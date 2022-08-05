@@ -13,15 +13,6 @@ export const MenuOpenContextProvider = ({ children }) => {
     document.querySelector('body').classList.toggle('h-screen-trick');
   };
 
-  useEffect(() => {
-    const closeMenuHandler = () => {
-      setIsMenuOpen(false);
-      document.querySelector('body').classList.remove('h-screen-trick');
-    };
-
-    window.onresize = closeMenuHandler;
-  });
-
   return (
     <MenuOpenContext.Provider value={{ isMenuOpen, toggleMenuHandler }}>
       {children}

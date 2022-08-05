@@ -89,9 +89,9 @@ const MobileMenu = () => {
 
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 grid w-screen opacity-100 ${
+      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen opacity-100 ${
         !menuOpenCtx.isMenuOpen && `translate-x-full opacity-0`
-      } place-content-center bg-black`}
+      } bg-black`}
     >
       <div
         className="absolute right-s3 top-s8 cursor-pointer md:right-[2.5%]"
@@ -99,15 +99,15 @@ const MobileMenu = () => {
       >
         <Image src={closeIcon} width={32} height={32} alt="close icon" />
       </div>
-      <div>
+      <div className="absolute top-1/2 grid w-full -translate-y-1/2 gap-8">
         {ROUTES.map((route) => (
-          <div key={route.id}>
-            <Link href={route.route}>
-              <a className="gradient-text gradient-2 mb-8 text-4xl font-bold">
+          <Link href={route.route} key={route.id}>
+            <div className="w-full pl-10">
+              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-4xl">
                 {route.text}
               </a>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
