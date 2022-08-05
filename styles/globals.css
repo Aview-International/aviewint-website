@@ -3,4 +3,25 @@
 @tailwind utilities;
 
 @layer components {
+  .gradient-1 {
+    @apply bg-gradient-to-tr from-purple to-blue;
+  }
+
+  .gradient-2 {
+    @apply bg-gradient-to-br from-purple to-blue;
+  }
+
+  .gradient-text {
+    @apply inline-block bg-clip-text text-transparent;
+  }
+
+  .transition-300 {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .h-screen-trick {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    @apply min-h-[640px] !important;
+  }
 }

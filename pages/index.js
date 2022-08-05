@@ -1,3 +1,11 @@
+import Header from '../components/navigation/Header';
+
 const Home = () => {
-  return <div className=""></div>;
+  return (
+    <>
+      <Header curPage="Home" />
+    </>
+  );
 };
+
+export default Home;
