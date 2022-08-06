@@ -1,13 +1,20 @@
 import '../styles/globals.css';
 import { MenuOpenContextProvider } from '../store/menu-open-context';
-import ViewportHeight from '../utils/ViewportHeight';
+import { useEffect } from 'react';
 
 const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    const setViewportHeight = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setViewportHeight();
+    window.onresize = setViewportHeight;
+  });
+
   return (
     <MenuOpenContextProvider>
-      <ViewportHeight>
-        <Component {...pageProps} />
-      </ViewportHeight>
+      <Component {...pageProps} />
     </MenuOpenContextProvider>
   );
 };
