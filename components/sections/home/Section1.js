@@ -22,25 +22,7 @@ const Section1 = () => {
           <p className="body mb-8">
             Start increasing your international fanbase AVIEW at a time.
           </p>
-          <form
-            name="phone-number"
-            method="POST"
-            data-netlify="true"
-            className="lg:flex lg:justify-between lg:gap-s2"
-          >
-            <div className="mb-s2 lg:mb-0 lg:grow">
-              <TextInput
-                type="tel"
-                name="phone-number"
-                placeholder="Phone Number"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                invalidMessage="Enter a valid phone number."
-              />
-            </div>
-            <Button type="primary" purpose="submit">
-              Get Started
-            </Button>
-          </form>
+          <PhoneNumberForm />
         </div>
         <div className="mx-auto mt-s9 -mb-2 max-w-[500px] lg:-m-s2 lg:max-w-full">
           <Image src={landingGraphic} alt="landing-graphic" />
@@ -48,6 +30,24 @@ const Section1 = () => {
       </div>
       <Milestones />
     </section>
+  );
+};
+
+const PhoneNumberForm = () => {
+  return (
+    <form
+      name="phone-number"
+      method="POST"
+      data-netlify="true"
+      className="lg:flex lg:justify-between lg:gap-s2"
+    >
+      <div className="mb-s2 lg:mb-0 lg:grow">
+        <TextInput type="tel" name="phone-number" placeholder="Phone Number" />
+      </div>
+      <Button type="primary" purpose="submit">
+        Get Started
+      </Button>
+    </form>
   );
 };
 
