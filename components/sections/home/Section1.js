@@ -35,19 +35,9 @@ const Section1 = () => {
 
 const PhoneNumberForm = () => {
   return (
-    <form
-      name="phone-number"
-      method="POST"
-      data-netlify="true"
-      className="lg:flex lg:justify-between lg:gap-s2"
-    >
+    <form className="lg:flex lg:justify-between lg:gap-s2">
       <div className="mb-s2 lg:mb-0 lg:grow">
-        <TextInput
-          type="tel"
-          name="form-phone-number"
-          placeholder="Phone Number"
-          value="phone-number"
-        />
+        <TextInput placeholder="Phone Number" />
       </div>
       <Button type="primary" purpose="submit">
         Get Started
