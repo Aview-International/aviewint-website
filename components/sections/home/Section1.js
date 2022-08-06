@@ -42,7 +42,12 @@ const PhoneNumberForm = () => {
       className="lg:flex lg:justify-between lg:gap-s2"
     >
       <div className="mb-s2 lg:mb-0 lg:grow">
-        <TextInput type="tel" name="phone-number" placeholder="Phone Number" />
+        <TextInput
+          type="tel"
+          name="form-phone-number"
+          placeholder="Phone Number"
+          value="phone-number"
+        />
       </div>
       <Button type="primary" purpose="submit">
         Get Started
