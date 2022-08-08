@@ -1,6 +1,6 @@
 import TextInput from '../../UI/TextInput';
 import Button from '../../UI/Button';
-import landingGraphic from '../../../public/img/graphics/home-landing.png';
+import phoneInHandGraphic from '../../../public/img/graphics/phone-in-hand.png';
 import Shadow from '../../UI/Shadow';
 import Border from '../../UI/Border';
 import Image from 'next/image';
@@ -14,7 +14,7 @@ const Section1 = () => {
       <div className="grid lg:grid-cols-2">
         <div>
           <h1 className="title mb-s2">
-            Translate Your&nbsp;
+            Translate Your{' '}
             <span className="gradient-text gradient-2">
               Social Media Content
             </span>
@@ -25,7 +25,7 @@ const Section1 = () => {
           <PhoneNumberForm />
         </div>
         <div className="mx-auto mt-s9 -mb-2 max-w-[500px] lg:-m-s2 lg:max-w-full">
-          <Image src={landingGraphic} alt="landing-graphic" />
+          <Image src={phoneInHandGraphic} alt="landing-graphic" />
         </div>
       </div>
       <Milestones />
@@ -50,7 +50,7 @@ const Milestones = () => {
   return (
     <Shadow classes="w-full">
       <Border classes="w-full" borderRadius="2xl">
-        <div className="grid justify-center gap-s10 rounded-2xl bg-black py-10 md:grid-cols-3 md:gap-[10%] md:py-6">
+        <div className="grid justify-center gap-s10 rounded-2xl bg-black py-10 md:grid-cols-3 md:gap-[10%] md:py-s3">
           {MILESTONES.map((milestone) => (
             <Milestone key={milestone.id} milestone={milestone} />
           ))}

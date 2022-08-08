@@ -1,4 +1,4 @@
-import FullWidthGradient from '../../UI/FullWidthGradient';
+import FullWidthGradient from '../../layout/FullWidthGradient';
 
 const Section4 = () => {
   return (

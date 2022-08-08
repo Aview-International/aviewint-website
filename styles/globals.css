@@ -12,7 +12,7 @@
   }
 
   .m-horizontal {
-    @apply mx-auto w-[90%] max-w-[1400px];
+    @apply mx-auto w-[90%] max-w-[1240px];
   }
 
   .gradient-1 {
@@ -24,7 +24,7 @@
   }
 
   .gradient-text {
-    @apply inline-block bg-clip-text text-transparent;
+    @apply inline bg-clip-text text-transparent;
   }
 
   .transition-300 {

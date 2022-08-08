@@ -46,7 +46,7 @@ const DesktopRoutes = ({ curPage }) => {
           <a
             className={`text-md ml-s5 xl:text-lg ${
               curPage === route.text ? `gradient-text gradient-1` : `text-white`
-            }`}
+            } hover:gradient-text hover:gradient-1`}
           >
             {route.text}
           </a>
@@ -91,7 +91,7 @@ const MobileMenu = () => {
     <div
       className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen opacity-100 ${
         !menuOpenCtx.isMenuOpen && `translate-x-full opacity-0`
-      } bg-black`}
+      } z-50 bg-black`}
     >
       <div
         className="absolute right-s3 top-s8 cursor-pointer md:right-[2.5%]"
