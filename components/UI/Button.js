@@ -9,6 +9,10 @@ const Button = ({ children, type, purpose, route }) => {
       className={`
           ${type === 'primary' && `gradient-1 text-black `}
           ${type === 'secondary' && `bg-black text-white hover:text-black `}
+          ${
+            type === 'tertiary' &&
+            `border-[3px] border-solid border-white bg-transparent text-white hover:bg-white hover:text-black `
+          }
           transition-300 relative block w-max cursor-pointer rounded-full px-s5 pt-s1.5 pb-s1 text-lg
         `}
     >
@@ -17,14 +21,23 @@ const Button = ({ children, type, purpose, route }) => {
     </a>
   );
 
-  return (
-    <Shadow>
-      <Border borderRadius="full">
-        {purpose === 'route' && <Link href={route}>{buttonContent}</Link>}
-        {purpose === 'submit' && <button type="submit">{buttonContent}</button>}
-      </Border>
-    </Shadow>
-  );
+  const buttonPurpose =
+    purpose === 'route' ? (
+      <Link href={route}>{buttonContent}</Link>
+    ) : (
+      purpose === 'submit' && <button type="submit">{buttonContent}</button>
+    );
+
+  const button =
+    type === 'tertiary' ? (
+      buttonPurpose
+    ) : (
+      <Shadow>
+        <Border borderRadius="full">{buttonPurpose}</Border>
+      </Shadow>
+    );
+
+  return button;
 };
 
 export default Button;

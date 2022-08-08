@@ -37,7 +37,11 @@ const PhoneNumberForm = () => {
   return (
     <form className="lg:flex lg:justify-between lg:gap-s2">
       <div className="mb-s2 lg:mb-0 lg:grow">
-        <TextInput placeholder="Phone Number" />
+        <TextInput
+          placeholder="Phone Number"
+          bgColor="black"
+          textColor="white"
+        />
       </div>
       <Button type="primary" purpose="submit">
         Get Started
