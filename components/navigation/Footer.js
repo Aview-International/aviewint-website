@@ -36,7 +36,9 @@ const Footer = () => {
         <div className="flex flex-col gap-s1 text-right md:flex-row md:gap-s5 md:text-left">
           {ROUTES.map((route) => (
             <Link href={route.route} key={route.id}>
-              <a className="text-md text-white xl:text-lg">{route.text}</a>
+              <a className="text-md hover:gradient-text hover:gradient-2 text-white xl:text-lg">
+                {route.text}
+              </a>
             </Link>
           ))}
         </div>
