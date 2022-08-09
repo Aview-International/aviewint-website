@@ -2,7 +2,7 @@ import FullWidthGradient from '../../layout/FullWidthGradient';
 import Button from '../../UI/Button';
 import TextInput from '../../UI/TextInput';
 
-const Section9 = () => {
+const GoGlobal = () => {
   return (
     <section className="section text-center">
       <FullWidthGradient>
@@ -27,4 +27,4 @@ const Section9 = () => {
   );
 };
 
-export default Section9;
+export default GoGlobal;

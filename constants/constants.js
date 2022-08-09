@@ -5,18 +5,25 @@ import youtube from '../public/img/icons/youtube.svg';
 import tiktok from '../public/img/icons/tiktok.svg';
 import instagram from '../public/img/icons/instagram.svg';
 
-// Content Creators We've Worked With
+// Content Creators
 import logan1 from '../public/img/creators/logan-1.png';
 import ninja1 from '../public/img/creators/ninja-1.png';
 import saudBrothers from '../public/img/creators/saud-brothers.png';
 import whatIf from '../public/img/creators/what-if.png';
 import yesTheory from '../public/img/creators/yes-theory.png';
 import markRober from '../public/img/creators/mark-rober.png';
+import nextCanada from '../public/img/creators/next-canada.png';
+import rippleVentures from '../public/img/creators/ripple-ventures.png';
+import wayfoundHealth from '../public/img/creators/wayfound-health.png';
+import valnetMedia from '../public/img/creators/valnet-media.png';
+import underknownMedia from '../public/img/creators/underknown-media.png';
 
 // Why We Lead in Translations
 import fastAndEasy from '../public/img/graphics/fast-and-easy.png';
 import flexible from '../public/img/graphics/flexible.png';
 import accurate from '../public/img/graphics/accurate.png';
+
+// Our Services
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -150,4 +157,17 @@ export const LEAD_IN_TRANSLATIONS = [
       'We will ensure that our translations are accurate no matter the content.',
     graphic: accurate,
   },
+];
+
+export const GROW_CUSTOMERS_INTERNATIONALLY = [
+  { id: 'customer-1', name: 'Maverick Media', icon: logan1 },
+  { id: 'customer-2', name: 'Mark Rober', icon: markRober },
+  { id: 'customer-3', name: 'Saud Brothers', icon: saudBrothers },
+  { id: 'customer-4', name: 'What If', icon: whatIf },
+  { id: 'customer-5', name: 'Yes Theory', icon: yesTheory },
+  { id: 'customer-6', name: 'NEXT Canada', icon: nextCanada },
+  { id: 'customer-7', name: 'Ripple Ventures', icon: rippleVentures },
+  { id: 'customer-8', name: 'Wayfound Health', icon: wayfoundHealth },
+  { id: 'customer-9', name: 'Valnet Media', icon: valnetMedia },
+  { id: 'customer-10', name: 'Underknown Media', icon: underknownMedia },
 ];

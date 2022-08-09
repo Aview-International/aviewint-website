@@ -3,7 +3,7 @@ import { WORKED_WITH } from '../../../constants/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Section2 = () => {
+const ContentCreators = () => {
   return (
     <section className="section m-horizontal text-center">
       <h2 className="title mb-s4 text-left md:mb-s10 md:text-center">
@@ -29,4 +29,4 @@ const Section2 = () => {
   );
 };
 
-export default Section2;
+export default ContentCreators;

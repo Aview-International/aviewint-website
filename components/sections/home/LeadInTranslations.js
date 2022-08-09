@@ -2,7 +2,7 @@ import { LEAD_IN_TRANSLATIONS } from '../../../constants/constants';
 import Row3 from '../../layout/Row3';
 import GraphicCard from '../../UI/GraphicCard';
 
-const Section6 = () => {
+const LeadInTranslations = () => {
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s2 md:text-center">
@@ -30,4 +30,4 @@ const Section6 = () => {
   );
 };
 
-export default Section6;
+export default LeadInTranslations;

@@ -1,6 +1,6 @@
 import FullWidthGradient from '../../layout/FullWidthGradient';
 
-const Section4 = () => {
+const BreadAndButter = () => {
   return (
     <section className="section">
       <FullWidthGradient>
@@ -16,4 +16,4 @@ const Section4 = () => {
   );
 };
 
-export default Section4;
+export default BreadAndButter;

@@ -2,7 +2,7 @@ import Button from '../../UI/Button';
 import globeGraphic from '../../../public/img/graphics/globe.png';
 import Image from 'next/image';
 
-const Section5 = () => {
+const YouCreateWeTranslate = () => {
   return (
     <section className="section m-horizontal grid items-center gap-10 md:grid-cols-[4fr,3fr] md:gap-12 lg:gap-40">
       <div>
@@ -26,4 +26,4 @@ const Section5 = () => {
   );
 };
 
-export default Section5;
+export default YouCreateWeTranslate;

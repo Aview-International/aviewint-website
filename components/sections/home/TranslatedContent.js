@@ -2,7 +2,7 @@ import { TRANSLATED_CONTENT } from '../../../constants/constants';
 import Border from '../../UI/Border';
 import Shadow from '../../UI/Shadow';
 
-const Section3 = () => {
+const TranslatedContent = () => {
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
@@ -24,4 +24,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default TranslatedContent;

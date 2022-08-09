@@ -8,7 +8,7 @@ import { MILESTONES } from '../../../constants/constants';
 import { useState, useRef, useEffect } from 'react';
 import { useOnScreen } from '../../../hooks/useOnScreen';
 
-const Section1 = () => {
+const TranslateYourSocialMediaContent = () => {
   return (
     <section className="section m-horizontal mt-s8 lg:mt-s17">
       <div className="grid lg:grid-cols-2">
@@ -97,4 +97,4 @@ const Milestone = ({ milestone }) => {
   );
 };
 
-export default Section1;
+export default TranslateYourSocialMediaContent;
