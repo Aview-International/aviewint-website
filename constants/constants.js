@@ -24,6 +24,9 @@ import flexible from '../public/img/graphics/flexible.png';
 import accurate from '../public/img/graphics/accurate.png';
 
 // Our Services
+import subtitles from '../public/img/graphics/subtitles.png';
+import dubbing from '../public/img/graphics/dubbing.png';
+import shorts from '../public/img/graphics/shorts.png';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -166,8 +169,71 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
   { id: 'customer-4', name: 'What If', icon: whatIf },
   { id: 'customer-5', name: 'Yes Theory', icon: yesTheory },
   { id: 'customer-6', name: 'NEXT Canada', icon: nextCanada },
-  { id: 'customer-7', name: 'Ripple Ventures', icon: rippleVentures },
+  // { id: 'customer-7', name: 'Ripple Ventures', icon: rippleVentures },
   { id: 'customer-8', name: 'Wayfound Health', icon: wayfoundHealth },
   { id: 'customer-9', name: 'Valnet Media', icon: valnetMedia },
   { id: 'customer-10', name: 'Underknown Media', icon: underknownMedia },
+];
+
+export const OUR_SERVICES = [
+  {
+    id: 'service-1',
+    title: 'Subtitles',
+    description:
+      'Receive a translation file that can be uploaded directly to your YouTube video.',
+    graphic: subtitles,
+  },
+  {
+    id: 'service-2',
+    title: 'Dubbing',
+    description:
+      'Receive your videos completely translated with voice-overs in the language of your choosing. ',
+    graphic: dubbing,
+  },
+  {
+    id: 'service-3',
+    title: 'Shorts',
+    description:
+      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook. ',
+    graphic: shorts,
+  },
+];
+
+export const OUR_MILESTONES = [
+  {
+    id: 'milestone-1',
+    end: 500,
+    suffix: 'M+',
+    text: 'International Creator Views',
+  },
+  {
+    id: 'milestone-2',
+    end: 15,
+    suffix: '+',
+    text: 'Languages',
+  },
+  {
+    id: 'milestone-3',
+    end: 10,
+    suffix: '+',
+    text: 'International Gained Subscribers',
+  },
+  {
+    id: 'milestone-4',
+    end: 1600,
+    suffix: '+',
+    text: 'Completed Videos',
+  },
+  {
+    id: 'milestone-5',
+    end: 400,
+    suffix: '+',
+    text: 'Hours of Translated Content',
+  },
+  {
+    id: 'milestone-6',
+    end: 100,
+    suffix: 'M+',
+    text: 'Client Subscriber Count',
+  },
 ];
