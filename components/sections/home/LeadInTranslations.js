@@ -23,6 +23,7 @@ const LeadInTranslations = () => {
             title={card.title}
             description={card.description}
             graphic={card.graphic}
+            direction="vertical"
           />
         ))}
       </Row3>

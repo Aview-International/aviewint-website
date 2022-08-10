@@ -34,6 +34,12 @@ import ninja2 from '../public/img/creators/ninja-2.png';
 import goodSimpleLiving from '../public/img/creators/good-simple-living.png';
 import amandaCerney from '../public/img/creators/amanda-cerney.png';
 
+// Benefits of Translations
+import visibility from '../public/img/graphics/visibility.png';
+import growth from '../public/img/graphics/growth.png';
+import userFriendly from '../public/img/graphics/user-friendly.png';
+import expand from '../public/img/graphics/expand.png';
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -282,5 +288,34 @@ export const OUR_MILESTONES = [
     end: 100,
     suffix: 'M+',
     text: 'Client Subscriber Count',
+  },
+];
+
+export const BENEFITS_OF_TRANSLATIONS = [
+  {
+    id: 'benefit-1',
+    title: 'Visibility',
+    description:
+      "Translated metadata will help increase your visibility on Youtube's algorithm.",
+    graphic: visibility,
+  },
+  {
+    id: 'benefit-2',
+    title: 'Growth',
+    description:
+      'Increase the growth of your channel by tapping into new communities.',
+    graphic: growth,
+  },
+  {
+    id: 'benefit-3',
+    title: 'User-Friendly',
+    description: 'Make your videos more accessible to different groups.',
+    graphic: userFriendly,
+  },
+  {
+    id: 'benefit-4',
+    title: 'Expand',
+    description: 'Grow an international audience and increase engagement.',
+    graphic: expand,
   },
 ];

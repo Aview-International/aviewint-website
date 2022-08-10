@@ -15,6 +15,7 @@ const OurServices = () => {
             title={service.title}
             description={service.description}
             graphic={service.graphic}
+            direction="vertical"
           />
         ))}
       </Row3>
