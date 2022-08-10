@@ -4,9 +4,9 @@ import HoverGradientFill from './HoverGradientFill';
 
 const GraphicCard = ({ title, description, graphic }) => {
   return (
-    <Card>
+    <Card borderRadius="2xl">
       <HoverGradientFill borderRadius="2xl" />
-      <div className="relative text-center">
+      <div className="relative py-s5 px-s4 text-center md:py-s6 md:px-s3">
         <div className="mx-auto max-w-[225px] pb-s2">
           <Image src={graphic} alt={title} />
         </div>

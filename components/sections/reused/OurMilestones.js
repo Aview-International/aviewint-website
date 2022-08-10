@@ -38,8 +38,8 @@ const Milestone = ({ milestone }) => {
   }, [isOnScreen]);
 
   return (
-    <Card>
-      <div className="py-s5 text-center">
+    <Card borderRadius="2xl">
+      <div className="py-s5 text-center md:py-s9">
         <p
           className="gradient-2 gradient-text inline-block text-7xl font-bold md:text-8xl"
           ref={elementRef}

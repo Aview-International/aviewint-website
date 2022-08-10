@@ -28,6 +28,12 @@ import subtitles from '../public/img/graphics/subtitles.png';
 import dubbing from '../public/img/graphics/dubbing.png';
 import shorts from '../public/img/graphics/shorts.png';
 
+// Generating Aview For
+import logan2 from '../public/img/creators/logan-2.png';
+import ninja2 from '../public/img/creators/ninja-2.png';
+import goodSimpleLiving from '../public/img/creators/good-simple-living.png';
+import amandaCerney from '../public/img/creators/amanda-cerney.png';
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -162,6 +168,47 @@ export const LEAD_IN_TRANSLATIONS = [
   },
 ];
 
+export const GENERATING_AVIEW_FOR = [
+  {
+    id: 'creator-1',
+    name: 'Logan Paul',
+    subscribers: '23.5M+ Subs',
+    icon: logan2,
+  },
+  { id: 'creator-2', name: 'Ninja', subscribers: '23.9M+ Subs', icon: ninja2 },
+  {
+    id: 'creator-3',
+    name: 'Saud Brothers',
+    subscribers: '6.7M+ Subs',
+    icon: saudBrothers,
+  },
+  { id: 'creator-4', name: 'What If', subscribers: '6.7M+ Subs', icon: whatIf },
+  {
+    id: 'creator-5',
+    name: 'Yes Theory',
+    subscribers: '7.7M+ Subs',
+    icon: yesTheory,
+  },
+  {
+    id: 'creator-6',
+    name: 'Mark Rober',
+    subscribers: '22.3M+ Subs',
+    icon: markRober,
+  },
+  {
+    id: 'creator-7',
+    name: 'Good Simple Living',
+    subscribers: '404K+ Subs',
+    icon: goodSimpleLiving,
+  },
+  {
+    id: 'creator-8',
+    name: 'Amanda Cerney',
+    subscribers: '2.7M+ Subs',
+    icon: amandaCerney,
+  },
+];
+
 export const GROW_CUSTOMERS_INTERNATIONALLY = [
   { id: 'customer-1', name: 'Maverick Media', icon: logan1 },
   { id: 'customer-2', name: 'Mark Rober', icon: markRober },
@@ -215,7 +262,7 @@ export const OUR_MILESTONES = [
   {
     id: 'milestone-3',
     end: 10,
-    suffix: '+',
+    suffix: 'M+',
     text: 'International Gained Subscribers',
   },
   {
