@@ -40,6 +40,10 @@ import growth from '../public/img/graphics/growth.png';
 import userFriendly from '../public/img/graphics/user-friendly.png';
 import expand from '../public/img/graphics/expand.png';
 
+// Our Core Values
+import fastTurnaround from '../public/img/graphics/fast-turnaround.png';
+import tailoredForCreators from '../public/img/graphics/tailored-for-creators.png';
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -317,5 +321,29 @@ export const BENEFITS_OF_TRANSLATIONS = [
     title: 'Expand',
     description: 'Grow an international audience and increase engagement.',
     graphic: expand,
+  },
+];
+
+export const OUR_CORE_VALUES = [
+  {
+    id: 'value-1',
+    title: 'Fast Turnaround',
+    description:
+      'Aview will guarantee a 24-hour turnaround on subtitle work and 48 hours turnaround on dubbed content. We understand the importance of being timely to maximize views.',
+    graphic: fastTurnaround,
+  },
+  {
+    id: 'value-2',
+    title: 'Tailored for Creators',
+    description:
+      'Aview understands each creator is different and will work closely with your team to find the best service and languages. No one service fits all. We will ensure you receive what is best for you and your brand.',
+    graphic: tailoredForCreators,
+  },
+  {
+    id: 'value-3',
+    title: 'Flexible Payments',
+    description:
+      'Aview creates personalized payment plans for each creator to ensure your needs and ROI is met. We will work closely with you and your brand to find a plan that works for you.',
+    graphic: flexible,
   },
 ];
