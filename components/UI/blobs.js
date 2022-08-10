@@ -10,10 +10,10 @@ const Blobs = () => {
       <div className="-z-20 absolute w-1/2 -top-24 right-32">
         <Image src={blob2} alt="blob2" />
       </div>
-      <div className="-z-20 absolute w-1/3 -bottom-40 -right-60">
+      <div className="-z-20 absolute w-1/2 -bottom-80 -right-96">
         <Image src={blob2} alt="blob2" />
       </div>
-      <div className="-z-10 absolute w-5/6 -top-32 -right-96">
+      <div className="-z-10 absolute -top-72 -right-96">
         <Image src={blob1} alt="blob1" />
       </div>
         </>
