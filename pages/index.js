@@ -7,6 +7,7 @@ import YouCreateWeTranslate from '../components/sections/home/YouCreateWeTransla
 import LeadInTranslations from '../components/sections/home/LeadInTranslations';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
+import Blobs from '../components/UI/Blobs';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <LeadInTranslations />
       <GoGlobal />
       <Footer />
+      <Blobs />
     </>
   );
 };
