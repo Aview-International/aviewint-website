@@ -1,6 +1,6 @@
 import FullWidthGradient from '../../layout/FullWidthGradient';
 
-const Section3 = () => {
+const AtAview = () => {
   return (
     <section className="section">
       <FullWidthGradient>
@@ -16,4 +16,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default AtAview;

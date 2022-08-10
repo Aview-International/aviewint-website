@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import aboutGraphic from '../../../public/img/graphics/about-aview.png';
 
-const Section2 = () => {
+const AboutAview = () => {
     return (
       <section className="section m-horizontal mt-s8 lg:mt-s17">
         <div className="items-center grid lg:grid-cols-6">
@@ -23,4 +23,4 @@ const Section2 = () => {
     );
   };
 
-export default Section2;
+export default AboutAview;
