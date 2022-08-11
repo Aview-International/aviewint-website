@@ -7,7 +7,7 @@ const FavoriteInfluencer = () => {
     <section className="section m-horizontal mt-s8 lg:mt-s17">
       <div className="grid lg:grid-cols-7 items-center">
         <div className="col-span-3">
-          <h1 className="title mb-s4">
+          <h1 className="title mb-s3">
            <span className="gradient-text gradient-2">Translate Your Favorite Influencer Videos!</span>
           </h1>
           <p className="body mb-s4 lg:max-w-[400px]">
