@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Card from './Card';
 
-const CreatorProfile = ({ name, description, icon }) => {
+const Profile = ({ name, description, icon }) => {
   return (
     <div className="text-center">
       <div className="relative z-10 mx-auto h-[75px] w-[75px] overflow-hidden rounded-full md:h-[125px] md:w-[125px]">
@@ -21,4 +21,4 @@ const CreatorProfile = ({ name, description, icon }) => {
   );
 };
 
-export default CreatorProfile;
+export default Profile;

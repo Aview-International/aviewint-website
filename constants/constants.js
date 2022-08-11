@@ -44,6 +44,18 @@ import expand from '../public/img/graphics/expand.png';
 import fastTurnaround from '../public/img/graphics/fast-turnaround.png';
 import tailoredForCreators from '../public/img/graphics/tailored-for-creators.png';
 
+// Our Team
+import akshay from '../public/img/team/akshay.png';
+import andrew from '../public/img/team/andrew.png';
+import david from '../public/img/team/david.png';
+import garnet from '../public/img/team/garnet.png';
+import jon from '../public/img/team/jon.png';
+import mari from '../public/img/team/mari.png';
+import michell from '../public/img/team/michell.png';
+import taehun from '../public/img/team/taehun.png';
+import victor from '../public/img/team/victor.png';
+import defaultPicture from '../public/img/team/default.png';
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -345,5 +357,74 @@ export const OUR_CORE_VALUES = [
     description:
       'Aview creates personalized payment plans for each creator to ensure your needs and ROI is met. We will work closely with you and your brand to find a plan that works for you.',
     graphic: flexible,
+  },
+];
+
+export const TEAM = [
+  {
+    id: 'group-1',
+    role: 'Co-Founders',
+    members: [
+      {
+        id: 'member-1',
+        name: 'Akshay Maharaj',
+        description: 'Co-Founder',
+        picture: akshay,
+      },
+      {
+        id: 'member-2',
+        name: 'Garnet Delsey',
+        description: 'Co-Founder',
+        picture: garnet,
+      },
+    ],
+  },
+  {
+    id: 'group-2',
+    role: 'Development Team',
+    members: [
+      {
+        id: 'member-1',
+        name: 'Andrew Qiao',
+        description: 'Software Engineer',
+        picture: andrew,
+      },
+      {
+        id: 'member-2',
+        name: 'Victor Ogunjobi',
+        description: 'Software Engineer',
+        picture: victor,
+      },
+      {
+        id: 'member-3',
+        name: 'Taehun Jang',
+        description: 'Software Engineer',
+        picture: taehun,
+      },
+      {
+        id: 'member-4',
+        name: 'Jon-Carlo Timmer',
+        description: 'Software Engineer',
+        picture: jon,
+      },
+    ],
+  },
+  {
+    id: 'group-3',
+    role: 'Design Team',
+    members: [
+      {
+        id: 'member-1',
+        name: 'David Lovenburg',
+        description: 'UI/UX Designer',
+        picture: david,
+      },
+      {
+        id: 'member-2',
+        name: 'Luis Sarceño',
+        description: 'Graphic Designer',
+        picture: defaultPicture,
+      },
+    ],
   },
 ];

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { GENERATING_AVIEW_FOR } from '../../../constants/constants';
 import Card from '../../UI/Card';
 import Row4 from '../../layout/Row4';
-import CreatorProfile from '../../UI/CreatorProfile';
+import Profile from '../../UI/Profile';
 
 const GeneratingAviewFor = () => {
   return (
@@ -19,7 +19,7 @@ const CreatorGrid = () => {
   return (
     <Row4>
       {GENERATING_AVIEW_FOR.map((creator) => (
-        <CreatorProfile
+        <Profile
           key={creator.id}
           name={creator.name}
           description={creator.subscribers}
