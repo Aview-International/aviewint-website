@@ -50,11 +50,12 @@ import andrew from '../public/img/team/andrew.png';
 import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
 import jon from '../public/img/team/jon.png';
-import mari from '../public/img/team/mari.png';
-import michell from '../public/img/team/michell.png';
 import taehun from '../public/img/team/taehun.png';
 import victor from '../public/img/team/victor.png';
 import defaultPicture from '../public/img/team/default.png';
+
+// Aview's Growth
+import keyMetrics from '../public/img/graphics/key-metrics.png';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -426,5 +427,29 @@ export const TEAM = [
         picture: defaultPicture,
       },
     ],
+  },
+];
+
+export const AVIEW_GROWTH = [
+  {
+    id: 'growth-1',
+    title: 'Our First Client - Logan Paul',
+    description:
+      'Aview was founded in 2017 initially by two high school students. Our services were simple yet effective and allowed creators like Logan Paul to expand into new international audiences and globalize their brand. Aview is a leading translation service for many media influencers and brands.',
+    icon: logan2,
+  },
+  {
+    id: 'growth-2',
+    title: 'Hitting Our Key Metrics',
+    description:
+      'Our mission has been simple, to help take influencers and brands to global markets. In 2021, We hit our milestone of receiving over 500 million international views across our international content! We are creeping up very quickly on our next milestone of 1 billion views!',
+    icon: keyMetrics,
+  },
+  {
+    id: 'growth-3',
+    title: 'Expanding Our Services',
+    description:
+      'Given the increase in demand from content creators to go global, we expanded our offerings to include video dubbing and translated short-form content. With this fast expansion, Aview is always looking for more translators, dubbers and editors to join our team!',
+    icon: expand,
   },
 ];
