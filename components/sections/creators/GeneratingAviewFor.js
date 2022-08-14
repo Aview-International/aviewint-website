@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { GENERATING_AVIEW_FOR } from '../../../constants/constants';
-import Card from '../../UI/Card';
 import Row4 from '../../layout/Row4';
 import Profile from '../../UI/Profile';
 
