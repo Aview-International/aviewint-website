@@ -6,10 +6,10 @@ import MakeImpact from '../../components/sections/translator/MakeImpact';
 import CompanyCulture from '../../components/sections/translator/CompanyCulture';
 import Blobs from '../../components/UI/Blobs';
 
-const Translator = () => {
+const Careers = () => {
   return (
     <>
-      <Header curPage="Translator" />
+      <Header curPage="Careers" />
       <FavoriteInfluencer />
       <PerksAview />
       <MakeImpact />
@@ -20,4 +20,4 @@ const Translator = () => {
   );
 };
 
-export default Translator;
+export default Careers;

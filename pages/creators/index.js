@@ -10,7 +10,7 @@ import GeneratingAviewFor from '../../components/sections/creators/GeneratingAvi
 const Creators = () => {
   return (
     <>
-      <Header />
+      <Header curPage="Creators" />
       <OurServices />
       <YouCreateWeTranslate />
       <BenefitsOfTranslations />

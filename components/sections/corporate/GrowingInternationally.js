@@ -11,10 +11,10 @@ const GrowingInternationally = () => {
       <h2 className="mb-s4 text-5xl font-bold text-white md:mb-s10 md:text-8xl">
         Growing our customers internationally
       </h2>
-      <div className="mb-s4 grid grid-cols-2 gap-x-s2 gap-y-s4 2xs:grid-cols-3 xs:grid-cols-4 xs:gap-x-s4 xs:gap-y-s6 md:mb-s10 md:grid-cols-5 lg:gap-x-s8 lg:gap-y-s10 xl:gap-x-s16 xl:gap-y-s10">
+      <div className="flex flex-row flex-wrap justify-center gap-s4 pb-s4 xs:gap-s8 md:pb-s10 xl:gap-s16">
         {GROW_CUSTOMERS_INTERNATIONALLY.map(({ id, name, icon }) => (
           <div key={id}>
-            <Image src={icon} alt={name} />
+            <Image src={icon} alt={name} width={125} height={125} />
             <p className="mt-s1 text-white md:mt-s2 md:text-lg">{name}</p>
           </div>
         ))}

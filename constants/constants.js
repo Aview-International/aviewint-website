@@ -340,9 +340,9 @@ export const BENEFITS_OF_TRANSLATIONS = [
 export const OUR_CORE_VALUES = [
   {
     id: 'value-1',
-    title: 'Fast Turnaround',
+    title: 'Fast Turn-Around',
     description:
-      'Aview will guarantee a 24-hour turnaround on subtitle work and 48 hours turnaround on dubbed content. We understand the importance of being timely to maximize views.',
+      'Aview will guarantee a 24-hour turn-around on subtitle work and 48 hours turnaround on dubbed content. We understand the importance of being timely to maximize views.',
     graphic: fastTurnaround,
   },
   {
@@ -404,7 +404,7 @@ export const TEAM = [
       },
       {
         id: 'member-4',
-        name: 'Jon-Carlo Timmer',
+        name: 'Jon Timmer',
         description: 'Software Engineer',
         picture: jon,
       },

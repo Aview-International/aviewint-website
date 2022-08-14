@@ -7,7 +7,7 @@ import OurMilestones from '../../components/sections/reused/OurMilestones';
 const Corporate = () => {
   return (
     <>
-      <Header />
+      <Header curPage="Corporate" />
       <GrowingInternationally />
       <OurServices />
       <OurMilestones />

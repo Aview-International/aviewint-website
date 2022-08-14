@@ -6,7 +6,7 @@ import Profile from '../../UI/Profile';
 const MeetTheTeam = () => {
   return (
     <section className="section m-horizontal text-center">
-      <h2 className="title mb-s2 md:mb-s10">
+      <h2 className="title mb-s4 md:mb-s10">
         <span className="gradient-text gradient-2">Meet The Team</span>
       </h2>
       {TEAM.map((group) => (
@@ -15,14 +15,29 @@ const MeetTheTeam = () => {
             {group.role}
           </h3>
           <Row4>
-            {group.members.map((member) => (
-              <Profile
-                name={member.name}
-                icon={member.picture}
-                description={member.description}
-                key={member.id}
-              />
-            ))}
+            {group.members.length === 2 ? (
+              <>
+                <div className="hidden xl:block"></div>
+                {group.members.map((member) => (
+                  <Profile
+                    name={member.name}
+                    icon={member.picture}
+                    description={member.description}
+                    key={member.id}
+                  />
+                ))}
+                <div className="hidden xl:block"></div>
+              </>
+            ) : (
+              group.members.map((member) => (
+                <Profile
+                  name={member.name}
+                  icon={member.picture}
+                  description={member.description}
+                  key={member.id}
+                />
+              ))
+            )}
           </Row4>
         </div>
       ))}

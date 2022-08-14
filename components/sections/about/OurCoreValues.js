@@ -30,22 +30,20 @@ const OurCoreValues = () => {
 
 const CoreValue = ({ title, description, graphic }) => {
   return (
-    <div className="group">
-      <Card borderRadius="2xl">
-        <HoverGradientFill borderRadius="2xl" />
-        <div className="relative mb-s2 p-s3">
-          <p className="text-left">
-            <span className="gradient-text gradient-2 text-8xl font-bold group-hover:text-white">
-              {title}
-            </span>
-          </p>
-          <div className="mx-auto mb-s2 max-w-[225px]">
-            <Image src={graphic} alt={title} />
-          </div>
-          <p className="body text-left">{description}</p>
+    <Card borderRadius="2xl">
+      <HoverGradientFill borderRadius="2xl" />
+      <div className="relative p-s3">
+        <p className="text-left">
+          <span className="gradient-text gradient-2 text-8xl font-bold group-hover:text-white">
+            {title}
+          </span>
+        </p>
+        <div className="mx-auto max-w-[225px] pb-s2">
+          <Image src={graphic} alt={title} />
         </div>
-      </Card>
-    </div>
+        <p className="body text-left">{description}</p>
+      </div>
+    </Card>
   );
 };
 
