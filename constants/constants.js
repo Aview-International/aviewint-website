@@ -61,7 +61,7 @@ export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
   { id: 'route-3', text: 'Corporate', route: '/corporate' },
-  { id: 'route-4', text: 'BillC96', route: '/billc96' },
+  { id: 'route-4', text: 'BillC96', route: '/bill-c96' },
   { id: 'route-5', text: 'About', route: '/about' },
   { id: 'route-6', text: 'Careers', route: '/careers' },
   { id: 'route-7', text: 'Blog', route: '/blog' },
@@ -472,5 +472,23 @@ export const TESTIMONIALS = [
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
     clientName: 'Lorem ipsum',
     clientPicture: defaultPicture,
+  },
+];
+
+export const HOW_WE_CAN_HELP = [
+  {
+    id: 'help-1',
+    title: 'Media Translations',
+    text: 'Aview specializes in media translations. We will take care of any marketing material that will need to be translated.',
+  },
+  {
+    id: 'help-2',
+    title: 'Document Translations',
+    text: 'Aview will translate and format any documents that need to be translated. Receive accurate translations in a timely manner.',
+  },
+  {
+    id: 'help-3',
+    title: 'Module Translations',
+    text: 'Training your team members to releasing an educational workshop, Aview can provide voiceover translations that fit within the modules.',
   },
 ];
