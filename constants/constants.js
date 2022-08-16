@@ -453,3 +453,24 @@ export const AVIEW_GROWTH = [
     icon: expand,
   },
 ];
+
+export const TESTIMONIALS = [
+  {
+    id: 'testimonial-1',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
+    clientName: 'Lorem ipsum',
+    clientPicture: defaultPicture,
+  },
+  {
+    id: 'testimonial-2',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
+    clientName: 'Lorem ipsum',
+    clientPicture: defaultPicture,
+  },
+  {
+    id: 'testimonial-3',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
+    clientName: 'Lorem ipsum',
+    clientPicture: defaultPicture,
+  },
+];
