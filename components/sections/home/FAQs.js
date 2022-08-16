@@ -30,8 +30,8 @@ const Question = ({ question, answer }) => {
     <>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`cursor-pointer pl-s3 transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-[45rem]' : 'max-h-12'
+        className={`cursor-pointer pl-s3 transition-all duration-1000 ease-in-out ${
+          isOpen ? 'max-h-[65rem]' : 'max-h-40'
         }`}
       >
         <h3 className="align-center mt-s3 mb-s3 flex justify-between text-xl text-white md:text-2xl">
@@ -39,7 +39,7 @@ const Question = ({ question, answer }) => {
           <div className="relative">
             <span className="inline-block h-[4px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[17px] left-[0px]  h-[4px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[16px] left-[0px] h-[4px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>
@@ -47,7 +47,7 @@ const Question = ({ question, answer }) => {
         </h3>
         <p
           className={`body mt-s3 mb-s3 ${
-            isOpen ? 'visible opacity-100' : 'invisible opacity-0'
+            isOpen ? 'block' : 'hidden'
           }`}
           dangerouslySetInnerHTML={{
             __html: answer,
