@@ -492,3 +492,56 @@ export const HOW_WE_CAN_HELP = [
     text: 'Training your team members to releasing an educational workshop, Aview can provide voiceover translations that fit within the modules.',
   },
 ];
+
+export const LANDING_PAGE_FAQ = [
+  {
+    id: 'question1',
+    question: 'How does it work?',
+    answer: `Three simple steps to increase your international viewership.
+    <br />
+    1. Select from our translations or voiceover services <br />
+    2. Indicate what languages would work best for you <br />
+    3. Receive 100% accurate translations or voice-overs within 48
+    hours, edited and ready to be posted`,
+  },
+  {
+    id: 'question2',
+    question: 'What are your services?',
+    answer: `AVIEW offers 3 services.
+    <br /> <br /> 1. Subtitles Translations <br />
+    Receive a translation file that can be uploaded directly to your
+    YouTube video. The file will be sent within 24 hours and will
+    auto-match the audio from the video. Simply add the translations and
+    target new global fans! <br />
+    <br /> 2. Voiceover Translations <br />
+    Receive your videos completely translated with voice-overs in the
+    language of your choosing. Aview will edit and post the video on a
+    new YouTube channel within 48 hours. Complete passive income!
+    <br />  <br /> 3. Short-form Content
+    <br />
+    Receive translated short-form content that can be uploaded to
+    YouTube, Instagram, TikTok and Facebook. The file will be sent
+    within 48 hours and dubbed or translated with subtitles. Go viral in
+    several languages!`,
+  },
+  {
+    id: 'question3',
+    question: 'Who have you worked with?',
+    answer: `We have been generating AVIEW for Logan Paul, Mark Rober, YesTheory, Ninja, Vitalyzdtv, Active Self Protection, Saud Brothers, Amanda Cerny, Marlin and many more! AVIEW has helped these creators expand into international markets and become known worldwide.`,
+  },
+  {
+    id: 'question4',
+    question: 'How much does it cost?',
+    answer: `AVIEW creates a pricing plan for each creator. We ensure that you see a return on our services! If you would like a quote, please click here!`,
+  },
+  {
+    id: 'question5',
+    question: 'How large does my audience need to be?',
+    answer: `To see the greatest results, we recommend you have an average of 25,000 views per video.`,
+  },
+  {
+    id: 'question6',
+    question: 'Can you translate for other platforms like TikTok?',
+    answer: `Yes! We are a multimedia translation service. We can translate and edit the content on any platform for you so they are ready to be uploaded.`,
+  },
+];

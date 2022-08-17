@@ -8,6 +8,7 @@ import LeadInTranslations from '../components/sections/home/LeadInTranslations';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
+import FAQs from '../components/sections/home/FAQs';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <BreadAndButter />
       <YouCreateWeTranslate />
       <LeadInTranslations />
+      <FAQs />
       <GoGlobal />
       <Footer />
       <Blobs />
