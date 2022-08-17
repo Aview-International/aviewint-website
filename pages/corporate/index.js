@@ -6,11 +6,15 @@ import OurMilestones from '../../components/sections/reused/OurMilestones';
 import Testimonials from '../../components/sections/corporate/Testimonials';
 import WhyChooseUs from '../../components/sections/corporate/WhyChooseUs';
 import Blobs from '../../components/UI/Blobs';
+import BrandGlobal from '../../components/sections/corporate/BrandGlobal';
+import OurMission from '../../components/sections/corporate/OurMission';
 
 const Corporate = () => {
   return (
     <>
       <Header curPage="Corporate" />
+      <BrandGlobal />
+      <OurMission />
       <GrowingInternationally />
       <OurServices />
       <OurMilestones />
