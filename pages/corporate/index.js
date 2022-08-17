@@ -5,6 +5,7 @@ import OurServices from '../../components/sections/reused/OurServices';
 import OurMilestones from '../../components/sections/reused/OurMilestones';
 import Testimonials from '../../components/sections/corporate/Testimonials';
 import WhyChooseUs from '../../components/sections/corporate/WhyChooseUs';
+import Blobs from '../../components/UI/Blobs';
 
 const Corporate = () => {
   return (
@@ -16,6 +17,7 @@ const Corporate = () => {
       <Testimonials />
       <WhyChooseUs />
       <Footer />
+      <Blobs />
     </>
   );
 };

@@ -4,6 +4,7 @@ import PreparingForBillC96 from '../../components/sections/bill-c96/PreparingFor
 import WhatIsBillC96 from '../../components/sections/bill-c96/WhatIsBillC96';
 import HowWeCanHelp from '../../components/sections/bill-c96/HowWeCanHelp';
 import OurServices from '../../components/sections/reused/OurServices';
+import Blobs from '../../components/UI/Blobs';
 
 const BillC96 = () => {
   return (
@@ -14,6 +15,7 @@ const BillC96 = () => {
       <HowWeCanHelp />
       <OurServices />
       <Footer />
+      <Blobs />
     </>
   );
 };

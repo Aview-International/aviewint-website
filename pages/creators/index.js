@@ -6,6 +6,7 @@ import BenefitsOfTranslations from '../../components/sections/creators/BenefitsO
 import HowItWorks from '../../components/sections/creators/HowItWorks';
 import AtAview from '../../components/sections/creators/AtAview';
 import GeneratingAviewFor from '../../components/sections/creators/GeneratingAviewFor';
+import Blobs from '../../components/UI/Blobs';
 
 const Creators = () => {
   return (
@@ -18,6 +19,7 @@ const Creators = () => {
       <AtAview />
       <GeneratingAviewFor />
       <Footer />
+      <Blobs />
     </>
   );
 };

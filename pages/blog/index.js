@@ -3,6 +3,7 @@ import Header from '../../components/navigation/Header';
 import { getDate, getDescription, getStories } from '../../utils/blog';
 import { useState, useEffect } from 'react';
 import Card from '../../components/UI/Card';
+import Blobs from '../../components/UI/Blobs';
 
 const Blog = ({ posts }) => {
   const [stories, setStories] = useState(posts);
@@ -63,6 +64,7 @@ const Blog = ({ posts }) => {
         </div>
       </section>
       <Footer />
+      <Blobs />
     </>
   );
 };
