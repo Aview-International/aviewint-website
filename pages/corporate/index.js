@@ -8,10 +8,12 @@ import WhyChooseUs from '../../components/sections/corporate/WhyChooseUs';
 import Blobs from '../../components/UI/Blobs';
 import BrandGlobal from '../../components/sections/corporate/BrandGlobal';
 import OurMission from '../../components/sections/corporate/OurMission';
+import SEO from '../../components/SEO/SEO';
 
 const Corporate = () => {
   return (
     <>
+      <SEO title="Corporate - AVIEW" />
       <Header curPage="Corporate" />
       <BrandGlobal />
       <OurMission />

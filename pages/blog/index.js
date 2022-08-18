@@ -4,6 +4,7 @@ import { getDate, getDescription, getStories } from '../../utils/blog';
 import { useState, useEffect } from 'react';
 import Card from '../../components/UI/Card';
 import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const Blog = ({ posts }) => {
   const [stories, setStories] = useState(posts);
@@ -23,6 +24,7 @@ const Blog = ({ posts }) => {
 
   return (
     <>
+      <SEO title="Blog - AVIEW" />
       <Header curPage="Blog" />
       <section className="section m-horizontal">
         <h1 className="title mt-s11 mb-s6 text-center md:mt-s18 md:mb-s10">

@@ -7,10 +7,12 @@ import HowItWorks from '../../components/sections/creators/HowItWorks';
 import AtAview from '../../components/sections/creators/AtAview';
 import GeneratingAviewFor from '../../components/sections/creators/GeneratingAviewFor';
 import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const Creators = () => {
   return (
     <>
+      <SEO title="Creators - AVIEW" />
       <Header curPage="Creators" />
       <OurServices />
       <YouCreateWeTranslate />

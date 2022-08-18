@@ -9,10 +9,12 @@ import AviewsGrowth from '../../components/sections/about/AviewGrowth';
 import OurMilestones from '../../components/sections/reused/OurMilestones';
 import MeetTheTeam from '../../components/sections/about/MeetTheTeam';
 import WhyName from '../../components/sections/about/WhyName';
+import SEO from '../../components/SEO/SEO';
 
 const About = () => {
   return (
     <>
+      <SEO title="About - AVIEW" />
       <Header curPage="About" />
       <Landing />
       <AboutAview />
