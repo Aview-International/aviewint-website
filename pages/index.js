@@ -8,11 +8,8 @@ import LeadInTranslations from '../components/sections/home/LeadInTranslations';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
-<<<<<<< Updated upstream
 import FAQs from '../components/sections/home/FAQs';
-=======
 import SEO from '../components/SEO/SEO';
->>>>>>> Stashed changes
 
 const Home = () => {
   return (
