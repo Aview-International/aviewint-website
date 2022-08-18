@@ -16,11 +16,11 @@
   }
 
   .gradient-1 {
-    @apply bg-gradient-to-tr from-purple to-blue;
+    background: linear-gradient(54deg, #ff00ff 7.13%, #00ffff 91%);
   }
 
   .gradient-2 {
-    @apply bg-gradient-to-br from-purple to-blue;
+    background: linear-gradient(108.35deg, #ec11ff 7.55%, #1be4ff 57.75%);
   }
 
   .gradient-text {

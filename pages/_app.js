@@ -10,7 +10,7 @@ const MyApp = ({ Component, pageProps }) => {
     };
     setViewportHeight();
     window.onresize = setViewportHeight;
-  });
+  }, []);
 
   return (
     <MenuOpenContextProvider>

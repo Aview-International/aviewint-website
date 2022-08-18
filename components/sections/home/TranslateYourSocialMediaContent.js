@@ -15,7 +15,7 @@ const TranslateYourSocialMediaContent = () => {
         <div>
           <h1 className="title mb-s2">
             Translate Your{' '}
-            <span className="gradient-text gradient-2">
+            <span className="gradient-text gradient-2 xs:inline-block">
               Social Media Content
             </span>
           </h1>
