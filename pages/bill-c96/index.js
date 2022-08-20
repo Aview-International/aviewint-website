@@ -11,7 +11,7 @@ const BillC96 = () => {
   return (
     <>
       <SEO title="Bill C-96 - AVIEW" />
-      <Header />
+      <Header curPage="Bill C96" />
       <PreparingForBillC96 />
       <WhatIsBillC96 />
       <HowWeCanHelp />
