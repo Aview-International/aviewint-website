@@ -33,7 +33,7 @@ const FormInput = ({
         {label}
       </label>
       <div>
-        <Border classes="w-[90%] relative" borderRadius="[5px]">
+        <Border classes="w-[90%] md:w-full relative" borderRadius="[5px]">
           <input
             id={_id}
             name={name}
