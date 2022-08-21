@@ -9,6 +9,7 @@ import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import FAQs from '../components/sections/home/FAQs';
+import GenerateAview from '../components/sections/home/GenerateAview';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <BreadAndButter />
       <YouCreateWeTranslate />
       <LeadInTranslations />
+      <GenerateAview />
       <FAQs />
       <GoGlobal />
       <Footer />

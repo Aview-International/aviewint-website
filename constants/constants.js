@@ -17,6 +17,7 @@ import rippleVentures from '../public/img/creators/ripple-ventures.png';
 import wayfoundHealth from '../public/img/creators/wayfound-health.png';
 import valnetMedia from '../public/img/creators/valnet-media.png';
 import underknownMedia from '../public/img/creators/underknown-media.png';
+import activeSelfProtection from '../public/img/creators/underknown-media.png';
 
 // Why We Lead in Translations
 import fastAndEasy from '../public/img/graphics/fast-and-easy.png';
@@ -54,8 +55,17 @@ import taehun from '../public/img/team/taehun.png';
 import victor from '../public/img/team/victor.png';
 import defaultPicture from '../public/img/team/default.png';
 
+// content creators summary
+import LoganPaulSummary from '../public/img/summary/logan-paul.png';
+import YesTheorySummary from '../public/img/summary/yes-theory.png';
+import ActiveSelfProtectionSummary from '../public/img/summary/active-self-protection.png';
+
+
 // Aview's Growth
 import keyMetrics from '../public/img/graphics/key-metrics.png';
+
+// input validators
+import { emailValidator, urlValidator } from '../utils/regex';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -543,5 +553,130 @@ export const LANDING_PAGE_FAQ = [
     id: 'question6',
     question: 'Can you translate for other platforms like TikTok?',
     answer: `Yes! We are a multimedia translation service. We can translate and edit the content on any platform for you so they are ready to be uploaded.`,
+  },
+];
+
+export const GENERATE_AVIEW_INPUT = [
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Name',
+    _id: 'name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Your name',
+  },
+  {
+    validator: (value) => urlValidator(value),
+    label: 'Channel Link',
+    _id: 'channel_url',
+    name: 'url',
+    type: 'text',
+    placeholder: 'URL to your social media channel',
+  },
+  {
+    validator: (value) => emailValidator(value),
+    label: 'Email Address',
+    _id: 'email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Your email address',
+  },
+];
+
+export const GENERATE_AVIEW_CHECKBOX = [
+  {
+    name: 'Translations/Subtitles',
+    label: 'Translations/Subtitles',
+    value: 'Translations/Subtitles',
+    tooltip:
+      'Receive a translation file that can be uploaded directly to your YouTube video.',
+  },
+  {
+    name: 'Dubbing',
+    label: 'Dubbing',
+    value: 'Dubbing',
+    tooltip:
+      'Receive your videos completely translated with voice-overs in the language of your choosing.',
+  },
+  {
+    name: 'Shorts',
+    label: 'Shorts',
+    value: 'Shorts',
+    tooltip:
+      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook.',
+  },
+];
+
+export const CREATORS_SLIDERS = [
+  {
+    label: 'Uploads per month',
+    max: 30,
+    values: false,
+    name: 'uploadsPerMonth',
+  },
+  {
+    label: 'Average View Count per Month',
+    values: [
+      '1K',
+      '2K',
+      '3.5K',
+      '5K',
+      '7.5K',
+      '10K',
+      '20K',
+      '35k',
+      '50K',
+      '75K',
+      '100K',
+      '200K',
+      '350k',
+      '500K',
+      '750k',
+      '1M',
+      '2M',
+      '5M',
+      '5M+',
+    ],
+    max: 18,
+    name: 'averageViewCount',
+  },
+  {
+    label: 'Languages',
+    values: false,
+    max: 10,
+    name: 'languages',
+  },
+];
+
+export const LANGUAGES = [
+  'English',
+  'French',
+  'German',
+  'Spanish',
+  'Swedish',
+  'Portuguese',
+  'Arabic',
+  'Russian',
+  'Chinese',
+];
+
+export const GROWTH_WITH_AVIEW_CREATORS = [
+  {
+    name: 'Logan Paul',
+    subscribers: '23.5M+',
+    picture: logan2,
+    summary: LoganPaulSummary,
+  },
+  {
+    name: 'Yes Theory',
+    subscribers: '7.5M+',
+    picture: yesTheory,
+    summary: YesTheorySummary,
+  },
+  {
+    name: 'Active Self Protection',
+    subscribers: '2.62M+',
+    picture: activeSelfProtection,
+    summary: ActiveSelfProtectionSummary,
   },
 ];
