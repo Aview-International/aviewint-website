@@ -60,7 +60,6 @@ import LoganPaulSummary from '../public/img/summary/logan-paul.png';
 import YesTheorySummary from '../public/img/summary/yes-theory.png';
 import ActiveSelfProtectionSummary from '../public/img/summary/active-self-protection.png';
 
-
 // Aview's Growth
 import keyMetrics from '../public/img/graphics/key-metrics.png';
 
@@ -679,4 +678,12 @@ export const GROWTH_WITH_AVIEW_CREATORS = [
     picture: activeSelfProtection,
     summary: ActiveSelfProtectionSummary,
   },
+];
+
+export const TEAM_OPEN_POSITIONS = [
+  'Translators',
+  'Thumbnail Designer',
+  'Transribers',
+  'Dubbers',
+  'Editors',
 ];

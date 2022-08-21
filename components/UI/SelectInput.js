@@ -10,7 +10,7 @@ const SelectInput = ({ text, options, onChange }) => {
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-      <div className="relative mb-s4 w-full text-xl text-white">
+      <div className="relative mb-s4 w-[90%] text-xl text-white">
         <p className="mb-s1">{text}</p>
         <Border borderRadius="[5px] w-full">
           <div

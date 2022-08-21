@@ -25,7 +25,7 @@ const About = () => {
       <OurMilestones />
       <MeetTheTeam />
       <WhyName />
-      {/* <JoinTheTeam /> */}
+      <JoinTheTeam />
       <Footer />
       <Blobs />
     </>
