@@ -9,7 +9,11 @@ import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import FAQs from '../components/sections/home/FAQs';
+<<<<<<< HEAD
+import GenerateAview from '../components/sections/home/GenerateAview';
+=======
 import SEO from '../components/SEO/SEO';
+>>>>>>> 74157481f533c00514458e190cc3cc61657f7d3d
 
 const Home = () => {
   return (
@@ -25,6 +29,7 @@ const Home = () => {
       <BreadAndButter />
       <YouCreateWeTranslate />
       <LeadInTranslations />
+      <GenerateAview />
       <FAQs />
       <GoGlobal />
       <Footer />

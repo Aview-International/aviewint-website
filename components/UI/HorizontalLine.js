@@ -1,5 +1,5 @@
 const HorizontalLine = () => {
-  return <hr className="w-full h-1 gradient-1" />;
+  return <hr className="gradient-1 h-1 w-full bg-black" />;
 };
 
 export default HorizontalLine;

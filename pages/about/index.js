@@ -9,6 +9,7 @@ import AviewsGrowth from '../../components/sections/about/AviewGrowth';
 import OurMilestones from '../../components/sections/reused/OurMilestones';
 import MeetTheTeam from '../../components/sections/about/MeetTheTeam';
 import WhyName from '../../components/sections/about/WhyName';
+import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
 import SEO from '../../components/SEO/SEO';
 
 const About = () => {
@@ -24,6 +25,7 @@ const About = () => {
       <OurMilestones />
       <MeetTheTeam />
       <WhyName />
+      {/* <JoinTheTeam /> */}
       <Footer />
       <Blobs />
     </>
