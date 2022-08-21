@@ -5,7 +5,7 @@ import { OUR_SERVICES } from '../../../constants/constants';
 const OurServices = () => {
   return (
     <section className="section m-horizontal">
-      <h2 className="title mb-s3 text-center md:mb-s10">
+      <h2 className="title mb-s3 md:mb-s10 md:text-center">
         Our <span className="gradient-2 gradient-text">Services</span>
       </h2>
       <Row3>

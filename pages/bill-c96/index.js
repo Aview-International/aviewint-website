@@ -4,16 +4,20 @@ import PreparingForBillC96 from '../../components/sections/bill-c96/PreparingFor
 import WhatIsBillC96 from '../../components/sections/bill-c96/WhatIsBillC96';
 import HowWeCanHelp from '../../components/sections/bill-c96/HowWeCanHelp';
 import OurServices from '../../components/sections/reused/OurServices';
+import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const BillC96 = () => {
   return (
     <>
-      <Header />
+      <SEO title="Bill C-96 - AVIEW" />
+      <Header curPage="Bill C96" />
       <PreparingForBillC96 />
       <WhatIsBillC96 />
       <HowWeCanHelp />
       <OurServices />
       <Footer />
+      <Blobs />
     </>
   );
 };

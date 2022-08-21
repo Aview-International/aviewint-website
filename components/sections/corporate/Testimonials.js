@@ -7,7 +7,7 @@ import Image from 'next/image';
 const Testimonials = () => {
   return (
     <section className="section m-horizontal">
-      <h2 className="title mb-s4 text-center md:mb-s10">
+      <h2 className="title mb-s4 md:mb-s10 md:text-center">
         <span className="gradient-text gradient-2">Testimonials</span>
       </h2>
       <Row3>

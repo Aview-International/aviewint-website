@@ -5,7 +5,7 @@ const WhyChooseUs = () => {
   return (
     <section className="section text-center">
       <FullWidthGradient>
-        <h2 className="title mb-s2">WHy Choose Us?</h2>
+        <h2 className="title mb-s2">Why Choose Us?</h2>
         <p className="body mx-auto mb-s4 max-w-[800px]">
           Aview will ensure your content is accurately translated and
           distributed within the right channels. Organizations around the world

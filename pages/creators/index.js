@@ -9,10 +9,13 @@ import GeneratingAviewFor from '../../components/sections/creators/GeneratingAvi
 import InternationalGrowth from '../../components/sections/creators/InternationalGrowth';
 import GrowthWithAview from '../../components/sections/creators/GrowthWithAview';
 import GenerateAview from '../../components/sections/home/GenerateAview';
+import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const Creators = () => {
   return (
     <>
+      <SEO title="Creators - AVIEW" />
       <Header curPage="Creators" />
       <InternationalGrowth />
       <OurServices />
@@ -24,6 +27,7 @@ const Creators = () => {
       <GrowthWithAview />
       <GenerateAview />
       <Footer />
+      <Blobs />
     </>
   );
 };

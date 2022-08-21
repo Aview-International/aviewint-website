@@ -10,10 +10,12 @@ import OurMilestones from '../../components/sections/reused/OurMilestones';
 import MeetTheTeam from '../../components/sections/about/MeetTheTeam';
 import WhyName from '../../components/sections/about/WhyName';
 import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
+import SEO from '../../components/SEO/SEO';
 
 const About = () => {
   return (
     <>
+      <SEO title="About - AVIEW" />
       <Header curPage="About" />
       <Landing />
       <AboutAview />
@@ -23,7 +25,7 @@ const About = () => {
       <OurMilestones />
       <MeetTheTeam />
       <WhyName />
-      <JoinTheTeam />
+      {/* <JoinTheTeam /> */}
       <Footer />
       <Blobs />
     </>

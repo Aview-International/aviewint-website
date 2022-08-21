@@ -16,15 +16,15 @@
   }
 
   .gradient-1 {
-    @apply bg-gradient-to-tr from-purple to-blue;
+    background: linear-gradient(54deg, #ff00ff 0%, #00ffff 100%);
   }
 
   .gradient-2 {
-    @apply bg-gradient-to-br from-purple to-blue;
+    background: linear-gradient(108.35deg, #ec11ff 0%, #1be4ff 100%);
   }
 
   .gradient-text {
-    @apply inline bg-clip-text text-transparent;
+    @apply inline-block bg-clip-text text-transparent;
   }
 
   .transition-300 {

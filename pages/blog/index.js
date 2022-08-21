@@ -3,6 +3,8 @@ import Header from '../../components/navigation/Header';
 import { getDate, getDescription, getStories } from '../../utils/blog';
 import { useState, useEffect } from 'react';
 import Card from '../../components/UI/Card';
+import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const Blog = ({ posts }) => {
   const [stories, setStories] = useState(posts);
@@ -22,12 +24,13 @@ const Blog = ({ posts }) => {
 
   return (
     <>
+      <SEO title="Blog - AVIEW" />
       <Header curPage="Blog" />
       <section className="section m-horizontal">
         <h1 className="title mt-s11 mb-s6 text-center md:mt-s18 md:mb-s10">
           Enjoy our <span className="gradient-text gradient-2">Aview</span>
         </h1>
-        <div className="grid grid-cols-1 gap-s3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-s3 md:grid-cols-2 lg:grid-cols-3">
           {stories.map((story, i) => (
             <a
               href={story.link}
@@ -63,6 +66,7 @@ const Blog = ({ posts }) => {
         </div>
       </section>
       <Footer />
+      <Blobs />
     </>
   );
 };

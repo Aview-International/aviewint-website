@@ -5,10 +5,12 @@ import PerksAview from '../../components/sections/translator/PerksAview';
 import MakeImpact from '../../components/sections/translator/MakeImpact';
 import CompanyCulture from '../../components/sections/translator/CompanyCulture';
 import Blobs from '../../components/UI/Blobs';
+import SEO from '../../components/SEO/SEO';
 
 const Careers = () => {
   return (
     <>
+      <SEO title="Careers - AVIEW" />
       <Header curPage="Careers" />
       <FavoriteInfluencer />
       <PerksAview />
