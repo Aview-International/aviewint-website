@@ -12,7 +12,7 @@ const Careers = () => {
     <>
       <SEO
         title="Careers - AVIEW"
-        description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
+        description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
       />
       <Header curPage="Careers" />
       <FavoriteInfluencer />
