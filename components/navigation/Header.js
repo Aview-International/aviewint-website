@@ -89,8 +89,8 @@ const MobileMenu = () => {
 
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen translate-x-full opacity-0 ${
-        menuOpenCtx.isMenuOpen && `translate-x-0 opacity-100`
+      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen opacity-0 ${
+        menuOpenCtx.isMenuOpen && `opacity-100`
       } z-50 bg-black lg:hidden`}
     >
       <div
