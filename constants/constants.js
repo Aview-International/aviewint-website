@@ -53,6 +53,7 @@ import garnet from '../public/img/team/garnet.png';
 import jon from '../public/img/team/jon.png';
 import taehun from '../public/img/team/taehun.png';
 import victor from '../public/img/team/victor.png';
+import luis from '../public/img/team/luis.png';
 import defaultPicture from '../public/img/team/default.png';
 
 // content creators summary
@@ -433,7 +434,7 @@ export const TEAM = [
         id: 'member-2',
         name: 'Luis Sarceño',
         description: 'Graphic Designer',
-        picture: defaultPicture,
+        picture: luis,
       },
     ],
   },
