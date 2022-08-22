@@ -26,7 +26,7 @@ const Creators = () => {
       <GeneratingAviewFor />
       <GrowthWithAview />
       <GenerateAview />
-      <Footer />
+      <Footer curPage="Creators" />
       <Blobs />
     </>
   );

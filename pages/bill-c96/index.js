@@ -16,7 +16,7 @@ const BillC96 = () => {
       <WhatIsBillC96 />
       <HowWeCanHelp />
       <OurServices />
-      <Footer />
+      <Footer curPage="Bill C-96" />
       <Blobs />
     </>
   );

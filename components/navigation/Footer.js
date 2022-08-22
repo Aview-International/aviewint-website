@@ -3,7 +3,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
 
-const Footer = () => {
+const Footer = ({ curPage }) => {
   return (
     <div className="navigation mb-s5">
       <hr className="gradient-1 mb-s5 h-[3px]" />
@@ -36,7 +36,13 @@ const Footer = () => {
         <div className="flex flex-col gap-s1 text-right md:flex-row md:gap-s5 md:text-left">
           {ROUTES.map((route) => (
             <Link href={route.route} key={route.id}>
-              <a className="text-md hover:gradient-text hover:gradient-2 text-white xl:text-lg">
+              <a
+                className={`text-md hover:gradient-text hover:gradient-2 xl:text-lg ${
+                  curPage === route.text
+                    ? 'gradient-text gradient-2'
+                    : 'text-white'
+                }`}
+              >
                 {route.text}
               </a>
             </Link>

@@ -26,7 +26,7 @@ const About = () => {
       <MeetTheTeam />
       <WhyName />
       <JoinTheTeam />
-      <Footer />
+      <Footer curPage="About" />
       <Blobs />
     </>
   );

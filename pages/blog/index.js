@@ -65,7 +65,7 @@ const Blog = ({ posts }) => {
           ))}
         </div>
       </section>
-      <Footer />
+      <Footer curPage="Blog" />
       <Blobs />
     </>
   );

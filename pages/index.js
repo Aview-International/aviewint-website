@@ -29,7 +29,7 @@ const Home = () => {
       <GenerateAview />
       <FAQs />
       <GoGlobal />
-      <Footer />
+      <Footer curPage="Home" />
       <Blobs />
     </>
   );

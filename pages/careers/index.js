@@ -16,7 +16,7 @@ const Careers = () => {
       <PerksAview />
       <MakeImpact />
       <CompanyCulture />
-      <Footer />
+      <Footer curPage="Careers" />
       <Blobs />
     </>
   );

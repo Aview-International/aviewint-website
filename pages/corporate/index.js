@@ -22,7 +22,7 @@ const Corporate = () => {
       <OurMilestones />
       <Testimonials />
       <WhyChooseUs />
-      <Footer />
+      <Footer curPage="Corporate" />
       <Blobs />
     </>
   );
