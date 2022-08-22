@@ -13,7 +13,10 @@ import SEO from '../../components/SEO/SEO';
 const Corporate = () => {
   return (
     <>
-      <SEO title="Corporate - AVIEW" />
+      <SEO
+        title="Corporate - AVIEW"
+        description="Organizations worldwide trust us to ensure they deliver their content in a language and format that meets their audience's needs. Contact Us Today!"
+      />
       <Header curPage="Corporate" />
       <BrandGlobal />
       <OurMission />

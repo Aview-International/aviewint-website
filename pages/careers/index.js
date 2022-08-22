@@ -10,7 +10,10 @@ import SEO from '../../components/SEO/SEO';
 const Careers = () => {
   return (
     <>
-      <SEO title="Careers - AVIEW" />
+      <SEO
+        title="Careers - AVIEW"
+        description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
+      />
       <Header curPage="Careers" />
       <FavoriteInfluencer />
       <PerksAview />

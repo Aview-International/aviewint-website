@@ -10,7 +10,10 @@ import SEO from '../../components/SEO/SEO';
 const BillC96 = () => {
   return (
     <>
-      <SEO title="Bill C-96 - AVIEW" />
+      <SEO
+        title="Bill C-96 - AVIEW"
+        description="Bill C-96 reinforces the obligation of businesses offering goods and services. Aview is up to date with ongoing legislation Visit Today to save time!"
+      />
       <Header curPage="Bill C-96" />
       <PreparingForBillC96 />
       <WhatIsBillC96 />

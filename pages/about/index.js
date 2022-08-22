@@ -15,7 +15,10 @@ import SEO from '../../components/SEO/SEO';
 const About = () => {
   return (
     <>
-      <SEO title="About - AVIEW" />
+      <SEO
+        title="About - AVIEW"
+        description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
+      />
       <Header curPage="About" />
       <Landing />
       <AboutAview />
