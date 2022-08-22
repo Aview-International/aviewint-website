@@ -30,7 +30,7 @@ const Blog = ({ posts }) => {
         <h1 className="title mt-s8 mb-s6 text-center md:mt-s18 md:mb-s10">
           Enjoy our <span className="gradient-text gradient-2">Aview</span>
         </h1>
-        <div className="grid grid-cols-1 gap-s3 md:grid-cols-2 lg:gap-s6">
+        <div className="grid grid-cols-1 gap-s3 md:grid-cols-2 lg:gap-s6 xl:gap-s10">
           {stories.map((story, i) => (
             <a
               href={story.link}

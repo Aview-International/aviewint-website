@@ -19,7 +19,7 @@ const GrowingInternationally = () => {
           </div>
         ))}
       </div>
-      <Button type="primary" route="#generate-aview" purpose="route">
+      <Button type="primary" route="/#generate-aview" purpose="route">
         Contact Us
       </Button>
     </section>

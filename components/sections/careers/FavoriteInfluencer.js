@@ -4,7 +4,7 @@ import Button from '../../UI/Button';
 
 const FavoriteInfluencer = () => {
   return (
-    <section className="section m-horizontal mt-s8 lg:mt-s12">
+    <section className="section m-horizontal mt-s6 lg:mt-s12">
       <div className="grid items-center lg:grid-cols-7">
         <div className="col-span-3">
           <h1 className="title mb-s3">

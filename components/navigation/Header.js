@@ -59,7 +59,7 @@ const DesktopRoutes = ({ curPage }) => {
 const HeaderButtons = () => {
   return (
     <div className="hidden items-center gap-s2.5 lg:flex">
-      <Button purpose="route" route="/#contact-us" type="primary">
+      <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
       {/* <Button purpose="route" route="/login" type="secondary">
@@ -106,7 +106,7 @@ const MobileMenu = () => {
               className="w-full pl-10"
               onClick={menuOpenCtx.toggleMenuHandler}
             >
-              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-4xl">
+              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-6xl">
                 {route.text}
               </a>
             </div>

@@ -24,7 +24,7 @@ const PERKS = [
 
 const PerksAview = () => {
   return (
-    <section className="section m-horizontal mt-s8 lg:mt-s17">
+    <section className="section m-horizontal mt-s6 lg:mt-s17">
       <div className="grid items-center lg:grid-cols-4">
         <div className="col-span-2">
           <h1 className="title mb-s4">
