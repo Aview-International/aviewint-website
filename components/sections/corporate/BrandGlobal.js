@@ -8,7 +8,7 @@ import BrandIcon4 from '../../../public/img/graphics/brand-icon4.png';
 
 const BrandGlobal = () => {
   return (
-    <section className="section m-horizontal mt-s8 lg:mt-s17">
+    <section className="section m-horizontal mt-s8 lg:mt-s6">
       <div className="grid items-center lg:grid-cols-7">
         <div className="col-span-3">
           <h1 className="title mb-s3">
@@ -24,7 +24,7 @@ const BrandGlobal = () => {
             Contact Us
           </Button>
         </div>
-        <div className="mt-s4 max-w-[600px] lg:col-span-4 lg:max-w-[40vw]">
+        <div className="mt-s4 max-w-[600px] lg:col-span-4">
           <Image src={BrandGlobalImage} alt="landing-graphic" />
         </div>
         <span className="absolute right-32 -bottom-12 w-[12vw] min-w-[90px] max-w-[167px] md:right-56 md:-bottom-20 lg:right-52 lg:top-28">

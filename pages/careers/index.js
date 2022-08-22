@@ -1,9 +1,9 @@
 import Footer from '../../components/navigation/Footer';
 import Header from '../../components/navigation/Header';
-import FavoriteInfluencer from '../../components/sections/translator/FavoriteInfluencer';
-import PerksAview from '../../components/sections/translator/PerksAview';
-import MakeImpact from '../../components/sections/translator/MakeImpact';
-import CompanyCulture from '../../components/sections/translator/CompanyCulture';
+import FavoriteInfluencer from '../../components/sections/careers/FavoriteInfluencer';
+import PerksAview from '../../components/sections/careers/PerksAview';
+import MakeImpact from '../../components/sections/careers/MakeImpact';
+import CompanyCulture from '../../components/sections/careers/CompanyCulture';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 
