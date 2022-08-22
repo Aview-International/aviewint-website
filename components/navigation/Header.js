@@ -75,7 +75,7 @@ const MenuButton = () => {
   return (
     <div
       className="flex cursor-pointer flex-col items-end lg:hidden"
-      onClick={menuOpenCtx.toggleMenuHandler}
+      onClick={menuOpenCtx.openMenuHandler}
     >
       <div className="mb-s1 h-[3px] w-[36px] rounded-full bg-white"></div>
       <div className="mb-s1 h-[3px] w-[21px] rounded-full bg-white"></div>
@@ -89,13 +89,13 @@ const MobileMenu = () => {
 
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen opacity-0 ${
-        menuOpenCtx.isMenuOpen && `opacity-100`
+      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen translate-x-full opacity-0 ${
+        menuOpenCtx.isMenuOpen && `translate-x-0 opacity-100`
       } z-50 bg-black lg:hidden`}
     >
       <div
         className="absolute right-s3 top-s8 cursor-pointer md:right-[2.5%]"
-        onClick={menuOpenCtx.toggleMenuHandler}
+        onClick={menuOpenCtx.closeMenuHandler}
       >
         <Image src={closeIcon} width={32} height={32} alt="close icon" />
       </div>
@@ -104,7 +104,7 @@ const MobileMenu = () => {
           <Link href={route.route} key={route.id}>
             <div
               className="w-full pl-10"
-              onClick={menuOpenCtx.toggleMenuHandler}
+              onClick={menuOpenCtx.closeMenuHandler}
             >
               <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-6xl">
                 {route.text}
