@@ -27,6 +27,8 @@ const Corporate = () => {
       <OurMilestones />
       <Testimonials />
       <WhyChooseUs />
+      <FAQs page="corporate" />
+      <GenerateAviewForCompany />
       <Footer />
       <Blobs />
     </>

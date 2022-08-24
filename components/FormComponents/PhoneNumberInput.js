@@ -24,7 +24,7 @@ const PhoneNumberInput = ({
 }) => {
   return (
     <div className={`relative`}>
-      {label && <label>{label}</label>}
+      {label && <label className="text-xl text-white">{label}</label>}
       <Border borderRadius="5px" classes="w-full">
         <div className={`phone-number bg-black text-white`}>
           <PhoneInput
@@ -35,7 +35,11 @@ const PhoneNumberInput = ({
             onChange={onChange}
           />
         </div>
-        <span className="absolute right-[10px] top-[12px]">
+        <span
+          className={`absolute right-[10px] ${
+            label ? 'top-[40px]' : 'top-[12px]'
+          }`}
+        >
           {isValid && (
             <Image src={Correct} alt="Correct" width={20} height={20} />
           )}

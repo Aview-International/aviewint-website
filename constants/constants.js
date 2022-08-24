@@ -637,6 +637,40 @@ export const GENERATE_AVIEW_CHECKBOX = [
   },
 ];
 
+export const GENERATE_AVIEW_COMPANY_INPUT = [
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Name',
+    _id: 'name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Your name',
+  },
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Company',
+    _id: 'company',
+    name: 'companyName',
+    type: 'text',
+    placeholder: 'Company name',
+  },
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Company Website',
+    _id: 'company',
+    name: 'companyUrl',
+    type: 'text',
+    placeholder: 'URL to company website',
+  },
+  {
+    validator: (value) => emailValidator(value),
+    label: 'Email Address',
+    _id: 'email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Your email address',
+  },
+];
 export const CREATORS_SLIDERS = [
   {
     label: 'Uploads per month',
