@@ -59,7 +59,11 @@ const GenerateAview = () => {
         Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}
         Today!
       </h2>
-      <Form className="m-auto w-full md:w-9/12" submitHandler={handleSubmit}>
+      <Form
+        name="generate-aview"
+        className="m-auto w-full md:w-9/12"
+        submitHandler={handleSubmit}
+      >
         {GENERATE_AVIEW_INPUT.map((item, i) => (
           <FormInput
             key={`input-${i}`}
