@@ -35,8 +35,8 @@ const PerksAview = () => {
           {PERKS.map((list, i) => (
             <div className="list" key={`list-${i}`}>
               <div className="flex">
-                <h1 className="title mr-s2 lg:mt-s3 lg:min-w-[140px] lg:text-[100px]">
-                  <span className="gradient-text gradient-2">
+                <h1 className="title min-w-[51px] mr-s3 lg:min-w-[140px] lg:min-h-[140px] leading-none">
+                  <span className="gradient-text gradient-2 lg:text-[100px]">
                     {list.number}
                   </span>
                 </h1>
