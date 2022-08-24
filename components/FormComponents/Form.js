@@ -7,7 +7,7 @@ import { useState } from 'react';
  * @prop formState: State containing form inputs
  * @prop children: Form input elements
  */
-function Form({ name, buttonText, buttonType, submitHandler, children }) {
+function Form({ name, submitHandler, className, children }) {
   const [honeypot, setHoneypot] = useState('');
 
   function honeypotChangeHandler(e) {
@@ -28,6 +28,8 @@ function Form({ name, buttonText, buttonType, submitHandler, children }) {
       data-netlify="true"
       netlify-honeypot="bot-field"
       action="/success"
+      onSubmit={onSubmit}
+      className={className}
     >
       <div className="hidden">
         <label>

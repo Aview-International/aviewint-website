@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Correct from '../../public/img/icons/correct.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
-import Border from './Border';
+import Border from '../UI/Border';
+
 /**
  * Reusable input field
  *
@@ -33,7 +34,7 @@ const FormInput = ({
         {label}
       </label>
       <div>
-        <Border classes="w-[90%] md:w-full relative" borderRadius="[5px]">
+        <Border classes="w-full relative" borderRadius="[5px]">
           <input
             id={_id}
             name={name}
@@ -46,12 +47,12 @@ const FormInput = ({
             className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
           ></div>
         </Border>
-        <span className="absolute -right-[10px]">
+        <span className="absolute right-[10px] top-[45px]">
           {isValid && (
-            <Image src={Correct} alt="Correct" width={35} height={35} />
+            <Image src={Correct} alt="Correct" width={25} height={25} />
           )}
           {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={35} height={35} />
+            <Image src={Incorrect} alt="Incorrect" width={25} height={25} />
           )}
         </span>
       </div>

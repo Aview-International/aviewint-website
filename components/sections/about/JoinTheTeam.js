@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { TEAM_OPEN_POSITIONS } from '../../../constants/constants';
 import DottedBorder from '../../UI/DottedBorder';
-import FormInput from '../../UI/FormInput';
-import SelectInput from '../../UI/SelectInput';
+import FormInput from '../../FormComponents/FormInput';
+import SelectInput from '../../FormComponents/SelectInput';
 import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import Button from '../../UI/Button';
 
@@ -50,10 +50,10 @@ const JoinTheTeam = () => {
       </h2>
       <form className="m-auto w-full md:w-9/12">
         <div className="items-starts flex flex-col justify-between md:flex-row">
-          <div className="md:w-9/12">
+          <div className="md:w-[70%]">
             <FormInput onChange={handleChange} {...array[0]} />
           </div>
-          <div className="md:w-1/5">
+          <div className="md:w-[25%]">
             <SelectInput text="Country" options={TEAM_OPEN_POSITIONS} />
           </div>
         </div>
@@ -64,7 +64,7 @@ const JoinTheTeam = () => {
           options={TEAM_OPEN_POSITIONS}
         />
         <UploadButton />
-        <div className="mt-s4 flex justify-center ">
+        <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
             Send Message
           </Button>
@@ -77,10 +77,11 @@ const JoinTheTeam = () => {
 const UploadButton = () => {
   return (
     <DottedBorder classes="block md:inline-block">
-      <div className="flex flex-col items-center md:px-s10 py-s6">
+      <label className="flex flex-col items-center py-s6 md:px-s10">
         <Image src={UploadIcon} alt="Upload" />
         <p className="pt-s1 text-xl text-white">Upload Resume</p>
-      </div>
+        <input type="file" name="resume" className="hidden" />
+      </label>
     </DottedBorder>
   );
 };

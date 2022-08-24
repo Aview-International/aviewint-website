@@ -6,11 +6,12 @@ import {
 } from '../../../constants/constants';
 import { submitForm } from '../../../utils/submit-form';
 import CheckBox from '../../FormComponents/CheckBox';
+import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import SelectInput from '../../FormComponents/SelectInput';
 import Button from '../../UI/Button';
 
-const GenerateAview = () => {
+const GenerateAviewForCompany = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -25,7 +26,7 @@ const GenerateAview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (!data.name || !data.url || !data.email) return;
+    console.log(e.target);
     submitForm('generate-aview', data);
   };
 
@@ -50,15 +51,16 @@ const GenerateAview = () => {
   };
 
   return (
-    <section
-      className="section m-horizontal -mt-s4 pt-s4 md:-mt-s8 md:pt-s8"
-      id="generate-aview"
-    >
+    <section className="section m-horizontal">
       <h2 className="title mb-s4 text-center">
         Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}
         Today!
       </h2>
-      <form className="m-auto w-full md:w-9/12" onSubmit={handleSubmit}>
+      <Form
+        className="m-auto w-full md:w-9/12"
+        onSubmit={handleSubmit}
+        name="generate-aview"
+      >
         {GENERATE_AVIEW_INPUT.map((item, i) => (
           <FormInput
             key={`input-${i}`}
@@ -87,9 +89,9 @@ const GenerateAview = () => {
             Become a Creator
           </Button>
         </div>
-      </form>
+      </Form>
     </section>
   );
 };
 
-export default GenerateAview;
+export default GenerateAviewForCompany;
