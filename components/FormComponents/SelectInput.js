@@ -18,7 +18,7 @@ const SelectInput = ({ text, options, onChange }) => {
             onClick={() => setIsOpen(!isOpen)}
           >
             <p>{data || 'Select'}</p>
-            <span className={`transition-300 ${isOpen && 'rotate-180'}`}>
+            <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>
           </div>

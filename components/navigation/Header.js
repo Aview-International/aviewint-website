@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
 import Button from '../UI/Button';
 import MenuOpenContext from '../../store/menu-open-context';
 import { ROUTES } from '../../constants/constants';
@@ -8,28 +8,9 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 
 const Header = ({ curPage }) => {
-  const nav = useRef(null);
-  const [fixed, setFixed] = useState(false);
-
-  useEffect(() => {
-    if (nav.current && window.pageYOffset > nav.current.offsetTop) {
-      setFixed(true);
-    } else setFixed(false);
-
-    window.addEventListener('scroll', () => {
-      if (nav.current && window.pageYOffset > nav.current.offsetTop) {
-        setFixed(true);
-      } else setFixed(false);
-    });
-  }, []);
   return (
     <>
-      <header
-        className={`navigation fixed top-0 left-[0px] flex w-full items-center justify-between px-[30px] pt-s3 ${
-          fixed && ' header-animation z-10 bg-transparent backdrop-blur-md'
-        }`}
-        ref={nav}
-      >
+      <header className="navigation mt-s5 flex items-center justify-between">
         <div className="flex items-center">
           <HeaderLogo />
           <DesktopRoutes curPage={curPage} />
@@ -78,7 +59,7 @@ const DesktopRoutes = ({ curPage }) => {
 const HeaderButtons = () => {
   return (
     <div className="hidden items-center gap-s2.5 lg:flex">
-      <Button purpose="route" route="/#contact-us" type="primary">
+      <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
       {/* <Button purpose="route" route="/login" type="secondary">
@@ -94,7 +75,7 @@ const MenuButton = () => {
   return (
     <div
       className="flex cursor-pointer flex-col items-end lg:hidden"
-      onClick={menuOpenCtx.toggleMenuHandler}
+      onClick={menuOpenCtx.openMenuHandler}
     >
       <div className="mb-s1 h-[3px] w-[36px] rounded-full bg-white"></div>
       <div className="mb-s1 h-[3px] w-[21px] rounded-full bg-white"></div>
@@ -108,13 +89,13 @@ const MobileMenu = () => {
 
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen opacity-100 ${
-        !menuOpenCtx.isMenuOpen && `translate-x-full opacity-0`
-      } z-50 bg-black`}
+      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen translate-x-full opacity-0 ${
+        menuOpenCtx.isMenuOpen && `translate-x-0 opacity-100`
+      } z-50 bg-black lg:hidden`}
     >
       <div
         className="absolute right-s3 top-s8 cursor-pointer md:right-[2.5%]"
-        onClick={menuOpenCtx.toggleMenuHandler}
+        onClick={menuOpenCtx.closeMenuHandler}
       >
         <Image src={closeIcon} width={32} height={32} alt="close icon" />
       </div>
@@ -123,9 +104,9 @@ const MobileMenu = () => {
           <Link href={route.route} key={route.id}>
             <div
               className="w-full pl-10"
-              onClick={menuOpenCtx.toggleMenuHandler}
+              onClick={menuOpenCtx.closeMenuHandler}
             >
-              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-4xl">
+              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-6xl">
                 {route.text}
               </a>
             </div>

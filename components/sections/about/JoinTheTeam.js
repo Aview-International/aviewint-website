@@ -50,10 +50,10 @@ const JoinTheTeam = () => {
       </h2>
       <form className="m-auto w-full md:w-9/12">
         <div className="items-starts flex flex-col justify-between md:flex-row">
-          <div className="md:w-9/12">
+          <div className="md:w-[70%]">
             <FormInput onChange={handleChange} {...array[0]} />
           </div>
-          <div className="md:w-1/5">
+          <div className="md:w-[25%]">
             <SelectInput text="Country" options={TEAM_OPEN_POSITIONS} />
           </div>
         </div>
@@ -77,10 +77,11 @@ const JoinTheTeam = () => {
 const UploadButton = () => {
   return (
     <DottedBorder classes="block md:inline-block">
-      <div className="flex flex-col items-center md:px-s10 py-s6">
+      <label className="flex flex-col items-center py-s6 md:px-s10">
         <Image src={UploadIcon} alt="Upload" />
         <p className="pt-s1 text-xl text-white">Upload Resume</p>
-      </div>
+        <input type="file" name="resume" className="hidden" />
+      </label>
     </DottedBorder>
   );
 };

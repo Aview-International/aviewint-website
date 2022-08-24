@@ -9,6 +9,7 @@ import Blobs from '../../components/UI/Blobs';
 import BrandGlobal from '../../components/sections/corporate/BrandGlobal';
 import OurMission from '../../components/sections/corporate/OurMission';
 import SEO from '../../components/SEO/SEO';
+import FAQs from '../../components/sections/home/FAQs';
 
 const Corporate = () => {
   return (
@@ -22,6 +23,7 @@ const Corporate = () => {
       <OurMilestones />
       <Testimonials />
       <WhyChooseUs />
+      <FAQs page="corporate" />
       <Footer />
       <Blobs />
     </>

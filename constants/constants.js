@@ -555,6 +555,37 @@ export const LANDING_PAGE_FAQ = [
   },
 ];
 
+export const CORPORATE_PAGE_FAQ = [
+  {
+    question: 'How does it work?',
+    answer: `Three simple steps to increase your international viewership.
+    <br /> 
+    1. Select from our translations or voiceover services <br /> 
+    2. Indicate what languages would work best for you <br /> 
+    3. Receive 100% accurate translations or voice-overs within 48
+    hours, edited and ready to be posted`,
+    _id: 'question1',
+  },
+  {
+    question: 'Who have you worked with?',
+    answer: `We have been working with some of the largest media brands, venture capital funds, mental health associations and many more. We have a wide depth of translators, dubbers and editors who will fit your content. 
+    `,
+    _id: 'question2',
+  },
+  {
+    question: 'What are your services?',
+    answer: `AVIEW offers 3 services.
+    <br /> <br /> 1. Receive a translation file that can be uploaded directly to your videos. The file will be sent within 24 hours and will auto-match the audio from the video. Simply add the translations and target a new market.  <br />
+    <br /> 2. Voiceover Translations <br />
+    Receive your videos completely translated with voice-overs that match your subject's voice in the language of your choosing. Aview will edit and send this back within 48 hours. 
+    <br />  <br /> 3. Short-form Content
+    <br />
+    Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
+    `,
+    _id: 'question3',
+  },
+];
+
 export const GENERATE_AVIEW_INPUT = [
   {
     validator: (value) => value.length >= 3,
