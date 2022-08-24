@@ -4,10 +4,10 @@ import {
   GENERATE_AVIEW_INPUT,
   LANGUAGES,
 } from '../../../constants/constants';
+import CheckBox from '../../FormComponents/CheckBox';
+import FormInput from '../../FormComponents/FormInput';
+import SelectInput from '../../FormComponents/SelectInput';
 import Button from '../../UI/Button';
-import CheckBox from '../../UI/CheckBox';
-import FormInput from '../../UI/FormInput';
-import SelectInput from '../../UI/SelectInput';
 
 const GenerateAview = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -23,6 +23,7 @@ const GenerateAview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     setHasSubmitted(true);
     console.log(e.target);
 

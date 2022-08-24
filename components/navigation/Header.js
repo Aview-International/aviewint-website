@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Button from '../UI/Button';
 import MenuOpenContext from '../../store/menu-open-context';
 import { ROUTES } from '../../constants/constants';
@@ -8,9 +8,28 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 
 const Header = ({ curPage }) => {
+  const nav = useRef(null);
+  const [fixed, setFixed] = useState(false);
+
+  useEffect(() => {
+    if (nav.current && window.pageYOffset > nav.current.offsetTop) {
+      setFixed(true);
+    } else setFixed(false);
+
+    window.addEventListener('scroll', () => {
+      if (nav.current && window.pageYOffset > nav.current.offsetTop) {
+        setFixed(true);
+      } else setFixed(false);
+    });
+  }, []);
   return (
     <>
-      <header className="navigation mt-s5 flex items-center justify-between">
+      <header
+        className={`navigation fixed top-0 left-[0px] flex w-full items-center justify-between px-[30px] pt-s3 ${
+          fixed && ' header-animation z-10 bg-transparent backdrop-blur-md'
+        }`}
+        ref={nav}
+      >
         <div className="flex items-center">
           <HeaderLogo />
           <DesktopRoutes curPage={curPage} />

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Tooltip from '../../public/img/icons/tooltip.svg';
 import Info from '../../public/img/icons/info.svg';
-import Border from './Border';
+import Border from '../UI/Border';
 import { useState } from 'react';
 
 const CheckBox = ({ label, value, onChange, tooltip, name }) => {

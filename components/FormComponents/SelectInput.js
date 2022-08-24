@@ -1,4 +1,4 @@
-import Border from './Border';
+import Border from '../UI/Border';
 import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ const SelectInput = ({ text, options, onChange }) => {
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-      <div className="relative mb-s4 w-[90%] text-xl text-white">
+      <div className="relative mb-s4 text-xl text-white">
         <p className="mb-s1">{text}</p>
         <Border borderRadius="[5px] w-full">
           <div

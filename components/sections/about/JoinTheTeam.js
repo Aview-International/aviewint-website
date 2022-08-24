@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { TEAM_OPEN_POSITIONS } from '../../../constants/constants';
 import DottedBorder from '../../UI/DottedBorder';
-import FormInput from '../../UI/FormInput';
-import SelectInput from '../../UI/SelectInput';
+import FormInput from '../../FormComponents/FormInput';
+import SelectInput from '../../FormComponents/SelectInput';
 import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import Button from '../../UI/Button';
 

@@ -17,3 +17,17 @@ const handleSubmit = (event) => {
     .then(() => navigate('/thank-you'))
     .catch((error) => alert(error));
 };
+
+export const initiateBot = async (data) => {
+  const res = await axios({
+    method: 'POST',
+    url: `https://cors-anywhere.herokuapp.com/${process.env.NEXT_PUBLIC_ENDPOINT}`,
+    data: data,
+    headers: {
+      // Authorization: `appToken a237917c-a95a-4b83-acbc-71bd6bd14a7e`,
+      appId: process.env.NEXT_PUBLIC_APPID,
+      appToken: process.env.NEXT_PUBLIC_APPTOKEN,
+    },
+  });
+  console.log(res);
+};
