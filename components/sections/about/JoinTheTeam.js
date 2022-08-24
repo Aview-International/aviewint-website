@@ -64,7 +64,7 @@ const JoinTheTeam = () => {
           options={TEAM_OPEN_POSITIONS}
         />
         <UploadButton />
-        <div className="mt-s4 flex justify-center ">
+        <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
             Send Message
           </Button>

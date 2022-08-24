@@ -48,7 +48,7 @@ const Question = ({ question, answer }) => {
           <div className="relative">
             <span className="inline-block h-[4px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[16px] left-[0px] h-[4px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[16.5px] left-[0px] h-[4px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>

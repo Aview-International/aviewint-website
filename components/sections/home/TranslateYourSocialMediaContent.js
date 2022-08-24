@@ -16,7 +16,7 @@ const TranslateYourSocialMediaContent = () => {
     hasSubmitted: false,
   });
   return (
-    <section className="section pt-s10 m-horizontal mt-s8 lg:mt-s17">
+    <section className="section m-horizontal mt-s8 pt-s10 lg:mt-s17">
       <div className="grid lg:grid-cols-2">
         <div>
           <h1 className="title mb-s2">
@@ -33,7 +33,11 @@ const TranslateYourSocialMediaContent = () => {
               Please check your messages to finish your setup
             </p>
           ) : (
-            <PhoneNumberForm setPhone={setPhone} phone={phone} />
+            <PhoneNumberForm
+              setPhone={setPhone}
+              phone={phone}
+              setShowText={setShowText}
+            />
           )}
         </div>
         <div className="mx-auto mt-s9 -mb-2 max-w-[500px] lg:-m-s2 lg:max-w-full">
@@ -45,7 +49,7 @@ const TranslateYourSocialMediaContent = () => {
   );
 };
 
-const PhoneNumberForm = ({ setPhone, phone }) => {
+const PhoneNumberForm = ({ setPhone, phone, setShowText }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     initiateBot();

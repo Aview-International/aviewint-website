@@ -4,17 +4,25 @@ function encode(data) {
     .join('&');
 }
 
-const handleSubmit = (event) => {
-  event.preventDefault();
+export const submitForm = (name, data) => {
+  console.log('hereee');
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+      )
+      .join('&');
+  };
   fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: encode({
-      'form-name': event.target.getAttribute('name'),
-      ...name,
+      'form-name': name,
+      ...data,
     }),
   })
-    .then(() => navigate('/thank-you'))
+    .then(() => console.log('Success'))
     .catch((error) => alert(error));
 };
 
