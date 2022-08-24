@@ -6,6 +6,7 @@ import {
 } from '../../../constants/constants';
 import { submitForm } from '../../../utils/submit-form';
 import CheckBox from '../../FormComponents/CheckBox';
+import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import SelectInput from '../../FormComponents/SelectInput';
 import Button from '../../UI/Button';
@@ -58,7 +59,7 @@ const GenerateAview = () => {
         Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}
         Today!
       </h2>
-      <form className="m-auto w-full md:w-9/12" onSubmit={handleSubmit}>
+      <Form className="m-auto w-full md:w-9/12" submitHandler={handleSubmit}>
         {GENERATE_AVIEW_INPUT.map((item, i) => (
           <FormInput
             key={`input-${i}`}
@@ -87,7 +88,7 @@ const GenerateAview = () => {
             Become a Creator
           </Button>
         </div>
-      </form>
+      </Form>
     </section>
   );
 };
