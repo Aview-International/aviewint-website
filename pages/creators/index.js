@@ -15,7 +15,10 @@ import SEO from '../../components/SEO/SEO';
 const Creators = () => {
   return (
     <>
-      <SEO title="Creators - AVIEW" />
+      <SEO
+        title="Creators - AVIEW"
+        description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
+      />
       <Header curPage="Creators" />
       <InternationalGrowth />
       <OurServices />
@@ -26,7 +29,7 @@ const Creators = () => {
       <GeneratingAviewFor />
       <GrowthWithAview />
       <GenerateAview />
-      <Footer />
+      <Footer curPage="Creators" />
       <Blobs />
     </>
   );

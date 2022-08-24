@@ -5,7 +5,7 @@ import aviewLogo from '../public/img/aview/logo.svg';
 const Page404 = () => {
   return (
     <div className="h-screen-trick grid w-screen place-content-center text-center">
-      <h1 className="-mb-4 flex items-center gap-s3 sm:-mb-10 md:-mb-16 md:gap-s4">
+      <h1 className="-mt-s6 -mb-s2 flex items-center gap-s3 sm:-mb-s5 md:-mb-s8 md:gap-s4">
         <span className="gradient-text gradient-1 text-[120px] font-bold xs:text-[160px] sm:text-[200px] md:text-[300px]">
           4
         </span>

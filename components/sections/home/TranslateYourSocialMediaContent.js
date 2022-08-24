@@ -20,13 +20,18 @@ const TranslateYourSocialMediaContent = () => {
       <div className="grid lg:grid-cols-2">
         <div>
           <h1 className="title mb-s2">
-            Translate Your{' '}
+            You{' '}
             <span className="gradient-text gradient-2 xs:inline-block">
-              Social Media Content
+              create.
+            </span>{' '}
+            We{' '}
+            <span className="gradient-text gradient-2 xs:inline-block">
+              translate.
             </span>
           </h1>
           <p className="body mb-8">
-            Start increasing your international fanbase AVIEW at a time.
+            Our mission is simple - to grow your international influence,
+            starting with translations, A-View at a time.
           </p>
           {showText ? (
             <p className="body mb-8">

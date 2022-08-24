@@ -12,7 +12,7 @@ const WhyChooseUs = () => {
           trust us with their content.
         </p>
         <div className="inline-block">
-          <Button type="tertiary" purpose="route" route="#generate-aview">
+          <Button type="tertiary" purpose="route" route="/#generate-aview">
             Contact Us
           </Button>
         </div>

@@ -7,7 +7,7 @@ import Slider from '../../UI/Slider';
 
 const InternationalGrowth = () => {
   return (
-    <section className="section m-horizontal mt-s25">
+    <section className="section m-horizontal mt-s6 md:mt-s12">
       <h2 className="title md:text-center">
         <span className="gradient-text gradient-2">
           Find Your International Growth!
@@ -19,7 +19,7 @@ const InternationalGrowth = () => {
       </p>
       <Calculator />
       <div className="mt-s4 flex justify-center">
-        <Button purpose="route" route="/" type="secondary">
+        <Button purpose="route" route="#generate-aview" type="secondary">
           Contact Us
         </Button>
       </div>
@@ -63,7 +63,7 @@ const Calculator = () => {
             {CREATORS_SLIDERS.map((item, i) => (
               <Slider
                 setRanges={setRanges}
-                key={`slider-${i}`} 
+                key={`slider-${i}`}
                 value={ranges[item.name]}
                 {...item}
               />

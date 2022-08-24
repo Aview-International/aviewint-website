@@ -7,9 +7,7 @@ const LeadInTranslations = () => {
     <section className="section m-horizontal">
       <h2 className="title mb-s2 md:text-center">
         Why We{' '}
-        <span className="gradient-text gradient-2 mb-s2">
-          Lead in Translations.
-        </span>
+        <span className="gradient-text gradient-2">Lead in Translations.</span>
       </h2>
       <p className="body mx-auto mb-s4 md:mb-s10 md:max-w-[755px]">
         AVIEW focuses on making our services 100% catered to our creators.

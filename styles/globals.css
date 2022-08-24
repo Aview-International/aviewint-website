@@ -8,7 +8,7 @@
   }
 
   .section {
-    @apply mb-s20 md:mb-s25;
+    @apply mb-s16 md:mb-s24;
   }
 
   .m-horizontal {
