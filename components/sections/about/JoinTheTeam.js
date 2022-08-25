@@ -39,7 +39,7 @@ const JoinTheTeam = () => {
       !data.resume
     )
       return;
-    submitFile('generate-aview-for-company', data);
+    submitFile('team-applications', data);
   };
 
   const handleChange = (e) => {
@@ -50,7 +50,11 @@ const JoinTheTeam = () => {
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">Join the Team</span>
       </h2>
-      <Form className="m-auto w-full md:w-9/12" submitHandler={handleSubmit}>
+      <Form
+        className="m-auto w-full md:w-9/12"
+        submitHandler={handleSubmit}
+        name="team-applications"
+      >
         <div className="items-starts flex flex-col justify-between md:flex-row">
           <div className="md:w-[70%]">
             <FormInput onChange={handleChange} {...JOIN_THE_TEAM[0]} />
