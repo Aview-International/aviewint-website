@@ -88,7 +88,7 @@ const GenerateAviewForCompany = () => {
             isValid={data.phone?.length > 10 && data.phone?.length < 18}
             onChange={(number) => setData({ ...data, phone: number })}
           />
-          <input type="hidden" name="Phone" value={data.phone} />
+          <input type="hidden" name="phone" value={data.phone} />
         </div>
         <div className="w-full md:w-3/5">
           <SelectInput
