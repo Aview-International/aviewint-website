@@ -8,7 +8,7 @@ import { submitForm } from '../../../utils/submit-form';
 import CheckBox from '../../FormComponents/CheckBox';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
-import SelectInput from '../../FormComponents/SelectInput';
+import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
 
 const GenerateAview = () => {
@@ -74,7 +74,7 @@ const GenerateAview = () => {
           />
         ))}
         <div className="w-full md:w-3/5">
-          <SelectInput
+          <CustomSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
             onChange={(option) => setData({ ...data, language: option })}

@@ -9,7 +9,7 @@ import CheckBox from '../../FormComponents/CheckBox';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
-import SelectInput from '../../FormComponents/SelectInput';
+import SelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
 
 const GenerateAviewForCompany = () => {

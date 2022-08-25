@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 
-const SelectInput = ({ text, options, onChange }) => {
+const CustomSelectInput = ({ text, options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState('');
 
@@ -61,4 +61,4 @@ const OPTIONS = ({ isOpen, setData, options, setIsOpen, onChange }) => {
   );
 };
 
-export default SelectInput;
+export default CustomSelectInput;
