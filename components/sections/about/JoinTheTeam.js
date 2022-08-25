@@ -83,7 +83,7 @@ const JoinTheTeam = () => {
           options={TEAM_OPEN_POSITIONS}
           onChange={(option) => setData({ ...data, position: option })}
         />
-        <input type="hidden" value={data.position} />
+        <input type="hidden" name="position" value={data.position} />
         <UploadButton data={data} setData={setData} />
         <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
