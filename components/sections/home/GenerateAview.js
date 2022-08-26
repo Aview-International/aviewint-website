@@ -11,8 +11,10 @@ import FormInput from '../../FormComponents/FormInput';
 import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
+import { useRouter } from 'next/router';
 
 const GenerateAview = () => {
+  let router = useRouter();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -26,18 +28,22 @@ const GenerateAview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
-    if (!data.name || !data.url || !data.email || data.languages.length < 1)
-      return;
-    submitForm('generate-aview', {
-      name: data.name,
-      url: data.url,
-      email: data.email,
-      languages: data.languages.toString(),
-      'Translations/Subtitles': data['Translations/Subtitles'],
-      Dubbing: data['Dubbing'],
-      Shorts: data['Shorts'],
-    });
+    try {
+      setHasSubmitted(true);
+      if (!data.name || !data.url || !data.email) return;
+      submitForm('generate-aview', {
+        name: data.name,
+        url: data.url,
+        email: data.email,
+        languages: data.languages.toString(),
+        'Translations/Subtitles': data['Translations/Subtitles'],
+        Dubbing: data['Dubbing'],
+        Shorts: data['Shorts'],
+      });
+      router.push('/success');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {

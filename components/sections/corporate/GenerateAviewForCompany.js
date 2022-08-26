@@ -11,8 +11,10 @@ import FormInput from '../../FormComponents/FormInput';
 import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import Button from '../../UI/Button';
+import { useRouter } from 'next/router';
 
 const GenerateAviewForCompany = ({ title }) => {
+  let router = useRouter();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -25,28 +27,32 @@ const GenerateAviewForCompany = ({ title }) => {
     Shorts: 'No',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
-    if (
-      !data.name ||
-      !data.companyName ||
-      !data.companyUrl ||
-      data.languages.length < 1 ||
-      data.phone.length < 10 ||
-      data.phone.length > 18
-    )
-      return;
-    submitForm('generate-aview-for-company', {
-      name: data.name,
-      companyName: data.companyName,
-      companyUrl: data.companyUrl,
-      phone: data.phone,
-      languages: data.languages.toString(),
-      'Translations/Subtitles': data['Translations/Subtitles'],
-      Dubbing: data['Dubbing'],
-      Shorts: data['Shorts'],
-    });
+    try {
+      setHasSubmitted(true);
+      if (
+        !data.name ||
+        !data.companyName ||
+        !data.companyUrl ||
+        data.phone.length < 10 ||
+        data.phone.length > 18
+      )
+        return;
+      await submitForm('generate-aview-for-company', {
+        name: data.name,
+        companyName: data.companyName,
+        companyUrl: data.companyUrl,
+        phone: data.phone,
+        languages: data.languages.toString(),
+        'Translations/Subtitles': data['Translations/Subtitles'],
+        Dubbing: data['Dubbing'],
+        Shorts: data['Shorts'],
+      });
+      router.push('/success');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {

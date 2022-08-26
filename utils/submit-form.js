@@ -5,8 +5,6 @@ function encode(data) {
 }
 
 export const submitForm = (name, data) => {
-  console.log('hereee');
-
   const encode = (data) => {
     return Object.keys(data)
       .map(
@@ -21,9 +19,7 @@ export const submitForm = (name, data) => {
       'form-name': name,
       ...data,
     }),
-  })
-    .then(() => console.log('Success'))
-    .catch((error) => alert(error));
+  });
 };
 
 export const submitFile = (name, data) => {
@@ -40,13 +36,7 @@ export const submitFile = (name, data) => {
       ...data,
     }),
     method: 'POST',
-  })
-    .then(() => {
-      console.log('Success');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  });
 };
 
 export const initiateBot = async (data) => {
@@ -55,7 +45,7 @@ export const initiateBot = async (data) => {
     url: `https://cors-anywhere.herokuapp.com/${process.env.NEXT_PUBLIC_ENDPOINT}`,
     data: data,
     headers: {
-      // Authorization: `appToken a237917c-a95a-4b83-acbc-71bd6bd14a7e`,
+      // Authorization: `appToken process.env.APP_TOKEN`,
       appId: process.env.NEXT_PUBLIC_APPID,
       appToken: process.env.NEXT_PUBLIC_APPTOKEN,
     },

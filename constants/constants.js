@@ -769,6 +769,7 @@ export const JOIN_THE_TEAM = [
     name: 'email',
   },
   {
+    validator: (value) => value.length >= 5,
     _id: 'linkedin',
     label: 'LinkedIn',
     placeholder: 'LinkedIn URL',

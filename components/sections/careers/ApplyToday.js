@@ -1,20 +1,20 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import {
   CAREER_APPLY_TODAY,
   LANGUAGES,
   TEAM_OPEN_POSITIONS,
 } from '../../../constants/constants';
-import DottedBorder from '../../UI/DottedBorder';
 import FormInput from '../../FormComponents/FormInput';
 import CustomSelectInput from '../../FormComponents/CustomSelectInput';
-import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import Button from '../../UI/Button';
 import Form from '../../FormComponents/Form';
 import { submitFile } from '../../../utils/submit-form';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
+import { useRouter } from 'next/router';
+import UploadFile from '../../FormComponents/UploadFile';
 
 const ApplyToday = () => {
+  let router = useRouter();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -25,26 +25,31 @@ const ApplyToday = () => {
     resume: null,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
-    if (
-      !data.name ||
-      !data.email ||
-      data.languages.length < 1 ||
-      !data['Voice acting/Dubbing'] ||
-      !data.position ||
-      !data.resume
-    )
-      return;
-    submitFile('translator-applications', {
-      name: data.name,
-      email: data.email,
-      languages: data.languages.toString(),
-      'Voice acting/Dubbing': data['Voice acting/Dubbing'],
-      position: data.position,
-      resume: data.resume,
-    });
+    try {
+      setHasSubmitted(true);
+      if (
+        !data.name ||
+        !data.email ||
+        data.languages.length < 1 ||
+        !data['Voice acting/Dubbing'] ||
+        !data.position ||
+        !data.resume
+      )
+        return;
+      await submitFile('translator-applications', {
+        name: data.name,
+        email: data.email,
+        languages: data.languages.toString(),
+        'Voice acting/Dubbing': data['Voice acting/Dubbing'],
+        position: data.position,
+        resume: data.resume,
+      });
+      router.push('/success');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {
@@ -121,7 +126,12 @@ const ApplyToday = () => {
           />
           <input type="hidden" name="position" value={data.position} />
         </div>
-        <UPLOADBUTTON data={data} setData={setData} />
+        <UploadFile
+          data={data}
+          setData={setData}
+          hasSubmitted={hasSubmitted}
+          isValid={data.resume}
+        />
         <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
             Send Message
@@ -132,23 +142,4 @@ const ApplyToday = () => {
   );
 };
 
-const UPLOADBUTTON = ({ data, setData }) => {
-  return (
-    <DottedBorder classes="block md:inline-block">
-      <label className="flex cursor-pointer flex-col items-center py-s6 md:px-s10">
-        <Image src={UploadIcon} alt="Upload" />
-        <p className="pt-s1 text-xl text-white">
-          {data.resume === null ? 'Upload Resume' : data.resume.name}
-        </p>
-        <input
-          type="file"
-          name="resume"
-          className="hidden"
-          accept="application/doc, application/docx, application/pdf"
-          onChange={(e) => setData({ ...data, resume: e.target.files[0] })}
-        />
-      </label>
-    </DottedBorder>
-  );
-};
 export default ApplyToday;
