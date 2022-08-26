@@ -11,7 +11,6 @@ import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import Button from '../../UI/Button';
 import Border from '../../UI/Border';
-import { data } from 'autoprefixer';
 import Form from '../../FormComponents/Form';
 import { submitFile } from '../../../utils/submit-form';
 

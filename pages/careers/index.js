@@ -6,6 +6,7 @@ import MakeImpact from '../../components/sections/careers/MakeImpact';
 import CompanyCulture from '../../components/sections/careers/CompanyCulture';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
+import ApplyToday from '../../components/sections/careers/ApplyToday';
 
 const Careers = () => {
   return (
@@ -19,6 +20,7 @@ const Careers = () => {
       <PerksAview />
       <MakeImpact />
       <CompanyCulture />
+      <ApplyToday />
       <Footer curPage="Careers" />
       <Blobs />
     </>

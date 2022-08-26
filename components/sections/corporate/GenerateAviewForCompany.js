@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 import {
   GENERATE_AVIEW_CHECKBOX,
   GENERATE_AVIEW_COMPANY_INPUT,
@@ -12,7 +12,7 @@ import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import Button from '../../UI/Button';
 
-const GenerateAviewForCompany = () => {
+const GenerateAviewForCompany = ({ title }) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -80,11 +80,11 @@ const GenerateAviewForCompany = () => {
       setData({ ...data, languages: LANGUAGAESARRAY });
     }
   };
+
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s4 text-center">
-        Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}
-        Today!
+        <span className="gradient-text gradient-2">{title}</span>
       </h2>
       <Form
         className="m-auto w-full md:w-9/12"

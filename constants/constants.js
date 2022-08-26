@@ -776,6 +776,23 @@ export const JOIN_THE_TEAM = [
   },
 ];
 
+export const CAREER_APPLY_TODAY = [
+  {
+    validator: (value) => value.length >= 3,
+    _id: 'name',
+    label: 'Name',
+    placeholder: 'Your Name',
+    name: 'name',
+  },
+  {
+    validator: (value) => emailValidator(value),
+    _id: 'email',
+    label: 'Email address',
+    placeholder: 'Your email address',
+    name: 'email',
+  },
+];
+
 export const COUNTRIES = [
   'Afghanistan',
   'Albania',

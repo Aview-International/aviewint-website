@@ -3,8 +3,16 @@ import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
 import { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
+import Correct from '../../public/img/icons/correct.svg';
+import Incorrect from '../../public/img/icons/incorrect.svg';
 
-const CustomSelectInput = ({ text, options, onChange }) => {
+const CustomSelectInput = ({
+  text,
+  options,
+  onChange,
+  hasSubmitted,
+  isValid,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState('');
 
@@ -23,6 +31,14 @@ const CustomSelectInput = ({ text, options, onChange }) => {
             </span>
           </div>
         </Border>
+        <span className="absolute right-[30px] bottom-[7px]">
+          {isValid && (
+            <Image src={Correct} alt="Correct" width={20} height={20} />
+          )}
+          {hasSubmitted && !isValid && (
+            <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
+          )}
+        </span>
         <OPTIONS
           isOpen={isOpen}
           setData={setData}
