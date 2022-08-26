@@ -71,7 +71,7 @@ const ApplyToday = () => {
       <Form
         className="m-auto w-full md:w-9/12"
         submitHandler={handleSubmit}
-        name="team-applications"
+        name="translator-applications"
       >
         <FormInput
           onChange={handleChange}
