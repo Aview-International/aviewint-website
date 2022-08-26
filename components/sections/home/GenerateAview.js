@@ -6,17 +6,21 @@ import {
 } from '../../../constants/constants';
 import { submitForm } from '../../../utils/submit-form';
 import CheckBox from '../../FormComponents/CheckBox';
+import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
-import SelectInput from '../../FormComponents/SelectInput';
+import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
+import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
+import { useRouter } from 'next/router';
 
 const GenerateAview = () => {
+  let router = useRouter();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
     name: '',
     url: '',
     email: '',
-    language: '',
+    languages: [],
     'Translations/Subtitles': 'No',
     Dubbing: 'No',
     Shorts: 'No',
@@ -24,9 +28,22 @@ const GenerateAview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setHasSubmitted(true);
-    if (!data.name || !data.url || !data.email) return;
-    submitForm('generate-aview', data);
+    try {
+      setHasSubmitted(true);
+      if (!data.name || !data.url || !data.email) return;
+      submitForm('generate-aview', {
+        name: data.name,
+        url: data.url,
+        email: data.email,
+        languages: data.languages.toString(),
+        'Translations/Subtitles': data['Translations/Subtitles'],
+        Dubbing: data['Dubbing'],
+        Shorts: data['Shorts'],
+      });
+      router.push('/success');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {
@@ -48,6 +65,17 @@ const GenerateAview = () => {
       });
     }
   };
+  const handleMutlipleCheckbox = (e) => {
+    if (data.languages.includes(e.target.textContent)) {
+      let newArray = [...data.languages];
+      newArray.splice(newArray.indexOf(e.target.textContent), 1);
+      setData({ ...data, languages: newArray });
+    } else {
+      let LANGUAGAESARRAY = [...data.languages];
+      LANGUAGAESARRAY.push(e.target.textContent);
+      setData({ ...data, languages: LANGUAGAESARRAY });
+    }
+  };
 
   return (
     <section
@@ -58,7 +86,11 @@ const GenerateAview = () => {
         Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}
         Today!
       </h2>
-      <form className="m-auto w-full md:w-9/12" onSubmit={handleSubmit}>
+      <Form
+        name="generate-aview"
+        className="m-auto w-full md:w-9/12"
+        submitHandler={handleSubmit}
+      >
         {GENERATE_AVIEW_INPUT.map((item, i) => (
           <FormInput
             key={`input-${i}`}
@@ -69,10 +101,15 @@ const GenerateAview = () => {
           />
         ))}
         <div className="w-full md:w-3/5">
-          <SelectInput
+          <MultipleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
-            onChange={(option) => setData({ ...data, language: option })}
+            onChange={(event) => handleMutlipleCheckbox(event)}
+          />
+          <input
+            type="hidden"
+            name="languages"
+            value={data.languages.toString()}
           />
         </div>
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
@@ -87,7 +124,7 @@ const GenerateAview = () => {
             Become a Creator
           </Button>
         </div>
-      </form>
+      </Form>
     </section>
   );
 };

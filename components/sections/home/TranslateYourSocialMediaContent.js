@@ -57,8 +57,8 @@ const TranslateYourSocialMediaContent = () => {
 const PhoneNumberForm = ({ setPhone, phone, setShowText }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    initiateBot();
-    setShowText(true);
+    // initiateBot();
+    // setShowText(true);
   };
   return (
     <form
