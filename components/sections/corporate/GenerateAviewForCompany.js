@@ -9,7 +9,7 @@ import CheckBox from '../../FormComponents/CheckBox';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
-import MultitpleSelectInput from '../../FormComponents/MultitpleSelectInput';
+import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import Button from '../../UI/Button';
 
 const GenerateAviewForCompany = () => {
@@ -111,12 +111,16 @@ const GenerateAviewForCompany = () => {
           <input type="hidden" name="phone" value={data.phone} />
         </div>
         <div className="w-full md:w-3/5">
-          <MultitpleSelectInput
+          <MultipleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
-          <input type="hidden" name="languages" value={data.languages.toString()} />
+          <input
+            type="hidden"
+            name="languages"
+            value={data.languages.toString()}
+          />
         </div>
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox

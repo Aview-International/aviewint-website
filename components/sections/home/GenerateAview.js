@@ -10,6 +10,7 @@ import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
+import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 
 const GenerateAview = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -17,7 +18,7 @@ const GenerateAview = () => {
     name: '',
     url: '',
     email: '',
-    language: '',
+    languages: [],
     'Translations/Subtitles': 'No',
     Dubbing: 'No',
     Shorts: 'No',
@@ -26,8 +27,17 @@ const GenerateAview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (!data.name || !data.url || !data.email) return;
-    submitForm('generate-aview', data);
+    if (!data.name || !data.url || !data.email || data.languages.length < 1)
+      return;
+    submitForm('generate-aview', {
+      name: data.name,
+      url: data.url,
+      email: data.email,
+      languages: data.languages.toString(),
+      'Translations/Subtitles': data['Translations/Subtitles'],
+      Dubbing: data['Dubbing'],
+      Shorts: data['Shorts'],
+    });
   };
 
   const handleChange = (e) => {
@@ -47,6 +57,17 @@ const GenerateAview = () => {
         ...data,
         [e.target.name]: 'No',
       });
+    }
+  };
+  const handleMutlipleCheckbox = (e) => {
+    if (data.languages.includes(e.target.textContent)) {
+      let newArray = [...data.languages];
+      newArray.splice(newArray.indexOf(e.target.textContent), 1);
+      setData({ ...data, languages: newArray });
+    } else {
+      let LANGUAGAESARRAY = [...data.languages];
+      LANGUAGAESARRAY.push(e.target.textContent);
+      setData({ ...data, languages: LANGUAGAESARRAY });
     }
   };
 
@@ -74,10 +95,15 @@ const GenerateAview = () => {
           />
         ))}
         <div className="w-full md:w-3/5">
-          <CustomSelectInput
+          <MultipleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
-            onChange={(option) => setData({ ...data, language: option })}
+            onChange={(event) => handleMutlipleCheckbox(event)}
+          />
+          <input
+            type="hidden"
+            name="languages"
+            value={data.languages.toString()}
           />
         </div>
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import HorizontalLine from '../UI/HorizontalLine';
 
-const MultitpleSelectInput = ({ text, options, onChange }) => {
+const MultipleSelectInput = ({ text, options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -78,4 +78,4 @@ const CHECKBOX = ({ option, onChange }) => {
     </>
   );
 };
-export default MultitpleSelectInput;
+export default MultipleSelectInput;
