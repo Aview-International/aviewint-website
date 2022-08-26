@@ -10,7 +10,7 @@ const MultitpleSelectInput = ({ text, options, onChange }) => {
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-        <p className="mb-s1 text-white text-xl">{text}</p>
+      <p className="mb-s1 text-xl text-white">{text}</p>
       <div className="relative mb-s4 text-xl text-white">
         <Border borderRadius="[5px] w-full">
           <div
@@ -54,7 +54,11 @@ const CHECKBOX = ({ option, onChange }) => {
   const [isChecked, setIschecked] = useState(false);
   return (
     <>
-      <label
+      <div
+        onClick={(e) => {
+          setIschecked(!isChecked);
+          onChange(e);
+        }}
         className={`flex cursor-pointer items-center bg-black p-s1 text-xl text-white`}
       >
         <span
@@ -68,19 +72,8 @@ const CHECKBOX = ({ option, onChange }) => {
             }`}
           ></span>
         </span>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={(e) => {
-            setIschecked(!isChecked);
-            onChange(e);
-          }}
-          name={option}
-          value={option}
-          className="hidden"
-        />
         {option}
-      </label>
+      </div>
       <HorizontalLine />
     </>
   );

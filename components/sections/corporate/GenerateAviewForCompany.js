@@ -40,6 +40,7 @@ const GenerateAviewForCompany = () => {
     )
       return;
     submitForm('generate-aview-for-company', data);
+    console.log(langs);
   };
 
   const handleChange = (e) => {
@@ -63,14 +64,14 @@ const GenerateAviewForCompany = () => {
   };
 
   const handleMutlipleCheckbox = (e) => {
-    if (e.target.checked) {
-      let LANGUAGAESARRAY = [...langs];
-      LANGUAGAESARRAY.push(e.target.value);
-      setLangs(LANGUAGAESARRAY);
-    } else {
+    if (langs.includes(e.target.textContent)) {
       let newArray = [...langs];
-      newArray.splice(newArray.indexOf(e.target.value), 1);
+      newArray.splice(newArray.indexOf(e.target.textContent), 1);
       setLangs(newArray);
+    } else {
+      let LANGUAGAESARRAY = [...langs];
+      LANGUAGAESARRAY.push(e.target.textContent);
+      setLangs(LANGUAGAESARRAY);
     }
   };
   return (
