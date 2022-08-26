@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   GENERATE_AVIEW_CHECKBOX,
   GENERATE_AVIEW_COMPANY_INPUT,
@@ -14,13 +14,12 @@ import Button from '../../UI/Button';
 
 const GenerateAviewForCompany = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [langs, setLangs] = useState([]);
   const [data, setData] = useState({
     name: '',
     companyName: '',
     companyUrl: '',
     phone: '',
-    languages: '',
+    languages: [],
     'Translations/Subtitles': 'No',
     Dubbing: 'No',
     Shorts: 'No',
@@ -29,18 +28,25 @@ const GenerateAviewForCompany = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    setData({ ...data, languages: langs.toString() });
     if (
       !data.name ||
       !data.companyName ||
       !data.companyUrl ||
-      langs.length < 1 ||
+      data.languages.length < 1 ||
       data.phone.length < 10 ||
       data.phone.length > 18
     )
       return;
-    submitForm('generate-aview-for-company', data);
-    console.log(langs);
+    submitForm('generate-aview-for-company', {
+      name: data.name,
+      companyName: data.companyName,
+      companyUrl: data.companyUrl,
+      phone: data.phone,
+      languages: data.languages.toString(),
+      'Translations/Subtitles': data['Translations/Subtitles'],
+      Dubbing: data['Dubbing'],
+      Shorts: data['Shorts'],
+    });
   };
 
   const handleChange = (e) => {
@@ -64,14 +70,14 @@ const GenerateAviewForCompany = () => {
   };
 
   const handleMutlipleCheckbox = (e) => {
-    if (langs.includes(e.target.textContent)) {
-      let newArray = [...langs];
+    if (data.languages.includes(e.target.textContent)) {
+      let newArray = [...data.languages];
       newArray.splice(newArray.indexOf(e.target.textContent), 1);
-      setLangs(newArray);
+      setData({ ...data, languages: newArray });
     } else {
-      let LANGUAGAESARRAY = [...langs];
+      let LANGUAGAESARRAY = [...data.languages];
       LANGUAGAESARRAY.push(e.target.textContent);
-      setLangs(LANGUAGAESARRAY);
+      setData({ ...data, languages: LANGUAGAESARRAY });
     }
   };
   return (
@@ -110,7 +116,7 @@ const GenerateAviewForCompany = () => {
             options={LANGUAGES}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
-          <input type="hidden" name="languages" value={data.languages} />
+          <input type="hidden" name="languages" value={data.languages.toString()} />
         </div>
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox
