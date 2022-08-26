@@ -4,7 +4,7 @@ import Info from '../../public/img/icons/info.svg';
 import Border from '../UI/Border';
 import { useState } from 'react';
 
-const CheckBox = ({ label, value, onChange, tooltip, name }) => {
+const CheckBox = ({ label, onChange, tooltip, name }) => {
   const [isChecked, setIschecked] = useState(false);
   return (
     <label className={`flex cursor-pointer items-center text-xl text-white`}>

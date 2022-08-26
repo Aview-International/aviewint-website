@@ -9,11 +9,12 @@ import CheckBox from '../../FormComponents/CheckBox';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
-import SelectInput from '../../FormComponents/CustomSelectInput';
+import MultitpleSelectInput from '../../FormComponents/MultitpleSelectInput';
 import Button from '../../UI/Button';
 
 const GenerateAviewForCompany = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [langs, setLangs] = useState([]);
   const [data, setData] = useState({
     name: '',
     companyName: '',
@@ -28,11 +29,12 @@ const GenerateAviewForCompany = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    console.log(e.target);
+    setData({ ...data, languages: langs.toString() });
     if (
       !data.name ||
       !data.companyName ||
       !data.companyUrl ||
+      langs.length < 1 ||
       data.phone.length < 10 ||
       data.phone.length > 18
     )
@@ -60,6 +62,17 @@ const GenerateAviewForCompany = () => {
     }
   };
 
+  const handleMutlipleCheckbox = (e) => {
+    if (e.target.checked) {
+      let LANGUAGAESARRAY = [...langs];
+      LANGUAGAESARRAY.push(e.target.value);
+      setLangs(LANGUAGAESARRAY);
+    } else {
+      let newArray = [...langs];
+      newArray.splice(newArray.indexOf(e.target.value), 1);
+      setLangs(newArray);
+    }
+  };
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s4 text-center">
@@ -91,11 +104,12 @@ const GenerateAviewForCompany = () => {
           <input type="hidden" name="phone" value={data.phone} />
         </div>
         <div className="w-full md:w-3/5">
-          <SelectInput
+          <MultitpleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
-            onChange={(option) => setData({ ...data, language: option })}
+            onChange={(event) => handleMutlipleCheckbox(event)}
           />
+          <input type="hidden" name="languages" value={data.languages} />
         </div>
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox
