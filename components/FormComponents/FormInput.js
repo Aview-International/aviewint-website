@@ -27,6 +27,8 @@ const FormInput = ({
   placeholder,
   name,
   hasSubmitted,
+  bgColor,
+  textBlack,
 }) => {
   return (
     <div className="relative mb-s5 w-full text-xl text-white">
@@ -40,14 +42,16 @@ const FormInput = ({
             name={name}
             type="text"
             placeholder={placeholder}
-            className={`peer w-full rounded-[5px] bg-black p-[6px] text-white focus:outline-none`}
+            className={`peer w-full rounded-[5px] p-[6px] text-white focus:outline-none ${
+              bgColor ? bgColor : 'bg-black'
+            } ${textBlack ? 'text-black' : 'text-white'}`}
             onChange={(e) => onChange(e)}
           />
           <div
             className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
           ></div>
         </Border>
-        <span className="absolute right-[10px] top-[45px]">
+        <span className="absolute right-[10px] bottom-[0px]">
           {isValid && (
             <Image src={Correct} alt="Correct" width={25} height={25} />
           )}
