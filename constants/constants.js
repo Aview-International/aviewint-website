@@ -794,6 +794,14 @@ export const CAREER_APPLY_TODAY = [
   },
 ];
 
+export const GLOBAL_NEWSLETTER = {
+  placeholder: 'Your email address',
+  type: 'email',
+  name: 'email',
+  bgColor: 'bg-white',
+  textBlack: true,
+};
+
 export const COUNTRIES = [
   'Afghanistan',
   'Albania',
