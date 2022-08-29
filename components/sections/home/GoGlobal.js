@@ -20,7 +20,7 @@ const GoGlobal = () => {
     try {
       console.log(mail);
       setMail({ ...mail, hasSubmitted: false });
-      submitForm('newsletter', mail.email);
+      submitForm('newsletter', { email: mail.email });
       router.push('/success');
     } catch (error) {
       console.log(error);
