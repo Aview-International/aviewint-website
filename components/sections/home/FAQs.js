@@ -39,7 +39,7 @@ const Question = ({ question, answer }) => {
     <>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`cursor-pointer pl-s3 transition-all duration-1000 ease-in-out ${
+        className={`cursor-pointer pl-s3 ${
           isOpen ? 'max-h-[65rem]' : 'max-h-40'
         }`}
       >
@@ -48,7 +48,7 @@ const Question = ({ question, answer }) => {
           <div className="relative">
             <span className="inline-block h-[4px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[16.5px] left-[0px] h-[4px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[16.5px] left-[0px] h-[5px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>
@@ -72,7 +72,7 @@ const CLICKHERE_QUESTION = ({ page }) => {
     <>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`cursor-pointer pl-s3 transition-all duration-1000 ease-in-out ${
+        className={`cursor-pointer pl-s3 ${
           isOpen ? 'max-h-[65rem]' : 'max-h-40'
         }`}
       >
@@ -83,7 +83,7 @@ const CLICKHERE_QUESTION = ({ page }) => {
           <div className="relative">
             <span className="inline-block h-[4px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[16px] left-[0px] h-[4px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[16px] left-[0px] h-[5px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>

@@ -541,7 +541,7 @@ export const LANDING_PAGE_FAQ = [
   {
     id: 'question4',
     question: 'How much does it cost?',
-    answer: `AVIEW creates a pricing plan for each creator. We ensure that you see a return on our services! If you would like a quote, please click here!`,
+    answer: `AVIEW creates a pricing plan for each creator. We ensure that you see a return on our services! If you would like a quote, please click <a class="underline" href="/#generate-aview">here!</a>`,
   },
   {
     id: 'question5',

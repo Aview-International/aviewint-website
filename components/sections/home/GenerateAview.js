@@ -8,7 +8,6 @@ import { submitForm } from '../../../utils/submit-form';
 import CheckBox from '../../FormComponents/CheckBox';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
-import CustomSelectInput from '../../FormComponents/CustomSelectInput';
 import Button from '../../UI/Button';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import { useRouter } from 'next/router';
