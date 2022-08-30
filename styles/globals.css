@@ -4,7 +4,7 @@
 
 @layer components {
   .navigation {
-    @apply md:mx-auto md:w-[95%];
+    @apply mx-s3 md:mx-auto md:w-[95%];
   }
 
   .section {
@@ -39,9 +39,9 @@
     @apply text-lg text-white md:text-xl;
   }
   .phone-number input {
-    @apply bg-transparent w-full;
+    @apply w-full bg-transparent;
   }
-  .phone-number input:focus{
+  .phone-number input:focus {
     @apply outline-none;
   }
   .phone-number > div {
@@ -94,7 +94,7 @@
   .remove-highlight {
     -webkit-tap-highlight-color: transparent;
   }
-  .header-animation{
+  .header-animation {
     animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
@@ -104,7 +104,7 @@
       -webkit-transform: translate3d(0, -100%, 0);
       transform: translate3d(0, -100%, 0);
     }
-  
+
     to {
       opacity: 1;
       -webkit-transform: translateZ(0);
