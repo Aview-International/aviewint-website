@@ -28,6 +28,7 @@ import accurate from '../public/img/graphics/accurate.png';
 import subtitles from '../public/img/graphics/subtitles.png';
 import dubbing from '../public/img/graphics/dubbing.png';
 import shorts from '../public/img/graphics/shorts.png';
+import distribution from '../public/img/graphics/distribution.png';
 
 // Generating Aview For
 import logan2 from '../public/img/creators/logan-2.png';
@@ -40,6 +41,8 @@ import visibility from '../public/img/graphics/visibility.png';
 import growth from '../public/img/graphics/growth.png';
 import userFriendly from '../public/img/graphics/user-friendly.png';
 import expand from '../public/img/graphics/expand.png';
+import saveTime from '../public/img/graphics/save-time.png';
+import increaseRevenue from '../public/img/graphics/increase-revenue.png';
 
 // Our Core Values
 import fastTurnaround from '../public/img/graphics/fast-turnaround.png';
@@ -259,22 +262,22 @@ export const OUR_SERVICES = [
     id: 'service-1',
     title: 'Subtitles',
     description:
-      'Receive a translation file that can be uploaded directly to your YouTube video.',
+      'Our team of certified translators work in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
     graphic: subtitles,
   },
   {
     id: 'service-2',
-    title: 'Dubbing',
+    title: 'Shorts',
     description:
-      'Receive your videos completely translated with voice-overs in the language of your choosing. ',
-    graphic: dubbing,
+      'We create catchy short-form videos from your existing videos, giving your audience bite-sized content that can be enjoyed at any time of day.',
+    graphic: shorts,
   },
   {
     id: 'service-3',
-    title: 'Shorts',
+    title: 'Distribution',
     description:
-      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook. ',
-    graphic: shorts,
+      'Our tools allow us to seamlessly distribute your content across all your social media channels, including YouTube and Instagram.',
+    graphic: distribution,
   },
 ];
 
@@ -320,29 +323,30 @@ export const OUR_MILESTONES = [
 export const BENEFITS_OF_TRANSLATIONS = [
   {
     id: 'benefit-1',
-    title: 'Visibility',
-    description:
-      "Translated metadata will help increase your visibility on Youtube's algorithm.",
-    graphic: visibility,
+    title: 'Save Time',
+    description: 'Leverage existing content to reach new audiences',
+    graphic: saveTime,
   },
   {
     id: 'benefit-2',
-    title: 'Growth',
+    title: 'Grow Globally',
     description:
-      'Increase the growth of your channel by tapping into new communities.',
+      'Connect with new audiences by becoming internationally searchable',
     graphic: growth,
   },
   {
     id: 'benefit-3',
-    title: 'User-Friendly',
-    description: 'Make your videos more accessible to different groups.',
-    graphic: userFriendly,
+    title: 'Increased Revenue',
+    description:
+      'Build engagement with new followers by speaking their language',
+    graphic: increaseRevenue,
   },
   {
     id: 'benefit-4',
-    title: 'Expand',
-    description: 'Grow an international audience and increase engagement.',
-    graphic: expand,
+    title: 'Visibility',
+    description:
+      'Translated metadata will help increase your visibility on Youtube’s algorithm.',
+    graphic: visibility,
   },
 ];
 

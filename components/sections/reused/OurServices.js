@@ -4,10 +4,13 @@ import { OUR_SERVICES } from '../../../constants/constants';
 
 const OurServices = () => {
   return (
-    <section className="section m-horizontal">
-      <h2 className="title mb-s3 md:mb-s10 md:text-center">
+    <section className="section m-horizontal md:text-center">
+      <h2 className="title mb-s2">
         Our <span className="gradient-2 gradient-text">Services</span>
       </h2>
+      <p className="mb-s3 text-xl text-white md:mb-s10">
+        We tailor our approach to fit your audience growth goals.
+      </p>
       <Row3>
         {OUR_SERVICES.map((service) => (
           <GraphicCard

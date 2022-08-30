@@ -4,22 +4,21 @@ import Image from 'next/image';
 
 const YouCreateWeTranslate = () => {
   return (
-    <section className="section m-horizontal grid items-center gap-10 md:grid-cols-[4fr,3fr] md:gap-12 lg:gap-40">
+    <section className="section m-horizontal grid items-center gap-s5 md:grid-cols-[4fr,3fr] md:gap-s6 lg:gap-s20">
       <div>
-        <h2 className="title pb-4">
-          You <span className="gradient-text gradient-2">Create.</span> We
-          Translate.
+        <h2 className="title mb-s4 md:mb-s2">
+          A Leader In{' '}
+          <span className="gradient-text gradient-2">Translations</span>
         </h2>
-        <p className="body pb-8">
-          AVIEW hand picks the best translators and voice actors for your
-          content. We cater our approach to each individual creator and their
-          brand. Our team is ready to help you gain a AVIEW on your competition.
+        <div className="mb-s4 md:hidden">
+          <Image src={globeGraphic} alt="Translation graphic" />
+        </div>
+        <p className="body mb-s4">
+          With our customized approach, we help you expand your audience and
+          exponentially increase your revenues.
         </p>
-        <Button type="primary" purpose="route" route="/#generate-aview">
-          Go Global Now!
-        </Button>
       </div>
-      <div className="mx-auto max-w-[400px] md:max-w-none">
+      <div className="hidden md:block">
         <Image src={globeGraphic} alt="Translation graphic" />
       </div>
     </section>
