@@ -58,6 +58,8 @@ const TranslateYourSocialMediaContent = () => {
 const PhoneNumberForm = ({ setPhone, phone, setShowText }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    setPhone({ ...phone, hasSubmitted: true });
+    if (phone.phone.length < 11 || phone.phone.length > 18) return;
     try {
       initiateBot([
         {
@@ -77,7 +79,7 @@ const PhoneNumberForm = ({ setPhone, phone, setShowText }) => {
         <PhoneNumberInput
           onChange={(e) => setPhone({ ...phone, phone: e })}
           value={phone.phoner}
-          hasSubmitted={phone.submitted}
+          hasSubmitted={phone.hasSubmitted}
           isValid={phone.phone?.length > 11 && phone.phone?.length < 18}
         />
       </div>

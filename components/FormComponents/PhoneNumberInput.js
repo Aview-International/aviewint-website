@@ -37,14 +37,14 @@ const PhoneNumberInput = ({
         </div>
         <span
           className={`absolute right-[10px] ${
-            label ? 'top-[40px]' : 'top-[12px]'
+            label ? 'top-[40px]' : 'top-[9px]'
           }`}
         >
           {isValid && (
-            <Image src={Correct} alt="Correct" width={20} height={20} />
+            <Image src={Correct} alt="Correct" width={30} height={30} />
           )}
           {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
+            <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
           )}
         </span>
       </Border>
