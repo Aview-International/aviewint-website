@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 function encode(data) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -40,15 +42,6 @@ export const submitFile = (name, data) => {
 };
 
 export const initiateBot = async (data) => {
-  const res = await axios({
-    method: 'POST',
-    url: `https://cors-anywhere.herokuapp.com/${process.env.NEXT_PUBLIC_ENDPOINT}`,
-    data: data,
-    headers: {
-      // Authorization: `appToken process.env.APP_TOKEN`,
-      appId: process.env.NEXT_PUBLIC_APPID,
-      appToken: process.env.NEXT_PUBLIC_APPTOKEN,
-    },
-  });
-  console.log(res);
+  const res = await axios.post(`/api/submit-phone`, data);
+  return res;
 };

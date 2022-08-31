@@ -35,7 +35,7 @@ const TranslateYourSocialMediaContent = () => {
           </p>
           {showText ? (
             <p className="body mb-8">
-              Please check your messages to finish your setup
+              Please check your messages to finish your setup ✅
             </p>
           ) : (
             <PhoneNumberForm
@@ -57,8 +57,15 @@ const TranslateYourSocialMediaContent = () => {
 const PhoneNumberForm = ({ setPhone, phone, setShowText }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // initiateBot();
-    // setShowText(true);
+    try {
+      initiateBot([
+        {
+          phoneNumber: phone.phone,
+          payLoad: Date.now(),
+        },
+      ]);
+      setShowText(true);
+    } catch (error) {}
   };
   return (
     <form
