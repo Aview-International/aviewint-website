@@ -7,15 +7,14 @@ import Slider from '../../UI/Slider';
 
 const InternationalGrowth = () => {
   return (
-    <section className="section m-horizontal mt-s6 md:mt-s12">
+    <section className="section m-horizontal">
       <h2 className="title md:text-center">
-        <span className="gradient-text gradient-2">
-          Find Your International Growth!
-        </span>
+        Uncover Your Full{' '}
+        <span className="gradient-text gradient-2">Revenue Potential</span>
       </h2>
       <p className="mb-s4 mt-s2 text-xl text-white md:text-center">
-        Use the calculator below to discover your increase in views and
-        potential revenue!
+        Use our calculator and watch your revenue grow exponentially, all by
+        simply adding more languages to your library!
       </p>
       <Calculator />
       <div className="mt-s4 flex justify-center">

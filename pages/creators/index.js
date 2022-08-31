@@ -11,6 +11,7 @@ import GrowthWithAview from '../../components/sections/creators/GrowthWithAview'
 import GenerateAview from '../../components/sections/home/GenerateAview';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
+import GoGlobal from '../../components/sections/creators/GoGlobal';
 
 const Creators = () => {
   return (
@@ -20,15 +21,14 @@ const Creators = () => {
         description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
       />
       <Header curPage="Creators" />
-      <InternationalGrowth />
+      <GoGlobal />
       <OurServices />
       <YouCreateWeTranslate />
       <BenefitsOfTranslations />
       <HowItWorks />
       <AtAview />
       <GeneratingAviewFor />
-      <GrowthWithAview />
-      <GenerateAview />
+      <InternationalGrowth />
       <Footer curPage="Creators" />
       <Blobs />
     </>

@@ -22,16 +22,17 @@ const TranslateYourSocialMediaContent = () => {
           <h1 className="title mb-s2">
             You{' '}
             <span className="gradient-text gradient-2 xs:inline-block">
-              create.
+              Create.
             </span>{' '}
             We{' '}
             <span className="gradient-text gradient-2 xs:inline-block">
-              translate.
+              Translate.
             </span>
           </h1>
           <p className="body mb-8">
-            Our mission is simple - to grow your international influence,
-            starting with translations, A-View at a time.
+            At AVIEW, we work with the top translators and voiceover talent so
+            that you can easily grow your international influence, A-View at a
+            time.
           </p>
           {showText ? (
             <p className="body mb-8">

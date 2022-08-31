@@ -9,7 +9,7 @@ const GrowingInternationally = () => {
         Content Creators We&apos;ve Worked With
       </p>
       <h2 className="mb-s4 text-5xl font-bold text-white md:mb-s10 md:text-8xl">
-        Growing our customers internationally
+        Get a free quote today!
       </h2>
       <div className="flex flex-row flex-wrap justify-center gap-s4 pb-s4 xs:gap-s8 md:pb-s10 xl:gap-s16">
         {GROW_CUSTOMERS_INTERNATIONALLY.map(({ id, name, icon }) => (
