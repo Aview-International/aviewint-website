@@ -1,4 +1,4 @@
-import GraphicCard from '../../UI/GraphicCard';
+import GraphicCard from '../../UI/GraphicCardHorizontal';
 import Image from 'next/image';
 import ed2Focus from '../../../public/img/graphics/ed2.png';
 import collaborativeWork from '../../../public/img/graphics/collabo.png';
@@ -42,11 +42,9 @@ const CardGrid = () => {
     <div className="mx-auto grid max-w-[1030px] gap-x-s2.5 gap-y-s4 md:grid-cols-2">
       {CARD_CONTENT.map((list) => (
         <GraphicCard
-          key={list.id}
-          title={list.title}
-          description={list.description}
           graphic={list.graphic}
-          direction="vertical"
+          title={list.title}
+          direction="horizontal"
         />
       ))}
     </div>
