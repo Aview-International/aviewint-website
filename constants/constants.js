@@ -1057,3 +1057,42 @@ export const COUNTRIES = [
   'Zimbabwe',
   'Åland Islands',
 ];
+
+export const OUR_TRANSLATION_SERVICES = [
+  {
+    id: 'service-1',
+    title: 'Marketing Materials',
+    text: 'Our team of certified translators work in over 15 languages, taking care of language nuances in your video and written marketing materials.',
+  },
+  {
+    id: 'service-2',
+    title: 'Documents',
+    text: 'We guarantee fast, professional and accurate translations for all documents, including; legal, technical and newsletters.',
+  },
+  {
+    id: 'service-1',
+    title: 'Training Modules',
+    text: 'We provide subtitle and voiceover dubs to fit your teams training and educational videos.',
+  },
+];
+
+export const MOST_POPULAR_LANGUAGES = [
+  { id: 'language-1', language: 'English' },
+  { id: 'language-2', language: 'Mandarin' },
+  { id: 'language-3', language: 'Hindi' },
+  { id: 'language-4', language: 'Spanish' },
+  { id: 'language-5', language: 'Arabic' },
+];
+
+export const ALSO_AVAILABLE = [
+  { id: 'language-1', language: 'Portuguese' },
+  { id: 'language-2', language: 'Indonesian' },
+  { id: 'language-3', language: 'Bengali' },
+  { id: 'language-4', language: 'German' },
+  { id: 'language-5', language: 'Russian' },
+  { id: 'language-6', language: 'Japanese' },
+  { id: 'language-7', language: 'French' },
+  { id: 'language-8', language: 'Marthi' },
+  { id: 'language-9', language: 'Urdu' },
+  { id: 'language-10', language: 'Teluga' },
+];

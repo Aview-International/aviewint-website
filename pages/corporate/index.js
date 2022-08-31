@@ -11,6 +11,9 @@ import OurMission from '../../components/sections/corporate/OurMission';
 import SEO from '../../components/SEO/SEO';
 import FAQs from '../../components/sections/home/FAQs';
 import GenerateAviewForCompany from '../../components/sections/corporate/GenerateAviewForCompany';
+import OurTranslationServices from '../../components/sections/corporate/OurTranslationServices';
+import LanguagesServed from '../../components/sections/corporate/LanguagesServed';
+import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
 
 const Corporate = () => {
   return (
@@ -24,6 +27,9 @@ const Corporate = () => {
       <OurMission />
       <GrowingInternationally />
       <OurServices />
+      <OurTranslationServices />
+      <LanguagesServed />
+      <PreppingForBillC96 />
       <OurMilestones />
       <Testimonials />
       <WhyChooseUs />
