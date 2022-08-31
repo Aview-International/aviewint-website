@@ -35,7 +35,7 @@ const Corporate = () => {
       <WhyChooseUs />
       <FAQs page="corporate" />
       <GenerateAviewForCompany title="Generate Aview" />
-      <Footer />
+      <Footer curPage="Corporate" />
       <Blobs />
     </>
   );
