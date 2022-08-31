@@ -1,4 +1,4 @@
-## Welcome to aviewint.ca! 👋
+## Welcome to aviewint.com! 👋
 This repo is for the website of AVIEW International. Visit it [here](https://www.aviewint.com)!
 
 ### Technologies&nbsp; 🖥
