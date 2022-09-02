@@ -69,7 +69,7 @@ const ApplyToday = () => {
   };
 
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" id="apply-today">
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">Apply Today!</span>
       </h2>

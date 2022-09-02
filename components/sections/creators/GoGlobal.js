@@ -21,7 +21,7 @@ const GoGlobal = () => {
           comes to growing your audience - don&apos;t let language be one of
           them.
         </p>
-        <Button type="primary" purpose="route" route="/#generate-aview">
+        <Button type="primary" purpose="route" route="#work-with-us">
           Get Started
         </Button>
       </div>

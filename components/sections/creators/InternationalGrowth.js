@@ -18,7 +18,7 @@ const InternationalGrowth = () => {
       </p>
       <Calculator />
       <div className="mt-s4 flex justify-center">
-        <Button purpose="route" route="#generate-aview" type="secondary">
+        <Button purpose="route" route="#work-with-us" type="secondary">
           Contact Us
         </Button>
       </div>

@@ -5,21 +5,24 @@ import collaborativeWork from '../../../public/img/graphics/collabo.png';
 import personalGrowth from '../../../public/img/graphics/personal.png';
 import teambuilding from '../../../public/img/graphics/team-building.png';
 
-
 const CARD_CONTENT = [
   {
+    id: 'culture-1',
     title: 'Teambuilding',
     graphic: teambuilding,
   },
   {
+    id: 'culture-2',
     title: 'Collaborative Work',
     graphic: collaborativeWork,
   },
   {
+    id: 'culture-3',
     title: 'Personal Growth',
     graphic: personalGrowth,
   },
   {
+    id: 'culture-4',
     title: 'EDII Focus',
     graphic: ed2Focus,
   },
@@ -27,10 +30,9 @@ const CARD_CONTENT = [
 
 const CompanyCulture = () => {
   return (
-    <section className="section m-horizontal text-center">
-      <h2 className="title mb-s4 md:mb-s10">
-        Benefits of{' '}
-        <span className="gradient-text gradient-2">Translations</span>
+    <section className="section m-horizontal md:text-center">
+      <h2 className="title mb-s4">
+        <span className="gradient-text gradient-2">Company Culture</span>
       </h2>
       <CardGrid />
     </section>
@@ -42,6 +44,7 @@ const CardGrid = () => {
     <div className="mx-auto grid max-w-[1030px] gap-x-s2.5 gap-y-s4 md:grid-cols-2">
       {CARD_CONTENT.map((list) => (
         <GraphicCard
+          key={list.id}
           graphic={list.graphic}
           title={list.title}
           direction="horizontal"
@@ -49,6 +52,6 @@ const CardGrid = () => {
       ))}
     </div>
   );
-  }
-  
-  export default CompanyCulture;
+};
+
+export default CompanyCulture;

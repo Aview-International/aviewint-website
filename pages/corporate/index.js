@@ -26,14 +26,13 @@ const Corporate = () => {
       <BrandGlobal />
       <OurMission />
       <GrowingInternationally />
-      <OurServices />
       <OurTranslationServices />
       <LanguagesServed />
       <PreppingForBillC96 />
-      <OurMilestones />
-      <Testimonials />
+      {/* <OurMilestones /> */}
+      {/* <Testimonials /> */}
       <WhyChooseUs />
-      <FAQs page="corporate" />
+      {/* <FAQs page="corporate" /> */}
       <GenerateAviewForCompany title="Generate Aview" />
       <Footer curPage="Corporate" />
       <Blobs />

@@ -48,7 +48,7 @@ const JoinTheTeam = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" id="join-the-team">
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">Join the Team</span>
       </h2>
