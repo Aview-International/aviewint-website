@@ -18,8 +18,8 @@ const GoGlobal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      console.log(mail);
-      setMail({ ...mail, hasSubmitted: false });
+      setMail({ ...mail, hasSubmitted: true });
+      if (!emailValidator(mail.email)) return;
       submitForm('newsletter', { email: mail.email });
       router.push('/success');
     } catch (error) {

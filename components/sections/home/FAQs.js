@@ -45,10 +45,10 @@ const Question = ({ question, answer }) => {
       >
         <h3 className="align-center mt-s3 mb-s3 flex justify-between text-xl text-white md:text-2xl">
           {question}
-          <div className="relative">
-            <span className="inline-block h-[4px] w-6 bg-white"></span>
+          <div className="relative pr-s3">
+            <span className="inline-block h-[3px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[16.5px] left-[0px] h-[5px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[18px] left-[0px] h-[3px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>
@@ -80,10 +80,10 @@ const CLICKHERE_QUESTION = ({ page }) => {
           {page === 'corporate'
             ? 'How much does it cost?'
             : 'How can I get started?'}
-          <div className="relative">
-            <span className="inline-block h-[4px] w-6 bg-white"></span>
+          <div className="relative pr-s3">
+          <span className="inline-block h-[3px] w-6 bg-white"></span>
             <span
-              className={`absolute top-[16px] left-[0px] h-[5px] w-6 rotate-90 bg-white ${
+              className={`absolute top-[18px] left-[0px] h-[3px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
               }`}
             ></span>

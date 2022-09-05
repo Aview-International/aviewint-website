@@ -1,13 +1,15 @@
 import Border from '../UI/Border';
 import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import HorizontalLine from '../UI/HorizontalLine';
 
-const MultipleSelectInput = ({ text, options, onChange }) => {
+const MultipleSelectInput = ({ answer, text, options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const selectedAnswer = useMemo(() => {
+    return answer;
+  });
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
       <p className="mb-s1 text-xl text-white">{text}</p>
@@ -17,7 +19,13 @@ const MultipleSelectInput = ({ text, options, onChange }) => {
             className="flex w-full cursor-pointer items-center justify-between rounded-[5px] bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p>Select Languages</p>
+            <p>
+              {selectedAnswer?.length > 0
+                ? `${selectedAnswer[0]}, ${
+                    selectedAnswer.length > 1 ? selectedAnswer[1] : ''
+                  }${selectedAnswer.length > 2 ? ', ...' : ''}`
+                : 'Select Languages'}
+            </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>
@@ -55,9 +63,9 @@ const CHECKBOX = ({ option, onChange }) => {
   return (
     <>
       <div
-        onClick={(e) => {
+        onClick={() => {
           setIschecked(!isChecked);
-          onChange(e);
+          onChange(option);
         }}
         className={`flex cursor-pointer items-center bg-black p-s1 text-xl text-white`}
       >

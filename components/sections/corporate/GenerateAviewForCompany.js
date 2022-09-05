@@ -12,6 +12,7 @@ import PhoneNumberInput from '../../FormComponents/PhoneNumberInput';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import Button from '../../UI/Button';
 import { useRouter } from 'next/router';
+import Textarea from '../../FormComponents/Textarea';
 
 const GenerateAviewForCompany = ({ title }) => {
   let router = useRouter();
@@ -22,6 +23,7 @@ const GenerateAviewForCompany = ({ title }) => {
     companyUrl: '',
     phone: '',
     languages: [],
+    additionalInfo: '',
     'Translations/Subtitles': 'No',
     Dubbing: 'No',
     Shorts: 'No',
@@ -45,6 +47,7 @@ const GenerateAviewForCompany = ({ title }) => {
         companyUrl: data.companyUrl,
         phone: data.phone,
         languages: data.languages.toString(),
+        additionalInfo: data.additionalInfo,
         'Translations/Subtitles': data['Translations/Subtitles'],
         Dubbing: data['Dubbing'],
         Shorts: data['Shorts'],
@@ -75,18 +78,24 @@ const GenerateAviewForCompany = ({ title }) => {
     }
   };
 
-  const handleMutlipleCheckbox = (e) => {
-    if (data.languages.includes(e.target.textContent)) {
+  const handleMutlipleCheckbox = (option) => {
+    if (data.languages.includes(option)) {
       let newArray = [...data.languages];
-      newArray.splice(newArray.indexOf(e.target.textContent), 1);
+      newArray.splice(newArray.indexOf(option), 1);
       setData({ ...data, languages: newArray });
     } else {
       let LANGUAGAESARRAY = [...data.languages];
-      LANGUAGAESARRAY.push(e.target.textContent);
+      LANGUAGAESARRAY.push(option);
       setData({ ...data, languages: LANGUAGAESARRAY });
     }
   };
 
+  const textarea = {
+    _id: 'additionalInfo',
+    placeholder: 'Additional information',
+    label: "Is there anything else you'd like us to know? (Optional)",
+    name: 'additionalInfo',
+  };
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s4 text-center">
@@ -120,6 +129,7 @@ const GenerateAviewForCompany = ({ title }) => {
           <MultipleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
+            answer={data.languages}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
           <input
@@ -128,6 +138,7 @@ const GenerateAviewForCompany = ({ title }) => {
             value={data.languages.toString()}
           />
         </div>
+        <Textarea onChange={handleChange} {...textarea} />
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox
             key={`checkbox-${i}`}

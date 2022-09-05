@@ -14,6 +14,7 @@ import GenerateAviewForCompany from '../../components/sections/corporate/Generat
 import OurTranslationServices from '../../components/sections/corporate/OurTranslationServices';
 import LanguagesServed from '../../components/sections/corporate/LanguagesServed';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
+import WorkWithUs from '../../components/sections/creators/WorkWithUs';
 
 const Corporate = () => {
   return (
@@ -34,7 +35,8 @@ const Corporate = () => {
       <Testimonials />
       <WhyChooseUs />
       <FAQs page="corporate" />
-      <GenerateAviewForCompany title="Generate Aview" />
+      <GenerateAviewForCompany title="Get a free quote today" />
+      <WorkWithUs />
       <Footer curPage="Corporate" />
       <Blobs />
     </>
