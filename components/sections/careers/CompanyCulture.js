@@ -5,7 +5,6 @@ import collaborativeWork from '../../../public/img/graphics/collabo.png';
 import personalGrowth from '../../../public/img/graphics/personal.png';
 import teambuilding from '../../../public/img/graphics/team-building.png';
 
-
 const CARD_CONTENT = [
   {
     title: 'Teambuilding',
@@ -40,8 +39,9 @@ const CompanyCulture = () => {
 const CardGrid = () => {
   return (
     <div className="mx-auto grid max-w-[1030px] gap-x-s2.5 gap-y-s4 md:grid-cols-2">
-      {CARD_CONTENT.map((list) => (
+      {CARD_CONTENT.map((list, i) => (
         <GraphicCard
+          key={`culture-${i}`}
           graphic={list.graphic}
           title={list.title}
           direction="horizontal"
@@ -49,6 +49,6 @@ const CardGrid = () => {
       ))}
     </div>
   );
-  }
-  
-  export default CompanyCulture;
+};
+
+export default CompanyCulture;
