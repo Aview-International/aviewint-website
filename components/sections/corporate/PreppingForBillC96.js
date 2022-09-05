@@ -21,7 +21,16 @@ const PreppingForBillC96 = () => {
         <p className="body">
           With French as one of our most popular languages, our team at AVIEW is
           ready to translate all your content to comply with Bill C-96. For more
-          information, visit our FAQ.
+          information, contact us at{' '}
+          <a
+            href="mailto:julia@aviewint.com"
+            className="underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            julia@aviewint.com
+          </a>
+          .
         </p>
       </div>
       <div className="hidden md:block">

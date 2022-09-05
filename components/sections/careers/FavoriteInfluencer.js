@@ -15,7 +15,7 @@ const FavoriteInfluencer = () => {
           <p className="body mb-s4 lg:max-w-[400px]">
             Apply now to join our team of translators, dubbers and editors.
           </p>
-          <Button type="primary" purpose="submit">
+          <Button type="primary" purpose="route" route="#apply-today">
             Contact Us
           </Button>
         </div>

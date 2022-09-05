@@ -13,7 +13,7 @@ const Landing = () => {
             subtitles and voiceovers; a client, a language, and{' '}
             <span className="gradient-text gradient-2">Aview </span> at a time.
           </h1>
-          <Button type="primary" purpose="submit">
+          <Button type="primary" purpose="route" route="#join-the-team">
             Contact Us
           </Button>
         </div>

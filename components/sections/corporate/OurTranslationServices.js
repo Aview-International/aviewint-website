@@ -5,10 +5,13 @@ import { OUR_TRANSLATION_SERVICES } from '../../../constants/constants';
 const OurTranslationServices = () => {
   return (
     <section className="section m-horizontal">
-      <h2 className="title mb-s4 md:mb-s10 md:text-center">
+      <h2 className="title mb-s2 md:mb-s2 md:text-center">
         Our Translation{' '}
         <span className="gradient-text gradient-2">Services</span>
       </h2>
+      <p className="mb-s4 text-xl text-white md:mb-s10 md:text-center">
+        We tailor our approach to fit your audience growth goals.
+      </p>
       <div className="grid lg:max-w-none lg:grid-cols-[8fr_7fr] lg:items-center">
         <div className="mx-auto max-w-[500px]">
           <Image src={howWeCanHelpGraphic} alt="How we can help" />

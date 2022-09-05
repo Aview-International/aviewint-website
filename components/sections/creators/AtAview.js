@@ -13,7 +13,7 @@ const AtAview = () => {
           Want to learn more about our services? Contact us below!
         </p>
         <div className="mx-auto inline-block">
-          <Button type="tertiary" purpose="route" route="#generate-aview">
+          <Button type="tertiary" purpose="route" route="#work-with-us">
             Contact Us
           </Button>
         </div>
