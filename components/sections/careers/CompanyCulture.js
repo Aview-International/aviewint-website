@@ -42,7 +42,7 @@ const CompanyCulture = () => {
 const CardGrid = () => {
   return (
     <div className="mx-auto grid max-w-[1030px] gap-x-s2.5 gap-y-s4 md:grid-cols-2">
-      {CARD_CONTENT.map((list) => (
+      {CARD_CONTENT.map((list, i) => (
         <GraphicCard
           key={list.id}
           graphic={list.graphic}

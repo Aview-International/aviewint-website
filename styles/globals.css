@@ -39,7 +39,7 @@
     @apply text-lg text-white md:text-xl;
   }
   .phone-number input {
-    @apply w-full bg-transparent;
+    @apply w-full bg-transparent pl-s2;
   }
   .phone-number input:focus {
     @apply outline-none;

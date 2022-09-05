@@ -64,16 +64,18 @@ const GenerateAview = () => {
       });
     }
   };
-  const handleMutlipleCheckbox = (e) => {
-    if (data.languages.includes(e.target.textContent)) {
+  const handleMutlipleCheckbox = (option) => {
+    console.log(option);
+    if (data.languages.includes(option)) {
       let newArray = [...data.languages];
-      newArray.splice(newArray.indexOf(e.target.textContent), 1);
+      newArray.splice(newArray.indexOf(option), 1);
       setData({ ...data, languages: newArray });
     } else {
       let LANGUAGAESARRAY = [...data.languages];
-      LANGUAGAESARRAY.push(e.target.textContent);
+      LANGUAGAESARRAY.push(option);
       setData({ ...data, languages: LANGUAGAESARRAY });
     }
+    console.log(data.languages)
   };
 
   return (
@@ -103,6 +105,7 @@ const GenerateAview = () => {
           <MultipleSelectInput
             text="What languages do you need translations for?"
             options={LANGUAGES}
+            answer={data.languages}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
           <input
@@ -120,7 +123,7 @@ const GenerateAview = () => {
         ))}
         <div className="mt-s4 flex items-center justify-center">
           <Button type="secondary" purpose="submit" route="/#generate-aview">
-            Become a Creator
+            Submit
           </Button>
         </div>
       </Form>
