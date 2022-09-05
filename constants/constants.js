@@ -1096,3 +1096,75 @@ export const ALSO_AVAILABLE = [
   { id: 'language-9', language: 'Urdu' },
   { id: 'language-10', language: 'Teluga' },
 ];
+
+export const CAREER_PROCESS = [
+  {
+    department: 'Translator',
+    requirement:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa nibh et feugiat vivamus diam, feugiat feugiat.',
+    steps: [
+      {
+        step: 'Step 1',
+        title: 'Accept Posting',
+        description:
+          'Translators and transcript writers can be either assigned to a channel or pick up jobs per their availability.',
+      },
+      {
+        step: 'Step 2',
+        title: 'Translate Transcript',
+        description:
+          'Once the video is translated, you will send it to the next employee for review or dubbing based on the services offered.',
+      },
+      {
+        step: 'Step 3',
+        title: 'Upload to Portal',
+      },
+    ],
+  },
+  {
+    department: 'Dubber',
+    requirement:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa nibh et feugiat vivamus diam, feugiat feugiat.',
+    steps: [
+      {
+        step: 'Step 1',
+        title: 'Assigned to a Creator',
+        description:
+          'All dubbers will be assigned directly to a content creator, where you will become the international voice for their channel.',
+      },
+      {
+        step: 'Step 2',
+        title: 'Dub Video',
+        description:
+          'Once you get assigned, you will begin the dubbing process which will be reviewed and approved by the project manager',
+      },
+      {
+        step: 'Step 3',
+        title: 'Upload to Portal',
+      },
+    ],
+  },
+  {
+    department: 'Video Editor',
+    requirement:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa nibh et feugiat vivamus diam, feugiat feugiat.',
+    steps: [
+      {
+        step: 'Step 1',
+        title: 'Accept Posting',
+        description:
+          'Editors will either be assigned to creator channels or complete videos per request. Depending on the service, you may creator short form content too.',
+      },
+      {
+        step: 'Step 2',
+        title: 'Edit Video',
+        description:
+          'Editing will be completed and approved by the project manager and the creator. Often, editors will have direct communication with our creators.',
+      },
+      {
+        step: 'Step 3',
+        title: 'Upload to Portal',
+      },
+    ],
+  },
+];
