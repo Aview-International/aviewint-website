@@ -47,8 +47,11 @@
   .phone-number > div {
     @apply p-2;
   }
+  .phone-number img{
+    @apply max-w-[90%]
+  }
   .phone-number > div > div > div:last-of-type {
-    @apply ml-s2 mb-s1 h-[12px] w-[12px] border-r-[3px] border-b-[3px] border-white opacity-100;
+    @apply ml-s2 mb-s1 h-[11px] w-[11px] border-r-[3px] border-b-[3px] border-white opacity-100;
   }
   .h-screen-trick {
     height: 100vh;
