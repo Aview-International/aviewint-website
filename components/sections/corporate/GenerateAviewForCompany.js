@@ -150,7 +150,7 @@ const GenerateAviewForCompany = ({ title }) => {
         ))}
         <div className="mt-s4 flex items-center justify-center">
           <Button type="secondary" purpose="submit" route="/#generate-aview">
-            Become a Creator
+            Submit
           </Button>
         </div>
       </Form>
