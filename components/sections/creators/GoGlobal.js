@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import goGlobalGraphic from '../../../public/img/graphics/go-global.png';
+import PhoneNumberWithButton from '../../FormComponents/PhoneNumberWithButton';
 import Button from '../../UI/Button';
 
 const GoGlobal = () => {
@@ -21,9 +22,7 @@ const GoGlobal = () => {
           comes to growing your audience - don&apos;t let language be one of
           them.
         </p>
-        <Button type="primary" purpose="route" route="#work-with-us">
-          Get Started
-        </Button>
+        <PhoneNumberWithButton />
       </div>
     </section>
   );
