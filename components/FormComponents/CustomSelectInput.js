@@ -61,7 +61,7 @@ const OPTIONS = ({ isOpen, setData, options, setIsOpen, onChange }) => {
       <div className="gradient-1 rounded-[5px]">
         {options.map((option, i) => (
           <p
-            className="my-[2px] bg-black p-s1"
+            className="my-[2px] cursor-pointer bg-black p-s1"
             key={`option-${i}`}
             onClick={() => {
               onChange(option);
