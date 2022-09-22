@@ -12,6 +12,7 @@ import { submitFile } from '../../../utils/submit-form';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import { useRouter } from 'next/router';
 import UploadFile from '../../FormComponents/UploadFile';
+import { emailValidator } from '../../../utils/regex';
 
 const ApplyToday = () => {
   let router = useRouter();
@@ -56,16 +57,18 @@ const ApplyToday = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleMutlipleCheckbox = (e) => {
-    if (data.languages.includes(e.target.textContent)) {
+  const handleMutlipleCheckbox = (option) => {
+    console.log(option);
+    if (data.languages.includes(option)) {
       let newArray = [...data.languages];
-      newArray.splice(newArray.indexOf(e.target.textContent), 1);
+      newArray.splice(newArray.indexOf(option), 1);
       setData({ ...data, languages: newArray });
     } else {
       let LANGUAGAESARRAY = [...data.languages];
-      LANGUAGAESARRAY.push(e.target.textContent);
+      LANGUAGAESARRAY.push(option);
       setData({ ...data, languages: LANGUAGAESARRAY });
     }
+    console.log(data.languages);
   };
 
   return (
@@ -81,22 +84,26 @@ const ApplyToday = () => {
         <FormInput
           onChange={handleChange}
           hasSubmitted={hasSubmitted}
+          isValid={data.name.length > 2}
           {...CAREER_APPLY_TODAY[0]}
         />
         <FormInput
           onChange={handleChange}
           hasSubmitted={hasSubmitted}
+          isValid={emailValidator(data.email)}
           {...CAREER_APPLY_TODAY[1]}
         />
         <div className="w-full md:w-3/5">
           <MultipleSelectInput
             text="What languages can you translate?"
             options={LANGUAGES}
+            answer={data.languages}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
           <input
             type="hidden"
             name="languages"
+            answer
             value={data.languages.toString()}
           />
         </div>
