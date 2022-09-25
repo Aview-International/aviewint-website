@@ -5,6 +5,8 @@ import BrandIcon1 from '../../../public/img/graphics/brand-icon1.png';
 import BrandIcon2 from '../../../public/img/graphics/brand-icon2.png';
 import BrandIcon3 from '../../../public/img/graphics/brand-icon3.png';
 import BrandIcon4 from '../../../public/img/graphics/brand-icon4.png';
+import OneMillionTeachersIcon from '../../../public/img/graphics/1-million-teachers.png';
+import RippleVenturesIcon from '../../../public/img/graphics/ripple-ventures.png';
 
 const BrandGlobal = () => {
   return (
@@ -15,19 +17,21 @@ const BrandGlobal = () => {
             <Image src={BrandIcon1} alt="" />
           </span>
           <span className="absolute top-[-80px] right-0 hidden max-w-[100px] 2xs:block md:hidden">
-            <Image src={BrandIcon2} alt="" />
+            <Image src={OneMillionTeachersIcon} alt="" />
           </span>
           <span className="absolute top-[30px] right-0 hidden max-w-[80px] 2xs:block md:hidden">
             <Image src={BrandIcon3} alt="" />
+          </span>
+          <span className="absolute top-[140px] right-0 hidden w-[145px] 2xs:block md:hidden">
+            <Image src={RippleVenturesIcon} alt="" />
           </span>
           <h1 className="title mb-s3 max-w-[249px] xs:max-w-[400px] sm:max-w-none">
             <span className="gradient-text gradient-2">
               Take your brand global
             </span>
           </h1>
-          <p className="body mb-s4 max-w-[315px] xs:max-w-[400px] sm:max-w-[500px] md:max-w-[none]">
-            Globalize your brand and media content through translations and
-            dubbing.
+          <p className="body mb-s4 max-w-[315px] sm:max-w-[500px] md:max-w-[none]">
+            Avoid the hassle of translations with Aview.
           </p>
           <Button type="primary" purpose="route" route="#generate-aview">
             Contact Us
@@ -41,10 +45,13 @@ const BrandGlobal = () => {
             <Image src={BrandIcon1} alt="" />
           </span>
           <span className="absolute top-[-120px] right-[-80px] hidden max-w-[196px] lg:block xl:right-[-50px]">
-            <Image src={BrandIcon2} alt="" />
+            <Image src={OneMillionTeachersIcon} alt="" />
           </span>
-          <span className="absolute top-[90px] right-[-100px] hidden max-w-[147px] lg:block xl:right-[-70px]">
+          <span className="absolute top-[90px] right-[-130px] hidden max-w-[147px] lg:block xl:right-[-80px]">
             <Image src={BrandIcon3} alt="" />
+          </span>
+          <span className="absolute top-[280px] right-[-200px] hidden w-[250px] lg:block xl:right-[-160px]">
+            <Image src={RippleVenturesIcon} alt="" />
           </span>
         </div>
       </div>

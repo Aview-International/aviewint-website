@@ -19,12 +19,18 @@ const MeetTheTeam = () => {
               <>
                 <div className="hidden xl:block"></div>
                 {group.members.map((member) => (
-                  <Profile
-                    name={member.name}
-                    icon={member.picture}
-                    description={member.description}
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
                     key={member.id}
-                  />
+                    rel="noreferrer"
+                  >
+                    <Profile
+                      name={member.name}
+                      icon={member.picture}
+                      description={member.description}
+                    />
+                  </a>
                 ))}
                 <div className="hidden xl:block"></div>
               </>
