@@ -7,20 +7,21 @@ import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 
 const Blog = ({ posts }) => {
-  const [stories, setStories] = useState(posts);
+  // const [stories, setStories] = useState(posts);
 
-  const fetchStories = async () => {
-    try {
-      const response = await getStories();
-      setStories(response.data.items);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchStories = async () => {
+  //   try {
+  //     const response = await getStories();
+  //     console.log(response);
+  //     setStories(response.data.items);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchStories();
-  }, []);
+  // useEffect(() => {
+  //   fetchStories();
+  // }, []);
 
   return (
     <>
@@ -31,7 +32,7 @@ const Blog = ({ posts }) => {
           Enjoy our <span className="gradient-text gradient-2">Aview</span>
         </h1>
         <div className="grid grid-cols-1 gap-s3 md:grid-cols-2 lg:gap-s6 xl:gap-s10">
-          {stories.map((story, i) => (
+          {posts.map((story, i) => (
             <a
               href={story.link}
               target="_blank"
@@ -71,7 +72,7 @@ const Blog = ({ posts }) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await getStories();
   const posts = res.data.items;
 
