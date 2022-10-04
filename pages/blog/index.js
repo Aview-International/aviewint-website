@@ -1,35 +1,18 @@
 import Footer from '../../components/navigation/Footer';
 import Header from '../../components/navigation/Header';
 import { getDate, getDescription, getStories } from '../../utils/blog';
-import { useState, useEffect } from 'react';
 import Card from '../../components/UI/Card';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 
 const Blog = ({ posts }) => {
-  // const [stories, setStories] = useState(posts);
-
-  // const fetchStories = async () => {
-  //   try {
-  //     const response = await getStories();
-  //     console.log(response);
-  //     setStories(response.data.items);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchStories();
-  // }, []);
-
   return (
     <>
       <SEO title="Blog - AVIEW" />
       <Header curPage="Blog" />
       <section className="section m-horizontal">
         <h1 className="title mt-s8 mb-s6 text-center md:mt-s18 md:mb-s10">
-          Enjoy our <span className="gradient-text gradient-2">Aview</span>
+          Enjoy our <span className="gradient-text gradient-2">Blogs</span>
         </h1>
         <div className="grid grid-cols-1 gap-s3 md:grid-cols-2 lg:gap-s6 xl:gap-s10">
           {posts.map((story, i) => (

@@ -1168,3 +1168,42 @@ export const CAREER_PROCESS = [
     ],
   },
 ];
+
+export const ONBOARDING_STAGE_4 = [
+  {
+    title: 'Translations',
+    content: 'Translations of your content in any language of your choice.',
+  },
+  {
+    title: 'Shorts',
+    content: 'Your content edited into 15-30 second clips.',
+  },
+  {
+    title: 'Dubbing',
+    content: 'Dubbing and subtitles for your content. ',
+  },
+  {
+    title: 'Distribution',
+    content: 'We will manage and distribute your translated content for you.',
+  },
+];
+
+export const AVERAGE_MONTHLY_VIEWS = [
+  '0 - 1,000',
+  '1,000 - 5,000',
+  '5,000 - 10,000',
+  '10,000 - 25,000',
+  '25,000 - 100,000',
+  '100,000 - 250,000',
+  '250,000 - 500,000',
+  '500,000 - 1,000,00',
+  '1,000,000+',
+];
+
+export const AVERAGE_VIDEO_DURATION = [
+  '1 - 5 minutes',
+  '5 - 15 minutes',
+  '15 - 30 minutes',
+  '30 - 60 minutes',
+  '60+ minutes',
+];

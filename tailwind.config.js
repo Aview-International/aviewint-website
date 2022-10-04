@@ -16,6 +16,8 @@ module.exports = {
       green: '#00C874',
       red: '#FF3939',
       transparent: 'transparent',
+      facebook: '#0054ff',
+      youtube: '#FF0000',
     },
     fontFamily: {
       overpass: ['Overpass', 'sans-serif'],
@@ -72,6 +74,19 @@ module.exports = {
         s23: '184px',
         s24: '192px',
         s25: '200px',
+      },
+      keyframes: {
+        roll: {
+          '0%': {
+            transform: ' translate(-50%, -50%) rotate(0deg)',
+          },
+          '100%': {
+            transform: 'translate(-50%, -50%) rotate(360deg)',
+          },
+        },
+      },
+      animation: {
+        roll: 'roll 1s linear infinite',
       },
     },
   },

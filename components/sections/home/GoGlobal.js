@@ -46,9 +46,11 @@ const GoGlobal = () => {
             By signing up you agree to receive communications via email. For
             more information please refer to our Privacy Policy.
           </p>
-          <Button type="tertiary" purpose="submit">
-            Subscribe
-          </Button>
+          <div className='inline-block'>
+            <Button type="tertiary" purpose="submit">
+              Subscribe
+            </Button>
+          </div>
         </Form>
       </FullWidthGradient>
     </section>

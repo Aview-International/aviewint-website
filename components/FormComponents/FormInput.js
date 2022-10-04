@@ -29,6 +29,7 @@ const FormInput = ({
   hasSubmitted,
   bgColor,
   textBlack,
+  type,
 }) => {
   return (
     <div className="relative mb-s5 w-full text-xl text-white">
@@ -40,7 +41,7 @@ const FormInput = ({
           <input
             id={_id}
             name={name}
-            type="text"
+            type={type || 'text'}
             placeholder={placeholder}
             className={`peer w-full rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
