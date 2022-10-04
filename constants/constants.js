@@ -752,7 +752,7 @@ export const GROWTH_WITH_AVIEW_CREATORS = [
 export const TEAM_OPEN_POSITIONS = [
   'Translators',
   'Thumbnail Designer',
-  'Transribers',
+  'Transcribers',
   'Dubbers',
   'Editors',
 ];
