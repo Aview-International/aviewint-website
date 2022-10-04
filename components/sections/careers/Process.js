@@ -36,11 +36,11 @@ const Card = ({ department, steps }) => {
             <div
               className={`absolute top-0 -left-[5px] flex h-[88%] flex-col items-center`}
             >
-              <div className="bg-[20px] h-5 w-5 rounded-full bg-blue"></div>
+              <div className="h-5 w-5 rounded-full bg-blue"></div>
               <span className="gradient-1 inline-block h-[40%] w-[2px]"></span>
-              <div className="bg-[20px] h-5 w-5 rounded-full bg-blue"></div>
+              <div className="h-5 w-5 rounded-full bg-blue"></div>
               <span className="gradient-1 inline-block h-[40%] w-[2px]"></span>
-              <div className="bg-[20px] h-5 w-5 rounded-full bg-blue"></div>
+              <div className="h-5 w-5 rounded-full bg-blue"></div>
             </div>
             <ul className={`list-none pl-6 text-white`}>
               {steps.map((step, i) => (

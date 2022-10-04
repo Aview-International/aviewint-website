@@ -22,7 +22,14 @@
   .gradient-2 {
     background: linear-gradient(108.35deg, #ec11ff 0%, #1be4ff 100%);
   }
-
+  .gradient-dark {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.0726563) 51.56%,
+      rgba(255, 255, 255, 0.045) 100%
+    );
+  }
   .gradient-text {
     @apply inline-block bg-clip-text text-transparent;
   }
@@ -47,8 +54,8 @@
   .phone-number > div {
     @apply p-2;
   }
-  .phone-number img{
-    @apply max-w-[90%]
+  .phone-number img {
+    @apply max-w-[90%];
   }
   .phone-number > div > div > div:last-of-type {
     @apply ml-s2 mb-s1 h-[11px] w-[11px] border-r-[3px] border-b-[3px] border-white opacity-100;
@@ -100,6 +107,24 @@
   .header-animation {
     animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  .instagram {
+    background: radial-gradient(
+          51.8% 49.8% at 36.25% 96.55%,
+          #ffd600 0%,
+          #ff6930 48.44%,
+          #fe3b36 73.44%,
+          rgba(254, 59, 54, 0) 100%
+        )
+        /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+      radial-gradient(
+        182.65% 122.8% at 84.5% 113.5%,
+        #ff1b90 24.39%,
+        #f80261 43.67%,
+        #ed00c0 68.85%,
+        #c500e9 77.68%,
+        #7017ff 89.32%
+      );
   }
   @keyframes fadeInDown {
     0% {
