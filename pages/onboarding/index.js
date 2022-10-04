@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Header from '../../components/navigation/Header';
 import {
   OnboardingStep1,
   OnboardingStep2,
@@ -10,6 +11,7 @@ import {
   OnboardingStep6,
   OnboardingSuccess,
 } from '../../components/Onboarding';
+import SEO from '../../components/SEO/SEO';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';
 
@@ -20,6 +22,10 @@ const Onboarding = ({ children }) => {
   }, []);
   return (
     <>
+      <SEO
+        title="Creator Onboarding - AVIEW"
+        description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
+      />
       <div className="">
         <div className="px-5 py-2">
           <Image
@@ -42,7 +48,7 @@ const Onboarding = ({ children }) => {
               <Image src={ArrowBack} alt="Go back" width={16} height={32} />
             </button>
           )}
-          <div className="min-w-2/4 mx-auto md:mt-s12 mb-s12 mt-s6 text-white">
+          <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
             {children}
             <Stages />
           </div>
