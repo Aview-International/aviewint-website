@@ -20,8 +20,8 @@ import {
 import Link from 'next/link';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
-import Button from '../UI/Button';
 
+// Onboarding stage 1
 export const OnboardingStep1 = () => {
   const router = useRouter();
   const [email, setEmail] = useState({
@@ -77,6 +77,7 @@ export const OnboardingStep1 = () => {
   );
 };
 
+// Onboarding stage 2
 export const OnboardingStep2 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
@@ -157,6 +158,7 @@ export const OnboardingStep2 = () => {
   );
 };
 
+// Onboarding stage 3
 export const OnboardingStep3 = () => {
   const router = useRouter();
   const [data, setData] = useState({
@@ -225,6 +227,7 @@ export const OnboardingStep3 = () => {
   );
 };
 
+// Onboarding stage 4
 export const OnboardingStep4 = () => {
   const router = useRouter();
   const [usage, setUsage] = useState([]);
@@ -295,6 +298,7 @@ export const OnboardingStep4 = () => {
   );
 };
 
+// Onboarding stage 5
 export const OnboardingStep5 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
@@ -370,6 +374,7 @@ export const OnboardingStep5 = () => {
   );
 };
 
+// Onboarding stage 6
 export const OnboardingStep6 = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -418,6 +423,7 @@ export const OnboardingStep6 = () => {
   );
 };
 
+// Onboarding success page 
 export const OnboardingSuccess = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -428,7 +434,7 @@ export const OnboardingSuccess = () => {
   };
   return (
     <div className="m-auto w-[min(360px,80%)] pt-s5">
-      <h2 className="text-left text-5xl md:text-6xl">Success!</h2>
+      <h2 className="md:text-center text-5xl md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         You&#8217;ve completed the onboarding process. Now let&#8217;s take a
         look at your dashboard.
