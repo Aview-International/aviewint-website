@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "next": "12.2.3",
     "react": "18.2.0",
