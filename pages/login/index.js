@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import FormInput from '../../components/FormComponents/FormInput';
 import OnbaordingButton from '../../components/onboarding/button';
 import { LOGIN_INPUT } from '../../constants/constants';
 
 const Login = () => {
+  const router = useRouter();
   const [payload, setPayload] = useState({
     email: '',
     password: '',
@@ -16,6 +18,10 @@ const Login = () => {
   const handleChange = (e) =>
     setPayload({ ...payload, [e.target.name]: e.target.value });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push('/dashboard');
+  };
   return (
     <>
       <div className="fixed top-2/4 left-2/4 w-[min(400px,90%)] -translate-x-2/4 -translate-y-2/4 text-white">
@@ -36,7 +42,10 @@ const Login = () => {
                 {...item}
               />
             ))}
-            <OnbaordingButton isLoading={sideEffects.isLoading}>
+            <OnbaordingButton
+              isLoading={sideEffects.isLoading}
+              onClick={handleSubmit}
+            >
               Log in
             </OnbaordingButton>
           </form>
