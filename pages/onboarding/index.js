@@ -9,7 +9,7 @@ import {
   OnboardingStep5,
   OnboardingStep6,
   OnboardingSuccess,
-} from '../../components/onboarding';
+} from '../../components/Onboarding';
 import SEO from '../../components/SEO/SEO';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';

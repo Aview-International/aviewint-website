@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import FormInput from '../../components/FormComponents/FormInput';
-import OnbaordingButton from '../../components/onboarding/button';
+import OnbaordingButton from '../../components/Onboarding/button';
 import { LOGIN_INPUT } from '../../constants/constants';
 
 const Login = () => {
