@@ -22,7 +22,7 @@ const Login = () => {
         <div data-aos="zoom-in-up">
           <h2 className="text-center text-7xl md:text-8xl">Log In</h2>
           <p className="my-s3 text-center text-lg md:text-xl">
-            Don't have an account?
+            Don&apos;t have an account?
             <br /> Get started{' '}
             <Link href="/onboarding?stage=1">
               <a className="underline">here</a>
