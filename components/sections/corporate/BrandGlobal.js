@@ -10,7 +10,10 @@ import RippleVenturesIcon from '../../../public/img/graphics/ripple-ventures.png
 
 const BrandGlobal = () => {
   return (
-    <section className="section m-horizontal relative mt-s12 lg:mt-s16">
+    <section
+      className="section m-horizontal relative mt-s12 lg:mt-s16"
+      data-aos="fade-up"
+    >
       <div className="grid items-center gap-s7 md:grid-cols-2">
         <div className="relative">
           <span className="absolute top-[-100px] right-[110px] hidden max-w-[90px] 2xs:block md:hidden">

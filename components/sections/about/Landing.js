@@ -4,7 +4,7 @@ import Button from '../../UI/Button';
 
 const Landing = () => {
   return (
-    <section className="section m-horizontal mt-s6 lg:mt-s8">
+    <section className="section m-horizontal mt-s6 lg:mt-s8" data-aos="fade-up">
       <div className="grid items-center lg:grid-cols-11">
         <div className="col-span-7">
           <p className="body mb-s2">Our Mission</p>

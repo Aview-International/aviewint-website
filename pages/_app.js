@@ -1,8 +1,13 @@
 import '../styles/globals.css';
 import { MenuOpenContextProvider } from '../store/menu-open-context';
 import { useEffect } from 'react';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   useEffect(() => {
     const setViewportHeight = () => {
       let vh = window.innerHeight * 0.01;

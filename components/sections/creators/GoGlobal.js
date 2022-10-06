@@ -5,7 +5,10 @@ import Button from '../../UI/Button';
 
 const GoGlobal = () => {
   return (
-    <section className="section m-horizontal mt-s6 grid items-center gap-s7 md:mt-s15 md:grid-cols-[5fr_4fr]">
+    <section
+      className="section m-horizontal mt-s6 grid items-center gap-s7 md:mt-s15 md:grid-cols-[5fr_4fr]"
+      data-aos="fade-up"
+    >
       <div className="mx-auto max-w-[280px] md:order-2 md:max-w-none">
         <Image src={goGlobalGraphic} alt="Go global graphic" />
       </div>

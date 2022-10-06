@@ -4,7 +4,7 @@ import Button from '../../UI/Button';
 
 const GrowingInternationally = () => {
   return (
-    <section className="section m-horizontal text-center">
+    <section className="section m-horizontal text-center" data-aos="slide-up">
       <p className="gradient-text gradient-2 mb-s2 inline-block text-lg font-bold md:text-2xl">
         Content Creators We&apos;ve Worked With
       </p>

@@ -24,7 +24,10 @@ const PERKS = [
 
 const PerksAview = () => {
   return (
-    <section className="section m-horizontal mt-s6 lg:mt-s17">
+    <section
+      className="section m-horizontal mt-s6 lg:mt-s17"
+      data-aos="fade-left"
+    >
       <div className="grid items-center lg:grid-cols-4">
         <div className="col-span-2">
           <h1 className="title mb-s4">
@@ -35,7 +38,7 @@ const PerksAview = () => {
           {PERKS.map((list, i) => (
             <div className="list" key={`list-${i}`}>
               <div className="flex">
-                <h1 className="title min-w-[51px] mr-s3 lg:min-w-[140px] lg:min-h-[140px] leading-none">
+                <h1 className="title mr-s3 min-w-[51px] leading-none lg:min-h-[140px] lg:min-w-[140px]">
                   <span className="gradient-text gradient-2 lg:text-[100px]">
                     {list.number}
                   </span>

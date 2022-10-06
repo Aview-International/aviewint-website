@@ -4,7 +4,10 @@ import PhoneNumberWithButton from '../../FormComponents/PhoneNumberWithButton';
 const WorkWithUs = () => {
   const [showText, setShowText] = useState(false);
   return (
-    <section className="m-horizontal section w-full md:w-[60%]">
+    <section
+      className="m-horizontal section w-full md:w-[60%]"
+      data-aos="zoom-in-left"
+    >
       <h2 className="title">
         Work With <span className="gradient-1 gradient-text">Us</span>
       </h2>

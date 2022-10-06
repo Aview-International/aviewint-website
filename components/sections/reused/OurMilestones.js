@@ -6,7 +6,7 @@ import { useOnScreen } from '../../../hooks/useOnScreen';
 
 const OurMilestones = () => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="fade-up-left">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
         Our <span className="gradient-text gradient-2">Milestones</span>
       </h2>

@@ -6,7 +6,10 @@ import Image from 'next/image';
 
 const OurCoreValues = () => {
   return (
-    <section className="section m-horizontal md:text-center">
+    <section
+      className="section m-horizontal md:text-center"
+      data-aos="zoom-out-left"
+    >
       <h2 className="title mb-s2">
         Our <span className="gradient-text gradient-2">Core Values</span>
       </h2>

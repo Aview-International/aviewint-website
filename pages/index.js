@@ -16,23 +16,23 @@ import SEO from '../components/SEO/SEO';
 const Home = () => {
   return (
     <>
-      <SEO
-        title="Video Translation & Subtitling - AVIEW"
-        description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
-      />
-      <Header curPage="Home" />
-      <TranslateYourSocialMediaContent />
-      <ContentCreators />
-      <TranslatedContent />
-      <YouCreateWeTranslate />
-      <OurServices />
-      <BreadAndButter />
-      <LeadInTranslations />
-      <GenerateAview />
-      <FAQs />
-      <GoGlobal />
-      <Footer curPage="Home" />
-      <Blobs />
+        <SEO
+          title="Video Translation & Subtitling - AVIEW"
+          description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
+        />
+        <Header curPage="Home" />
+        <TranslateYourSocialMediaContent />
+        <ContentCreators />
+        <TranslatedContent />
+        <YouCreateWeTranslate />
+        <OurServices />
+        <BreadAndButter />
+        <LeadInTranslations />
+        <GenerateAview />
+        <FAQs />
+        <GoGlobal />
+        <Footer curPage="Home" />
+        <Blobs />
     </>
   );
 };

@@ -19,25 +19,25 @@ import WorkWithUs from '../../components/sections/creators/WorkWithUs';
 const Corporate = () => {
   return (
     <>
-      <SEO
-        title="Corporate - AVIEW"
-        description="Organizations worldwide trust us to ensure they deliver their content in a language and format that meets their audience's needs. Contact Us Today!"
-      />
-      <Header curPage="Corporate" />
-      <BrandGlobal />
-      <OurMission />
-      <GrowingInternationally />
-      <OurTranslationServices />
-      <LanguagesServed />
-      <PreppingForBillC96 />
-      {/* <OurMilestones /> */}
-      {/* <Testimonials /> */}
-      <WhyChooseUs />
-      <FAQs page="corporate" />
-      <GenerateAviewForCompany title="Get a free quote today" />
-      <WorkWithUs />
-      <Footer curPage="Corporate" />
-      <Blobs />
+        <SEO
+          title="Corporate - AVIEW"
+          description="Organizations worldwide trust us to ensure they deliver their content in a language and format that meets their audience's needs. Contact Us Today!"
+        />
+        <Header curPage="Corporate" />
+        <BrandGlobal />
+        <OurMission />
+        <GrowingInternationally />
+        <OurTranslationServices />
+        <LanguagesServed />
+        <PreppingForBillC96 />
+        {/* <OurMilestones /> */}
+        {/* <Testimonials /> */}
+        <WhyChooseUs />
+        <FAQs page="corporate" />
+        <GenerateAviewForCompany title="Get a free quote today" />
+        <WorkWithUs />
+        <Footer curPage="Corporate" />
+        <Blobs />
     </>
   );
 };

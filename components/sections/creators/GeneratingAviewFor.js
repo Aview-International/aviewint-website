@@ -5,7 +5,7 @@ import Profile from '../../UI/Profile';
 
 const GeneratingAviewFor = () => {
   return (
-    <section className="section m-horizontal text-center">
+    <section className="section m-horizontal text-center" data-aos="fade-up">
       <h2 className="title mb-s9 md:mb-s10">
         Generating <span className="gradient-text gradient-2">Aview</span> For
       </h2>

@@ -4,7 +4,7 @@ import Card from '../../UI/Card';
 
 const LanguagesServed = () => {
   return (
-    <section className="section m-horizontal text-center">
+    <section className="section m-horizontal text-center" data-aos="fade-right">
       <h2 className="title mb-s2 text-left md:text-center">
         Languages <span className="gradient-text gradient-2">Served</span>
       </h2>

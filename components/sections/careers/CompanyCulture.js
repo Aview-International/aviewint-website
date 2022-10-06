@@ -30,7 +30,10 @@ const CARD_CONTENT = [
 
 const CompanyCulture = () => {
   return (
-    <section className="section m-horizontal md:text-center">
+    <section
+      className="section m-horizontal md:text-center"
+      data-aos="zoom-in-up"
+    >
       <h2 className="title mb-s4">
         <span className="gradient-text gradient-2">Company Culture</span>
       </h2>

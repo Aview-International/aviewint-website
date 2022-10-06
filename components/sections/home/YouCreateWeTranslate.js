@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 const YouCreateWeTranslate = () => {
   return (
-    <section className="section m-horizontal grid items-center gap-s5 md:grid-cols-[4fr,3fr] md:gap-s6 lg:gap-s20">
+    <section
+      className="section m-horizontal grid items-center gap-s5 md:grid-cols-[4fr,3fr] md:gap-s6 lg:gap-s20"
+      data-aos="zoom-in"
+    >
       <div>
         <h2 className="title mb-s4 md:mb-s2">
           A Leader In{' '}

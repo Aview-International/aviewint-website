@@ -8,7 +8,7 @@ import HorizontalLine from '../../UI/HorizontalLine';
 
 const FAQs = ({ page }) => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="zoom-out">
       <h2 className="title text-center">
         <span className="gradient-text gradient-2">FAQ</span>
       </h2>

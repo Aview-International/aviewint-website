@@ -8,7 +8,7 @@ import pathRightToLeftLarge from '../../../public/img/graphics/path-right-to-lef
 
 const AviewsGrowth = () => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="zoom-out-right">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
         <span className="gradient-text gradient-2">Aview&apos;s</span> Growth
       </h2>

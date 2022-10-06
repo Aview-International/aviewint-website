@@ -99,7 +99,11 @@ const GenerateAviewForCompany = ({ title }) => {
     name: 'additionalInfo',
   };
   return (
-    <section className="section m-horizontal" id="generate-aview">
+    <section
+      className="section m-horizontal"
+      id="generate-aview"
+      data-aos="zoom-in-right"
+    >
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">{title}</span>
       </h2>

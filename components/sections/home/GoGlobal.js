@@ -27,7 +27,7 @@ const GoGlobal = () => {
     }
   };
   return (
-    <section className="section text-center">
+    <section className="section text-center" data-aos="zoom-in-down">
       <FullWidthGradient>
         <h2 className="title mb-s2">Want To Go Global?</h2>
         <p className="body mb-s2 md:mb-s4">
@@ -46,7 +46,7 @@ const GoGlobal = () => {
             By signing up you agree to receive communications via email. For
             more information please refer to our Privacy Policy.
           </p>
-          <div className='inline-block'>
+          <div className="inline-block">
             <Button type="tertiary" purpose="submit">
               Subscribe
             </Button>

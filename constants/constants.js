@@ -669,6 +669,7 @@ export const GENERATE_AVIEW_COMPANY_INPUT = [
     placeholder: 'Your email address',
   },
 ];
+
 export const CREATORS_SLIDERS = [
   {
     label: 'Uploads per month',
@@ -1200,4 +1201,21 @@ export const AVERAGE_VIDEO_DURATION = [
   '15 - 30 minutes',
   '30 - 60 minutes',
   '60+ minutes',
+];
+
+export const LOGIN_INPUT = [
+  {
+    name: 'email',
+    _id: 'email',
+    placeholder: 'Your email',
+    type: 'email',
+    label: ' Email',
+  },
+  {
+    name: 'password',
+    _id: 'password',
+    type: 'text',
+    placeholder: 'Your password',
+    label: ' Password',
+  },
 ];

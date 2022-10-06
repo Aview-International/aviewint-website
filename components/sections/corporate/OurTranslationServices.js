@@ -4,7 +4,7 @@ import { OUR_TRANSLATION_SERVICES } from '../../../constants/constants';
 
 const OurTranslationServices = () => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="zoom-out-down">
       <h2 className="title mb-s2 md:mb-s2 md:text-center">
         Our Translation{' '}
         <span className="gradient-text gradient-2">Services</span>
