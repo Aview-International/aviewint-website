@@ -7,23 +7,23 @@ import Footer from '../../components/navigation/Footer';
 
 import { BLOGS } from '../../constants/blogs';
 
-const Blog3 = () => {
+const Blog4 = () => {
   return (
     <>
-      <SEO title={`${BLOGS[2].title} - AVIEW`} />
+      <SEO title={`${BLOGS[3].title} - AVIEW`} />
       <Header curPage="Blog" />
       <div className="mx-s3 mt-s6 lg:mt-s8">
         <div className="mx-auto max-w-[820px]">
           <BlogIntro
-            title={BLOGS[2].title}
-            img={BLOGS[2].img}
-            author={BLOGS[2].author}
-            authorImg={BLOGS[2].authorImg}
-            date={BLOGS[2].date}
-            length={BLOGS[2].length}
+            title={BLOGS[3].title}
+            img={BLOGS[3].img}
+            author={BLOGS[3].author}
+            authorImg={BLOGS[3].authorImg}
+            date={BLOGS[3].date}
+            length={BLOGS[3].length}
           />
-          <TableOfContents sections={BLOGS[2].sections} />
-          <BlogText sections={BLOGS[2].sections} />
+          <TableOfContents sections={BLOGS[3].sections} />
+          <BlogText sections={BLOGS[3].sections} />
         </div>
       </div>
       <Footer curPage="Blog" />
@@ -31,4 +31,4 @@ const Blog3 = () => {
   );
 };
 
-export default Blog3;
+export default Blog4;
