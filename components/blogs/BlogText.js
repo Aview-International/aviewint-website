@@ -17,9 +17,8 @@ const BlogText = ({ sections }) => {
                   <p
                     className="text-lg text-white md:text-xl"
                     key={`content-${i}`}
-                  >
-                    {content.text}
-                  </p>
+                    dangerouslySetInnerHTML={{ __html: content.text }}
+                  />
                 );
               } else if (content.type === 'unordered list') {
                 return (
@@ -30,7 +29,10 @@ const BlogText = ({ sections }) => {
                         key={`item-${i}`}
                       >
                         <div className="mt-2 h-2 w-2 rounded-full bg-white"></div>
-                        <p className="text-lg text-white md:text-xl">{item}</p>
+                        <p
+                          className="text-lg text-white md:text-xl"
+                          dangerouslySetInnerHTML={{ __html: item }}
+                        />
                       </div>
                     ))}
                   </div>
