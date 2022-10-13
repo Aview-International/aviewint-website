@@ -37,6 +37,27 @@ const BlogText = ({ sections }) => {
                     ))}
                   </div>
                 );
+              } else if (content.type === 'ordered list') {
+                return (
+                  <ul>
+                    {content.items.map((item, i) => {
+                      const listItem = (
+                        <div className="relative text-lg text-white md:text-xl">
+                          <p className="absolute left-0">{i + 1}.</p>
+                          <p
+                            className="ml-6 md:ml-8"
+                            dangerouslySetInnerHTML={{
+                              __html: item,
+                            }}
+                            key={`item-${i}`}
+                          />
+                        </div>
+                      );
+
+                      return listItem;
+                    })}
+                  </ul>
+                );
               }
             })}
           </div>

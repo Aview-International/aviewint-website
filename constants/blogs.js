@@ -30,7 +30,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "It's such a great way to reach larger audiences that even popular creators such as Logan Paul, Ninja, YesTheory, and more have opted to dub their content.",
+            text: "It's such a great way to reach larger audiences that even popular creators such as <a href='https://www.youtube.com/channel/UCG8rbF3g2AMX70yOd8vqIZg' target='_blank' class='link'>Logan Paul</a>, <a href='https://www.twitch.tv/ninja' target='_blank' class='link'>Ninja</a>, <a href='https://yestheory.com/' target='_blank' class='link'>YesTheory</a>, and more have opted to dub their content.",
           },
           {
             type: 'paragraph',
@@ -48,7 +48,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "Dubbing allows you to grow your audience using translations, so it's worth considering if you want your content accessible in other languages.",
+            text: "Dubbing allows you to <a href='https://medium.com/@aviewint/how-to-grow-your-channel-using-translations-9646f82e4fbf?source=rss-e9071214d32d------2' target='_blank' class='link'>grow your audience using translations</a>, so it's worth considering if you want your content accessible in other languages.",
           },
         ],
       },
@@ -106,10 +106,10 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'One of the easiest ways to add dubbing to your content is by becoming a creator at Aview. You can translate your content in 3 easy steps.',
+            text: 'One of the easiest ways to add dubbing to your content is by <a href="https://www.aviewint.com/#generate-aview:~:text=Start%20Generating,Today!" target="_blank" class="link">becoming a creator at Aview</a>. You can translate your content in 3 easy steps.',
           },
           {
-            type: 'unordered list',
+            type: 'ordered list',
             items: [
               'Select from our translation and voice-over services',
               'Choose your languages',
@@ -141,21 +141,105 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: "A good editor is worth its weight in gold. It can be challenging to understand where to find a good editor who fits your needs if you're on a limited budget. If you have high expectations of what the contractor delivers, it's not wrong to ask for a discount on the job. You can get the best deal if you prepare your negotiation with accurate information and informed knowledge.",
+            text: "A good editor is worth its weight in gold. It can be challenging to understand how to find a good editor who fits your needs if you're on a small budget.",
+          },
+          {
+            type: 'paragraph',
+            text: 'You can get the best deal if you prepare your negotiation with accurate information and informed knowledge.',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're on the hunt for a good editor and you're on a tight budget, keep reading because, in this post, you'll learn how to do just that.",
           },
         ],
       },
       {
-        title: 'Understand what editing level you need.',
-        link: '#understand',
+        title: 'Identify the editing level you need.',
+        link: '#identify-editing-level',
         content: [
           {
             type: 'paragraph',
-            text: "To hire an editor, you must understand what level of editing you need. For most small businesses, one good editor is all you need to function. You may even be able to find them for free if you offer internship opportunities. However, interns don't offer the same experience as editors who have been doing it as a career.",
+            text: 'To hire an editor, you must understand the level of editing you need. For most small businesses, one good editor is all you need to function.',
           },
           {
             type: 'paragraph',
-            text: "A good editor can take footage that's already pretty good and make it great by improving things like lighting, sound quality, transitions, and more. Imagine you have an exceptional script with phenomenal footage filmed from multiple angles by someone with experience. In that case, the only thing holding back your video from being excellent is its audio quality — and that's where great editors come in handy. In this case, it would be wise to pay the extra bucks for an experienced editor to get the best video possible.",
+            text: "You may even be able to find them for free if you offer internship opportunities. However, interns don't offer the same experience as editors who have been doing it as a career.",
+          },
+          {
+            type: 'paragraph',
+            text: "A good editor can take footage that's already good and make it great by improving things like lighting, sound quality, transitions, and more.",
+          },
+          {
+            type: 'paragraph',
+            text: "Imagine you have an exceptional script with phenomenal footage filmed from multiple angles by someone with experience. In that case, the only thing holding back your video from being excellent is its audio quality—and that's where great editors come in handy.",
+          },
+          {
+            type: 'paragraph',
+            text: 'In this case, it would be wise to pay the extra bucks for an experienced editor to get the best video possible.',
+          },
+        ],
+      },
+      {
+        title: 'Check out freelance websites.',
+        link: '#freelance-websites',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'To find the right editor, you can look at freelance websites with editors.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Here are some of the most popular freelance platforms:',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              '<a href="https://www.upwork.com/" target="_blank" class="link">Upwork</a>',
+              '<a href="https://www.fiverr.com/" target="_blank" class="link">Fiverr</a>',
+              '<a href="https://www.kimp.io/" target="_blank" class="link">Kimp.io</a>',
+              '<a href="https://www.peopleperhour.com/" target="_blank" class="link">PeoplePerHour</a>',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Make sure they have a good portfolio and reviews. Some editors may charge more than others, but if you don't have much experience with your type of work, the extra cost might not be worth it.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Asking yourself these questions is a good way of ensuring that you hire an editor who will meet your needs and keep within budget constraints:',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Do I need someone who can help me with marketing materials? (If so, consider hiring an experienced copywriter instead.)',
+              "Am I looking for someone who can edit technical documents or blog posts? (If so, make sure they know how to write concisely to avoid wasting anyone's time.)",
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Consider outsourcing to an editing company.',
+        link: '#outsourcing',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'While chances are, you will be able to find a great freelance video editor at an affordable price, there are some reasons why you might want to consider working with a video editing company.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Here are the benefits of video editing companies:',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Predictable pricing',
+              'Consistent quality',
+              'Quick turnaround time',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: '<a href="https://www.aviewint.com/" target="_blank" class="link">Aview</a> provides editing services for short-form content across a wide range of platforms. This is a great place to start if you\'re looking to grow your brand using <a href="https://about.instagram.com/blog/announcements/introducing-instagram-reels-announcement" target="_blank" class="link">Instagram reels</a>, <a href="https://www.tiktok.com/en/" target="_blank" class="link">TikToks</a>, <a href="https://www.youtube.com/creators/shorts/" target="_blank" class="link">YouTube Shorts</a>, or other types of short-form content.',
           },
         ],
       },
@@ -175,66 +259,62 @@ export const BLOGS = [
       },
       {
         title: "Know what you're asking your editor to do.",
-        link: '#asking-editor',
+        link: '#asking',
         content: [
           {
             type: 'paragraph',
-            text: "Before you begin the hiring process, the most important thing you can do is know what you're asking your editor to do. If you don't know how many words need to be edited, an editor can't give you a quote. You also won't know if they've done the job right unless given specific instructions.",
+            text: "Before you begin the hiring process, you need to know what you're asking your editor to do. An editor can't give you a quote if they don't know how many words need to be edited. You won't know if they've done the job right unless given specific instructions.",
           },
           {
             type: 'paragraph',
-            text: "When hiring an editor, make sure you match what's needed for your project. To help determine whether this is true for you and other authors who might read this article: Ask yourself: What does my content need? Is there a particular style guide I must conform to? Also, consider how much time has passed between drafts and revisions; this will allow us more time to provide feedback so that we don't hinder our final product.",
-          },
-        ],
-      },
-      {
-        title: 'Go through websites like Upwork.',
-        link: '#upwork',
-        content: [
-          {
-            type: 'paragraph',
-            text: "To find the right editor for your project, you can look at freelance websites like Upwork. Make sure they have a good portfolio and reviews. Some editors may charge more than others, but if you don't have much experience with your type of work, the extra cost might not be worth it.",
-          },
-          {
-            type: 'paragraph',
-            text: 'Asking yourself these questions is a good way of ensuring that you hire an editor who will meet your needs and keep within budget constraints:',
+            text: "When hiring an editor, make sure you match what's needed for your project. To help determine what you need, ask yourself:",
           },
           {
             type: 'unordered list',
             items: [
-              'Do I need someone who can help me with marketing materials? (If so, consider hiring an experienced copywriter instead.)',
-              "Am I looking for someone who can edit technical documents or blog posts? (If so, make sure they know how to write concisely to avoid wasting anyone's time.)",
+              'What qualities would improve my content?',
+              'Is there a particular style guide I must conform to?',
             ],
+          },
+          {
+            type: 'paragraph',
+            text: 'By compiling the necessary information you will set yourself up to collaborate well with your editor.',
           },
         ],
       },
       {
-        title:
-          'Be flexible on the type of professional who can take on the project.',
+        title: 'Be flexible with your editor.',
         link: '#flexible',
         content: [
           {
             type: 'paragraph',
-            text: "As you begin to look for an editor, it's essential to have a list of potential editors in mind. You may be able to find them through word-of-mouth referrals or by searching online.",
+            text: "As you begin your search, it's essential to have a list of potential editors in mind. You may be able to find them through word-of-mouth referrals or by searching online.",
           },
           {
             type: 'paragraph',
-            text: "One way to narrow down your search is by looking at the type of professional that might be right for your project. In the case of editing a video and seeking someone with experience with making videos, you would want someone with that specific background and skill set. If this isn't possible or practical because there aren't many editors with these skills, consider hiring a different type of editor who is familiar with this kind of work but not necessarily all the experience needed.",
+            text: 'One way to narrow down your search is by looking at the type of professional that might be right for your project. In the case of editing a video and seeking someone with experience with making videos, you would want someone with that specific background and skill set.',
+          },
+          {
+            type: 'paragraph',
+            text: "If this isn't possible or practical because there aren't many editors with these skills, consider hiring a different type of editor who is familiar with this kind of work but not necessarily all the experience needed.",
+          },
+          {
+            type: 'paragraph',
+            text: "If you can't find the perfect editor, it's important to be flexible and work through any difficulties.",
           },
         ],
       },
       {
-        title:
-          "Having these negotiation points up front means everyone is on the same page before there's any money exchanging hands.",
-        link: '#negotiation',
+        title: 'Prepare negotiation points.',
+        link: '#negotiation-points',
         content: [
           {
             type: 'unordered list',
             items: [
-              "Be clear about the parameters of your project. If you're editing a video, consider how long the material should be? If it's an article or blog post, how many paragraphs?",
-              'Know what kind of editor you need. Do they need to be experienced in editing ads? Are they good at design and layout?',
-              "Ask for references from previous clients. A good editor will have no problem giving out references — and if they don't, that should raise some red flags right away!",
-              "Get a sample edit done by them before committing to anything official. This will give both parties an idea of how well each other works together and whether there's any chemistry between them — or whether this particular individual might not be the best fit for whatever project needs doing.",
+              "<strong>Be clear about the parameters of your project.</strong> If you're editing a video, consider how long the material should be. If it's an article or blog post, how many paragraphs?",
+              '<strong>Know what kind of editor you need.</strong> Do they need to be experienced in editing ads? Are they good at design and layout?',
+              "<strong>Ask for references from previous clients.</strong> A good editor will have no problem giving out references—and if they don't, that should raise some red flags right away!",
+              "<strong>Get a sample edit done.</strong> This will give both parties an idea of how well each other works together and whether there's any chemistry between them—or whether this particular individual might not be the best fit for whatever project needs doing.",
             ],
           },
         ],
@@ -245,7 +325,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: "In conclusion, if you're looking for an editor on a budget, remember that there is more than one option. You might go with someone who charges by the project or by the hour, but make sure you know what kind of edit you want them to do beforehand so everyone can be on the same page about what will happen. You also want someone who understands how long it will take and how much work will go into editing each type of project before they start working with you. Lastly, keep in mind that editors can come from all different backgrounds, so don't limit yourself when it comes time for hiring.",
+            text: "If you're looking for an editor on a budget, remember that there is more than one option. You might go with someone who charges by the project or by the hour, but make sure you know what kind of edit you want them to do beforehand so everyone can be on the same page.",
           },
         ],
       },
@@ -354,7 +434,7 @@ export const BLOGS = [
           {
             type: 'unordered list',
             items: [
-              "Make sure it's crisp and easy to read! Use a template from Canva (or another similar site or program), and make sure you choose a font size that works well at that size. You can find this information by checking out <a href='https://support.google.com/youtube/answer/72431?hl=en#zippy=%2Cimage-size-resolution%2Ccustom-thumbnail-limits' class='link'>YouTube's official guidelines.</a>",
+              "Make sure it's crisp and easy to read! Use a template from Canva (or another similar site or program), and make sure you choose a font size that works well at that size. You can find this information by checking out <a href='https://support.google.com/youtube/answer/72431?hl=en#zippy=%2Cimage-size-resolution%2Ccustom-thumbnail-limits' target='_blank' class='link'>YouTube's official guidelines.</a>",
             ],
           },
         ],
@@ -380,7 +460,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'Your thumbnail is the first thing your audience sees, so it will determine whether they watch your video. It needs to be exciting and enticing! Try our tips today or contact <a href="mailto:partners@aviewint.com" class="link">partners@aviewint.com</a> to have it made for you.',
+            text: 'Your thumbnail is the first thing your audience sees, so it will determine whether they watch your video. It needs to be exciting and enticing! Try our tips today or contact <a href="mailto:partners@aviewint.com" target="_blank" class="link">partners@aviewint.com</a> to have it made for you.',
           },
         ],
       },
