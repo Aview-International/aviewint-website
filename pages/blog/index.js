@@ -8,6 +8,7 @@ import { BLOGS } from '../../constants/blogs';
 
 const Blog = () => {
   const reversedBlogs = [].concat(BLOGS).reverse();
+  console.log(reversedBlogs);
 
   return (
     <>
