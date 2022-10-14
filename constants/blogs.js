@@ -48,7 +48,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "Dubbing allows you to <a href='https://medium.com/@aviewint/how-to-grow-your-channel-using-translations-9646f82e4fbf?source=rss-e9071214d32d------2' target='_blank' class='link'>grow your audience using translations</a>, so it's worth considering if you want your content accessible in other languages.",
+            text: "Dubbing allows you to <a href='https://www.aviewint.com/blog/grow-channel-using-translations' target='_blank' class='link'>grow your audience using translations</a>, so it's worth considering if you want your content accessible in other languages.",
           },
         ],
       },
