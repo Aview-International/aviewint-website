@@ -22,10 +22,10 @@ const Home = () => {
       />
       <Header curPage="Home" />
       <TranslateYourSocialMediaContent />
+      <OurServices />
       <ContentCreators />
       <TranslatedContent />
       <YouCreateWeTranslate />
-      <OurServices />
       <BreadAndButter />
       <LeadInTranslations />
       <GenerateAview />
