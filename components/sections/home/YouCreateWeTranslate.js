@@ -1,6 +1,6 @@
-import Button from '../../UI/Button';
-import globeGraphic from '../../../public/img/graphics/globe.png';
 import Image from 'next/image';
+
+import globeGraphic from '../../../public/img/graphics/globe.png';
 
 const YouCreateWeTranslate = () => {
   return (

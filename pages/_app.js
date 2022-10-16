@@ -1,6 +1,8 @@
-import '../styles/globals.css';
-import { MenuOpenContextProvider } from '../store/menu-open-context';
 import { useEffect } from 'react';
+
+import { MenuOpenContextProvider } from '../store/menu-open-context';
+
+import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {

@@ -42,7 +42,10 @@ const BlogText = ({ sections }) => {
                   <ul>
                     {content.items.map((item, i) => {
                       const listItem = (
-                        <div className="relative text-lg text-white md:text-xl">
+                        <div
+                          className="relative text-lg text-white md:text-xl"
+                          key={`item-${i}`}
+                        >
                           <p className="absolute left-0">{i + 1}.</p>
                           <p
                             className="ml-6 md:ml-8"

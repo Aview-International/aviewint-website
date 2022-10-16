@@ -1,17 +1,17 @@
+import SEO from '../components/SEO/SEO';
 import Header from '../components/navigation/Header';
-import TranslateYourSocialMediaContent from '../components/sections/home/TranslateYourSocialMediaContent';
-import ContentCreators from '../components/sections/home/ContentCreators';
-import TranslatedContent from '../components/sections/home/TranslatedContent';
-import BreadAndButter from '../components/sections/home/BreadAndButter';
-import YouCreateWeTranslate from '../components/sections/home/YouCreateWeTranslate';
-import LeadInTranslations from '../components/sections/home/LeadInTranslations';
+import YouCreateWeTranslate from '../components/sections/home/TranslateYourSocialMediaContent';
 import OurServices from '../components/sections/reused/OurServices';
+import ContentCreators from '../components/sections/home/ContentCreators';
+import OurTranslatedContent from '../components/sections/home/TranslatedContent';
+import ALeaderInTranslations from '../components/sections/home/YouCreateWeTranslate';
+import BreadAndButter from '../components/sections/home/BreadAndButter';
+import WhyWorkWithUs from '../components/sections/home/LeadInTranslations';
+import GenerateAview from '../components/sections/home/GenerateAview';
+import FAQ from '../components/sections/home/FAQs';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
-import FAQs from '../components/sections/home/FAQs';
-import GenerateAview from '../components/sections/home/GenerateAview';
-import SEO from '../components/SEO/SEO';
 
 const Home = () => {
   return (
@@ -21,15 +21,15 @@ const Home = () => {
         description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
       />
       <Header curPage="Home" />
-      <TranslateYourSocialMediaContent />
+      <YouCreateWeTranslate />
       <OurServices />
       <ContentCreators />
-      <TranslatedContent />
-      <YouCreateWeTranslate />
+      <OurTranslatedContent />
+      <ALeaderInTranslations />
       <BreadAndButter />
-      <LeadInTranslations />
+      <WhyWorkWithUs />
       <GenerateAview />
-      <FAQs />
+      <FAQ />
       <GoGlobal />
       <Footer curPage="Home" />
       <Blobs />
