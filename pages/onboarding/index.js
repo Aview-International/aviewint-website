@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import {
   OnboardingStep1,
   OnboardingStep2,
@@ -10,22 +10,28 @@ import {
   OnboardingStep6,
   OnboardingSuccess,
 } from '../../components/Onboarding';
-import SEO from '../../components/SEO/SEO';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';
 import { PageTransition } from '../../components/animations';
+import { UserData } from '../../store/menu-open-context';
+import Head from 'next/head';
+import { ProtectedRoutes } from '../../utils/autoLogout';
 
 const Onboarding = () => {
+  const { user } = useContext(UserData);
   const router = useRouter();
   useEffect(() => {
     if (!window.location.search) router.push('/onboarding?stage=1');
+    if (router.query.code) {
+      localStorage.setItem('ig_access_code', router.query.code);
+      window.close();
+    }
   }, []);
   return (
     <>
-      <SEO
-        title="Creator Onboarding - AVIEW"
-        description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
-      />
+      <Head>
+        <title>Onboarding Process - Aview International</title>
+      </Head>
       <div className="">
         <div className="px-5 py-2">
           <Image
@@ -69,34 +75,46 @@ const Stages = () => {
         </PageTransition>
       )}
       {query.stage === '2' && (
-        <PageTransition>
-          <OnboardingStep2 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep2 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '3' && (
-        <PageTransition>
-          <OnboardingStep3 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep3 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '4' && (
-        <PageTransition>
-          <OnboardingStep4 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep4 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '5' && (
-        <PageTransition>
-          <OnboardingStep5 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep5 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '6' && (
-        <PageTransition>
-          <OnboardingStep6 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep6 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '7' && (
-        <PageTransition>
-          <OnboardingSuccess />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingSuccess />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
     </>
   );

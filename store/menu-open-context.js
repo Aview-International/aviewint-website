@@ -29,3 +29,19 @@ export const MenuOpenContextProvider = ({ children }) => {
 };
 
 export default MenuOpenContext;
+
+export const UserData = createContext(null);
+export const UserContext = ({ children }) => {
+  const [user, updateUser] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    picture: '',
+  });
+
+  return (
+    <UserData.Provider value={{ user, updateUser }}>
+      {children}
+    </UserData.Provider>
+  );
+};

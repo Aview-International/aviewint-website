@@ -1,5 +1,8 @@
 import '../styles/globals.css';
-import { MenuOpenContextProvider } from '../store/menu-open-context';
+import {
+  MenuOpenContextProvider,
+  UserContext,
+} from '../store/menu-open-context';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -19,7 +22,9 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <MenuOpenContextProvider>
-      <Component {...pageProps} />
+      <UserContext>
+        <Component {...pageProps} />
+      </UserContext>
     </MenuOpenContextProvider>
   );
 };

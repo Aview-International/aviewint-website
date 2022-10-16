@@ -4,8 +4,7 @@ import Shadow from '../UI/Shadow';
 import DefaultPicture from '../../public/img/team/default.png';
 import Image from 'next/image';
 import OnboardingButton from './button';
-import { useState } from 'react';
-import { emailValidator } from '../../utils/regex';
+import { useContext, useState } from 'react';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import Personal from '../../public/img/graphics/personal-use.png';
@@ -20,29 +19,61 @@ import {
 import Link from 'next/link';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
+import {
+  changeName,
+  createNewUser,
+  signInWithGoogle,
+  updateAviewUsage,
+  updateRequiredServices,
+  updateUserBio,
+} from '../../pages/api/onboarding';
+import { UserData } from '../../store/menu-open-context';
+import { InstagramAuthenticationLink } from './apis';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
   const router = useRouter();
-  const [email, setEmail] = useState({
-    hasSubmitted: false,
-    isLoading: false,
-    email: '',
-  });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail({ ...email, hasSubmitted: true });
-    if (!emailValidator(email.email)) return;
-    setEmail({ ...email, isLoading: true });
-    setTimeout(() => router.push('/onboarding?stage=2'), 2000);
+  const { user, updateUser } = useContext(UserData);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    const { _tokenResponse } = await signInWithGoogle();
+    console.log(_tokenResponse);
+    updateUser({
+      ...user,
+      email: _tokenResponse.email,
+      firstName: _tokenResponse.firstName,
+      lastName: _tokenResponse.lastName,
+      picture: _tokenResponse.photoUrl,
+    });
+    localStorage.setItem('token', _tokenResponse.idToken);
+    localStorage.setItem('uid', _tokenResponse.localId);
+    const res = await createNewUser(
+      _tokenResponse.localId,
+      _tokenResponse.firstName,
+      _tokenResponse.lastName,
+      _tokenResponse.photoUrl,
+      _tokenResponse.email
+    );
+    console.log(res);
+    router.push('/onboarding?stage=3');
   };
+
+  const findMail = async () => {
+    const res = await changeName();
+    // console.log(res);
+  };
+
   return (
     <>
       <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
         <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
         <Shadow classes="w-full mb-4">
           <Border borderRadius="full" classes="w-full">
-            <button className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3">
+            <button
+              className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
+              onClick={handleSubmit}
+            >
               <span className="flex items-center justify-center pr-s1">
                 <Image src={Google} alt="Google" />
               </span>
@@ -50,6 +81,7 @@ export const OnboardingStep1 = () => {
             </button>
           </Border>
         </Shadow>
+        <button onClick={findMail}>CHeck</button>
         <Shadow classes="w-full">
           <Border borderRadius="full" classes="w-full">
             <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
@@ -60,18 +92,6 @@ export const OnboardingStep1 = () => {
             </button>
           </Border>
         </Shadow>
-        <div className={`gradient-1 my-8 h-[2px] w-full`}></div>
-        <FormInput
-          label="Email"
-          placeholder="Your email"
-          _id="email"
-          hasSubmitted={email.hasSubmitted}
-          onChange={(e) => setEmail({ ...email, email: e.target.value })}
-          isValid={emailValidator(email.email)}
-        />
-        <OnboardingButton isLoading={email.isLoading} onClick={handleSubmit}>
-          Continue with email
-        </OnboardingButton>
       </div>
     </>
   );
@@ -160,23 +180,32 @@ export const OnboardingStep2 = () => {
 
 // Onboarding stage 3
 export const OnboardingStep3 = () => {
+  const { user, updateUser } = useContext(UserData);
   const router = useRouter();
   const [data, setData] = useState({
     purpose: '',
     hasSubmitted: false,
     isLoading: false,
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setData({ ...data, hasSubmitted: true });
     if (!data.purpose) return;
     setData({ ...data, isLoading: true });
-    setTimeout(() => router.push('/onboarding?stage=4'), 2000);
+    try {
+      const res = await updateAviewUsage(
+        data.purpose,
+        localStorage.getItem('uid')
+      );
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+    router.push('/onboarding?stage=4');
   };
   return (
     <div className="m-auto w-[min(630px,90%)]">
       <h2 className="text-3xl md:text-center md:text-4xl">
-        How are you planning to use Aview?
+        {user?.firstName}, how are you planning to use Aview?
       </h2>
       <p className="mt-4 mb-8 text-lg md:text-center md:text-xl">
         We&#8217;ll streamline your setup experience accordingly.
@@ -245,11 +274,16 @@ export const OnboardingStep4 = () => {
       setUsage(newArray);
     }
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (usage.length < 1) return;
     setSideEffects({ ...sideEffects, isLoading: true });
-    setTimeout(() => router.push('/onboarding?stage=5'), 2000);
+    const res = await updateRequiredServices(
+      usage,
+      localStorage.getItem('uid')
+    );
+    console.log(res);
+    router.push('/onboarding?stage=5');
   };
   const Option = ({ title, content }) => (
     <Shadow>
@@ -320,7 +354,7 @@ export const OnboardingStep5 = () => {
       setPayload({ ...payload, languages: newArray });
     }
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (
       !payload.monthlyView ||
@@ -329,7 +363,9 @@ export const OnboardingStep5 = () => {
     )
       return;
     setSideEffects({ ...sideEffects, isLoading: true });
-    setTimeout(() => router.push('/onboarding?stage=6'), 2000);
+    const res = await updateUserBio(payload, localStorage.getItem('uid'));
+    console.log(res);
+    router.push('/onboarding?stage=6');
   };
   return (
     <div className="m-auto w-[90%]">
@@ -383,6 +419,10 @@ export const OnboardingStep6 = () => {
     setIsLoading(true);
     setTimeout(() => router.push('/onboarding?stage=7'), 2000);
   };
+  const linkInstagramAccount = () => {
+    console.log('loading');
+    window.open(InstagramAuthenticationLink, '_blank');
+  };
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl md:text-6xl">
@@ -395,6 +435,7 @@ export const OnboardingStep6 = () => {
       <div className="m-auto w-[min(360px,100%)]">
         <button
           className={`instagram my-s2 block w-full rounded-full border-2 p-s1.5 text-center`}
+          onClick={linkInstagramAccount}
         >
           Instagram
         </button>
@@ -423,7 +464,7 @@ export const OnboardingStep6 = () => {
   );
 };
 
-// Onboarding success page 
+// Onboarding success page
 export const OnboardingSuccess = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -434,7 +475,7 @@ export const OnboardingSuccess = () => {
   };
   return (
     <div className="m-auto w-[min(360px,80%)] pt-s5">
-      <h2 className="md:text-center text-5xl md:text-6xl">Success!</h2>
+      <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         You&#8217;ve completed the onboarding process. Now let&#8217;s take a
         look at your dashboard.
