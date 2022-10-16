@@ -20,7 +20,6 @@ import Link from 'next/link';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
-  changeName,
   createNewUser,
   signInWithGoogle,
   updateAviewUsage,
@@ -59,11 +58,6 @@ export const OnboardingStep1 = () => {
     router.push('/onboarding?stage=3');
   };
 
-  const findMail = async () => {
-    const res = await changeName();
-    // console.log(res);
-  };
-
   return (
     <>
       <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
@@ -81,7 +75,6 @@ export const OnboardingStep1 = () => {
             </button>
           </Border>
         </Shadow>
-        <button onClick={findMail}>CHeck</button>
         <Shadow classes="w-full">
           <Border borderRadius="full" classes="w-full">
             <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
