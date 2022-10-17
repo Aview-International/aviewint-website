@@ -1,27 +1,42 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import FormInput from '../../components/FormComponents/FormInput';
-import OnbaordingButton from '../../components/Onboarding/button';
-import { LOGIN_INPUT } from '../../constants/constants';
+import { useContext, useState } from 'react';
+import Border from '../../components/UI/Border';
+import Loader from '../../components/UI/loader';
+import Shadow from '../../components/UI/Shadow';
+import Google from '../../public/img/icons/google.svg';
+import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
+import { UserData } from '../../store/menu-open-context';
+import { createNewUser, signInWithGoogle } from '../api/onboarding';
 
 const Login = () => {
   const router = useRouter();
-  const [payload, setPayload] = useState({
-    email: '',
-    password: '',
-  });
-  const [sideEffects, setSideEffects] = useState({
-    isLoading: false,
-    hasSubmitted: false,
-  });
-  const handleChange = (e) =>
-    setPayload({ ...payload, [e.target.name]: e.target.value });
+  const { user, updateUser } = useContext(UserData);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const { _tokenResponse } = await signInWithGoogle();
+    updateUser({
+      ...user,
+      email: _tokenResponse.email,
+      firstName: _tokenResponse.firstName,
+      lastName: _tokenResponse.lastName,
+      picture: _tokenResponse.photoUrl,
+    });
+    localStorage.setItem('token', _tokenResponse.idToken);
+    localStorage.setItem('uid', _tokenResponse.localId);
+    await createNewUser(
+      _tokenResponse.localId,
+      _tokenResponse.firstName,
+      _tokenResponse.lastName,
+      _tokenResponse.photoUrl,
+      _tokenResponse.email
+    );
     router.push('/dashboard');
   };
+
   return (
     <>
       <div className="fixed top-2/4 left-2/4 w-[min(400px,90%)] -translate-x-2/4 -translate-y-2/4 text-white">
@@ -34,26 +49,35 @@ const Login = () => {
               <a className="underline">here</a>
             </Link>
           </p>
-          <form>
-            {LOGIN_INPUT.map((item, index) => (
-              <FormInput
-                onChange={handleChange}
-                key={`form-input-${index}`}
-                {...item}
-              />
-            ))}
-            <OnbaordingButton
-              isLoading={sideEffects.isLoading}
-              onClick={handleSubmit}
-            >
-              Log in
-            </OnbaordingButton>
-          </form>
-          <p className="mt-s3 text-right text-lg md:text-xl">
-            <Link href="/onboarding?stage=1">
-              <a className="underline">Forgot Password?</a>
-            </Link>
-          </p>
+          <Shadow classes="w-full mb-4">
+            <Border borderRadius="full" classes="w-full">
+              <button
+                className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
+                onClick={handleSubmit}
+              >
+                {isLoading ? (
+                  <Loader />
+                ) : (
+                  <>
+                    <span className="flex items-center justify-center pr-s1">
+                      <Image src={Google} alt="Google" />
+                    </span>
+                    Continue with Google
+                  </>
+                )}
+              </button>
+            </Border>
+          </Shadow>
+          <Shadow classes="w-full">
+            <Border borderRadius="full" classes="w-full">
+              <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
+                <span className="flex items-center justify-center pr-s1">
+                  <Image src={Facebook} alt="Facebook" />
+                </span>
+                Continue with Facebook
+              </button>
+            </Border>
+          </Shadow>
         </div>
       </div>
     </>

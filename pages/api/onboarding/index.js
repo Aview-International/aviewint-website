@@ -52,95 +52,72 @@ export const createNewUser = async (
   return response;
 };
 
-export const getMail = () => {
-  try {
-    const starCountRef = ref(database, 'users/Kxz20ZXjWtT4YUQJWiGS9RpHho83');
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const updateAviewUsage = async (aviewUsage, _id) => {
-  try {
-    get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        const postData = {
-          ...data,
-          aviewUsage,
-        };
-        const updates = {
-          [`users/${_id}`]: postData,
-        };
-        const res = await update(ref(database), updates);
-        console.log(res);
-      } else {
-        console.log('No data available');
-      }
-    });
-  } catch (error) {
-    return error;
-  }
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        aviewUsage,
+      };
+      const updates = {
+        [`users/${_id}`]: postData,
+      };
+      await update(ref(database), updates);
+    } else {
+      console.log('No data available');
+    }
+  });
 };
 
 export const updateRequiredServices = async (services, _id) => {
-  try {
-    get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        const postData = {
-          ...data,
-          services,
-        };
-        const updates = {
-          [`users/${_id}`]: postData,
-        };
-        const res = await update(ref(database), updates);
-        console.log(res);
-      } else {
-        console.log('No data available');
-      }
-    });
-  } catch (error) {
-    return error;
-  }
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        services,
+      };
+      const updates = {
+        [`users/${_id}`]: postData,
+      };
+      await update(ref(database), updates);
+    } else {
+      console.log('No data available');
+    }
+  });
 };
 
 export const updateUserBio = async (payload, _id) => {
-  try {
-    get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        const postData = {
-          ...data,
-          monthlyView: payload.monthlyView,
-          languagesRequired: payload.languages,
-          averageDuration: payload.averageVideoDuration,
-        };
-        const updates = {
-          [`users/${_id}`]: postData,
-        };
-        const res = await update(ref(database), updates);
-        console.log(res);
-      } else {
-        console.log('No data available');
-      }
-    });
-  } catch (error) {
-    return error;
-  }
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        monthlyView: payload.monthlyView,
+        languagesRequired: payload.languages,
+        averageDuration: payload.averageVideoDuration,
+      };
+      const updates = {
+        [`users/${_id}`]: postData,
+      };
+      await update(ref(database), updates);
+    } else {
+      console.log('No data available');
+    }
+  });
 };
 
 export const getInstagramUserToken = async (req) => {
   try {
     const res = await axios({
       method: 'POst',
-    })
+    });
   } catch (error) {
     console.log(error);
   }
 };
+
+export default async function handler(req, res) {
+  const { stage } = req.query;
+}

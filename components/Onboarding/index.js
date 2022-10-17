@@ -1,10 +1,8 @@
-import FormInput from '../FormComponents/FormInput';
 import Border from '../UI/Border';
 import Shadow from '../UI/Shadow';
-import DefaultPicture from '../../public/img/team/default.png';
 import Image from 'next/image';
 import OnboardingButton from './button';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import Personal from '../../public/img/graphics/personal-use.png';
@@ -28,6 +26,8 @@ import {
 } from '../../pages/api/onboarding';
 import { UserData } from '../../store/menu-open-context';
 import { InstagramAuthenticationLink } from './apis';
+import Loader from '../UI/loader';
+import axios from 'axios';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -36,8 +36,8 @@ export const OnboardingStep1 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
-    console.log(_tokenResponse);
     updateUser({
       ...user,
       email: _tokenResponse.email,
@@ -47,15 +47,14 @@ export const OnboardingStep1 = () => {
     });
     localStorage.setItem('token', _tokenResponse.idToken);
     localStorage.setItem('uid', _tokenResponse.localId);
-    const res = await createNewUser(
+    await createNewUser(
       _tokenResponse.localId,
       _tokenResponse.firstName,
       _tokenResponse.lastName,
       _tokenResponse.photoUrl,
       _tokenResponse.email
     );
-    console.log(res);
-    router.push('/onboarding?stage=3');
+    router.push('/onboarding?stage=2');
   };
 
   return (
@@ -68,10 +67,16 @@ export const OnboardingStep1 = () => {
               className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
               onClick={handleSubmit}
             >
-              <span className="flex items-center justify-center pr-s1">
-                <Image src={Google} alt="Google" />
-              </span>
-              Continue with Google
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <>
+                  <span className="flex items-center justify-center pr-s1">
+                    <Image src={Google} alt="Google" />
+                  </span>
+                  Continue with Google
+                </>
+              )}
             </button>
           </Border>
         </Shadow>
@@ -92,88 +97,7 @@ export const OnboardingStep1 = () => {
 
 // Onboarding stage 2
 export const OnboardingStep2 = () => {
-  const router = useRouter();
-  const [payload, setPayload] = useState({
-    image: null,
-    firstName: '',
-    password: '',
-  });
-  const [sideEffects, setSideEffects] = useState({
-    isLoading: false,
-    hasSubmitted: false,
-  });
-  const handleChange = (e) => {
-    setPayload({ ...payload, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSideEffects({ ...sideEffects, hasSubmitted: true });
-    if (!payload.image || !payload.firstName || !payload.password) return;
-    setSideEffects({ ...sideEffects, isLoading: true });
-    setTimeout(() => router.push('/onboarding?stage=3'), 2000);
-  };
-  return (
-    <>
-      <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
-        <h2 className="text-center text-3xl md:text-4xl">Welcome to Aview</h2>
-        <p className="mt-2 mb-8 text-center text-lg md:text-xl">
-          Tell us a litle about yourself
-        </p>
-        <label className="cursor-pointer">
-          <span className="align-center flex justify-center">
-            <Image
-              src={
-                payload.image
-                  ? URL.createObjectURL(payload.image)
-                  : DefaultPicture
-              }
-              alt="Photo"
-              width={80}
-              height={80}
-              className="rounded-full"
-            />
-          </span>
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={(e) =>
-              setPayload({ ...payload, image: e.target.files[0] })
-            }
-          />
-        </label>
-        <p className="mt-4 mb-8 text-center text-lg md:text-xl">Add a photo</p>
-        <FormInput
-          label="What is your name?"
-          placeholder="First and last name"
-          onChange={handleChange}
-          name="firstName"
-          isValid={payload.firstName}
-          hasSubmitted={sideEffects.hasSubmitted}
-        />
-        <FormInput
-          label="Set a password"
-          placeholder="New password"
-          onChange={handleChange}
-          isValid={payload.password}
-          type="password"
-          name="password"
-          hasSubmitted={sideEffects.hasSubmitted}
-        />
-        <OnboardingButton
-          isLoading={sideEffects.isLoading}
-          onClick={handleSubmit}
-        >
-          Continue
-        </OnboardingButton>
-      </div>
-    </>
-  );
-};
-
-// Onboarding stage 3
-export const OnboardingStep3 = () => {
-  const { user, updateUser } = useContext(UserData);
+  const { user } = useContext(UserData);
   const router = useRouter();
   const [data, setData] = useState({
     purpose: '',
@@ -185,15 +109,11 @@ export const OnboardingStep3 = () => {
     if (!data.purpose) return;
     setData({ ...data, isLoading: true });
     try {
-      const res = await updateAviewUsage(
-        data.purpose,
-        localStorage.getItem('uid')
-      );
-      console.log(res);
+      await updateAviewUsage(data.purpose, localStorage.getItem('uid'));
     } catch (error) {
       console.error(error);
     }
-    router.push('/onboarding?stage=4');
+    router.push('/onboarding?stage=3');
   };
   return (
     <div className="m-auto w-[min(630px,90%)]">
@@ -249,8 +169,8 @@ export const OnboardingStep3 = () => {
   );
 };
 
-// Onboarding stage 4
-export const OnboardingStep4 = () => {
+// Onboarding stage 3
+export const OnboardingStep3 = () => {
   const router = useRouter();
   const [usage, setUsage] = useState([]);
   const [sideEffects, setSideEffects] = useState({
@@ -268,15 +188,15 @@ export const OnboardingStep4 = () => {
     }
   };
   const handleSubmit = async () => {
-    setSideEffects({ ...sideEffects, hasSubmitted: true });
-    if (usage.length < 1) return;
-    setSideEffects({ ...sideEffects, isLoading: true });
-    const res = await updateRequiredServices(
-      usage,
-      localStorage.getItem('uid')
-    );
-    console.log(res);
-    router.push('/onboarding?stage=5');
+    try {
+      setSideEffects({ ...sideEffects, hasSubmitted: true });
+      if (usage.length < 1) return;
+      setSideEffects({ ...sideEffects, isLoading: true });
+      await updateRequiredServices(usage, localStorage.getItem('uid'));
+      router.push('/onboarding?stage=4');
+    } catch (error) {
+      console.log(error);
+    }
   };
   const Option = ({ title, content }) => (
     <Shadow>
@@ -325,8 +245,8 @@ export const OnboardingStep4 = () => {
   );
 };
 
-// Onboarding stage 5
-export const OnboardingStep5 = () => {
+// Onboarding stage 4
+export const OnboardingStep4 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
@@ -356,9 +276,12 @@ export const OnboardingStep5 = () => {
     )
       return;
     setSideEffects({ ...sideEffects, isLoading: true });
-    const res = await updateUserBio(payload, localStorage.getItem('uid'));
-    console.log(res);
-    router.push('/onboarding?stage=6');
+    try {
+      await updateUserBio(payload, localStorage.getItem('uid'));
+      router.push('/onboarding?stage=5');
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="m-auto w-[90%]">
@@ -403,19 +326,40 @@ export const OnboardingStep5 = () => {
   );
 };
 
-// Onboarding stage 6
-export const OnboardingStep6 = () => {
+// Onboarding stage 5
+export const OnboardingStep5 = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = () => {
     setIsLoading(true);
-    setTimeout(() => router.push('/onboarding?stage=7'), 2000);
+    setTimeout(() => router.push('/onboarding?stage=6'), 2000);
   };
-  const linkInstagramAccount = () => {
-    console.log('loading');
+
+  const getInstagramUsername = async () => {};
+  const getInstagramToken = async () => {
+    try {
+      const code = {
+        code: localStorage.getItem('ig_access_code'),
+      };
+      const res = await axios.post('/api/onboarding/link-instagram', code);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'ig_access_code') getInstagramToken();
+    });
+  }, []);
+
+  const linkInstagramAccount = async () => {
     window.open(InstagramAuthenticationLink, '_blank');
+    // getInstagramToken();
   };
+
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl md:text-6xl">

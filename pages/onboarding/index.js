@@ -7,7 +7,6 @@ import {
   OnboardingStep3,
   OnboardingStep4,
   OnboardingStep5,
-  OnboardingStep6,
   OnboardingSuccess,
 } from '../../components/Onboarding';
 import aviewLogo from '../../public/img/aview/logo.svg';
@@ -20,12 +19,16 @@ import { ProtectedRoutes } from '../../utils/autoLogout';
 const Onboarding = () => {
   const { user } = useContext(UserData);
   const router = useRouter();
+
   useEffect(() => {
-    if (!window.location.search) router.push('/onboarding?stage=1');
-    if (router.query.code) {
-      localStorage.setItem('ig_access_code', router.query.code);
+    if (window.location.search.split('=')[0].includes('code')) {
+      localStorage.setItem(
+        'ig_access_code',
+        window.location.search.split('=')[1].split('#')[0]
+      );
       window.close();
     }
+    if (!window.location.search) router.push('/onboarding?stage=1');
   }, []);
   return (
     <>
@@ -42,7 +45,7 @@ const Onboarding = () => {
           />
         </div>
         <div
-          style={{ width: `${Math.ceil((+router.query.stage * 100) / 7)}%` }}
+          style={{ width: `${Math.ceil((+router.query.stage * 100) / 6)}%` }}
           className="gradient-1 h-1 transition-all ease-in-out"
         ></div>
         <div className="relative">
@@ -103,13 +106,6 @@ const Stages = () => {
         </ProtectedRoutes>
       )}
       {query.stage === '6' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep6 />
-          </PageTransition>
-        </ProtectedRoutes>
-      )}
-      {query.stage === '7' && (
         <ProtectedRoutes>
           <PageTransition>
             <OnboardingSuccess />
