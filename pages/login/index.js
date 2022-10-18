@@ -8,7 +8,11 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import { UserData } from '../../store/menu-open-context';
-import { createNewUser, signInWithGoogle } from '../api/onboarding';
+import {
+  checkUserEmail,
+  createNewUser,
+  signInWithGoogle,
+} from '../api/onboarding';
 
 const Login = () => {
   const router = useRouter();
@@ -18,23 +22,22 @@ const Login = () => {
   const handleSubmit = async () => {
     setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
-    updateUser({
-      ...user,
-      email: _tokenResponse.email,
-      firstName: _tokenResponse.firstName,
-      lastName: _tokenResponse.lastName,
-      picture: _tokenResponse.photoUrl,
-    });
-    localStorage.setItem('token', _tokenResponse.idToken);
-    localStorage.setItem('uid', _tokenResponse.localId);
-    await createNewUser(
-      _tokenResponse.localId,
-      _tokenResponse.firstName,
-      _tokenResponse.lastName,
-      _tokenResponse.photoUrl,
-      _tokenResponse.email
-    );
-    router.push('/dashboard');
+    const res = await checkUserEmail(_tokenResponse.email);
+    console.log(res);
+    if (res === undefined) router.push('/onboarding?stage=1&account=false');
+    else {
+      localStorage.setItem('token', _tokenResponse.idToken);
+      localStorage.setItem('uid', _tokenResponse.localId);
+      updateUser({
+        ...user,
+        email: _tokenResponse.email,
+        firstName: _tokenResponse.firstName,
+        lastName: _tokenResponse.lastName,
+        picture: _tokenResponse.photoUrl,
+      });
+    }
+
+    // router.push('/dashboard');
   };
 
   return (

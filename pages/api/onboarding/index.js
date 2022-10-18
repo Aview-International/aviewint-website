@@ -1,14 +1,23 @@
 import axios from 'axios';
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getAuth,
+  FacebookAuthProvider,
+} from 'firebase/auth';
 import {
   getDatabase,
   set,
   ref,
-  onValue,
   child,
+  query,
   update,
   get,
+  orderByChild,
+  equalTo,
+  onValue,
 } from 'firebase/database';
 
 const firebaseConfig = {
@@ -28,13 +37,28 @@ const app = initializeApp(firebaseConfig);
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
 
+// Initialize the auth service
+const auth = getAuth();
+
+export const checkUserEmail = async (email) => {
+  const dbRef = ref(database, '/users');
+  const queryConstraints = [orderByChild('email'), equalTo(email)];
+  onValue(query(dbRef, ...queryConstraints), (snapshot) => {
+    return snapshot.val();
+  });
+};
+
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const auth = getAuth();
   const response = await signInWithPopup(auth, provider);
   return response;
 };
 
+export const signInWithFacebook = async () => {
+  const provider = new FacebookAuthProvider();
+  const response = await signInWithPopup(auth, provider);
+  console.log(response);
+};
 export const createNewUser = async (
   _id,
   firstName,

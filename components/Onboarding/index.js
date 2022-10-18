@@ -19,6 +19,7 @@ import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
   createNewUser,
+  signInWithFacebook,
   signInWithGoogle,
   updateAviewUsage,
   updateRequiredServices,
@@ -33,9 +34,12 @@ import axios from 'axios';
 export const OnboardingStep1 = () => {
   const router = useRouter();
   const { user, updateUser } = useContext(UserData);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({
+    google: false,
+    facebook: false,
+  });
 
-  const handleSubmit = async () => {
+  const handleGoogle = async () => {
     setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
     updateUser({
@@ -57,17 +61,28 @@ export const OnboardingStep1 = () => {
     router.push('/onboarding?stage=2');
   };
 
+  const handleFacebook = async () => {
+    setIsLoading(true);
+    const res = await signInWithFacebook();
+    console.log(res);
+  };
+  const { account } = router.query;
   return (
     <>
       <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
         <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
+        {account && (
+          <p className="mb-s3 text-center text-lg">
+            You don't have an account yet, begin here
+          </p>
+        )}
         <Shadow classes="w-full mb-4">
           <Border borderRadius="full" classes="w-full">
             <button
               className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
-              onClick={handleSubmit}
+              onClick={handleGoogle}
             >
-              {isLoading ? (
+              {isLoading.google ? (
                 <Loader />
               ) : (
                 <>
@@ -82,11 +97,20 @@ export const OnboardingStep1 = () => {
         </Shadow>
         <Shadow classes="w-full">
           <Border borderRadius="full" classes="w-full">
-            <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
-              <span className="flex items-center justify-center pr-s1">
-                <Image src={Facebook} alt="Facebook" />
-              </span>
-              Continue with Facebook
+            <button
+              className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3"
+              onClick={handleFacebook}
+            >
+              {isLoading.facebook ? (
+                <Loader />
+              ) : (
+                <>
+                  <span className="flex items-center justify-center pr-s1">
+                    <Image src={Facebook} alt="Facebook" />
+                  </span>
+                  Continue with Facebook
+                </>
+              )}
             </button>
           </Border>
         </Shadow>
