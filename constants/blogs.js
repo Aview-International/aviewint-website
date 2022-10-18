@@ -3,6 +3,8 @@ import blog2Graphic from '../public/img/blogs/make-best-thumbnail.jpg';
 import blog3Graphic from '../public/img/blogs/good-editor-on-small-budget.png';
 import blog4Graphic from '../public/img/blogs/why-add-translated-dubbing.jpg';
 import blog5Graphic from '../public/img/blogs/add-captions-instagram-reels.png';
+import blog6Graphic from '../public/img/blogs/closed-captions-vs-subtitles.png';
+import blog7Graphic from '../public/img/blogs/subtitling-best-practises.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -663,4 +665,204 @@ export const BLOGS = [
       },
     ],
   },
+  {
+    title: "Closed Captions vs Subtitles: What's the difference?",
+    description: '',
+    date: 'Oct 18, 2022',
+    img: blog6Graphic,
+    link: '/blog/closed-captions-vs-subtitles',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Viewers that are native speakers of a different language need video content to be accessible. That's why closed captioning and subtitling are two essential tools for broadcasters, streaming providers, and producers of video content.",
+          },
+          {
+            type: 'paragraph',
+            text: "But what is the difference between closed captions and subtitles? Which one should you use when creating your video content? Let's find out! Read on to learn more about both closed captions and subtitles, their uses, as well as examples in real-world scenarios.",
+          },
+        ],
+      },
+      {
+        title: 'Closed Captions',
+        link: '#closed-captions',
+        content: [
+          {
+            type: 'paragraph',
+            text: "A closed caption is a text transcription of the spoken dialogue in a video. They're usually shown as a strip at the bottom of the video, but they can also be displayed as pop-up boxes, or within the video itself.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are used by those who cannot hear the audio of a video. This includes, but is not limited to, people who are hard-of-hearing or deaf, people who are using audio-only devices, or people who are in a noisy environment where they can't hear the audio.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are available in both live and recorded video as a service to your audience. They're important because they allow your viewers to access the audio of your video even when the sound is off or when there's too much ambient noise to hear it.",
+          },
+        ],
+      },
+      {
+        title: 'Closed Captions',
+        link: '#closed-captions',
+        content: [
+          {
+            type: 'paragraph',
+            text: "A closed caption is a text transcription of the spoken dialogue in a video. They're usually shown as a strip at the bottom of the video, but they can also be displayed as pop-up boxes, or within the video itself.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are used by those who cannot hear the audio of a video. This includes, but is not limited to, people who are hard-of-hearing or deaf, people who are using audio-only devices, or people who are in a noisy environment where they can't hear the audio.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are available in both live and recorded video as a service to your audience. They’re important because they allow your viewers to access the audio of your video even when the sound is off or when there's too much ambient noise to hear it.",
+          },
+        ],
+      },
+      {
+        title: 'Subtitles',
+        link: '#subtitles',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'A subtitle is an additional text that gives a translation of the spoken dialogue in a video. Subtitles are text, either in a different language or dialect, or in a different style, from that of the spoken dialogue in the video.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Like closed captions, subtitles are usually displayed at the bottom of the video. They can also be displayed as pop-up boxes or appear within the video itself.',
+          },
+          {
+            type: 'paragraph',
+            text: "Subtitles are not just for the deaf and hard-of-hearing audiences. They are also used by people learning a new language, people who are in a very loud environment and can't hear the audio, people who are more focused on the visual content than the spoken dialogue, or people who are learning English.",
+          },
+        ],
+      },
+      {
+        title: "What's the Same About Closed Captions and Subtitles?",
+        link: '#similarities',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Both are used to transcribe the spoken dialogue in a video. Both are displayed at the bottom of the video. Both are displayed in separate boxes or text. Both can be used for different languages and dialects. Both can be used by people learning a new language.',
+          },
+        ],
+      },
+      {
+        title: 'Differences Between Closed Captions and Subtitles',
+        link: '#differences',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Closed captions are text that transcribes the spoken dialogue in a video. Subtitles are text that gives a translation of the spoken dialogue in a video.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Closed captions are audio-based. Subtitles are text-based.',
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are generated based on what's being said. Subtitles are generated based on what's being said and what's being shown.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are used for people who can't hear the audio. Subtitles are used for people who want additional information or want to use the video for language learning.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Closed captions are displayed at the bottom of the video. Subtitles are displayed at the bottom of the video or within the video itself.',
+          },
+        ],
+      },
+      {
+        title: 'When to Use Closed Captions',
+        link: '#when-to-use-closed-captions',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Closed captions are used by people who can't hear the audio of a video. It's a very common practice to add subtitles to your YouTube videos to increase their accessibility.",
+          },
+          {
+            type: 'paragraph',
+            text: "YouTube also recommends using closed captions if your video has sound. In that case, you can use closed captions as a backup in case there's a technical issue with the sound.",
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are also used for language learning. To use closed captions for language learning, you'll need to have someone transcribe the spoken dialogue and translate it into a different language. You can then add the closed captions to your video. This is a great way for people to learn a new language while watching videos on YouTube.",
+          },
+        ],
+      },
+      {
+        title: 'When to Use Subtitles',
+        link: '#when-to-use-subtitles',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Subtitles are used for people who want additional information or want to use the video for language learning.',
+          },
+          {
+            type: 'paragraph',
+            text: "Unlike closed captions, subtitles don't need to transcribe everything that's being said. Instead, they just need to translate what's being said. For example, if there's a car driving by in the video, the closed captions would need to say something like “Car drives by”. The subtitles, on the other hand, would only need to translate this into the language being used in the video.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Translated subtitles are also a great way to expand your audience. In fact many of the most popular content creators have <a href="www.aviewint.com/blog/grow-channel-using-translations" class="link">used subtitles to help grow their channels</a.',
+          },
+        ],
+      },
+      {
+        title: 'Summing Up',
+        link: '#summing-up',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Closed captions and subtitles are two essential tools for broadcasters, streaming providers, and producers of video content. While they may seem similar, they serve different purposes and have different uses. These tools are used to transcribe the spoken dialogue in a video. They are also used by people who want additional information or want to use the video for language learning.',
+          },
+          {
+            type: 'paragraph',
+            text: "Closed captions are audio-based text that transcribes the spoken dialogue in a video. Subtitles are text-based text that gives a translation of the spoken dialogue in a video. Closed captions are used by people who can't hear the audio of a video. Subtitles are used for people who want additional information or want to use the video for language learning.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Want to add subtitles or closed captions to your videos? Check out the services at <a href="www.aviewint.com" class="link">Aview</a>.',
+          },
+        ],
+      },
+    ],
+  },
+  // {
+  //   title: '',
+  //   description: '',
+  //   date: ', 2022',
+  //   img: blog1Graphic,
+  //   link: '/blog/',
+  //   author: 'Elis Hayakawa',
+  //   authorImg: elisImg,
+  //   length: '3 min',
+  //   sections: [
+  //     {
+  //       title: '',
+  //       link: '#',
+  //       content: [
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
