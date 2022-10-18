@@ -8,11 +8,7 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import { UserData } from '../../store/menu-open-context';
-import {
-  checkUserEmail,
-  createNewUser,
-  signInWithGoogle,
-} from '../api/onboarding';
+import { checkUserEmail, signInWithGoogle } from '../api/onboarding';
 
 const Login = () => {
   const router = useRouter();
@@ -22,9 +18,8 @@ const Login = () => {
   const handleSubmit = async () => {
     setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
-    const res = await checkUserEmail(_tokenResponse.email);
-    console.log(res);
-    if (res === undefined) router.push('/onboarding?stage=1&account=false');
+    const res = await checkUserEmail(_tokenResponse.localId);
+    if (!res) router.push('/onboarding?stage=1&account=false');
     else {
       localStorage.setItem('token', _tokenResponse.idToken);
       localStorage.setItem('uid', _tokenResponse.localId);
@@ -35,9 +30,8 @@ const Login = () => {
         lastName: _tokenResponse.lastName,
         picture: _tokenResponse.photoUrl,
       });
+      router.push('/dashboard');
     }
-
-    // router.push('/dashboard');
   };
 
   return (

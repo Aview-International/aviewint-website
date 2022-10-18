@@ -12,12 +12,8 @@ import {
   set,
   ref,
   child,
-  query,
   update,
   get,
-  orderByChild,
-  equalTo,
-  onValue,
 } from 'firebase/database';
 
 const firebaseConfig = {
@@ -40,12 +36,12 @@ const database = getDatabase(app);
 // Initialize the auth service
 const auth = getAuth();
 
-export const checkUserEmail = async (email) => {
-  const dbRef = ref(database, '/users');
-  const queryConstraints = [orderByChild('email'), equalTo(email)];
-  onValue(query(dbRef, ...queryConstraints), (snapshot) => {
-    return snapshot.val();
+export const checkUserEmail = async (uid) => {
+  const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {
+    if (snapshot.exists()) return snapshot.val();
+    else return null;
   });
+  return res;
 };
 
 export const signInWithGoogle = async () => {
