@@ -73,7 +73,7 @@ export const OnboardingStep1 = () => {
         <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
         {account && (
           <p className="mb-s3 text-center text-lg">
-            You don't have an account yet, begin here
+            You don&apos;t have an account yet, begin here
           </p>
         )}
         <Shadow classes="w-full mb-4">
