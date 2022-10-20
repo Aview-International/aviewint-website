@@ -4,7 +4,7 @@
 
 @layer components {
   .link {
-    @apply underline;
+    @apply text-blue underline;
   }
 
   .navigation {

@@ -811,7 +811,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Translated subtitles are also a great way to expand your audience. In fact many of the most popular content creators have <a href="www.aviewint.com/blog/grow-channel-using-translations" class="link">used subtitles to help grow their channels</a.',
+            text: 'Translated subtitles are also a great way to expand your audience. In fact many of the most popular content creators have <a href="https://www.aviewint.com/blog/grow-channel-using-translations" class="link">used subtitles to help grow their channels</a>.',
           },
         ],
       },
@@ -829,7 +829,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Want to add subtitles or closed captions to your videos? Check out the services at <a href="www.aviewint.com" class="link">Aview</a>.',
+            text: 'Want to add subtitles or closed captions to your videos? Check out the services at <a href="https://www.aviewint.com" class="link">Aview</a>.',
           },
         ],
       },
