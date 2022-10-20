@@ -10,6 +10,7 @@ import WhyWorkWithUs from '../components/sections/home/LeadInTranslations';
 import GenerateAview from '../components/sections/home/GenerateAview';
 import FAQ from '../components/sections/home/FAQs';
 import GoGlobal from '../components/sections/home/GoGlobal';
+import FeaturedBlogs from '../components/sections/reused/FeaturedBlogs';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 
@@ -31,6 +32,7 @@ const Home = () => {
       <GenerateAview />
       <FAQ />
       <GoGlobal />
+      <FeaturedBlogs />
       <Footer curPage="Home" />
       <Blobs />
     </>

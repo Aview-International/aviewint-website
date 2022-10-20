@@ -8,6 +8,7 @@ import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import ApplyToday from '../../components/sections/careers/ApplyToday';
 import Process from '../../components/sections/careers/Process';
+import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 
 const Careers = () => {
   return (
@@ -23,6 +24,7 @@ const Careers = () => {
       <CompanyCulture />
       <Process />
       <ApplyToday />
+      <FeaturedBlogs />
       <Footer curPage="Careers" />
       <Blobs />
     </>

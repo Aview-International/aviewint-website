@@ -11,6 +11,7 @@ import MeetTheTeam from '../../components/sections/about/MeetTheTeam';
 import WhyName from '../../components/sections/about/WhyName';
 import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
 import SEO from '../../components/SEO/SEO';
+import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 
 const About = () => {
   return (
@@ -29,6 +30,7 @@ const About = () => {
       <MeetTheTeam />
       <WhyName />
       <JoinTheTeam />
+      <FeaturedBlogs />
       <Footer curPage="About" />
       <Blobs />
     </>

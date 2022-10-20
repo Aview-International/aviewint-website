@@ -10,6 +10,7 @@ import InternationalGrowth from '../../components/sections/creators/Internationa
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import GoGlobal from '../../components/sections/creators/GoGlobal';
+import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 
 const Creators = () => {
   return (
@@ -27,6 +28,7 @@ const Creators = () => {
       <BenefitsOfTranslations />
       <InternationalGrowth />
       <AtAview />
+      <FeaturedBlogs />
       <Footer curPage="Creators" />
       <Blobs />
     </>

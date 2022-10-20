@@ -1,9 +1,6 @@
 import Header from '../../components/navigation/Header';
 import Footer from '../../components/navigation/Footer';
 import GrowingInternationally from '../../components/sections/corporate/GrowingInternationally';
-import OurServices from '../../components/sections/reused/OurServices';
-import OurMilestones from '../../components/sections/reused/OurMilestones';
-import Testimonials from '../../components/sections/corporate/Testimonials';
 import WhyChooseUs from '../../components/sections/corporate/WhyChooseUs';
 import Blobs from '../../components/UI/Blobs';
 import BrandGlobal from '../../components/sections/corporate/BrandGlobal';
@@ -15,6 +12,7 @@ import OurTranslationServices from '../../components/sections/corporate/OurTrans
 import LanguagesServed from '../../components/sections/corporate/LanguagesServed';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
 import WorkWithUs from '../../components/sections/creators/WorkWithUs';
+import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 
 const Corporate = () => {
   return (
@@ -30,12 +28,11 @@ const Corporate = () => {
       <OurTranslationServices />
       <LanguagesServed />
       <PreppingForBillC96 />
-      {/* <OurMilestones /> */}
-      {/* <Testimonials /> */}
       <WhyChooseUs />
       <FAQs page="corporate" />
       <GenerateAviewForCompany title="Get a free quote today" />
       <WorkWithUs />
+      <FeaturedBlogs />
       <Footer curPage="Corporate" />
       <Blobs />
     </>
