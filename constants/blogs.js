@@ -865,4 +865,34 @@ export const BLOGS = [
   //     },
   //   ],
   // },
+  // {
+  //   title: '',
+  //   description: '',
+  //   date: ', 2022',
+  //   img: blog1Graphic,
+  //   link: '/blog/',
+  //   author: 'Elis Hayakawa',
+  //   authorImg: elisImg,
+  //   length: '3 min',
+  //   sections: [
+  //     {
+  //       title: '',
+  //       link: '#',
+  //       content: [
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //         {
+  //           type: '',
+  //           text: '',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
