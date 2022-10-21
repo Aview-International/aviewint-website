@@ -12,11 +12,7 @@ const BlogRow = ({ blogs }) => {
             <Card borderRadius="2xl" fullWidth={true}>
               <div className="pb-s3">
                 <div className="mb-s2 overflow-hidden rounded-t-2xl">
-                  <Image
-                    src={blog.img}
-                    alt="Blog graphic"
-                    layout="responsive"
-                  />
+                  <Image src={blog.img} alt={blog.title} layout="responsive" />
                 </div>
                 <div className="px-s3">
                   <p className="mb-s1 text-xl font-bold text-white md:text-2xl">
