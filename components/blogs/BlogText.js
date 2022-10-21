@@ -22,7 +22,7 @@ const BlogText = ({ sections }) => {
                 );
               } else if (content.type === 'unordered list') {
                 return (
-                  <div>
+                  <div key={`section-${i}`}>
                     {content.items.map((item, i) => (
                       <div
                         className="grid grid-cols-[auto_auto] justify-start gap-3"
@@ -39,7 +39,7 @@ const BlogText = ({ sections }) => {
                 );
               } else if (content.type === 'ordered list') {
                 return (
-                  <ul>
+                  <ul key={`section-${i}`}>
                     {content.items.map((item, i) => {
                       const listItem = (
                         <div
@@ -60,6 +60,22 @@ const BlogText = ({ sections }) => {
                       return listItem;
                     })}
                   </ul>
+                );
+              } else if (content.type === 'youtube') {
+                return (
+                  <div
+                    className="my-4 text-center"
+                    key={`section-${i}`}
+                    dangerouslySetInnerHTML={{ __html: content.code }}
+                  ></div>
+                );
+              } else if (content.type === 'twitter') {
+                return (
+                  <div
+                    className="mx-auto"
+                    key={`section-${i}`}
+                    dangerouslySetInnerHTML={{ __html: content.code }}
+                  ></div>
                 );
               }
             })}

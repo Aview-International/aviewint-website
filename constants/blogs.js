@@ -721,7 +721,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "Closed captions are available in both live and recorded video as a service to your audience. They’re important because they allow your viewers to access the audio of your video even when the sound is off or when there's too much ambient noise to hear it.",
+            text: "Closed captions are available in both live and recorded video as a service to your audience. They're important because they allow your viewers to access the audio of your video even when the sound is off or when there's too much ambient noise to hear it.",
           },
         ],
       },
@@ -829,42 +829,319 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Want to add subtitles or closed captions to your videos? Check out the services at <a href="https://www.aviewint.com" class="link">Aview</a>.',
+            text: 'Want to add subtitles or closed captions to your videos? Check out the services at <a href="https://www.aviewint.com" target="_blank" class="link">Aview</a>.',
           },
         ],
       },
     ],
   },
-  // {
-  //   title: '',
-  //   description: '',
-  //   date: ', 2022',
-  //   img: blog1Graphic,
-  //   link: '/blog/',
-  //   author: 'Elis Hayakawa',
-  //   authorImg: elisImg,
-  //   length: '3 min',
-  //   sections: [
-  //     {
-  //       title: '',
-  //       link: '#',
-  //       content: [
-  //         {
-  //           type: '',
-  //           text: '',
-  //         },
-  //         {
-  //           type: '',
-  //           text: '',
-  //         },
-  //         {
-  //           type: '',
-  //           text: '',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Best Practises for Subtitling Videos 2022',
+    description:
+      "Adding subtitles to your videos can help you reach a wider audience. In this post, you'll learn the best practices for subtitling videos in 2022.",
+    date: 'Oct 21, 2022',
+    img: blog7Graphic,
+    link: '/blog/subtitling-best-practises',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The best content creators are always looking for ways to reach more people. They do this by following trends, producing high-quality videos, doing giveaways, and much more.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Another amazing way to <a href="https://www.aviewint.com/blog/grow-channel-using-translations" target="_blank" class="link">increase your viewership is by adding subtitles to your videos</a>.',
+          },
+        ],
+      },
+      {
+        title: 'Why are subtitles important?',
+        link: '#subtitles-importance',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Adding subtitles can exponentially increase your audience. How is that possible? Turns out there are about <a href='https://www.babbel.com/en/magazine/how-many-people-speak-english-and-where-is-it-spoken' target='_blank' class=''>6.45 billion people that don't speak English</a>! On top of that, over <a href='https://www.3playmedia.com/accessibility-online-video-stats/#:~:text=Over%205%25%20of%20the%20world's,adults%20and%2032%20million%20children).' target='_blank' class='link'>360 million people suffer from hearing loss</a>.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Subtitles can also help those in noisy environments understand the content.',
+          },
+          {
+            type: 'paragraph',
+            text: 'By adding subtitles to your videos creators can tap into this incredibly large audience.',
+          },
+          {
+            type: 'paragraph',
+            text: '',
+          },
+          {
+            type: 'paragraph',
+            text: "Subtitling your content is a strategy that's proven to work. In fact, according to <a href='https://www.3playmedia.com/customers/case-studies/discovery-digital-networks/' target='_blank' class='link'>Discovery Digital Networks</a>, YouTube videos with subtitles had 7.32% more overall views compared to content with no subtitles.",
+          },
+          {
+            type: 'paragraph',
+            text: "But how do you create quality subtitles? If you're looking to implement this strategy, keep reading because, in this article, you'll learn the best practices for subtitling your videos so that you can take your content to the next level.",
+          },
+          {
+            type: 'twitter',
+            code: '<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">&quot;Once you overcome the one-inch tall barrier of subtitles, you will be introduced to so many more amazing films.&quot; — Bong Joon-ho <a href="https://twitter.com/hashtag/GoldenGlobes?src=hash&amp;ref_src=twsrc%5Etfw">#GoldenGlobes</a></p>&mdash; Netflix (@netflix) <a href="https://twitter.com/netflix/status/1213998556551344128?ref_src=twsrc%5Etfw">January 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>',
+          },
+        ],
+      },
+      {
+        title: 'Use great timing.',
+        link: '#great-timing',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The first step to having amazing subtitles is by having the correct timing. Here are a few rules of thumb to keep in mind.',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Coincide with the start/end of the speech',
+              'Sync with video and audio',
+              'Fit within shots',
+              'Try not to go over 42 characters in one line',
+              'Avoid spoilers!',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Subtitles should appear when someone starts speaking and disappear when they stop speaking.',
+          },
+          {
+            type: 'paragraph',
+            text: "In some cases, syncing it with music can also enhance the viewer's experience.",
+          },
+          {
+            type: 'paragraph',
+            text: "If your video includes surprises, make sure the subtitles don't reveal any spoilers. You wouldn't want to ruin any jumpscares!",
+          },
+        ],
+      },
+      {
+        title: 'Include accurate meaning/translations.',
+        link: '#accurate',
+        content: [
+          {
+            type: 'paragraph',
+            text: "It can be easy to translate words using their exact definitions. However, this isn't always the most accurate way to create subtitles.",
+          },
+          {
+            type: 'paragraph',
+            text: 'To ensure, the message is communicated accurately, focus on the meaning and the context behind the audio.',
+          },
+        ],
+      },
+      {
+        title: 'Communicate muffled or distorted speech.',
+        link: '#muffled-or-distorted',
+        content: [
+          {
+            type: 'paragraph',
+            text: "The speech in your videos isn't always going to be completely audible. That's where subtitles shine.",
+          },
+          {
+            type: 'paragraph',
+            text: "As mentioned above, it's important to focus on the meaning behind the audio. If there's inaudible or muffled speech, make sure to accurately communicate the meaning behind the words.",
+          },
+        ],
+      },
+      {
+        title: 'Sound effects and background music.',
+        link: '#sound-effects-background-music',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Imagine what a horror movie would be like with no music! That's why it's important to include music to set the tone.",
+          },
+          {
+            type: 'paragraph',
+            text: "Many creators also use sound effects to enhance the experience. Make sure to include these effects as long as they don't continuously repeat at certain intervals.",
+          },
+        ],
+      },
+      {
+        title: 'Add punctuation to make it more engaging!',
+        link: '#punctuation',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Including punctuation is a great way to add more context for users who may suffer from hearing loss.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Adding question marks (?), exclamation points (!), hyphens (-), and much more will create an engaging experience for your viewers!',
+          },
+        ],
+      },
+      {
+        title: 'Correct formatting for numbers.',
+        link: '#correct-formatting',
+        content: [
+          {
+            type: 'paragraph',
+            text: "When numbers are mentioned in your video's dialogue, there are a few common practices to keep in mind.",
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Only use numerals for numbers over ten. (five apples vs 20 apples)',
+              'Use hyphens in phone numbers. (xxx-xxx-xxx)',
+              'Spell out non-phonetic numbers. (A dozen eggs)',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Optimal placement.',
+        link: '#optimal-placement',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The standard placement for subtitles is in the center of the screen.',
+          },
+          {
+            type: 'paragraph',
+            text: "In most cases, it's placed at the bottom of the screen to avoid covering anything important. However, this is not always optimal.",
+          },
+          {
+            type: 'paragraph',
+            text: "For short-form content such as <a href='https://www.youtube.com/creators/shorts/' target='_blank' class='link'>YouTube Shorts</a>, adding subtitles in the center of the screen can lead to a better user experience. Here's an example of this.",
+          },
+        ],
+      },
+      {
+        title: 'Use a good font.',
+        link: '#good-font',
+        content: [
+          {
+            type: 'paragraph',
+            text: "A good font is easy to see, but not too distracting. Here's a list of standard fonts for subtitles.",
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Lucida Grande',
+              'Arial',
+              'STIXGeneral',
+              'Verdana',
+              'Helvetica Neue',
+              'Times',
+              'Futura',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Just because these are the standard fonts doesn't mean you have to use them. As long as your font is practical and consistent with your brand you're good to go.",
+          },
+        ],
+      },
+      {
+        title: 'Create contrast.',
+        link: '#contrast',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Even if you have a great font, your subtitles still may be read. This can be due to multiple factors. The color, shadow, outline, or other properties can prevent or help viewers read the text.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Here are 5 ways you can make your subtitles easier to read.',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'Use an outline for the text',
+              'Make the font bold',
+              'Use a different color',
+              'Use a background behind the text',
+              'Add a drop shadow',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Italics for off-screen narration.',
+        link: '#italics',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Italics are most often used for audio coming from a speaker that is either off-screen or not the shot.',
+          },
+          {
+            type: 'paragraph',
+            text: 'One of the most common uses of italics in television is flashbacks.',
+          },
+        ],
+      },
+      {
+        title: 'Adding subtitles with Aview.',
+        link: '#aview',
+        content: [
+          {
+            type: 'youtube',
+            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/lefxMV5AF3M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+          },
+          {
+            type: 'paragraph',
+            text: 'There are multiple ways to add subtitles to your videos. One of the best ways to get quality subtitles in multiple languages is with <a href="https://www.aviewint.com/" target="_blank" class="link">Aview</a>".',
+          },
+          {
+            type: 'paragraph',
+            text: 'Aview supports translations for the following languages:',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'English',
+              'French',
+              'German',
+              'Spanish',
+              'Swedish',
+              'Portuguese',
+              'Arabic',
+              'Russian',
+              'Chinese',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Many successful content creators such as <a href='https://www.youtube.com/c/loganpaulvlogs/featured' target='_blank' class='link'>Logan Paul</a>, <a href='https://www.youtube.com/c/Ninja' target='_blank' class='link'>Ninja</a>, and <a href='https://www.youtube.com/c/YesTheory' target='_blank' class='link'>YesTheory</a> have been able to grow their audiences using Aview's translation and subtitling services.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Adding subtitles to your videos with Aview is as simple as selecting from our services, selecting your desired languages, and receiving high-quality translations within 48 hours.',
+          },
+        ],
+      },
+      {
+        title: 'Wrapping up.',
+        link: '#wrapping-up',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Utilizing subtitles is an amazing way to improve user experience and increase viewership.',
+          },
+          {
+            type: 'paragraph',
+            text: 'By applying the best practices above, you can ensure that you are creating high-quality subtitles for your audience.',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're also interested in dubbing, feel free to check out our article on the <a href='https://www.aviewint.com/blog/why-add-translated-dubbing' target='_blank' class='link'>3 Reasons Why You Should Add Translated Dubbing to Your Content</a>.",
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   title: '',
   //   description: '',
