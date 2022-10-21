@@ -13,9 +13,16 @@ const YouCreateWeTranslate = () => {
         <div className="mb-s4 md:hidden">
           <Image src={globeGraphic} alt="Translation graphic" />
         </div>
+        <p className="body mb-s1.5 md:mb-s2.5">
+          Why does AVIEW lead in video translations? Our customized approach
+          allows us to help you expand your audience and exponentially increase
+          your revenue.
+        </p>
         <p className="body mb-s4">
-          With our customized approach, we help you expand your audience and
-          exponentially increase your revenues.
+          Whether you need subtitles, voice-overs, video editing, or
+          distribution, AVIEW is your one-stop shop for anyone that wants to
+          grow their audience. Creators have used our services to gain millions
+          of views from around the world.
         </p>
       </div>
       <div className="hidden md:block">
