@@ -26,9 +26,9 @@ const Dashboard = () => {
       </h2>
       <p>Youtuber videos available from your channel</p>
       <div className="m-auto grid w-3/4 grid-cols-1 items-center justify-center gap-10 text-white md:grid-cols-2">
-        {videos.map((video) => (
-          <div>
-            <p className="text-center text-xl mb-s1.5">{video.snippet.title}</p>
+        {videos.map((video, index) => (
+          <div key={`video-${index}`}>
+            <p className="mb-s1.5 text-center text-xl">{video.snippet.title}</p>
             <iframe
               width="100%"
               height="320"
