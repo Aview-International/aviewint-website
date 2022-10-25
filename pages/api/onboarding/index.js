@@ -120,7 +120,6 @@ export const addYoutubeChannelId = async (youtubeChannelId, _id) => {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-      console.log('yesss')
     } else {
       console.log('No data available');
     }

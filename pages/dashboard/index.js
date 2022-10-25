@@ -9,7 +9,6 @@ const Dashboard = () => {
         '/api/onboarding/link-youtube?get=videos',
         { token: youtube_oauth }
       );
-      console.log(getVideos.data.items);
       setVideos(getVideos.data.items);
     } catch (error) {
       console.log(error);
@@ -21,7 +20,7 @@ const Dashboard = () => {
   }, []);
   return (
     <>
-      <h2 className="mt-s20 text-center text-7xl text-white">
+      <h2 className="mt-s10 text-center text-7xl text-white">
         Welcome to the dashboard
       </h2>
       <p>Youtuber videos available from your channel</p>
