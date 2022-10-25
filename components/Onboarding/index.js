@@ -354,10 +354,16 @@ export const OnboardingStep4 = () => {
 // Onboarding stage 5
 export const OnboardingStep5 = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState({
+    youtube: false,
+    continue: false,
+    instagram: false,
+    tiktok: false,
+    facebook: false,
+  });
 
   const handleSubmit = () => {
-    setIsLoading(true);
+    setIsLoading({ ...isLoading, continue: true });
     setTimeout(() => router.push('/onboarding?stage=6'), 2000);
   };
 
@@ -386,6 +392,7 @@ export const OnboardingStep5 = () => {
   }, []);
 
   const getChannelId = async (token) => {
+    setIsLoading({ ...isLoading, youtube: true });
     try {
       const response = await axios.post(
         'api/onboarding/link-youtube?get=channel',
@@ -441,10 +448,13 @@ export const OnboardingStep5 = () => {
           className={`my-s2 block w-full rounded-full border-2 bg-[#ff0000] p-s1.5 text-center`}
           onClick={linkYoutubeAccount}
         >
-          Youtube
+          {isLoading.youtube ? <Loader /> : 'Youtube'}
         </button>
         <div className="mt-s4">
-          <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+          <OnboardingButton
+            isLoading={isLoading.continue}
+            onClick={handleSubmit}
+          >
             Continue
           </OnboardingButton>
         </div>
