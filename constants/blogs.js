@@ -5,6 +5,8 @@ import blog4Graphic from '../public/img/blogs/why-add-translated-dubbing.png';
 import blog5Graphic from '../public/img/blogs/add-captions-instagram-reels.png';
 import blog6Graphic from '../public/img/blogs/closed-captions-vs-subtitles.png';
 import blog7Graphic from '../public/img/blogs/subtitling-best-practises.png';
+import blog8Graphic from '../public/img/blogs/outsourcing-video-editing.png';
+import blog9Graphic from '../public/img/blogs/google-translate-accuracy.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -1137,6 +1139,151 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: "If you're also interested in dubbing, feel free to check out our article on the <a href='https://www.aviewint.com/blog/why-add-translated-dubbing' target='_blank' class='link'>3 Reasons Why You Should Add Translated Dubbing to Your Content</a>.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: '5 Major Benefits of Outsourcing Video Editing',
+    description:
+      "Outsourcing your video editing is essential to any creator's growth strategy. Keep reading to learn the 5 major benefits of hiring a video editor.",
+    date: 'Oct 25, 2022',
+    img: blog8Graphic,
+    link: '/blog/outsourcing-video-editing',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'YouTube is one of the most popular social media platforms with over <a href="https://www.statista.com/statistics/1252638/youtube-app-dau-worldwide/#:~:text=As%20of%20the%20third%20quarter,DAU)%20worldwide%20on%20iOS%20devices." target="_blank" class="link">361.23 million daily active users</a> and <a href="https://earthweb.com/how-many-youtube-channels-are-there/#:~:text=YouTube%20currently%20has%2038%20million,to%20become%20popular%20almost%20overnight." target="_blank" class="link">38 million active channels</a>. How can you make your videos stand out amongst the crowd?',
+          },
+          {
+            type: 'paragraph',
+            text: 'The answer is simple. Whether you are a new Youtuber or a veteran with a large channel, the quality of your videos needs to be able to compete with the rest of the creators in your niche.',
+          },
+          {
+            type: 'paragraph',
+            text: "The easiest way to create high-quality content is by outsourcing your video editing. If you would like to learn how to make your content stand out, keep reading because in this post you'll learn 11 benefits of outsourcing your video editing.",
+          },
+        ],
+      },
+      {
+        title: '#1 Outsourcing saves time.',
+        link: '#save-time',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Editing is time-consuming. Most content creators would rather spend their time on the creative aspect of their business than staring at their computer screen for hours on end trying to edit their footage. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Professional editors are experts in their field. They have the entire process streamlined from beginning to end to make sure that no time is wasted. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Rather than attempting to become a video editing expert yourself, consider saving time and resources by outsourcing your work. ',
+          },
+        ],
+      },
+      {
+        title: '#2 Outsourcing saves money.',
+        link: '#save-money',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Most free editing software comes with limited capabilities. In order to create high-quality videos that will stand out, chances are, you will need expensive software and hardware. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Luckily, professional editors already have all the equipment they need to make your content look amazing. ',
+          },
+          {
+            type: 'paragraph',
+            text: "Once the price of video equipment is factored in, it's clear that outsourcing your video editing is actually extremely cost-efficient. ",
+          },
+        ],
+      },
+      {
+        title: '#3 Translations and subtitles.',
+        link: '#translations-and-subtitles',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'On top of video editing, translating content into multiple languages is simply impossible for most creators.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Why translate your content? Adding subtitles or closed captions in multiple languages is a <a href="https://medium.com/@aviewint/how-to-grow-your-channel-using-translations-9646f82e4fbf?source=rss-e9071214d32d------2" target="_blank" class="link">great way to grow your channel by appealing to a global audience</a>.',
+          },
+          {
+            type: 'paragraph',
+            text: 'An extremely large percentage of YouTube users are non-English speakers. In fact, the leading country in active users is India coming in at <a href="https://www.statista.com/statistics/280685/number-of-monthly-unique-youtube-users/" target="_blank" class="link">467 million users</a>. Why not take advantage of this?',
+          },
+        ],
+      },
+      {
+        title: '#4 Scalability.',
+        link: '#scalability',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Video editing services can handle large amounts of content. This allows creators to film as much footage as they need and ultimately increase the amount of content they are producing.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Increasing the amount of content you are producing is the key to scaling your YouTube channel.',
+          },
+        ],
+      },
+      {
+        title: '#5 Repurpose your content.',
+        link: '#repurpose-content',
+        content: [
+          {
+            type: 'paragraph',
+            text: "A great way to make the most out of the content you produce is by repurposing it. If you post regularly, it's very likely that there are amazing clips to be found among the hours of content you have on your channel.",
+          },
+          {
+            type: 'paragraph',
+            text: 'This is a great opportunity to recycle old content by taking clips and making them into YouTube shorts. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Editing services that specialize in short-form content such as <a href="https://www.aviewint.com/" target="_blank" class="link">Aview</a> are perfect for this job. By outsourcing your editing, you can get more views out of old content. ',
+          },
+        ],
+      },
+      {
+        title: '#6 Finding an editor.',
+        link: '#finding-editor',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'When looking for an editor, there are two routes you can take. You can check out freelance editors from sites like <a href="https://www.fiverr.com/?utm_source=google&utm_medium=cpc-brand&utm_campaign=G_US_Brand_BrandingDeskTop_Exact&utm_term=one-fiverr_(exact)&utm_content=AdID%5e549600552450%5eKeyword%5efiverr%5ePlacement%5e%5eDevice%5ec&caid=731898203&agid=43879774452&ad_id=549600552450&kw=fiverr&lpcat=br_general&show_join=true&cq_src=google_ads&cq_cmp=731898203&cq_term=fiverr&cq_plac=&cq_net=g&cq_plt=gp&gclid=Cj0KCQjw-fmZBhDtARIsAH6H8qj1iuuWkjynBtMwCHZnYXdCjCbnXH7boYSaoBVEu7f2WQjApT7JBNsaAmeiEALw_wcB&gclsrc=aw.ds" target="_blank" class="link">Fiverr</a> and <a href="https://www.upwork.com/nx/find-work/" target="_blank" class="link">Upwork</a> or you can go with a video editing agency.',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're looking to find a cheap editor, consider checking out our post on <a href='https://medium.com/@aviewint/how-to-hire-a-good-editor-on-a-small-budget-a90e8c7739d2?source=rss-e9071214d32d------2' target='_blank' class='link'>How to Find a Good Editor on a Small Budget</a>.",
+          },
+        ],
+      },
+      {
+        title: 'Summing up.',
+        link: '#conclusion',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Whether you are looking to save time, and money, increase viewership, create more content, or repurpose old content, utilizing editing services is a great way to improve your YouTube channel. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Outsourcing your video editing will give you an edge as a content creator and it will help you take your YouTube channel to new heights. ',
           },
         ],
       },

@@ -7,7 +7,7 @@ import OurTranslatedContent from '../components/sections/home/TranslatedContent'
 import ALeaderInTranslations from '../components/sections/home/YouCreateWeTranslate';
 import BreadAndButter from '../components/sections/home/BreadAndButter';
 import WhyWorkWithUs from '../components/sections/home/LeadInTranslations';
-import GenerateAview from '../components/sections/home/GenerateAview';
+import StartGenerating from '../components/sections/home/StartGenerating';
 import FAQ from '../components/sections/home/FAQs';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import FeaturedBlogs from '../components/sections/reused/FeaturedBlogs';
@@ -29,7 +29,7 @@ const Home = () => {
       <ALeaderInTranslations />
       <BreadAndButter />
       <WhyWorkWithUs />
-      <GenerateAview />
+      <StartGenerating />
       <FAQ />
       <GoGlobal />
       <FeaturedBlogs />

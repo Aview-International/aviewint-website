@@ -12,7 +12,7 @@ import Button from '../../UI/Button';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import { useRouter } from 'next/router';
 
-const GenerateAview = () => {
+const StartGenerating = () => {
   let router = useRouter();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [data, setData] = useState({
@@ -129,4 +129,4 @@ const GenerateAview = () => {
   );
 };
 
-export default GenerateAview;
+export default StartGenerating;
