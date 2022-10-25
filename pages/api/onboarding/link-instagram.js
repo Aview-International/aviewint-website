@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export default async function getAccessToken(req, res) {
   const { code } = req.body;
-  // console.log(code);
   try {
     const response = await axios({
       method: 'POST',

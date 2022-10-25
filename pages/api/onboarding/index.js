@@ -108,6 +108,25 @@ export const updateRequiredServices = async (services, _id) => {
   });
 };
 
+export const addYoutubeChannelId = async (youtubeChannelId, _id) => {
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        youtubeChannelId,
+      };
+      const updates = {
+        [`users/${_id}`]: postData,
+      };
+      await update(ref(database), updates);
+      console.log('yesss')
+    } else {
+      console.log('No data available');
+    }
+  });
+};
+
 export const updateUserBio = async (payload, _id) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {

@@ -18,6 +18,7 @@ import Link from 'next/link';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
+  addYoutubeChannelId,
   createNewUser,
   signInWithFacebook,
   signInWithGoogle,
@@ -26,7 +27,7 @@ import {
   updateUserBio,
 } from '../../pages/api/onboarding';
 import { UserData } from '../../store/menu-open-context';
-import { InstagramAuthenticationLink } from './apis';
+import { InstagramAuthenticationLink, YoutubeAuthenticationLink } from './apis';
 import Loader from '../UI/loader';
 import axios from 'axios';
 
@@ -40,7 +41,7 @@ export const OnboardingStep1 = () => {
   });
 
   const handleGoogle = async () => {
-    setIsLoading(true);
+    setIsLoading({ ...isLoading, google: true });
     const { _tokenResponse } = await signInWithGoogle();
     updateUser({
       ...user,
@@ -360,7 +361,6 @@ export const OnboardingStep5 = () => {
     setTimeout(() => router.push('/onboarding?stage=6'), 2000);
   };
 
-  const getInstagramUsername = async () => {};
   const getInstagramToken = async () => {
     try {
       const code = {
@@ -377,11 +377,38 @@ export const OnboardingStep5 = () => {
     window.addEventListener('storage', (e) => {
       if (e.key === 'ig_access_code') getInstagramToken();
     });
+    const token = router.asPath
+      ?.split('access_token=')[1]
+      ?.split('&token_type')[0];
+    if (!token) return;
+    localStorage.setItem('youtube_oauth', token);
+    getChannelId(token);
   }, []);
+
+  const getChannelId = async (token) => {
+    try {
+      const response = await axios.post(
+        'api/onboarding/link-youtube?get=channel',
+        {
+          token,
+        }
+      );
+      await addYoutubeChannelId(
+        response.data.items[0].id,
+        localStorage.getItem('uid')
+      );
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const linkInstagramAccount = async () => {
     window.open(InstagramAuthenticationLink, '_blank');
     // getInstagramToken();
+  };
+  const linkYoutubeAccount = async () => {
+    router.push(YoutubeAuthenticationLink);
   };
 
   return (
@@ -412,6 +439,7 @@ export const OnboardingStep5 = () => {
         </button>
         <button
           className={`my-s2 block w-full rounded-full border-2 bg-[#ff0000] p-s1.5 text-center`}
+          onClick={linkYoutubeAccount}
         >
           Youtube
         </button>
