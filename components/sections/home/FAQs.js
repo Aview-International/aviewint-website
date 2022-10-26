@@ -9,7 +9,7 @@ import HorizontalLine from '../../UI/HorizontalLine';
 const FAQs = ({ page }) => {
   return (
     <section className="section m-horizontal">
-      <h2 className="title text-center">
+      <h2 className="title mb-s2 text-center">
         <span className="gradient-text gradient-2">FAQ</span>
       </h2>
       <p className="body mb-s6 md:mb-s10 md:text-center">
@@ -81,7 +81,7 @@ const CLICKHERE_QUESTION = ({ page }) => {
             ? 'How much does it cost?'
             : 'How can I get started?'}
           <div className="relative pr-s3">
-          <span className="inline-block h-[3px] w-6 bg-white"></span>
+            <span className="inline-block h-[3px] w-6 bg-white"></span>
             <span
               className={`absolute top-[18px] left-[0px] h-[3px] w-6 rotate-90 bg-white ${
                 isOpen ? 'hidden' : 'inline-block'
