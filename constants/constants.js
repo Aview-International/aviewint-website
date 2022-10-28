@@ -175,19 +175,19 @@ export const WORKED_WITH = [
 export const TRANSLATED_CONTENT = [
   {
     id: 'video-1',
-    link: 'https://drive.google.com/file/d/1BYj5OV2coc8fnWa86tPmWic2amqG8jUK/preview',
+    link: 'https://www.youtube.com/embed/mnzxkkoGROM',
   },
   {
     id: 'video-2',
-    link: 'https://drive.google.com/file/d/14-L7z5nvxzbhFBSsjhQjxv9IrRjQdvvf/preview',
+    link: 'https://www.youtube.com/embed/tRMbUkN0DNc',
   },
   {
     id: 'video-3',
-    link: 'https://drive.google.com/file/d/18fOj70jdyo_KC0vb2J6E5kA5711vAsX4/preview',
+    link: 'https://www.youtube.com/embed/7Jbx0tzIKok',
   },
   {
     id: 'video-4',
-    link: 'https://drive.google.com/file/d/1hD_3AM4hXj11TTcjRv74hqB6en-RsY7f/preview',
+    link: 'https://www.youtube.com/embed/T-LOpmmWLW4',
   },
 ];
 
