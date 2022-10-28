@@ -7,7 +7,7 @@ const BlogText = ({ sections }) => {
           key={`section-${i}`}
           id={section.link.slice(1)}
         >
-          <h4 className="mb-s1 text-xl font-bold text-white md:text-3xl">
+          <h4 className="mb-s1 text-xl font-bold text-white md:mb-s2 md:text-3xl">
             {section.title}
           </h4>
           <div className="flex flex-col gap-s3">
@@ -76,6 +76,12 @@ const BlogText = ({ sections }) => {
                     key={`section-${i}`}
                     dangerouslySetInnerHTML={{ __html: content.code }}
                   ></div>
+                );
+              } else if (content.type === 'subtitle') {
+                return (
+                  <h5 className="-mb-3 text-lg font-bold text-white md:text-2xl">
+                    {content.text}
+                  </h5>
                 );
               }
             })}

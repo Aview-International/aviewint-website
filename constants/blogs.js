@@ -1289,6 +1289,274 @@ export const BLOGS = [
       },
     ],
   },
+  {
+    title: 'How Accurate is Google Translate in 2022?',
+    description:
+      "Google Translate isn't always correct. But how accurate is it? This article goes over Google Translate's accuracy as well as the pros and cons.",
+    date: 'Oct 28, 2022',
+    img: blog9Graphic,
+    link: '/blog/google-translate-accuracy',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: "If you're looking to translate some content, where is the first place you go? Normally, the answer is Google Translate.",
+          },
+          {
+            type: 'paragraph',
+            text: "But Google Translate is not always on point. And when you're translating legal documents, business texts, or other important documents accuracy is extremely important.",
+          },
+          {
+            type: 'paragraph',
+            text: 'In order to understand how accurate Google Translate is, we first have to go over how it works.',
+          },
+        ],
+      },
+      {
+        title: 'How does Google Translate Work?',
+        link: '#how-google-translate-works',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Google used to scan the internet for words that had been translated in the past. There were two problems with this. ',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'Some language pairs have little to no history of online translation.',
+              "Translating single words results doesn't allow for context.",
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'For example, if you attempted to translate between Icelandic and Welsh, which are uncommon online, there would be almost no text for Google to reference. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Along with that, translating single words according to their most common definitions almost always results in the meaning getting lost in translation.',
+          },
+          {
+            type: 'paragraph',
+            text: 'However, Google has a new <a href="https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture" target="_blank" class="link">machine learning system</a>.',
+          },
+          {
+            type: 'paragraph',
+            text: "Now, English is used as an intermediary between languages. In other words, language “a” is translated to English, then it's translated to language “b”.",
+          },
+          {
+            type: 'paragraph',
+            text: 'They also scan full sentences instead of single words for better context.',
+          },
+          {
+            type: 'paragraph',
+            text: "While these upgrades have, without a doubt, increased the quality of Google's translations, it's still imperfect. But how close has Google Translate gotten?",
+          },
+        ],
+      },
+      {
+        title: 'How Accurate is Google Translate?',
+        link: '#accuracy',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Various studies have attempted to measure the quality of Google's translations and many of the results differ. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'However, the general consensus is that <a href="https://www.researchgate.net/publication/334523114_An_Updated_Evaluation_of_Google_Translate_Accuracy" target="_blank" class="link">Google Translate is about 85% accurate<a/>.',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're casually translating words to understand what they mean, Google Translate can in most cases, provide you with accurate enough information.",
+          },
+          {
+            type: 'paragraph',
+            text: 'However, if you are looking to translate important texts, you may want to consider factoring in the pros and cons.',
+          },
+        ],
+      },
+      {
+        title: 'Pros of Google Translate',
+        link: '#pros',
+        content: [
+          {
+            type: 'subtitle',
+            text: '#1 Google Translate is Fast',
+          },
+          {
+            type: 'paragraph',
+            text: "Maybe, you're trying to turn in your Japanese homework on time and you need a translation right away. Google Translate is your best bet.",
+          },
+          {
+            type: 'subtitle',
+            text: '#2 Google Translate is Free',
+          },
+          {
+            type: 'paragraph',
+            text: "Oftentimes, individuals need translations for day-to-day personal reasons. It wouldn't make sense to purchase a language tool or hire a translator. Just use Google it for free!",
+          },
+          {
+            type: 'subtitle',
+            text: '#3 Google Translate is Always Improving',
+          },
+          {
+            type: 'paragraph',
+            text: 'Machine learning is not rule-based. In other words, it’s always evolving and trying to improve.',
+          },
+        ],
+      },
+      {
+        title: 'Cons of Google Translate',
+        link: '#cons',
+        content: [
+          {
+            type: 'subtitle',
+            text: '#1 Polysemic Words',
+          },
+          {
+            type: 'paragraph',
+            text: "A polysemic word or phrase has the same origin but multiple meanings. At the end of the day, Google Translate is a machine. It can't understand polysemy.",
+          },
+          {
+            type: 'paragraph',
+            text: 'This is a huge problem because the top 100 most common words in the English dictionary have an <a href="https://www.researchgate.net/publication/334523114_An_Updated_Evaluation_of_Google_Translate_Accuracy" target="_blank" class="link">average of 15 senses</a>.',
+          },
+          {
+            type: 'paragraph',
+            text: 'For example, the word “organ” can refer to a body part or an instrument. You can see how this may become wildly problematic for auto-generated translations.',
+          },
+          {
+            type: 'subtitle',
+            text: '#2 Colloquial Phrases',
+          },
+          {
+            type: 'paragraph',
+            text: 'Colloquial phrases are informal sayings that are used in casual settings. A couple of examples are “kick the bucket” or “hard to swallow”.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Unfortunately, Google Translate has a hard time understanding these phrases. In fact, Google has a <a href="https://preply.com/en/blog/how-accurate-is-google-translate/" target="_blank" class="link">72% accuracy when translating colloquial phrases<a/>.',
+          },
+          {
+            type: 'paragraph',
+            text: 'This can result in inaccurate translations that leave people confused.',
+          },
+          {
+            type: 'subtitle',
+            text: '#3 Privacy Issues',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're working with sensitive legal or business information, you may want to consider using a different service.",
+          },
+          {
+            type: 'paragraph',
+            text: "According to <a href='https://policies.google.com/terms?hl=en-US' target='_blank' class='link'>Google's terms of service<a/>, they have the right to host, distribute, communicate and use your content which is problematic if you're dealing with confidential texts.",
+          },
+          {
+            type: 'paragraph',
+            text: 'This could lead to the breach of non-disclosure agreements.',
+          },
+          {
+            type: 'subtitle',
+            text: '#4 Negative Impacts on SEO',
+          },
+          {
+            type: 'paragraph',
+            text: "One of the biggest factors in SEO is user experience. If you're publishing content on your website with mistranslated phrases, it's not uncommon to see a negative effect on your search rankings.",
+          },
+          {
+            type: 'quote',
+            quote:
+              "“If you're creating content for German users and it's mistranslated, they are going to go somewhere else.”",
+            author:
+              "Google's <a href='https://www.youtube.com/watch?v=qoISMxlhNTI&t=378s' target='_blank' class='link'>John Mueller</a>",
+          },
+        ],
+      },
+      {
+        title: 'Should you use Google Translate?',
+        link: '#should-you-use',
+        content: [
+          {
+            type: 'paragraph',
+            text: "It depends. If you're looking to casually translate some words or phrases Google Translate will, for the most part, get the job done.",
+          },
+          {
+            type: 'paragraph',
+            text: 'However, business, legal, and other confidential documents should not be translated through Google.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Instead, consider using an online tool or service to get the job done.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Related: <a href="https://www.aviewint.com/blog/why-add-translated-dubbing" target="_blank" class="link">3 Reasons Why You Should Add Translated Dubbing to Your Content</a>',
+          },
+        ],
+      },
+      {
+        title: 'Google Translate Alternative - AVIEW',
+        link: '#translate-alternative',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'One of the best alternatives to Google Translate is AVIEW.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Because AVIEW has certified translators, we can ensure high-quality results.',
+          },
+          {
+            type: 'paragraph',
+            text: "Here's a list of services to choose from:",
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'Translations',
+              'Subtitles',
+              'Captions',
+              'Video editing',
+              'Distribution',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'To learn more about us, check out <a href="https://www.aviewint.com/creators" target="_blank" class="link">AVIEW<a/> or contact us at julia@aviewint.com.',
+          },
+        ],
+      },
+      {
+        title: 'Wrapping Up',
+        link: '#wrapping-up',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Language is complex. In fact, it's so complex that despite all the developments in the machine learning industry, no one, not even Google has been able to come up with a system that can fully comprehend it.",
+          },
+          {
+            type: 'paragraph',
+            text: 'In fact, some experts believe that the differences between languages can never be understood by A.I.',
+          },
+          {
+            type: 'quote',
+            quote:
+              '"Machine translation will only replace those humans that translate like machines."',
+            author:
+              '<a href="https://twitter.com/arlelommel?lang=en" target="_blank" class="link">Arle Richard Lommel</a>',
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   title: '',
   //   description: '',
