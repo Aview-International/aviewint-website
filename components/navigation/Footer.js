@@ -2,6 +2,7 @@ import Image from 'next/image';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
+import { baseUrl } from '../baseUrl';
 
 const Footer = ({ curPage }) => {
   return (
@@ -50,7 +51,7 @@ const Footer = ({ curPage }) => {
           <a
             className={`text-md hover:gradient-text hover:gradient-2 } 
             text-white xl:text-lg`}
-            href="https://drive.google.com/file/d/1afrmOmR1LnXy7zFx8TxpnN0WpusvB2Qx/view?usp=sharing"
+            href={`${baseUrl}/privacy-policy`}
             target="_blank"
             rel="noopener noreferrer"
           >
