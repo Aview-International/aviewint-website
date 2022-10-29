@@ -9,4 +9,4 @@ const redirect_uri = `${baseUrl}/onboarding?stage=5`;
 const client_id =
   '976675432160-g6gf4n7e0g8am198nnsimqt3td1c4rc0.apps.googleusercontent.com';
 
-export const YoutubeAuthenticationLink = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`t
+export const YoutubeAuthenticationLink = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
