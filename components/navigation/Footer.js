@@ -47,6 +47,15 @@ const Footer = ({ curPage }) => {
               </a>
             </Link>
           ))}
+          <a
+            className={`text-md hover:gradient-text hover:gradient-2 } 
+            text-white xl:text-lg`}
+            href="https://drive.google.com/file/d/1afrmOmR1LnXy7zFx8TxpnN0WpusvB2Qx/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </a>
         </div>
       </div>
     </div>
