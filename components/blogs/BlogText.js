@@ -79,7 +79,7 @@ const BlogText = ({ sections }) => {
                 );
               } else if (content.type === 'subtitle') {
                 return (
-                  <h5 className="-mb-3 text-lg font-bold text-white md:text-2xl">
+                  <h5 className="-mb-3 mt-2 text-lg font-bold text-white md:mt-4 md:text-2xl">
                     {content.text}
                   </h5>
                 );

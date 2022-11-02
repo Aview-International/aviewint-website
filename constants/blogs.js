@@ -7,6 +7,7 @@ import blog6Graphic from '../public/img/blogs/closed-captions-vs-subtitles.png';
 import blog7Graphic from '../public/img/blogs/subtitling-best-practises.png';
 import blog8Graphic from '../public/img/blogs/outsourcing-video-editing.png';
 import blog9Graphic from '../public/img/blogs/google-translate-accuracy.png';
+import blog10Graphic from '../public/img/blogs/youtube-gaming-on-budget.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -1552,6 +1553,317 @@ export const BLOGS = [
               '"Machine translation will only replace those humans that translate like machines."',
             author:
               '<a href="https://twitter.com/arlelommel?lang=en" target="_blank" class="link">Arle Richard Lommel</a>',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "YouTube Gaming Equipment on a Budget | A Beginner's Guide",
+    description:
+      "Looking to start a YouTube gaming channel? You're in luck! This guide provides you with all the equipment you need to get started.",
+    date: 'Nov 1, 2022',
+    img: blog10Graphic,
+    link: '/blog/youtube-gaming-on-budget',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Looking to start a gaming channel but don't know where to start? You're not alone.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Many popular gaming YouTubers have fancy setups worth thousands of dollars. Luckily all you need to start are a few basic items.',
+          },
+          {
+            type: 'paragraph',
+            text: "In this post, you'll learn the basics of YouTube gaming equipment so that you can launch your channel and grow your audience.",
+          },
+        ],
+      },
+      {
+        title: 'Gaming PC',
+        link: '#gaming-pc',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Whether you're a PC or console gamer, a computer is a necessary piece of equipment. You'll be using it to store, edit, and upload footage.",
+          },
+          {
+            type: 'paragraph',
+            text: "For PC gamers, it's important to make sure that your computer has the capabilities to run all your programs well. But, PCs can be expensive.",
+          },
+          {
+            type: 'paragraph',
+            text: "Luckily, we've put together a list of great gaming PCs for beginner YouTubers that won't break the bank.",
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.lenovo.com/us/en/p/desktops/legion-desktops/legion-t-series-towers/legion-tower-5i-gen-7-(intel)/len102g0004" target="_blank" class="link">Lenovo Legion 5i Tower Gen 7</a> - $1,370',
+              '<a href="https://www.acer.com/us-en/predator/desktops-and-all-in-ones/predator-orion/orion-3000" target="_blank" class="link">Acer Predator Orion 3000</a> - $900',
+              '<a href="https://skytechgaming.com/product/blaze-ii-amd-ryzen-7-2700-nvidia-geforce-rtx-6gb-500gb-ssd-16gb-ram/" target="_blank" class="link">Skytech Blaze II Gaming PC</a> - $1,070',
+              '<a href="https://www.ibuypower.com/gaming-pcs/prebuilt-gaming-pcs" target="_blank" class="link">iBuyPower Gaming RDY</a> - $849',
+              '<a href="https://www.cyberpowerpc.com/" target="_blank" class="link">CyberPowerPC</a> - $849',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Gaming Mouse',
+        link: '#gaming-mouse',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Given the amount of time, you'll be spending on your computer, having a decent mouse for editing, gaming, and more is a must.",
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Gaming Mice',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.logitechg.com/en-us/products/gaming-mice/g403-hero-gaming-mouse.910-005630.html" target="_blank" class="link">Logitech G403</a> - Programmable buttons, RBG lights',
+              '<a href="https://row.hyperx.com/products/hyperx-pulsefire-haste-gaming-mouse?variant=40909066731725" target="_blank" class="link">HyperX Pulsefire Haste</a> - Very lightweight',
+              '<a href="https://www.corsair.com/us/en/Categories/Products/Gaming-Mice/FPS-Fast-Action-Mice/KATAR-PRO-XT-Ultra-Light-Gaming-Mouse/p/CH-930C111-NA" target="_blank" class="link">Corsair Katar Pro XT</a> - Programmable buttons',
+              '<a href="https://www.logitechg.com/en-us/products/gaming-mice/g305-lightspeed-wireless-gaming-mouse.910-006012.html" target="_blank" class="link">Logitech G203/G305</a> - Wireless options',
+              '<a href="https://www.logitechg.com/en-us/products/gaming-mice/g502-hero-gaming-mouse.910-005469.html" target="_blank" class="link">Razer Gigantus V2</a> - Best overall',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Audio Recorder',
+        link: '#audio-recorder',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'In order to start recording footage, you need to find a way to record your audio. There are 2 options to choose from. A microphone, or a gaming headset.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Audio quality is important. This is why getting a quality microphone may be a good investment. When you combine amazing sound with top-notch editing and video quality, your viewers will appreciate it.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Microphones for Gaming',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://hyperx.com/products/hyperx-solocast-usb-microphone" target="_blank" class="link">HyperX SoloCast</a> - Best price for cardioid polar pattern',
+              '<a href="https://fifinemicrophone.com/" target="_blank" class="link">FIFINE metal condenser recording microphone</a> - Best budget microphone',
+              '<a href="https://fifinemicrophone.com/" target="_blank" class="link">Blue Yeti USB</a> - Voice modulation and professional recording',
+              '<a href="https://rode.com/en/microphones/broadcast/podmic" target="_blank" class="link">Rode PodMic</a> - Good for all uses',
+              '<a href="https://www.shure.com/en-US/products/microphones/sm48" target="_blank" class="link">Shure SM48-LC</a> - Automatic noise canceling',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "What if you're on a budget? You're in luck. There are other ways to record your audio that aren't too expensive.",
+          },
+          {
+            type: 'paragraph',
+            text: "A good option is a gaming headset with a built-in microphone. If you're a gamer, chances are, you already have one, in which case, you don't have to spend extra money.",
+          },
+          {
+            type: 'paragraph',
+            text: "While the sound may not be exceptional, if you're creating entertaining content, people will still watch your videos.",
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Budget Gaming Headsets',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.razer.com/gaming-headsets/Razer-Barracuda-X/RZ04-03800100-R3U1" target="_blank" class="link">Razer Barracuda X</a> - Wireless, good for multiplatform use',
+              '<a href="https://steelseries.com/gaming-headsets/arctis-1" target="_blank" class="link">SteelSeries Arctic 1</a> - Noise-canceling microphone',
+              '<a href="https://www.razer.com/gaming-headsets/razer-blackshark-v2-x" target="_blank" class="link">Razer BlackShark V2 X</a> - Lightweight, noise canceling',
+              '<a href="https://www.corsair.com/us/en/Categories/Products/Gaming-Headsets/Stereo-Headsets/HS35-Stereo-Gaming-Headset/p/CA-9011195-NA" target="_blank" class="link">Corsair HS35</a> - Best budget headset',
+              '<a href="https://www.playstation.com/en-us/accessories/pulse-3d-wireless-headset/" target="_blank" class="link">Sony Pulse 3D</a> - 3D audio',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Audio Editing Software',
+        link: '#audio-editing-software',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Another important piece of equipment is audio editing software. While this isn't completely necessary, it will open many doors in terms of content quality.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Audio editing software will allow you to add sound effects and music. This will make your gaming footage way more engaging.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Luckily, there are many free options.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Audio Editing Software',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.nch.com.au/wavepad/index.html" target="_blank" class="link">WavePad</a> - Free, tons of features',
+              '<a href="https://www.audacityteam.org/" target="_blank" class="link">Audacity</a> - Free, open source, cross-platform',
+              '<a href="https://mp3cut.net/" target="_blank" class="link">Audio Cutter</a> - Very user friendly',
+              '<a href="https://www.cyberlink.com/products/audiodirector/features_en_US.html" target="_blank" class="link">AudioDirector 365</a> - Best budget audio editing software',
+              '<a href="https://www.adobe.com/products/audition.html" target="_blank" class="link">Adobe Audition</a> - Best overall',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Related: <a href="https://www.aviewint.com/blog/why-add-translated-dubbing" target="_blank" class="link">3 Reasons Why You Should Add Translated Dubbing to Your Content</a>',
+          },
+        ],
+      },
+      {
+        title: 'Video Capture Device',
+        link: '#video-capture-device',
+        content: [
+          {
+            type: 'paragraph',
+            text: "If you're playing on a console, you're going to need a video capture device. This will allow you to record gameplay footage and save it directly to your computer.",
+          },
+          {
+            type: 'paragraph',
+            text: "Video capture devices can be a bit pricy, however, if you're recording on a console, it's a worthwhile investment. ",
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Video Capture Devices',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.asus.com/us/accessories/streaming-kits/video-capture-streaming/tuf-gaming-capture-box-cu4k30/" target="_blank" class="link">Asus Tuf Gaming CU4K30</a> - Good for solo and multiplayer',
+              '<a href="https://www.avermedia.com/us/product-detail/GC513" target="_blank" class="link">AverMedia Live Gamer Portable 2 Plus</a> - Ultra HD 4K Pass Through',
+              '<a href="https://www.avermedia.com/us/product-detail/GC311" target="_blank" class="link">AverMedia Live Gamer Mini</a> - Best budget video capture device',
+              '<a href="https://www.atomos.com/products/ninja-v" target="_blank" class="link">Atomos Ninja V</a> - Best multipurpose option',
+              '<a href="https://www.evga.com/products/product.aspx?pn=141-U1-CB20-LR" target="_blank" class="link">EVGA XR1 Lite</a> - Certified for OBS',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Related: <a href="https://www.aviewint.com/blog/outsourcing-video-editing" target="_blank" class="link">5 Major Benefits of Outsourcing Your Video Editing</a>',
+          },
+        ],
+      },
+      {
+        title: 'Video Recording Software',
+        link: '#video-recording-software',
+        content: [
+          {
+            type: 'paragraph',
+            text: "For all you PC gamers, you're going to need video recording software. Luckily, there are many free options out there.",
+          },
+          {
+            type: 'paragraph',
+            text: 'One of the most popular ones is OBS. This will allow you to record from your webcam, along with your monitor.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Free Video Recording Software',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://actionrecorder.com/" target="_blank" class="link">Action</a> - Beginner friendly',
+              '<a href="https://manycam.com/" target="_blank" class="link">ManyCam</a> - Best for professional use',
+              '<a href="https://obsproject.com/" target="_blank" class="link">OBS</a> - Best free option',
+              '<a href="https://www.nchsoftware.com/capture/index.html" target="_blank" class="link">Debut Video Capture</a> - Good for non-commercial use',
+              '<a href="https://getsharex.com/" target="_blank" class="link">ShareX</a> - Free, open source',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Related: <a href="https://www.aviewint.com/blog/hiring-good-editor-on-small-budget" target="_blank" class="link">How to Find a Good Editor on a Small Budget</a>',
+          },
+        ],
+      },
+      {
+        title: 'Webcam',
+        link: '#webcam',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Most computers come with a built-in webcam, however, chances are, it won't have the most flattering angle.",
+          },
+          {
+            type: 'paragraph',
+            text: 'This is why external webcams are essential. Many webcams even have built-in microphones which can help you save even more money.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Webcams for Gaming',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.elgato.com/en/facecam" target="_blank" class="link">Elgato Facecam</a> - Professional quality and features',
+              '<a href="https://www.logitech.com/en-us/products/webcams/streamcam.960-001286.html" target="_blank" class="link">Logitech StreamCam</a> - Full HD 1080p at 60fps',
+              '<a href="https://www.insta360.com/product/insta360-link" target="_blank" class="link">Insta360 Link</a> - AI tracking capabilities',
+              '<a href="https://www.razer.com/streaming-cameras/razer-kiyo-pro" target="_blank" class="link">Razer Kiyo Pro</a> - Wide angle lens, adjustable FOV',
+              '<a href="https://www.logitech.com/en-us/products/webcams/c922-pro-stream-webcam.960-001087.html" target="_blank" class="link">Logitech C922 HD Pro</a> - Bes budget option',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Thumbnail Editing Software',
+        link: '#thumbnail-editing-software',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Great thumbnails are a must. Your thumbnail is the first thing people see when they are scrolling through their YouTube.',
+          },
+          {
+            type: 'paragraph',
+            text: "It's important to create a high-quality thumbnail that is attention-grabbing and reflects the content of your video.",
+          },
+          {
+            type: 'subtitle',
+            text: 'Top 5 Thumbnail Editing Software',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              '<a href="https://www.canva.com/" target="_blank" class="link">Canva</a> - Free, easy to use',
+              '<a href="https://pixlr.com/suite/" target="_blank" class="link">>Pixlr</a - Lots of customization',
+              '<a href="https://www.picmaker.com/" target="_blank" class="link">Picmaker</a> - Pre-made templates',
+              '<a href="https://filmora.wondershare.com/video-editor/" target="_blank" class="link">Filmora</a> - Video and image editing capabilities',
+              '<a href="https://www.visme.co/" target="_blank" class="link">Visme</a> - Best for professional presentations and documents',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'Related: <a href="https://www.aviewint.com/blog/make-best-thumbnail" target="_blank" class="link">How to Make the Best Thumbnail for Your Videos</a>',
+          },
+        ],
+      },
+      {
+        title: "Equipment Isn't Everything",
+        link: '#equipment-isnt-everything',
+        content: [
+          {
+            type: 'paragraph',
+            text: "While having top-tier gaming equipment will help you give your audience the best experience possible, you don't have to have a fancy setup to attract viewers.",
+          },
+          {
+            type: 'paragraph',
+            text: "Focus on content. If you're creating videos that are funny, charismatic, or insightful, people will watch and enjoy your content.",
           },
         ],
       },

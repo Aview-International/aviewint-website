@@ -3,9 +3,8 @@ import Header from '../navigation/Header';
 import BlogIntro from './BlogIntro';
 import TableOfContents from './TableOfContents';
 import BlogText from './BlogText';
-
-import { BLOGS } from '../../constants/blogs';
 import Footer from '../navigation/Footer';
+import { BLOGS } from '../../constants/blogs';
 
 const BlogPage = ({ idx }) => {
   return (
