@@ -196,12 +196,12 @@ export const LEAD_IN_TRANSLATIONS = [
     id: 'card-1',
     title: 'Fast & Easy',
     description:
-      'AVIEW guarantees a 24-hour turnaround on subtitle and 48 hours on dubbed content.',
+      'AVIEW guarantees a 24-hour turnaround on subtitles and 48 hours on dubbed content.',
     graphic: fastAndEasy,
   },
   {
     id: 'card-2',
-    title: 'Flexible',
+    title: 'Personalized',
     description:
       'We offer a personalized payment plan and tailor our process to your needs.',
     graphic: flexible,
@@ -272,16 +272,16 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
 export const OUR_SERVICES = [
   {
     id: 'service-1',
-    title: 'Subtitles',
+    title: 'Subtitles and Dubs',
     description:
-      'Our team of certified translators work in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
+      'Our team of certified translators works in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
     graphic: subtitles,
   },
   {
     id: 'service-2',
-    title: 'Shorts',
+    title: 'Video-Editing',
     description:
-      'We create catchy short-form videos from your existing videos, giving your audience bite-sized content that can be enjoyed at any time of day.',
+      'We create catchy short-form videos from your existing videos, giving your audience bite-sized content that can be enjoyed anytime.',
     graphic: shorts,
   },
   {

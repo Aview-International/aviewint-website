@@ -24,9 +24,9 @@ const TranslateYourSocialMediaContent = () => {
               Translate.
             </span>
           </h1>
-          <p className="body mb-8">
+          <p className="body mb-8 max-w-[575px]">
             At AVIEW, we work with the top translators and voiceover talent so
-            that you can easily grow your international influence, A-View at a
+            that you can quickly grow your international influence, A-View at a
             time.
           </p>
           {showText ? (
