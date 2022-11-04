@@ -79,6 +79,21 @@ const BlogText = ({ sections }) => {
                     {content.text}
                   </h5>
                 );
+              } else if (content.type === 'quote') {
+                return (
+                  <div className="mx-auto my-8 max-w-[400px]">
+                    <p
+                      className="mb-s3 text-lg text-white md:text-xl"
+                      key={`content-${i}`}
+                      dangerouslySetInnerHTML={{ __html: content.quote }}
+                    />
+                    <p
+                      className="text-base font-[350] italic text-white md:text-lg"
+                      key={`content-${i}`}
+                      dangerouslySetInnerHTML={{ __html: content.author }}
+                    />
+                  </div>
+                );
               }
             })}
           </div>

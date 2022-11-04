@@ -1478,7 +1478,7 @@ export const BLOGS = [
             quote:
               "“If you're creating content for German users and it's mistranslated, they are going to go somewhere else.”",
             author:
-              "Google's <a href='https://www.youtube.com/watch?v=qoISMxlhNTI&t=378s' target='_blank' class='link'>John Mueller</a>",
+              "- Google's <a href='https://www.youtube.com/watch?v=qoISMxlhNTI&t=378s' target='_blank' class='link'>John Mueller</a>",
           },
         ],
       },
@@ -1553,7 +1553,7 @@ export const BLOGS = [
             quote:
               '"Machine translation will only replace those humans that translate like machines."',
             author:
-              '<a href="https://twitter.com/arlelommel?lang=en" target="_blank" class="link">Arle Richard Lommel</a>',
+              '- <a href="https://twitter.com/arlelommel?lang=en" target="_blank" class="link">Arle Richard Lommel</a>',
           },
         ],
       },
