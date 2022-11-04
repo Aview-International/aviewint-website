@@ -2,11 +2,7 @@ const BlogText = ({ sections }) => {
   return (
     <div className="mb-s10 md:mb-s20">
       {sections.map((section, i) => (
-        <div
-          className="pt-s5 md:pt-s10"
-          key={`section-${i}`}
-          id={section.link.slice(1)}
-        >
+        <div className="pt-s10" key={`section-${i}`} id={section.link.slice(1)}>
           <h4 className="mb-s1 text-xl font-bold text-white md:mb-s2 md:text-3xl">
             {section.title}
           </h4>

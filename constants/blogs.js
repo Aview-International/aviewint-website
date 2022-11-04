@@ -8,6 +8,7 @@ import blog7Graphic from '../public/img/blogs/subtitling-best-practises.png';
 import blog8Graphic from '../public/img/blogs/outsourcing-video-editing.png';
 import blog9Graphic from '../public/img/blogs/google-translate-accuracy.png';
 import blog10Graphic from '../public/img/blogs/youtube-gaming-on-budget.png';
+import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -1864,6 +1865,123 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: "Focus on content. If you're creating videos that are funny, charismatic, or insightful, people will watch and enjoy your content.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'How Logan Paul Went Global Through Translations',
+    description:
+      "This shows that the vast majority of creators have yet to translate their content into multiple languages. As trailblazers like Logan Paul have shown, there's massive potential for growth by taking your brand global.",
+    date: 'Nov 4, 2022',
+    img: blog11Graphic,
+    link: '/blog/logan-paul-global',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: "If you're online, chances are you've heard of Logan Paul. But he didn't become popular by chance.",
+          },
+          {
+            type: 'paragraph',
+            text: 'In fact, throughout his career as a YouTuber and social media influencer, Logan Paul has made strategic decisions that have helped him grow his following to a whopping 23 million subscribers on YouTube and millions more on all other social media platforms.',
+          },
+          {
+            type: 'paragraph',
+            text: 'But how did he do it? Focusing on entertaining content, a consistent schedule, and engaging with your audience will help almost any creator amass a decent following.',
+          },
+          {
+            type: 'paragraph',
+            text: "But given that Logan Paul's fanbase became so incredibly large, it's clear he's made decisions to help him stand out amongst all the competition. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'What set him apart from the crowd was that he went global. ',
+          },
+        ],
+      },
+      {
+        title: 'Logan Paul Adopts Translated Content',
+        link: '#logan-paul-translated',
+        content: [
+          {
+            type: 'youtube',
+            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/A_Fwj7GHwa4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+          },
+          {
+            type: 'paragraph',
+            text: "Logan realized the potential of global audiences. In fact, roughly <a href='https://www.linkedin.com/feed/update/urn:li:activity:6990376528043782145/?actorCompanyId=53422183' target='_blank' class='link'>75% of internet users don't use English<a/>. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'If your content is only in English, you may be missing out on millions of potential viewers.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Logan was one of the first major influencers to take advantage of the international market. This was done through translations.',
+          },
+          {
+            type: 'paragraph',
+            text: "While YouTube does have a translated subtitle feature, it can be very inaccurate. In fact, Google's machine-learning translation system is only about <a href='https://www.aviewint.com/blog/google-translate-accuracy' target='_blank' class='link'>85% accurate<a/>. So how did Logan reach non-English speaking users?",
+          },
+          {
+            type: 'paragraph',
+            text: 'In 2017, Logan partnered with <a href="https://www.aviewint.com/" target="_blank" class="link">AVIEW International<a/> to create translated content for people around the globe. He translated content from English to Arabic, Russian, Hindi, Spanish, Portuguese, and many other languages.',
+          },
+          {
+            type: 'paragraph',
+            text: 'This turned out to be an extremely successful strategy. His channel saw an explosion of popularity in countries all around the world.',
+          },
+          {
+            type: 'paragraph',
+            text: "One of Logan's largest international fanbases is from the United Arab Emirates. This was demonstrated by his massive meetup at the Dubai Mall in 2017.",
+          },
+        ],
+      },
+      {
+        title: "Logan Paul's Meetup at The Dubai Mall",
+        link: '#logan-paul-mall-meetup',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The Logan Paul meetup at the Dubai Mall was a legendary showcase of the power of his content strategy.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Hosted by the <a href="https://itp.live/" target="_blank" class="link">ITP<a/>, the then 22-year-old was met with a crowd of over 10,000 excited fans.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Since the Dubai Mall meetup, Logan Paul has continued to provide entertainment to his fanbase in the UAE. ',
+          },
+        ],
+      },
+      {
+        title: 'The Power of Going Global',
+        link: '#power-of-going-global',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'There are many things that go into scaling your presence online. For example, hiring video editors, implementing SEO, and sticking to a content schedule are all things that are necessary to take your channel to gold status. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'However, translating your content may be one of the best ways to take your online presence to the next level. ',
+          },
+          {
+            type: 'paragraph',
+            text: "The turnout at the Dubai Mall clearly demonstrates that there's a huge demand for translations on YouTube. <a href='https://www.oberlo.com/blog/youtube-statistics#:~:text=According%20to%20a%20survey%2C%20two,in%20English%20and%20other%20languages.' target='_blank' class='link'>In fact, over two-thirds of videos on the platform are not in English and only about 5% of videos are translated into multiple languages<a/>.",
+          },
+          {
+            type: 'paragraph',
+            text: "This shows that the vast majority of creators have yet to translate their content into multiple languages. As trailblazers like Logan Paul have shown, there's massive potential for growth by taking your brand global.",
           },
         ],
       },
