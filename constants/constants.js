@@ -272,7 +272,7 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
 export const OUR_SERVICES = [
   {
     id: 'service-1',
-    title: 'Subtitles and Dubs',
+    title: 'Subtitles & Dubs',
     description:
       'Our team of certified translators works in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
     graphic: subtitles,

@@ -38,7 +38,7 @@ const TranslateYourSocialMediaContent = () => {
           )}
         </div>
         <div className="mx-auto mt-s9 -mb-2 max-w-[500px] lg:-m-s2 lg:max-w-full">
-          <Image src={phoneInHandGraphic} alt="landing-graphic" />
+          <Image src={phoneInHandGraphic} alt="landing-graphic" priority />
         </div>
       </div>
       <Milestones />
