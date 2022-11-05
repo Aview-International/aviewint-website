@@ -423,7 +423,7 @@ export const OnboardingStep6 = () => {
   );
 };
 
-// Onboarding success page 
+// Onboarding success page
 export const OnboardingSuccess = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -434,7 +434,7 @@ export const OnboardingSuccess = () => {
   };
   return (
     <div className="m-auto w-[min(360px,80%)] pt-s5">
-      <h2 className="md:text-center text-5xl md:text-6xl">Success!</h2>
+      <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         You&#8217;ve completed the onboarding process. Now let&#8217;s take a
         look at your dashboard.
