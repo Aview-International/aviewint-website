@@ -563,6 +563,11 @@ export const LANDING_PAGE_FAQ = [
     question: 'Can you translate for other platforms like TikTok?',
     answer: `Yes! We are a multimedia translation service. We can translate and edit the content on any platform for you so they are ready to be uploaded.`,
   },
+  {
+    id: 'question7',
+    question: 'How can I get started?',
+    answer: `Click&nbsp;<a href="#generate-aview" class="underline">here</a>&nbsp;to get started!`,
+  },
 ];
 
 export const CORPORATE_PAGE_FAQ = [
@@ -593,6 +598,10 @@ export const CORPORATE_PAGE_FAQ = [
     Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
     `,
     _id: 'question3',
+  },
+  {
+    question: 'How much does it cost?',
+    answer: `AVIEW creates a pricing plan for each corporate client. We ensure that you see a return on our services! If you would like a quote, please click&nbsp;<a href="/corporate#generate-aview" class="underline">here!</a>`,
   },
 ];
 

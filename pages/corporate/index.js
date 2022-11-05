@@ -6,7 +6,7 @@ import Blobs from '../../components/UI/Blobs';
 import BrandGlobal from '../../components/sections/corporate/BrandGlobal';
 import OurMission from '../../components/sections/corporate/OurMission';
 import SEO from '../../components/SEO/SEO';
-import FAQs from '../../components/sections/home/FAQs';
+import FAQ from '../../components/sections/home/FAQ';
 import GenerateAviewForCompany from '../../components/sections/corporate/GenerateAviewForCompany';
 import OurTranslationServices from '../../components/sections/corporate/OurTranslationServices';
 import LanguagesServed from '../../components/sections/corporate/LanguagesServed';
@@ -29,7 +29,7 @@ const Corporate = () => {
       <LanguagesServed />
       <PreppingForBillC96 />
       <WhyChooseUs />
-      <FAQs page="corporate" />
+      <FAQ page="corporate" />
       <GenerateAviewForCompany title="Get a free quote today" />
       <WorkWithUs />
       <FeaturedBlogs />

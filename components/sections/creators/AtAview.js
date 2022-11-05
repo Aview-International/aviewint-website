@@ -1,10 +1,10 @@
-import FullWidthGradient from '../../layout/FullWidthGradient';
+import Banner from '../../layout/Banner';
 import Button from '../../UI/Button';
 
 const AtAview = () => {
   return (
     <section className="section text-center">
-      <FullWidthGradient>
+      <Banner>
         <h2 className="title mx-auto mb-s2 max-w-[1171px]">
           At Aview, our services fit any size creator! We have an offering that
           would work for you.
@@ -17,7 +17,7 @@ const AtAview = () => {
             Contact Us
           </Button>
         </div>
-      </FullWidthGradient>
+      </Banner>
     </section>
   );
 };

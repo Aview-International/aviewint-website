@@ -15,8 +15,10 @@ import UploadFile from '../../FormComponents/UploadFile';
 import { emailValidator } from '../../../utils/regex';
 
 const ApplyToday = () => {
-  let router = useRouter();
+  const router = useRouter();
+
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -26,8 +28,9 @@ const ApplyToday = () => {
     resume: null,
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     try {
       setHasSubmitted(true);
       if (
@@ -39,7 +42,8 @@ const ApplyToday = () => {
         !data.resume
       )
         return;
-      await submitFile('translator-applications', {
+
+      submitFile('translator-applications', {
         name: data.name,
         email: data.email,
         languages: data.languages.toString(),
@@ -47,6 +51,7 @@ const ApplyToday = () => {
         position: data.position,
         resume: data.resume,
       });
+
       router.push('/success');
     } catch (error) {
       console.log(error);
@@ -58,17 +63,15 @@ const ApplyToday = () => {
   };
 
   const handleMutlipleCheckbox = (option) => {
-    console.log(option);
     if (data.languages.includes(option)) {
       let newArray = [...data.languages];
       newArray.splice(newArray.indexOf(option), 1);
       setData({ ...data, languages: newArray });
     } else {
-      let LANGUAGAESARRAY = [...data.languages];
-      LANGUAGAESARRAY.push(option);
-      setData({ ...data, languages: LANGUAGAESARRAY });
+      let languagesArray = [...data.languages];
+      languagesArray.push(option);
+      setData({ ...data, languages: languagesArray });
     }
-    console.log(data.languages);
   };
 
   return (

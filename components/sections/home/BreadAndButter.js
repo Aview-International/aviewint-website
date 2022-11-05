@@ -1,9 +1,9 @@
-import FullWidthGradient from '../../layout/FullWidthGradient';
+import Banner from '../../layout/Banner';
 
 const BreadAndButter = () => {
   return (
     <section className="section">
-      <FullWidthGradient>
+      <Banner>
         <h2 className="title mx-auto mb-4 max-w-[593px] text-center">
           Translating Content, It&apos;s Our Bread and Butter
         </h2>
@@ -13,7 +13,7 @@ const BreadAndButter = () => {
           500M+ views, we&apos;ve helped creators and media companies meet their
           revenue and audience growth goals.
         </p>
-      </FullWidthGradient>
+      </Banner>
     </section>
   );
 };

@@ -2,7 +2,7 @@ import SEO from '../SEO/SEO';
 import Header from '../navigation/Header';
 import BlogIntro from './BlogIntro';
 import TableOfContents from './TableOfContents';
-import BlogText from './BlogText';
+import BlogContent from './BlogContent';
 import Footer from '../navigation/Footer';
 import { BLOGS } from '../../constants/blogs';
 
@@ -25,7 +25,7 @@ const BlogPage = ({ idx }) => {
             length={BLOGS[idx].length}
           />
           <TableOfContents sections={BLOGS[idx].sections} />
-          <BlogText sections={BLOGS[idx].sections} />
+          <BlogContent sections={BLOGS[idx].sections} />
         </div>
       </div>
       <Footer curPage="Blog" />

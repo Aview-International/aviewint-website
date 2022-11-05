@@ -2,7 +2,7 @@ import Image from 'next/image';
 import landingGraphic from '../../../public/img/graphics/about-landing.png';
 import Button from '../../UI/Button';
 
-const Landing = () => {
+const OurMission = () => {
   return (
     <section className="section m-horizontal mt-s6 lg:mt-s8">
       <div className="grid items-center lg:grid-cols-11">
@@ -25,4 +25,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default OurMission;

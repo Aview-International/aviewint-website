@@ -1,4 +1,4 @@
-const BlogText = ({ sections }) => {
+const BlogContent = ({ sections }) => {
   return (
     <div className="mb-s10 md:mb-s20">
       {sections.map((section, i) => (
@@ -103,4 +103,4 @@ const BlogText = ({ sections }) => {
   );
 };
 
-export default BlogText;
+export default BlogContent;

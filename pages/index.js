@@ -1,14 +1,14 @@
 import SEO from '../components/SEO/SEO';
 import Header from '../components/navigation/Header';
-import YouCreateWeTranslate from '../components/sections/home/TranslateYourSocialMediaContent';
+import YouCreateWeTranslate from '../components/sections/home/YouCreateWeTranslate';
 import OurServices from '../components/sections/reused/OurServices';
 import ContentCreators from '../components/sections/home/ContentCreators';
 import OurTranslatedContent from '../components/sections/home/TranslatedContent';
-import ALeaderInTranslations from '../components/sections/home/YouCreateWeTranslate';
+import LeaderInTranslations from '../components/sections/home/LeaderInTranslations';
 import BreadAndButter from '../components/sections/home/BreadAndButter';
 import WhyWorkWithUs from '../components/sections/home/LeadInTranslations';
 import StartGenerating from '../components/sections/home/StartGenerating';
-import FAQ from '../components/sections/home/FAQs';
+import FAQ from '../components/sections/home/FAQ';
 import GoGlobal from '../components/sections/home/GoGlobal';
 import FeaturedBlogs from '../components/sections/reused/FeaturedBlogs';
 import Footer from '../components/navigation/Footer';
@@ -26,7 +26,7 @@ const Home = () => {
       <OurServices />
       <ContentCreators />
       <OurTranslatedContent />
-      <ALeaderInTranslations />
+      <LeaderInTranslations />
       <BreadAndButter />
       <WhyWorkWithUs />
       <StartGenerating />

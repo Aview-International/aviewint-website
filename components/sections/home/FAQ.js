@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import {
   CORPORATE_PAGE_FAQ,
@@ -6,7 +5,7 @@ import {
 } from '../../../constants/constants';
 import HorizontalLine from '../../UI/HorizontalLine';
 
-const FAQs = ({ page }) => {
+const FAQ = ({ page }) => {
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-s2 text-center">
@@ -25,13 +24,12 @@ const FAQs = ({ page }) => {
           : LANDING_PAGE_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
             ))}
-        <CLICKHERE_QUESTION page={page} />
       </div>
     </section>
   );
 };
 
-export default FAQs;
+export default FAQ;
 
 const Question = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,53 +58,6 @@ const Question = ({ question, answer }) => {
             __html: answer,
           }}
         />
-      </div>
-      <HorizontalLine />
-    </>
-  );
-};
-
-const CLICKHERE_QUESTION = ({ page }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className={`cursor-pointer pl-s3 ${
-          isOpen ? 'max-h-[65rem]' : 'max-h-40'
-        }`}
-      >
-        <h3 className="align-center mt-s3 mb-s3 flex justify-between text-xl text-white md:text-2xl">
-          {page === 'corporate'
-            ? 'How much does it cost?'
-            : 'How can I get started?'}
-          <div className="relative pr-s3">
-            <span className="inline-block h-[3px] w-6 bg-white"></span>
-            <span
-              className={`absolute top-[18px] left-[0px] h-[3px] w-6 rotate-90 bg-white ${
-                isOpen ? 'hidden' : 'inline-block'
-              }`}
-            ></span>
-          </div>
-        </h3>
-        {page === 'corporate' ? (
-          <p className={`body mt-s3 mb-s3 ${isOpen ? 'block' : 'hidden'}`}>
-            AVIEW creates a pricing plan for each corporate client. We ensure
-            that you see a return on our services! If you would like a quote,
-            please click{' '}
-            <Link href="/corporate#generate-aview">
-              <a className="underline">here! </a>
-            </Link>
-          </p>
-        ) : (
-          <p className={`body mt-s3 mb-s3 ${isOpen ? 'block' : 'hidden'}`}>
-            Click{' '}
-            <Link href="/#generate-aview">
-              <a className="underline">here</a>
-            </Link>{' '}
-            to get started!
-          </p>
-        )}
       </div>
       <HorizontalLine />
     </>
