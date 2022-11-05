@@ -14,7 +14,11 @@ const ContentCreators = () => {
         {WORKED_WITH.map((creator) => (
           <Link key={creator.id} href={creator.link}>
             <a className="group">
-              <Image src={creator.icon} alt={creator.name} />
+              <Image
+                src={creator.icon}
+                alt={creator.name}
+                className="overflow-hidden rounded-full"
+              />
               <p className="group-hover:gradient-text group-hover:gradient-2 mt-s2 text-lg text-white group-hover:inline-block md:text-xl">
                 {creator.name}
               </p>
