@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .link {
+    @apply text-blue underline;
+  }
+
   .navigation {
     @apply mx-s3 md:mx-auto md:w-[95%];
   }

@@ -7,6 +7,7 @@ import OurServices from '../../components/sections/reused/OurServices';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import GenerateAviewForCompany from '../../components/sections/corporate/GenerateAviewForCompany';
+import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 
 const BillC96 = () => {
   return (
@@ -21,6 +22,7 @@ const BillC96 = () => {
       <HowWeCanHelp />
       <OurServices />
       <GenerateAviewForCompany title="Get a free quote today!" />
+      <FeaturedBlogs />
       <Footer curPage="Bill C-96" />
       <Blobs />
     </>

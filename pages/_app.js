@@ -1,9 +1,11 @@
-import '../styles/globals.css';
-import { MenuOpenContextProvider } from '../store/menu-open-context';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import UserContextProvider from '../store/user-profile';
+
+import { MenuOpenContextProvider } from '../store/menu-open-context';
+
+import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {

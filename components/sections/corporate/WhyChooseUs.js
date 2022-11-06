@@ -1,10 +1,10 @@
-import FullWidthGradient from '../../layout/FullWidthGradient';
+import Banner from '../../layout/Banner';
 import Button from '../../UI/Button';
 
 const WhyChooseUs = () => {
   return (
     <section className="section text-center">
-      <FullWidthGradient>
+      <Banner>
         <h2 className="title mb-s2">Why Choose Us?</h2>
         <p className="body mx-auto mb-s4 max-w-[800px]">
           Aview will ensure your content is accurately translated and
@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
             Contact Us
           </Button>
         </div>
-      </FullWidthGradient>
+      </Banner>
     </section>
   );
 };

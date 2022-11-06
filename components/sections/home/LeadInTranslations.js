@@ -5,8 +5,8 @@ import GraphicCard from '../../UI/GraphicCard';
 
 const LeadInTranslations = () => {
   return (
-    <section className="section m-horizontal" data-aos="zoom-in">
-      <h2 className="title mb-s4 text-left text-center md:mb-s10">
+    <section className="section m-horizontal">
+      <h2 className="title mb-s4 text-center md:mb-s10">
         Why <span className="gradient-text gradient-2">Work With Us</span>
       </h2>
       <div className="mb-s4">

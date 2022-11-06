@@ -12,7 +12,7 @@ const Process = () => {
         effective
       </p>
       <div
-        className={`max-w-[calc(550px * 2)] my-0 mx-auto grid grid-cols-1 gap-s11 xl:grid-cols-2`}
+        className={`mx-auto grid max-w-[1050px] grid-cols-1 gap-s6 xl:grid-cols-2`}
       >
         {CAREER_PROCESS.map((process, i) => (
           <Card key={`card-${i}`} {...process} />
@@ -29,7 +29,7 @@ const Card = ({ department, steps }) => {
     <div className="mx-auto w-full last:m-auto md:w-[500px] xl:last:col-start-1 xl:last:col-end-3 last:xl:w-1/2">
       <Border borderRadius="[15px]">
         <div className={`w-full rounded-[15px] bg-black p-s4`}>
-          <h3 className="pb-s1.5 text-center text-xl md:text-6xl">
+          <h3 className="pb-s1.5 text-center text-xl font-semibold md:text-6xl">
             <span className="gradient-text gradient-2">{department}</span>
           </h3>
           <div className={`relative flex`}>
@@ -45,10 +45,12 @@ const Card = ({ department, steps }) => {
             <ul className={`list-none pl-6 text-white`}>
               {steps.map((step, i) => (
                 <li key={`step-${i}`}>
-                  <small className="text-lg text-gray-2 md:text-xl">
+                  <small className="text-lg text-gray-2 md:text-xl ">
                     {step.step}
                   </small>
-                  <h4 className="my-s1.5 text-xl md:text-4xl">{step.title}</h4>
+                  <h4 className="my-s1.5 text-xl font-medium md:text-4xl">
+                    {step.title}
+                  </h4>
                   <p className="pb-s3 text-base md:text-xl">
                     {step.description}
                   </p>

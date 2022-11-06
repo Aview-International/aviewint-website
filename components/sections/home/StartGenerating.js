@@ -12,9 +12,11 @@ import Button from '../../UI/Button';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import { useRouter } from 'next/router';
 
-const GenerateAview = () => {
-  let router = useRouter();
+const StartGenerating = () => {
+  const router = useRouter();
+
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
   const [data, setData] = useState({
     name: '',
     url: '',
@@ -27,9 +29,12 @@ const GenerateAview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     try {
       setHasSubmitted(true);
+
       if (!data.name || !data.url || !data.email) return;
+
       submitForm('generate-aview', {
         name: data.name,
         url: data.url,
@@ -39,6 +44,7 @@ const GenerateAview = () => {
         Dubbing: data['Dubbing'],
         Shorts: data['Shorts'],
       });
+
       router.push('/success');
     } catch (error) {
       console.log(error);
@@ -51,7 +57,8 @@ const GenerateAview = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const hanldeCheckBox = (e) => {
+
+  const handleCheckbox = (e) => {
     if (e.target.checked) {
       setData({
         ...data,
@@ -64,15 +71,16 @@ const GenerateAview = () => {
       });
     }
   };
+
   const handleMutlipleCheckbox = (option) => {
     if (data.languages.includes(option)) {
       let newArray = [...data.languages];
       newArray.splice(newArray.indexOf(option), 1);
       setData({ ...data, languages: newArray });
     } else {
-      let LANGUAGAESARRAY = [...data.languages];
-      LANGUAGAESARRAY.push(option);
-      setData({ ...data, languages: LANGUAGAESARRAY });
+      let languagesArray = [...data.languages];
+      languagesArray.push(option);
+      setData({ ...data, languages: languagesArray });
     }
   };
 
@@ -116,12 +124,12 @@ const GenerateAview = () => {
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox
             key={`checkbox-${i}`}
-            onChange={hanldeCheckBox}
+            onChange={handleCheckbox}
             {...checkbox}
           />
         ))}
         <div className="mt-s4 flex items-center justify-center">
-          <Button type="secondary" purpose="submit" route="/#generate-aview">
+          <Button type="secondary" purpose="submit">
             Submit
           </Button>
         </div>
@@ -130,4 +138,4 @@ const GenerateAview = () => {
   );
 };
 
-export default GenerateAview;
+export default StartGenerating;

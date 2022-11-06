@@ -9,8 +9,12 @@ const GoGlobal = () => {
       className="section m-horizontal mt-s6 grid items-center gap-s7 md:mt-s15 md:grid-cols-[5fr_4fr]"
       data-aos="fade-up"
     >
-      <div className="mx-auto max-w-[280px] md:order-2 md:max-w-none">
-        <Image src={goGlobalGraphic} alt="Go global graphic" />
+      <div className="mx-auto w-[200px] sm:w-[380px] md:order-2 md:max-w-none">
+        <Image
+          src={goGlobalGraphic}
+          alt="Go global graphic"
+          layout="responsive"
+        />
       </div>
       <div className="md:order-1">
         <h1 className="mb-s2 text-5xl font-bold text-white md:text-8xl">

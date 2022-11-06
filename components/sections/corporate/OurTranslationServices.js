@@ -16,7 +16,7 @@ const OurTranslationServices = () => {
         <div className="mx-auto max-w-[500px]">
           <Image src={howWeCanHelpGraphic} alt="How we can help" />
         </div>
-        <div className="grid gap-s4">
+        <div className="grid gap-s4 lg:-mt-20">
           {OUR_TRANSLATION_SERVICES.map((help) => (
             <div key={help.id}>
               <p className="gradient-text gradient-2 mb-s2 inline-block text-5xl font-bold md:text-7xl">

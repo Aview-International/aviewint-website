@@ -8,10 +8,14 @@ const PhoneNumberWithButton = ({ setShowText }) => {
     phone: '',
     hasSubmitted: false,
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setPhone({ ...phone, hasSubmitted: true });
+
     if (phone.phone.length < 11 || phone.phone.length > 18) return;
+
     try {
       initiateBot([
         {

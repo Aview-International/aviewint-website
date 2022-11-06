@@ -10,5 +10,6 @@ export default async function handler(req, res) {
       appToken: process.env.NEXT_PUBLIC_APPTOKEN,
     },
   });
+
   res.status(201).json(response.data);
 }

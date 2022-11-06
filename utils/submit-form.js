@@ -1,11 +1,5 @@
 import axios from 'axios';
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-}
-
 export const submitForm = (name, data) => {
   const encode = (data) => {
     return Object.keys(data)

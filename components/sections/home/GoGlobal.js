@@ -5,11 +5,12 @@ import { emailValidator } from '../../../utils/regex';
 import { submitForm } from '../../../utils/submit-form';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
-import FullWidthGradient from '../../layout/FullWidthGradient';
+import Banner from '../../layout/Banner';
 import Button from '../../UI/Button';
 
 const GoGlobal = () => {
-  let router = useRouter();
+  const router = useRouter();
+
   const [mail, setMail] = useState({
     email: '',
     hasSubmitted: false,
@@ -17,6 +18,7 @@ const GoGlobal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     try {
       setMail({ ...mail, hasSubmitted: true });
       if (!emailValidator(mail.email)) return;
@@ -27,8 +29,8 @@ const GoGlobal = () => {
     }
   };
   return (
-    <section className="section text-center" data-aos="zoom-in-down">
-      <FullWidthGradient>
+    <section className="section text-center">
+      <Banner>
         <h2 className="title mb-s2">Want To Go Global?</h2>
         <p className="body mb-s2 md:mb-s4">
           Give us your email. We will do the rest.
@@ -52,7 +54,7 @@ const GoGlobal = () => {
             </Button>
           </div>
         </Form>
-      </FullWidthGradient>
+      </Banner>
     </section>
   );
 };

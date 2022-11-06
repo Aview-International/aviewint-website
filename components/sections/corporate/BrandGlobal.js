@@ -30,7 +30,7 @@ const BrandGlobal = () => {
           </span>
           <h1 className="title mb-s3 max-w-[249px] xs:max-w-[400px] sm:max-w-none">
             <span className="gradient-text gradient-2">
-              Take your brand global
+              Take Your Brand Global.
             </span>
           </h1>
           <p className="body mb-s4 max-w-[315px] sm:max-w-[500px] md:max-w-[none]">

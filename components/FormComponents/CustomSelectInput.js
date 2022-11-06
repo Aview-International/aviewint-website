@@ -39,7 +39,7 @@ const CustomSelectInput = ({
             <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
           )}
         </span>
-        <OPTIONS
+        <Options
           isOpen={isOpen}
           setData={setData}
           options={options}
@@ -50,7 +50,8 @@ const CustomSelectInput = ({
     </OutsideClickHandler>
   );
 };
-const OPTIONS = ({ isOpen, setData, options, setIsOpen, onChange }) => {
+
+const Options = ({ isOpen, setData, options, setIsOpen, onChange }) => {
   return (
     <Border
       borderRadius="[5px]"

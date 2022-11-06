@@ -17,11 +17,11 @@ const InternationalGrowth = () => {
         simply adding more languages to your library!
       </p>
       <Calculator />
-      <div className="mt-s4 flex justify-center">
+      {/* <div className="mt-s4 flex justify-center">
         <Button purpose="route" route="#work-with-us" type="secondary">
           Contact Us
         </Button>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -182,10 +182,22 @@ export const WORKED_WITH = [
 ];
 
 export const TRANSLATED_CONTENT = [
-  { id: 'video-1', link: 'https://www.youtube.com/embed/ThMCYT6sbHw' },
-  { id: 'video-2', link: 'https://www.youtube.com/embed/tk_ZlWJ3qJI' },
-  { id: 'video-3', link: 'https://www.youtube.com/embed/8cvhwquPqJ0' },
-  { id: 'video-4', link: 'https://www.youtube.com/embed/2ov35705pFQ' },
+  {
+    id: 'video-1',
+    link: 'https://www.youtube.com/embed/mnzxkkoGROM',
+  },
+  {
+    id: 'video-2',
+    link: 'https://www.youtube.com/embed/tRMbUkN0DNc',
+  },
+  {
+    id: 'video-3',
+    link: 'https://www.youtube.com/embed/7Jbx0tzIKok',
+  },
+  {
+    id: 'video-4',
+    link: 'https://www.youtube.com/embed/T-LOpmmWLW4',
+  },
 ];
 
 export const LEAD_IN_TRANSLATIONS = [
@@ -193,12 +205,12 @@ export const LEAD_IN_TRANSLATIONS = [
     id: 'card-1',
     title: 'Fast & Easy',
     description:
-      'AVIEW guarantees a 24-hour turnaround on subtitle and 48 hours on dubbed content.',
+      'AVIEW guarantees a 24-hour turnaround on subtitles and 48 hours on dubbed content.',
     graphic: fastAndEasy,
   },
   {
     id: 'card-2',
-    title: 'Flexible',
+    title: 'Personalized',
     description:
       'We offer a personalized payment plan and tailor our process to your needs.',
     graphic: flexible,
@@ -269,16 +281,16 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
 export const OUR_SERVICES = [
   {
     id: 'service-1',
-    title: 'Subtitles',
+    title: 'Subtitles & Dubs',
     description:
-      'Our team of certified translators work in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
+      'Our team of certified translators works in over 15 languages, including; Spanish, French, Portuguese and Arabic.',
     graphic: subtitles,
   },
   {
     id: 'service-2',
-    title: 'Shorts',
+    title: 'Video-Editing',
     description:
-      'We create catchy short-form videos from your existing videos, giving your audience bite-sized content that can be enjoyed at any time of day.',
+      'We create catchy short-form videos from your existing videos, giving your audience bite-sized content that can be enjoyed anytime.',
     graphic: shorts,
   },
   {
@@ -560,6 +572,11 @@ export const LANDING_PAGE_FAQ = [
     question: 'Can you translate for other platforms like TikTok?',
     answer: `Yes! We are a multimedia translation service. We can translate and edit the content on any platform for you so they are ready to be uploaded.`,
   },
+  {
+    id: 'question7',
+    question: 'How can I get started?',
+    answer: `Click&nbsp;<a href="#generate-aview" class="underline">here</a>&nbsp;to get started!`,
+  },
 ];
 
 export const CORPORATE_PAGE_FAQ = [
@@ -590,6 +607,10 @@ export const CORPORATE_PAGE_FAQ = [
     Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
     `,
     _id: 'question3',
+  },
+  {
+    question: 'How much does it cost?',
+    answer: `AVIEW creates a pricing plan for each corporate client. We ensure that you see a return on our services! If you would like a quote, please click&nbsp;<a href="/corporate#generate-aview" class="underline">here!</a>`,
   },
 ];
 
