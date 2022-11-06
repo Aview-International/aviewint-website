@@ -69,8 +69,8 @@ const SelectedVideos = ({ setIsSelected }) => {
         <span>Videos Selected</span>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        {array.map(() => (
-          <VideoFrame />
+        {array.map((item, index) => (
+          <VideoFrame key={`video-${index}`} />
         ))}
       </div>
     </div>
