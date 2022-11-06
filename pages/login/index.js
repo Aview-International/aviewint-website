@@ -7,12 +7,12 @@ import Loader from '../../components/UI/loader';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
-import { UserData } from '../../store/menu-open-context';
 import { checkUserEmail, signInWithGoogle } from '../api/onboarding';
+import { UserContext } from '../../store/user-profile';
 
 const Login = () => {
   const router = useRouter();
-  const { user, updateUser } = useContext(UserData);
+  const { user, updateUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {

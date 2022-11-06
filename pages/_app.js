@@ -1,11 +1,10 @@
 import '../styles/globals.css';
-import {
-  MenuOpenContextProvider,
-  UserContext,
-} from '../store/menu-open-context';
+import { MenuOpenContextProvider } from '../store/menu-open-context';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import UserContextProvider from '../store/user-profile';
+
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     AOS.init();
@@ -22,11 +21,19 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <MenuOpenContextProvider>
-      <UserContext>
-        <Component {...pageProps} />
-      </UserContext>
+      <UserContextProvider>
+        <Layout Component={Component} pageProps={pageProps} />
+      </UserContextProvider>
     </MenuOpenContextProvider>
   );
+};
+
+const Layout = ({ Component, pageProps }) => {
+  if (Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />);
+  } else {
+    return <Component {...pageProps} />;
+  }
 };
 
 export default MyApp;

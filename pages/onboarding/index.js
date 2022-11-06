@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   OnboardingStep1,
   OnboardingStep2,
@@ -12,24 +12,11 @@ import {
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';
 import { PageTransition } from '../../components/animations';
-import { UserData } from '../../store/menu-open-context';
 import Head from 'next/head';
 import { ProtectedRoutes } from '../../utils/autoLogout';
 
 const Onboarding = () => {
-  const { user } = useContext(UserData);
   const router = useRouter();
-
-  useEffect(() => {
-    if (window.location.search.split('=')[0].includes('code')) {
-      localStorage.setItem(
-        'ig_access_code',
-        window.location.search.split('=')[1].split('#')[0]
-      );
-      window.close();
-    }
-    if (!window.location.search) router.push('/onboarding?stage=1');
-  }, []);
   return (
     <>
       <Head>

@@ -80,7 +80,7 @@ const GenerateAview = () => {
     <section
       className="section m-horizontal -mt-s4 pt-s4 md:-mt-s8 md:pt-s8"
       id="generate-aview"
-      data-aos="fade-left"
+      data-aos="zoom-in"
     >
       <h2 className="title mb-s4 text-center">
         Start Generating <span className="gradient-text gradient-2">Aview</span>{' '}

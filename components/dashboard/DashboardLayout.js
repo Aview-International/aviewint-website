@@ -1,0 +1,52 @@
+import { useContext, useEffect, useState } from 'react';
+import { getUserProfile } from '../../pages/api/onboarding';
+import { UserContext } from '../../store/user-profile';
+import FullScreenLoader from '../UI/FullScreenLoader';
+import DashBoardHeader from './Header';
+import DashboardSidebar from './Sidebar';
+
+const DashboardStructure = ({ children }) => {
+  const { user, updateUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const getProfile = async () => {
+    try {
+      const _id = localStorage.getItem('uid');
+      const res = await getUserProfile(_id);
+      updateUser({
+        ...user,
+        email: res.email,
+        picture: res.picture,
+        firstName: res.firstName,
+        lastName: res.lastName,
+        youtubeChannelId: res.youtubeChannelId,
+      });
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  return (
+    <>
+      {isLoading ? (
+        <FullScreenLoader />
+      ) : (
+        <main className="gradient-dark flex min-h-screen w-full">
+          <DashboardSidebar user={user} />
+          <div className="w-[calc(100%-170px)]">
+            <DashBoardHeader user={user} />
+            <div className="h-full bg-black p-s4">{children}</div>
+          </div>
+        </main>
+      )}
+    </>
+  );
+};
+
+const DashboardLayout = (page) => (
+  <DashboardStructure>{page}</DashboardStructure>
+);
+export default DashboardLayout;

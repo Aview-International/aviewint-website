@@ -32,7 +32,7 @@ const PhoneNumberWithButton = ({ setShowText }) => {
       <div className="mb-s2 lg:mb-0 lg:grow">
         <PhoneNumberInput
           onChange={(e) => setPhone({ ...phone, phone: e })}
-          value={phone.phoner}
+          value={phone.phone}
           hasSubmitted={phone.hasSubmitted}
           isValid={phone.phone?.length > 11 && phone.phone?.length < 18}
         />

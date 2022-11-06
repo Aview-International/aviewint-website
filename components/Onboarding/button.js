@@ -2,7 +2,7 @@ import Border from '../UI/Border';
 import Loader from '../UI/loader';
 import Shadow from '../UI/Shadow';
 
-const OnbaordingButton = ({ children, isLoading, onClick }) => {
+const OnboardingButton = ({ children, isLoading, onClick }) => {
   return (
     <Shadow classes="w-full">
       <Border borderRadius="full" classes="w-full">
@@ -17,4 +17,4 @@ const OnbaordingButton = ({ children, isLoading, onClick }) => {
   );
 };
 
-export default OnbaordingButton;
+export default OnboardingButton;

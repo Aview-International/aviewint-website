@@ -20,29 +20,29 @@ import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
   addYoutubeChannelId,
   createNewUser,
+  InstagramAuthenticationLink,
   signInWithFacebook,
   signInWithGoogle,
   updateAviewUsage,
   updateRequiredServices,
   updateUserBio,
+  YoutubeAuthenticationLink,
 } from '../../pages/api/onboarding';
-import { UserData } from '../../store/menu-open-context';
-import { InstagramAuthenticationLink, YoutubeAuthenticationLink } from './apis';
 import Loader from '../UI/loader';
 import axios from 'axios';
+import { UserContext } from '../../store/user-profile';
+import Correct from '../../public/img/icons/correct.svg';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
   const router = useRouter();
-  const { user, updateUser } = useContext(UserData);
+  const { user, updateUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,
   });
 
-  const handleGoogle = async () => {
-    setIsLoading({ ...isLoading, google: true });
-    const { _tokenResponse } = await signInWithGoogle();
+  const updateDatabase = async (_tokenResponse) => {
     updateUser({
       ...user,
       email: _tokenResponse.email,
@@ -57,16 +57,23 @@ export const OnboardingStep1 = () => {
       _tokenResponse.firstName,
       _tokenResponse.lastName,
       _tokenResponse.photoUrl,
-      _tokenResponse.email
+      _tokenResponse?.email
     );
     router.push('/onboarding?stage=2');
   };
 
-  const handleFacebook = async () => {
-    setIsLoading(true);
-    const res = await signInWithFacebook();
-    console.log(res);
+  const handleGoogle = async (type) => {
+    setIsLoading({ ...isLoading, google: true });
+    const { _tokenResponse } = await signInWithGoogle();
+    updateDatabase(_tokenResponse);
   };
+
+  const handleFacebook = async () => {
+    setIsLoading({ ...isLoading, facebook: true });
+    const { _tokenResponse } = await signInWithFacebook();
+    updateDatabase(_tokenResponse);
+  };
+
   const { account } = router.query;
   return (
     <>
@@ -122,7 +129,7 @@ export const OnboardingStep1 = () => {
 
 // Onboarding stage 2
 export const OnboardingStep2 = () => {
-  const { user } = useContext(UserData);
+  const { user } = useContext(UserContext);
   const router = useRouter();
   const [data, setData] = useState({
     purpose: '',
@@ -362,6 +369,13 @@ export const OnboardingStep5 = () => {
     facebook: false,
   });
 
+  const [isComplete, setIsComplete] = useState({
+    youtube: false,
+    continue: false,
+    instagram: false,
+    tiktok: false,
+    facebook: false,
+  });
   const handleSubmit = () => {
     setIsLoading({ ...isLoading, continue: true });
     setTimeout(() => router.push('/onboarding?stage=6'), 2000);
@@ -404,7 +418,8 @@ export const OnboardingStep5 = () => {
         response.data.items[0].id,
         localStorage.getItem('uid')
       );
-      router.push('/dashboard');
+      setIsComplete({ ...isComplete, youtube: true });
+      setIsLoading({ ...isLoading, youtube: false });
     } catch (error) {
       console.log(error);
     }
@@ -427,29 +442,57 @@ export const OnboardingStep5 = () => {
         We&#8217;ll need this information to accurately post on your behalf. You
         can remove them at any point if you like!
       </p>
-      <div className="m-auto w-[min(360px,100%)]">
-        <button
-          className={`instagram my-s2 block w-full rounded-full border-2 p-s1.5 text-center`}
-          onClick={linkInstagramAccount}
-        >
-          Instagram
-        </button>
-        <button
-          className={`my-s2 block w-full rounded-full border-2 bg-[#0054ff] p-s1.5 text-center`}
-        >
-          Facebook
-        </button>
-        <button
-          className={`my-s2 block w-full rounded-full border-2 bg-[#000000] p-s1.5 text-center`}
-        >
-          TikTok
-        </button>
-        <button
-          className={`my-s2 block w-full rounded-full border-2 bg-[#ff0000] p-s1.5 text-center`}
-          onClick={linkYoutubeAccount}
-        >
-          {isLoading.youtube ? <Loader /> : 'Youtube'}
-        </button>
+      <div className="m-auto w-[min(360px,80%)]">
+        <div className="relative my-s2">
+          <button
+            className={`instagram block w-full rounded-full border-2 p-s1.5 text-center`}
+            onClick={linkInstagramAccount}
+          >
+            Instagram
+          </button>
+          {isComplete.instagram && (
+            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
+              <Image src={Correct} alt="Correct" width={35} height={35} />
+            </span>
+          )}
+        </div>
+        <div className="relative my-s2">
+          <button
+            className={`block w-full rounded-full border-2 bg-[#0054ff] p-s1.5 text-center`}
+          >
+            Facebook
+          </button>
+          {isComplete.facebook && (
+            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
+              <Image src={Correct} alt="Correct" width={35} height={35} />
+            </span>
+          )}
+        </div>
+        <div className="relative my-s2">
+          <button
+            className={`block w-full rounded-full border-2 bg-[#000000] p-s1.5 text-center`}
+          >
+            TikTok
+          </button>
+          {isComplete.tiktok && (
+            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
+              <Image src={Correct} alt="Correct" width={35} height={35} />
+            </span>
+          )}
+        </div>
+        <div className="relative my-s2">
+          <button
+            className={`w-full rounded-full border-2 bg-[#ff0000] p-s1.5 text-center`}
+            onClick={linkYoutubeAccount}
+          >
+            {isLoading.youtube ? <Loader /> : 'Youtube'}
+          </button>
+          {isComplete.youtube && (
+            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
+              <Image src={Correct} alt="Correct" width={35} height={35} />
+            </span>
+          )}
+        </div>
         <div className="mt-s4">
           <OnboardingButton
             isLoading={isLoading.continue}
