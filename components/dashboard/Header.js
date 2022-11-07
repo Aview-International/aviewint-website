@@ -9,7 +9,6 @@ const DashBoardHeader = ({ user }) => {
         <h3 className="text-xl">Good morning {user.firstName}!</h3>
         <p className="text-lg text-gray-2">Welcome to your Aview dashboard</p>
       </div>
-      <input type="text" className="text-red" />
       <div>
         <Link href="/dashboard/messages">
           <a className="flex items-center rounded-full bg-gray-1 px-s2 py-s1 text-sm">

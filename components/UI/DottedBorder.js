@@ -10,7 +10,7 @@
 const DottedBorder = ({ children, borderRadius, classes }) => {
   return (
     <div
-      className={`gradient-1 rounded-[15px] border-4 border-dashed bg-origin-border ${classes}`}
+      className={`gradient-1 rounded-[15px] border-4 border-dashed bg-origin-border border-black ${classes}`}
       style={{
         borderRadius: borderRadius,
       }}

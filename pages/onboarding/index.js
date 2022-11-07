@@ -17,6 +17,17 @@ import { ProtectedRoutes } from '../../utils/autoLogout';
 
 const Onboarding = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    if (window.location.search.split('=')[0].includes('code')) {
+      router.push(
+        `/onboarding/?stage=5&ig_access_code=${
+          window.location.search.split('=')[1].split('#')[0]
+        }`
+      );
+    }
+    if (!window.location.search) router.push('/onboarding?stage=1');
+  }, []);
   return (
     <>
       <Head>

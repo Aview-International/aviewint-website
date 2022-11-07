@@ -2,7 +2,7 @@ import Border from '../UI/Border';
 import Shadow from '../UI/Shadow';
 import Image from 'next/image';
 import OnboardingButton from './button';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import Personal from '../../public/img/graphics/personal-use.png';
@@ -20,18 +20,21 @@ import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
   addYoutubeChannelId,
   createNewUser,
+  getUserProfile,
   InstagramAuthenticationLink,
   signInWithFacebook,
   signInWithGoogle,
   updateAviewUsage,
   updateRequiredServices,
   updateUserBio,
+  updateUserInstagram,
   YoutubeAuthenticationLink,
 } from '../../pages/api/onboarding';
 import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';
 import Correct from '../../public/img/icons/correct.svg';
+import { async } from '@firebase/util';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -361,48 +364,77 @@ export const OnboardingStep4 = () => {
 // Onboarding stage 5
 export const OnboardingStep5 = () => {
   const router = useRouter();
+  const [userData, setUserData] = useState({});
+  const [isComplete, setIsComplete] = useState(undefined);
   const [isLoading, setIsLoading] = useState({
     youtube: false,
-    continue: false,
     instagram: false,
     tiktok: false,
     facebook: false,
   });
 
-  const [isComplete, setIsComplete] = useState({
-    youtube: false,
-    continue: false,
-    instagram: false,
-    tiktok: false,
-    facebook: false,
-  });
-  const handleSubmit = () => {
-    setIsLoading({ ...isLoading, continue: true });
-    setTimeout(() => router.push('/onboarding?stage=6'), 2000);
-  };
-
-  const getInstagramToken = async () => {
+  const getInstagramToken = async (ig_access_code) => {
+    // get short lived acces token
     try {
-      const code = {
-        code: localStorage.getItem('ig_access_code'),
-      };
-      const res = await axios.post('/api/onboarding/link-instagram', code);
-      console.log(res.data);
+      const response = await axios.post(
+        '/api/onboarding/link-instagram?get=short_lived_access',
+        {
+          code: ig_access_code,
+        }
+      );
+      // get long lived token
+      const getToken = await axios.post(
+        '/api/onboarding/link-instagram?get=long_lived_access',
+        {
+          code: response.data.access_token,
+        }
+      );
+      // get user instagram data
+      const getUserProfile = await axios.post(
+        '/api/onboarding/link-instagram?get=user_account_info',
+        {
+          code: getToken.data.access_token,
+        }
+      );
+      // add current time to expiry date
+      const current_milliseconds = new Date().getTime();
+      const time = getToken.data.expires_in * 1000;
+      const new_expiry_time = +current_milliseconds + time;
+
+      // save all neccessary info to the database
+      await updateUserInstagram(
+        localStorage.getItem('uid'),
+        getUserProfile.data.username,
+        getUserProfile.data.id,
+        getUserProfile.data.account_type,
+        getToken.data.access_token,
+        new_expiry_time
+      );
+      localStorage.setItem('isComplete', isComplete);
+      setIsComplete(Math.random());
+      setIsLoading({ ...isLoading, instagram: false });
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'ig_access_code') getInstagramToken();
-    });
+    const { ig_access_code } = router.query;
+    if (ig_access_code) getInstagramToken(ig_access_code);
     const token = router.asPath
       ?.split('access_token=')[1]
       ?.split('&token_type')[0];
     if (!token) return;
     localStorage.setItem('youtube_oauth', token);
     getChannelId(token);
+  }, []);
+
+  useEffect(() => {
+    async function getProfile() {
+      const data = await getUserProfile(localStorage.getItem('uid'));
+      setUserData(data);
+    }
+    getProfile();
   }, []);
 
   const getChannelId = async (token) => {
@@ -418,7 +450,7 @@ export const OnboardingStep5 = () => {
         response.data.items[0].id,
         localStorage.getItem('uid')
       );
-      setIsComplete({ ...isComplete, youtube: true });
+      setIsComplete(Math.random());
       setIsLoading({ ...isLoading, youtube: false });
     } catch (error) {
       console.log(error);
@@ -426,9 +458,9 @@ export const OnboardingStep5 = () => {
   };
 
   const linkInstagramAccount = async () => {
-    window.open(InstagramAuthenticationLink, '_blank');
-    // getInstagramToken();
+    router.push(InstagramAuthenticationLink);
   };
+
   const linkYoutubeAccount = async () => {
     router.push(YoutubeAuthenticationLink);
   };
@@ -437,6 +469,7 @@ export const OnboardingStep5 = () => {
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl md:text-6xl">
         Connect your accounts
+        {userData.firstName}
       </h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(600px,100%)] text-center text-lg md:text-xl">
         We&#8217;ll need this information to accurately post on your behalf. You
@@ -450,7 +483,7 @@ export const OnboardingStep5 = () => {
           >
             Instagram
           </button>
-          {isComplete.instagram && (
+          {userData.ig_access_token && (
             <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
               <Image src={Correct} alt="Correct" width={35} height={35} />
             </span>
@@ -462,7 +495,7 @@ export const OnboardingStep5 = () => {
           >
             Facebook
           </button>
-          {isComplete.facebook && (
+          {userData.facebook && (
             <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
               <Image src={Correct} alt="Correct" width={35} height={35} />
             </span>
@@ -474,7 +507,7 @@ export const OnboardingStep5 = () => {
           >
             TikTok
           </button>
-          {isComplete.tiktok && (
+          {userData.tiktok && (
             <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
               <Image src={Correct} alt="Correct" width={35} height={35} />
             </span>
@@ -487,7 +520,7 @@ export const OnboardingStep5 = () => {
           >
             {isLoading.youtube ? <Loader /> : 'Youtube'}
           </button>
-          {isComplete.youtube && (
+          {userData.youtubeChannelId && (
             <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
               <Image src={Correct} alt="Correct" width={35} height={35} />
             </span>
@@ -496,7 +529,7 @@ export const OnboardingStep5 = () => {
         <div className="mt-s4">
           <OnboardingButton
             isLoading={isLoading.continue}
-            onClick={handleSubmit}
+            onClick={() => router.push('/onboarding?stage=6')}
           >
             Continue
           </OnboardingButton>
@@ -509,12 +542,6 @@ export const OnboardingStep5 = () => {
 // Onboarding success page
 export const OnboardingSuccess = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = () => {
-    setIsLoading(true);
-    setTimeout(() => router.push('/dashboard'), 2000);
-  };
   return (
     <div className="m-auto w-[min(360px,80%)] pt-s5">
       <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
@@ -523,7 +550,7 @@ export const OnboardingSuccess = () => {
         look at your dashboard.
       </p>
       <div className="w-full">
-        <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+        <OnboardingButton onClick={() => router.push('/dashboard')}>
           Go to Dashboard
         </OnboardingButton>
       </div>

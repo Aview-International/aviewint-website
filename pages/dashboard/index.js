@@ -3,7 +3,8 @@ import DashboardLayout from '../../components/dashboard/DashboardLayout';
 import OnboardingButton from '../../components/Onboarding/button';
 import Insights from '../../components/sections/dashboard-home/Insights';
 import Videos from '../../components/sections/dashboard-home/Videos';
-import TranslateOptions from '../../components/dashboard/TranslateOptions';
+import TranslateOptions from '../../components/dashboard/SubmitVideos';
+import PageTitle from '../../components/SEO/PageTitle';
 
 const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -11,6 +12,7 @@ const DashboardHome = () => {
 
   return (
     <>
+      <PageTitle title="Dashboard" />
       {isSelected ? (
         <TranslateOptions setIsSelected={setIsSelected} />
       ) : (

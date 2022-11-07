@@ -3,7 +3,6 @@ import { initializeApp } from 'firebase/app';
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   getAuth,
   FacebookAuthProvider,
 } from 'firebase/auth';
@@ -176,6 +175,35 @@ export const updateUserBio = async (payload, _id) => {
   });
 };
 
+export const updateUserInstagram = async (
+  _id,
+  ig_username,
+  ig_account_id,
+  ig_account_type,
+  ig_access_token,
+  ig_access_token_expiry
+) => {
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        ig_username,
+        ig_account_id,
+        ig_account_type,
+        ig_access_token,
+        ig_access_token_expiry,
+      };
+      const updates = {
+        [`users/${_id}`]: postData,
+      };
+      await update(ref(database), updates);
+    } else {
+      console.log('No data available');
+    }
+  });
+};
+
 // get all user data from the database
 export const getUserProfile = async (_id) => {
   const res = await get(ref(database, `users/${_id}`)).then((snapshot) => {
@@ -184,17 +212,3 @@ export const getUserProfile = async (_id) => {
   });
   return res;
 };
-
-export const getInstagramUserToken = async (req) => {
-  try {
-    const res = await axios({
-      method: 'POst',
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export default async function handler(req, res) {
-  const { stage } = req.query;
-}

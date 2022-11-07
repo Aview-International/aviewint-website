@@ -1270,3 +1270,22 @@ export const DASHBOARD_NAVLINKS = [
     route: '/dashboard/settings',
   },
 ];
+
+export const DAHSHBOARD_SERVICES = [
+  'Subtitle',
+  'Dubs',
+  'Shorts',
+  'Distribution',
+];
+
+export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
+  'English',
+  'Spanish',
+  'Portuguese',
+  'French',
+  'Hindi',
+  'German',
+  'Mandarin',
+  'Arabic',
+  'Others',
+];
