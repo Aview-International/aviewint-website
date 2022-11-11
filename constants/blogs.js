@@ -1987,6 +1987,254 @@ export const BLOGS = [
       },
     ],
   },
+  {
+    title: '10 Skills You Need to be a Successful YouTuber',
+    description: '',
+    date: 'Nov 10, 2022',
+    img: blog1Graphic,
+    link: '/blog/skills-to-be-successful-youtube',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'A decade ago, becoming a YouTuber wasn’t always seen as a real career path. But things have changed since then.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Many content creators have grown massive audiences through content creation and monetization. But what skills do you need to become a successful YouTuber?',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you’re looking to grow a channel, you’re in luck because in this post you’ll learn the 10 essential skills you need to grow an audience on Youtube.',
+          },
+        ],
+      },
+      {
+        title: '#1 Understand the Ins and Outs of YouTube',
+        link: '#ins-and-outs',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The first thing you need to know is how to use the platform. This might seem self-explanatory but there are many features on YouTube that are often overlooked.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Become familiar with the whole site. Take a look at all the features in the creator dashboard as well as your personal settings. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'It’s also important to keep track of updates. YouTube is constantly working to improve the platform and as a result, many new fixes and features are introduced each month. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'You can stay up to date by checking out the YouTube Updates page. If you’d like a more in-depth analysis of YouTube’s latest developments, a great resource is their official blog. ',
+          },
+        ],
+      },
+      {
+        title: '#2 Research Skills',
+        link: '#research-skills',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'To have a successful channel, you’re going to need to produce lots of content over a long period of time. It doesn’t take long for video ideas to dry up. This is why it’s important to have a basic understanding of how to conduct research so that you’re constantly coming up with new ideas for content.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Identify gaps in the market. In other words, find video ideas that people are looking for but aren’t being covered by other creators. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'A great way to do this is by using research tools such as Answer the Public. Answer the Public gives you title variations according to the keyword you input. Using tools such as these, you can find opportunities to provide great content to your viewers with little competition. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Another part of research is keeping track of trends. A great tool you can use to find which topics are trending is Google Trends. However, the results of your research will vary heavily depending on your niche. ',
+          },
+        ],
+      },
+      {
+        title: '#3 Expertise in Your Niche',
+        link: '#expertise-in-niche',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'If you love your niche, managing a YouTube channel becomes a lot easier. For example, if you’re a fisherman, make videos about fishing, if you’re a gamer, make videos about gaming. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'This will assist your research because you most likely already know a lot about your niche. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you’re still deciding on which topic to cover, keep in mind that the more specific the better. In other words, choose a niche within a niche.',
+          },
+          {
+            type: 'paragraph',
+            text: 'For example, if you’re a gamer, make videos about a gaming genre or even one specific game. Many popular YouTubers such as Ninja, have successfully used this strategy to grow massive audiences.',
+          },
+        ],
+      },
+      {
+        title: '#4 Video Editing Skills',
+        link: '#video-editing',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'It goes without saying that a little bit of video editing goes a long way. While there is an audience for raw footage, the majority of users prefer content with edits. But, many creators have yet to take advantage of this.',
+          },
+          {
+            type: 'paragraph',
+            text: 'In fact, according to Pew Research Center, the majority of videos uploaded by individuals were unedited. This presents a huge opportunity. By going above and beyond to create high-quality content, you can stand out amongst the crowd.',
+          },
+          {
+            type: 'paragraph',
+            text: 'It’s important to note that if your channel’s growth has plateaued, in order to scale up, it may be worth investing in an editor. This will allow you to upload at a much higher frequency. However, editors can be pricey.',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you’re going to hire an editor on a budget, it’s important to know how to negotiate and set your parameters. ',
+          },
+        ],
+      },
+      {
+        title: '#5 Social Media Savvy',
+        link: '#social-media',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Building an audience online isn’t done only through YouTube. Other social media platforms such as Instagram and Twitter play a huge role in building a fanbase. As a content creator, proficiency in social media is a must.',
+          },
+          {
+            type: 'paragraph',
+            text: 'This doesn’t mean you have to be a master at making viral tweets or that you have to have millions of followers on Instagram. But knowing how to use them is helpful. These platforms can be amazing tools to help you promote your channel. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'You may even be able to make money off of other social media sites. For example, Instagram supports monetization. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Depending on which niche you’re in, different social platforms may be optimal. If you’re a lifestyle or fashion vlogger, sites like Instagram may work best for you. If you’re a gamer, Twitch, Discord, and Reddit may help your channel grow.',
+          },
+        ],
+      },
+      {
+        title: '#6 Persistence',
+        link: '#persistence',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'While some people go viral out of nowhere, this isn’t the case for the majority of people. This doesn’t mean not shooting for viral content. However, a consistent uploading schedule for a long period of time is the best way to guarantee a successful channel.',
+          },
+          {
+            type: 'paragraph',
+            text: 'According to data from OKOA, it takes the average beauty vlogger 3.6 years and 241 videos to reach 1 million subscribers. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'To sum up, becoming a successful YouTuber takes persistence. Set small goals for yourself in order to prevent burnout and stick to content that you genuinely enjoy.',
+          },
+        ],
+      },
+      {
+        title: '#7 People Skills',
+        link: '#people-skills',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'In order to connect with your audience, you have to understand what they enjoy and how you can provide them with entertainment. If you’re a natural people person, this will help out a lot. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Interacting with your audience through giveaways, Q&As, and other events will result in you retaining viewership.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Not only is it good for your viewers, but if you’re charismatic, this can also help you network with other creators. If you’re able to build up a solid network of creators within your niche, they can help you work through challenges and come up with ideas. ',
+          },
+        ],
+      },
+      {
+        title: '#8 Time Management',
+        link: '#time-management',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'When your audience is expecting you to upload according to your normal schedule, it’s important to deliver. But everyone experiences procrastination.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Luckily, there are ways to increase your productivity in order to meet your content deadlines. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Creating a content calendar or using organizational tools and services is a great way to stay on track. Some trusted tools are Google Calendar, Trello, Asana, and more.',
+          },
+          {
+            type: 'paragraph',
+            text: 'There are also ways to increase your productivity while you’re sifting through your video footage. For example, the Pomodoro method is a popular and trusted productivity technique where you work for about 25 minutes at a time and take 5-minute breaks in between. ',
+          },
+        ],
+      },
+      {
+        title: '#9 YouTube Analytics',
+        link: '#youtube-analytics',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'To speed up your growth, track your content. By utilizing YouTube analytics, creators can take a look at various metrics to see how their videos are performing. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'From watch time to demographics, YouTube allows you to keep track of all sorts of metrics. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'This data is extremely valuable. You can use it to test content strategies and replicate videos that performed well in the past.',
+          },
+        ],
+      },
+      {
+        title: '#10 YouTube Video SEO',
+        link: '#video-seo',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'SEO (search engine optimization) is the practice of implementing strategies to appear higher in search engine results. This can be applied to videos. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'By strategically implementing keywords into titles, descriptions, audio, and channel, you’re letting Google know what your content is about. If Google can easily tell what your video is about, they are more likely to include it in search results. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Another big factor in YouTube SEO is simply content quality. By creating content that retains viewers’ attention, search engines recognize that your videos are providing value.',
+          },
+        ],
+      },
+      {
+        title: 'Summing Up',
+        link: '#summing-up',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Growing a channel can be challenging. Now more than ever before, the market is diluted with tons of competition. Despite that, by persevering it’s definitely possible to become a full-time YouTuber. It’s also a great opportunity to gain valuable experience.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Learning all of these skills will set you up for success on YouTube and in other areas of your career. ',
+          },
+        ],
+      },
+    ],
+  },
   // {
   //   title: '',
   //   description: '',

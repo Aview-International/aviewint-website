@@ -1091,27 +1091,6 @@ export const OUR_TRANSLATION_SERVICES = [
   },
 ];
 
-export const MOST_POPULAR_LANGUAGES = [
-  { id: 'language-1', language: 'English' },
-  { id: 'language-2', language: 'Mandarin' },
-  { id: 'language-3', language: 'Hindi' },
-  { id: 'language-4', language: 'Spanish' },
-  { id: 'language-5', language: 'Arabic' },
-];
-
-export const ALSO_AVAILABLE = [
-  { id: 'language-1', language: 'Portuguese' },
-  { id: 'language-2', language: 'Indonesian' },
-  { id: 'language-3', language: 'Bengali' },
-  { id: 'language-4', language: 'German' },
-  { id: 'language-5', language: 'Russian' },
-  { id: 'language-6', language: 'Japanese' },
-  { id: 'language-7', language: 'French' },
-  { id: 'language-8', language: 'Marthi' },
-  { id: 'language-9', language: 'Urdu' },
-  { id: 'language-10', language: 'Teluga' },
-];
-
 export const CAREER_PROCESS = [
   {
     department: 'Translator',
