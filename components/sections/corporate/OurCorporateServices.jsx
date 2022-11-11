@@ -4,8 +4,8 @@ import graphic from '../../../public/img/graphics/corporate/our-corporate-servic
 
 export default function OurCorporateServices() {
   return (
-    <section className="section m-horizontal mt-s6 grid gap-s5 md:mt-s8 md:grid-cols-2 md:items-center">
-      <div>
+    <section className="section m-horizontal grid gap-s3 md:mt-s8 md:grid-cols-2 md:items-center md:gap-s5">
+      <div className="order-2 md:order-1">
         <h1 className="title mb-s2">
           Our Corporate{' '}
           <span className="gradient-1 gradient-text">Services</span>
@@ -18,7 +18,7 @@ export default function OurCorporateServices() {
           Get a Quote
         </Button>
       </div>
-      <div>
+      <div className="order-1 md:order-2">
         <Image src={graphic} alt="Our Corporate Services" />
       </div>
     </section>

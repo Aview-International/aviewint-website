@@ -4,7 +4,7 @@ import billc96 from '../../../public/img/graphics/corporate/bill96.png';
 export default function PreppingForBillC96() {
   return (
     <section className="section m-horizontal grid gap-s4 lg:grid-cols-2 lg:items-center">
-      <div className="lg:-mt-s2">
+      <div className="order-2 lg:order-1 lg:-mt-s2">
         <h2 className="title mb-s2">
           Prepping for{' '}
           <span className="gradient-text gradient-1">Bill C-96</span>
@@ -21,7 +21,7 @@ export default function PreppingForBillC96() {
           information, visit our FAQ.
         </p>
       </div>
-      <div className="mx-auto">
+      <div className="order-1 mx-auto lg:order-2">
         <Image src={billc96} alt="Bill C-96" />
       </div>
     </section>
