@@ -9,6 +9,7 @@ import blog8Graphic from '../public/img/blogs/outsourcing-video-editing.png';
 import blog9Graphic from '../public/img/blogs/google-translate-accuracy.png';
 import blog10Graphic from '../public/img/blogs/youtube-gaming-on-budget.png';
 import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
+import blog12Graphic from '../public/img/blogs/skills-to-be-successful-youtuber.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -1991,8 +1992,8 @@ export const BLOGS = [
     title: '10 Skills You Need to be a Successful YouTuber',
     description: '',
     date: 'Nov 10, 2022',
-    img: blog1Graphic,
-    link: '/blog/skills-to-be-successful-youtube',
+    img: blog12Graphic,
+    link: '/blog/skills-to-be-successful-youtuber',
     author: 'Elis Hayakawa',
     authorImg: elisImg,
     length: '3 min',
@@ -2033,7 +2034,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'You can stay up to date by checking out the YouTube Updates page. If you’d like a more in-depth analysis of YouTube’s latest developments, a great resource is their official blog. ',
+            text: 'You can stay up to date by checking out the <a href="https://support.google.com/youtube/answer/9730487?hl=en" target="_blank" class="link">YouTube Updates</a> page. If you’d like a more in-depth analysis of YouTube’s latest developments, a great resource is their <a href="https://blog.youtube/news-and-events/an-updated-look-and-feel-for-youtube/" target="_blank" class="link">official blog</a>. ',
           },
         ],
       },
@@ -2051,11 +2052,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'A great way to do this is by using research tools such as Answer the Public. Answer the Public gives you title variations according to the keyword you input. Using tools such as these, you can find opportunities to provide great content to your viewers with little competition. ',
+            text: 'A great way to do this is by using research tools such as <a href="https://answerthepublic.com/" target="_blank" class="link">Answer the Public</a>. Answer the Public gives you title variations according to the keyword you input. Using tools such as these, you can find opportunities to provide great content to your viewers with little competition. ',
           },
           {
             type: 'paragraph',
-            text: 'Another part of research is keeping track of trends. A great tool you can use to find which topics are trending is Google Trends. However, the results of your research will vary heavily depending on your niche. ',
+            text: 'Another part of research is keeping track of trends. A great tool you can use to find which topics are trending is <a href="https://trends.google.com/trends/explore?gprop=youtube" target="_blank" class="link">Google Trends</a>. However, the results of your research will vary heavily depending on your niche. ',
           },
         ],
       },
@@ -2099,7 +2100,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'If you’re going to hire an editor on a budget, it’s important to know how to negotiate and set your parameters. ',
+            text: 'If you’re going to <a href="https://www.aviewint.com/blog/hiring-good-editor-on-small-budget" target="_blank" class="link">hire an editor on a budget</a>, it’s important to know how to negotiate and set your parameters. ',
           },
         ],
       },
@@ -2117,7 +2118,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'You may even be able to make money off of other social media sites. For example, Instagram supports monetization. ',
+            text: 'You may even be able to make money off of other social media sites. For example, <a href="https://help.instagram.com/167414052020731" target="_blank" class="link">Instagram supports monetization</a>. ',
           },
           {
             type: 'paragraph',
@@ -2135,7 +2136,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'According to data from OKOA, it takes the average beauty vlogger 3.6 years and 241 videos to reach 1 million subscribers. ',
+            text: 'According to data from <a href="https://medium.com/@okoa/what-does-it-take-for-a-youtuber-to-get-to-1-million-subscribers-2dd684c84e70" target="_blank" class="link">OKOA</a>, it takes the average beauty vlogger 3.6 years and 241 videos to reach 1 million subscribers. ',
           },
           {
             type: 'paragraph',
@@ -2175,11 +2176,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Creating a content calendar or using organizational tools and services is a great way to stay on track. Some trusted tools are Google Calendar, Trello, Asana, and more.',
+            text: 'Creating a content calendar or using organizational tools and services is a great way to stay on track. Some trusted tools are <a href="https://www.google.com/calendar" target="_blank" class="link">Google Calendar</a>, <a href="https://trello.com/en" target="_blank" class="link">Trello</a>, <a href="https://asana.com/" target="_blank" class="link">Asana</a>, and more.',
           },
           {
             type: 'paragraph',
-            text: 'There are also ways to increase your productivity while you’re sifting through your video footage. For example, the Pomodoro method is a popular and trusted productivity technique where you work for about 25 minutes at a time and take 5-minute breaks in between. ',
+            text: 'There are also ways to increase your productivity while you’re sifting through your video footage. For example, the <a href="https://www.themuse.com/advice/take-it-from-someone-who-hates-productivity-hacksthe-pomodoro-technique-actually-works#:~:text=What%20Is%20the%20Pomodoro%20Technique,are%20referred%20to%20as%20pomodoros." target="_blank" class="link">Pomodoro method</a> is a popular and trusted productivity technique where you work for about 25 minutes at a time and take 5-minute breaks in between. ',
           },
         ],
       },
