@@ -12,8 +12,8 @@ import {
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';
 import { PageTransition } from '../../components/animations';
-import Head from 'next/head';
 import { ProtectedRoutes } from '../../utils/autoLogout';
+import PageTitle from '../../components/SEO/PageTitle';
 
 const Onboarding = () => {
   const router = useRouter();
@@ -30,9 +30,7 @@ const Onboarding = () => {
   }, []);
   return (
     <>
-      <Head>
-        <title>Onboarding Process - Aview International</title>
-      </Head>
+      <PageTitle title="Aview Onboarding" />
       <div className="">
         <div className="px-5 py-2">
           <Image

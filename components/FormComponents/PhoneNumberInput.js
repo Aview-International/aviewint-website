@@ -1,6 +1,6 @@
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import Correct from '../../public/img/icons/correct.svg';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 import Image from 'next/image';
 import Border from '../UI/Border';

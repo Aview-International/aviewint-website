@@ -3,7 +3,7 @@ import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
 import { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import Correct from '../../public/img/icons/correct.svg';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 
 const CustomSelectInput = ({

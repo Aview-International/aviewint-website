@@ -9,14 +9,16 @@ export default async function getYoutubeData(req, res) {
     try {
       const response = await axios({
         method: 'GET',
-        url: `https://www.googleapis.com/youtube/v3/channels?&mine=true`,
+        url: `https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       return res.status(200).json(response.data);
     } catch (error) {
+      console.log(error);
       return res.status(500).json(error);
+      // return res.status(500).json({  message: 'Error getting channel' });
     }
   }
 
@@ -27,11 +29,14 @@ export default async function getYoutubeData(req, res) {
     try {
       const response = await axios({
         method: 'GET',
-        url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${youtubeChannelId}&type=video&key=${apikey}`,
+        url: `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UU${youtubeChannelId.substring(
+          2
+        )}&key=${apikey}`,
       });
       return res.status(200).json(response.data);
     } catch (error) {
-      return res.status(500).json(error);
+      console.log(error);
+      return res.status(500).json({ message: 'Error getting videos' });
     }
   }
 }

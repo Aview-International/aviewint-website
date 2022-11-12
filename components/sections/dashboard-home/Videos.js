@@ -29,26 +29,36 @@ const Videos = ({ setSelectedVideos, selectedVideos }) => {
     },
   ];
   const [videos, setVideos] = useState([]);
-  const getYoutubeVideos = async (youtube_oauth) => {
+  const getYoutubeVideos = async () => {
     try {
       const getVideos = await axios.post(
         '/api/onboarding/link-youtube?get=videos',
-        { token: youtube_oauth, youtubeChannelId: user.youtubeChannelId }
+        { youtubeChannelId: user.youtubeChannelId }
       );
-      console.log(getVideos.data.items);
       setVideos(getVideos.data.items);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    const youtube_oauth = localStorage.getItem('youtube_oauth');
-    getYoutubeVideos(youtube_oauth);
+    getYoutubeVideos();
   }, []);
 
   const handleVideos = (value) => {
-    console.log(value);
+    const videos = [...selectedVideos];
+    const findVideo = videos.find((v) => v.videoId === value.videoId);
+    if (!findVideo) {
+      videos.push(value);
+      setSelectedVideos(videos);
+    } else {
+      const existingVideoIndex = videos.findIndex(
+        (v) => findVideo.videoId === v.videoId
+      );
+      videos.splice(existingVideoIndex, 1);
+      setSelectedVideos(videos);
+    }
   };
+
   return (
     <div className="gradient-dark mt-s3 rounded-2xl p-s2">
       <div className="mb-s2 flex justify-between text-white">
@@ -65,11 +75,15 @@ const Videos = ({ setSelectedVideos, selectedVideos }) => {
         <div className="m-auto grid grid-cols-2 items-center gap-10 text-white md:grid-cols-3 lg:grid-cols-4">
           {videos.map((item, index) => (
             <YoutubeVideoFrame
-              thumbnail={item.snippet.thumbnails.default.url}
+              thumbnail={item.snippet.thumbnails.medium.url}
               channelTitle={item.snippet.channelTitle}
               publishedAt={item.snippet.publishedAt}
               title={item.snippet.title}
+              videoId={item.snippet.resourceId.videoId}
               handleVideos={handleVideos}
+              selected={selectedVideos.find(
+                (v) => v.videoId === item.snippet.resourceId.videoId
+              )}
               key={`video-${index}`}
             />
           ))}

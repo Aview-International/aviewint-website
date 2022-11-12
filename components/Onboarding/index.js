@@ -33,8 +33,7 @@ import {
 import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';
-import Correct from '../../public/img/icons/correct.svg';
-import { async } from '@firebase/util';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -425,8 +424,10 @@ export const OnboardingStep5 = () => {
       ?.split('access_token=')[1]
       ?.split('&token_type')[0];
     if (!token) return;
-    localStorage.setItem('youtube_oauth', token);
-    getChannelId(token);
+    else {
+      localStorage.setItem('youtube_oauth', token);
+      getChannelId(token);
+    }
   }, []);
 
   useEffect(() => {
@@ -446,12 +447,13 @@ export const OnboardingStep5 = () => {
           token,
         }
       );
-      await addYoutubeChannelId(
-        response.data.items[0].id,
-        localStorage.getItem('uid')
-      );
-      setIsComplete(Math.random());
-      setIsLoading({ ...isLoading, youtube: false });
+      console.log(response);
+      // await addYoutubeChannelId(
+      //   response.data.items[0].id,
+      //   localStorage.getItem('uid')
+      // );
+      // setIsComplete(Math.random());
+      // setIsLoading({ ...isLoading, youtube: false });
     } catch (error) {
       console.log(error);
     }
@@ -469,7 +471,6 @@ export const OnboardingStep5 = () => {
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl md:text-6xl">
         Connect your accounts
-        {userData.firstName}
       </h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(600px,100%)] text-center text-lg md:text-xl">
         We&#8217;ll need this information to accurately post on your behalf. You

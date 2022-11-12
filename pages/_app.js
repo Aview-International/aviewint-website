@@ -12,6 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
     AOS.init();
     AOS.refresh();
   }, []);
+
   useEffect(() => {
     const setViewportHeight = () => {
       let vh = window.innerHeight * 0.01;

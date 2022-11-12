@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
-import Correct from '../../public/img/icons/correct.svg';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 
 const UploadFile = ({ data, setData, isValid, hasSubmitted }) => {

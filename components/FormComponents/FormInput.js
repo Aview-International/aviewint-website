@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Correct from '../../public/img/icons/correct.svg';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 import Border from '../UI/Border';
 

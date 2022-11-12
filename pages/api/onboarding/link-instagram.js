@@ -22,21 +22,29 @@ export default async function handler(req, res) {
       });
       return res.status(200).json(response.data);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ message: 'Error getting access code' });
     }
   } else if (get === 'long_lived_access') {
-    // exchnage one time access token for long_lived_access_token
-    const { code } = req.body;
-    const response = await axios.get(
-      `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=${process.env.NEXT_PUBLIC_INSTAGRAM_SECRET_KEY}&access_token=${code}`
-    );
-    return res.status(200).json(response.data);
+    try {
+      // exchange one time access token for long_lived_access_token
+      const { code } = req.body;
+      const response = await axios.get(
+        `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=${process.env.NEXT_PUBLIC_INSTAGRAM_SECRET_KEY}&access_token=${code}`
+      );
+      return res.status(200).json(response.data);
+    } catch (error) {
+      return res.status(500).json({ message: 'Error connecting to instagram' });
+    }
   } else if (get === 'user_account_info') {
-    // get user account info
-    const { code } = req.body;
-    const response = await axios(
-      `https://graph.instagram.com/v15.0/me?fields=id,username,account_type&access_token=${code}`
-    );
-    return res.status(200).json(response.data);
+    try {
+      // get user account info
+      const { code } = req.body;
+      const response = await axios(
+        `https://graph.instagram.com/v15.0/me?fields=id,username,account_type&access_token=${code}`
+      );
+      return res.status(200).json(response.data);
+    } catch (error) {
+      return res.status(500).json({ message: 'Error connecting to instagram' });
+    }
   }
 }

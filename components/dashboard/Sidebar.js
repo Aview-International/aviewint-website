@@ -7,14 +7,18 @@ import signout from '../../public/img/icons/signout.svg';
 
 const DashboardSidebar = ({ user }) => {
   return (
-    <aside className="flex max-h-screen w-[170px] flex-col items-center overflow-y-auto py-s4 text-white">
+    <aside className="fixed top-0 left-0 flex max-h-screen w-[170px] flex-col items-center overflow-y-auto py-s4 text-white">
       <div>
-        <Image
-          src={aviewLogo}
-          alt="AVIEW International logo"
-          width={56}
-          height={56}
-        />
+        <Link href="/dashboard">
+          <a>
+            <Image
+              src={aviewLogo}
+              alt="AVIEW International logo"
+              width={56}
+              height={56}
+            />
+          </a>
+        </Link>
       </div>
       <Profile user={user} />
       <Navlink />

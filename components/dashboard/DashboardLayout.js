@@ -36,9 +36,11 @@ const DashboardStructure = ({ children }) => {
       ) : (
         <main className="gradient-dark flex min-h-screen w-full">
           <DashboardSidebar user={user} />
-          <div className="w-[calc(100%-170px)]">
+          <div className="ml-auto w-[calc(100%-170px)]">
             <DashBoardHeader user={user} />
-            <div className="h-full bg-black p-s4">{children}</div>
+            <div className="max-h-[calc(100%-116px)] overflow-y-auto bg-black p-s4">
+              {children}
+            </div>
           </div>
         </main>
       )}
