@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import DashboardLayout from './DashboardLayout';
-import VideoFrame from './YoutubeVideoFrame';
 import Arrow from '../../public/img/icons/arrow-back.svg';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import TranslateOptions from './TranslateOptions';
+import YoutubeVideoFrame from './YoutubeVideoFrame';
 
-const SubmitVideos = ({ setIsSelected }) => {
+const SubmitVideos = ({ setIsSelected, selectedVideos }) => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     services: [],
@@ -38,7 +38,11 @@ const SubmitVideos = ({ setIsSelected }) => {
   return (
     <div className="flex p-s4 text-white">
       <div className="w-1/2">
-        {/* <SelectedVideos router={router} setIsSelected={setIsSelected} /> */}
+        <SelectedVideos
+          router={router}
+          setIsSelected={setIsSelected}
+          selectedVideos={selectedVideos}
+        />
       </div>
       <div className="w-1/2">
         <TranslateOptions
@@ -52,8 +56,7 @@ const SubmitVideos = ({ setIsSelected }) => {
   );
 };
 
-const SelectedVideos = ({ setIsSelected }) => {
-  const array = ['', '', '', ''];
+const SelectedVideos = ({ setIsSelected, selectedVideos }) => {
   return (
     <div>
       <div
@@ -66,8 +69,12 @@ const SelectedVideos = ({ setIsSelected }) => {
         <span>Videos Selected</span>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        {array.map((item, index) => (
-          <VideoFrame key={`video-${index}`} />
+        {selectedVideos.map((item, index) => (
+          <YoutubeVideoFrame
+            key={`video-${index}`}
+            handleVideos={() => null}
+            {...item}
+          />
         ))}
       </div>
     </div>

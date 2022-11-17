@@ -1,10 +1,6 @@
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../store/user-profile';
 import YoutubeVideoFrame from '../../dashboard/YoutubeVideoFrame';
 
-const Videos = ({ setSelectedVideos, selectedVideos }) => {
-  const { user } = useContext(UserContext);
+const Videos = ({ setSelectedVideos, selectedVideos, videos }) => {
   const BUTTONS = [
     {
       title: 'All Videos',
@@ -28,34 +24,19 @@ const Videos = ({ setSelectedVideos, selectedVideos }) => {
       title: 'Facebook',
     },
   ];
-  const [videos, setVideos] = useState([]);
-  const getYoutubeVideos = async () => {
-    try {
-      const getVideos = await axios.post(
-        '/api/onboarding/link-youtube?get=videos',
-        { youtubeChannelId: user.youtubeChannelId }
-      );
-      setVideos(getVideos.data.items);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getYoutubeVideos();
-  }, []);
 
   const handleVideos = (value) => {
-    const videos = [...selectedVideos];
+    const newArray = [...selectedVideos];
     const findVideo = videos.find((v) => v.videoId === value.videoId);
     if (!findVideo) {
-      videos.push(value);
-      setSelectedVideos(videos);
+      newArray.push(value);
+      setSelectedVideos(newArray);
     } else {
       const existingVideoIndex = videos.findIndex(
         (v) => findVideo.videoId === v.videoId
       );
-      videos.splice(existingVideoIndex, 1);
-      setSelectedVideos(videos);
+      newArray.splice(existingVideoIndex, 1);
+      setSelectedVideos(newArray);
     }
   };
 

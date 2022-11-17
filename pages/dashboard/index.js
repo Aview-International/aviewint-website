@@ -1,22 +1,46 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import DashboardLayout from '../../components/dashboard/DashboardLayout';
 import OnboardingButton from '../../components/Onboarding/button';
 import Insights from '../../components/sections/dashboard-home/Insights';
 import Videos from '../../components/sections/dashboard-home/Videos';
-import TranslateOptions from '../../components/dashboard/SubmitVideos';
+import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
+import { UserContext } from '../../store/user-profile';
+import axios from 'axios';
 
 const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const { user } = useContext(UserContext);
+
+  const getYoutubeVideos = async () => {
+    try {
+      const getVideos = await axios.post(
+        '/api/onboarding/link-youtube?get=videos',
+        { youtubeChannelId: user.youtubeChannelId }
+      );
+      setVideos(getVideos.data.items);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getYoutubeVideos();
+  }, []);
 
   return (
     <>
       <PageTitle title="Dashboard" />
       {isSelected ? (
-        <TranslateOptions setIsSelected={setIsSelected} />
+        <SubmitVideos
+          setIsSelected={setIsSelected}
+          selectedVideos={selectedVideos}
+        />
       ) : (
         <Step1
+          videos={videos}
           setIsSelected={setIsSelected}
           selectedVideos={selectedVideos}
           setSelectedVideos={setSelectedVideos}
@@ -26,11 +50,17 @@ const DashboardHome = () => {
   );
 };
 
-const Step1 = ({ setIsSelected, setSelectedVideos, selectedVideos }) => {
+const Step1 = ({
+  setIsSelected,
+  setSelectedVideos,
+  selectedVideos,
+  videos,
+}) => {
   return (
     <div>
       <Insights />
       <Videos
+        videos={videos}
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}
       />
