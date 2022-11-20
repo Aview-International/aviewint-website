@@ -10,6 +10,7 @@ import blog9Graphic from '../public/img/blogs/google-translate-accuracy.png';
 import blog10Graphic from '../public/img/blogs/youtube-gaming-on-budget.png';
 import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
 import blog12Graphic from '../public/img/blogs/skills-to-be-successful-youtuber.png';
+import blog13Graphic from '../public/img/blogs/video-localization-guide.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -2231,6 +2232,452 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: 'Learning all of these skills will set you up for success on YouTube and in other areas of your career. ',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'The Ultimate Guide to Video Localization',
+    description:
+      'Video localization is an extremely powerful growth strategy. Keep reading to learn everything you need to know to take your videos global.',
+    date: 'Nov 17, 2022',
+    img: blog13Graphic,
+    link: '/blog/video-localization-guide',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Let's face it. Most people prefer videos to written content. For influencers, content creators, and businesses looking to grow a brand, videos are one of the best mediums to attract eyes to your work. In fact, <a href='http://blogs.forrester.com/interactive_marketing/2009/01/the-easiest-way.html' target='_blank' class='link'>video results are 50x more likely to be organically ranked in Google than text-based results.</a>",
+          },
+          {
+            type: 'paragraph',
+            text: 'But unlike copy, it’s much harder to create videos in a way that appeals to a global audience.  And for anyone trying to scale their brand, reaching international audiences is one of the most effective growth strategies.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The solution is video localization. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you want to take your brand global but don’t know where to start, you’re in luck because, in this guide, you’ll learn everything you’ll need to know to expand your audience through video localization. ',
+          },
+        ],
+      },
+      {
+        title: 'What is Video Localization?',
+        link: '#video-localization',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'To understand how to make videos appeal to specific audiences from different locations, we must first understand what localization is. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'In short, localization is the practice of taking content and molding it to fit the preferences of a specific geographic location or culture. When done correctly, users shouldn’t be able to tell that the content was made in a different language or region. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'So how does this apply to videos? Well, there are three ways you can adapt your content.',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'Transcriptions',
+              'Captions & Subtitles',
+              'Voice-Overs & Dubbing',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'At this point, you may ask yourself, how is this different from translations?',
+          },
+          {
+            type: 'paragraph',
+            text: 'Well, localization is more nuanced. While a literal translation takes the words from a video and uses dictionary definitions to change them to a different language, localization takes into account subtle factors such as colloquial phrases, context, and cultural norms. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'These changes should make viewers feel at home while consuming your content.  ',
+          },
+        ],
+      },
+      {
+        title: 'How Video Localization Drives Revenue',
+        link: '#driving-revenue',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'To determine if this is a profitable strategy, we first have to see if there’s a market for it. The easiest way to determine this is by looking at the demographics of internet users. So what does the data say?',
+          },
+          {
+            type: 'image',
+            text: '',
+          },
+          {
+            type: 'paragraph',
+            text: 'According to <a href="https://www.statista.com/statistics/262946/share-of-the-most-common-languages-on-the-internet/" target="_blank" class="link">Statista</a>, about 25% of internet users speak English. If your content is in English, this leaves a whopping 75% of users that don’t have access to your videos. Who wouldn’t benefit from expanding their viewership to different countries?',
+          },
+          {
+            type: 'subtitle',
+            text: 'Localized Videos Have a High ROI',
+          },
+          {
+            type: 'paragraph',
+            text: 'Before investing your resources, let’s look at the ROI (return on investment) of localized content. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'According to data from <a href="https://www.demandgenreport.com/features/demanding-views/there-s-a-language-for-that-translating-mobile-apps-and-content/" target="_blank" class="link">DemandGen</a>, localized mobile apps received a 128% increase in downloads. In another study by <a href="https://www.bizreport.com/2009/03/plymedia-subtitles-increase-video-viewing-time.html" target="_blank" class="link">PLYmedia</a>, researchers found that adding subtitles or captions to videos increased user watch time by 40%. The <a href="https://hbr.org/2012/08/speak-to-global-customers-in-t" target="_blank" class="link">Harvard Business Review</a> reports that 72.1% of consumers spend most or all of their time on websites in their native language.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The data clearly points to a high ROI. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Translated Videos are Amazing for SEO',
+          },
+          {
+            type: 'paragraph',
+            text: 'Videos make up most search results. In fact, according to Cisco, <a href="http://www.reelseo.com/2018-internet-traffic-video/?utm_source=ReelSEO+Subscribers&utm_campaign=b4e4d29392-Daily-Email&utm_medium=email&utm_term=0_c3543eda94-b4e4d29392-213949869" target="_blank" class="link">82% of internet traffic is video content</a>. To increase your content’s visibility among all the competition, optimizing for SEO is a must.',
+          },
+          {
+            type: 'paragraph',
+            text: 'SEO (search engine optimization) is the practice of using strategies to rank your content higher in search results. Conventionally, this is used for copywriting. However, these strategies can also be applied to videos.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Turns out, translating your content is amazing for SEO! ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Translating a video requires a written transcript of all the dialogue and audio, which is then crawled by search engines and used to determine the video’s ranking. Having a transcript will provide search engines with additional context and keywords, proving that your work is good quality and authoritative. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'On top of that, international users will be able to search for your work in their native language, increasing viewership, which in turn improves SEO. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Localized Content Will Expand Your Audience',
+          },
+          {
+            type: 'paragraph',
+            text: 'Who wouldn’t want to watch entertainment in their native language? This goes without saying, but localized content opens the door for an incredible amount of audience growth. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you translate your work into the most common languages on the internet, this could potentially double or triple your viewership.',
+          },
+          {
+            type: 'paragraph',
+            text: 'It also helps you target a specific audience. Let’s say you’re looking to sell an online course, and you’ve identified an exact geographic location that has a particularly high demand for what your course has to offer. Localizing all the e-learning videos for that region is going to not only help people understand your course, but feel at home while taking it. ',
+          },
+        ],
+      },
+      {
+        title: 'When Should You Go Global?',
+        link: '#go-global',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Expanding your brand to international audiences is a very profitable strategy. But as a business owner, content creator, or professional, you may be asking yourself when is the best time to implement this growth strategy.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The short answer is right away. Any brand will see the immediate benefits of adapting video content to new audiences. But as always, it depends on your current goals.',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you have the time and resources, investing in localization is something you can benefit from no matter what stage your brand is in. ',
+          },
+        ],
+      },
+      {
+        title: 'How to Translate Subtitles and Captions',
+        link: '#translate-subtitles-and-captions',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The first step to growing an international audience is mapping out a strategy so that you can ensure that the changes you’re implementing are effective. And what planning your strategy comes down to is assessing your goals, understanding your target audience, and using analytics to make data-driven decisions.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The details of your strategy are going to be largely dictated by the industry you’re in and your current situation. So how do you go about assessing your goals?',
+          },
+          {
+            type: 'subtitle',
+            text: 'Assess Your Current Goals',
+          },
+          {
+            type: 'paragraph',
+            text: 'When setting goals for growth, it’s going to largely depend on data that you have already collected.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Let’s say you’re running a YouTube channel and you’ve plateaued, so you want to find a new way to grow your audience. You take a look at your audience statistics and you see that a large percentage of your viewers are Spanish speaking. You can then prioritize translating videos to Spanish first. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Understanding Your Target Audience',
+          },
+          {
+            type: 'paragraph',
+            text: 'Appealing to a new audience may seem hard but it isn’t. The fact is, doing a bit of research goes a long way. A couple of Google searches into the cultural norms of your target audience will make a huge difference in the quality of your localized videos. ',
+          },
+          {
+            type: 'paragraph',
+            text: "Most importantly, you’ll want to get feedback. If you've just started implementing this strategy, reach out to your community and ask them if there’s anything you can improve on. You can never have too much communication!",
+          },
+          {
+            type: 'subtitle',
+            text: 'Make Data-Driven Decisions',
+          },
+          {
+            type: 'paragraph',
+            text: 'Like any other growth strategy, you’re going to want to measure your results. This is going to help you make sure your investments are paying off. The goal is to keep track of ROI.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Let’s say you’re localizing all your YouTube videos. By keeping track of the data, you can see which types of videos perform best when localized and which ones don’t. This way you can strategically translate specific types of content and replicate videos that are proven to be effective. ',
+          },
+          {
+            type: 'linkedin',
+            embed:
+              '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6995496267132854272" height="567" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>',
+          },
+        ],
+      },
+      {
+        title: 'How to Translate Subtitles and Captions',
+        link: '#subtitles-and-captions',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Are you on a tight budget? <a href="https://www.aviewint.com/blog/grow-channel-using-translations" target="_blank" class="link">Using translated subtitles or captions is your best bet at increasing your viewership</a>. But first, let’s take a look at the difference between subtitles and captions.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Subtitles Vs. Captions',
+          },
+          {
+            type: 'paragraph',
+            text: '<a href="https://aviewint.com/blog/closed-captions-vs-subtitles" target="_blank" class="link">Subtitles and captions are very similar but they do have a slight difference</a>. Captions display text according to the exact dialog in a video, while subtitles include contextual text such as music or background noise. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'In short, captions are specifically for dialog and subtitles give more context but they both transcribe audio. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Subtitle Best Practices',
+          },
+          {
+            type: 'paragraph',
+            text: 'While the creation of subtitles is best left in the hands of professional translators and transcribers if you’re planning on doing it yourself, it’s good to learn <a href="https://aviewint.com/blog/subtitling-best-practises" target="_blank" class="link">how to make subtitles correctly</a>. Here are a few tips to keep in mind.',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Use good timing - the text should be synchronized with the audio.',
+              'Have accurate translations - rather than only focusing on using dictionary definitions to translate, focus on communicating the meaning and context behind the dialog. ',
+              'Use optimal placement - Subtitles are most commonly placed at the bottom of the screen so they won’t block any important visuals',
+              'Add punctuation - You can utilize punctuation to make subtitles more engaging',
+              'Choose a good font and color - Use standard fonts and contrasting colors to make the subtitles easy to see.',
+            ],
+          },
+          {
+            type: 'subtitle',
+            text: 'Automated Subtitles Vs. Manual Subtitles',
+          },
+          {
+            type: 'paragraph',
+            text: 'There are 2 options for translated subtitles. Human translators and AI-generated translations. So which one should you select?',
+          },
+          {
+            type: 'paragraph',
+            text: 'This largely depends on your budget seeing as AI translation tends to be cheaper. However, if your goal is quality localization, manual translators are the way to go. This is because <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">machine learning translation isn’t always accurate.</a>',
+          },
+          {
+            type: 'paragraph',
+            text: 'Google Translate, the most commonly used translation service, is only about <a href="https://www.researchgate.net/publication/334523114_An_Updated_Evaluation_of_Google_Translate_Accuracy" target="_blank" class="link">85% accurate</a>. Where machine learning falls short is colloquial phrases. AI is still incapable of understanding slang and colloquialisms which presents a huge problem for those looking to create completely localized content. ',
+          },
+          {
+            type: 'linkedin',
+            embed:
+              '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6990975386490707968" height="924" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>',
+          },
+          {
+            type: 'paragraph',
+            text: 'If you have the budget for it, manual translations are the way to go!',
+          },
+        ],
+      },
+      {
+        title: 'How To Translate Voice-Over and Dubbing',
+        link: '#voice-over-and-dubbing',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Voice-overs and dubbing are the way to go if you have the resources for it. Hiring a talented voice actor can help you take your videos to the next level and make them extremely entertaining for your target audience. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Voice-over Vs. Dubbing',
+          },
+          {
+            type: 'paragraph',
+            text: 'A voice-over is when translated audio is played over the original audio from the video whereas dubbing is when the audio is completely replaced with the translated audio. Again, deciding between these two options depends on your budget. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'While dubbing is optimal because it creates a better user experience, it tends to be more pricey than voice-overs. Either way, your viewers will appreciate having the audio changed to their native language.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Human Voice-overs Vs. AI Voice-overs',
+          },
+          {
+            type: 'paragraph',
+            text: 'Now that you have a better idea of voice-overs and dubbing, the next step is to choose between human and AI-generated voice-overs.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Chances are you’ve heard examples of both in movies and on social media. The truth is, AI voice-overs aren’t optimal. While the cheaper prices may make it appear like a good option, AI-generated audio is very far from perfect. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'AI lacks a human touch. From slang to different tonal nuances, it’s nearly impossible for machine-learning voice-overs to produce accurate results. If your budget allows, human translators are your best bet. ',
+          },
+        ],
+      },
+      {
+        title: 'Content Distribution',
+        link: '#content-distribution',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Video localization goes beyond implementing translations. How are you going to distribute your work? While this largely depends on your niche, there are a few unique ways you can promote your localized content.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Internal Website Translation',
+          },
+          {
+            type: 'paragraph',
+            text: "Let’s say you're building a site to sell an e-learning course and you’ve included localized videos. What is the best way of delivering the translated content to your target audience? This is where website translation comes in. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'The simple solution is Google Translate. You can automatically translate text by inputting the website copy into <a href="https://translate.google.com/" target="_blank" class="link">translate.google.com</a>. This allows you to immediately view the translated version of your site using your browser’s toolbar. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'But as I mentioned earlier in this article, Google Translate has its shortcomings. Chances are, the machine learning system will miss some text on your site and will include some mistranslations.',
+          },
+          {
+            type: 'paragraph',
+            text: 'This is why looking into website localization services such as <a href="https://weglot.com/how-to-translate-your-entire-website-online/" target="_blank" class="link">Weglot</a> is so effective. These services will help you accurately localize your entire website while keeping it free from any errors. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Creating an International YouTube Channel',
+          },
+          {
+            type: 'paragraph',
+            text: 'Another way to promote localized videos is through a dedicated YouTube channel. This is especially effective if YouTube is already your main platform. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'A great example of this is the famous creator <a href="https://www.youtube.com/c/blameitonjorge" target="_blank" class="link">BlameitonJorge</a>. He created a separate channel dedicated to his Spanish-speaking audience. Check it out <a href="https://www.youtube.com/channel/UCIdMo6f8jXVIdQixYLJNCpw" target="_blank" class="link">here!</a>',
+          },
+        ],
+      },
+      {
+        title: 'Additional Tips for Video Localization',
+        link: '#additional-tips-for-video-localization',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The goal is to make your content appeal to an international audience. To do this, it’s good to take into account cultural differences. Here are a few tips to help you understand your audience. ',
+          },
+          {
+            type: 'unordered list',
+            items: [
+              'Look up their local holidays',
+              'Stay away from controversial topics',
+              'Make sure the content is relevant to your audience',
+              'Create a keyword-focused title and description',
+              'Promote localized content on social media',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Choosing a Video Localization Provider',
+        link: '#choosing-video-localization-provider',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'If you’ve made it to this point in this article, you may be wondering what the next steps are to take. The answer is choosing a provider. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'There are many types of video localization and translation services to select from depending on your niche but luckily at <a href="https://aviewint.com/" target="_blank" class="link">Aview</a>, we can provide personalized plans according to your goals.',
+          },
+          {
+            type: 'subtitle',
+            text: 'What We Can Do For You',
+          },
+          {
+            type: 'paragraph',
+            text: 'At Aview we can help you with all kinds of localization and translation materials. Here’s a short list of the types of content we specialize in.',
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'YouTube Channels - We translate videos for creators and offer a multitude of promotional services.',
+              'Marketing Materials - Got marketing copy that needs translation? We’ve got you covered.',
+              'Legal Documents - It’s important to manually localize legal documents for accuracy and privacy reasons. Our translators can cover any personal or business-related legal documents. ',
+              'E-Learning - Aview specializes in helping companies translate e-learning material for employee training and more. We also cover online courses that are looking to expand into international markets.',
+            ],
+          },
+          {
+            type: 'subtitle',
+            text: 'Why Work With Us?',
+          },
+          {
+            type: 'paragraph',
+            text: 'What makes Aview different is the highly personalized approach we take with each client. Everyone has different goals. We take pride in catering our services to help you make the exact changes you need to help you take your brand to the next level. ',
+          },
+        ],
+      },
+      {
+        title: 'Taking Your Brand Global Through Localization',
+        link: '#brand-global',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Assess your goals, understand your target audience, and translate your video content. This is what localization comes down to. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'By doing your research and having a strategy planned out in advance, you’ll be on your way to expanding your audience in no time!',
+          },
+          {
+            type: 'paragraph',
+            text: 'Now that you’ve learned everything you need to know about video localization, it’s time to go global. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Have something to add? Any questions left unanswered? Send us a message at julia@aviewint.com and we’ll be happy to assist you!',
           },
         ],
       },
