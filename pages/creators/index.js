@@ -1,16 +1,17 @@
 import Header from '../../components/navigation/Header';
-import OurServices from '../../components/sections/reused/OurServices';
 import Footer from '../../components/navigation/Footer';
-import YouCreateWeTranslate from '../../components/sections/creators/YouCreateWeTranslate';
 import BenefitsOfTranslations from '../../components/sections/creators/BenefitsOfTranslations';
-import HowItWorks from '../../components/sections/creators/HowItWorks';
-import AtAview from '../../components/sections/creators/AtAview';
-import GeneratingAviewFor from '../../components/sections/creators/GeneratingAviewFor';
 import InternationalGrowth from '../../components/sections/creators/InternationalGrowth';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
-import GoGlobal from '../../components/sections/creators/GoGlobal';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
+import ContentCreators from '../../components/sections/home/ContentCreators';
+import LanguagesServed from '../../components/sections/reused/LanguagesServed';
+import StartGenerating from '../../components/sections/home/StartGenerating';
+import FAQ from '../../components/sections/home/FAQ';
+import OurCreators from '../../components/sections/creators/OurCreators';
+import CreatorTranslations from '../../components/sections/creators/CreatorTranslations';
+import HowItWorks from '../../components/sections/reused/HowItWorks';
 
 const Creators = () => {
   return (
@@ -20,14 +21,15 @@ const Creators = () => {
         description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
       />
       <Header curPage="Creators" />
-      <GoGlobal />
-      <GeneratingAviewFor />
-      <YouCreateWeTranslate />
-      <OurServices />
+      <OurCreators />
       <HowItWorks />
+      <ContentCreators />
+      <CreatorTranslations />
+      <LanguagesServed />
       <BenefitsOfTranslations />
       <InternationalGrowth />
-      <AtAview />
+      <StartGenerating />
+      <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Creators" />
       <Blobs />

@@ -9,9 +9,9 @@ import OurCorporateServices from '../../components/sections/corporate/OurCorpora
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
 import CorporateTranslations from '../../components/sections/corporate/CorporateTranslations';
 import BenefitsOfTranslatingContent from '../../components/sections/corporate/BenefitsOfTranslatingContent';
-import LanguagesServed from '../../components/sections/corporate/LanguagesServed';
+import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
-import HowItWorks from '../../components/sections/corporate/HowItWorks';
+import HowItWorks from '../../components/sections/reused/HowItWorks';
 
 const Corporate = () => {
   return (
