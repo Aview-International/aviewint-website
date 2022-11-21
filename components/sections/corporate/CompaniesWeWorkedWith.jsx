@@ -26,7 +26,7 @@ export default function CompaniesWeWorkedWith() {
       <div className="flex flex-row flex-wrap justify-center gap-y-s10 gap-x-[20%] md:gap-x-[5%] lg:gap-x-[5%]">
         {COMPANIES.map((company, i) => (
           <div
-            className="grid w-[40%] place-content-center md:w-[30%] lg:w-[20%]"
+            className="grid w-[40%] max-w-[160px] place-content-center md:w-[30%] lg:w-[20%]"
             key={company.name}
           >
             <Image src={company.logo} alt={company.name} />
