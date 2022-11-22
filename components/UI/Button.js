@@ -3,8 +3,8 @@ import Border from './Border';
 import Shadow from './Shadow';
 import HoverGradientFill from './HoverGradientFill';
 
-const Button = ({ children, type, purpose, route }) => {
-  const buttonContent = (
+const Button = ({ children, type, purpose, route, onClick }) => {
+  let button = (
     <a
       className={`
           ${type === 'primary' && `gradient-1 text-black `}
@@ -21,21 +21,21 @@ const Button = ({ children, type, purpose, route }) => {
     </a>
   );
 
-  const buttonPurpose =
-    purpose === 'route' ? (
-      <Link href={route}>{buttonContent}</Link>
-    ) : (
-      purpose === 'submit' && <button type="submit">{buttonContent}</button>
-    );
+  if (purpose === 'route') {
+    button = <Link href={route}>{button}</Link>;
+  } else if (purpose === 'submit') {
+    button = <button type="submit">{button}</button>;
+  } else if (purpose === 'onClick') {
+    button = <div onClick={onClick}>{button}</div>;
+  }
 
-  const button =
-    type === 'tertiary' ? (
-      buttonPurpose
-    ) : (
+  if (type !== 'tertiary') {
+    button = (
       <Shadow>
-        <Border borderRadius="full">{buttonPurpose}</Border>
+        <Border borderRadius="full">{button}</Border>
       </Shadow>
     );
+  }
 
   return button;
 };

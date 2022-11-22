@@ -66,7 +66,7 @@ const GenerateAviewForCompany = ({ title }) => {
       [e.target.name]: e.target.value,
     });
   };
-  const hanldeCheckBox = (e) => {
+  const handleCheckBox = (e) => {
     if (e.target.checked) {
       setData({
         ...data,
@@ -148,7 +148,7 @@ const GenerateAviewForCompany = ({ title }) => {
         {GENERATE_AVIEW_CHECKBOX.map((checkbox, i) => (
           <CheckBox
             key={`checkbox-${i}`}
-            onChange={hanldeCheckBox}
+            onChange={handleCheckBox}
             {...checkbox}
           />
         ))}

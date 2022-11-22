@@ -26,7 +26,7 @@ const ContentCreators = () => {
           </Link>
         ))}
       </div>
-      <Button type="primary" purpose="route" route="/#generate-aview">
+      <Button type="primary" purpose="route" route="#generate-aview">
         Become a Creator
       </Button>
     </section>
