@@ -26,7 +26,7 @@ function Form({ name, submitHandler, className, children }) {
       method="POST"
       autoComplete="on"
       data-netlify="true"
-      netlify-honeypot="bot-field"
+      // netlify-honeypot="bot-field"
       action="/success"
       onSubmit={onSubmit}
       className={className}
