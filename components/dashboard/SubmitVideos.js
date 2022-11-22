@@ -7,6 +7,7 @@ import YoutubeVideoFrame from './YoutubeVideoFrame';
 import axios from 'axios';
 import { saveVideo } from '../../pages/api/onboarding';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const SubmitVideos = ({
   setIsSelected,
@@ -16,6 +17,7 @@ const SubmitVideos = ({
   user,
 }) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const handleLanguages = (value) => {
     const newLanguages = [...payload.languages];
     if (newLanguages.includes(value))
@@ -33,6 +35,7 @@ const SubmitVideos = ({
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     let result = [];
     try {
       for (let i = 0; i < selectedVideos.length; i++) {
@@ -69,14 +72,12 @@ ${
           idBoard: res.data.id,
         }
       );
-      const createCard = await axios.post(
-        '/api/submit-new-requests?create=card',
-        {
-          cardName: encodeURI('New Video Request'),
-          idList: createList.data.id,
-          desc: encodeURIComponent(description),
-        }
-      );
+      await axios.post('/api/submit-new-requests?create=card', {
+        cardName: encodeURI('New Video Request'),
+        idList: createList.data.id,
+        desc: encodeURIComponent(description),
+      });
+      setIsLoading(false);
       toast('Succesfully submitted tasks');
       // window.location.reload();
     } catch (error) {
@@ -99,6 +100,7 @@ ${
           handleSubmit={handleSubmit}
           payload={payload}
           setPayload={setPayload}
+          isLoading={isLoading}
         />
       </div>
     </div>

@@ -13,6 +13,7 @@ const TranslateOptions = ({
   handleSubmit,
   payload,
   setPayload,
+  isLoading,
 }) => {
   return (
     <div>
@@ -92,7 +93,9 @@ const TranslateOptions = ({
       />
       <br />
       <div className="w-36">
-        <OnboardingButton onClick={handleSubmit}>Submit</OnboardingButton>
+        <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+          Submit
+        </OnboardingButton>
       </div>
     </div>
   );

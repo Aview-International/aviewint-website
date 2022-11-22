@@ -7,6 +7,7 @@ import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { UserContext } from '../../store/user-profile';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -71,6 +72,13 @@ const SelectVideos = ({
   selectedVideos,
   videos,
 }) => {
+  const handleTranslate = () => {
+    if (selectedVideos.length < 1) {
+      toast.error('Please select a video');
+    } else {
+      setIsSelected(true);
+    }
+  };
   return (
     <div>
       <Insights />
@@ -82,9 +90,7 @@ const SelectVideos = ({
       />
       <br />
       <div className="w-[155px]">
-        <OnboardingButton onClick={() => setIsSelected(true)}>
-          Translate
-        </OnboardingButton>
+        <OnboardingButton onClick={handleTranslate}>Translate</OnboardingButton>
       </div>
     </div>
   );
