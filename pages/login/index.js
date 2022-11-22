@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Border from '../../components/UI/Border';
-import Loader from '../../components/UI/loader';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/onboarding';
 import { UserContext } from '../../store/user-profile';
+import ButtonLoader from '../../public/loaders/ButtonLoader';
 
 const Login = () => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const Login = () => {
                 onClick={handleSubmit}
               >
                 {isLoading ? (
-                  <Loader />
+                  <ButtonLoader />
                 ) : (
                   <>
                     <span className="flex items-center justify-center pr-s1">

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { initializeApp } from 'firebase/app';
 import {
   GoogleAuthProvider,
@@ -94,7 +93,6 @@ export const createNewUser = async (
         lastName,
         picture,
       });
-      // return response;
     }
   });
 };
@@ -137,12 +135,17 @@ export const updateRequiredServices = async (services, _id) => {
 };
 
 // save user youtube channel id after connecting youtube account
-export const addYoutubeChannelId = async (youtubeChannelId, _id) => {
+export const addYoutubeChannelId = async (
+  youtubeChannelName,
+  youtubeChannelId,
+  _id
+) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const postData = {
         ...data,
+        youtubeChannelName,
         youtubeChannelId,
       };
       const updates = {
@@ -211,4 +214,9 @@ export const getUserProfile = async (_id) => {
     else return null;
   });
   return res;
+};
+
+// save video to the database
+export const saveVideo = async (channelId, data) => {
+  await set(ref(database, `youtube-videos/${channelId}`), data);
 };

@@ -2,20 +2,20 @@ import Image from 'next/image';
 import DashboardLayout from './DashboardLayout';
 import Arrow from '../../public/img/icons/arrow-back.svg';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import TranslateOptions from './TranslateOptions';
 import YoutubeVideoFrame from './YoutubeVideoFrame';
+import axios from 'axios';
+import { saveVideo } from '../../pages/api/onboarding';
+import { toast } from 'react-toastify';
 
-const SubmitVideos = ({ setIsSelected, selectedVideos }) => {
+const SubmitVideos = ({
+  setIsSelected,
+  selectedVideos,
+  setPayload,
+  payload,
+  user,
+}) => {
   const router = useRouter();
-  const [payload, setPayload] = useState({
-    services: [],
-    languages: [],
-    otherLanguages: '',
-    allowUsPostVideo: false,
-    saveSettingsForFuture: false,
-  });
-
   const handleLanguages = (value) => {
     const newLanguages = [...payload.languages];
     if (newLanguages.includes(value))
@@ -32,8 +32,56 @@ const SubmitVideos = ({ setIsSelected, selectedVideos }) => {
     setPayload({ ...payload, services: newServices });
   };
 
-  const handleSubmit = () => {
-    console.log(payload);
+  const handleSubmit = async () => {
+    let result = [];
+    try {
+      for (let i = 0; i < selectedVideos.length; i++) {
+        let markup = `## Video - ${i + 1}
+ **Title** = ${selectedVideos[i].title} 
+ **Link** = https://www.youtube.com/watch?v=${selectedVideos[i].videoId}
+ 
+---
+`;
+        result.push(markup);
+      }
+      const description = `${result.join(
+        ''
+      )} **Services Required** : ${payload.services.join(', ')} 
+**Language(s) to be translated** : ${payload.languages.join(', ')}, ${
+        payload.otherLanguages
+      }
+${
+  payload.additionalNote
+    ? '**Additional Note** : ' + payload.additionalNote
+    : ''
+}
+**Can we post this video** : ${payload.allowUsPostVideo ? 'Yes' : 'No'}`;
+      console.log(description);
+
+      saveVideo(user.youtubeChannelId, { videos: payload.languages });
+      const res = await axios.post('/api/submit-new-requests?create=board', {
+        boardName: user.youtubeChannelName,
+      });
+      const createList = await axios.post(
+        '/api/submit-new-requests?create=list',
+        {
+          boardName: user.youtubeChannelName,
+          idBoard: res.data.id,
+        }
+      );
+      const createCard = await axios.post(
+        '/api/submit-new-requests?create=card',
+        {
+          cardName: encodeURI('New Video Request'),
+          idList: createList.data.id,
+          desc: encodeURIComponent(description),
+        }
+      );
+      toast('Succesfully submitted tasks');
+      // window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="flex p-s4 text-white">
@@ -50,6 +98,7 @@ const SubmitVideos = ({ setIsSelected, selectedVideos }) => {
           handleLanguages={handleLanguages}
           handleSubmit={handleSubmit}
           payload={payload}
+          setPayload={setPayload}
         />
       </div>
     </div>

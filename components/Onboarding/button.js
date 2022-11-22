@@ -1,5 +1,5 @@
 import Border from '../UI/Border';
-import Loader from '../UI/loader';
+import Loader from '../../public/loaders/ButtonLoader';
 import Shadow from '../UI/Shadow';
 
 const OnboardingButton = ({ children, isLoading, onClick }) => {

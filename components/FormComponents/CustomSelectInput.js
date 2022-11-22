@@ -22,7 +22,7 @@ const CustomSelectInput = ({
         <p className="mb-s1">{text}</p>
         <Border borderRadius="[5px] w-full">
           <div
-            className="flex w-full cursor-pointer items-center justify-between rounded-[5px] bg-black p-s1"
+            className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
             <p>{data || 'Select'}</p>

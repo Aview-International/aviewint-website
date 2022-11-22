@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { getUserProfile } from '../../pages/api/onboarding';
 import { UserContext } from '../../store/user-profile';
-import FullScreenLoader from '../UI/FullScreenLoader';
+import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
 
@@ -19,6 +19,7 @@ const DashboardStructure = ({ children }) => {
         firstName: res.firstName,
         lastName: res.lastName,
         youtubeChannelId: res.youtubeChannelId,
+        youtubeChannelName: res.youtubeChannelName,
       });
       setIsLoading(false);
     } catch (error) {

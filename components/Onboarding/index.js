@@ -364,7 +364,6 @@ export const OnboardingStep4 = () => {
 export const OnboardingStep5 = () => {
   const router = useRouter();
   const [userData, setUserData] = useState({});
-  const [isComplete, setIsComplete] = useState(undefined);
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -409,8 +408,6 @@ export const OnboardingStep5 = () => {
         getToken.data.access_token,
         new_expiry_time
       );
-      localStorage.setItem('isComplete', isComplete);
-      setIsComplete(Math.random());
       setIsLoading({ ...isLoading, instagram: false });
     } catch (error) {
       console.log(error);
@@ -448,12 +445,12 @@ export const OnboardingStep5 = () => {
         }
       );
       console.log(response);
-      // await addYoutubeChannelId(
-      //   response.data.items[0].id,
-      //   localStorage.getItem('uid')
-      // );
-      // setIsComplete(Math.random());
-      // setIsLoading({ ...isLoading, youtube: false });
+      await addYoutubeChannelId(
+        response.data.items[0].snippet.title,
+        response.data.items[0].id,
+        localStorage.getItem('uid')
+      );
+      setIsLoading({ ...isLoading, youtube: false });
     } catch (error) {
       console.log(error);
     }

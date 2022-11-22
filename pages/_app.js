@@ -7,7 +7,11 @@ import { MenuOpenContextProvider } from '../store/menu-open-context';
 
 import '../styles/globals.css';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const MyApp = ({ Component, pageProps }) => {
+  // AOS animation
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -25,6 +29,18 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <MenuOpenContextProvider>
       <UserContextProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <Layout Component={Component} pageProps={pageProps} />
       </UserContextProvider>
     </MenuOpenContextProvider>

@@ -9,7 +9,7 @@ export default async function getYoutubeData(req, res) {
     try {
       const response = await axios({
         method: 'GET',
-        url: `https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&mine=true`,
+        url: `https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails,snippet&mine=true`,
         headers: {
           Authorization: `Bearer ${token}`,
         },

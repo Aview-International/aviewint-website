@@ -10,9 +10,18 @@ import axios from 'axios';
 
 const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
   const { user } = useContext(UserContext);
+  const [payload, setPayload] = useState({
+    services: [],
+    languages: [],
+    otherLanguages: '',
+    additionalNote: '',
+    allowUsPostVideo: false,
+    saveSettingsForFuture: false,
+  });
 
   const getYoutubeVideos = async () => {
     try {
@@ -21,6 +30,7 @@ const DashboardHome = () => {
         { youtubeChannelId: user.youtubeChannelId }
       );
       setVideos(getVideos.data.items);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -37,10 +47,14 @@ const DashboardHome = () => {
         <SubmitVideos
           setIsSelected={setIsSelected}
           selectedVideos={selectedVideos}
+          setPayload={setPayload}
+          payload={payload}
+          user={user}
         />
       ) : (
-        <Step1
+        <SelectVideos
           videos={videos}
+          isLoading={isLoading}
           setIsSelected={setIsSelected}
           selectedVideos={selectedVideos}
           setSelectedVideos={setSelectedVideos}
@@ -50,8 +64,9 @@ const DashboardHome = () => {
   );
 };
 
-const Step1 = ({
+const SelectVideos = ({
   setIsSelected,
+  isLoading,
   setSelectedVideos,
   selectedVideos,
   videos,
@@ -61,6 +76,7 @@ const Step1 = ({
       <Insights />
       <Videos
         videos={videos}
+        isLoading={isLoading}
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}
       />

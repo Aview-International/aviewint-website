@@ -25,6 +25,7 @@ const FormInput = ({
   label,
   onChange,
   placeholder,
+  value,
   name,
   hasSubmitted,
   bgColor,
@@ -47,6 +48,7 @@ const FormInput = ({
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
             onChange={(e) => onChange(e)}
+            value={value}
           />
           <div
             className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}

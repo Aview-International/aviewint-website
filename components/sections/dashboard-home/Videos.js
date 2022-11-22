@@ -1,6 +1,7 @@
+import CircleLoader from '../../../public/loaders/CircleLoader';
 import YoutubeVideoFrame from '../../dashboard/YoutubeVideoFrame';
 
-const Videos = ({ setSelectedVideos, selectedVideos, videos }) => {
+const Videos = ({ setSelectedVideos, selectedVideos, videos, isLoading }) => {
   const BUTTONS = [
     {
       title: 'All Videos',
@@ -27,12 +28,12 @@ const Videos = ({ setSelectedVideos, selectedVideos, videos }) => {
 
   const handleVideos = (value) => {
     const newArray = [...selectedVideos];
-    const findVideo = videos.find((v) => v.videoId === value.videoId);
+    const findVideo = newArray.find((v) => v.videoId === value.videoId);
     if (!findVideo) {
       newArray.push(value);
       setSelectedVideos(newArray);
     } else {
-      const existingVideoIndex = videos.findIndex(
+      const existingVideoIndex = newArray.findIndex(
         (v) => findVideo.videoId === v.videoId
       );
       newArray.splice(existingVideoIndex, 1);
@@ -53,22 +54,26 @@ const Videos = ({ setSelectedVideos, selectedVideos, videos }) => {
         ))}
       </div>
       <div className="max-h-[45vh] overflow-y-auto">
-        <div className="m-auto grid grid-cols-2 items-center gap-10 text-white md:grid-cols-3 lg:grid-cols-4">
-          {videos.map((item, index) => (
-            <YoutubeVideoFrame
-              thumbnail={item.snippet.thumbnails.medium.url}
-              channelTitle={item.snippet.channelTitle}
-              publishedAt={item.snippet.publishedAt}
-              title={item.snippet.title}
-              videoId={item.snippet.resourceId.videoId}
-              handleVideos={handleVideos}
-              selected={selectedVideos.find(
-                (v) => v.videoId === item.snippet.resourceId.videoId
-              )}
-              key={`video-${index}`}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <CircleLoader />
+        ) : (
+          <div className="m-auto grid grid-cols-2 items-center gap-10 text-white md:grid-cols-3 lg:grid-cols-4">
+            {videos.map((item, index) => (
+              <YoutubeVideoFrame
+                thumbnail={item.snippet.thumbnails.medium.url}
+                channelTitle={item.snippet.channelTitle}
+                publishedAt={item.snippet.publishedAt}
+                title={item.snippet.title}
+                videoId={item.snippet.resourceId.videoId}
+                handleVideos={handleVideos}
+                selected={selectedVideos.find(
+                  (v) => v.videoId === item.snippet.resourceId.videoId
+                )}
+                key={`video-${index}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

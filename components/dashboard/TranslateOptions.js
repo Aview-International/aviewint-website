@@ -39,7 +39,14 @@ const TranslateOptions = ({
         <div className="mt-s4">
           <FormInput
             label="Please specify language(s), separated with comma"
+            value={payload.otherLanguages}
             placeholder="Other language(s)"
+            onChange={(e) =>
+              setPayload({
+                ...payload,
+                otherLanguages: e.target.value,
+              })
+            }
           />
         </div>
       )}
@@ -62,6 +69,13 @@ const TranslateOptions = ({
       <Textarea
         label="Is there anything else you would like us to know?"
         placeholder="Additional notes"
+        value={payload.additionalNote}
+        onChange={(e) =>
+          setPayload({
+            ...payload,
+            additionalNote: e.target.value,
+          })
+        }
       />
       <CheckBox
         onChange={(e) =>
@@ -77,7 +91,7 @@ const TranslateOptions = ({
         label="Would you like us to post this video as well?"
       />
       <br />
-      <div className="w-[140px]">
+      <div className="w-36">
         <OnboardingButton onClick={handleSubmit}>Submit</OnboardingButton>
       </div>
     </div>
