@@ -110,7 +110,6 @@ const ApplyToday = () => {
           <input
             type="hidden"
             name="languages"
-            answer
             value={data.languages.toString()}
           />
         </div>
