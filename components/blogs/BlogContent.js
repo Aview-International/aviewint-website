@@ -75,16 +75,21 @@ const BlogContent = ({ sections }) => {
                 );
               } else if (content.type === 'subtitle') {
                 return (
-                  <h5 className="-mb-3 mt-2 text-lg font-bold text-white md:mt-4 md:text-2xl">
+                  <h5
+                    className="-mb-3 mt-2 text-lg font-bold text-white md:mt-4 md:text-2xl"
+                    key={`content-${i}`}
+                  >
                     {content.text}
                   </h5>
                 );
               } else if (content.type === 'quote') {
                 return (
-                  <div className="mx-auto my-8 max-w-[400px]">
+                  <div
+                    className="mx-auto my-8 max-w-[400px]"
+                    key={`content-${i}`}
+                  >
                     <p
                       className="mb-s3 text-lg text-white md:text-xl"
-                      key={`content-${i}`}
                       dangerouslySetInnerHTML={{ __html: content.quote }}
                     />
                     <p
