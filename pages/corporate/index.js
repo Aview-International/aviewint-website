@@ -28,7 +28,7 @@ const Corporate = () => {
       <LanguagesServed />
       <PreppingForBillC96 />
       <HowItWorks />
-      <GenerateAviewForCompany title="Generate Aview" />
+      <GenerateAviewForCompany />
       <FAQ page="corporate" />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
