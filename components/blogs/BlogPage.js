@@ -12,6 +12,7 @@ const BlogPage = ({ idx }) => {
       <SEO
         title={`${BLOGS[idx].title} - AVIEW`}
         description={BLOGS[idx].description}
+        image={BLOGS[idx].img}
       />
       <Header curPage="Blog" />
       <div className="mx-s3 mt-s6 lg:mt-s8">
