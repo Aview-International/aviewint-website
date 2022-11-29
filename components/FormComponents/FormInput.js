@@ -30,9 +30,14 @@ const FormInput = ({
   bgColor,
   textBlack,
   type,
+  noBottomMargin,
 }) => {
   return (
-    <div className="relative mb-s5 w-full text-xl text-white">
+    <div
+      className={`relative w-full text-xl text-white ${
+        !noBottomMargin && 'mb-s5'
+      }`}
+    >
       <label htmlFor={_id} className={`mb-s1 block w-full`}>
         {label}
       </label>
