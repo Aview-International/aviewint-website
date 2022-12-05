@@ -42,7 +42,7 @@ const Login = () => {
           <p className="my-s3 text-center text-lg md:text-xl">
             Don&apos;t have an account?
             <br /> Get started{' '}
-            <Link href="/onboarding?stage=1">
+            <Link href="/register">
               <a className="underline">here</a>
             </Link>
           </p>

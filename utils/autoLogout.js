@@ -22,6 +22,6 @@ const autoLogout = () => {
 export const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const validToken = autoLogout();
-  if (!validToken) router.push('/onboarding?stage=1');
+  if (!validToken) router.push('/login');
   return <>{children}</>;
 };

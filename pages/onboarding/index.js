@@ -6,7 +6,6 @@ import {
   OnboardingStep2,
   OnboardingStep3,
   OnboardingStep4,
-  OnboardingStep5,
   OnboardingSuccess,
 } from '../../components/Onboarding';
 import aviewLogo from '../../public/img/aview/logo.svg';
@@ -14,6 +13,7 @@ import ArrowBack from '../../public/img/icons/arrow-back.svg';
 import { PageTransition } from '../../components/animations';
 import { ProtectedRoutes } from '../../utils/autoLogout';
 import PageTitle from '../../components/SEO/PageTitle';
+import Link from 'next/link';
 
 const Onboarding = () => {
   const router = useRouter();
@@ -32,7 +32,14 @@ const Onboarding = () => {
     <>
       <PageTitle title="Aview Onboarding" />
       <div className="">
-        <div className="px-5 py-2">
+        <div className="flex items-center px-5 py-6">
+          {router.query.stage !== '1' && (
+            <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
+              <a className="flex place-content-center pr-4">
+                <Image src={ArrowBack} alt="Go back" width={10} height={20} />
+              </a>
+            </Link>
+          )}
           <Image
             src={aviewLogo}
             alt="AVIEW International logo"
@@ -40,22 +47,19 @@ const Onboarding = () => {
             height={40}
           />
         </div>
-        <div
-          style={{ width: `${Math.ceil((+router.query.stage * 100) / 6)}%` }}
-          className="gradient-1 h-1 transition-all ease-in-out"
-        ></div>
-        <div className="relative">
-          {router.query.stage !== '1' && (
-            <button
-              className="absolute top-2/4 -left-1/4 z-10 -translate-y-2/4"
-              onClick={() => router.back()}
-            >
-              <Image src={ArrowBack} alt="Go back" width={16} height={32} />
-            </button>
+        <div className="bg-gray-1">
+          <div
+            style={{ width: `${Math.ceil((+router.query.stage * 100) / 5)}%` }}
+            className="gradient-1 h-1 transition-all ease-in-out"
+          ></div>
+        </div>
+        <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
+          {router.query.stage > 1 && (
+            <small className="mb-s2 block text-center text-lg">
+              Step {router.query.stage} of 5
+            </small>
           )}
-          <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
-            <Stages />
-          </div>
+          <Stages />
         </div>
       </div>
     </>
@@ -69,9 +73,11 @@ const Stages = () => {
   return (
     <>
       {query.stage === '1' && (
-        <PageTransition>
-          <OnboardingStep1 />
-        </PageTransition>
+        <ProtectedRoutes>
+          <PageTransition>
+            <OnboardingStep1 />
+          </PageTransition>
+        </ProtectedRoutes>
       )}
       {query.stage === '2' && (
         <ProtectedRoutes>
@@ -95,13 +101,6 @@ const Stages = () => {
         </ProtectedRoutes>
       )}
       {query.stage === '5' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep5 />
-          </PageTransition>
-        </ProtectedRoutes>
-      )}
-      {query.stage === '6' && (
         <ProtectedRoutes>
           <PageTransition>
             <OnboardingSuccess />

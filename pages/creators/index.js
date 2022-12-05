@@ -11,7 +11,7 @@ import FAQ from '../../components/sections/home/FAQ';
 import OurCreators from '../../components/sections/creators/OurCreators';
 import CreatorTranslations from '../../components/sections/creators/CreatorTranslations';
 import HowItWorks from '../../components/sections/reused/HowItWorks';
-import GenerateAview from '../../components/sections/home/GenerateAview';
+import StartGenerating from '../../components/sections/home/StartGenerating';
 
 const Creators = () => {
   return (
@@ -28,7 +28,7 @@ const Creators = () => {
       <LanguagesServed />
       <BenefitsOfTranslations />
       <InternationalGrowth />
-      <GenerateAview />
+      <StartGenerating />
       <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Creators" />

@@ -2,9 +2,7 @@ import Border from '../UI/Border';
 import Shadow from '../UI/Shadow';
 import Image from 'next/image';
 import OnboardingButton from './button';
-import { useContext, useEffect, useMemo, useState } from 'react';
-import Google from '../../public/img/icons/google.svg';
-import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
+import { useContext, useEffect, useState } from 'react';
 import Personal from '../../public/img/graphics/personal-use.png';
 import Team from '../../public/img/graphics/team-use.png';
 import { useRouter } from 'next/router';
@@ -34,120 +32,27 @@ import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';
 import Correct from '../../public/img/icons/green-check-circle.svg';
+import FormInput from '../FormComponents/FormInput';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
-  const router = useRouter();
-  const { user, updateUser } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState({
-    google: false,
-    facebook: false,
-  });
-
-  const updateDatabase = async (_tokenResponse) => {
-    updateUser({
-      ...user,
-      email: _tokenResponse.email,
-      firstName: _tokenResponse.firstName,
-      lastName: _tokenResponse.lastName,
-      picture: _tokenResponse.photoUrl,
-    });
-    localStorage.setItem('token', _tokenResponse.idToken);
-    localStorage.setItem('uid', _tokenResponse.localId);
-    await createNewUser(
-      _tokenResponse.localId,
-      _tokenResponse.firstName,
-      _tokenResponse.lastName,
-      _tokenResponse.photoUrl,
-      _tokenResponse?.email
-    );
-    router.push('/onboarding?stage=2');
-  };
-
-  const handleGoogle = async (type) => {
-    setIsLoading({ ...isLoading, google: true });
-    const { _tokenResponse } = await signInWithGoogle();
-    updateDatabase(_tokenResponse);
-  };
-
-  const handleFacebook = async () => {
-    setIsLoading({ ...isLoading, facebook: true });
-    const { _tokenResponse } = await signInWithFacebook();
-    updateDatabase(_tokenResponse);
-  };
-
-  const { account } = router.query;
-  return (
-    <>
-      <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
-        <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
-        {account && (
-          <p className="mb-s3 text-center text-lg">
-            You don&apos;t have an account yet, begin here
-          </p>
-        )}
-        <Shadow classes="w-full mb-4">
-          <Border borderRadius="full" classes="w-full">
-            <button
-              className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
-              onClick={handleGoogle}
-            >
-              {isLoading.google ? (
-                <Loader />
-              ) : (
-                <>
-                  <span className="flex items-center justify-center pr-s1">
-                    <Image src={Google} alt="Google" />
-                  </span>
-                  Continue with Google
-                </>
-              )}
-            </button>
-          </Border>
-        </Shadow>
-        <Shadow classes="w-full">
-          <Border borderRadius="full" classes="w-full">
-            <button
-              className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3"
-              onClick={handleFacebook}
-            >
-              {isLoading.facebook ? (
-                <Loader />
-              ) : (
-                <>
-                  <span className="flex items-center justify-center pr-s1">
-                    <Image src={Facebook} alt="Facebook" />
-                  </span>
-                  Continue with Facebook
-                </>
-              )}
-            </button>
-          </Border>
-        </Shadow>
-      </div>
-    </>
-  );
-};
-
-// Onboarding stage 2
-export const OnboardingStep2 = () => {
   const { user } = useContext(UserContext);
   const router = useRouter();
   const [data, setData] = useState({
-    purpose: '',
+    role: '',
     hasSubmitted: false,
     isLoading: false,
   });
   const handleSubmit = async () => {
     setData({ ...data, hasSubmitted: true });
-    if (!data.purpose) return;
+    if (!data.role) return;
     setData({ ...data, isLoading: true });
     try {
-      await updateAviewUsage(data.purpose, localStorage.getItem('uid'));
+      await updateAviewUsage(data.role, localStorage.getItem('uid'));
     } catch (error) {
       console.error(error);
     }
-    router.push('/onboarding?stage=3');
+    router.push('/onboarding?stage=2');
   };
   return (
     <div className="m-auto w-[min(630px,90%)]">
@@ -162,9 +67,9 @@ export const OnboardingStep2 = () => {
           <Border classes="h-full w-full" borderRadius="2xl">
             <div
               className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center md:p-s3 ${
-                data.purpose === 'team' && 'gradient-1'
+                data.role === 'Content Manager' && 'gradient-1'
               }`}
-              onClick={() => setData({ ...data, purpose: 'team' })}
+              onClick={() => setData({ ...data, role: 'Content Manager' })}
             >
               <Image src={Team} alt="Team" width={250} height={250} />
               <h3 className="text-xl md:text-2xl">For my content creators</h3>
@@ -178,9 +83,9 @@ export const OnboardingStep2 = () => {
           <Border borderRadius="2xl" classes="h-full w-full">
             <div
               className={`transition-300 h-full w-full rounded-2xl bg-black p-s2 text-center md:p-s3 ${
-                data.purpose === 'personal' && 'gradient-1'
+                data.role === 'Content Creator' && 'gradient-1'
               }`}
-              onClick={() => setData({ ...data, purpose: 'personal' })}
+              onClick={() => setData({ ...data, role: 'Content Creator' })}
             >
               <Image src={Personal} alt="Personal" width={250} height={250} />
               <h3 className="text-xl md:text-2xl">For myself</h3>
@@ -191,11 +96,16 @@ export const OnboardingStep2 = () => {
           </Border>
         </Shadow>
       </div>
-      {data.hasSubmitted && !data.purpose && (
+      {data.hasSubmitted && !data.role && (
         <p className="my-s3 text-center text-xl">Please select an option</p>
       )}
       <div className="mx-auto my-s4 w-full md:w-[360px]">
-        <OnboardingButton onClick={handleSubmit} isLoading={data.isLoading}>
+        <OnboardingButton
+          disabled={!data.role}
+          onClick={handleSubmit}
+          isLoading={data.isLoading}
+          theme="dark"
+        >
           Continue
         </OnboardingButton>
       </div>
@@ -203,8 +113,8 @@ export const OnboardingStep2 = () => {
   );
 };
 
-// Onboarding stage 3
-export const OnboardingStep3 = () => {
+// Onboarding stage 2
+export const OnboardingStep2 = () => {
   const router = useRouter();
   const [usage, setUsage] = useState([]);
   const [sideEffects, setSideEffects] = useState({
@@ -227,7 +137,7 @@ export const OnboardingStep3 = () => {
       if (usage.length < 1) return;
       setSideEffects({ ...sideEffects, isLoading: true });
       await updateRequiredServices(usage, localStorage.getItem('uid'));
-      router.push('/onboarding?stage=4');
+      router.push('/onboarding?stage=3');
     } catch (error) {
       console.log(error);
     }
@@ -266,41 +176,52 @@ export const OnboardingStep3 = () => {
       )}
       <div className="mx-auto my-s4 w-full md:w-[360px]">
         <OnboardingButton
+          theme="dark"
           onClick={handleSubmit}
           isLoading={sideEffects.isLoading}
         >
           Continue
         </OnboardingButton>
       </div>
-      <Link href="/onboarding?stage=5">
-        <a className="block text-center text-xl">Skip</a>
+      <Link href="/onboarding?stage=3">
+        <a className="m-auto block w-full rounded-full border-2 border-solid border-white p-3 text-center text-lg md:w-[360px]">
+          Skip
+        </a>
       </Link>
     </div>
   );
 };
 
-// Onboarding stage 4
-export const OnboardingStep4 = () => {
+// Onboarding stage 3
+export const OnboardingStep3 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
-    languages: [],
+    languages: '',
     averageVideoDuration: '',
   });
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
   });
-  const handleMultipleSelect = (option) => {
-    const newArray = [...payload.languages];
-    if (newArray.includes(option)) {
-      newArray.splice(newArray.indexOf(option), 1);
-      setPayload({ ...payload, languages: newArray });
-    } else {
-      newArray.push(option);
-      setPayload({ ...payload, languages: newArray });
-    }
-  };
+
+  const ONBOARDING_STAGE_3_INPUT = [
+    {
+      name: 'monthlyView',
+      label: 'What are your average monthly views?',
+    },
+    {
+      name: 'languages',
+      label: 'What languages do you need translations for?',
+    },
+    {
+      name: 'averageVideoDuration',
+      label: 'How long is your average duration of videos?',
+    },
+  ];
+  const handleChange = (e) =>
+    setPayload({ ...payload, [e.target.name]: e.target.value });
+
   const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (
@@ -312,7 +233,7 @@ export const OnboardingStep4 = () => {
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
       await updateUserBio(payload, localStorage.getItem('uid'));
-      router.push('/onboarding?stage=5');
+      router.push('/onboarding?stage=4');
     } catch (error) {
       console.log(error);
     }
@@ -325,43 +246,34 @@ export const OnboardingStep4 = () => {
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         We&#8217;ll customize your Aview experience based on your choices
       </p>
-      <div className="m-auto w-[min(360px,100%)]">
-        <CustomSelectInput
-          text="What are your average monthly views?"
-          options={AVERAGE_MONTHLY_VIEWS}
-          hasSubmitted={sideEffects.hasSubmitted}
-          isValid={payload.monthlyView}
-          onChange={(option) => setPayload({ ...payload, monthlyView: option })}
-        />
-        <MultipleSelectInput
-          text="What languages do you need translations for?"
-          options={LANGUAGES}
-          answer={payload.languages}
-          hasSubmitted={sideEffects.hasSubmitted}
-          onChange={(event) => handleMultipleSelect(event)}
-        />
-        <CustomSelectInput
-          text="How long is your average duration of videos?"
-          options={AVERAGE_VIDEO_DURATION}
-          hasSubmitted={sideEffects.hasSubmitted}
-          isValid={payload.averageVideoDuration}
-          onChange={(option) =>
-            setPayload({ ...payload, averageVideoDuration: option })
-          }
-        />
-        <OnboardingButton
-          onClick={handleSubmit}
-          isLoading={sideEffects.isLoading}
-        >
-          Continue
-        </OnboardingButton>
+      <div>
+        <div className="m-auto flex max-w-[1144px] flex-col items-center lg:flex-row lg:gap-8">
+          {ONBOARDING_STAGE_3_INPUT.map((item, index) => (
+            <FormInput
+              key={`input-${index}`}
+              onChange={handleChange}
+              hasSubmitted={sideEffects.hasSubmitted}
+              placeholder="Your Response"
+              {...item}
+            />
+          ))}
+        </div>
+        <div className="m-auto w-full md:w-[360px]">
+          <OnboardingButton
+            onClick={handleSubmit}
+            isLoading={sideEffects.isLoading}
+            theme="dark"
+          >
+            Continue
+          </OnboardingButton>
+        </div>
       </div>
     </div>
   );
 };
 
-// Onboarding stage 5
-export const OnboardingStep5 = () => {
+// Onboarding stage 4
+export const OnboardingStep4 = () => {
   const router = useRouter();
   const [userData, setUserData] = useState({});
   const [isLoading, setIsLoading] = useState({
@@ -476,58 +388,47 @@ export const OnboardingStep5 = () => {
       <div className="m-auto w-[min(360px,80%)]">
         <div className="relative my-s2">
           <button
-            className={`instagram block w-full rounded-full border-2 p-s1.5 text-center`}
+            className={`${
+              userData.ig_access_token && 'instagram'
+            } block w-full rounded-full border-2 p-s1.5 text-center`}
             onClick={linkInstagramAccount}
           >
             Instagram
           </button>
-          {userData.ig_access_token && (
-            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
-              <Image src={Correct} alt="Correct" width={35} height={35} />
-            </span>
-          )}
         </div>
         <div className="relative my-s2">
           <button
-            className={`block w-full rounded-full border-2 bg-[#0054ff] p-s1.5 text-center`}
+            className={`block w-full rounded-full border-2 p-s1.5 text-center ${
+              userData.facebook && 'bg-[#0054ff]'
+            }`}
           >
             Facebook
           </button>
-          {userData.facebook && (
-            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
-              <Image src={Correct} alt="Correct" width={35} height={35} />
-            </span>
-          )}
         </div>
         <div className="relative my-s2">
           <button
-            className={`block w-full rounded-full border-2 bg-[#000000] p-s1.5 text-center`}
+            className={`block w-full rounded-full border-2 p-s1.5 text-center ${
+              userData.tiktok && 'bg-[#000000]'
+            }`}
           >
             TikTok
           </button>
-          {userData.tiktok && (
-            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
-              <Image src={Correct} alt="Correct" width={35} height={35} />
-            </span>
-          )}
         </div>
         <div className="relative my-s2">
           <button
-            className={`w-full rounded-full border-2 bg-[#ff0000] p-s1.5 text-center`}
+            className={`w-full rounded-full border-2 p-s1.5 text-center ${
+              userData.youtubeChannelId && 'bg-[#ff0000]'
+            }`}
             onClick={linkYoutubeAccount}
           >
             {isLoading.youtube ? <Loader /> : 'Youtube'}
           </button>
-          {userData.youtubeChannelId && (
-            <span className="absolute -right-[40px] top-1/2 flex -translate-y-2/4">
-              <Image src={Correct} alt="Correct" width={35} height={35} />
-            </span>
-          )}
         </div>
         <div className="mt-s4">
           <OnboardingButton
+            theme="dark"
             isLoading={isLoading.continue}
-            onClick={() => router.push('/onboarding?stage=6')}
+            onClick={() => router.push('/onboarding?stage=5')}
           >
             Continue
           </OnboardingButton>
@@ -544,12 +445,15 @@ export const OnboardingSuccess = () => {
     <div className="m-auto w-[min(360px,80%)] pt-s5">
       <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
-        You&#8217;ve completed the onboarding process. Now let&#8217;s take a
-        look at your dashboard.
+        You&#8217;ve completed the onboarding process and joined our waitlist.
+        You'll be contacted soon, thank you
       </p>
       <div className="w-full">
-        <OnboardingButton onClick={() => router.push('/dashboard')}>
-          Go to Dashboard
+        <OnboardingButton
+          onClick={() => router.push('/')}
+          theme="dark"
+        >
+          Go back to home
         </OnboardingButton>
       </div>
     </div>

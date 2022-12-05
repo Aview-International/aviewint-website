@@ -98,13 +98,13 @@ export const createNewUser = async (
 };
 
 // update user preferences
-export const updateAviewUsage = async (aviewUsage, _id) => {
+export const updateAviewUsage = async (role, _id) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const postData = {
         ...data,
-        aviewUsage,
+        role,
       };
       const updates = {
         [`users/${_id}`]: postData,
