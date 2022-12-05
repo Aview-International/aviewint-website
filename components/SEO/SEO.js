@@ -40,7 +40,7 @@ const FAQ_SCHEMA = {
   ],
 };
 
-const SEO = ({ title, description }) => {
+const SEO = ({ title, description, image = '/images/og-image.png' }) => {
   const router = useRouter();
   const path = router.pathname;
 
@@ -56,7 +56,10 @@ const SEO = ({ title, description }) => {
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`www.aviewint.com${path}`} />
-      <meta property="og:image" content="/images/og-image.png" />
+      <meta property="og:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:description" content={description} />
       <link rel="canonical" href={`www.aviewint.com${path}`} />
       <link
         rel="apple-touch-icon"

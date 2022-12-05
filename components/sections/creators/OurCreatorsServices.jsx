@@ -2,12 +2,12 @@ import Image from 'next/image';
 import Button from '../../UI/Button';
 import graphic from '../../../public/img/graphics/creators/our-creators.png';
 
-export default function OurCreators() {
+export default function OurCreatorsServices() {
   return (
     <section className="section m-horizontal mt-s3 grid gap-s3 md:mt-s12 md:grid-cols-2 md:items-center md:gap-s6">
       <div className="order-2 md:order-1">
         <h1 className="title mb-s2">
-          Our <span className="gradient-1 gradient-text">Creators</span>
+          Our Creator <span className="gradient-1 gradient-text">Services</span>
         </h1>
         <p className="body mb-s4">
           We offer a wide range of translation services tailored to content

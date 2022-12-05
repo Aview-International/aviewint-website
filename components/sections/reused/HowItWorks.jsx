@@ -1,12 +1,38 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useState } from 'react';
 import Button from '../../UI/Button';
-import howSubtitlesWorkS from '../../../public/img/graphics/corporate/how-subtitles-work-sm.svg';
-import howSubtitlesWorkL from '../../../public/img/graphics/corporate/how-subtitles-work-lg.svg';
-import howDubbingWorksL from '../../../public/img/graphics/corporate/how-dubbing-works-lg.svg';
-import howDubbingWorksS from '../../../public/img/graphics/corporate/how-dubbing-works-sm.svg';
+import howSubtitlesWorksCreatorsL from '../../../public/img/graphics/corporate/how-subtitles-works-lg.svg';
+import howSubtitlesWorksCreatorsS from '../../../public/img/graphics/corporate/how-subtitles-works-sm.svg';
+import howDubbingWorksCreatorsL from '../../../public/img/graphics/corporate/how-dubbing-works-lg.svg';
+import howDubbingWorksCreatorsS from '../../../public/img/graphics/corporate/how-dubbing-works-sm.svg';
+import howSubtitlesWorksCorporateL from '../../../public/img/graphics/corporate/how-subtitles-works-lg.svg';
+import howSubtitlesWorksCorporateS from '../../../public/img/graphics/corporate/how-subtitles-works-sm.svg';
+import howDubbingWorksCorporateL from '../../../public/img/graphics/corporate/how-dubbing-works-lg.svg';
+import howDubbingWorksCorporateS from '../../../public/img/graphics/corporate/how-dubbing-works-sm.svg';
 
 export default function HowItWorks() {
+  const router = useRouter();
+
+  const path = router.pathname;
+
+  let howSubtitlesWorkS;
+  let howSubtitlesWorkL;
+  let howDubbingWorksS;
+  let howDubbingWorksL;
+
+  if (path === '/creators') {
+    howSubtitlesWorkS = howSubtitlesWorksCreatorsS;
+    howSubtitlesWorkL = howSubtitlesWorksCreatorsL;
+    howDubbingWorksS = howDubbingWorksCreatorsS;
+    howDubbingWorksL = howDubbingWorksCreatorsL;
+  } else {
+    howSubtitlesWorkS = howSubtitlesWorksCorporateS;
+    howSubtitlesWorkL = howSubtitlesWorksCorporateL;
+    howDubbingWorksS = howDubbingWorksCorporateS;
+    howDubbingWorksL = howDubbingWorksCorporateL;
+  }
+
   const [process, setProcess] = useState('subtitles');
 
   return (

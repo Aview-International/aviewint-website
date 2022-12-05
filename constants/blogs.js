@@ -11,6 +11,8 @@ import blog10Graphic from '../public/img/blogs/youtube-gaming-on-budget.png';
 import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
 import blog12Graphic from '../public/img/blogs/skills-to-be-successful-youtuber.png';
 import blog13Graphic from '../public/img/blogs/video-localization-guide.png';
+import blog14Graphic from '../public/img/blogs/business-translation.png';
+import documentsRequireTranslations from '../public/img/blogs/blog-14/documents-require-translations.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -2572,7 +2574,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "Let’s say you're building a site to sell an e-learning course and you’ve included localized videos. What is the best way of delivering the translated content to your target audience? This is where website translation comes in. ",
+            text: "Let’s say you're building a site to sell an e-learning course and you've included localized videos. What is the best way of delivering the translated content to your target audience? This is where website translation comes in. ",
           },
           {
             type: 'paragraph',
@@ -2678,6 +2680,504 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: 'Have something to add? Any questions left unanswered? Send us a message at julia@aviewint.com and we’ll be happy to assist you!',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Business Translation | Everything You Need to Know',
+    description: '',
+    date: 'Nov 25, 2022',
+    img: blog14Graphic,
+    link: '/blog/business-translation',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Business is all about growth. And one of the most underrated growth strategies is utilizing translations to expand into new markets. Think about the best brands —Apple, Amazon, and Microsoft. Everyone around the globe has heard of them. To become this relevant, they all had to invest in business translations.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Appealing to an international audience has become necessary in scaling up a business. The <a href="https://www.oneskyapp.com/blog/localization-statistics/#:~:text=The%20global%20language%20services%20industry%20is%20forecasted%20to%20grow%20by%20%245%20billion" target="_blank" class="link">translation industry is expected to grow by $5 billion</a>. To stay ahead, business owners should begin translating and localizing business documents across all platforms. ',
+          },
+          {
+            type: 'paragraph',
+            text: "But before investing in localization, it's important to answer a few questions. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'What are the benefits of translation?',
+          },
+          {
+            type: 'paragraph',
+            text: 'Which documents require translations?',
+          },
+          {
+            type: 'paragraph',
+            text: 'How do you go about choosing a provider?',
+          },
+          {
+            type: 'paragraph',
+            text: "In this article, you'll learn everything you need about business translations to take your company global.",
+          },
+        ],
+      },
+      {
+        title: "What's Business Translation?",
+        link: '#what-is-business-translation',
+        content: [
+          {
+            type: 'paragraph',
+            text: "In short, it's the practice of utilizing translations to assist a company in scaling to an international level. Business translations are a broader strategy to localize your content for global audiences. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'But how is it different from typical translations?',
+          },
+          {
+            type: 'paragraph',
+            text: "Well, if you're a business owner, you'll know firsthand that a lot of copy is involved in running an organization. From SOPs to marketing materials, there's no shortage of documents that require translations. And translating these documents involves expertise. ",
+          },
+          {
+            type: 'paragraph',
+            text: "The high level of collaboration between a company and the translators differentiates business translations from normal ones. For example, if you're translating entertainment, the priority is creating an enjoyable experience for the audience. Contrast that with legal documents. There's little to no room for error. Business translations are reliable, accurate, and specialized. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'So if expanding your reach into international audiences is such a big task, is it even worth it?',
+          },
+          {
+            type: 'paragraph',
+            text: "The answer is yes, and here's why.",
+          },
+        ],
+      },
+      {
+        title: 'What Are the Benefits of Going Global?',
+        link: '#going-global-benefits',
+        content: [
+          {
+            type: 'paragraph',
+            text: "As a business owner, you'll want to know if a growth strategy will benefit your organization. In the case of localization, there are many benefits. It's such a powerful strategy that, according to CSA research, Fortune 500 companies are <a href='http://www.commonsenseadvisory.com/default.aspx?Contenttype=ArticleDet&tabID=64&moduleId=392&Aid=2860&PR=PR' target='_blank' class='link'>2.04</a> times more likely to improve profits after investing in translation or localization services. ",
+          },
+          {
+            type: 'subtitle',
+            text: 'Tapping into New Markets',
+          },
+          {
+            type: 'paragraph',
+            text: 'Translations allow businesses to access international markets. Given the fact that there are <a href="https://blog.busuu.com/most-spoken-languages-in-the-world/#:~:text=Well%2C%20more%20than%207%2C100%20languages,spoken%20by%20only%20eight%20people." target="_blank" class="link">over 7,100 languages spoken today, the potential for growth by appealing to these new audiences is incredible. ',
+          },
+          {
+            type: 'paragraph',
+            text: "But what's the growth potential for online businesses? ",
+          },
+          {
+            type: 'paragraph',
+            text: "About <a href='https://www.statista.com/statistics/262946/share-of-the-most-common-languages-on-the-internet/' target='_blank' class='link'>75% of internet users aren't English speaking</a>. Without an international growth strategy, businesses run the risk of plateauing. If your business is primarily in English, you may miss out on millions of prospects. ",
+          },
+          {
+            type: 'subtitle',
+            text: 'Accessing More Distribution Channels',
+          },
+          {
+            type: 'paragraph',
+            text: "If you're into social media marketing in the United States, chances are you're familiar with apps like Instagram, LinkedIn, TikTok, Facebook, etc. But what if I told you that this is just the tip of the iceberg of SMM? There are many popular platforms built for non-English user bases. ",
+          },
+          {
+            type: 'paragraph',
+            text: "Here's a short list of them:",
+          },
+          {
+            type: 'unordered list',
+            items: [
+              '<a href="https://www.wechat.com/" target="_blank" class="link">WeChat - Chinese</a>',
+              '<a href="https://www.kakao.com/talk" target="_blank" class="link">KaKaoTalk - Korean</a>',
+              '<a href="https://vk.com/" target="_blank" class="link">VKontakte (VK) - Russian</a>',
+              '<a href="https://qzone.qq.com/" target="_blank" class="link">QZone - Chinese</a>',
+              '<a href="https://mixi.jp/home.pl" target="_blank" class="link">Mixi - Japanese</a>',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: 'After translating your content, you can multiply the number of distribution channels and reach millions of new users. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Providing a Better User Experience',
+          },
+          {
+            type: 'paragraph',
+            text: 'Businesses need to provide value to prospects. Translations do a great job of this. ',
+          },
+          {
+            type: 'paragraph',
+            text: "If you partner with talented translators, voice actors, and transcribers, you will deliver material to your audience that makes them feel at home. If done correctly, they shouldn't be able to tell that your content was originally in a different language. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'Translations are a great way to improve audience retention.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Growing An International Audience',
+          },
+          {
+            type: 'paragraph',
+            text: 'Having a global brand will put you a step ahead of your competitors. By accessing international audiences, businesses can scale at an unbelievable rate.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Imagine having a brand that is recognized and loved all around the globe. That is only possible by converting your business materials into different languages for people in other countries to understand. ',
+          },
+        ],
+      },
+      {
+        title: 'How Profitable are Business Translations?',
+        link: '#profitability',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'So, business translations are profitable. But what kind of ROI (return on investment) can you expect from this strategy? That’s an important question to ask before investing in any growth strategy. ',
+          },
+          {
+            type: 'paragraph',
+            text: "First, let's take a look at how to calculate the ROI.",
+          },
+          {
+            type: 'subtitle',
+            text: 'How to Calculate ROI for Localization',
+          },
+          {
+            type: 'paragraph',
+            text: 'Understanding the ROI can be tricky. The simplest way to go about it is to track specific KPIs or key performance metrics. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'These are the standard metrics to track.',
+          },
+          {
+            type: 'paragraph',
+            text: "Website Traffic - Keeping track of website traffic is a great way to understand the demand for your international content. It's also crucial to track each country or language on your site. This data will help you focus on more profitable regions. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'Revenue Vs. Cost of Translation - Some services charge per word. Others have flat fees. Either way, keeping track of your expenses and revenue will give you a clear idea of the ROI. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Conversions - Keeping tabs on conversions according to each language and country will show you how big your audience is and which regions produce the most sales. ',
+          },
+        ],
+      },
+      {
+        title: 'When Should You Translate Your Business?',
+        link: '#when',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Where do translations fit into your overarching growth strategy, and when should you implement them?',
+          },
+          {
+            type: 'paragraph',
+            text: "The easy answer is right away! Any business can see the benefits of going global at all stages. However, you should assess your company's current goals first. Is expanding your audience one of those goals? It's time to translate!",
+          },
+        ],
+      },
+      {
+        title: 'Setting up for Success',
+        link: '#setting-up-for-success',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Before implementing this growth strategy, plan your approach. Determine which tools and services are required. Decide on which languages to implement. Plan out when the changes will be made to your business. Set up a budget. These are all very important steps to take to ensure success. ',
+          },
+        ],
+      },
+      {
+        title: 'Which Languages Should You Choose?',
+        link: '#languages',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Going global doesn't necessarily mean translating to all 7,100 languages. Prioritizing specific languages or regions is the way to go.",
+          },
+          {
+            type: 'paragraph',
+            text: "If your company has already identified a demand in a specific country, you'll want to focus on that language first. But if you don't have those insights, start by identifying which languages are used most often on the internet. ",
+          },
+          {
+            type: 'paragraph',
+            text: "Here's a list of the top 10 most common languages used on the internet.",
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'English',
+              'Chinese',
+              'Spanish',
+              'Arabic',
+              'Indonesia',
+              'Portuguese',
+              'French',
+              'Japanese',
+              'Russian',
+              'German',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'What Should Your Business Translate?',
+        link: '#what-should-business-translate',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'As I previously mentioned, a lot of copy goes into running a business. So, which documents can benefit from being translated? ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Most business content can be translated, but these are generally essential documents.',
+          },
+          {
+            type: 'image',
+            src: documentsRequireTranslations,
+            alt: 'documents requiring translations',
+            maxWidth: 'max-w-[400px]',
+          },
+          {
+            type: 'subtitle',
+            text: 'Marketing Materials',
+          },
+          {
+            type: 'paragraph',
+            text: "Marketing materials are anything your company uses to reach your audience. For example, if you're running an ad campaign in a specific region, you'll want it translated into the audience's native language.",
+          },
+          {
+            type: 'paragraph',
+            text: "But when localizing marketing materials, it can be challenging to stick to your company's themes and messages. You're trying to have consistent messaging while appealing to audiences from different regions. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'This is solved through collaboration. Have your marketing team work closely with your translation service provider to ensure that your brand stays consistent. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Newsletters - Running a newsletter is an effective way to grow an active audience. But what if people from other countries start signing up for it? Most newsletter platforms provide audience insights such as demographics and geographic location. You can use this valuable information to determine which languages to translate your emails to.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Ad Campaigns - Creating ad campaigns in multiple languages will allow you to target specific audiences. This opens up many opportunities for testing international markets. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Blogs - Blogging for your website is a strategy proven to increase website traffic. However, some search queries may be unique to specific countries or languages. Business owners can utilize translations to reach readers around the globe.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Social Media Posts - If your company is running ad campaigns on foreign social media platforms, it goes without saying that they will need to be in the correct language.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Operations Documents',
+          },
+          {
+            type: 'paragraph',
+            text: 'Companies, significantly bigger ones, tend to have many internal documents, such as SOPs. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'If your business is looking to hire employees who speak different languages, it may be worth investing in translation services to ensure everyone can understand the company documents. ',
+          },
+          {
+            type: 'paragraph',
+            text: "Financial Records - Every business has documentation of its financial history. It's a crucial part of having a functional organization. If you're employing people that speak a different language, they may have to interact with these records. That's why financial documents require translations.",
+          },
+          {
+            type: 'paragraph',
+            text: 'Employee Records - Similar to finance, employee records may also require translations. If your management is multilingual, they will have to be able to read and use these records. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Policies and Procedures - Having policies and procedures that everyone can understand is a crucial part of running a business. Depending on the size or location of your company, translating all your policies may be necessary.',
+          },
+          {
+            type: 'subtitle',
+            text: 'E-Learning Material',
+          },
+          {
+            type: 'paragraph',
+            text: 'Most large corporations use e-learning videos to onboard new employees. Having these videos in multiple languages can ensure that all employees understand the material.',
+          },
+          {
+            type: 'paragraph',
+            text: "You can also benefit from translations if you're running an online course. By localizing your course, you can expand into new markets and provide education to people around the globe. ",
+          },
+          {
+            type: 'paragraph',
+            text: 'Website Taxonomy - Menus, navigation, headings, and other forms of copy require translations so that users can understand your website.',
+          },
+          {
+            type: 'paragraph',
+            text: '<a href="https://aviewint.com/blog/video-localization-guide" target="_blank" class="link">Videos</a> - All educational videos should have translated captions or voice-overs so that students and employees can understand the material. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Graphics - Any images, such as charts and infographics, must be available in the necessary languages.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Legal Documents',
+          },
+          {
+            type: 'paragraph',
+            text: 'There are many types of legal documents that may require translations—these range from applications, consent forms, notices, rule books, etc.',
+          },
+          {
+            type: 'paragraph',
+            text: 'One thing to note is that legal documents demand human translation instead of AI-generated translation. This is due to the accuracy of human translations. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Legal translations require a high level of expertise in language and legal matters. ',
+          },
+          {
+            type: 'subtitle',
+            text: 'Websites',
+          },
+          {
+            type: 'paragraph',
+            text: 'Translating your website is a great way to increase conversions and traffic. In fact, according to CSA Research, <a href="https://csa-research.com/Blogs-Events/CSA-in-the-Media/Press-Releases/Consumers-Prefer-their-Own-Language" target="_blank" class="link">76% of consumers prefer to shop in their native language.</a>',
+          },
+          {
+            type: 'paragraph',
+            text: "Many website localization tools, such as <a href='https://weglot.com/features/' target='_blank' class='link'>Weglot</a>, can automatically translate all your site's pages. But it's always important to double-check all the text on your site because some words are not uncommon to be missed or mistranslated. ",
+          },
+          {
+            type: 'subtitle',
+            text: 'Medical',
+          },
+          {
+            type: 'paragraph',
+            text: 'Many health professionals work in multi-ethnic regions. Being able to provide patients with documents in their native language is essential. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Unlike regular translations, those dealing with medical documents must be very qualified in their field. Quality and accuracy are essential. ',
+          },
+        ],
+      },
+      {
+        title: 'Choosing a Translation Service Provider',
+        link: '#choosing-translation-service-provider',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'The translation industry is growing extremely fast. According to Market Research Future, the <a href="https://www.marketresearchfuture.com/reports/translation-service-market-1400" target="_blank" class="link">market size has grown 40% over the past few years.</a>',
+          },
+          {
+            type: 'paragraph',
+            text: 'Nowadays, there are many providers to choose from. So how do you know which translation service provider is best for your company?',
+          },
+          {
+            type: 'paragraph',
+            text: "When selecting a provider, there are many things to factor in. What are your company's goals? What types of documents need to be translated? Which provider can help you get to your goals?",
+          },
+          {
+            type: 'ordered list',
+            items: [
+              'Reliability and Certification - While some freelance voice actors and transcribers may have yet to be certified regarding business documents, the proper certifications are required. While there are many certifications, the most common ones to look for are ISO 9001, 17100, or 27001. ',
+              "Language Requirements - The provider you select needs to have the languages that you require. If you translate common languages on the internet, this probably won't be an issue for you. But if you need to translate uncommon or obscure languages, double-check that your provider can solve them. ",
+              'Speed and Efficiency - Most providers have a guaranteed turnaround time. Make sure that they can translate your material according to your time constraints. ',
+              'Ask for references - Ask for references or case studies of other companies within the same niche or business sector. This will ensure that your provider has the capabilities to achieve your goals. ',
+            ],
+          },
+          {
+            type: 'subtitles',
+            text: 'Manual Vs. AI Translation',
+          },
+          {
+            type: 'paragraph',
+            text: 'Some providers have AI translation services. Are these worth investing in?',
+          },
+          {
+            type: 'paragraph',
+            text: 'When it comes to legal, medical, and educational materials, human translators are required. This is because of the inaccuracy of AI-generated translations. To better understand machine learning translations, look at one of the most common examples, Google Translate. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'It turns out <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">Google Translate has an accuracy of 85%</a>. Now, this isn\'t a big deal if you\'re simply looking up a few words to determine their definitions. However, when it comes to legal documents, for example, 85% just doesn’t cut it. This is why businesses must look for providers that can manually translate material.',
+          },
+          {
+            type: 'subtitle',
+            text: 'Translating Your Business With Aview',
+          },
+          {
+            type: 'paragraph',
+            text: 'At Aview we offer many business translation services, from marketing materials to legal documents. Why work with us?',
+          },
+          {
+            type: 'paragraph',
+            text: 'We provide entirely personalized plans for each of our clients. We collaborate closely with companies to ensure they are set up to achieve their goals. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Get a quote <a href="https://aviewint.com/corporate" target="_blank" class="link">here!</a>',
+          },
+        ],
+      },
+      {
+        title: 'Additional Tips',
+        link: '#additional-tips',
+        content: [
+          {
+            type: 'subtitle',
+            text: '#1 Understand Your Target Audience',
+          },
+          {
+            type: 'paragraph',
+            text: "A few Google searches into your target audience's culture will go a long way. What are their holidays? Which topics are controversial? What are the current local trends? You should ask yourself these questions before trying to reach new audiences. ",
+          },
+          {
+            type: 'subtitle',
+            text: '#2 Learn the Relevant Laws in Other Countries ',
+          },
+          {
+            type: 'paragraph',
+            text: 'Expanding into international audiences may come with some legal complications. It’s better to deal with this before translating your content to avoid any issues.',
+          },
+          {
+            type: 'subtitle',
+            text: '#3 Make Data-Driven Decisions',
+          },
+          {
+            type: 'paragraph',
+            text: 'Data is key. Make sure to make strategic decisions based on the metrics that are available to you. Rather than choosing a random language to translate, look at the data to make an educated decision.',
+          },
+          {
+            type: 'subtitle',
+            text: '#4 Communicate With Your Provider',
+          },
+          {
+            type: 'paragraph',
+            text: 'To get the most out of a translation service, communication key. Make sure to collaborate closely with your provider. Ensure that they have a clear idea of your goals. Ask them for references to see if they have the capabilities your business requires.',
+          },
+        ],
+      },
+      {
+        title: 'Scaling Your Business Through Translation',
+        link: '#scaling-business-through-translation',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Growing an international business is a big goal, but it's entirely possible. These are the necessary steps: Identify what needs to be translated, work with a translation or localization service provider, and measure the results. Connecting with an international audience will help you take your brand to the next level.",
           },
         ],
       },

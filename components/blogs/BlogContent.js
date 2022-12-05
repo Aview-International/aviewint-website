@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const BlogContent = ({ sections }) => {
   return (
     <div className="mb-s10 md:mb-s20">
@@ -97,6 +99,12 @@ const BlogContent = ({ sections }) => {
                       key={`content-${i}`}
                       dangerouslySetInnerHTML={{ __html: content.author }}
                     />
+                  </div>
+                );
+              } else if (content.type === 'image') {
+                return (
+                  <div className={`${content.maxWidth} mx-auto my-8`}>
+                    <Image src={content.src} alt={content.alt} />
                   </div>
                 );
               }
