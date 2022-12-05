@@ -43,7 +43,7 @@ export default function ComingSoon() {
           In the meantime, sign up for our newsletter to receive updates.
         </p>
         {showText ? (
-          <p className="body">Submitted successfully, we'll be in touch 👻</p>
+          <p className="body">Submitted successfully, we&apos;ll be in touch 👻</p>
         ) : (
           <Form
             name="newsletter"
