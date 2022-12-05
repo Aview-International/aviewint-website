@@ -13,6 +13,7 @@ export default function ComingSoon() {
     email: '',
     hasSubmitted: false,
   });
+  const [showText, setShowText] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function ComingSoon() {
       setMail({ ...mail, hasSubmitted: true });
       if (!emailValidator(mail.email)) return;
       submitForm('newsletter', { email: mail.email });
-      router.push('/success');
+      setShowText(true);
     } catch (error) {
       console.log(error);
     }
@@ -41,26 +42,30 @@ export default function ComingSoon() {
         <p className="body mb-s4">
           In the meantime, sign up for our newsletter to receive updates.
         </p>
-        <Form
-          name="newsletter"
-          submitHandler={handleSubmit}
-          className="mx-auto flex flex-col gap-s5 lg:max-w-[580px] lg:flex-row lg:items-center lg:gap-s2"
-        >
-          <FormInput
-            placeholder="Your Email Address"
-            onChange={emailChangeHandler}
-            value={mail.email}
-            hasSubmitted={mail.hasSubmitted}
-            isValid={emailValidator(mail.email)}
-            noBottomMargin={true}
-            name="email"
-          />
-          <div className="mt-s1">
-            <Button type="primary" purpose="submit">
-              Sign Up
-            </Button>
-          </div>
-        </Form>
+        {showText ? (
+          <p className="body">Submitted successfully, we'll be in touch 👻</p>
+        ) : (
+          <Form
+            name="newsletter"
+            submitHandler={handleSubmit}
+            className="mx-auto flex flex-col gap-s5 lg:max-w-[580px] lg:flex-row lg:items-center lg:gap-s2"
+          >
+            <FormInput
+              placeholder="Your Email Address"
+              onChange={emailChangeHandler}
+              value={mail.email}
+              hasSubmitted={mail.hasSubmitted}
+              isValid={emailValidator(mail.email)}
+              noBottomMargin={true}
+              name="email"
+            />
+            <div className="mt-s1">
+              <Button type="primary" purpose="submit">
+                Sign Up
+              </Button>
+            </div>
+          </Form>
+        )}
       </div>
       <div className="absolute top-0 left-1/2 -z-10 w-[250%] -translate-x-1/2 xs:w-[225%] sm:w-[200%] lg:w-full">
         <Image src={comingSoon} alt="easter egg graphic" />
