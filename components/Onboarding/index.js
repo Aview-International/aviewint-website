@@ -29,12 +29,15 @@ import FormInput from '../FormComponents/FormInput';
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
   const { user } = useContext(UserContext);
+  
   const router = useRouter();
+
   const [data, setData] = useState({
     role: '',
     hasSubmitted: false,
     isLoading: false,
   });
+
   const handleSubmit = async () => {
     setData({ ...data, hasSubmitted: true });
     if (!data.role) return;
