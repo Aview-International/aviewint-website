@@ -103,7 +103,10 @@ const BlogContent = ({ sections }) => {
                 );
               } else if (content.type === 'image') {
                 return (
-                  <div className={`${content.maxWidth} mx-auto my-8`}>
+                  <div
+                    className={`${content.maxWidth} mx-auto my-8`}
+                    key={`content-${i}`}
+                  >
                     <Image src={content.src} alt={content.alt} />
                   </div>
                 );
