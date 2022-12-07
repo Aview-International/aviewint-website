@@ -29,7 +29,7 @@ import FormInput from '../FormComponents/FormInput';
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
   const { user } = useContext(UserContext);
-  
+
   const router = useRouter();
 
   const [data, setData] = useState({
@@ -448,8 +448,8 @@ export const OnboardingSuccess = () => {
     <div className="m-auto w-[min(360px,80%)] pt-s5">
       <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
-        You&#8217;ve completed the onboarding process and joined our waitlist.
-        You'll be contacted soon, thank you
+        You&apos;ve completed the onboarding process and joined our waitlist.
+        You&apos;ll be contacted soon, thank you
       </p>
       <div className="w-full">
         <OnboardingButton onClick={() => router.push('/')} theme="dark">
