@@ -6,15 +6,8 @@ import { useContext, useEffect, useState } from 'react';
 import Personal from '../../public/img/graphics/personal-use.png';
 import Team from '../../public/img/graphics/team-use.png';
 import { useRouter } from 'next/router';
-import {
-  AVERAGE_MONTHLY_VIEWS,
-  AVERAGE_VIDEO_DURATION,
-  LANGUAGES,
-  ONBOARDING_STAGE_4,
-} from '../../constants/constants';
+import { ONBOARDING_STAGE_4 } from '../../constants/constants';
 import Link from 'next/link';
-import CustomSelectInput from '../FormComponents/CustomSelectInput';
-import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import {
   addYoutubeChannelId,
   createNewUser,
@@ -31,7 +24,6 @@ import {
 import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';
-import Correct from '../../public/img/icons/green-check-circle.svg';
 import FormInput from '../FormComponents/FormInput';
 
 // Onboarding stage 1
@@ -49,11 +41,27 @@ export const OnboardingStep1 = () => {
     setData({ ...data, isLoading: true });
     try {
       await updateAviewUsage(data.role, localStorage.getItem('uid'));
+      localStorage.setItem('role', data.role);
+      router.push('/onboarding?stage=2');
     } catch (error) {
       console.error(error);
     }
-    router.push('/onboarding?stage=2');
   };
+
+  const Options = [
+    {
+      image: Team,
+      title: 'For my content creators',
+      desc: 'I manage a team of content creators.',
+      data: 'Content Manager',
+    },
+    {
+      image: Personal,
+      title: 'For myself',
+      desc: 'Get access to translations for your online content.',
+      data: 'Content Creator',
+    },
+  ];
   return (
     <div className="m-auto w-[min(630px,90%)]">
       <h2 className="text-3xl md:text-center md:text-4xl">
@@ -62,39 +70,31 @@ export const OnboardingStep1 = () => {
       <p className="mt-4 mb-8 text-lg md:text-center md:text-xl">
         We&#8217;ll streamline your setup experience accordingly.
       </p>
-      <div className="flex flex-col items-stretch justify-center md:flex-row">
-        <Shadow classes="md:w-[300px] w-full mr-s4 cursor-pointer">
-          <Border classes="h-full w-full" borderRadius="2xl">
-            <div
-              className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center md:p-s3 ${
-                data.role === 'Content Manager' && 'gradient-1'
-              }`}
-              onClick={() => setData({ ...data, role: 'Content Manager' })}
-            >
-              <Image src={Team} alt="Team" width={250} height={250} />
-              <h3 className="text-xl md:text-2xl">For my content creators</h3>
-              <p className="mt-s2 text-lg md:text-xl">
-                I manage a team of content creators.
-              </p>
-            </div>
-          </Border>
-        </Shadow>
-        <Shadow classes="md:w-[300px] w-full cursor-pointer mt-s2 md:mt-0">
-          <Border borderRadius="2xl" classes="h-full w-full">
-            <div
-              className={`transition-300 h-full w-full rounded-2xl bg-black p-s2 text-center md:p-s3 ${
-                data.role === 'Content Creator' && 'gradient-1'
-              }`}
-              onClick={() => setData({ ...data, role: 'Content Creator' })}
-            >
-              <Image src={Personal} alt="Personal" width={250} height={250} />
-              <h3 className="text-xl md:text-2xl">For myself</h3>
-              <p className="mt-s2 text-lg md:text-xl">
-                Get access to translations for your online content.
-              </p>
-            </div>
-          </Border>
-        </Shadow>
+      <div className="flex flex-col items-stretch justify-center gap-4 md:flex-row md:gap-0">
+        {Options.map((item, index) => (
+          <Shadow
+            classes="md:w-[300px] w-full mr-s4 cursor-pointer"
+            key={`option-${index}`}
+          >
+            <Border borderRadius="2xl" classes="h-full w-full">
+              <div
+                className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center md:p-s3 ${
+                  data.role === item.data && 'gradient-1'
+                }`}
+                onClick={() => setData({ ...data, role: item.data })}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={250}
+                  height={250}
+                />
+                <h3 className="text-xl md:text-2xl">{item.title}</h3>
+                <p className="mt-s2 text-lg md:text-xl">{item.desc}</p>
+              </div>
+            </Border>
+          </Shadow>
+        ))}
       </div>
       {data.hasSubmitted && !data.role && (
         <p className="my-s3 text-center text-xl">Please select an option</p>
@@ -449,10 +449,7 @@ export const OnboardingSuccess = () => {
         You'll be contacted soon, thank you
       </p>
       <div className="w-full">
-        <OnboardingButton
-          onClick={() => router.push('/')}
-          theme="dark"
-        >
+        <OnboardingButton onClick={() => router.push('/')} theme="dark">
           Go back to home
         </OnboardingButton>
       </div>

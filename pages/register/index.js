@@ -55,9 +55,9 @@ const Register = () => {
   const { account } = router.query;
   return (
     <>
-      <PageTitle title="Aview Onboarding" />
+      <PageTitle title="Register - Aview International" />
       <div className="">
-        <div className="flex items-center px-5 py-6">
+        <div className="flex items-center pl-s14 py-6">
           <Image
             src={aviewLogo}
             alt="AVIEW International logo"
