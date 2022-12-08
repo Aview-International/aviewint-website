@@ -2319,10 +2319,6 @@ export const BLOGS = [
             text: "To determine if this is a profitable strategy, we first have to see if there's a market for it. The easiest way to determine this is by looking at the demographics of internet users. So what does the data say?",
           },
           {
-            type: 'image',
-            text: '',
-          },
-          {
             type: 'paragraph',
             text: 'According to <a href="https://www.statista.com/statistics/262946/share-of-the-most-common-languages-on-the-internet/" target="_blank" class="link">Statista</a>, about 25% of internet users speak English. If your content is in English, this leaves a whopping 75% of users that don\'t have access to your videos. Who wouldn\'t benefit from expanding their viewership to different countries?',
           },
