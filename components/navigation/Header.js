@@ -63,7 +63,7 @@ const HeaderButtons = () => {
         Contact Us
       </Button>
       <Button purpose="route" route="/login" type="secondary">
-        Log In
+        Login
       </Button>
     </div>
   );
