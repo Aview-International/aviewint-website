@@ -175,18 +175,22 @@ export const WORKED_WITH = [
 export const TRANSLATED_CONTENT = [
   {
     id: 'video-1',
+    title: 'Logan Paul',
     link: 'https://www.youtube.com/embed/mnzxkkoGROM',
   },
   {
     id: 'video-2',
+    title: 'Mark Rober',
     link: 'https://www.youtube.com/embed/tRMbUkN0DNc',
   },
   {
     id: 'video-3',
+    title: 'Saud Bros',
     link: 'https://www.youtube.com/embed/7Jbx0tzIKok',
   },
   {
     id: 'video-4',
+    title: 'Yes Theory',
     link: 'https://www.youtube.com/embed/T-LOpmmWLW4',
   },
 ];
