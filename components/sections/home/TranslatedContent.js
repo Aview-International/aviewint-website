@@ -15,6 +15,7 @@ const TranslatedContent = () => {
               <iframe
                 className="aspect-video w-full rounded-2xl"
                 src={video.link}
+                title={video.title}
               ></iframe>
             </Border>
           </Shadow>
