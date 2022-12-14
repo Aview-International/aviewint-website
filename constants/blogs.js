@@ -1096,7 +1096,7 @@ export const BLOGS = [
         content: [
           {
             type: 'youtube',
-            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/lefxMV5AF3M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            code: '<iframe class="aspect-video w-full" title="You got experiences with crabs?" src="https://www.youtube.com/embed/lefxMV5AF3M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           },
           {
             type: 'paragraph',
@@ -1917,7 +1917,7 @@ export const BLOGS = [
         content: [
           {
             type: 'youtube',
-            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/A_Fwj7GHwa4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            code: '<iframe class="aspect-video w-full" title="IMAGINE FOUND A SUPER RARE $100,000 AMETHYST CRYSTAL" src="https://www.youtube.com/embed/A_Fwj7GHwa4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           },
           {
             type: 'paragraph',
