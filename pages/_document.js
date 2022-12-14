@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html className="m-0 overflow-x-hidden scroll-smooth p-0" lang="en">
         <Head>
+          <link rel="canonical" href="https://aviewint.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
