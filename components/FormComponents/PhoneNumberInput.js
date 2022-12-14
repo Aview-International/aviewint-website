@@ -24,9 +24,13 @@ const PhoneNumberInput = ({
 }) => {
   return (
     <div className={`relative`}>
-      {label && <label className="text-xl text-white mb-s1 block">{label}</label>}
+      {label && (
+        <label className="mb-s1 block text-xl text-white">{label}</label>
+      )}
       <Border borderRadius="[5px]" classes="w-full">
-        <div className={`phone-number bg-black text-white text-xl rounded-[5px]`}>
+        <div
+          className={`phone-number rounded-[5px] bg-black text-xl text-white`}
+        >
           <PhoneInput
             international
             countryCallingCodeEditable={false}

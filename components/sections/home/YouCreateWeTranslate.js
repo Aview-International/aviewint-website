@@ -1,4 +1,4 @@
-import phoneInHandGraphic from '../../../public/img/graphics/phone-in-hand.png';
+import phoneInHandGraphic from '../../../public/img/graphics/phone-in-hand.webp';
 import Shadow from '../../UI/Shadow';
 import Border from '../../UI/Border';
 import Image from 'next/image';
