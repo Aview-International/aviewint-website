@@ -100,7 +100,7 @@ const Transactions = () => {
           </thead>
           <tbody>
             {TableData.map((data, index) => (
-              <tr className="mt-s2 text-center text-lg">
+              <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
                 <td className="py-s2">{data.date}</td>
                 <td className="py-s2">{data.services}</td>
                 <td className="py-s2">{data.payment}</td>
