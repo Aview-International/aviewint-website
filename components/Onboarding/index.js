@@ -259,7 +259,7 @@ export const OnboardingStep3 = () => {
       setPayload({ ...payload, languages: newArray });
     }
   };
-  
+
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-4xl md:text-center md:text-6xl">
@@ -494,8 +494,8 @@ export const OnboardingSuccess = () => {
     <div className="m-auto w-[min(360px,80%)] pt-s5">
       <h2 className="text-5xl md:text-center md:text-6xl">Success!</h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
-        You&apos;ve completed the onboarding process and joined our waitlist.
-        You&apos;ll be contacted soon, thank you
+        {/* You&apos;ve completed the onboarding process and joined our waitlist.
+        You&apos;ll be contacted soon, thank you */}
       </p>
       <div className="w-full">
         <OnboardingButton onClick={() => router.push('/')} theme="dark">
