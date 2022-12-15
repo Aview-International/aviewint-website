@@ -13,7 +13,7 @@ export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/auth
 const scope = 'https://www.googleapis.com/auth/youtube';
 const include_granted_scopes = true;
 const state = 'state_parameter_passthrough_value';
-const redirect_uri = `${baseUrl}/onboarding?stage=5`;
+const redirect_uri = `${baseUrl}/onboarding?stage=4`;
 const client_id =
   '976675432160-g6gf4n7e0g8am198nnsimqt3td1c4rc0.apps.googleusercontent.com';
 

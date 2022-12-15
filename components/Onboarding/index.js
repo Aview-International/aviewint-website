@@ -383,7 +383,6 @@ export const OnboardingStep4 = () => {
       ?.split('&token_type')[0];
     if (!token) return;
     else {
-      localStorage.setItem('youtube_oauth', token);
       getChannelId(token);
     }
   }, []);
@@ -405,7 +404,6 @@ export const OnboardingStep4 = () => {
           token,
         }
       );
-      console.log(response);
       await addYoutubeChannelId(
         response.data.items[0].snippet.title,
         response.data.items[0].id,
@@ -496,9 +494,14 @@ export const OnboardingSuccess = () => {
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         {/* You&apos;ve completed the onboarding process and joined our waitlist.
         You&apos;ll be contacted soon, thank you */}
+        You've completed the onboarding process. Now let's take a look at your
+        dashboard.
       </p>
       <div className="w-full">
-        <OnboardingButton onClick={() => router.push('/')} theme="dark">
+        <OnboardingButton
+          onClick={() => router.push('/dashboard')}
+          theme="dark"
+        >
           Go back to home
         </OnboardingButton>
       </div>
