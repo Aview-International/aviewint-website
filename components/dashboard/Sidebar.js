@@ -85,12 +85,10 @@ const Navlink = () => {
 };
 
 const Signout = () => {
-  const { push } = useRouter();
   const handleLogout = () => {
     localStorage.removeItem('uid');
     localStorage.removeItem('token');
-    push('/');
-    window.location.reload();
+    window.location.href = '/';
   };
   return (
     <button
