@@ -54,13 +54,20 @@ const Navlink = () => {
       {DASHBOARD_NAVLINKS.map((link, index) => (
         <Link href={link.route} key={`sidebar-link-${index}`}>
           <a
-            className={`mb-s3 flex items-center py-s1 px-s3 ${
+            className={`hover:gradient-dark group relative mb-s2 flex items-center py-s1 px-s3 ${
               route === link.route && 'gradient-dark'
             }`}
           >
             <span
-              className={`mr-5 ${
-                route !== link.route ? 'brightness-0 invert' : ''
+              className={`gradient-1 absolute right-0 top-1/4 block h-5 w-1 rounded-md group-hover:animate-dropin ${
+                route === link.route
+                  ? 'visible'
+                  : 'invisible group-hover:visible'
+              }`}
+            ></span>
+            <span
+              className={`mr-5 group-hover:animate-popup ${
+                route === link.route ? 'animate-popup' : ''
               }`}
             >
               <Image src={link.image} alt={link.text} width={20} height={20} />

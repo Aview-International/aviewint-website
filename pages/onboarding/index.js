@@ -54,7 +54,7 @@ const Onboarding = () => {
           ></div>
         </div>
         <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
-          {router.query.stage > 1 && (
+          {router.query.stage > 0 && (
             <small className="mb-s2 block text-center text-lg">
               Step {router.query.stage} of 5
             </small>

@@ -6,7 +6,12 @@ import { useContext, useEffect, useState } from 'react';
 import Personal from '../../public/img/graphics/personal-use.png';
 import Team from '../../public/img/graphics/team-use.png';
 import { useRouter } from 'next/router';
-import { ONBOARDING_STAGE_4 } from '../../constants/constants';
+import {
+  AVERAGE_MONTHLY_VIEWS,
+  AVERAGE_VIDEO_DURATION,
+  LANGUAGES,
+  ONBOARDING_STAGE_4,
+} from '../../constants/constants';
 import Link from 'next/link';
 import {
   addYoutubeChannelId,
@@ -25,6 +30,8 @@ import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';
 import FormInput from '../FormComponents/FormInput';
+import CustomSelectInput from '../FormComponents/CustomSelectInput';
+import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -241,6 +248,18 @@ export const OnboardingStep3 = () => {
       console.log(error);
     }
   };
+
+  const handleMultipleSelect = (option) => {
+    const newArray = [...payload.languages];
+    if (newArray.includes(option)) {
+      newArray.splice(newArray.indexOf(option), 1);
+      setPayload({ ...payload, languages: newArray });
+    } else {
+      newArray.push(option);
+      setPayload({ ...payload, languages: newArray });
+    }
+  };
+  
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-4xl md:text-center md:text-6xl">
@@ -250,7 +269,7 @@ export const OnboardingStep3 = () => {
         We&#8217;ll customize your Aview experience based on your choices
       </p>
       <div>
-        <div className="m-auto flex max-w-[1144px] flex-col items-center lg:flex-row lg:gap-8">
+        {/* <div className="m-auto flex max-w-[1144px] flex-col items-center lg:flex-row lg:gap-8">
           {ONBOARDING_STAGE_3_INPUT.map((item, index) => (
             <FormInput
               key={`input-${index}`}
@@ -260,6 +279,33 @@ export const OnboardingStep3 = () => {
               {...item}
             />
           ))}
+        </div> */}
+        <div className="m-auto flex max-w-[1144px] flex-col items-stretch lg:flex-row lg:gap-8">
+          <CustomSelectInput
+            text="What are your average monthly views?"
+            options={AVERAGE_MONTHLY_VIEWS}
+            hasSubmitted={sideEffects.hasSubmitted}
+            isValid={payload.monthlyView}
+            onChange={(option) =>
+              setPayload({ ...payload, monthlyView: option })
+            }
+          />
+          <MultipleSelectInput
+            text="What languages do you need translations for?"
+            options={LANGUAGES}
+            answer={payload.languages}
+            hasSubmitted={sideEffects.hasSubmitted}
+            onChange={(event) => handleMultipleSelect(event)}
+          />
+          <CustomSelectInput
+            text="How long is your average duration of videos?"
+            options={AVERAGE_VIDEO_DURATION}
+            hasSubmitted={sideEffects.hasSubmitted}
+            isValid={payload.averageVideoDuration}
+            onChange={(option) =>
+              setPayload({ ...payload, averageVideoDuration: option })
+            }
+          />
         </div>
         <div className="m-auto w-full md:w-[360px]">
           <OnboardingButton

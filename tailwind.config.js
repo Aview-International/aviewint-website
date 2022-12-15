@@ -4,7 +4,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './public/**/*.{js,ts,jsx,tsx}'
+    './public/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
@@ -79,15 +79,38 @@ module.exports = {
       keyframes: {
         roll: {
           '0%': {
-            transform: ' translate(-50%, -50%) rotate(0deg)',
+            transform: 'translate(-50%, -50%) rotate(0deg)',
           },
           '100%': {
             transform: 'translate(-50%, -50%) rotate(360deg)',
           },
         },
+        popup: {
+          '0%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(0.5)',
+          },
+          '100%': {
+            transform: 'scale(1)',
+          },
+        },
+        dropin: {
+          '0%': {
+            transform: 'translateY(-25px)',
+            height: '35px',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            height: '20px',
+          },
+        },
       },
       animation: {
         roll: 'roll 1s linear infinite',
+        popup: 'popup 0.4s ease-in-out 1',
+        dropin: 'dropin 0.5s cubic-bezier(.25,.75,.5,1.25) 1',
       },
     },
   },
