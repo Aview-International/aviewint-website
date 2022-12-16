@@ -494,7 +494,7 @@ export const OnboardingSuccess = () => {
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         {/* You&apos;ve completed the onboarding process and joined our waitlist.
         You&apos;ll be contacted soon, thank you */}
-        You've completed the onboarding process. Now let's take a look at your
+        You&apos;ve completed the onboarding process. Now let&apos;s take a look at your
         dashboard.
       </p>
       <div className="w-full">
