@@ -42,7 +42,7 @@ const Register = () => {
   const handleGoogle = async (type) => {
     setIsLoading({ ...isLoading, google: true });
     const { _tokenResponse } = await signInWithGoogle();
-    console.log("hereeee")
+    console.log('hereeee');
     updateDatabase(_tokenResponse);
   };
 
@@ -57,7 +57,7 @@ const Register = () => {
     <>
       <PageTitle title="Register - Aview International" />
       <div className="">
-        <div className="flex items-center pl-s14 py-6">
+        <div className="flex items-center py-6 pl-s14">
           <Image
             src={aviewLogo}
             alt="AVIEW International logo"
