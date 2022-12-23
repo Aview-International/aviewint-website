@@ -7,8 +7,10 @@ export default function Socials({ title, buttons }) {
       <div className="flex justify-center gap-s2">
         {buttons.map((button) => (
           <a
-            className="gradient-1 grid h-[40px] w-[40px] place-content-center rounded-full p-2"
+            className="h-[40px] w-[40px]"
             href={button.link}
+            target="_blank"
+            rel="noreferrer"
             key={button.text}
           >
             <Image src={button.image} alt={button.text} />

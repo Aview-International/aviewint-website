@@ -1,5 +1,8 @@
-import instagramIcon from '../public/img/icons/instagram.svg';
-import facebookIcon from '../public/img/icons/facebook.svg';
+import twitter from '../public/img/creators/creator-landing/twitter.svg';
+import instagram from '../public/img/creators/creator-landing/instagram.svg';
+import facebook from '../public/img/creators/creator-landing/facebook.svg';
+import tumblr from '../public/img/creators/creator-landing/tumblr.svg';
+import twitch from '../public/img/creators/creator-landing/twitch.svg';
 import blameItOnJorgeMockup from '../public/img/creators/blame-it-on-jorge/mockup.png';
 import blameItOnJorgeIcon1 from '../public/img/creators/blame-it-on-jorge/icon-1.png';
 import blameItOnJorgeIcon2 from '../public/img/creators/blame-it-on-jorge/icon-2.png';
@@ -103,11 +106,11 @@ export const CREATORS = {
     socials: {
       title: 'Follow blameitonjorge on Social Media',
       buttons: [
-        { image: instagramIcon, link: 'https://instagram.com' },
-        { image: facebookIcon, link: 'https://facebook.com' },
-        { image: facebookIcon, link: 'https://facebook.com' },
-        { image: facebookIcon, link: 'https://facebook.com' },
-        { image: facebookIcon, link: 'https://facebook.com' },
+        { image: twitter, link: 'https://instagram.com' },
+        { image: instagram, link: 'https://facebook.com' },
+        { image: facebook, link: 'https://facebook.com' },
+        { image: tumblr, link: 'https://facebook.com' },
+        { image: twitch, link: 'https://facebook.com' },
       ],
     },
   },
