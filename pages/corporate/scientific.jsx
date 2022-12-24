@@ -31,7 +31,7 @@ export default function Scientific() {
       <ScientificBranchesWeWorkWith />
       <LanguagesServed />
       <StartGenerating />
-      <FAQ />
+      <FAQ page="corporate" />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
       <Blobs />

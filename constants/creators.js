@@ -19,7 +19,7 @@ export const CREATORS = {
       buttons: [
         {
           text: 'Watch Now',
-          link: 'https://youtube.com',
+          link: 'https://www.youtube.com/@blameitonjorge',
         },
       ],
       image: blameItOnJorgeMockup,
@@ -31,11 +31,11 @@ export const CREATORS = {
       buttons: [
         {
           text: 'Spanish',
-          link: 'https://youtube.com',
+          link: 'https://www.youtube.com/@blameitonjorgeespanol',
         },
         {
           text: 'English',
-          link: 'https://youtube.com',
+          link: 'https://www.youtube.com/@blameitonjorge',
         },
       ],
       image: blameItOnJorgeIcon1,
@@ -45,15 +45,15 @@ export const CREATORS = {
       description:
         'All translated content can be found on <a href="" target="_blank" class="link">blameitonjorge Espanol</a>, where we have began to recreate some of his most popular videos. Check out some of his Spanish translated content by Aview International.',
       videos: [
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
-        'https://www.youtube.com/embed/tRMbUkN0DNc',
+        'https://www.youtube.com/embed/VVDN7KgbATI',
+        'https://www.youtube.com/embed/2PgpgqL857w',
+        'https://www.youtube.com/embed/EP9QjAs6Oq4',
+        'https://www.youtube.com/embed/8bzpmwXkSHg',
+        'https://www.youtube.com/embed/LcZBPUTJt3A',
+        'https://www.youtube.com/embed/d_phc8PQKSA',
+        'https://www.youtube.com/embed/JrcO00Dycn0',
+        'https://www.youtube.com/embed/R3fWvI15iKc',
+        'https://www.youtube.com/embed/EB8xwomPfEo',
       ],
     },
     about: {
@@ -69,49 +69,49 @@ export const CREATORS = {
       buttons: [
         {
           text: 'Spanish Channel',
-          link: 'https://youtube.com',
+          link: 'https://www.youtube.com/@blameitonjorgeespanol',
         },
         {
           text: 'English Channel',
-          link: 'https://youtube.com',
+          link: 'https://www.youtube.com/@blameitonjorge',
         },
       ],
     },
-    fans: {
-      title: 'Hear What His Fans Have To Say',
-      fans: [
-        {
-          image: blameItOnJorgeFan1,
-          name: 'Emily F',
-          description: 'Longtime viewer and fan',
-          quote:
-            '“This is awesome!! As someone learning Spanish but just at the point where I need practice more than anything, this will be extremely useful, especially because it seems like the narration is very clear and not spoken too fast”',
-        },
-        {
-          image: blameItOnJorgeFan2,
-          name: 'TheGrrf',
-          description: 'New fan',
-          quote:
-            "“This is awesome! Your videos deserve to be enjoyed worldwide in every language, they're so interesting”",
-        },
-        {
-          image: blameItOnJorgeFan3,
-          name: 'El Kaito',
-          description: 'Longtime viewer and fan',
-          quote:
-            "“This is great! I've been enjoying your videos for a long time and wanted to share them with my wife but unfortunately, she doesn't speak English Now she will finally understand why I stayed so entertained watching YouTube”",
-        },
-      ],
-    },
-    socials: {
-      title: 'Follow blameitonjorge on Social Media',
-      buttons: [
-        { image: twitter, link: 'https://instagram.com' },
-        { image: instagram, link: 'https://facebook.com' },
-        { image: facebook, link: 'https://facebook.com' },
-        { image: tumblr, link: 'https://facebook.com' },
-        { image: twitch, link: 'https://facebook.com' },
-      ],
-    },
+    // fans: {
+    //   title: 'Hear What His Fans Have To Say',
+    //   fans: [
+    //     {
+    //       image: blameItOnJorgeFan1,
+    //       name: 'Emily F',
+    //       description: 'Longtime viewer and fan',
+    //       quote:
+    //         '“This is awesome!! As someone learning Spanish but just at the point where I need practice more than anything, this will be extremely useful, especially because it seems like the narration is very clear and not spoken too fast”',
+    //     },
+    //     {
+    //       image: blameItOnJorgeFan2,
+    //       name: 'TheGrrf',
+    //       description: 'New fan',
+    //       quote:
+    //         "“This is awesome! Your videos deserve to be enjoyed worldwide in every language, they're so interesting”",
+    //     },
+    //     {
+    //       image: blameItOnJorgeFan3,
+    //       name: 'El Kaito',
+    //       description: 'Longtime viewer and fan',
+    //       quote:
+    //         "“This is great! I've been enjoying your videos for a long time and wanted to share them with my wife but unfortunately, she doesn't speak English Now she will finally understand why I stayed so entertained watching YouTube”",
+    //     },
+    //   ],
+    // },
+    // socials: {
+    //   title: 'Follow blameitonjorge on Social Media',
+    //   buttons: [
+    //     { image: twitter, link: 'https://instagram.com' },
+    //     { image: instagram, link: 'https://facebook.com' },
+    //     { image: facebook, link: 'https://facebook.com' },
+    //     { image: tumblr, link: 'https://facebook.com' },
+    //     { image: twitch, link: 'https://facebook.com' },
+    //   ],
+    // },
   },
 };
