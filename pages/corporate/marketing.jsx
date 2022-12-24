@@ -1,10 +1,12 @@
 import Header from '../../components/navigation/Header';
 import Hero from '../../components/layout/Hero';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
+import MarketingServices from '../../components/sections/corporate/marketing/MarketingServices';
 import WhyUseAview from '../../components/sections/corporate/scientific/WhyUseAview';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
+import MarketingMaterials from '../../components/sections/corporate/marketing/MarketingMaterials';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/blobs';
@@ -23,8 +25,10 @@ export default function Marketing() {
         imageAlt="Marketing Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <MarketingServices />
       <WhyUseAview />
       <LanguagesServed />
+      <MarketingMaterials />
       <StartGenerating />
       <FAQ />
       <FeaturedBlogs />
