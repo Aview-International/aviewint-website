@@ -4,7 +4,7 @@ const Row3 = ({ children }) => {
       {children.map((child) => (
         <div
           key={child.key}
-          className={`m-s2 mx-auto w-full flex-1 sm:flex-[0_0_calc(50%-48px)] xl:flex-[0_0_calc(33.33%-48px)]`}
+          className={`m-s2 mx-auto w-full flex-1 sm:flex-[0_0_calc(50%-24px)] md:flex-[0_0_calc(50%-48px)] xl:flex-[0_0_calc(33.33%-24px)]`}
         >
           <div className="flex h-full justify-center">{child}</div>
         </div>
