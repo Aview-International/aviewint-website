@@ -1,7 +1,6 @@
 import Header from '../../components/navigation/Header';
 import Hero from '../../components/layout/Hero';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
-import WhyUseAview from '../../components/sections/corporate/scientific/WhyUseAview';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
@@ -9,6 +8,9 @@ import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/blobs';
 import legalTranslations from '../../public/img/graphics/corporate/legal/legal-services.png';
+import LegalTranslationOverview from '../../components/sections/corporate/legal/LegalTranslationOverview';
+import BenefitsOfLegalTranslation from '../../components/sections/corporate/legal/BenefitsOfLegalTranslation';
+import LegalBranches from '../../components/sections/corporate/legal/LegalBranches';
 
 export default function Legal() {
   return (
@@ -23,8 +25,10 @@ export default function Legal() {
         imageAlt="Legal Translation Services"
       />
       <CompaniesWeWorkedWith />
-      <WhyUseAview />
+      <LegalTranslationOverview />
+      <BenefitsOfLegalTranslation />
       <LanguagesServed />
+      <LegalBranches />
       <StartGenerating />
       <FAQ />
       <FeaturedBlogs />

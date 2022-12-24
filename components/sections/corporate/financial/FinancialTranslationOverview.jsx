@@ -4,8 +4,7 @@ import taxReturns from '../../../../public/img/graphics/corporate/financial/tax-
 import auditReports from '../../../../public/img/graphics/corporate/financial/audit-reports.png';
 import insuranceDocuments from '../../../../public/img/graphics/corporate/financial/insurance-documents.png';
 import salesBrochures from '../../../../public/img/graphics/corporate/financial/sales-brochures.png';
-import Border from '../../../UI/Border';
-import Image from 'next/image';
+import HoverShowImageOrText from '../../../layout/HoverShowImageOrText';
 
 const ITEMS = [
   {
@@ -61,25 +60,7 @@ export default function FinancialTranslationOverview() {
         translations so you can easily keep tabs on your business&apos;s
         financial records.
       </p>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {ITEMS.map((item) => (
-          <div key={item.title}>
-            <Border classes="rounded-2xl group">
-              <div className="rounded-2xl bg-black p-6">
-                <div className="mx-auto mb-4 w-[75%] md:group-hover:hidden">
-                  <Image src={item.image} />
-                </div>
-                <p className="mb-2 text-center text-5xl font-bold text-white">
-                  {item.title}
-                </p>
-                <p className="body hidden text-left group-hover:block">
-                  {item.description}
-                </p>
-              </div>
-            </Border>
-          </div>
-        ))}
-      </div>
+      <HoverShowImageOrText items={ITEMS} />
     </section>
   );
 }
