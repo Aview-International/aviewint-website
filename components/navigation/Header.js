@@ -10,7 +10,7 @@ import closeIcon from '../../public/img/icons/close.svg';
 const Header = ({ curPage }) => {
   return (
     <>
-      <header className="navigation mt-s5 flex items-center justify-between">
+      <header className="navigation mt-10 flex items-center justify-between">
         <div className="flex items-center">
           <HeaderLogo />
           <DesktopRoutes curPage={curPage} />
@@ -44,7 +44,7 @@ const DesktopRoutes = ({ curPage }) => {
       {ROUTES.map((route) => (
         <Link href={route.route} key={route.id}>
           <a
-            className={`text-md ml-s5 xl:text-lg ${
+            className={`text-md ml-10 xl:text-lg ${
               curPage === route.text ? `gradient-text gradient-1` : `text-white`
             } hover:gradient-text hover:gradient-1`}
           >
@@ -58,7 +58,7 @@ const DesktopRoutes = ({ curPage }) => {
 
 const HeaderButtons = () => {
   return (
-    <div className="hidden items-center gap-s2.5 lg:flex">
+    <div className="hidden gap-5 lg:flex">
       <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
@@ -77,8 +77,8 @@ const MenuButton = () => {
       className="flex cursor-pointer flex-col items-end lg:hidden"
       onClick={menuOpenCtx.openMenuHandler}
     >
-      <div className="mb-s1 h-[3px] w-[36px] rounded-full bg-white"></div>
-      <div className="mb-s1 h-[3px] w-[21px] rounded-full bg-white"></div>
+      <div className="mb-2 h-[3px] w-[36px] rounded-full bg-white"></div>
+      <div className="mb-2 h-[3px] w-[21px] rounded-full bg-white"></div>
       <div className="h-[3px] w-[36px] rounded-full bg-white"></div>
     </div>
   );
@@ -94,7 +94,7 @@ const MobileMenu = () => {
       } z-50 bg-black lg:hidden`}
     >
       <div
-        className="absolute right-s3 top-s8 cursor-pointer md:right-[2.5%]"
+        className="absolute right-6 top-16 cursor-pointer md:right-[2.5%]"
         onClick={menuOpenCtx.closeMenuHandler}
       >
         <Image src={closeIcon} width={32} height={32} alt="close icon" />
