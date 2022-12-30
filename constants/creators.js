@@ -103,15 +103,9 @@ export const CREATORS = {
     //     },
     //   ],
     // },
-    // socials: {
-    //   title: 'Follow blameitonjorge on Social Media',
-    //   buttons: [
-    //     { image: twitter, link: 'https://instagram.com' },
-    //     { image: instagram, link: 'https://facebook.com' },
-    //     { image: facebook, link: 'https://facebook.com' },
-    //     { image: tumblr, link: 'https://facebook.com' },
-    //     { image: twitch, link: 'https://facebook.com' },
-    //   ],
-    // },
+    socials: {
+      title: 'Follow blameitonjorge on Social Media',
+      buttons: [{ image: twitter, link: 'https://twitter.com/blameitonjorge' }],
+    },
   },
 };
