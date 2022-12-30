@@ -11,7 +11,7 @@ const BlogRow = ({ blogs }) => {
           <a>
             <Card borderRadius="2xl" fullWidth={true}>
               <div className="pb-s3">
-                <div className="mb-s2 overflow-hidden rounded-t-2xl">
+                <div className="mb-s2 aspect-video overflow-hidden rounded-t-2xl">
                   <Image src={blog.img} alt={blog.title} layout="responsive" />
                 </div>
                 <div className="px-s3">
