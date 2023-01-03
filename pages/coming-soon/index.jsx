@@ -60,6 +60,7 @@ export default function ComingSoon() {
               isValid={emailValidator(mail.email)}
               noBottomMargin={true}
               name="email"
+              bottomMargin="mb-0"
             />
             <div className="mt-s1">
               <Button type="primary" purpose="submit">
