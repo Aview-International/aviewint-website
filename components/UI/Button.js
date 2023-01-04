@@ -3,9 +3,9 @@ import Border from './Border';
 import Shadow from './Shadow';
 import HoverGradientFill from './HoverGradientFill';
 
-const Button = ({ children, type, purpose, route, onClick }) => {
+const Button = ({ children, type, purpose, route, onClick, externalLink }) => {
   let button = (
-    <a
+    <div
       className={`
           ${type === 'primary' && `gradient-1 text-black `}
           ${type === 'secondary' && `bg-black text-white hover:text-black `}
@@ -18,15 +18,25 @@ const Button = ({ children, type, purpose, route, onClick }) => {
     >
       {type === 'secondary' && <HoverGradientFill borderRadius="full" />}
       <span className="relative">{children}</span>
-    </a>
+    </div>
   );
 
   if (purpose === 'route') {
-    button = <Link href={route}>{button}</Link>;
+    button = (
+      <Link href={route}>
+        <a>{button}</a>
+      </Link>
+    );
   } else if (purpose === 'submit') {
     button = <button type="submit">{button}</button>;
   } else if (purpose === 'onClick') {
     button = <div onClick={onClick}>{button}</div>;
+  } else if (purpose === 'externalLink') {
+    button = (
+      <a href={externalLink} target="_blank" rel="noreferrer">
+        {button}
+      </a>
+    );
   }
 
   if (type !== 'tertiary') {

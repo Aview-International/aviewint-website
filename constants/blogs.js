@@ -12,7 +12,11 @@ import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
 import blog12Graphic from '../public/img/blogs/skills-to-be-successful-youtuber.png';
 import blog13Graphic from '../public/img/blogs/video-localization-guide.png';
 import blog14Graphic from '../public/img/blogs/business-translation.png';
+import blog15Graphic from '../public/img/blogs/recap-2022.png';
 import documentsRequireTranslations from '../public/img/blogs/blog-14/documents-require-translations.png';
+import momGrowth from '../public/img/blogs/blog-15/mom-growth.png';
+import teamGrowth from '../public/img/blogs/blog-15/team-growth.png';
+import newChannels from '../public/img/blogs/blog-15/new-channels.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -237,7 +241,7 @@ export const BLOGS = [
               'Include only the essentials.',
               "Don't include too much text, and make sure it's readable.",
               "Don't include irrelevant information, like what you ate for lunch or where you went last weekend.",
-              "Don't overdo it with images, especially if they're small and hard to read (which can happen if your thumbnail is too busy). If an image or two makes sense, that's fine! But don’t use an image in place of text—unless they're needed, like a logo or profile shot of yourself or someone else relevant to your content.",
+              "Don't overdo it with images, especially if they're small and hard to read (which can happen if your thumbnail is too busy). If an image or two makes sense, that's fine! But don't use an image in place of text—unless they're needed, like a logo or profile shot of yourself or someone else relevant to your content.",
             ],
           },
         ],
@@ -1096,7 +1100,7 @@ export const BLOGS = [
         content: [
           {
             type: 'youtube',
-            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/lefxMV5AF3M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            code: '<iframe class="aspect-video w-full" title="You got experiences with crabs?" src="https://www.youtube.com/embed/lefxMV5AF3M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           },
           {
             type: 'paragraph',
@@ -1413,7 +1417,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Machine learning is not rule-based. In other words, it’s always evolving and trying to improve.',
+            text: "Machine learning is not rule-based. In other words, it's always evolving and trying to improve.",
           },
         ],
       },
@@ -1917,7 +1921,7 @@ export const BLOGS = [
         content: [
           {
             type: 'youtube',
-            code: '<iframe class="aspect-video w-full" src="https://www.youtube.com/embed/A_Fwj7GHwa4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            code: '<iframe class="aspect-video w-full" title="IMAGINE FOUND A SUPER RARE $100,000 AMETHYST CRYSTAL" src="https://www.youtube.com/embed/A_Fwj7GHwa4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           },
           {
             type: 'paragraph',
@@ -2007,7 +2011,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'A decade ago, becoming a YouTuber wasn’t always seen as a real career path. But things have changed since then.',
+            text: "A decade ago, becoming a YouTuber wasn't always seen as a real career path. But things have changed since then.",
           },
           {
             type: 'paragraph',
@@ -2015,7 +2019,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'If you’re looking to grow a channel, you’re in luck because in this post you’ll learn the 10 essential skills you need to grow an audience on Youtube.',
+            text: "If you're looking to grow a channel, you're in luck because in this post you'll learn the 10 essential skills you need to grow an audience on Youtube.",
           },
         ],
       },
@@ -2033,11 +2037,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'It’s also important to keep track of updates. YouTube is constantly working to improve the platform and as a result, many new fixes and features are introduced each month. ',
+            text: "It's also important to keep track of updates. YouTube is constantly working to improve the platform and as a result, many new fixes and features are introduced each month. ",
           },
           {
             type: 'paragraph',
-            text: 'You can stay up to date by checking out the <a href="https://support.google.com/youtube/answer/9730487?hl=en" target="_blank" class="link">YouTube Updates</a> page. If you’d like a more in-depth analysis of YouTube’s latest developments, a great resource is their <a href="https://blog.youtube/news-and-events/an-updated-look-and-feel-for-youtube/" target="_blank" class="link">official blog</a>. ',
+            text: 'You can stay up to date by checking out the <a href="https://support.google.com/youtube/answer/9730487?hl=en" target="_blank" class="link">YouTube Updates</a> page. If you\'d like a more in-depth analysis of YouTube\'s latest developments, a great resource is their <a href="https://blog.youtube/news-and-events/an-updated-look-and-feel-for-youtube/" target="_blank" class="link">official blog</a>. ',
           },
         ],
       },
@@ -2047,11 +2051,11 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'To have a successful channel, you’re going to need to produce lots of content over a long period of time. It doesn’t take long for video ideas to dry up. This is why it’s important to have a basic understanding of how to conduct research so that you’re constantly coming up with new ideas for content.',
+            text: "To have a successful channel, you're going to need to produce lots of content over a long period of time. It doesn't take long for video ideas to dry up. This is why it's important to have a basic understanding of how to conduct research so that you're constantly coming up with new ideas for content.",
           },
           {
             type: 'paragraph',
-            text: 'Identify gaps in the market. In other words, find video ideas that people are looking for but aren’t being covered by other creators. ',
+            text: "Identify gaps in the market. In other words, find video ideas that people are looking for but aren't being covered by other creators. ",
           },
           {
             type: 'paragraph',
@@ -2069,7 +2073,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'If you love your niche, managing a YouTube channel becomes a lot easier. For example, if you’re a fisherman, make videos about fishing, if you’re a gamer, make videos about gaming. ',
+            text: "If you love your niche, managing a YouTube channel becomes a lot easier. For example, if you're a fisherman, make videos about fishing, if you're a gamer, make videos about gaming. ",
           },
           {
             type: 'paragraph',
@@ -2077,11 +2081,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'If you’re still deciding on which topic to cover, keep in mind that the more specific the better. In other words, choose a niche within a niche.',
+            text: "If you're still deciding on which topic to cover, keep in mind that the more specific the better. In other words, choose a niche within a niche.",
           },
           {
             type: 'paragraph',
-            text: 'For example, if you’re a gamer, make videos about a gaming genre or even one specific game. Many popular YouTubers such as Ninja, have successfully used this strategy to grow massive audiences.',
+            text: "For example, if you're a gamer, make videos about a gaming genre or even one specific game. Many popular YouTubers such as Ninja, have successfully used this strategy to grow massive audiences.",
           },
         ],
       },
@@ -2099,11 +2103,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'It’s important to note that if your channel’s growth has plateaued, in order to scale up, it may be worth investing in an editor. This will allow you to upload at a much higher frequency. However, editors can be pricey.',
+            text: "It's important to note that if your channel's growth has plateaued, in order to scale up, it may be worth investing in an editor. This will allow you to upload at a much higher frequency. However, editors can be pricey.",
           },
           {
             type: 'paragraph',
-            text: 'If you’re going to <a href="https://www.aviewint.com/blog/hiring-good-editor-on-small-budget" target="_blank" class="link">hire an editor on a budget</a>, it’s important to know how to negotiate and set your parameters. ',
+            text: 'If you\'re going to <a href="https://www.aviewint.com/blog/hiring-good-editor-on-small-budget" target="_blank" class="link">hire an editor on a budget</a>, it\'s important to know how to negotiate and set your parameters. ',
           },
         ],
       },
@@ -2113,11 +2117,11 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'Building an audience online isn’t done only through YouTube. Other social media platforms such as Instagram and Twitter play a huge role in building a fanbase. As a content creator, proficiency in social media is a must.',
+            text: "Building an audience online isn't done only through YouTube. Other social media platforms such as Instagram and Twitter play a huge role in building a fanbase. As a content creator, proficiency in social media is a must.",
           },
           {
             type: 'paragraph',
-            text: 'This doesn’t mean you have to be a master at making viral tweets or that you have to have millions of followers on Instagram. But knowing how to use them is helpful. These platforms can be amazing tools to help you promote your channel. ',
+            text: "This doesn't mean you have to be a master at making viral tweets or that you have to have millions of followers on Instagram. But knowing how to use them is helpful. These platforms can be amazing tools to help you promote your channel. ",
           },
           {
             type: 'paragraph',
@@ -2125,7 +2129,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Depending on which niche you’re in, different social platforms may be optimal. If you’re a lifestyle or fashion vlogger, sites like Instagram may work best for you. If you’re a gamer, Twitch, Discord, and Reddit may help your channel grow.',
+            text: "Depending on which niche you're in, different social platforms may be optimal. If you're a lifestyle or fashion vlogger, sites like Instagram may work best for you. If you're a gamer, Twitch, Discord, and Reddit may help your channel grow.",
           },
         ],
       },
@@ -2135,7 +2139,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'While some people go viral out of nowhere, this isn’t the case for the majority of people. This doesn’t mean not shooting for viral content. However, a consistent uploading schedule for a long period of time is the best way to guarantee a successful channel.',
+            text: "While some people go viral out of nowhere, this isn't the case for the majority of people. This doesn't mean not shooting for viral content. However, a consistent uploading schedule for a long period of time is the best way to guarantee a successful channel.",
           },
           {
             type: 'paragraph',
@@ -2153,7 +2157,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'In order to connect with your audience, you have to understand what they enjoy and how you can provide them with entertainment. If you’re a natural people person, this will help out a lot. ',
+            text: "In order to connect with your audience, you have to understand what they enjoy and how you can provide them with entertainment. If you're a natural people person, this will help out a lot. ",
           },
           {
             type: 'paragraph',
@@ -2161,7 +2165,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Not only is it good for your viewers, but if you’re charismatic, this can also help you network with other creators. If you’re able to build up a solid network of creators within your niche, they can help you work through challenges and come up with ideas. ',
+            text: "Not only is it good for your viewers, but if you're charismatic, this can also help you network with other creators. If you're able to build up a solid network of creators within your niche, they can help you work through challenges and come up with ideas. ",
           },
         ],
       },
@@ -2171,7 +2175,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'When your audience is expecting you to upload according to your normal schedule, it’s important to deliver. But everyone experiences procrastination.',
+            text: "When your audience is expecting you to upload according to your normal schedule, it's important to deliver. But everyone experiences procrastination.",
           },
           {
             type: 'paragraph',
@@ -2183,7 +2187,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'There are also ways to increase your productivity while you’re sifting through your video footage. For example, the <a href="https://www.themuse.com/advice/take-it-from-someone-who-hates-productivity-hacksthe-pomodoro-technique-actually-works#:~:text=What%20Is%20the%20Pomodoro%20Technique,are%20referred%20to%20as%20pomodoros." target="_blank" class="link">Pomodoro method</a> is a popular and trusted productivity technique where you work for about 25 minutes at a time and take 5-minute breaks in between. ',
+            text: 'There are also ways to increase your productivity while you\'re sifting through your video footage. For example, the <a href="https://www.themuse.com/advice/take-it-from-someone-who-hates-productivity-hacksthe-pomodoro-technique-actually-works#:~:text=What%20Is%20the%20Pomodoro%20Technique,are%20referred%20to%20as%20pomodoros." target="_blank" class="link">Pomodoro method</a> is a popular and trusted productivity technique where you work for about 25 minutes at a time and take 5-minute breaks in between. ',
           },
         ],
       },
@@ -2215,11 +2219,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'By strategically implementing keywords into titles, descriptions, audio, and channel, you’re letting Google know what your content is about. If Google can easily tell what your video is about, they are more likely to include it in search results. ',
+            text: "By strategically implementing keywords into titles, descriptions, audio, and channel, you're letting Google know what your content is about. If Google can easily tell what your video is about, they are more likely to include it in search results. ",
           },
           {
             type: 'paragraph',
-            text: 'Another big factor in YouTube SEO is simply content quality. By creating content that retains viewers’ attention, search engines recognize that your videos are providing value.',
+            text: "Another big factor in YouTube SEO is simply content quality. By creating content that retains viewers' attention, search engines recognize that your videos are providing value.",
           },
         ],
       },
@@ -2229,7 +2233,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'Growing a channel can be challenging. Now more than ever before, the market is diluted with tons of competition. Despite that, by persevering it’s definitely possible to become a full-time YouTuber. It’s also a great opportunity to gain valuable experience.',
+            text: "Growing a channel can be challenging. Now more than ever before, the market is diluted with tons of competition. Despite that, by persevering it's definitely possible to become a full-time YouTuber. It's also a great opportunity to gain valuable experience.",
           },
           {
             type: 'paragraph',
@@ -2260,15 +2264,15 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'But unlike copy, it’s much harder to create videos in a way that appeals to a global audience.  And for anyone trying to scale their brand, reaching international audiences is one of the most effective growth strategies.',
+            text: "But unlike copy, it's much harder to create videos in a way that appeals to a global audience.  And for anyone trying to scale their brand, reaching international audiences is one of the most effective growth strategies.",
           },
           {
             type: 'paragraph',
-            text: 'The solution is video localization. ',
+            text: 'The solution is video localization.',
           },
           {
             type: 'paragraph',
-            text: 'If you want to take your brand global but don’t know where to start, you’re in luck because, in this guide, you’ll learn everything you’ll need to know to expand your audience through video localization. ',
+            text: "If you want to take your brand global but don't know where to start, you're in luck because, in this guide, you'll learn everything you'll need to know to expand your audience through video localization. ",
           },
         ],
       },
@@ -2282,7 +2286,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'In short, localization is the practice of taking content and molding it to fit the preferences of a specific geographic location or culture. When done correctly, users shouldn’t be able to tell that the content was made in a different language or region. ',
+            text: "In short, localization is the practice of taking content and molding it to fit the preferences of a specific geographic location or culture. When done correctly, users shouldn't be able to tell that the content was made in a different language or region. ",
           },
           {
             type: 'paragraph',
@@ -2316,15 +2320,11 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'To determine if this is a profitable strategy, we first have to see if there’s a market for it. The easiest way to determine this is by looking at the demographics of internet users. So what does the data say?',
-          },
-          {
-            type: 'image',
-            text: '',
+            text: "To determine if this is a profitable strategy, we first have to see if there's a market for it. The easiest way to determine this is by looking at the demographics of internet users. So what does the data say?",
           },
           {
             type: 'paragraph',
-            text: 'According to <a href="https://www.statista.com/statistics/262946/share-of-the-most-common-languages-on-the-internet/" target="_blank" class="link">Statista</a>, about 25% of internet users speak English. If your content is in English, this leaves a whopping 75% of users that don’t have access to your videos. Who wouldn’t benefit from expanding their viewership to different countries?',
+            text: 'According to <a href="https://www.statista.com/statistics/262946/share-of-the-most-common-languages-on-the-internet/" target="_blank" class="link">Statista</a>, about 25% of internet users speak English. If your content is in English, this leaves a whopping 75% of users that don\'t have access to your videos. Who wouldn\'t benefit from expanding their viewership to different countries?',
           },
           {
             type: 'subtitle',
@@ -2332,7 +2332,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Before investing your resources, let’s look at the ROI (return on investment) of localized content. ',
+            text: "Before investing your resources, let's look at the ROI (return on investment) of localized content. ",
           },
           {
             type: 'paragraph',
@@ -2348,7 +2348,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Videos make up most search results. In fact, according to Cisco, <a href="http://www.reelseo.com/2018-internet-traffic-video/?utm_source=ReelSEO+Subscribers&utm_campaign=b4e4d29392-Daily-Email&utm_medium=email&utm_term=0_c3543eda94-b4e4d29392-213949869" target="_blank" class="link">82% of internet traffic is video content</a>. To increase your content’s visibility among all the competition, optimizing for SEO is a must.',
+            text: 'Videos make up most search results. In fact, according to Cisco, <a href="http://www.reelseo.com/2018-internet-traffic-video/?utm_source=ReelSEO+Subscribers&utm_campaign=b4e4d29392-Daily-Email&utm_medium=email&utm_term=0_c3543eda94-b4e4d29392-213949869" target="_blank" class="link">82% of internet traffic is video content</a>. To increase your content\'s visibility among all the competition, optimizing for SEO is a must.',
           },
           {
             type: 'paragraph',
@@ -2360,7 +2360,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Translating a video requires a written transcript of all the dialogue and audio, which is then crawled by search engines and used to determine the video’s ranking. Having a transcript will provide search engines with additional context and keywords, proving that your work is good quality and authoritative. ',
+            text: "Translating a video requires a written transcript of all the dialogue and audio, which is then crawled by search engines and used to determine the video's ranking. Having a transcript will provide search engines with additional context and keywords, proving that your work is good quality and authoritative. ",
           },
           {
             type: 'paragraph',
@@ -2372,7 +2372,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Who wouldn’t want to watch entertainment in their native language? This goes without saying, but localized content opens the door for an incredible amount of audience growth. ',
+            text: "Who wouldn't want to watch entertainment in their native language? This goes without saying, but localized content opens the door for an incredible amount of audience growth. ",
           },
           {
             type: 'paragraph',
@@ -2380,7 +2380,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'It also helps you target a specific audience. Let’s say you’re looking to sell an online course, and you’ve identified an exact geographic location that has a particularly high demand for what your course has to offer. Localizing all the e-learning videos for that region is going to not only help people understand your course, but feel at home while taking it. ',
+            text: "It also helps you target a specific audience. Let's say you're looking to sell an online course, and you've identified an exact geographic location that has a particularly high demand for what your course has to offer. Localizing all the e-learning videos for that region is going to not only help people understand your course, but feel at home while taking it. ",
           },
         ],
       },
@@ -2408,11 +2408,11 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'The first step to growing an international audience is mapping out a strategy so that you can ensure that the changes you’re implementing are effective. And what planning your strategy comes down to is assessing your goals, understanding your target audience, and using analytics to make data-driven decisions.',
+            text: "The first step to growing an international audience is mapping out a strategy so that you can ensure that the changes you're implementing are effective. And what planning your strategy comes down to is assessing your goals, understanding your target audience, and using analytics to make data-driven decisions.",
           },
           {
             type: 'paragraph',
-            text: 'The details of your strategy are going to be largely dictated by the industry you’re in and your current situation. So how do you go about assessing your goals?',
+            text: "The details of your strategy are going to be largely dictated by the industry you're in and your current situation. So how do you go about assessing your goals?",
           },
           {
             type: 'subtitle',
@@ -2420,11 +2420,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'When setting goals for growth, it’s going to largely depend on data that you have already collected.',
+            text: "When setting goals for growth, it's going to largely depend on data that you have already collected.",
           },
           {
             type: 'paragraph',
-            text: 'Let’s say you’re running a YouTube channel and you’ve plateaued, so you want to find a new way to grow your audience. You take a look at your audience statistics and you see that a large percentage of your viewers are Spanish speaking. You can then prioritize translating videos to Spanish first. ',
+            text: "Let's say you're running a YouTube channel and you've plateaued, so you want to find a new way to grow your audience. You take a look at your audience statistics and you see that a large percentage of your viewers are Spanish speaking. You can then prioritize translating videos to Spanish first. ",
           },
           {
             type: 'subtitle',
@@ -2432,11 +2432,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Appealing to a new audience may seem hard but it isn’t. The fact is, doing a bit of research goes a long way. A couple of Google searches into the cultural norms of your target audience will make a huge difference in the quality of your localized videos. ',
+            text: "Appealing to a new audience may seem hard but it isn't. The fact is, doing a bit of research goes a long way. A couple of Google searches into the cultural norms of your target audience will make a huge difference in the quality of your localized videos. ",
           },
           {
             type: 'paragraph',
-            text: "Most importantly, you’ll want to get feedback. If you've just started implementing this strategy, reach out to your community and ask them if there’s anything you can improve on. You can never have too much communication!",
+            text: "Most importantly, you'll want to get feedback. If you've just started implementing this strategy, reach out to your community and ask them if there's anything you can improve on. You can never have too much communication!",
           },
           {
             type: 'subtitle',
@@ -2444,11 +2444,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Like any other growth strategy, you’re going to want to measure your results. This is going to help you make sure your investments are paying off. The goal is to keep track of ROI.',
+            text: "Like any other growth strategy, you're going to want to measure your results. This is going to help you make sure your investments are paying off. The goal is to keep track of ROI.",
           },
           {
             type: 'paragraph',
-            text: 'Let’s say you’re localizing all your YouTube videos. By keeping track of the data, you can see which types of videos perform best when localized and which ones don’t. This way you can strategically translate specific types of content and replicate videos that are proven to be effective. ',
+            text: "Let's say you're localizing all your YouTube videos. By keeping track of the data, you can see which types of videos perform best when localized and which ones don't. This way you can strategically translate specific types of content and replicate videos that are proven to be effective. ",
           },
           {
             type: 'linkedin',
@@ -2463,7 +2463,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'Are you on a tight budget? <a href="https://www.aviewint.com/blog/grow-channel-using-translations" target="_blank" class="link">Using translated subtitles or captions is your best bet at increasing your viewership</a>. But first, let’s take a look at the difference between subtitles and captions.',
+            text: 'Are you on a tight budget? <a href="https://www.aviewint.com/blog/grow-channel-using-translations" target="_blank" class="link">Using translated subtitles or captions is your best bet at increasing your viewership</a>. But first, let\'s take a look at the difference between subtitles and captions.',
           },
           {
             type: 'subtitle',
@@ -2483,14 +2483,14 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'While the creation of subtitles is best left in the hands of professional translators and transcribers if you’re planning on doing it yourself, it’s good to learn <a href="https://aviewint.com/blog/subtitling-best-practises" target="_blank" class="link">how to make subtitles correctly</a>. Here are a few tips to keep in mind.',
+            text: 'While the creation of subtitles is best left in the hands of professional translators and transcribers if you\'re planning on doing it yourself, it\'s good to learn <a href="https://aviewint.com/blog/subtitling-best-practises" target="_blank" class="link">how to make subtitles correctly</a>. Here are a few tips to keep in mind.',
           },
           {
             type: 'unordered list',
             items: [
               'Use good timing - the text should be synchronized with the audio.',
               'Have accurate translations - rather than only focusing on using dictionary definitions to translate, focus on communicating the meaning and context behind the dialog. ',
-              'Use optimal placement - Subtitles are most commonly placed at the bottom of the screen so they won’t block any important visuals',
+              "Use optimal placement - Subtitles are most commonly placed at the bottom of the screen so they won't block any important visuals",
               'Add punctuation - You can utilize punctuation to make subtitles more engaging',
               'Choose a good font and color - Use standard fonts and contrasting colors to make the subtitles easy to see.',
             ],
@@ -2505,7 +2505,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'This largely depends on your budget seeing as AI translation tends to be cheaper. However, if your goal is quality localization, manual translators are the way to go. This is because <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">machine learning translation isn’t always accurate.</a>',
+            text: 'This largely depends on your budget seeing as AI translation tends to be cheaper. However, if your goal is quality localization, manual translators are the way to go. This is because <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">machine learning translation isn\'t always accurate.</a>',
           },
           {
             type: 'paragraph',
@@ -2552,11 +2552,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Chances are you’ve heard examples of both in movies and on social media. The truth is, AI voice-overs aren’t optimal. While the cheaper prices may make it appear like a good option, AI-generated audio is very far from perfect. ',
+            text: "Chances are you've heard examples of both in movies and on social media. The truth is, AI voice-overs aren't optimal. While the cheaper prices may make it appear like a good option, AI-generated audio is very far from perfect. ",
           },
           {
             type: 'paragraph',
-            text: 'AI lacks a human touch. From slang to different tonal nuances, it’s nearly impossible for machine-learning voice-overs to produce accurate results. If your budget allows, human translators are your best bet. ',
+            text: "AI lacks a human touch. From slang to different tonal nuances, it's nearly impossible for machine-learning voice-overs to produce accurate results. If your budget allows, human translators are your best bet. ",
           },
         ],
       },
@@ -2574,11 +2574,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "Let’s say you're building a site to sell an e-learning course and you've included localized videos. What is the best way of delivering the translated content to your target audience? This is where website translation comes in. ",
+            text: "Let's say you're building a site to sell an e-learning course and you've included localized videos. What is the best way of delivering the translated content to your target audience? This is where website translation comes in. ",
           },
           {
             type: 'paragraph',
-            text: 'The simple solution is Google Translate. You can automatically translate text by inputting the website copy into <a href="https://translate.google.com/" target="_blank" class="link">translate.google.com</a>. This allows you to immediately view the translated version of your site using your browser’s toolbar. ',
+            text: 'The simple solution is Google Translate. You can automatically translate text by inputting the website copy into <a href="https://translate.google.com/" target="_blank" class="link">translate.google.com</a>. This allows you to immediately view the translated version of your site using your browser\'s toolbar. ',
           },
           {
             type: 'paragraph',
@@ -2608,7 +2608,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'The goal is to make your content appeal to an international audience. To do this, it’s good to take into account cultural differences. Here are a few tips to help you understand your audience. ',
+            text: "The goal is to make your content appeal to an international audience. To do this, it's good to take into account cultural differences. Here are a few tips to help you understand your audience. ",
           },
           {
             type: 'unordered list',
@@ -2628,7 +2628,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'If you’ve made it to this point in this article, you may be wondering what the next steps are to take. The answer is choosing a provider. ',
+            text: "If you've made it to this point in this article, you may be wondering what the next steps are to take. The answer is choosing a provider. ",
           },
           {
             type: 'paragraph',
@@ -2640,14 +2640,14 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'At Aview we can help you with all kinds of localization and translation materials. Here’s a short list of the types of content we specialize in.',
+            text: "At Aview we can help you with all kinds of localization and translation materials. Here's a short list of the types of content we specialize in.",
           },
           {
             type: 'ordered list',
             items: [
               'YouTube Channels - We translate videos for creators and offer a multitude of promotional services.',
-              'Marketing Materials - Got marketing copy that needs translation? We’ve got you covered.',
-              'Legal Documents - It’s important to manually localize legal documents for accuracy and privacy reasons. Our translators can cover any personal or business-related legal documents. ',
+              "Marketing Materials - Got marketing copy that needs translation? We've got you covered.",
+              "Legal Documents - It's important to manually localize legal documents for accuracy and privacy reasons. Our translators can cover any personal or business-related legal documents. ",
               'E-Learning - Aview specializes in helping companies translate e-learning material for employee training and more. We also cover online courses that are looking to expand into international markets.',
             ],
           },
@@ -2671,15 +2671,15 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'By doing your research and having a strategy planned out in advance, you’ll be on your way to expanding your audience in no time!',
+            text: "By doing your research and having a strategy planned out in advance, you'll be on your way to expanding your audience in no time!",
           },
           {
             type: 'paragraph',
-            text: 'Now that you’ve learned everything you need to know about video localization, it’s time to go global. ',
+            text: "Now that you've learned everything you need to know about video localization, it's time to go global. ",
           },
           {
             type: 'paragraph',
-            text: 'Have something to add? Any questions left unanswered? Send us a message at julia@aviewint.com and we’ll be happy to assist you!',
+            text: "Have something to add? Any questions left unanswered? Send us a message at julia@aviewint.com and we'll be happy to assist you!",
           },
         ],
       },
@@ -2845,7 +2845,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: 'So, business translations are profitable. But what kind of ROI (return on investment) can you expect from this strategy? That’s an important question to ask before investing in any growth strategy. ',
+            text: "So, business translations are profitable. But what kind of ROI (return on investment) can you expect from this strategy? That's an important question to ask before investing in any growth strategy. ",
           },
           {
             type: 'paragraph',
@@ -3113,7 +3113,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'It turns out <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">Google Translate has an accuracy of 85%</a>. Now, this isn\'t a big deal if you\'re simply looking up a few words to determine their definitions. However, when it comes to legal documents, for example, 85% just doesn’t cut it. This is why businesses must look for providers that can manually translate material.',
+            text: 'It turns out <a href="https://aviewint.com/blog/google-translate-accuracy" target="_blank" class="link">Google Translate has an accuracy of 85%</a>. Now, this isn\'t a big deal if you\'re simply looking up a few words to determine their definitions. However, when it comes to legal documents, for example, 85% just doesn\'t cut it. This is why businesses must look for providers that can manually translate material.',
           },
           {
             type: 'subtitle',
@@ -3151,7 +3151,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Expanding into international audiences may come with some legal complications. It’s better to deal with this before translating your content to avoid any issues.',
+            text: "Expanding into international audiences may come with some legal complications. It's better to deal with this before translating your content to avoid any issues.",
           },
           {
             type: 'subtitle',
@@ -3178,6 +3178,192 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: "Growing an international business is a big goal, but it's entirely possible. These are the necessary steps: Identify what needs to be translated, work with a translation or localization service provider, and measure the results. Connecting with an international audience will help you take your brand to the next level.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: '2022 Recap | AVIEW International',
+    description:
+      "2022 was our biggest year yet. What started as a small project to provide translations to YouTubers has grown into a massive endeavor to break down language barriers in all industries. From incredible growth to expanding our services, the team at AVIEW has worked hard this past year to take the company to new heights. Check out this year's highlights!",
+    date: 'Dec 30, 2022',
+    img: blog15Graphic,
+    link: '/blog/2022-recap',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: '2022 was our biggest year yet. What started as a small project to provide translations to YouTubers has grown into a massive endeavor to break down language barriers in all industries.',
+          },
+          {
+            type: 'paragraph',
+            text: "From incredible growth to expanding our services, the team at AVIEW has worked hard this past year to take the company to new heights. Check out this year's highlights!",
+          },
+        ],
+      },
+      {
+        title: 'Incredible Growth',
+        link: '#incredible-growth',
+        content: [
+          {
+            type: 'image',
+            src: momGrowth,
+            alt: '115% MoM Growth',
+          },
+          {
+            type: 'paragraph',
+            text: "All the new developments we've made this year allowed AVIEW to grow at a fast rate. Throughout 2022 AVIEW experienced an average of 115% month-over-month growth.",
+          },
+        ],
+      },
+      {
+        title: 'Website Improvements',
+        link: '#website-improvements',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Our talented web development team worked hard all year to improve the AVIEW website.',
+          },
+          {
+            type: 'paragraph',
+            text: 'One of the most notable accomplishments of the AVIEW dev team has been all the new pages on the website.',
+          },
+        ],
+      },
+      {
+        title: 'Expanded Services',
+        link: '#expanded-services',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'AVIEW was originally founded to translate content for YouTube creators. Over the past year, our services have grown exponentially.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Now, AVIEW provides solutions for a wide range of industries. We translate for business, education, science, finance, and more.',
+          },
+          {
+            type: 'paragraph',
+            text: "Transcribing technical material is difficult. That's because dealing with sensitive information such as financial documents requires complete accuracy and expertise. Our talented team of translators made this possible.",
+          },
+          {
+            type: 'paragraph',
+            text: 'On top of expanding into different industries, we released new services for creators on YouTube. This year we began launching international YouTube channels.',
+          },
+          {
+            type: 'paragraph',
+            text: 'How does it work?',
+          },
+          {
+            type: 'paragraph',
+            text: "We collaborate with creators to set up channels dedicated to specific languages. By translating their most popular content, we can quickly grow the channel's viewership.",
+          },
+          {
+            type: 'paragraph',
+            text: "This year, we launched our first successful international channel. With over 1.7 million views in the first few months, it's clear that there's a demand for multilingual content on YouTube.",
+          },
+          {
+            type: 'paragraph',
+            text: "We're looking forward to finding new solutions to help break down language barriers next year!",
+          },
+        ],
+      },
+      {
+        title: 'Expanding Our Team',
+        link: '#expanding-our-team',
+        content: [
+          {
+            type: 'image',
+            src: teamGrowth,
+            alt: 'Team Growth',
+          },
+          {
+            type: 'paragraph',
+            text: "During 2022, the team at AVIEW expanded exponentially. We've brought on many new translators, developers, copywriters, designers, and more. Overall, the team grew from 7 to 77 members in one year.",
+          },
+        ],
+      },
+      {
+        title: 'Social Media Channels',
+        link: '#social-media-channels',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Increasing our presence on social media was a big goal this year. We created accounts on Instagram, Twitter, and LinkedIn.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The purpose of our social channels is to provide valuable information to our audience. You can find the latest industry news, tips, updates, and interesting statistics on the official AVIEW social media pages.',
+          },
+        ],
+      },
+      {
+        title: 'Creative Destruction Labs',
+        link: '#creative-destruction-labs',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'In July, AVIEW announced our participation in the <a href="https://creativedestructionlab.com/" target="_blank" class="link">CDL (Creative Destruction Lab)</a> program.',
+          },
+          {
+            type: 'paragraph',
+            text: 'What is CDL about?',
+          },
+          {
+            type: 'paragraph',
+            text: 'The CDL program helps entrepreneurs launch tech startups by providing them with mentors and various solutions.',
+          },
+          {
+            type: 'paragraph',
+            text: "Creative Destruction Labs has played a major role in the growth we've experienced this year.",
+          },
+        ],
+      },
+      {
+        title: 'New Creators',
+        link: '#new-creators',
+        content: [
+          {
+            type: 'image',
+            src: newChannels,
+            alt: '20 New Channels',
+          },
+          {
+            type: 'paragraph',
+            text: 'In 2017, AVIEW partnered with Logan Paul to create translated content. Logan was one of the first large creators we worked with. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'This past year, we connected with many popular creators such as HZHTube, Producer Michael, Blameitonjorge, and more.',
+          },
+          {
+            type: 'paragraph',
+            text: "We're looking forward to helping each of our new partners grow their international audiences.",
+          },
+        ],
+      },
+      {
+        title: 'Growing A-View at a Time',
+        link: '#growing-aview-at-a-time',
+        content: [
+          {
+            type: 'paragraph',
+            text: "There are lots of things to look forward to next year. From new product launches to more solutions, we're hard at work bringing you language services.",
+          },
+          {
+            type: 'paragraph',
+            text: "During 2023, we plan to find more ways to help creators build their audiences. We'll also be providing technical translations for all industries.",
+          },
+          {
+            type: 'paragraph',
+            text: "There are many opportunities to provide value through language. And we're going to continue helping people a-view at a time.",
           },
         ],
       },

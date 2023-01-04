@@ -58,8 +58,8 @@ export default function ComingSoon() {
               value={mail.email}
               hasSubmitted={mail.hasSubmitted}
               isValid={emailValidator(mail.email)}
-              noBottomMargin={true}
               name="email"
+              bottomMargin="mb-0"
             />
             <div className="mt-s1">
               <Button type="primary" purpose="submit">

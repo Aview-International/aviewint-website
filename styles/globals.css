@@ -24,7 +24,7 @@
   }
 
   .gradient-2 {
-    background: linear-gradient(108.35deg, #ec11ff 0%, #1be4ff 100%);
+    background: linear-gradient(54deg, #ff00ff 7.13%, #00ffff 91%);
   }
   .gradient-dark {
     background: linear-gradient(
@@ -44,6 +44,10 @@
 
   .title {
     @apply text-7xl font-bold text-white md:text-8xl;
+  }
+
+  .h2 {
+    @apply text-5xl font-bold text-white md:text-6xl;
   }
 
   .body {

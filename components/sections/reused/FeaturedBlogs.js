@@ -8,7 +8,7 @@ export default function FeaturedBlogs() {
 
   return (
     <section className="section m-horizontal">
-      <h1 className="title mt-s6 mb-s4 text-center md:mt-s18 md:mb-s8">
+      <h1 className="title mt-s6 mb-s4 md:mt-s18 md:mb-s8 md:text-center">
         Our Featured <span className="gradient-text gradient-2">Blogs</span>
       </h1>
       <BlogRow blogs={featuredBlogs} />

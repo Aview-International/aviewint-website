@@ -23,10 +23,10 @@ export default function CompaniesWeWorkedWith() {
       <p className="mb-s4 text-xl font-bold text-white md:mb-s8 md:text-2xl">
         Companies We&apos;ve Worked With
       </p>
-      <div className="flex flex-row flex-wrap justify-center gap-y-s10 gap-x-[20%] md:gap-x-[5%] lg:gap-x-[5%]">
+      <div className="flex flex-row flex-wrap justify-center gap-y-s10 gap-x-[20%] md:gap-x-[5%] lg:gap-x-[15%]">
         {COMPANIES.map((company, i) => (
           <div
-            className="grid w-[40%] max-w-[160px] place-content-center md:w-[30%] lg:w-[20%]"
+            className="grid w-[40%] max-w-[160px] place-content-center md:w-[30%] lg:w-[25%]"
             key={company.name}
           >
             <Image src={company.logo} alt={company.name} />

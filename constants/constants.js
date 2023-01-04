@@ -79,27 +79,6 @@ export const ROUTES = [
   { id: 'route-6', text: 'Blog', route: '/blog' },
 ];
 
-export const MILESTONES = [
-  {
-    id: 'milestone-1',
-    end: 500,
-    suffix: 'M+',
-    text: 'International Creator Views',
-  },
-  {
-    id: 'milestone-2',
-    end: 15,
-    suffix: '+',
-    text: 'Languages',
-  },
-  {
-    id: 'milestone-3',
-    end: 10,
-    suffix: 'M+',
-    text: 'International Gained Subscribers',
-  },
-];
-
 export const SOCIALS = [
   {
     id: 'social-1',
@@ -175,18 +154,22 @@ export const WORKED_WITH = [
 export const TRANSLATED_CONTENT = [
   {
     id: 'video-1',
+    title: 'Logan Paul',
     link: 'https://www.youtube.com/embed/mnzxkkoGROM',
   },
   {
     id: 'video-2',
+    title: 'Mark Rober',
     link: 'https://www.youtube.com/embed/tRMbUkN0DNc',
   },
   {
     id: 'video-3',
+    title: 'Saud Bros',
     link: 'https://www.youtube.com/embed/7Jbx0tzIKok',
   },
   {
     id: 'video-4',
+    title: 'Yes Theory',
     link: 'https://www.youtube.com/embed/T-LOpmmWLW4',
   },
 ];

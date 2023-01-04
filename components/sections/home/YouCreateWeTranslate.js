@@ -1,8 +1,7 @@
-import phoneInHandGraphic from '../../../public/img/graphics/phone-in-hand.png';
+import phoneInHandGraphic from '../../../public/img/graphics/phone-in-hand.webp';
 import Shadow from '../../UI/Shadow';
 import Border from '../../UI/Border';
 import Image from 'next/image';
-import { MILESTONES } from '../../../constants/constants';
 import { useState, useRef, useEffect } from 'react';
 import { useOnScreen } from '../../../hooks/useOnScreen';
 import PhoneNumberWithButton from '../../FormComponents/PhoneNumberWithButton';
@@ -11,10 +10,10 @@ const YouCreateWeTranslate = () => {
   const [showText, setShowText] = useState(false);
 
   return (
-    <section className="section m-horizontal mt-s6 lg:mt-s17">
+    <section className="section m-horizontal mt-12 lg:mt-32">
       <div className="grid lg:grid-cols-2">
         <div>
-          <h1 className="title mb-s2">
+          <h1 className="title mb-4">
             You{' '}
             <span className="gradient-text gradient-2 xs:inline-block">
               Create.
@@ -37,7 +36,7 @@ const YouCreateWeTranslate = () => {
             <PhoneNumberWithButton setShowText={setShowText} />
           )}
         </div>
-        <div className="mx-auto mt-s9 -mb-2 max-w-[500px] lg:-m-s2 lg:max-w-full">
+        <div className="mx-auto mt-16 -mb-2 max-w-[500px] lg:-m-4 lg:max-w-full">
           <Image src={phoneInHandGraphic} alt="landing-graphic" priority />
         </div>
       </div>
@@ -45,6 +44,27 @@ const YouCreateWeTranslate = () => {
     </section>
   );
 };
+
+const MILESTONES = [
+  {
+    id: 'milestone-1',
+    end: 500,
+    suffix: 'M+',
+    text: 'International Creator Views',
+  },
+  {
+    id: 'milestone-2',
+    end: 15,
+    suffix: '+',
+    text: 'Languages',
+  },
+  {
+    id: 'milestone-3',
+    end: 10,
+    suffix: 'M+',
+    text: 'International Gained Subscribers',
+  },
+];
 
 const Milestones = () => {
   return (

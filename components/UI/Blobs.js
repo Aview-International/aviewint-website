@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { useContext } from 'react';
-import blob1 from '../../public/img/blobs/blob-1.png';
-import blob2 from '../../public/img/blobs/blob-2.png';
-import blob3 from '../../public/img/blobs/blob-3.png';
-import blob4 from '../../public/img/blobs/blob-4.png';
+import blob1 from '../../public/img/blobs/blob-1.webp';
+import blob2 from '../../public/img/blobs/blob-2.webp';
+import blob3 from '../../public/img/blobs/blob-3.webp';
+import blob4 from '../../public/img/blobs/blob-4.webp';
 import MenuOpenContext from '../../store/menu-open-context';
 
 const Blobs = () => {
