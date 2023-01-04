@@ -58,7 +58,6 @@ export default function ComingSoon() {
               value={mail.email}
               hasSubmitted={mail.hasSubmitted}
               isValid={emailValidator(mail.email)}
-              noBottomMargin={true}
               name="email"
               bottomMargin="mb-0"
             />
