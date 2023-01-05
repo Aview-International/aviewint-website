@@ -8,7 +8,7 @@ const MenuOpenContext = createContext({
 });
 
 export const MenuOpenContextProvider = ({ children }) => {
-  const [curMenu, setCurMenu] = useState('main')
+  const [curMenu, setCurMenu] = useState('main');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openMenuHandler = () => {
@@ -19,15 +19,22 @@ export const MenuOpenContextProvider = ({ children }) => {
   const closeMenuHandler = () => {
     setIsMenuOpen(false);
     document.querySelector('body').classList.remove('h-screen-trick');
+    setCurMenu('main');
   };
 
   const setMenu = (newMenu) => {
-    setCurMenu(newMenu)
-  }
+    setCurMenu(newMenu);
+  };
 
   return (
     <MenuOpenContext.Provider
-      value={{ curMenu, setMenu, isMenuOpen, openMenuHandler, closeMenuHandler }}
+      value={{
+        curMenu,
+        setMenu,
+        isMenuOpen,
+        openMenuHandler,
+        closeMenuHandler,
+      }}
     >
       {children}
     </MenuOpenContext.Provider>
