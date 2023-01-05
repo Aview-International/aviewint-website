@@ -12,6 +12,7 @@ import WhyName from '../../components/sections/about/WhyName';
 import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
 import SEO from '../../components/SEO/SEO';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 const About = () => {
   return (
@@ -20,6 +21,7 @@ const About = () => {
         title="About - AVIEW"
         description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
       />
+      <EasterEgg />
       <Header curPage="About" />
       <OurMission />
       <AboutAview />

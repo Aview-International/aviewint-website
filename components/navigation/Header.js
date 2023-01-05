@@ -38,9 +38,9 @@ const HeaderButtons = () => {
       <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
-      <Button purpose="route" route="/log-in" type="secondary">
+      {/* <Button purpose="route" route="/login" type="secondary">
         Log In
-      </Button>
+      </Button> */}
     </div>
   );
 };

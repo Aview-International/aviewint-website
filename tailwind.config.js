@@ -88,9 +88,6 @@ module.exports = {
       animation: {
         roll: 'roll 1s linear infinite',
       },
-      height: {
-        0.25: '1px',
-      },
     },
   },
   plugins: [],
