@@ -10,21 +10,23 @@ const MENU = [
     type: 'dropdown',
     title: 'Services',
     dropdown: [
-      {
-        title: 'Creators',
-        items: [
-          { title: 'Subtitles', link: '/subtitles' },
-          { title: 'Dubs', link: '/dubs' },
-          { title: 'Shorts', link: '/shorts' },
-          { title: 'Distribution', link: '/distribution' },
-        ],
-      },
+      // {
+      //   title: 'Creators',
+      //   items: [
+      //     { title: 'Subtitles', link: '/subtitles' },
+      //     { title: 'Dubs', link: '/dubs' },
+      //     { title: 'Shorts', link: '/shorts' },
+      //     { title: 'Distribution', link: '/distribution' },
+      //   ],
+      // },
       {
         title: 'Corporate',
         items: [
-          { title: 'Marketing Materials', link: '/marketing-materials' },
-          { title: 'Documents', link: '/documents' },
-          { title: 'Training Modules', link: '/training-modules' },
+          { title: 'Business', link: '/corporate/business' },
+          { title: 'Financial', link: '/corporate/financial' },
+          { title: 'Legal', link: '/corporate/legal' },
+          { title: 'Marketing', link: '/corporate/marketing' },
+          { title: 'Scientific', link: '/corporate/scientific' },
         ],
       },
     ],

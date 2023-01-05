@@ -19,7 +19,7 @@ const MAIN_MENU = [
 ];
 
 const SERVICES_MENU = [
-  { type: 'dropdown', title: 'Creators', dropdown: 'creators' },
+  // { type: 'dropdown', title: 'Creators', dropdown: 'creators' },
   { type: 'dropdown', title: 'Corporate', dropdown: 'corporate' },
 ];
 
@@ -50,53 +50,53 @@ const CREATORS_MENU = [
 
 const CORPORATE_MENU = [
   {
+    title: 'Business',
+    description:
+      'Work with certified professionals to translate business material.',
+    link: '/corporate/business',
+  },
+  {
     title: 'Financial',
     description:
       'Work with certified professionals to translate financial documents.',
-    link: '/services/financial',
-  },
-  {
-    title: 'Scientific',
-    description:
-      'Work with certified professionals to translate scientific material.',
-    link: '/services/scientific',
-  },
-  {
-    title: 'Medical',
-    description:
-      'Work with certified professionals to translate medcial material.',
-    link: '/services/medical',
+    link: '/corporate/financial',
   },
   {
     title: 'Legal',
     description:
       'Work with certified professionals to translate legal material.',
-    link: '/services/legal',
-  },
-  {
-    title: 'Business',
-    description:
-      'Work with certified professionals to translate business material.',
-    link: '/services/business',
+    link: '/corporate/legal',
   },
   {
     title: 'Marketing',
     description:
       'Work with certified professionals to translate business material.',
-    link: '/services/marketing',
+    link: '/corporate/marketing',
   },
   {
-    title: 'E-Learning',
+    title: 'Scientific',
     description:
-      'Work with certified professionals to translate business material.',
-    link: '/services/e-learning',
+      'Work with certified professionals to translate scientific material.',
+    link: '/corporate/scientific',
   },
-  {
-    title: 'Voice Over',
-    description:
-      'Work with certified professionals to translate business material.',
-    link: '/services/voice-over',
-  },
+  // {
+  //   title: 'Medical',
+  //   description:
+  //     'Work with certified professionals to translate medcial material.',
+  //   link: '/services/medical',
+  // },
+  // {
+  //   title: 'E-Learning',
+  //   description:
+  //     'Work with certified professionals to translate business material.',
+  //   link: '/services/e-learning',
+  // },
+  // {
+  //   title: 'Voice Over',
+  //   description:
+  //     'Work with certified professionals to translate business material.',
+  //   link: '/services/voice-over',
+  // },
 ];
 
 export default function MobileMenu() {
