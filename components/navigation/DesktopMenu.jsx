@@ -31,7 +31,7 @@ const MENU = [
       },
     ],
   },
-  { type: 'route', title: 'Languages', link: '/languages' },
+  // { type: 'route', title: 'Languages', link: '/languages' },
   { type: 'route', title: 'About', link: '/about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },

@@ -12,7 +12,7 @@ import React from 'react';
 const MAIN_MENU = [
   { type: 'route', title: 'Home', link: '/' },
   { type: 'dropdown', title: 'Services', dropdown: 'services' },
-  { type: 'route', title: 'Languages', link: '/languages' },
+  // { type: 'route', title: 'Languages', link: '/languages' },
   { type: 'route', title: 'About', link: 'about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },
