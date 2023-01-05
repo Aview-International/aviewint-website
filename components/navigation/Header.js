@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
+import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
-import { ROUTES } from '../../constants/constants';
 import aviewLogo from '../../public/img/aview/logo.svg';
 
 const Header = ({ curPage }) => {
@@ -29,24 +29,6 @@ const Header = ({ curPage }) => {
       </header>
       <MobileMenu />
     </>
-  );
-};
-
-const DesktopMenu = ({ curPage }) => {
-  return (
-    <div className="hidden lg:block">
-      {ROUTES.map((route) => (
-        <Link href={route.route} key={route.id}>
-          <a
-            className={`text-md ml-10 xl:text-lg ${
-              curPage === route.text ? `gradient-text gradient-1` : `text-white`
-            } hover:gradient-text hover:gradient-1`}
-          >
-            {route.text}
-          </a>
-        </Link>
-      ))}
-    </div>
   );
 };
 
