@@ -10,7 +10,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 const Header = ({ curPage }) => {
   return (
     <>
-      <header className="navigation mt-10 flex items-center justify-between">
+      <header className="navigation relative z-50 mt-10 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
             <a className="w-16">
