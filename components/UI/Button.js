@@ -3,7 +3,15 @@ import Border from './Border';
 import Shadow from './Shadow';
 import HoverGradientFill from './HoverGradientFill';
 
-const Button = ({ children, type, purpose, route, onClick, externalLink }) => {
+const Button = ({
+  children,
+  type,
+  purpose,
+  route,
+  onClick,
+  externalLink,
+  fullWidth,
+}) => {
   let button = (
     <div
       className={`
@@ -18,7 +26,12 @@ const Button = ({ children, type, purpose, route, onClick, externalLink }) => {
           }
         `}
     >
-      {type === 'secondary' && <HoverGradientFill borderRadius="full" />}
+      {type === 'secondary' && (
+        <HoverGradientFill
+          borderRadius="full"
+          classes={fullWidth ? 'w-full' : ''}
+        />
+      )}
       <span className="relative">{children}</span>
     </div>
   );
@@ -44,7 +57,7 @@ const Button = ({ children, type, purpose, route, onClick, externalLink }) => {
   if (type !== 'tertiary') {
     button = (
       <Shadow>
-        <Border borderRadius="full">{button}</Border>
+        <Border borderRadius="full" classes={fullWidth?'w-full' : ''}>{button}</Border>
       </Shadow>
     );
   }

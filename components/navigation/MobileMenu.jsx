@@ -167,14 +167,14 @@ export default function MobileMenu() {
         >
           Login
         </Button>
-        <Button
+        {/* <Button
           purpose="route"
           route="/#generate-aview"
           type="primary"
           fullWidth={true}
         >
           Contact Us
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
