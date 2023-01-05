@@ -9,6 +9,7 @@ import SEO from '../../components/SEO/SEO';
 import ApplyToday from '../../components/sections/careers/ApplyToday';
 import Process from '../../components/sections/careers/Process';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 const Careers = () => {
   return (
@@ -17,6 +18,7 @@ const Careers = () => {
         title="Careers - AVIEW"
         description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
       />
+      <EasterEgg />
       <Header curPage="Careers" />
       <FavoriteInfluencer />
       <PerksAview />
