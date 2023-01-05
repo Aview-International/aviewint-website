@@ -1,28 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
-import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
-import MobileMenu from './MobileMenu';
+import MenuOpenContext from '../../store/menu-open-context';
 import { ROUTES } from '../../constants/constants';
 import aviewLogo from '../../public/img/aview/logo.svg';
+import closeIcon from '../../public/img/icons/close.svg';
 
 const Header = ({ curPage }) => {
   return (
     <>
       <header className="navigation mt-10 flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/">
-            <a className="w-16">
-              <Image
-                src={aviewLogo}
-                alt="AVIEW International logo"
-                width={70}
-                height={70}
-              />
-            </a>
-          </Link>
-          <DesktopMenu curPage={curPage} />
+          <HeaderLogo />
+          <DesktopRoutes curPage={curPage} />
         </div>
         <HeaderButtons />
         <MenuButton />
@@ -32,7 +23,22 @@ const Header = ({ curPage }) => {
   );
 };
 
-const DesktopMenu = ({ curPage }) => {
+const HeaderLogo = () => {
+  return (
+    <Link href="/">
+      <a className="w-16">
+        <Image
+          src={aviewLogo}
+          alt="AVIEW International logo"
+          width={70}
+          height={70}
+        />
+      </a>
+    </Link>
+  );
+};
+
+const DesktopRoutes = ({ curPage }) => {
   return (
     <div className="hidden lg:block">
       {ROUTES.map((route) => (
@@ -56,9 +62,9 @@ const HeaderButtons = () => {
       <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
-      <Button purpose="route" route="/log-in" type="secondary">
+      {/* <Button purpose="route" route="/login" type="secondary">
         Log In
-      </Button>
+      </Button> */}
     </div>
   );
 };
@@ -74,6 +80,39 @@ const MenuButton = () => {
       <div className="mb-2 h-[3px] w-[36px] rounded-full bg-white"></div>
       <div className="mb-2 h-[3px] w-[21px] rounded-full bg-white"></div>
       <div className="h-[3px] w-[36px] rounded-full bg-white"></div>
+    </div>
+  );
+};
+
+const MobileMenu = () => {
+  const menuOpenCtx = useContext(MenuOpenContext);
+
+  return (
+    <div
+      className={`h-screen-trick transition-300 absolute top-0 left-0 w-screen translate-x-full opacity-0 ${
+        menuOpenCtx.isMenuOpen && `translate-x-0 opacity-100`
+      } z-50 bg-black lg:hidden`}
+    >
+      <div
+        className="absolute right-6 top-16 cursor-pointer md:right-[2.5%]"
+        onClick={menuOpenCtx.closeMenuHandler}
+      >
+        <Image src={closeIcon} width={32} height={32} alt="close icon" />
+      </div>
+      <div className="absolute top-1/2 grid w-full -translate-y-1/2 gap-8">
+        {ROUTES.map((route) => (
+          <Link href={route.route} key={route.id}>
+            <div
+              className="w-full pl-10"
+              onClick={menuOpenCtx.closeMenuHandler}
+            >
+              <a className="gradient-text gradient-2 text-3xl font-bold 2xs:text-6xl">
+                {route.text}
+              </a>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
