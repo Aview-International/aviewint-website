@@ -11,10 +11,12 @@ import legalTranslations from '../../public/img/graphics/corporate/legal/legal-s
 import LegalTranslationOverview from '../../components/sections/corporate/legal/LegalTranslationOverview';
 import BenefitsOfLegalTranslation from '../../components/sections/corporate/legal/BenefitsOfLegalTranslation';
 import LegalBranches from '../../components/sections/corporate/legal/LegalBranches';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 export default function Legal() {
   return (
     <>
+      <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
         title="Legal Translation <span class='gradient-text gradient-2'>Services</span>"

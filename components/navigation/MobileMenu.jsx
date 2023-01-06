@@ -9,20 +9,6 @@ import leftChevronIcon from '../../public/img/icons/chevron-left.svg';
 import rightChevronIcon from '../../public/img/icons/chevron-right.svg';
 import React from 'react';
 
-const MAIN_MENU = [
-  { type: 'route', title: 'Home', link: '/' },
-  { type: 'dropdown', title: 'Services', dropdown: 'services' },
-  // { type: 'route', title: 'Languages', link: '/languages' },
-  { type: 'route', title: 'About', link: 'about' },
-  { type: 'route', title: 'Careers', link: '/careers' },
-  { type: 'route', title: 'Blog', link: '/blog' },
-];
-
-const SERVICES_MENU = [
-  // { type: 'dropdown', title: 'Creators', dropdown: 'creators' },
-  { type: 'dropdown', title: 'Corporate', dropdown: 'corporate' },
-];
-
 const CREATORS_MENU = [
   {
     title: 'Subtitles',
@@ -180,6 +166,15 @@ export default function MobileMenu() {
   );
 }
 
+const MAIN_MENU = [
+  { type: 'route', title: 'Home', link: '/' },
+  { type: 'dropdown', title: 'Services', dropdown: 'services' },
+  // { type: 'route', title: 'Languages', link: '/languages' },
+  { type: 'route', title: 'About', link: 'about' },
+  { type: 'route', title: 'Careers', link: '/careers' },
+  { type: 'route', title: 'Blog', link: '/blog' },
+];
+
 export function MainMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
 
@@ -230,6 +225,11 @@ export function MainMenu() {
   );
 }
 
+const SERVICES_MENU = [
+  { type: 'route', title: 'Creators', link: '/creators' },
+  { type: 'dropdown', title: 'Corporate', dropdown: 'corporate' },
+];
+
 export function ServicesMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
 
@@ -238,17 +238,16 @@ export function ServicesMenu() {
       {SERVICES_MENU.map((menuItem) => {
         if (menuItem.type === 'route') {
           return (
-            <div
-              className="flex h-16 items-center"
-              onClick={menuOpenCtx.closeMenuHandler}
-              key={menuItem.title}
-            >
-              <Link href={menuItem.link}>
-                <p className="gradient-text gradient-2 text-5xl font-bold">
+            <Link href={menuItem.link}>
+              <div className="flex h-16 items-center" key={menuItem.title}>
+                <a
+                  className="gradient-text gradient-2 text-5xl font-bold"
+                  onClick={menuOpenCtx.closeMenuHandler}
+                >
                   {menuItem.title}
-                </p>
-              </Link>
-            </div>
+                </a>
+              </div>
+            </Link>
           );
         } else if (menuItem.type === 'dropdown') {
           return (

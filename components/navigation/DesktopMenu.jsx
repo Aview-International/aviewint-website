@@ -10,16 +10,19 @@ const MENU = [
     type: 'dropdown',
     title: 'Services',
     dropdown: [
-      // {
-      //   title: 'Creators',
-      //   items: [
-      //     { title: 'Subtitles', link: '/subtitles' },
-      //     { title: 'Dubs', link: '/dubs' },
-      //     { title: 'Shorts', link: '/shorts' },
-      //     { title: 'Distribution', link: '/distribution' },
-      //   ],
-      // },
       {
+        type: 'route',
+        title: 'Creators',
+        link: '/creators',
+        // items: [
+        //   { title: 'Subtitles', link: '/subtitles' },
+        //   { title: 'Dubs', link: '/dubs' },
+        //   { title: 'Shorts', link: '/shorts' },
+        //   { title: 'Distribution', link: '/distribution' },
+        // ],
+      },
+      {
+        type: 'list',
         title: 'Corporate',
         items: [
           { title: 'Business', link: '/corporate/business' },
@@ -97,24 +100,36 @@ function Dropdown({ menuItem }) {
         }`}
       >
         <div className="flex w-max gap-10 rounded-md bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
-          {menuItem.dropdown.map((dropdownItem) => (
-            <div className="flex flex-col gap-4" key={dropdownItem.title}>
-              <p className="text-xl font-semibold text-white">
-                {dropdownItem.title}
-              </p>
-              <div className="flex flex-col gap-4">
-                {dropdownItem.items.map((item) => (
-                  <Link href={item.link} key={item.title}>
-                    <a className="group font-light">
-                      <span className="group-hover:gradient-text group-hover:gradient-2 text-white">
-                        {item.title}
-                      </span>
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
+          {menuItem.dropdown.map((dropdownItem) => {
+            if (dropdownItem.type === 'list') {
+              return (
+                <div className="flex flex-col gap-4" key={dropdownItem.title}>
+                  <p className="text-xl font-semibold text-white">
+                    {dropdownItem.title}
+                  </p>
+                  <div className="flex flex-col gap-4">
+                    {dropdownItem.items.map((item) => (
+                      <Link href={item.link} key={item.title}>
+                        <a className="group font-light">
+                          <span className="group-hover:gradient-text group-hover:gradient-2 text-white">
+                            {item.title}
+                          </span>
+                        </a>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            } else if (dropdownItem.type === 'route') {
+              return (
+                <Link href={dropdownItem.link}>
+                  <a className="hover:gradient-text hover:gradient-2 h-min text-xl font-semibold text-white">
+                    {dropdownItem.title}
+                  </a>
+                </Link>
+              );
+            }
+          })}
         </div>
       </div>
     </span>

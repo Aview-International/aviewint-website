@@ -11,10 +11,12 @@ import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 export default function Marketing() {
   return (
     <>
+      <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
         title="Marketing Translation <span class='gradient-text gradient-2'>Services</span>"

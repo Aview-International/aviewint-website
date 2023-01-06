@@ -12,10 +12,12 @@ import FAQ from '../../components/sections/home/FAQ';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import scientificGraphic from '../../public/img/graphics/corporate/scientific.png';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 export default function Scientific() {
   return (
     <>
+      <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
         title="Scientific Translation <span class='gradient-text gradient-2'>Services</span>"

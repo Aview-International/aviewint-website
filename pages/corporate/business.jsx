@@ -12,10 +12,12 @@ import BusinessTranslationOverview from '../../components/sections/corporate/bus
 import BenefitsOfBusinessTranslation from '../../components/sections/corporate/business/BenefitsOfBusinessTranslation';
 import AllBusinessSectors from '../../components/sections/corporate/business/AllBusinessSectors';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 export default function Business() {
   return (
     <>
+      <EasterEgg />
       <Header />
       <Hero
         title="Business Translation <span class='gradient-text gradient-2'>Services</span>"
