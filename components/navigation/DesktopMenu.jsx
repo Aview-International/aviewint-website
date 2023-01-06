@@ -6,21 +6,22 @@ import { useState } from 'react';
 
 const MENU = [
   { type: 'route', title: 'Home', link: '/' },
+  { type: 'route', title: 'Creators', link: '/creators' },
   {
     type: 'dropdown',
-    title: 'Services',
+    title: 'Corporate',
     dropdown: [
-      {
-        type: 'route',
-        title: 'Creators',
-        link: '/creators',
-        // items: [
-        //   { title: 'Subtitles', link: '/subtitles' },
-        //   { title: 'Dubs', link: '/dubs' },
-        //   { title: 'Shorts', link: '/shorts' },
-        //   { title: 'Distribution', link: '/distribution' },
-        // ],
-      },
+      // {
+      //   type: 'route',
+      //   title: 'Creators',
+      //   link: '/creators',
+      // items: [
+      //   { title: 'Subtitles', link: '/subtitles' },
+      //   { title: 'Dubs', link: '/dubs' },
+      //   { title: 'Shorts', link: '/shorts' },
+      //   { title: 'Distribution', link: '/distribution' },
+      // ],
+      // },
       {
         type: 'list',
         title: 'Corporate',
@@ -104,10 +105,10 @@ function Dropdown({ menuItem }) {
             if (dropdownItem.type === 'list') {
               return (
                 <div className="flex flex-col gap-4" key={dropdownItem.title}>
-                  <p className="text-xl font-semibold text-white">
+                  {/* <p className="text-xl font-semibold text-white">
                     {dropdownItem.title}
-                  </p>
-                  <div className="flex flex-col gap-4">
+                  </p> */}
+                  <div className="flex w-28 flex-col gap-4">
                     {dropdownItem.items.map((item) => (
                       <Link href={item.link} key={item.title}>
                         <a className="group font-light">
