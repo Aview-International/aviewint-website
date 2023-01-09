@@ -9,7 +9,7 @@ import FAQ from '../../components/sections/home/FAQ';
 import MarketingMaterials from '../../components/sections/corporate/marketing/MarketingMaterials';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
-import Blobs from '../../components/UI/blobs';
+import Blobs from '../../components/UI/Blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 
@@ -31,7 +31,7 @@ export default function Marketing() {
       <WhyUseAview />
       <LanguagesServed />
       <MarketingMaterials />
-      <StartGenerating />
+      <StartGenerating formId="JhSA3lfn" />
       <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
