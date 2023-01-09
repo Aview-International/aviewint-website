@@ -31,7 +31,7 @@ export default function Legal() {
       <BenefitsOfLegalTranslation />
       <LanguagesServed />
       <LegalBranches />
-      <StartGenerating />
+      <StartGenerating formId="JhSA3lfn" />
       <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
