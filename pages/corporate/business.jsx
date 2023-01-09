@@ -6,7 +6,7 @@ import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
-import Blobs from '../../components/UI/blobs';
+import Blobs from '../../components/UI/Blobs';
 import businessTranslations from '../../public/img/graphics/corporate/business/business-services.png';
 import BusinessTranslationOverview from '../../components/sections/corporate/business/BusinessTranslationOverview';
 import BenefitsOfBusinessTranslation from '../../components/sections/corporate/business/BenefitsOfBusinessTranslation';
