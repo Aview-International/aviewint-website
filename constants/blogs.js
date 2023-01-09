@@ -12,7 +12,11 @@ import blog11Graphic from '../public/img/blogs/logan-paul-global.png';
 import blog12Graphic from '../public/img/blogs/skills-to-be-successful-youtuber.png';
 import blog13Graphic from '../public/img/blogs/video-localization-guide.png';
 import blog14Graphic from '../public/img/blogs/business-translation.png';
+import blog15Graphic from '../public/img/blogs/recap-2022.png';
 import documentsRequireTranslations from '../public/img/blogs/blog-14/documents-require-translations.png';
+import momGrowth from '../public/img/blogs/blog-15/mom-growth.png';
+import teamGrowth from '../public/img/blogs/blog-15/team-growth.png';
+import newChannels from '../public/img/blogs/blog-15/new-channels.png';
 import elisImg from '../public/img/blogs/elis.png';
 
 export const BLOGS = [
@@ -3174,6 +3178,192 @@ export const BLOGS = [
           {
             type: 'paragraph',
             text: "Growing an international business is a big goal, but it's entirely possible. These are the necessary steps: Identify what needs to be translated, work with a translation or localization service provider, and measure the results. Connecting with an international audience will help you take your brand to the next level.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: '2022 Recap | AVIEW International',
+    description:
+      "2022 was our biggest year yet. What started as a small project to provide translations to YouTubers has grown into a massive endeavor to break down language barriers in all industries. From incredible growth to expanding our services, the team at AVIEW has worked hard this past year to take the company to new heights. Check out this year's highlights!",
+    date: 'Dec 30, 2022',
+    img: blog15Graphic,
+    link: '/blog/2022-recap',
+    author: 'Elis Hayakawa',
+    authorImg: elisImg,
+    length: '3 min',
+    sections: [
+      {
+        title: 'Introduction',
+        link: '#introduction',
+        content: [
+          {
+            type: 'paragraph',
+            text: '2022 was our biggest year yet. What started as a small project to provide translations to YouTubers has grown into a massive endeavor to break down language barriers in all industries.',
+          },
+          {
+            type: 'paragraph',
+            text: "From incredible growth to expanding our services, the team at AVIEW has worked hard this past year to take the company to new heights. Check out this year's highlights!",
+          },
+        ],
+      },
+      {
+        title: 'Incredible Growth',
+        link: '#incredible-growth',
+        content: [
+          {
+            type: 'image',
+            src: momGrowth,
+            alt: '115% MoM Growth',
+          },
+          {
+            type: 'paragraph',
+            text: "All the new developments we've made this year allowed AVIEW to grow at a fast rate. Throughout 2022 AVIEW experienced an average of 115% month-over-month growth.",
+          },
+        ],
+      },
+      {
+        title: 'Website Improvements',
+        link: '#website-improvements',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Our talented web development team worked hard all year to improve the AVIEW website.',
+          },
+          {
+            type: 'paragraph',
+            text: 'One of the most notable accomplishments of the AVIEW dev team has been all the new pages on the website.',
+          },
+        ],
+      },
+      {
+        title: 'Expanded Services',
+        link: '#expanded-services',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'AVIEW was originally founded to translate content for YouTube creators. Over the past year, our services have grown exponentially.',
+          },
+          {
+            type: 'paragraph',
+            text: 'Now, AVIEW provides solutions for a wide range of industries. We translate for business, education, science, finance, and more.',
+          },
+          {
+            type: 'paragraph',
+            text: "Transcribing technical material is difficult. That's because dealing with sensitive information such as financial documents requires complete accuracy and expertise. Our talented team of translators made this possible.",
+          },
+          {
+            type: 'paragraph',
+            text: 'On top of expanding into different industries, we released new services for creators on YouTube. This year we began launching international YouTube channels.',
+          },
+          {
+            type: 'paragraph',
+            text: 'How does it work?',
+          },
+          {
+            type: 'paragraph',
+            text: "We collaborate with creators to set up channels dedicated to specific languages. By translating their most popular content, we can quickly grow the channel's viewership.",
+          },
+          {
+            type: 'paragraph',
+            text: "This year, we launched our first successful international channel. With over 1.7 million views in the first few months, it's clear that there's a demand for multilingual content on YouTube.",
+          },
+          {
+            type: 'paragraph',
+            text: "We're looking forward to finding new solutions to help break down language barriers next year!",
+          },
+        ],
+      },
+      {
+        title: 'Expanding Our Team',
+        link: '#expanding-our-team',
+        content: [
+          {
+            type: 'image',
+            src: teamGrowth,
+            alt: 'Team Growth',
+          },
+          {
+            type: 'paragraph',
+            text: "During 2022, the team at AVIEW expanded exponentially. We've brought on many new translators, developers, copywriters, designers, and more. Overall, the team grew from 7 to 77 members in one year.",
+          },
+        ],
+      },
+      {
+        title: 'Social Media Channels',
+        link: '#social-media-channels',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'Increasing our presence on social media was a big goal this year. We created accounts on Instagram, Twitter, and LinkedIn.',
+          },
+          {
+            type: 'paragraph',
+            text: 'The purpose of our social channels is to provide valuable information to our audience. You can find the latest industry news, tips, updates, and interesting statistics on the official AVIEW social media pages.',
+          },
+        ],
+      },
+      {
+        title: 'Creative Destruction Labs',
+        link: '#creative-destruction-labs',
+        content: [
+          {
+            type: 'paragraph',
+            text: 'In July, AVIEW announced our participation in the <a href="https://creativedestructionlab.com/" target="_blank" class="link">CDL (Creative Destruction Lab)</a> program.',
+          },
+          {
+            type: 'paragraph',
+            text: 'What is CDL about?',
+          },
+          {
+            type: 'paragraph',
+            text: 'The CDL program helps entrepreneurs launch tech startups by providing them with mentors and various solutions.',
+          },
+          {
+            type: 'paragraph',
+            text: "Creative Destruction Labs has played a major role in the growth we've experienced this year.",
+          },
+        ],
+      },
+      {
+        title: 'New Creators',
+        link: '#new-creators',
+        content: [
+          {
+            type: 'image',
+            src: newChannels,
+            alt: '20 New Channels',
+          },
+          {
+            type: 'paragraph',
+            text: 'In 2017, AVIEW partnered with Logan Paul to create translated content. Logan was one of the first large creators we worked with. ',
+          },
+          {
+            type: 'paragraph',
+            text: 'This past year, we connected with many popular creators such as HZHTube, Producer Michael, Blameitonjorge, and more.',
+          },
+          {
+            type: 'paragraph',
+            text: "We're looking forward to helping each of our new partners grow their international audiences.",
+          },
+        ],
+      },
+      {
+        title: 'Growing A-View at a Time',
+        link: '#growing-aview-at-a-time',
+        content: [
+          {
+            type: 'paragraph',
+            text: "There are lots of things to look forward to next year. From new product launches to more solutions, we're hard at work bringing you language services.",
+          },
+          {
+            type: 'paragraph',
+            text: "During 2023, we plan to find more ways to help creators build their audiences. We'll also be providing technical translations for all industries.",
+          },
+          {
+            type: 'paragraph',
+            text: "There are many opportunities to provide value through language. And we're going to continue helping people a-view at a time.",
           },
         ],
       },

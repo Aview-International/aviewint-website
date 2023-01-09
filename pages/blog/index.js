@@ -3,6 +3,7 @@ import Header from '../../components/navigation/Header';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 
 import { BLOGS } from '../../constants/blogs';
 
@@ -13,6 +14,7 @@ const Blog = () => {
   return (
     <>
       <SEO title="Blog - AVIEW" />
+      <EasterEgg />
       <Header curPage="Blog" />
       <section className="section m-horizontal">
         <h1 className="title mt-s6 mb-s4 text-center md:mt-s18 md:mb-s8">

@@ -7,7 +7,8 @@ import { useState } from 'react';
  * @prop formState: State containing form inputs
  * @prop children: Form input elements
  */
-function Form({ name, submitHandler, className, children }) {
+
+const Form = ({ name, submitHandler, className, children }) => {
   const [honeypot, setHoneypot] = useState('');
 
   function honeypotChangeHandler(e) {
@@ -44,6 +45,6 @@ function Form({ name, submitHandler, className, children }) {
       {children}
     </form>
   );
-}
+};
 
 export default Form;

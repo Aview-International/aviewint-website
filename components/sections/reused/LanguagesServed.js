@@ -39,7 +39,7 @@ const ALSO_AVAILABLE = [
 const LanguagesServed = () => {
   return (
     <section className="section m-horizontal text-center">
-      <h2 className="title mb-s2 text-left md:text-center">
+      <h2 className="title mb-s2 text-center">
         Languages <span className="gradient-text gradient-2">Served</span>
       </h2>
       <p className="body mx-auto mb-s4 max-w-[1080px] text-left md:mb-s10 md:text-center">
