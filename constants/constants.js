@@ -1250,7 +1250,7 @@ export const DASHBOARD_NAVLINKS = [
   {
     text: 'Settings',
     image: settings,
-    route: '/dashboard/settings',
+    route: '/dashboard/settings/edit-profile',
   },
 ];
 

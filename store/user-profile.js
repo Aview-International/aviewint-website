@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { getUserProfile } from '../pages/api/onboarding';
 
 export const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
-  const [user, updateUser] = useState({
+  const [userInfo, setUserInfo] = useState({
     email: '',
     firstName: '',
     lastName: '',
@@ -11,8 +12,21 @@ const UserContextProvider = ({ children }) => {
     youtubeChannelId: '',
   });
 
+  const getProfile = async () => {
+    try {
+      const _id = localStorage.getItem('uid');
+      const res = await getUserProfile(_id);
+      setUserInfo(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
+
   return (
-    <UserContext.Provider value={{ user, updateUser }}>
+    <UserContext.Provider value={{ userInfo, setUserInfo }}>
       {children}
     </UserContext.Provider>
   );

@@ -35,7 +35,7 @@ import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
-  const { user } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
   const router = useRouter();
 
@@ -75,7 +75,7 @@ export const OnboardingStep1 = () => {
   return (
     <div className="m-auto w-[min(630px,90%)]">
       <h2 className="text-3xl md:text-center md:text-4xl">
-        {user?.firstName}, how are you planning to use Aview?
+        {userInfo?.firstName}, how are you planning to use Aview?
       </h2>
       <p className="mt-4 mb-8 text-lg md:text-center md:text-xl">
         We&#8217;ll streamline your setup experience accordingly.

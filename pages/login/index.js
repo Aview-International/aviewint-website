@@ -7,12 +7,12 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/onboarding';
-import { UserContext } from '../../store/user-profile';
+import { UserContext } from '../../store/userInfo-profile';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
 
 const Login = () => {
   const router = useRouter();
-  const { user, updateUser } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -23,8 +23,8 @@ const Login = () => {
     else {
       localStorage.setItem('token', _tokenResponse.idToken);
       localStorage.setItem('uid', _tokenResponse.localId);
-      updateUser({
-        ...user,
+      setUserInfo({
+        ...userInfo,
         email: _tokenResponse.email,
         firstName: _tokenResponse.firstName,
         lastName: _tokenResponse.lastName,

@@ -5,9 +5,9 @@ import { DASHBOARD_NAVLINKS } from '../../constants/constants';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
 
-const DashboardSidebar = ({ user }) => {
+const DashboardSidebar = ({ userInfo }) => {
   return (
-    <aside className="fixed top-0 left-0 flex max-h-screen w-[170px] flex-col items-center overflow-y-auto py-s4 text-white">
+    <aside className="fixed top-0 left-0 hidden max-h-screen w-[170px] flex-col items-center overflow-y-auto py-s4 text-white lg:flex">
       <div>
         <Link href="/dashboard">
           <a>
@@ -20,26 +20,27 @@ const DashboardSidebar = ({ user }) => {
           </a>
         </Link>
       </div>
-      <Profile user={user} />
+      <Profile userInfo={userInfo} />
       <Navlink />
       <Signout />
     </aside>
   );
 };
 
-const Profile = ({ user }) => {
+const Profile = ({ userInfo }) => {
   return (
     <div className="justify-content mt-s8 mb-s5 flex flex-col items-center">
       <Image
-        loader={() => user.picture}
-        src={user.picture}
+        loader={() => userInfo.picture}
+        src={userInfo.picture}
         alt="Profile Picture"
         width={100}
         height={100}
+        unoptimized
         className="rounded-full"
       />
       <h3 className="mt-s2 mb-s1 text-lg">
-        {user.firstName} {user?.lastName}
+        {userInfo.firstName} {userInfo?.lastName}
       </h3>
       <p className="text-sm">Content Creator</p>
     </div>

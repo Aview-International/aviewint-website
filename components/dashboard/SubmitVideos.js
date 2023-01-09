@@ -14,7 +14,7 @@ const SubmitVideos = ({
   selectedVideos,
   setPayload,
   payload,
-  user,
+  userInfo,
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -61,14 +61,14 @@ ${
 **Can we post this video** : ${payload.allowUsPostVideo ? 'Yes' : 'No'}`;
       console.log(description);
 
-      saveVideo(user.youtubeChannelId, { videos: payload.languages });
+      saveVideo(userInfo.youtubeChannelId, { videos: payload.languages });
       const res = await axios.post('/api/submit-new-requests?create=board', {
-        boardName: user.youtubeChannelName,
+        boardName: userInfo.youtubeChannelName,
       });
       const createList = await axios.post(
         '/api/submit-new-requests?create=list',
         {
-          boardName: user.youtubeChannelName,
+          boardName: userInfo.youtubeChannelName,
           idBoard: res.data.id,
         }
       );

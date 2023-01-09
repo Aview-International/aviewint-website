@@ -14,7 +14,7 @@ const DashboardHome = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
-  const { user } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
   const [payload, setPayload] = useState({
     services: [],
     languages: [],
@@ -28,7 +28,7 @@ const DashboardHome = () => {
     try {
       const getVideos = await axios.post(
         '/api/onboarding/link-youtube?get=videos',
-        { youtubeChannelId: user.youtubeChannelId }
+        { youtubeChannelId: userInfo.youtubeChannelId }
       );
       setVideos(getVideos.data.items);
       setIsLoading(false);
@@ -50,7 +50,7 @@ const DashboardHome = () => {
           selectedVideos={selectedVideos}
           setPayload={setPayload}
           payload={payload}
-          user={user}
+          userInfo={userInfo}
         />
       ) : (
         <SelectVideos
@@ -89,7 +89,7 @@ const SelectVideos = ({
         setSelectedVideos={setSelectedVideos}
       />
       <br />
-      <div className="w-[155px]">
+      <div className="w-full md:w-[155px]">
         <OnboardingButton onClick={handleTranslate}>Translate</OnboardingButton>
       </div>
     </div>

@@ -43,11 +43,11 @@ const Videos = ({ setSelectedVideos, selectedVideos, videos, isLoading }) => {
 
   return (
     <div className="gradient-dark mt-s3 rounded-2xl p-s2">
-      <div className="mb-s2 flex justify-between text-white">
+      <div className="mb-s2 flex w-full justify-between overflow-x-auto text-white">
         {BUTTONS.map((button, index) => (
           <button
             key={`button-${index}`}
-            className="gradient-dark rounded-full py-s1 px-s2 text-xl"
+            className="gradient-dark min-w-fit mx-1 rounded-full py-s1 px-s2 text-xl"
           >
             {button.title}
           </button>

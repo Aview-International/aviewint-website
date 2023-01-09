@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { UserContext } from '../../store/user-profile';
+import { UserContext } from '../../store/userInfo-profile';
 import { createNewUser, signInWithGoogle } from '../api/onboarding';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
@@ -13,15 +13,15 @@ import Loader from '../../components/UI/loader';
 
 const Register = () => {
   const router = useRouter();
-  const { user, updateUser } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,
   });
 
   const updateDatabase = async (_tokenResponse) => {
-    updateUser({
-      ...user,
+    setUserInfo({
+      ...userInfo,
       email: _tokenResponse.email,
       firstName: _tokenResponse.firstName,
       lastName: _tokenResponse.lastName,

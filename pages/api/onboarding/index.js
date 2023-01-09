@@ -14,8 +14,7 @@ const scope = 'https://www.googleapis.com/auth/youtube';
 const include_granted_scopes = true;
 const state = 'state_parameter_passthrough_value';
 const redirect_uri = `${baseUrl}/onboarding?stage=4`;
-const client_id =
-  '976675432160-g6gf4n7e0g8am198nnsimqt3td1c4rc0.apps.googleusercontent.com';
+const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
 
 export const YoutubeAuthenticationLink = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
 
