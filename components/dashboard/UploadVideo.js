@@ -30,7 +30,7 @@ const UploadVideo = ({ data, setData, isValid, hasSubmitted }) => {
               name="resume"
               className="hidden"
               accept="video/mp4,video/x-m4v,video/*"
-              onChange={(e) => setData({ ...data, resume: e.target.files[0] })}
+              onChange={setData}
             />
             <span className="gradient-1 rounded-full py-s1 px-s4 text-black">
               Select Files

@@ -5,6 +5,7 @@ import UploadVideo from '../../../components/dashboard/UploadVideo';
 import PageTitle from '../../../components/SEO/PageTitle';
 
 const Upload = () => {
+  const [video, setVideo] = useState(undefined);
   const [payload, setPayload] = useState({
     services: [],
     languages: [],
@@ -32,11 +33,14 @@ const Upload = () => {
   return (
     <>
       <PageTitle title="Upload Video" />
-      <div className="flex p-s4 text-white">
-        <div className="w-1/2">
-          <UploadVideo />
+      <div className="flex flex-col p-s4 text-white lg:flex-row">
+        <div className="w-full lg:w-1/2">
+          <UploadVideo
+            setData={(e) => setVideo(e.target.files[0])}
+            data={video}
+          />
         </div>
-        <div className="w-1/2">
+        <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
           <TranslateOptions
             handleServices={handleServices}
             handleLanguages={handleLanguages}

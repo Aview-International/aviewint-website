@@ -52,7 +52,7 @@ const TranslateOptions = ({
         </div>
       )}
       <p className="mt-s4 text-xl">What services do you need?</p>
-      <div className="mt-s1 mb-s4">
+      <div className="mt-s1 mb-s4 flex flex-wrap">
         {DAHSHBOARD_SERVICES.map((service, index) => (
           <span
             className={`mr-s1 mb-s1 cursor-pointer rounded-full py-s1 px-s3 text-lg ${
@@ -92,7 +92,7 @@ const TranslateOptions = ({
         label="Would you like us to post this video as well?"
       />
       <br />
-      <div className="w-36">
+      <div className="w-full md:w-36">
         <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
           Submit
         </OnboardingButton>
