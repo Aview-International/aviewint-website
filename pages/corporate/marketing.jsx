@@ -12,10 +12,12 @@ import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import SEO from '../../components/SEO/SEO';
 
 export default function Marketing() {
   return (
     <>
+      <SEO title="Marketing Services - AVIEW" />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero

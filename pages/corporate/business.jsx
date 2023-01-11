@@ -13,10 +13,12 @@ import BenefitsOfBusinessTranslation from '../../components/sections/corporate/b
 import AllBusinessSectors from '../../components/sections/corporate/business/AllBusinessSectors';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import SEO from '../../components/SEO/SEO';
 
 export default function Business() {
   return (
     <>
+      <SEO title="Business Services - AVIEW" />
       <EasterEgg />
       <Header />
       <Hero

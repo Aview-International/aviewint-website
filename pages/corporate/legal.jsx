@@ -12,10 +12,12 @@ import LegalTranslationOverview from '../../components/sections/corporate/legal/
 import BenefitsOfLegalTranslation from '../../components/sections/corporate/legal/BenefitsOfLegalTranslation';
 import LegalBranches from '../../components/sections/corporate/legal/LegalBranches';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import SEO from '../../components/SEO/SEO';
 
 export default function Legal() {
   return (
     <>
+      <SEO title="Legal Services - AVIEW" />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero

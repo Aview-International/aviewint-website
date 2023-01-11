@@ -12,10 +12,12 @@ import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/blobs';
 import financialTranslations from '../../public/img/graphics/corporate/financial/financial-translation-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import SEO from '../../components/SEO/SEO';
 
 export default function Financial() {
   return (
     <>
+      <SEO title="Financial Services - AVIEW" />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero

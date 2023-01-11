@@ -13,10 +13,12 @@ import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import scientificGraphic from '../../public/img/graphics/corporate/scientific.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import SEO from '../../components/SEO/SEO';
 
 export default function Scientific() {
   return (
     <>
+      <SEO title="Scientific Services - AVIEW" />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
