@@ -2,12 +2,20 @@ import { MessagesLayout } from './';
 import andrew from '../../../public/img/team/andrew.png';
 import Image from 'next/image';
 import WriteMessage from '../../../public/img/graphics/write-formatted-text.png';
-import FormInput from '../../../components/FormComponents/FormInput';
+import Arrow from '../../../public/img/icons/arrow-back.svg';
+import { useRouter } from 'next/router';
 
 const MessageDetails = () => {
+  const router = useRouter();
   return (
-    <div className="relative h-full">
+    <div className="relative flex h-full flex-col justify-between">
       <div className="flex items-center">
+        <button
+          className="block pr-s2 brightness-0 invert md:hidden"
+          onClick={() => router.back()}
+        >
+          <Image src={Arrow} alt="" with={10} height={20} />
+        </button>
         <div>
           <Image
             src={andrew}
@@ -19,12 +27,16 @@ const MessageDetails = () => {
         </div>
         <p className="ml-s1 text-2xl">Andrew Qiao</p>
       </div>
-      <div className="absolute bottom-3 w-full -translate-y-1/3">
+      <div className="">
         <div>
           <Message />
         </div>
-        <div className="relative h-[130px] w-full">
-          <FormInput />
+        <div className="relative w-full">
+          <input
+            type="text"
+            placeholder="Message Andrew"
+            className="w-full rounded-3xl bg-white-transparent p-s1"
+          />
           {/* <Image src={WriteMessage} alt="" layout="fill" /> */}
         </div>
       </div>

@@ -33,9 +33,9 @@ const DashboardStructure = ({ children }) => {
       <DashboardContainer>
         <main className="lg:gradient-dark flex min-h-screen w-full bg-black">
           <DashboardSidebar userInfo={userInfo} />
-          <div className="ml-auto w-full lg:w-[calc(100%-170px)]">
+          <div className="ml-auto flex w-full flex-col items-stretch lg:w-[calc(100%-170px)]">
             <DashBoardHeader userInfo={userInfo} />
-            <div className="h-full overflow-y-auto bg-black p-s1 md:p-s4">
+            <div className="mx-auto h-full w-full max-w-[1240px] self-stretch overflow-y-auto bg-black md:p-s4">
               {children}
             </div>
           </div>

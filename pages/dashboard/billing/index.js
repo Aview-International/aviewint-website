@@ -1,6 +1,10 @@
+import Image from 'next/image';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
+import OnboardingButton from '../../../components/Onboarding/button';
 import PageTitle from '../../../components/SEO/PageTitle';
 import Blobs from '../../../components/UI/Blobs';
+import Button from '../../../components/UI/Button';
+import Visa from '../../../public/img/icons/visa.svg';
 
 const Billing = () => {
   return (
@@ -21,8 +25,17 @@ const BillingDetails = () => {
   return (
     <div className="text-white">
       <h2 className="text-4xl">Billing Details</h2>
-      <div className="gradient-dark">
-        <p>Card on file:</p>
+      <div className="gradient-dark flex items-center justify-between rounded-2xl p-s2">
+        <div className="flex">
+          <p>Card on file:</p>
+          <div className="mx-s5">
+            <Image src={Visa} alt="" width={40} height={26} />
+          </div>
+          <p>Visa ending in 6099</p>
+        </div>
+        <div>
+          <OnboardingButton theme="dark">Edit</OnboardingButton>
+        </div>
       </div>
     </div>
   );
