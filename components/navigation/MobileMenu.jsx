@@ -101,10 +101,10 @@ export function MainMenu() {
 
   return (
     <div className="flex flex-col overflow-y-scroll">
-      {MAIN_MENU.map((menuItem) => {
+      {MAIN_MENU.map((menuItem, idx) => {
         if (menuItem.type === 'route') {
           return (
-            <Link href={menuItem.link}>
+            <Link href={menuItem.link} key={`link-${idx}`}>
               <div
                 className="flex h-16 items-center"
                 onClick={menuOpenCtx.closeMenuHandler}

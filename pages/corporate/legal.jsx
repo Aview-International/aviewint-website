@@ -6,7 +6,7 @@ import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
-import Blobs from '../../components/UI/blobs';
+import Blobs from '../../components/UI/Blobs';
 import legalTranslations from '../../public/img/graphics/corporate/legal/legal-services.png';
 import LegalTranslationOverview from '../../components/sections/corporate/legal/LegalTranslationOverview';
 import BenefitsOfLegalTranslation from '../../components/sections/corporate/legal/BenefitsOfLegalTranslation';
@@ -33,7 +33,7 @@ export default function Legal() {
       <BenefitsOfLegalTranslation />
       <LanguagesServed />
       <LegalBranches />
-      <StartGenerating />
+      <StartGenerating formId="JhSA3lfn" />
       <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
