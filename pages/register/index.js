@@ -3,17 +3,17 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { UserContext } from '../../store/userInfo-profile';
 import { createNewUser, signInWithGoogle } from '../api/onboarding';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
+import UserContextProvider from '../../store/user-profile';
 
 const Register = () => {
   const router = useRouter();
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContextProvider);
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,

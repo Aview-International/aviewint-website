@@ -1,6 +1,6 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import Blobs from '../../../components/UI/blobs';
+import Blobs from '../../../components/UI/Blobs';
 
 const Billing = () => {
   return (

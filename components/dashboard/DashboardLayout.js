@@ -5,7 +5,6 @@ import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
 
-// this component sends user profile only
 export const DashboardContainer = ({ children }) => {
   const { setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
