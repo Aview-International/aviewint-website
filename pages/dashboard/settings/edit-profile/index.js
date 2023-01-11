@@ -6,7 +6,7 @@ import Correct from '../../../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../../../public/img/icons/incorrect.svg';
 import Border from '../../../../components/UI/Border';
 import OnboardingButton from '../../../../components/Onboarding/button';
-import PhoneInput from 'react-phone-number-input';
+import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
 
 const INPUT_FIELDS = [
   {
@@ -27,11 +27,66 @@ const INPUT_FIELDS = [
 ];
 
 const Container = ({ left, right }) => (
-  <div className="mb-s2 flex w-full items-center">
-    <div className="w-2/5 text-right">{left}</div>
-    <div className="ml-s5 w-3/5">{right}</div>
+  <div className="flex w-full flex-col items-start p-s2 md:mb-s2 md:flex-row md:items-center md:p-0">
+    <div className="w-full text-left md:w-2/5 md:text-right">{left}</div>
+    <div className="ml-0 w-4/5 md:ml-s5 md:w-2/5">{right}</div>
   </div>
 );
+
+const Accounts = ({ userData }) => {
+  return (
+    <>
+      <Container
+        left={<p className={`text-xl`}>Instagram</p>}
+        right={
+          <button
+            className={`w-full rounded-full border-2 py-s1 text-center ${
+              userData.youtubeChannelId && 'instagram'
+            }`}
+          >
+            Instagram
+          </button>
+        }
+      />
+      <Container
+        left={<p className={`text-xl`}>Facebook</p>}
+        right={
+          <button
+            className={`w-full rounded-full border-2 py-s1  text-center ${
+              userData.youtubeChannelId && 'bg-[#0054ff]'
+            }`}
+          >
+            Facebook
+          </button>
+        }
+      />
+      <Container
+        left={<p className={`text-xl`}>TikTok</p>}
+        right={
+          <button
+            className={`w-full rounded-full border-2 py-s1 text-center ${
+              userData.youtubeChannelId && 'bg-[#000000]'
+            }`}
+          >
+            TikTok
+          </button>
+        }
+      />
+      <Container
+        left={<p className={`text-xl`}>Youtube</p>}
+        right={
+          <button
+            className={`w-full rounded-full border-2 py-s1 text-center ${
+              userData.youtubeChannelId && 'bg-[#ff0000]'
+            }`}
+          >
+            Youtube
+          </button>
+        }
+      />
+    </>
+  );
+};
 
 const EditProfile = () => {
   const { userInfo } = useContext(UserContext);
@@ -63,7 +118,7 @@ const EditProfile = () => {
 
       <Container
         left={
-          <div className="flex justify-end">
+          <div className="jusify-start flex md:justify-end">
             <Image
               src={userInfo.picture}
               alt={userInfo.firstName}
@@ -94,6 +149,7 @@ const EditProfile = () => {
         {...INPUT_FIELDS[1]}
       />
       <Container left={<h3 className="my-s1 text-2xl">Accounts</h3>} />
+      <Accounts userData={userInfo} />
       <Container
         left={<h3 className="my-s3 text-2xl">Personal Information</h3>}
       />
@@ -102,10 +158,13 @@ const EditProfile = () => {
         handleChange={handleChange}
         {...INPUT_FIELDS[2]}
       />
-
-      <PhoneNumberInput
-        value={payload.phone}
-        handleChange={(e) => setPayload({ ...payload, phone: e })}
+      <Container
+        left={<label className={`text-xl`}>Phone Number</label>}
+        right={
+          <div className="">
+            <PhoneNumberInput />
+          </div>
+        }
       />
 
       <div className="mx-auto w-36">
@@ -115,34 +174,6 @@ const EditProfile = () => {
   );
 };
 
-const PhoneNumberInput = ({ value, handleChange, hasSubmitted, isValid }) => (
-  <Container
-    left={<label className={`block text-right text-xl`}>Phone Number</label>}
-    right={
-      <Border borderRadius="[5px]" classes="w-full">
-        <div
-          className={`phone-number rounded-[5px] bg-black text-xl text-white`}
-        >
-          <PhoneInput
-            international
-            countryCallingCodeEditable={false}
-            defaultCountry="US"
-            value={value}
-            onChange={handleChange}
-          />
-        </div>
-        <span className={`absolute right-[10px] top-[9px]`}>
-          {isValid && (
-            <Image src={Correct} alt="Correct" width={30} height={30} />
-          )}
-          {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
-          )}
-        </span>
-      </Border>
-    }
-  />
-);
 const InputField = ({
   type,
   _id,
@@ -157,12 +188,12 @@ const InputField = ({
   return (
     <Container
       left={
-        <label htmlFor={_id} className={`block text-right text-xl`}>
+        <label htmlFor={_id} className={`block text-xl`}>
           {label}
         </label>
       }
       right={
-        <Border classes="relative" borderRadius="[5px]">
+        <Border classes="relative w-full" borderRadius="[5px]">
           <input
             id={_id}
             name={name}

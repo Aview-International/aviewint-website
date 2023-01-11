@@ -30,7 +30,7 @@ const MobileToggle = ({ title, info }) => {
   const handleChange = (e) => setIsChecked(e.target.checked);
 
   return (
-    <div className="flex items-center justify-between border-y border-white-transparent py-s2 px-s3 md:hidden">
+    <div className="flex items-center justify-between border-y border-white-transparent py-s2 px-s3 md:border-none">
       <div>
         <h4 className="text-xl">{title}</h4>
         <p className="text-xs">{info}</p>
