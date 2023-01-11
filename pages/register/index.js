@@ -9,11 +9,11 @@ import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
-import UserContextProvider from '../../store/user-profile';
+import { UserContext } from '../../store/user-profile';
 
 const Register = () => {
   const router = useRouter();
-  const { userInfo, setUserInfo } = useContext(UserContextProvider);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,
