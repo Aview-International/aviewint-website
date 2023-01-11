@@ -101,7 +101,7 @@ function Dropdown({ menuItem }) {
         }`}
       >
         <div className="flex w-max gap-10 rounded-md bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
-          {menuItem.dropdown.map((dropdownItem) => {
+          {menuItem.dropdown.map((dropdownItem, index) => {
             if (dropdownItem.type === 'list') {
               return (
                 <div className="flex flex-col gap-4" key={dropdownItem.title}>
@@ -123,7 +123,7 @@ function Dropdown({ menuItem }) {
               );
             } else if (dropdownItem.type === 'route') {
               return (
-                <Link href={dropdownItem.link}>
+                <Link href={dropdownItem.link} key={index}>
                   <a className="hover:gradient-text hover:gradient-2 h-min text-xl font-semibold text-white">
                     {dropdownItem.title}
                   </a>
