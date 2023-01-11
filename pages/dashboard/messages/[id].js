@@ -8,13 +8,15 @@ const MessageDetails = () => {
   return (
     <div className="relative h-full">
       <div className="flex items-center">
-        <Image
-          src={andrew}
-          alt="Profile Picture"
-          width={32}
-          height={32}
-          className="rounded-full"
-        />
+        <div>
+          <Image
+            src={andrew}
+            alt="Profile Picture"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+        </div>
         <p className="ml-s1 text-2xl">Andrew Qiao</p>
       </div>
       <div className="absolute bottom-3 w-full -translate-y-1/3">
@@ -23,7 +25,7 @@ const MessageDetails = () => {
         </div>
         <div className="relative h-[130px] w-full">
           <FormInput />
-          <Image src={WriteMessage} alt="" layout="fill" />
+          {/* <Image src={WriteMessage} alt="" layout="fill" /> */}
         </div>
       </div>
     </div>
@@ -35,7 +37,9 @@ export default MessageDetails;
 
 const Message = () => (
   <div className="my-s3 flex text-sm">
-    <Image src={andrew} alt="" width={40} height={40} />
+    <div>
+      <Image src={andrew} alt="" width={40} height={40} />
+    </div>
     <div>
       <p>
         Andrew Qiao <span className="pl-s2">3:27pm</span>

@@ -31,12 +31,10 @@ const Profile = ({ userInfo }) => {
   return (
     <div className="justify-content mt-s8 mb-s5 flex flex-col items-center">
       <Image
-        loader={() => userInfo.picture}
-        src={userInfo.picture}
+        src={userInfo?.picture}
         alt="Profile Picture"
         width={100}
         height={100}
-        unoptimized
         className="rounded-full"
       />
       <h3 className="mt-s2 mb-s1 text-lg">

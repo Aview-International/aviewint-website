@@ -78,6 +78,7 @@ import content from '../public/img/icons/content.svg';
 import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
+import messages from '../public/img/icons/messages.svg';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -1210,6 +1211,11 @@ export const DASHBOARD_NAVLINKS = [
     text: 'Analytics',
     image: analytics,
     route: '/dashboard/analytics',
+  },
+  {
+    text: 'Messages',
+    image: messages,
+    route: '/dashboard/messages',
   },
   {
     text: 'Content',

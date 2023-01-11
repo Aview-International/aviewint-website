@@ -67,7 +67,7 @@ const DistriubtionAccounts = () => {
       <Settings_Back_Button title="Distribution accounts" />
       {DISTRIBUTION_ACCOUNTS.map((item, index) => (
         <Container
-          key={`account-${index}`}
+          key={`accounts-${index}`}
           left={
             <h3 className="text-2xl">
               {item.account_type}{' '}
@@ -82,6 +82,7 @@ const DistriubtionAccounts = () => {
             <>
               {item.accounts.map(() => (
                 <Account
+                  key={`account-${index}`}
                   picture={Logo}
                   name="Aview International Espan'ol"
                   subscribers="2.28K subscribers"
