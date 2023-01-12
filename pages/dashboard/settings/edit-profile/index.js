@@ -162,7 +162,10 @@ const EditProfile = () => {
         left={<label className={`text-xl`}>Phone Number</label>}
         right={
           <div className="">
-            <PhoneNumberInput />
+            <PhoneNumberInput
+              value={payload.phone}
+              onChange={(e) => setPayload({ ...payload, phone: e })}
+            />
           </div>
         }
       />
