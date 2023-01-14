@@ -2,7 +2,7 @@ import Header from '../../components/navigation/Header';
 import Hero from '../../components/layout/Hero';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
 import FinancialTranslationOverview from '../../components/sections/corporate/financial/FinancialTranslationOverview';
-import WhyUseAview from '../../components/sections/corporate/scientific/WhyUseAview';
+import WhyUseAview from '../../components/sections/reused/WhyUseAview';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import AllFinancialDocuments from '../../components/sections/corporate/financial/AllFinancialDocuments';
 import StartGenerating from '../../components/sections/home/StartGenerating';
@@ -13,6 +13,8 @@ import Blobs from '../../components/UI/Blobs';
 import financialTranslations from '../../public/img/graphics/corporate/financial/financial-translation-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import SEO from '../../components/SEO/SEO';
+
+const ITEMS = [{ title: '', description: '' }];
 
 export default function Financial() {
   return (

@@ -45,7 +45,7 @@ const ITEMS = [
   },
 ];
 
-export default function ELearningServices() {
+export default function LearningServices() {
   return (
     <section className="section m-horizontal">
       <h2 className="title mb-4 text-center">

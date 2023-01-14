@@ -3,7 +3,7 @@ import EasterEgg from '../../components/sections/reused/EasterEgg';
 import Header from '../../components/navigation/Header';
 import Hero from '../../components/layout/Hero';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
-import ELearningServices from '../../components/sections/corporate/e-learning/eLearningServices';
+import LearningServices from '../../components/sections/corporate/e-learning/LearningServices';
 import WhyUseAview from '../../components/sections/reused/WhyUseAview';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import Workflow from '../../components/sections/reused/Workflow';
@@ -48,7 +48,7 @@ export default function ELearning() {
         imageAlt="eLearning Translation Services"
       />
       <CompaniesWeWorkedWith />
-      <ELearningServices />
+      <LearningServices />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
       <Workflow
