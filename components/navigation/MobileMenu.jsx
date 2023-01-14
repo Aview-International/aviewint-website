@@ -234,19 +234,19 @@ const CORPORATE_MENU = [
     title: 'Medical',
     description:
       'Work with certified professionals to translate medical material.',
-    link: '/services/medical',
+    link: '/corporate/medical',
   },
   {
     title: 'E-Learning',
     description:
       'Work with certified professionals to translate e-learning material.',
-    link: '/services/e-learning',
+    link: '/corporate/e-learning',
   },
   {
     title: 'Voice Over',
     description:
       'Work with certified professionals to translate voice over material.',
-    link: '/services/voice-over',
+    link: '/corporate/voice-over',
   },
 ];
 
