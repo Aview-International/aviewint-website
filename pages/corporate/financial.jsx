@@ -14,7 +14,23 @@ import financialTranslations from '../../public/img/graphics/corporate/financial
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import SEO from '../../components/SEO/SEO';
 
-const ITEMS = [{ title: '', description: '' }];
+const ITEMS = [
+  {
+    title: 'Fast Turnaround Time',
+    description:
+      'At AVIEW, we understand that you have time restraints and requirements. We take this into account and prioritize your needs. Contact us today to get a quote!',
+  },
+  {
+    title: 'Accurate Translations',
+    description:
+      'Financial documents can be sensitive. This is why at AVIEW, we take great care to ensure that your material is translated with the highest accuracy. Our certified translators guarantee high-quality transcriptions.',
+  },
+  {
+    title: 'Specialized Experts',
+    description:
+      'When dealing with financial records, there is a lot of technical jargon. Translators must have a background in finance or a related field. Our translators at AVIEW, are certified and specialize in working with these types of documents.',
+  },
+];
 
 export default function Financial() {
   return (
@@ -32,7 +48,7 @@ export default function Financial() {
       />
       <CompaniesWeWorkedWith />
       <FinancialTranslationOverview />
-      <WhyUseAview />
+      <WhyUseAview items={ITEMS} />
       <LanguagesServed />
       <AllFinancialDocuments />
       <StartGenerating formId="JhSA3lfn" />
