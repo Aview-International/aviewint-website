@@ -26,11 +26,14 @@ const MENU = [
         type: 'list',
         title: 'Corporate',
         items: [
-          { title: 'Business', link: '/corporate/business' },
+          { title: 'Scientific', link: '/corporate/scientific' },
           { title: 'Financial', link: '/corporate/financial' },
           { title: 'Legal', link: '/corporate/legal' },
+          { title: 'Business', link: '/corporate/business' },
           { title: 'Marketing', link: '/corporate/marketing' },
-          { title: 'Scientific', link: '/corporate/scientific' },
+          { title: 'E-Learning', link: '/corporate/e-learning' },
+          { title: 'Medical', link: '/corporate/medical' },
+          { title: 'Voice Over', link: '/corporate/voice-over' },
         ],
       },
     ],
@@ -60,7 +63,13 @@ export default function DesktopMenu({ curPage }) {
             </Link>
           );
         } else if (menuItem.type === 'dropdown') {
-          return <Dropdown menuItem={menuItem} key={menuItem.title} />;
+          return (
+            <Dropdown
+              menuItem={menuItem}
+              curPage={curPage}
+              key={menuItem.title}
+            />
+          );
         } else {
           return null;
         }
@@ -69,7 +78,7 @@ export default function DesktopMenu({ curPage }) {
   );
 }
 
-function Dropdown({ menuItem }) {
+function Dropdown({ menuItem, curPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -81,14 +90,18 @@ function Dropdown({ menuItem }) {
       <div className="inline-flex items-center gap-1">
         <p
           className={`text-md cursor-default xl:text-lg ${
-            dropdownOpen ? 'gradient-text gradient-1' : 'text-white'
+            dropdownOpen || curPage === menuItem.title
+              ? 'gradient-text gradient-1'
+              : 'text-white'
           }`}
         >
           {menuItem.title}
         </p>
         <div className={`h-6 w-6 ${dropdownOpen ? 'rotate-180' : ''}`}>
           <Image
-            src={dropdownOpen ? downChevronGradient : downChevronWhite}
+            src={
+              dropdownOpen || curPage ? downChevronGradient : downChevronWhite
+            }
             width={48}
             height={48}
             alt="chevron"
@@ -103,20 +116,34 @@ function Dropdown({ menuItem }) {
         <div className="flex w-max gap-10 rounded-md bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
           {menuItem.dropdown.map((dropdownItem) => {
             if (dropdownItem.type === 'list') {
+              const columns = [];
+
+              for (let i = 0; i < dropdownItem.items.length; i += 4) {
+                const column = dropdownItem.items.slice(i, i + 4);
+                columns.push(column);
+              }
+
               return (
                 <div className="flex flex-col gap-4" key={dropdownItem.title}>
                   {/* <p className="text-xl font-semibold text-white">
                     {dropdownItem.title}
                   </p> */}
-                  <div className="flex w-28 flex-col gap-4">
-                    {dropdownItem.items.map((item) => (
-                      <Link href={item.link} key={item.title}>
-                        <a className="group font-light">
-                          <span className="group-hover:gradient-text group-hover:gradient-2 text-white">
-                            {item.title}
-                          </span>
-                        </a>
-                      </Link>
+                  <div className="flex gap-4">
+                    {columns.map((column, i) => (
+                      <div
+                        className="flex w-28 flex-col gap-4"
+                        key={`column-${i}`}
+                      >
+                        {column.map((item) => (
+                          <Link href={item.link} key={item.title}>
+                            <a className="group font-light">
+                              <span className="group-hover:gradient-text group-hover:gradient-2 text-white">
+                                {item.title}
+                              </span>
+                            </a>
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 </div>

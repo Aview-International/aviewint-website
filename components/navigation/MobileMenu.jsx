@@ -221,7 +221,7 @@ const CORPORATE_MENU = [
   {
     title: 'Marketing',
     description:
-      'Work with certified professionals to translate business material.',
+      'Work with certified professionals to translate marketing material.',
     link: '/corporate/marketing',
   },
   {
@@ -230,24 +230,24 @@ const CORPORATE_MENU = [
       'Work with certified professionals to translate scientific material.',
     link: '/corporate/scientific',
   },
-  // {
-  //   title: 'Medical',
-  //   description:
-  //     'Work with certified professionals to translate medcial material.',
-  //   link: '/services/medical',
-  // },
-  // {
-  //   title: 'E-Learning',
-  //   description:
-  //     'Work with certified professionals to translate business material.',
-  //   link: '/services/e-learning',
-  // },
-  // {
-  //   title: 'Voice Over',
-  //   description:
-  //     'Work with certified professionals to translate business material.',
-  //   link: '/services/voice-over',
-  // },
+  {
+    title: 'Medical',
+    description:
+      'Work with certified professionals to translate medical material.',
+    link: '/services/medical',
+  },
+  {
+    title: 'E-Learning',
+    description:
+      'Work with certified professionals to translate e-learning material.',
+    link: '/services/e-learning',
+  },
+  {
+    title: 'Voice Over',
+    description:
+      'Work with certified professionals to translate voice over material.',
+    link: '/services/voice-over',
+  },
 ];
 
 export function CorporateMenu() {
