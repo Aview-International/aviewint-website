@@ -100,7 +100,9 @@ function Dropdown({ menuItem, curPage }) {
         <div className={`h-6 w-6 ${dropdownOpen ? 'rotate-180' : ''}`}>
           <Image
             src={
-              dropdownOpen || curPage ? downChevronGradient : downChevronWhite
+              dropdownOpen || curPage === menuItem.title
+                ? downChevronGradient
+                : downChevronWhite
             }
             width={48}
             height={48}
