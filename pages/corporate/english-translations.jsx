@@ -1,4 +1,5 @@
 import SEO from '../../components/SEO/SEO';
+import EasterEgg from '../../components/sections/reused/EasterEgg';
 import Header from '../../components/navigation/Header';
 import Hero from '../../components/layout/Hero';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
@@ -35,6 +36,7 @@ export default function EnglishTranslations() {
   return (
     <>
       <SEO title="English Translations - AVIEW" />
+      <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
         title="English Translation <span class='gradient-text gradient-2'>Services</span>"
