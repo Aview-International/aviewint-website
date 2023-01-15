@@ -54,7 +54,8 @@ export default function MobileMenu() {
           <Image src={closeIcon} width={28} height={28} alt="close icon" />
         </div>
       </div>
-      <nav className="flex flex-grow flex-col justify-between overflow-hidden">
+      <hr className="border-0.25 -mb-8 border-white opacity-40" />
+      <nav className="flex flex-grow flex-col justify-between overflow-hidden px-6">
         {menuOpenCtx.curMenu === 'main' ? <MainMenu /> : null}
         {/* {menuOpenCtx.curMenu === 'services' ? <ServicesMenu /> : null}
         {menuOpenCtx.curMenu === 'creators' ? <CreatorsMenu /> : null} */}
@@ -255,15 +256,10 @@ export function CorporateMenu() {
 
   return (
     <div className="flex flex-col overflow-y-scroll">
-      <hr className="border-0.25 border-white opacity-40" />
       {CORPORATE_MENU.map((menuItem) => (
         <React.Fragment key={menuItem.title}>
           <Link href={menuItem.link}>
-            <div
-              className="px-8"
-              key={menuItem.title}
-              onClick={menuOpenCtx.closeMenuHandler}
-            >
+            <div key={menuItem.title} onClick={menuOpenCtx.closeMenuHandler}>
               <p className="mt-6 mb-2 text-2xl font-bold">
                 <span className="gradient-text gradient-2">
                   {menuItem.title}
