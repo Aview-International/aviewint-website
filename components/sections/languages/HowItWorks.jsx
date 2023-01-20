@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import howItWorksSm from '../../../../public/img/graphics/corporate/translations/how-it-works-sm.svg';
-import howItWorksLg from '../../../../public/img/graphics/corporate/translations/how-it-works-lg.svg';
+import howItWorksSm from '../../../public/img/graphics/languages/how-it-works-sm.svg';
+import howItWorksLg from '../../../public/img/graphics/languages/how-it-works-lg.svg';
 
 export default function HowItWorks() {
   return (
