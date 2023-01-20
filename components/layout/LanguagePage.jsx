@@ -44,8 +44,7 @@ export default function LanguagePage({
         items={[
           {
             title: 'Fast Turnaround Time',
-            description:
-              "We understand that each project has unique time constraints. That's why we provide speedy English translation services.",
+            description: `We understand that each project has unique time constraints. That's why we provide speedy ${language} translation services.`,
           },
           {
             title: 'Personalization',
