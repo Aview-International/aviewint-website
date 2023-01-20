@@ -26,9 +26,9 @@ export default function LanguagePage({
 
   return (
     <>
-      <EasterEgg />;
-      <SEO title={`${language} Translations - AVIEW`} />;
-      <Header curPage="Languages" />;
+      <EasterEgg />
+      <SEO title={`${language} Translations - AVIEW`} />
+      <Header curPage="Languages" />
       <Hero
         title={`${language} Translation <span class='gradient-text gradient-2'>Services</span>`}
         description={`Collaborate with translators at AVIEW to receive ${language.toLowerCase()} translation solutions.`}
