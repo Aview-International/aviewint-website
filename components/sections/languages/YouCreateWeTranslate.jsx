@@ -1,5 +1,5 @@
-import Banner from '../../../layout/Banner';
-import Button from '../../../UI/Button';
+import Banner from '../../layout/Banner';
+import Button from '../../UI/Button';
 
 export default function YouCreateWeTranslation() {
   return (
