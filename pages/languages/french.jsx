@@ -1,6 +1,6 @@
 import LanguagePage from '../../components/layout/LanguagePage';
 import french from '../../public/img/graphics/languages/french.png';
-import fastAndAccurate from '../../public/img/graphics/languages/french.png';
+import fastAndAccurate from '../../public/img/graphics/languages/fast-and-accurate-french.png';
 
 export default function French() {
   return (
