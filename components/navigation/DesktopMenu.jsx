@@ -38,7 +38,7 @@ const MENU = [
       { title: 'German', link: '/languages/german' },
       { title: 'Japanese', link: '/languages/japanese' },
       { title: 'Marthi', link: '/languages/marthi' },
-      { title: 'Teluga', link: '/languages/teluga' },
+      { title: 'Telugu', link: '/languages/telugu' },
       { title: 'Dutch', link: '/languages/dutch' },
       { title: 'Tagalog', link: '/languages/tagalog' },
     ],
