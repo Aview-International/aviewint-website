@@ -30,7 +30,7 @@ const Creators = () => {
       <LanguagesServed />
       <BenefitsOfTranslations />
       <InternationalGrowth />
-      <StartGenerating />
+      <StartGenerating formId="t5dW3MSY" />
       <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Creators" />

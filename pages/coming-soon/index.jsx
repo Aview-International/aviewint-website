@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Form from '../../components/FormComponents/Form';
 import FormInput from '../../components/FormComponents/FormInput';
 import Header from '../../components/navigation/Header';
+import SEO from '../../components/SEO/SEO';
 import Button from '../../components/UI/Button';
 import comingSoon from '../../public/img/graphics/coming-soon.png';
 import { emailValidator } from '../../utils/regex';
@@ -33,6 +34,7 @@ export default function ComingSoon() {
 
   return (
     <>
+      <SEO title="Coming Soon - AVIEW" />
       <Header />
       <div className="m-horizontal relative mt-s6 md:text-center lg:mt-s10">
         <h1 className="title mb-s2">
@@ -69,13 +71,8 @@ export default function ComingSoon() {
           </Form>
         )}
       </div>
-      <div className="absolute top-0 left-1/2 -z-10 w-[250%] -translate-x-1/2 xs:w-[225%] sm:w-[200%] lg:w-full 2xl:w-[75%]">
-        <Image
-          src={comingSoon}
-          alt="easter egg graphic"
-          width={2880}
-          height={2502}
-        />
+      <div className="absolute bottom-0 left-1/2 -z-10 w-[250%] -translate-x-1/2 xs:w-[225%] sm:w-[200%] md:w-[125%] lg:w-full 2xl:w-[75%]">
+        <Image src={comingSoon} alt="easter egg graphic" />
       </div>
     </>
   );

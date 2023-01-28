@@ -14,51 +14,53 @@ export default function MobileMenu() {
 
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen flex-col gap-9 overflow-hidden bg-black px-6 pt-8 pb-10 lg:hidden ${
+      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen flex-col overflow-hidden bg-black px-6 pt-8 pb-10 lg:hidden ${
         menuOpenCtx.isMenuOpen
           ? 'translate-x-0 opacity-100'
           : 'translate-x-full opacity-0'
       }`}
     >
-      <div className="flex h-12 flex-grow-0 items-center justify-between">
-        {menuOpenCtx.curMenu === 'main' ? (
-          <div onClick={menuOpenCtx.closeMenuHandler}>
-            <Link href="/">
-              <div className="h-12 w-12">
+      <div className="flex-grow-0">
+        <div className="mb-8 flex h-12 items-center justify-between">
+          {menuOpenCtx.curMenu === 'main' ? (
+            <div onClick={menuOpenCtx.closeMenuHandler}>
+              <Link href="/">
+                <div className="h-12 w-12">
+                  <Image
+                    src={aviewLogo}
+                    width={48}
+                    height={48}
+                    alt="aview logo"
+                  />
+                </div>
+              </Link>
+            </div>
+          ) : (
+            <div
+              className="flex items-center"
+              onClick={() => menuOpenCtx.setMenu('main')}
+            >
+              <div className="h-8 w-8">
                 <Image
-                  src={aviewLogo}
-                  width={48}
-                  height={48}
-                  alt="aview logo"
+                  src={leftChevronIcon}
+                  alt="left chevron icon"
+                  width={32}
+                  height={32}
                 />
               </div>
-            </Link>
-          </div>
-        ) : (
-          <div
-            className="flex items-center"
-            onClick={() => menuOpenCtx.setMenu('main')}
-          >
-            <div className="h-8 w-8">
-              <Image
-                src={leftChevronIcon}
-                alt="left chevron icon"
-                width={32}
-                height={32}
-              />
+              <p className="mt-1 text-white">Back</p>
             </div>
-            <p className="mt-1 text-white">Back</p>
+          )}
+          <div className="h-7 w-7" onClick={menuOpenCtx.closeMenuHandler}>
+            <Image src={closeIcon} width={28} height={28} alt="close icon" />
           </div>
-        )}
-        <div className="h-7 w-7" onClick={menuOpenCtx.closeMenuHandler}>
-          <Image src={closeIcon} width={28} height={28} alt="close icon" />
         </div>
+        <hr className="border-0.25 border-white opacity-40" />
       </div>
-      <nav className="flex flex-grow flex-col justify-between overflow-hidden">
+      <nav className="flex flex-grow flex-col justify-between overflow-hidden px-6">
         {menuOpenCtx.curMenu === 'main' ? <MainMenu /> : null}
-        {/* {menuOpenCtx.curMenu === 'services' ? <ServicesMenu /> : null}
-        {menuOpenCtx.curMenu === 'creators' ? <CreatorsMenu /> : null} */}
         {menuOpenCtx.curMenu === 'corporate' ? <CorporateMenu /> : null}
+        {menuOpenCtx.curMenu === 'languages' ? <LanguagesMenu /> : null}
       </nav>
       <div
         className={`flex-grow-0 flex-col gap-4 ${
@@ -90,7 +92,7 @@ const MAIN_MENU = [
   { type: 'route', title: 'Home', link: '/' },
   { type: 'route', title: 'Creators', link: '/creators' },
   { type: 'dropdown', title: 'Corporate', dropdown: 'corporate' },
-  // { type: 'route', title: 'Languages', link: '/languages' },
+  { type: 'dropdown', title: 'Languages', dropdown: 'languages' },
   { type: 'route', title: 'About', link: 'about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },
@@ -101,10 +103,10 @@ export function MainMenu() {
 
   return (
     <div className="flex flex-col overflow-y-scroll">
-      {MAIN_MENU.map((menuItem) => {
+      {MAIN_MENU.map((menuItem, idx) => {
         if (menuItem.type === 'route') {
           return (
-            <Link href={menuItem.link}>
+            <Link href={menuItem.link} key={`link-${idx}`}>
               <div
                 className="flex h-16 items-center"
                 onClick={menuOpenCtx.closeMenuHandler}
@@ -146,59 +148,6 @@ export function MainMenu() {
   );
 }
 
-// const SERVICES_MENU = [
-//   { type: 'dropdown', title: 'Corporate', dropdown: 'corporate' },
-// ];
-
-// export function ServicesMenu() {
-//   const menuOpenCtx = useContext(MenuOpenContext);
-
-//   return (
-//     <div>
-//       {SERVICES_MENU.map((menuItem) => {
-//         if (menuItem.type === 'route') {
-//           return (
-//             <Link href={menuItem.link}>
-//               <div className="flex h-16 items-center" key={menuItem.title}>
-//                 <a
-//                   className="gradient-text gradient-2 text-5xl font-bold"
-//                   onClick={menuOpenCtx.closeMenuHandler}
-//                 >
-//                   {menuItem.title}
-//                 </a>
-//               </div>
-//             </Link>
-//           );
-//         } else if (menuItem.type === 'dropdown') {
-//           return (
-//             <div
-//               className="flex h-16 items-center justify-between"
-//               onClick={() => menuOpenCtx.setMenu(menuItem.dropdown)}
-//               key={menuItem.title}
-//             >
-//               <div>
-//                 <p className="gradient-text gradient-2 text-5xl font-bold">
-//                   {menuItem.title}
-//                 </p>
-//               </div>
-//               <div className="h-11 w-11">
-//                 <Image
-//                   src={rightChevronIcon}
-//                   alt="right chevron icon"
-//                   width={44}
-//                   height={44}
-//                 />
-//               </div>
-//             </div>
-//           );
-//         } else {
-//           return null;
-//         }
-//       })}
-//     </div>
-//   );
-// }
-
 const CORPORATE_MENU = [
   {
     title: 'Business',
@@ -221,7 +170,7 @@ const CORPORATE_MENU = [
   {
     title: 'Marketing',
     description:
-      'Work with certified professionals to translate business material.',
+      'Work with certified professionals to translate marketing material.',
     link: '/corporate/marketing',
   },
   {
@@ -230,24 +179,24 @@ const CORPORATE_MENU = [
       'Work with certified professionals to translate scientific material.',
     link: '/corporate/scientific',
   },
-  // {
-  //   title: 'Medical',
-  //   description:
-  //     'Work with certified professionals to translate medcial material.',
-  //   link: '/services/medical',
-  // },
-  // {
-  //   title: 'E-Learning',
-  //   description:
-  //     'Work with certified professionals to translate business material.',
-  //   link: '/services/e-learning',
-  // },
-  // {
-  //   title: 'Voice Over',
-  //   description:
-  //     'Work with certified professionals to translate business material.',
-  //   link: '/services/voice-over',
-  // },
+  {
+    title: 'Medical',
+    description:
+      'Work with certified professionals to translate medical material.',
+    link: '/corporate/medical',
+  },
+  {
+    title: 'E-Learning',
+    description:
+      'Work with certified professionals to translate e-learning material.',
+    link: '/corporate/e-learning',
+  },
+  {
+    title: 'Voice Over',
+    description:
+      'Work with certified professionals to translate voice over material.',
+    link: '/corporate/voice-over',
+  },
 ];
 
 export function CorporateMenu() {
@@ -255,15 +204,10 @@ export function CorporateMenu() {
 
   return (
     <div className="flex flex-col overflow-y-scroll">
-      <hr className="border-0.25 border-white opacity-40" />
       {CORPORATE_MENU.map((menuItem) => (
         <React.Fragment key={menuItem.title}>
           <Link href={menuItem.link}>
-            <div
-              className="px-8"
-              key={menuItem.title}
-              onClick={menuOpenCtx.closeMenuHandler}
-            >
+            <div key={menuItem.title} onClick={menuOpenCtx.closeMenuHandler}>
               <p className="mt-6 mb-2 text-2xl font-bold">
                 <span className="gradient-text gradient-2">
                   {menuItem.title}
@@ -281,58 +225,42 @@ export function CorporateMenu() {
   );
 }
 
-// const CREATORS_MENU = [
-//   {
-//     title: 'Subtitles',
-//     description:
-//       'Get your video translated with high quality subtitles and captions.',
-//     link: '/services/subtitles',
-//   },
-//   {
-//     title: 'Dubs',
-//     description: 'Get your video translated with high quality voice overs.',
-//     link: '/services/dubs',
-//   },
-//   {
-//     title: 'Shorts',
-//     description: 'Get your content edited specifically for short form content.',
-//     link: '/services/shorts',
-//   },
-//   {
-//     title: 'Distribution',
-//     description:
-//       "We will distribute you translated content for you so you don't have to.",
-//     link: '/services/distribution',
-//   },
-// ];
+const LANGUAGES_MENU = [
+  'English',
+  'Urdu',
+  'French',
+  'Indonesian',
+  'Hindi',
+  'German',
+  'Spanish',
+  'Japanese',
+  'Arabic',
+  'Marthi',
+  'Portuguese',
+  'Telugu',
+  'Bengali',
+  'Russian',
+];
 
-// export function CreatorsMenu() {
-//   const menuOpenCtx = useContext(MenuOpenContext);
+export function LanguagesMenu() {
+  const menuOpenCtx = useContext(MenuOpenContext);
 
-//   return (
-//     <div className="flex flex-col overflow-y-scroll">
-//       <hr className="border-0.25 border-white opacity-40" />
-//       {CREATORS_MENU.map((menuItem) => (
-//         <React.Fragment key={menuItem.title}>
-//           <Link href={menuItem.link}>
-//             <div
-//               className="px-8"
-//               key={menuItem.title}
-//               onClick={menuOpenCtx.closeMenuHandler}
-//             >
-//               <p className="mt-6 mb-2 text-2xl font-bold">
-//                 <span className="gradient-text gradient-2">
-//                   {menuItem.title}
-//                 </span>
-//               </p>
-//               <p className="mb-6 font-light text-white">
-//                 {menuItem.description}
-//               </p>
-//             </div>
-//           </Link>
-//           <hr className="border-0.25 border-white opacity-40" />
-//         </React.Fragment>
-//       ))}
-//     </div>
-//   );
-// }
+  return (
+    <div className="flex flex-col overflow-y-scroll">
+      {LANGUAGES_MENU.map((menuItem) => (
+        <React.Fragment key={menuItem}>
+          <Link href={`/languages/${menuItem.toLowerCase()}`}>
+            <a
+              className="my-4 text-2xl font-bold text-white"
+              key={menuItem}
+              onClick={menuOpenCtx.closeMenuHandler}
+            >
+              {menuItem}
+            </a>
+          </Link>
+          <hr className="border-0.25 border-white opacity-40" />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}

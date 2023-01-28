@@ -31,7 +31,7 @@ const Home = () => {
       <LeaderInTranslations />
       <BreadAndButter />
       <WhyWorkWithUs />
-      <StartGenerating />
+      <StartGenerating formId="t5dW3MSY" />
       <FAQ />
       <GoGlobal />
       <FeaturedBlogs />

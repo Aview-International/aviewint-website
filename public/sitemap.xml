@@ -9,132 +9,227 @@
 
 <url>
   <loc>https://aviewint.com/</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://aviewint.com/creators</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://aviewint.com/corporate/business</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://aviewint.com/corporate/financial</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://aviewint.com/corporate/legal</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://aviewint.com/corporate/marketing</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/corporate/scientific</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/financial</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/legal</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/business</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/marketing</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/e-learning</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/medical</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/corporate/voice-over</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/english</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/french</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/hindi</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/spanish</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/arabic</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/portuguese</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/bengali</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/russian</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/urdu</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/indonesian</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/german</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/japanese</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/marthi</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/teluga</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/dutch</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://aviewint.com/languages/tagalog</loc>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/about</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/careers</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/2022-recap</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/business-translation</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/video-localization-guide</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/corporate</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/skills-to-be-successful-youtuber</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/logan-paul-global</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/youtube-gaming-on-budget</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/google-translate-accuracy</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/outsourcing-video-editing</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/subtitling-best-practises</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/closed-captions-vs-subtitles</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/add-captions-instagram-reels</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/why-add-translated-dubbing</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/hiring-good-editor-on-small-budget</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/make-best-thumbnail</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://aviewint.com/blog/grow-channel-using-translations</loc>
-  <lastmod>2023-01-06T21:12:39+00:00</lastmod>
+  <lastmod>2023-01-23T01:32:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
