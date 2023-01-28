@@ -6,7 +6,7 @@ import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
-import { checkUserEmail, signInWithGoogle } from '../api/onboarding';
+import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
 import { UserContext } from '../../store/user-profile';
 

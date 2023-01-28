@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { createNewUser, signInWithGoogle } from '../api/onboarding';
+import { createNewUser, signInWithGoogle } from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';

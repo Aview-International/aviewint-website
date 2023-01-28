@@ -5,7 +5,16 @@ import {
   getAuth,
   FacebookAuthProvider,
 } from 'firebase/auth';
-import { getDatabase, set, ref, child, update, get } from 'firebase/database';
+import {
+  getDatabase,
+  set,
+  ref,
+  child,
+  update,
+  get,
+  push,
+  onValue,
+} from 'firebase/database';
 import { baseUrl } from '../../../components/baseUrl';
 
 export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URL}&scope=user_profile,user_media&response_type=code`;
@@ -218,4 +227,31 @@ export const getUserProfile = async (_id) => {
 // save video to the database
 export const saveVideo = async (channelId, data) => {
   await set(ref(database, `youtube-videos/${channelId}`), data);
+};
+
+// save user message to db
+export const sendMessage = async (uid, message) => {
+  const data = {
+    message: message,
+    timeStamp: Date.now(),
+  };
+
+  // get message key
+  const dataKey = push(child(ref(database), 'chats')).key;
+  const updates = {};
+  updates['/chats/' + uid + '/' + dataKey] = data;
+
+  return update(ref(database), updates);
+};
+
+// fetch user messages
+export const fetchMessages = async (uid, callback) => {
+  const messages = ref(database, 'chats/' + uid);
+  onValue(messages, (snapshot) => {
+    let chats = [];
+    snapshot.forEach((el) => {
+      chats.push(el.val());
+    });
+    callback(chats);
+  });
 };

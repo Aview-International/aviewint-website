@@ -25,7 +25,7 @@ import {
   updateUserBio,
   updateUserInstagram,
   YoutubeAuthenticationLink,
-} from '../../pages/api/onboarding';
+} from '../../pages/api/firebase';
 import Loader from '../UI/loader';
 import axios from 'axios';
 import { UserContext } from '../../store/user-profile';

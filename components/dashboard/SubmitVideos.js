@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import TranslateOptions from './TranslateOptions';
 import YoutubeVideoFrame from './YoutubeVideoFrame';
 import axios from 'axios';
-import { saveVideo } from '../../pages/api/onboarding';
+import { saveVideo } from '../../pages/api/firebase';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 

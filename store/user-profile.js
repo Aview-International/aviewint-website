@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getUserProfile } from '../pages/api/onboarding';
+import { getUserProfile } from '../pages/api/firebase';
 
 export const UserContext = createContext(null);
 
