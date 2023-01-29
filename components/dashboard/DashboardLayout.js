@@ -27,13 +27,22 @@ export const DashboardContainer = ({ children }) => {
 
 // this component renders the dashboard structure
 const DashboardStructure = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const { userInfo } = useContext(UserContext);
   return (
     <>
       <DashboardContainer>
         <main className="lg:gradient-dark flex min-h-screen w-full bg-black">
-          <DashboardSidebar userInfo={userInfo} />
-          <div className="ml-auto flex w-full flex-col items-stretch lg:w-[calc(100%-170px)]">
+          <DashboardSidebar
+            userInfo={userInfo}
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+          />
+          <div
+            className={`ml-auto flex w-full flex-col items-stretch ${
+              isOpen ? 'lg:w-[calc(100%-170px)]' : 'lg:w-[calc(100%-80px)]'
+            }`}
+          >
             <DashBoardHeader userInfo={userInfo} />
             <div className="mx-auto h-full w-full max-w-[1240px] self-stretch overflow-y-auto bg-black md:p-s4">
               {children}

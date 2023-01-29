@@ -4,11 +4,17 @@ import { useRouter } from 'next/router';
 import { DASHBOARD_NAVLINKS } from '../../constants/constants';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
+import sidebarArrow from '../../public/img/icons/sidebar-arrow.svg';
+import { useState } from 'react';
 
-const DashboardSidebar = ({ userInfo }) => {
+const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
-    <aside className="fixed top-0 left-0 hidden max-h-screen w-[170px] flex-col items-center overflow-y-auto py-s4 text-white lg:flex">
-      <div>
+    <aside
+      className={`${
+        isOpen ? 'w-[170px]' : 'w-[80px]'
+      } fixed top-0 left-0 hidden max-h-screen flex-col items-center overflow-y-auto py-s4 pr-2 text-white lg:flex`}
+    >
+      <div className="flex w-full items-center justify-between px-s2">
         <Link href="/dashboard">
           <a>
             <Image
@@ -19,15 +25,18 @@ const DashboardSidebar = ({ userInfo }) => {
             />
           </a>
         </Link>
+        <button onClick={() => setIsOpen(!isOpen)}>
+          <Image src={sidebarArrow} alt="" />
+        </button>
       </div>
-      <Profile userInfo={userInfo} />
-      <Navlink />
+      <Profile userInfo={userInfo} isOpen={isOpen} />
+      <Navlink isOpen={isOpen} />
       <Signout />
     </aside>
   );
 };
 
-const Profile = ({ userInfo }) => {
+const Profile = ({ userInfo, isOpen }) => {
   return (
     <div className="justify-content mt-s8 mb-s5 flex flex-col items-center">
       <Image
@@ -37,15 +46,19 @@ const Profile = ({ userInfo }) => {
         height={100}
         className="rounded-full"
       />
-      <h3 className="mt-s2 mb-s1 text-lg">
-        {userInfo.firstName} {userInfo?.lastName}
-      </h3>
-      <p className="text-sm">Content Creator</p>
+      {isOpen && (
+        <>
+          <h3 className="mt-s2 mb-s1 text-lg">
+            {userInfo.firstName} {userInfo?.lastName}
+          </h3>
+          <p className="text-sm">Content Creator</p>
+        </>
+      )}
     </div>
   );
 };
 
-const Navlink = () => {
+const Navlink = ({ isOpen }) => {
   const { route } = useRouter();
 
   return (
@@ -66,16 +79,26 @@ const Navlink = () => {
             ></span>
             <span
               className={`mr-5 group-hover:animate-popup ${
-                route === link.route ? 'animate-popup' : ''
+                route === link.route ? 'animate-popup' : 'brightness-0 invert'
               }`}
             >
-              <Image src={link.image} alt={link.text} width={20} height={20} />
+              <Image
+                src={link.image}
+                alt={link.text}
+                width={20}
+                height={20}
+                layout="fixed"
+              />
             </span>
-            <span
-              className={route === link.route ? 'gradient-text gradient-1' : ''}
-            >
-              {link.text}
-            </span>
+            {isOpen && (
+              <span
+                className={
+                  route === link.route ? 'gradient-text gradient-1' : ''
+                }
+              >
+                {link.text}
+              </span>
+            )}
           </a>
         </Link>
       ))}
