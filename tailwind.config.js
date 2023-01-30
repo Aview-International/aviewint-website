@@ -51,6 +51,7 @@ module.exports = {
     },
     extend: {
       spacing: {
+        s0: '4px',
         s1: '8px',
         's1.5': '12px',
         s2: '16px',
@@ -101,12 +102,15 @@ module.exports = {
         },
         dropin: {
           '0%': {
-            transform: 'translateY(-25px)',
-            height: '35px',
+            transform: 'translateY(-12px)',
+            // height: '20px',
+          },
+          '90%': {
+            transform: 'translateY(3px)',
           },
           '100%': {
             transform: 'translateY(0)',
-            height: '20px',
+            // height: '16px',
           },
         },
       },

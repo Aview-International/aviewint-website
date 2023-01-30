@@ -8,7 +8,6 @@ import PageTitle from '../../components/SEO/PageTitle';
 import { UserContext } from '../../store/user-profile';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Blobs from '../../components/UI/Blobs';
 
 const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -93,7 +92,6 @@ const SelectVideos = ({
       <div className="w-full md:w-[155px]">
         <OnboardingButton onClick={handleTranslate}>Translate</OnboardingButton>
       </div>
-      <Blobs />
     </div>
   );
 };

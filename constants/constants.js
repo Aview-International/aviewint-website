@@ -79,6 +79,7 @@ import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
 import messages from '../public/img/icons/messages.svg';
+import referral from '../public/img/icons/referral.svg';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -1231,6 +1232,11 @@ export const DASHBOARD_NAVLINKS = [
     text: 'History',
     image: history,
     route: '/dashboard/history',
+  },
+  {
+    text: 'Referral',
+    image: referral,
+    route: '/dashboard/referral',
   },
   {
     text: 'Settings',

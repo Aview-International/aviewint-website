@@ -27,7 +27,7 @@ export const DashboardContainer = ({ children }) => {
 
 // this component renders the dashboard structure
 const DashboardStructure = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const { userInfo } = useContext(UserContext);
   return (
     <>
@@ -44,7 +44,7 @@ const DashboardStructure = ({ children }) => {
             }`}
           >
             <DashBoardHeader userInfo={userInfo} />
-            <div className="mx-auto h-full w-full max-w-[1240px] self-stretch overflow-y-auto bg-black md:p-s4">
+            <div className="mx-auto h-full w-full max-w-[1480px] self-stretch overflow-y-auto bg-black md:p-s4">
               {children}
             </div>
           </div>
