@@ -12,7 +12,7 @@ const LANGUAGES = [
   'Spanish',
   'Japanese',
   'Arabic',
-  'Marthi',
+  'Marathi',
   'Portuguese',
   'Telugu',
   'Bengali',

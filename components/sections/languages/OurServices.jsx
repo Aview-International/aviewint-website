@@ -8,7 +8,7 @@ export default function OurServices({ language }) {
   const ITEMS = [
     {
       title: 'Subtitles',
-      description: `Adding ${language.toLowerCase()} subtitles to your videos can help you reach a much wider audience. At AVIEW, we provide professional ${language.toLowerCase()} subtitle services for all types of videos. We focus on producing ${language} subtitles that are both accurate and engaging.`,
+      description: `Adding ${language} subtitles to your videos can help you reach a much wider audience. At AVIEW, we provide professional ${language.toLowerCase()} subtitle services for all types of videos. We focus on producing ${language} subtitles that are both accurate and engaging.`,
       image: subtitles,
     },
     {

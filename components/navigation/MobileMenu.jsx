@@ -235,7 +235,7 @@ const LANGUAGES_MENU = [
   'Spanish',
   'Japanese',
   'Arabic',
-  'Marthi',
+  'Marathi',
   'Portuguese',
   'Telugu',
   'Bengali',
