@@ -6,6 +6,11 @@ import FormInput from '../../../components/FormComponents/FormInput';
 import OnboardingButton from '../../../components/Onboarding/button';
 import Border from '../../../components/UI/Border';
 import Shadow from '../../../components/UI/Shadow';
+import { useContext, useRef, useState } from 'react';
+import { emailValidator } from '../../../utils/regex';
+import axios from 'axios';
+import { UserContext } from '../../../store/user-profile';
+import { toast } from 'react-toastify';
 
 const Referral = () => {
   return (
@@ -63,6 +68,20 @@ const Statistics = () => {
 };
 
 const HowItWorks = () => {
+  const referralLink = useRef(null);
+
+  const handleClick = async () => {
+    referralLink.current.select();
+    navigator.clipboard
+      .writeText(referralLink.current.value)
+      .then(() => {
+        toast.success('Copied link to clipboard');
+      })
+      .catch(() => {
+        toast.error('Something went wrong');
+      });
+  };
+
   return (
     <div className="gradient-dark my-s3 rounded-2xl p-s3 text-xl">
       <h3 className="mb-s2 text-4xl font-bold">How it works</h3>
@@ -78,11 +97,17 @@ const HowItWorks = () => {
       <div className="mt-s2 flex items-center">
         <div className="w-9/12">
           <Border classes="w-full">
-            <div className="bg-black p-s1">aviewint.com/referral=75927594</div>
+            <input
+              type="text"
+              className="w-full bg-black p-s1"
+              value={'aviewint.com/referral=75927594'}
+              readOnly
+              ref={referralLink}
+            />
           </Border>
         </div>
         <div className="ml-s4 w-3/12">
-          <OnboardingButton>Copy Link</OnboardingButton>
+          <OnboardingButton onClick={handleClick}>Copy Link</OnboardingButton>
         </div>
       </div>
     </div>
@@ -90,6 +115,22 @@ const HowItWorks = () => {
 };
 
 const Invite = () => {
+  const [email, setEmail] = useState('');
+  const { userInfo } = useContext(UserContext);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('/api/invites', {
+        firstName: userInfo?.firstName,
+        lastName: userInfo?.lastName,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="gradient-dark rounded-2xl p-s3">
       <p className="text-2xl">Invite a creator</p>
@@ -98,17 +139,20 @@ const Invite = () => {
       </p>
       <form className="flex">
         <div className="w-9/12">
-          <Border classes="w-full">
-            <div className="bg-black p-s1">Email Address</div>
-          </Border>
+          <FormInput
+            extraClasses="mb-0"
+            placeholder="Email Address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="ml-s2 flex w-3/12">
-          <Border
-            classes={'w-full flex justify-center items-center'}
-            borderRadius="[30px]"
+          <OnboardingButton
+            disabled={!emailValidator(email)}
+            extraClasses="px-s1"
+            onClick={handleClick}
           >
-            <div>Invite</div>
-          </Border>
+            Invite
+          </OnboardingButton>
         </div>
       </form>
     </div>

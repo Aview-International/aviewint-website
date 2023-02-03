@@ -4,10 +4,38 @@ import Border from '../../UI/Border';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import { useOnScreen } from '../../../hooks/useOnScreen';
-import PhoneNumberWithButton from '../../FormComponents/PhoneNumberWithButton';
+import FormInput from '../../FormComponents/FormInput';
+import OnboardingButton from '../../Onboarding/button';
+import axios from 'axios';
+import { emailValidator } from '../../../utils/regex';
+import { new_creator_welcome_mail } from '../../../emails';
 
 const YouCreateWeTranslate = () => {
-  const [showText, setShowText] = useState(false);
+  const [email, setEmail] = useState('');
+  const [sideEffects, setSideEffects] = useState({
+    hasSubmitted: false,
+    showText: false,
+    isLoading: false,
+  });
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    setSideEffects({ ...sideEffects, hasSubmitted: true });
+    if (!emailValidator(email)) return;
+    setSideEffects({ ...sideEffects, isLoading: true });
+
+    try {
+      const res = await axios.post('/api/invites', {
+        to: email,
+        subject: 'Welcome to Aview International',
+        html: new_creator_welcome_mail,
+      });
+      console.log(res);
+      setSideEffects({ ...sideEffects, showText: true });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="section m-horizontal mt-12 lg:mt-32">
@@ -28,12 +56,32 @@ const YouCreateWeTranslate = () => {
             that you can quickly grow your international influence, A-View at a
             time.
           </p>
-          {showText ? (
+          {sideEffects.showText ? (
             <p className="body mb-8">
-              Check your messages to finish your setup!&nbsp;&nbsp;✅
+              Check your inbox to finish your setup!&nbsp;&nbsp;✅
             </p>
           ) : (
-            <PhoneNumberWithButton setShowText={setShowText} />
+            <form className="flex flex-col md:flex-row">
+              <FormInput
+                placeholder="Email Address"
+                onChange={(e) => setEmail(e.target.value)}
+                hasSubmitted={sideEffects.hasSubmitted}
+                extraClasses="mb-2 md:mb-s5"
+                name="email"
+              />
+              <div className="w-max md:ml-s2">
+                <OnboardingButton
+                  isLoading={sideEffects.isLoading}
+                  // isLoading
+                  extraClasses={`px-s2 ${
+                    sideEffects.isLoading ? 'w-[116px]' : 'w-max'
+                  }`}
+                  onClick={handleClick}
+                >
+                  Get Started
+                </OnboardingButton>
+              </div>
+            </form>
           )}
         </div>
         <div className="mx-auto mt-16 -mb-2 max-w-[500px] lg:-m-4 lg:max-w-full">
