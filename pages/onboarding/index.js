@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import {
-  OnboardingStep1,
+  // OnboardingStep1,
   OnboardingStep2,
   OnboardingStep3,
   OnboardingStep4,
@@ -69,16 +69,21 @@ const Onboarding = () => {
 export default Onboarding;
 
 const Stages = () => {
+  const router = useRouter();
   const { query } = useRouter();
+
   return (
     <>
-      {query.stage === '1' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep1 />
-          </PageTransition>
-        </ProtectedRoutes>
-      )}
+      {
+        query.stage === '1' && router.push('/onboarding?stage=2')
+        // <>
+        //   <ProtectedRoutes>
+        //     <PageTransition>
+        //       <OnboardingStep1 />
+        //     </PageTransition>
+        //   </ProtectedRoutes>
+        // </>
+      }
       {query.stage === '2' && (
         <ProtectedRoutes>
           <PageTransition>
