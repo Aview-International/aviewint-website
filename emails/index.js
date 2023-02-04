@@ -441,10 +441,10 @@ export const new_creator_welcome_mail = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Welcome to Aview International</title>
-
     <style type="text/css">
       img {
         max-width: 100%;
+        display: inline;
       }
       body {
         -webkit-font-smoothing: antialiased;
@@ -557,12 +557,12 @@ export const new_creator_welcome_mail = `<!DOCTYPE html>
       <p style="font-style: italic">Julia from Aview.</p>
     </div>
     <footer style="background-color: #000017; padding: 20px">
-      <div style="display: flex; justify-content: center; align-items: center">
+      <div style="text-align: center">
         <a
           href="https://www.youtube.com/@aviewinternational"
           target="_blank"
           rel="noreferrer"
-          style="width: 20px; height: 20px"
+          style="width: 20px; height: 20px; display: inline-block"
         >
           <img
             src="https://res.cloudinary.com/drdedgqs6/image/upload/v1675376541/aview/youtube-icon.png"
@@ -578,6 +578,7 @@ export const new_creator_welcome_mail = `<!DOCTYPE html>
             height: 20px;
             margin-left: 25px;
             margin-right: 25px;
+            display: inline-block;
           "
         >
           <img
@@ -589,7 +590,7 @@ export const new_creator_welcome_mail = `<!DOCTYPE html>
           href="https://www.instagram.com/aviewint/"
           target="_blank"
           rel="noreferrer"
-          style="width: 20px; height: 20px"
+          style="width: 20px; height: 20px; display: inline-block"
         >
           <img
             src="https://res.cloudinary.com/drdedgqs6/image/upload/v1675376541/aview/instagram-icon.png"
@@ -600,7 +601,12 @@ export const new_creator_welcome_mail = `<!DOCTYPE html>
           href="https://www.linkedin.com/company/aview-international/"
           target="_blank"
           rel="noreferrer"
-          style="width: 20px; height: 20px; margin-left: 25px"
+          style="
+            width: 20px;
+            height: 20px;
+            margin-left: 25px;
+            display: inline-block;
+          "
         >
           <img
             src="https://res.cloudinary.com/drdedgqs6/image/upload/v1675376541/aview/linkedin-icon.png"
