@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const { subject, to, html } = req.body;
   const DOMAIN = 'mg.aviewint.com';
   const mg = Mailgun({
-    apiKey: 'dcea6792926c51a04f267c6e7fceb0ae-4534758e-f6c2a974',
+    apiKey: '',
     domain: DOMAIN,
   });
 
