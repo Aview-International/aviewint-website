@@ -32,7 +32,7 @@ const Home = () => {
       <BreadAndButter />
       <WhyWorkWithUs />
       <StartGenerating formId="t5dW3MSY" />
-      <FAQ />
+      <FAQ page="landing" />
       <GoGlobal />
       <FeaturedBlogs />
       <Footer curPage="Home" />

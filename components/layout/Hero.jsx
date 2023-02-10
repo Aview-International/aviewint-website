@@ -16,7 +16,7 @@ export default function Hero({
           className="title mb-s2 max-w-[610px]"
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className="body mb-s4">{description}</p>
+        <p className="body mb-s4 max-w-[600px]">{description}</p>
         <Button type="primary" purpose="route" route={buttonLink}>
           {buttonText}
         </Button>

@@ -17,7 +17,7 @@ export default function WhyUseAview({ items }) {
       </div>
       <div className="text-center md:text-left">
         <Button type="secondary" purpose="route" route="#generate-aview">
-          Get Started
+          Book a Meeting Today
         </Button>
       </div>
     </section>

@@ -7,12 +7,12 @@ import localization from '../../../public/img/graphics/languages/localization.pn
 export default function OurServices({ language }) {
   const ITEMS = [
     {
-      title: 'Subtitles',
+      title: `${language} Subtitles`,
       description: `Adding ${language} subtitles to your videos can help you reach a much wider audience. At AVIEW, we provide professional ${language.toLowerCase()} subtitle services for all types of videos. We focus on producing ${language} subtitles that are both accurate and engaging.`,
       image: subtitles,
     },
     {
-      title: 'Voice-Overs',
+      title: `${language} Voice-Overs`,
       description: `${language} voice-overs are a great way to increase engagement. They allow you to repurpose your content to reach more people. Our experienced voice actors can create dialogue that will make your audience feel at home.`,
       image: voiceOvers,
     },

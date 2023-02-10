@@ -47,17 +47,17 @@ export default function VoiceOver() {
         image={voiceOver}
         imageAlt="Voice Over Translation Services"
       />
-      <CompaniesWeWorkedWith />
       <ProfessionalVoiceOvers />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
+      <CompaniesWeWorkedWith />
       <Workflow
         title="Languages <span class='gradient-text gradient-2'>Workflow</span>"
         workflowSm={workflowSm}
         workflowLg={workflowLg}
       />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="corporate" />
+      <FAQ page="voiceover" />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
     </>

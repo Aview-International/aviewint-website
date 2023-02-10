@@ -588,6 +588,59 @@ export const CORPORATE_PAGE_FAQ = [
   },
 ];
 
+export const E_LEARNING_FAQ = [
+  {
+    question: 'Is my information secure?',
+    answer:
+      'Yes, the security of your information is of the utmost importance to us. We take all necessary measures to ensure the confidentiality of your eLearning content, including secure storage and strict access controls.',
+    _id: 'q1',
+  },
+  {
+    question: 'Can I translate different types of material?',
+    answer:
+      'Yes, we provide much more than eLearning translation services. Our solutions include presentations, audio recordings, and interactive activities. Just let us know your specific needs, and we will work with you to find the best solution.',
+    _id: 'q2',
+  },
+  {
+    question:
+      'Can I include notes or special requests with my eLearning material?',
+    answer:
+      'Yes, we welcome and encourage our clients to include any notes or special requests that they have for their eLearning content. This allows us to better understand your goals and ensure that the final product meets your expectations.',
+    _id: 'q3',
+  },
+  {
+    question: 'How long does it take?',
+    answer:
+      'The timeline for our eLearning translation services will depend on the complexity and size of your content, as well as the target language(s). We will provide you with an estimated timeline after our initial assessment and will work with you to meet your deadline.',
+    _id: 'q4',
+  },
+];
+
+export const VOICEOVER_FAQ = [
+  {
+    question: 'Are the voiceovers manual or A.I. generated?',
+    answer:
+      'Our translated voice-overs are done by professional voice actors. Looking for A.I.-generated translation? Contact us and we can set up a custom plan for you.',
+    _id: 'q1',
+  },
+  {
+    question: 'Who have you worked with?',
+    answer:
+      'We have been working with some of the largest media brands, venture capital funds, mental health associations, and many more. We have a wide depth of translators, dubbers, and editors who will fit your content.',
+    _id: 'q2',
+  },
+  {
+    question: 'Does AVIEW offer other services?',
+    answer: `1. Receive a translation file that can be uploaded directly to your videos. The file will be sent within 24 hours and will auto-match the audio from the video. Simply add the translations and target a new market.<br /><br/>
+    2. Voice-over Translations</br>
+    Receive your videos completely translated with voice-overs that match your subject's voice in the language of your choosing. Aview will edit and send this back within 48 hours.<br /><br/>
+    3. Short-form Content<br/>
+    Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok, and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
+    4. Document Translation: Get your business or technical documents translated by our certified professionals. We provide scientific, business, legal, and financial document translations.`,
+    _id: 'q3',
+  },
+];
+
 export const GENERATE_AVIEW_INPUT = [
   {
     validator: (value) => value.length >= 3,
