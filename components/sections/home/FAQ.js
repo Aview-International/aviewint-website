@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import {
   CORPORATE_PAGE_FAQ,
+  E_LEARNING_FAQ,
   LANDING_PAGE_FAQ,
+  VOICEOVER_FAQ,
 } from '../../../constants/constants';
 import HorizontalLine from '../../UI/HorizontalLine';
 
@@ -17,13 +19,26 @@ const FAQ = ({ page }) => {
       </p>
       <div>
         <HorizontalLine />
+        {page === 'e-learning'
+          ? E_LEARNING_FAQ.map((faq, i) => (
+              <Question key={`faq-${i}`} {...faq} />
+            ))
+          : null}
         {page === 'corporate'
           ? CORPORATE_PAGE_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
             ))
-          : LANDING_PAGE_FAQ.map((faq, i) => (
+          : null}
+        {page === 'landing'
+          ? LANDING_PAGE_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
-            ))}
+            ))
+          : null}
+        {page === 'voiceover'
+          ? VOICEOVER_FAQ.map((faq, i) => (
+              <Question key={`faq-${i}`} {...faq} />
+            ))
+          : null}
       </div>
     </section>
   );

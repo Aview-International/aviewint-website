@@ -13,7 +13,7 @@ import urdu from '../../../public/img/graphics/corporate/urdu.png';
 import indonesian from '../../../public/img/graphics/corporate/indonesian.png';
 import german from '../../../public/img/graphics/corporate/german.png';
 import japanese from '../../../public/img/graphics/corporate/japanese.png';
-import marthi from '../../../public/img/graphics/corporate/marthi.png';
+import marathi from '../../../public/img/graphics/corporate/marthi.png';
 import teluga from '../../../public/img/graphics/corporate/teluga.png';
 
 const MOST_POPULAR = [
@@ -32,7 +32,7 @@ const ALSO_AVAILABLE = [
   { language: 'Indonesian', icon: indonesian },
   { language: 'German', icon: german },
   { language: 'Japanese', icon: japanese },
-  { language: 'Marthi', icon: marthi },
+  { language: 'Marathi', icon: marathi },
   { language: 'Telugu', icon: teluga },
 ];
 

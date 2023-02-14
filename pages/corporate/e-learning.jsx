@@ -41,23 +41,23 @@ export default function ELearning() {
       <Header curPage="Corporate" />
       <Hero
         title="eLearning Translation <span class='gradient-text gradient-2'>Services</span>"
-        description="Bring education to everyone through translation."
+        description="Reach more people through our certified eLearning translation services."
         buttonText="Get Started"
         buttonLink="#generate-aview"
         image={eLearning}
         imageAlt="eLearning Translation Services"
       />
-      <CompaniesWeWorkedWith />
       <LearningServices />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
+      <CompaniesWeWorkedWith />
       <Workflow
         title="eLearning Localization <span class='gradient-text gradient-2'>Workflow</span>"
         workflowSm={workflowSm}
         workflowLg={workflowLg}
       />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="corporate" />
+      <FAQ page="e-learning" />
       <FeaturedBlogs />
       <Footer curPage="Corporate" />
     </>

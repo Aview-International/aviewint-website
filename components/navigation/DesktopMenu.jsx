@@ -37,7 +37,7 @@ const MENU = [
       { title: 'Indonesian', link: '/languages/indonesian' },
       { title: 'German', link: '/languages/german' },
       { title: 'Japanese', link: '/languages/japanese' },
-      { title: 'Marthi', link: '/languages/marthi' },
+      { title: 'Marathi', link: '/languages/marathi' },
       { title: 'Telugu', link: '/languages/telugu' },
       { title: 'Dutch', link: '/languages/dutch' },
       { title: 'Tagalog', link: '/languages/tagalog' },

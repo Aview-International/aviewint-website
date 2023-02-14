@@ -124,9 +124,10 @@ export const BLOGS = [
     ],
   },
   {
-    title: 'How to Make The Best Thumbnail For Your Videos',
+    title:
+      "7 YouTube Thumbnail Tips to Increase Your Video's Click-Through Rate",
     description:
-      'Having amazing thumbnails is a must is a must for any YouTube channel looking to grow. But how do you make a good thumbnail? Here are some tips to take your thumbnails to the next level.',
+      'Discover 7 expert YouTube thumbnail tips to help increase the click-through rate of your videos. Learn how to create engaging and visually appealing thumbnails to entice viewers and boost your online presence.',
     date: 'Sep 23, 2022',
     img: blog2Graphic,
     link: '/blog/make-best-thumbnail',
@@ -140,7 +141,7 @@ export const BLOGS = [
         content: [
           {
             type: 'paragraph',
-            text: "How do you make sure people watch your videos? If you own a YouTube channel or another social media account, you have noticed that content is useless if no one clicks. Your thumbnail tells viewers what they can expect to see in the video and makes them want to watch. Give them a reason to watch by making your thumbnails exciting and engaging. We'll show you how in this article.",
+            text: "How do you make sure people watch your videos? If you own a YouTube channel or another social media account, you have noticed that content is useless if no one clicks. Your thumbnail tells viewers what they can expect to see in the video and makes them want to watch. Give them a reason to watch by making your thumbnails exciting and engaging. We'll lay out the best YouTube thumbnail tips to help you increase your viewership.",
           },
         ],
       },
@@ -174,22 +175,22 @@ export const BLOGS = [
       },
       {
         title: '2. Use bold text to communicate your message.',
-        link: '#',
+        link: '#use-bold-text',
         content: [
           {
             type: 'paragraph',
-            text: "The font you choose will be the first thing viewers notice when they look at your thumbnail. Make sure it's bold and easy to read so they immediately get the message you want them to see. I recommend pairing a contrasting background with your font choice. Doing this makes things stand out even more and more likely to draw attention without being distracting.",
+            text: "The font you choose will be the first thing viewers notice when they see your video. So what is the best font color for YouTube thumbnails? Make sure it's bold and easy to read so they immediately get the message you want them to see. I recommend pairing a contrasting background with your font choice. Doing this makes things stand out even more and more likely to draw attention without being distracting.",
           },
         ],
       },
       {
         title:
           '3. Set a focal point in your thumbnail, and use it to attract attention.',
-        link: '#',
+        link: '#set-focal-point',
         content: [
           {
             type: 'paragraph',
-            text: 'The next step is to set a focal point in your thumbnail. The focal point is the first thing viewers look at; it should be an object or element that will attract their attention. In some cases, this will be a person or animal; in others, it could be an interesting background detail or item of clothing.',
+            text: 'The next step is to set a focal point in your thumbnail. The focal point is the first thing viewers look at; it should be an object or element that will attract their attention. In some cases, this will be a person or animal; in others, it could be an interesting background detail or an item of clothing.',
           },
           {
             type: 'paragraph',
@@ -203,17 +204,17 @@ export const BLOGS = [
       },
       {
         title: '4. Choose colors that stand out and complement each other.',
-        link: '#',
+        link: '#choose-colors',
         content: [
           {
             type: 'paragraph',
-            text: "There is no rule for what colors work best together. Still, it would be best if you generally tried to use bright, high-contrast colors that complement each other. For example, if your thumbnail has a lot of blue, it's probably not a good idea to have some orange text. On the other hand, if you're using green as your primary background color, red text will look good against it and offer a holiday theme. You can also use this technique when choosing fonts for the video title and subtitle text: If the background is white, try using black text.",
+            text: "There is no rule for what colors work best together. Still, it would be best if you generally tried to use bright, high-contrast colors that complement each other. For example, if your thumbnail has a lot of blue, it's probably not a good idea to have some orange text. On the other hand, if you're using green as your primary background color, red text will look good against it and offer a holiday theme. You can also use this technique when choosing fonts for the video title and subtitle text: If the background is white, try using black text. The best background color for YouTube thumbnails contrasts with the other elements in the image.",
           },
         ],
       },
       {
         title: '5. Make sure it looks good on any device.',
-        link: '#',
+        link: '#any-device',
         content: [
           {
             type: 'paragraph',
@@ -221,13 +222,11 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'Here are some tips for making sure your thumbnails look good on any screen:',
+            text: 'Here are some YouTube thumbnail tips to increase the click-through rate of your videos.',
           },
           {
-            type: 'unordered list',
-            items: [
-              "Make sure it's crisp and easy to read! Use a template from Canva (or another similar site or program), and make sure you choose a font size that works well at that size. You can find this information by checking out <a href='https://support.google.com/youtube/answer/72431?hl=en#zippy=%2Cimage-size-resolution%2Ccustom-thumbnail-limits' target='_blank' class='link'>YouTube's official guidelines.</a>",
-            ],
+            type: 'paragraph',
+            text: "Make sure it's crisp and easy to read! Use a template from Canva (or another similar site or program), and make sure you choose a font size that works well at that size. You can find this information by checking out <a href='https://support.google.com/youtube/answer/72431?hl=en#zippy=%2Cimage-size-resolution%2Ccustom-thumbnail-limits' target='_blank' class='link'>YouTube's official guidelines.</a>",
           },
         ],
       },
@@ -247,8 +246,23 @@ export const BLOGS = [
         ],
       },
       {
-        title: 'Conclusion',
-        link: '#',
+        title: '7. Test Different Thumbnails.',
+        link: '#test-thumbnails',
+        content: [
+          {
+            type: 'paragraph',
+            text: "Testing different thumbnails is a crucial step in ensuring that your video gets the maximum number of views. A well-designed thumbnail can be the difference between a viewer clicking on your video or skipping it. By creating multiple thumbnails and analyzing the performance of each one, you can determine which design is most effective in catching people's attention and driving clicks.",
+          },
+          {
+            type: 'paragraph',
+            text: 'This process is called A/B testing and it involves showing two different thumbnails to two groups of viewers and comparing the results. This way, you can make informed decisions about which design elements to include in your future thumbnails. By continuously testing and optimizing your thumbnails, you can maximize the visibility and engagement of your videos on YouTube.',
+          },
+        ],
+      },
+      {
+        title:
+          'Increase Your Viewership with These Effective Youtube Thumbnail Tips',
+        link: '#conclusion',
         content: [
           {
             type: 'paragraph',

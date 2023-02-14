@@ -37,9 +37,9 @@ export default function LanguagePage({
         image={graphic1}
         imageAlt="translations"
       />
-      <CompaniesWeWorkedWith />
       <HighQuality title={title} language={language} graphic={graphic2} />
       <OurServices language={language} />
+      <CompaniesWeWorkedWith />
       <WhyUseAview
         items={[
           {
