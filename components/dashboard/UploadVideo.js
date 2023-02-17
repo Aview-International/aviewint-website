@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const UploadVideo = ({ data, setData, isValid, hasSubmitted }) => {
   return (
-    <div className="w-11/12 bg-black">
+    <div className="w-11/12">
       <DottedBorder classes="relative block md:inline-block w-full">
         <div className="flex flex-col items-center py-s6">
           <div className="flex h-[160px] w-[160px] place-content-center rounded-full bg-gray-1">

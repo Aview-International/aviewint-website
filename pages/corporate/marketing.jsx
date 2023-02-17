@@ -12,10 +12,13 @@ import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar'
 
 export default function Marketing() {
   return (
     <>
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
@@ -27,6 +30,7 @@ export default function Marketing() {
         imageAlt="Marketing Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <MarketingServices />
       <WhyUseAview />
       <LanguagesServed />

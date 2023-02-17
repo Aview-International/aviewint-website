@@ -13,10 +13,13 @@ import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import scientificGraphic from '../../public/img/graphics/corporate/scientific.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar'
 
 export default function Scientific() {
   return (
     <>
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
@@ -27,6 +30,7 @@ export default function Scientific() {
         image={scientificGraphic}
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <ScientificTranslationOverview />
       <BenefitsOfScientificTranslation />
       <WhyUseAview />

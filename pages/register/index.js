@@ -76,7 +76,7 @@ const Register = () => {
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
                 <button
-                  className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
+                  className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3 "
                   onClick={handleGoogle}
                 >
                   {isLoading.google ? (
@@ -84,7 +84,7 @@ const Register = () => {
                   ) : (
                     <>
                       <span className="flex items-center justify-center pr-s1">
-                        <Image src={Google} alt="Google" />
+                        <Image src={Google} alt="Google" width={20} height={20}/>
                       </span>
                       Continue with Google
                     </>
@@ -103,7 +103,7 @@ const Register = () => {
                   ) : (
                     <>
                       <span className="flex items-center justify-center pr-s1">
-                        <Image src={Facebook} alt="Facebook" />
+                        <Image src={Facebook} alt="Facebook" width={20} height={20}/>
                       </span>
                       Continue with Facebook
                     </>

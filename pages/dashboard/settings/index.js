@@ -51,9 +51,9 @@ const Settings = () => {
   const { userInfo } = useContext(UserContext);
   return (
     <>
-      <PageTitle title="Settings" />
+     <PageTitle title="Settings" />
       <DashboardContainer>
-        <div className="text-white">
+        <div className="text-white w-[1111px] mx-auto">
           <h2 className="text-7xl">Settings</h2>
           <div className="flex items-center p-s2">
             <Image
@@ -106,6 +106,8 @@ const Settings = () => {
           ))}
         </div>
       </DashboardContainer>
+    
+      
     </>
   );
 };

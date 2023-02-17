@@ -61,7 +61,7 @@ const Messages = () => {
   return (
     <>
       <PageTitle title="Messages" />
-      <div className="flex h-full rounded-2xl bg-white-transparent text-white">
+      <div className="flex h-full rounded-2xl bg-white-transparent w-[1111px] mx-auto text-white">
         <div className="w-full p-s2">
           <div className="relative flex h-full flex-col justify-between">
             <div className="flex items-center">

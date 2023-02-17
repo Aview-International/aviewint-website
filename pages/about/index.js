@@ -13,6 +13,8 @@ import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
 import SEO from '../../components/SEO/SEO';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar';
 
 const About = () => {
   return (
@@ -21,9 +23,11 @@ const About = () => {
         title="About - AVIEW"
         description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
       />
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="About" />
       <OurMission />
+      <ScrollToTopButton />
       <AboutAview />
       <AtAview />
       <OurCoreValues />

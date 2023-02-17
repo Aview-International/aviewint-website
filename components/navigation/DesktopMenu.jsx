@@ -86,7 +86,7 @@ function Dropdown({ menuItem }) {
         >
           {menuItem.title}
         </p>
-        <div className={`h-6 w-6 ${dropdownOpen ? 'rotate-180' : ''}`}>
+        <div className={`h-6 w-6 duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
           <Image
             src={dropdownOpen ? downChevronGradient : downChevronWhite}
             width={48}

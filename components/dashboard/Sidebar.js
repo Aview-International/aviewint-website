@@ -56,7 +56,7 @@ const Profile = ({ userInfo, isOpen }) => {
       {isOpen && (
         <>
           <h3
-            className={`mt-s2 mb-s1 text-lg ${
+            className={`mt-s2 mb-s1 text-lg text-center ${
               !isOpen && 'invisible opacity-0'
             }`}
           >

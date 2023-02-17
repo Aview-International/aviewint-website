@@ -15,7 +15,7 @@ const DottedBorder = ({ children, borderRadius, classes }) => {
         borderRadius: borderRadius,
       }}
     >
-      <div className="rounded-[10px] bg-black">{children}</div>
+      <div className="rounded-[10px]">{children}</div>
     </div>
   );
 };

@@ -9,10 +9,13 @@ import Visa from '../../../public/img/icons/visa.svg';
 const Billing = () => {
   return (
     <>
-      <PageTitle title="Billing" />
+    <div className='w-[1111px] mx-auto mt-5'>
+    <PageTitle title="Billing" />
       <BillingDetails />
       <Transactions />
       <Blobs />
+    </div>
+      
     </>
   );
 };

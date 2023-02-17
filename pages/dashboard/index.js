@@ -43,7 +43,8 @@ const DashboardHome = () => {
 
   return (
     <>
-      <PageTitle title="Dashboard" />
+    <div className='w-[1111px] mx-auto'>
+    <PageTitle title="Dashboard" />
       {isSelected ? (
         <SubmitVideos
           setIsSelected={setIsSelected}
@@ -61,6 +62,8 @@ const DashboardHome = () => {
           setSelectedVideos={setSelectedVideos}
         />
       )}
+    </div>
+      
     </>
   );
 };

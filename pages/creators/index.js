@@ -13,6 +13,8 @@ import CreatorTranslations from '../../components/sections/creators/CreatorTrans
 import HowItWorks from '../../components/sections/reused/HowItWorks';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar';
 
 const Creators = () => {
   return (
@@ -21,9 +23,11 @@ const Creators = () => {
         title="Creators - AVIEW"
         description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
       />
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Creators" />
       <OurCreators />
+      <ScrollToTopButton />
       <HowItWorks />
       <ContentCreators />
       <CreatorTranslations />

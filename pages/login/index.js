@@ -6,6 +6,8 @@ import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
+import PageTitle from '../../components/SEO/PageTitle';
+import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
 import { UserContext } from '../../store/user-profile';
@@ -36,6 +38,16 @@ const Login = () => {
 
   return (
     <>
+    <PageTitle title="Register - Aview International" />
+    <div className=''>  
+    <div className="flex items-center py-6 pl-s14">
+          <Image
+            src={aviewLogo}
+            alt="AVIEW International logo"
+            width={40}
+            height={40}
+          />
+        </div>
       <div className="fixed top-2/4 left-2/4 w-[min(400px,90%)] -translate-x-2/4 -translate-y-2/4 text-white">
         <div data-aos="zoom-in-up">
           <h2 className="text-center text-7xl md:text-8xl">Log In</h2>
@@ -49,7 +61,7 @@ const Login = () => {
           <Shadow classes="w-full mb-4">
             <Border borderRadius="full" classes="w-full">
               <button
-                className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3"
+                className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3 "
                 onClick={handleSubmit}
               >
                 {isLoading ? (
@@ -57,7 +69,7 @@ const Login = () => {
                 ) : (
                   <>
                     <span className="flex items-center justify-center pr-s1">
-                      <Image src={Google} alt="Google" />
+                      <Image src={Google} alt="Google" width={20} height={20}/>
                     </span>
                     Continue with Google
                   </>
@@ -69,7 +81,7 @@ const Login = () => {
             <Border borderRadius="full" classes="w-full">
               <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
                 <span className="flex items-center justify-center pr-s1">
-                  <Image src={Facebook} alt="Facebook" />
+                  <Image src={Facebook} alt="Facebook" width={20} height={20} />
                 </span>
                 Continue with Facebook
               </button>
@@ -77,6 +89,7 @@ const Login = () => {
           </Shadow>
         </div>
       </div>
+    </div>
     </>
   );
 };

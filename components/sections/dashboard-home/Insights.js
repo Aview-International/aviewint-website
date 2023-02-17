@@ -36,23 +36,21 @@ const Insights = () => {
 
 const GoalComponent = () => {
   return (
-    <div className="gradient-dark mt-s5 ml-0 flex w-full items-center justify-between rounded-2xl p-s2 md:mt-0 md:ml-s3 md:w-[360px]">
-      <div className="flex flex-col justify-between">
+    <div className="gradient-dark mt-s2 ml-0 flex w-full items-center justify-between rounded-2xl p-s2 md:mt-0 md:ml-s3 md:w-[360px]">
+      <div className="flex flex-col justify-between items-start p-0">
         <h4 className="text-xl">Redemption Code</h4>
-        <div>
-          <p className="tetx-2xl">10% off</p>
+        <div className='mt-5'>
+          <p className="text-2xl font-bold">10% off</p>
           <small className="text-sm">Your next transaction</small>
         </div>
-        <div className="flex items-center text-lg">
-          Your Code: Aview123
-          <span className="ml-s1">
-            <Image src={Copy} alt="Copy to clipboard" width={24} height={24} />
-          </span>
-        </div>
+        <div className="flex items-center text-lg mt-14 gap-1">
+          <p>Your Code: Aview123</p>
+          <Image src={Copy} alt="Copy to clipboard" width={20} height={20} />
+          </div>
       </div>
-      <div>
+      <div className='pt-10'>
         <Border borderRadius="full">
-          <div className="h-[120px] w-[120px] rounded-full bg-black">
+          <div className="h-[120px] w-[120px] rounded-full bg-black ">
             <div className="gradient-dark flex h-full w-full items-center justify-center rounded-full text-lg">
               Goal
             </div>

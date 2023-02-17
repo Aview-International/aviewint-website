@@ -32,6 +32,7 @@ const Upload = () => {
 
   return (
     <>
+    <div className='w-[1111px] mx-auto h-full rounded-xl bg-white-transparent '>
       <PageTitle title="Upload Video" />
       <div className="flex flex-col p-s4 text-white lg:flex-row">
         <div className="w-full lg:w-1/2">
@@ -50,6 +51,8 @@ const Upload = () => {
           />
         </div>
       </div>
+    </div>
+      
     </>
   );
 };
