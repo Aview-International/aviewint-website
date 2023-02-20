@@ -19,6 +19,7 @@ function getRichText(richText) {
 }
 
 export default function BlogBlock({ block }) {
+  if (block.type === 'p') {
     return (
       <p className="mt-s3 text-lg text-white md:text-xl" key={block.id}>
         {getRichText(block.richText)}
