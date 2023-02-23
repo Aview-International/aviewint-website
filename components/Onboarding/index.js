@@ -32,6 +32,7 @@ import { UserContext } from '../../store/user-profile';
 import FormInput from '../FormComponents/FormInput';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
+import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -433,44 +434,19 @@ export const OnboardingStep4 = () => {
         can remove them at any point if you like!
       </p>
       <div className="m-auto w-[min(360px,80%)]">
-        <div className="relative my-s2">
-          <button
-            className={`${
+        <OnBoardingAccounts classes={`${
               userData.ig_access_token && 'instagram'
-            } block w-full rounded-full border-2 p-s1.5 text-center`}
-            onClick={linkInstagramAccount}
-          >
-            Instagram
-          </button>
-        </div>
-        <div className="relative my-s2">
-          <button
-            className={`block w-full rounded-full border-2 p-s1.5 text-center ${
+            } block w-full rounded-full border-2 p-s1.5 text-center`} clickEvent={linkInstagramAccount} account='Instagram'/>
+        <OnBoardingAccounts classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
               userData.facebook && 'bg-[#0054ff]'
-            }`}
-          >
-            Facebook
-          </button>
-        </div>
-        <div className="relative my-s2">
-          <button
-            className={`block w-full rounded-full border-2 p-s1.5 text-center ${
+            }`} account='Facebook'/>
+        <OnBoardingAccounts classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
               userData.tiktok && 'bg-[#000000]'
-            }`}
-          >
-            TikTok
-          </button>
-        </div>
-        <div className="relative my-s2">
-          <button
-            className={`w-full rounded-full border-2 p-s1.5 text-center ${
+            }`} account='TikTok'/>
+        <OnBoardingAccounts classes={`w-full rounded-full border-2 p-s1.5 text-center ${
               userData.youtubeChannelId && 'bg-[#ff0000]'
-            }`}
-            onClick={linkYoutubeAccount}
-          >
-            {isLoading.youtube ? <Loader /> : 'Youtube'}
-          </button>
-        </div>
+            }`}  clickEvent={linkYoutubeAccount} account='Youtube'/>
+      </div>
         <div className="mt-s4">
           <OnboardingButton
             theme="dark"
@@ -481,8 +457,7 @@ export const OnboardingStep4 = () => {
           </OnboardingButton>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 // Onboarding success page

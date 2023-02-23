@@ -9,10 +9,7 @@ const ProgressBar = () => {
         let progressWidth=(scrollDistance/(window.document.body.getBoundingClientRect().height-window.document.documentElement.clientHeight))*100
         let widthValue=Math.floor(progressWidth)
          setWidth(widthValue)
-        // if(divRef.current){
-        //   divRef.current.style.width = (widthValue+1) + '%'
-        // }
-       console.log(width)
+         console.log(width)
     }
   
 
