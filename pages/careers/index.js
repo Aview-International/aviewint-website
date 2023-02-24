@@ -11,7 +11,7 @@ import Process from '../../components/sections/careers/Process';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
-import ProgressBar from '../../components/UI/progressBar';
+import ProgressBar from '../../components/UI/ProgressBar';
 
 const Careers = () => {
   return (
