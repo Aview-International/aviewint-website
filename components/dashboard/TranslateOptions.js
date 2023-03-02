@@ -51,13 +51,22 @@ const TranslateOptions = ({
           />
         </div>
       )}
-      <p className="mt-s4 text-xl">If selected Other, please specify which language(s) :</p>
-      <div className='w-full h-[43px] '>
-        <input type="text" value={payload.inputLanguages} onChange={(e)=>{ 
-          setPayload({
-            ...payload,
-            inputLanguages:e.target.value})
-          }} placeholder='Other language(s)' className='w-full h-full rounded-[5px] px-s2 py-2 border-2 text-white focus:outline-none'/>
+      <p className="mt-s4 text-xl">
+        If selected Other, please specify which language(s) :
+      </p>
+      <div className="h-[43px] w-full">
+        <input
+          type="text"
+          value={payload.inputLanguages}
+          onChange={(e) => {
+            setPayload({
+              ...payload,
+              inputLanguages: e.target.value,
+            });
+          }}
+          placeholder="Other language(s)"
+          className="h-full w-full rounded-[5px] border-2 px-s2 py-2 text-white focus:outline-none"
+        />
       </div>
       <p className="mt-s4 text-xl">What services do you need?</p>
       <div className="mt-s1 mb-s4 flex flex-wrap">

@@ -10,7 +10,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const DashboardHome = () => {
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -43,27 +43,26 @@ const DashboardHome = () => {
 
   return (
     <>
-    <div className='w-[1111px] mx-auto'>
-    <PageTitle title="Dashboard" />
-      {isSelected ? (
-        <SubmitVideos
-          setIsSelected={setIsSelected}
-          selectedVideos={selectedVideos}
-          setPayload={setPayload}
-          payload={payload}
-          userInfo={userInfo}
-        />
-      ) : (
-        <SelectVideos
-          videos={videos}
-          isLoading={isLoading}
-          setIsSelected={setIsSelected}
-          selectedVideos={selectedVideos}
-          setSelectedVideos={setSelectedVideos}
-        />
-      )}
-    </div>
-      
+      <div className="mx-auto max-w-[1200px]">
+        <PageTitle title="Dashboard" />
+        {isSelected ? (
+          <SubmitVideos
+            setIsSelected={setIsSelected}
+            selectedVideos={selectedVideos}
+            setPayload={setPayload}
+            payload={payload}
+            userInfo={userInfo}
+          />
+        ) : (
+          <SelectVideos
+            videos={videos}
+            isLoading={isLoading}
+            setIsSelected={setIsSelected}
+            selectedVideos={selectedVideos}
+            setSelectedVideos={setSelectedVideos}
+          />
+        )}
+      </div>
     </>
   );
 };
@@ -82,6 +81,7 @@ const SelectVideos = ({
       setIsSelected(true);
     }
   };
+
   return (
     <div>
       <Insights />

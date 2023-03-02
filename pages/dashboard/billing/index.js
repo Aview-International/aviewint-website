@@ -9,13 +9,12 @@ import Visa from '../../../public/img/icons/visa.svg';
 const Billing = () => {
   return (
     <>
-    <div className='w-[1111px] mx-auto mt-5'>
-    <PageTitle title="Billing" />
-      <BillingDetails />
-      <Transactions />
-      <Blobs />
-    </div>
-      
+      <div className="mx-auto mt-5 w-[1200px]">
+        <PageTitle title="Billing" />
+        <BillingDetails />
+        <Transactions />
+        <Blobs />
+      </div>
     </>
   );
 };
@@ -27,14 +26,14 @@ export default Billing;
 const BillingDetails = () => {
   return (
     <div className="text-white">
-      <h2 className="text-4xl">Billing Details</h2>
-      <div className="gradient-dark flex items-center justify-between rounded-2xl p-s2">
-        <div className="flex">
-          <p>Card on file:</p>
+      <h2 className="mb-4 text-4xl font-bold">Billing Details</h2>
+      <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
+        <div className="flex items-center">
+          <p className="text-2xl font-bold">Card on file:</p>
           <div className="mx-s5">
             <Image src={Visa} alt="" width={40} height={26} />
           </div>
-          <p>Visa ending in 6099</p>
+          <p className="text-xl">Visa ending in 6099</p>
         </div>
         <div>
           <OnboardingButton theme="dark">Edit</OnboardingButton>
@@ -103,7 +102,7 @@ const Transactions = () => {
   ];
   return (
     <div className="mt-s4 text-white">
-      <h3 className="mb-s2 text-2xl">Transactions</h3>
+      <h3 className="mb-s2 text-2xl font-bold">Transactions</h3>
       <div className="gradient-dark rounded-2xl p-s3">
         <table className="w-full">
           <thead>
@@ -117,10 +116,10 @@ const Transactions = () => {
           <tbody>
             {TableData.map((data, index) => (
               <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
-                <td className="py-s2">{data.date}</td>
-                <td className="py-s2">{data.services}</td>
-                <td className="py-s2">{data.payment}</td>
-                <td className="py-s2">{data.total}</td>
+                <td className="py-s3">{data.date}</td>
+                <td className="py-s3">{data.services}</td>
+                <td className="py-s3">{data.payment}</td>
+                <td className="py-s3">{data.total}</td>
               </tr>
             ))}
           </tbody>
