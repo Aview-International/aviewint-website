@@ -36,7 +36,7 @@ const ScrollToTopButton = () => {
    return (
     <>
     {scrollPosition && 
-      <div className={`animate-bounce fixed  bottom-5 right-5 z-50 cursor-pointer `} onClick={topFunction}>
+      <div className={`fixed bottom-5 right-5 z-50 cursor-pointer`} onClick={topFunction}>
       <button className=" ">
          <Image src={scrollToTop} width={48} height={48} alt='scroll' className='rounded-sm'/>
       </button>

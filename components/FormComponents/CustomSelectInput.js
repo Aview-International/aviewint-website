@@ -31,7 +31,7 @@ const CustomSelectInput = ({
             </span>
           </div>
         </Border>
-        <span className="absolute right-[30px] bottom-[7px]">
+        <span className="absolute right-[35px] bottom-[7px]">
           {isValid && (
             <Image src={Correct} alt="Correct" width={20} height={20} />
           )}

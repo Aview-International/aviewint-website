@@ -65,8 +65,8 @@ const Register = () => {
             height={40}
           />
         </div>
-        <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
-          <div className=" m-auto flex w-[min(380px,90%)] flex-col items-stretch">
+        <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white  md:mt-s12">
+          <div className=" fixed w-[min(380px,90%)] top-2/4 left-2/4  -translate-x-2/4 -translate-y-2/4">
             <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
             {account && (
               <p className="mb-s3 text-center text-lg">
