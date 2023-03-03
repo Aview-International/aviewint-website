@@ -1160,19 +1160,19 @@ export const CAREER_PROCESS = [
 
 export const ONBOARDING_STAGE_4 = [
   {
-    title: 'Translations',
+    title: 'Subtitle Translations',
     content: 'Receive subtitle translations in over 15 different languages with ease.',
   },
   {
-    title: 'Shorts',
+    title: 'Short-Form Content',
     content: 'Catchy 1-minute short-form videos from your existing content.',
   },
   {
-    title: 'Dubbing',
+    title: 'Voiceover Dubbing',
     content: 'Receive professional voiceover dubbing on your existing videos.',
   },
   {
-    title: 'Distribution',
+    title: 'Media Distribution',
     content: 'Distribute your content across all social media channels, including YouTube and Instagram.',
   },
 ];

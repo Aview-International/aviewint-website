@@ -440,7 +440,7 @@ export const OnboardingStep4 = () => {
       Connect your accounts
       </h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(610px,100%)] text-center text-lg md:text-xl">
-      Connect your socials to get started.We will never post on your behalf, and you can add socials at any point.
+      Connect your socials to get started!
       </p>
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts classes={`${
@@ -475,7 +475,7 @@ export const OnboardingSuccess = () => {
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-3xl text-center md:text-6xl">Success!</h2>
-      <p className="mx-auto mt-s2 mb-s4 w-[min(600px,100%)] text-center text-lg md:text-xl">
+      <p className="mx-auto mt-s2 mb-s4 w-[min(430px,100%)] text-center text-lg md:text-xl">
         {/* You&apos;ve completed the onboarding process and joined our waitlist.
         You&apos;ll be contacted soon, thank you */}
         You&apos;ve completed the onboarding process. Now let&apos;s take a look at your
