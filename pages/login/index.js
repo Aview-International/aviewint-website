@@ -38,19 +38,20 @@ const Login = () => {
 
   return (
     <>
-    <PageTitle title="Register - Aview International" />
-    <div className=''>  
-    <div className="flex items-center py-6 pl-s14">
+      <PageTitle title="Login - Aview International" />
+      <div className="">
+        <div className="flex items-center py-6 pl-s14">
           <Image
             src={aviewLogo}
             alt="AVIEW International logo"
             width={40}
             height={40}
           />
-    </div>
+
+        </div>
       <div className="fixed top-2/4 left-2/4 w-[min(400px,90%)] -translate-x-2/4 -translate-y-2/4 text-white">
         <div data-aos="zoom-in-up">
-          <h2 className="text-center text-7xl md:text-8xl">Log In</h2>
+          <h2 className="text-center text-7xl md:text-8xl font-bold">Log In</h2>
           <p className="my-s3 text-center text-lg md:text-xl">
             Don&apos;t have an account?
             <br /> Get started{' '}
@@ -61,7 +62,7 @@ const Login = () => {
           <Shadow classes="w-full mb-4">
             <Border borderRadius="full" classes="w-full">
               <button
-                className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3 "
+                className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
                 onClick={handleSubmit}
               >
                 {isLoading ? (
@@ -79,7 +80,7 @@ const Login = () => {
           </Shadow>
           <Shadow classes="w-full">
             <Border borderRadius="full" classes="w-full">
-              <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3">
+              <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3">
                 <span className="flex items-center justify-center pr-s1">
                   <Image src={Facebook} alt="Facebook" width={20} height={20} />
                 </span>
@@ -87,9 +88,10 @@ const Login = () => {
               </button>
             </Border>
           </Shadow>
+
         </div>
       </div>
-    </div>
+      </div>
     </>
   );
 };

@@ -4,6 +4,7 @@ import { UserContext } from '../../store/user-profile';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
+import { ProtectedRoutes } from '../../utils/autoLogout';
 
 export const DashboardContainer = ({ children }) => {
   const { setUserInfo } = useContext(UserContext);
@@ -55,6 +56,8 @@ const DashboardStructure = ({ children }) => {
 };
 
 const DashboardLayout = (page) => (
-  <DashboardStructure>{page}</DashboardStructure>
+  <ProtectedRoutes>
+    <DashboardStructure>{page}</DashboardStructure>
+  </ProtectedRoutes>
 );
 export default DashboardLayout;

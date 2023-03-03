@@ -42,7 +42,6 @@ const Register = () => {
   const handleGoogle = async (type) => {
     setIsLoading({ ...isLoading, google: true });
     const { _tokenResponse } = await signInWithGoogle();
-    console.log('hereeee');
     updateDatabase(_tokenResponse);
   };
 
@@ -67,8 +66,8 @@ const Register = () => {
         </div>
         <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white  md:mt-s12">
           <div className=" fixed w-[min(380px,90%)] top-2/4 left-2/4  -translate-x-2/4 -translate-y-2/4">
-            <h2 className="mb-8 text-center text-7xl md:text-8xl">Sign Up</h2>
-            {account && (
+            <h2 className="mb-8 text-center text-7xl md:text-8xl font-bold">Sign Up</h2>
+           {account && (
               <p className="mb-s3 text-center text-lg">
                 You don&apos;t have an account yet, begin here
               </p>
@@ -76,7 +75,7 @@ const Register = () => {
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
                 <button
-                  className="flex w-full items-center justify-center rounded-full bg-black p-2 text-white md:p-3 "
+                  className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
                   onClick={handleGoogle}
                 >
                   {isLoading.google ? (
@@ -84,7 +83,7 @@ const Register = () => {
                   ) : (
                     <>
                       <span className="flex items-center justify-center pr-s1">
-                        <Image src={Google} alt="Google" width={20} height={20}/>
+                        <Image src={Google} alt="Google" width={20} height={20} />
                       </span>
                       Continue with Google
                     </>
@@ -95,7 +94,7 @@ const Register = () => {
             <Shadow classes="w-full">
               <Border borderRadius="full" classes="w-full">
                 <button
-                  className="align-center flex w-full justify-center rounded-full bg-black p-2 text-white md:p-3"
+                  className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3"
                   onClick={handleFacebook}
                 >
                   {isLoading.facebook ? (
@@ -103,7 +102,7 @@ const Register = () => {
                   ) : (
                     <>
                       <span className="flex items-center justify-center pr-s1">
-                        <Image src={Facebook} alt="Facebook" width={20} height={20}/>
+                        <Image src={Facebook} alt="Facebook" width={20} height={20} />
                       </span>
                       Continue with Facebook
                     </>

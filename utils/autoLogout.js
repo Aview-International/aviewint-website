@@ -1,8 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const autoLogout = () => {
-  const token = localStorage.getItem('token');
+  if (typeof window !== 'undefined') {
+    var token = localStorage.getItem('token');
+  }
   if (!token) return false;
   else {
     const data = jwt.decode(token);
@@ -22,6 +25,9 @@ const autoLogout = () => {
 export const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const validToken = autoLogout();
-  if (!validToken) router.push('/login');
+  useEffect(() => {
+    console.log('validToken', validToken);
+    if (!validToken) router.push('/login');
+  }, []);
   return <>{children}</>;
 };
