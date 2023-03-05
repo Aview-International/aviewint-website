@@ -33,7 +33,7 @@ const DashboardStructure = ({ children }) => {
   return (
     <>
       <DashboardContainer>
-        <main className="lg:gradient-dark flex min-h-screen w-full bg-black">
+        <main className="flex min-h-screen w-full bg-black">
           <DashboardSidebar
             userInfo={userInfo}
             setIsOpen={setIsOpen}
