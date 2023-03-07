@@ -13,7 +13,7 @@ const Videos = ({ setSelectedVideos, selectedVideos, videos, isLoading }) => {
       title: 'Most Viewed',
     },
     {
-      title: 'Youtube',
+      title: 'YouTube',
     },
     {
       title: 'TikTok',

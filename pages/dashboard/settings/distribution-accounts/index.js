@@ -22,7 +22,7 @@ const Account = ({ picture, name, subscribers }) => (
 const DistriubtionAccounts = () => {
   const DISTRIBUTION_ACCOUNTS = [
     {
-      account_type: 'Youtube',
+      account_type: 'YouTube',
       accounts: [
         {
           title: "Aview International Espan'ol",

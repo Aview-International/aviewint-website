@@ -351,7 +351,7 @@ export const BENEFITS_OF_TRANSLATIONS = [
     id: 'benefit-4',
     title: 'Visibility',
     description:
-      'Translated metadata will help increase your visibility on Youtube’s algorithm.',
+      'Translated metadata will help increase your visibility on YouTube’s algorithm.',
     graphic: visibility,
   },
 ];
@@ -1161,7 +1161,8 @@ export const CAREER_PROCESS = [
 export const ONBOARDING_STAGE_4 = [
   {
     title: 'Subtitle Translations',
-    content: 'Receive subtitle translations in over 15 different languages with ease.',
+    content:
+      'Receive subtitle translations in over 15 different languages with ease.',
   },
   {
     title: 'Short-Form Content',
@@ -1173,7 +1174,8 @@ export const ONBOARDING_STAGE_4 = [
   },
   {
     title: 'Media Distribution',
-    content: 'Distribute your content across all social media channels, including YouTube and Instagram.',
+    content:
+      'Distribute your content across all social media channels, including YouTube and Instagram.',
   },
 ];
 
