@@ -30,9 +30,19 @@ export default Blogs;
 export async function getStaticProps() {
   const blogs = await getBlogPreviews();
 
+  blogs.sort((blog1, blog2) => {
+    if (blog1.date > blog2.date) {
+      return -1;
+    } else if (blog1.date < blog2.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
   return {
     props: {
-      blogs: blogs,
+      blogs,
     },
     revalidate: 1,
   };
