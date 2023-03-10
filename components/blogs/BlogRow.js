@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
 import Card from '../UI/Card';
+import { convertDate } from '../../utils/functions';
 
 const BlogRow = ({ blogs }) => {
   return (
@@ -11,12 +11,18 @@ const BlogRow = ({ blogs }) => {
           <a>
             <Card borderRadius="2xl" fullWidth={true}>
               <div className="pb-s3">
-                <div className="mb-s2 aspect-video overflow-hidden rounded-t-2xl">
-                  <Image src={blog.img} alt={blog.title} layout="responsive" />
+                <div className="relative mb-s2 aspect-video overflow-hidden rounded-t-2xl">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    layout="responsive"
+                    width="837"
+                    height="558"
+                  />
                 </div>
                 <div className="px-s3">
                   <p className="mb-s1 text-xl font-bold text-white md:text-2xl">
-                    {blog.date}
+                    {convertDate(blog.date)}
                   </p>
                   <h2 className="mb-s1 text-lg text-white md:text-xl">
                     {blog.title}

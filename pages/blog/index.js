@@ -5,12 +5,9 @@ import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 
-import { BLOGS } from '../../constants/blogs';
+import { getBlogPreviews } from '../../lib/notion';
 
-const Blog = () => {
-  const reversedBlogs = [].concat(BLOGS).reverse();
-  console.log(reversedBlogs);
-
+const Blogs = ({ blogs }) => {
   return (
     <>
       <SEO title="Blog - AVIEW" />
@@ -20,7 +17,7 @@ const Blog = () => {
         <h1 className="title mt-s6 mb-s4 text-center md:mt-s18 md:mb-s8">
           Enjoy our <span className="gradient-text gradient-2">Blogs.</span>
         </h1>
-        <BlogRow blogs={reversedBlogs} />
+        <BlogRow blogs={blogs} />
       </section>
       <Footer curPage="Blog" />
       <Blobs />
@@ -28,4 +25,15 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Blogs;
+
+export async function getStaticProps() {
+  const blogs = await getBlogPreviews();
+
+  return {
+    props: {
+      blogs: blogs,
+    },
+    revalidate: 1,
+  };
+}

@@ -4,7 +4,13 @@ const BlogIntro = ({ title, img, author, authorImg, date, length }) => {
   return (
     <>
       <div className="mb-s3 md:mb-s5">
-        <Image src={img} alt={title} layout="responsive" />
+        <Image
+          src={img}
+          alt={title}
+          layout="responsive"
+          width="837"
+          height="558"
+        />
       </div>
       <h1 className="mb-s2 text-4xl font-bold leading-snug text-white md:mb-s4 md:text-8xl">
         {title}
