@@ -26,7 +26,6 @@ export const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const validToken = autoLogout();
   useEffect(() => {
-    console.log('validToken', validToken);
     if (!validToken) router.push('/login');
   }, []);
   return <>{children}</>;

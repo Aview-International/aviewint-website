@@ -21,7 +21,9 @@ const Login = () => {
     setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
     const res = await checkUserEmail(_tokenResponse.localId);
-    if (!res) router.push('/onboarding?stage=1&account=false');
+    console.log('res', res);
+    if (!res) router.push('/register?account=false');
+    // if (!res) router.push('/onboarding?stage=1&account=false');
     else {
       localStorage.setItem('token', _tokenResponse.idToken);
       localStorage.setItem('uid', _tokenResponse.localId);
