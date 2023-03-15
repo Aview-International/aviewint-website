@@ -213,7 +213,7 @@ export const OnboardingStep3 = () => {
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
-    isEmpty:false
+    isEmpty: false,
   });
 
   const ONBOARDING_STAGE_3_INPUT = [
@@ -239,10 +239,10 @@ export const OnboardingStep3 = () => {
       !payload.monthlyView ||
       payload.languages.length < 1 ||
       !payload.averageVideoDuration
-    ){
-            setSideEffects({...sideEffects,isEmpty:true})
-            return;
-      }
+    ) {
+      setSideEffects({ ...sideEffects, isEmpty: true });
+      return;
+    }
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
       await updateUserBio(payload, localStorage.getItem('uid'));
@@ -250,7 +250,7 @@ export const OnboardingStep3 = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(sideEffects.hasSubmitted)
+    console.log(sideEffects.hasSubmitted);
   };
 
   const handleMultipleSelect = (option) => {
@@ -284,40 +284,40 @@ export const OnboardingStep3 = () => {
             />
           ))}
         </div> */}
-        <div className='flex flex-row justify-center ml-12'>
-        <div className="flex max-w-[1144px] flex-col  items-stretch lg:flex-row lg:gap-8">
-          <CustomSelectInput
-            text="What are your average monthly views ?"
-            options={AVERAGE_MONTHLY_VIEWS}
-            hasSubmitted={sideEffects.hasSubmitted}
-            isValid={payload.monthlyView}
-            onChange={(option) =>
-              setPayload({ ...payload, monthlyView: option })
-            }
-          />
-          <MultipleSelectInput
-            text="What languages do you need translations for ?"
-            options={LANGUAGES}
-            answer={payload.languages}
-            hasSubmitted={sideEffects.hasSubmitted}
-            onChange={(event) => handleMultipleSelect(event)}
-          />
-          <CustomSelectInput
-            text="How long is your average duration of videos ?"
-            options={AVERAGE_VIDEO_DURATION}
-            hasSubmitted={sideEffects.hasSubmitted}
-            isValid={payload.averageVideoDuration}
-            onChange={(option) =>
-              setPayload({ ...payload, averageVideoDuration: option })
-            }
-          />
-        </div>
+        <div className="ml-12 flex flex-row justify-center">
+          <div className="flex max-w-[1144px] flex-col  items-stretch lg:flex-row lg:gap-8">
+            <CustomSelectInput
+              text="What are your average monthly views ?"
+              options={AVERAGE_MONTHLY_VIEWS}
+              hasSubmitted={sideEffects.hasSubmitted}
+              isValid={payload.monthlyView}
+              onChange={(option) =>
+                setPayload({ ...payload, monthlyView: option })
+              }
+            />
+            <MultipleSelectInput
+              text="What languages do you need translations for ?"
+              options={LANGUAGES}
+              answer={payload.languages}
+              hasSubmitted={sideEffects.hasSubmitted}
+              onChange={(event) => handleMultipleSelect(event)}
+            />
+            <CustomSelectInput
+              text="How long is your average duration of videos ?"
+              options={AVERAGE_VIDEO_DURATION}
+              hasSubmitted={sideEffects.hasSubmitted}
+              isValid={payload.averageVideoDuration}
+              onChange={(option) =>
+                setPayload({ ...payload, averageVideoDuration: option })
+              }
+            />
+          </div>
         </div>
         {sideEffects.isEmpty && (
-        <p className="my-s3 text-center text-xl">
-          Please select from the options above to continue
-        </p>
-      )}
+          <p className="my-s3 text-center text-xl">
+            Please select from the options above to continue
+          </p>
+        )}
         <div className="m-auto w-full md:w-[360px]">
           <OnboardingButton
             onClick={handleSubmit}
@@ -437,36 +437,51 @@ export const OnboardingStep4 = () => {
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl md:text-6xl">
-      Connect your accounts
+        Connect your accounts
       </h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(610px,100%)] text-center text-lg md:text-xl">
-      Connect your socials to get started!
+        Connect your socials to get started!
       </p>
       <div className="m-auto w-[min(360px,80%)]">
-        <OnBoardingAccounts classes={`${
-              userData.ig_access_token && 'instagram'
-            } block w-full rounded-full border-2 p-s1.5 text-center`} clickEvent={linkInstagramAccount} account='Instagram'/>
-        <OnBoardingAccounts classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
-              userData.facebook && 'bg-[#0054ff]'
-            }`} account='Facebook'/>
-        <OnBoardingAccounts classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
-              userData.tiktok && 'bg-[#000000]'
-            }`} account='TikTok'/>
-        <OnBoardingAccounts classes={`w-full rounded-full border-2 p-s1.5 text-center ${
-              userData.youtubeChannelId && 'bg-[#ff0000]'
-            }`}  clickEvent={linkYoutubeAccount} account='YouTube'/>
+        <OnBoardingAccounts
+          classes={`${
+            userData.ig_access_token && 'instagram'
+          } block w-full rounded-full border-2 p-s1.5 text-center`}
+          clickEvent={linkInstagramAccount}
+          account="Instagram"
+        />
+        <OnBoardingAccounts
+          classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
+            userData.facebook && 'bg-[#0054ff]'
+          }`}
+          account="Facebook"
+        />
+        <OnBoardingAccounts
+          classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
+            userData.tiktok && 'bg-[#000000]'
+          }`}
+          account="TikTok"
+        />
+        <OnBoardingAccounts
+          classes={`w-full rounded-full border-2 p-s1.5 text-center ${
+            userData.youtubeChannelId && 'bg-[#ff0000]'
+          }`}
+          clickEvent={linkYoutubeAccount}
+          account="YouTube"
+          isLoading={isLoading.youtube}
+        />
       </div>
-        <div className="mt-s4 mx-auto w-[min(360px,80%)]">
-          <OnboardingButton
-            theme="dark"
-            isLoading={isLoading.continue}
-            onClick={() => router.push('/onboarding?stage=5')}
-          >
-            Continue
-          </OnboardingButton>
-        </div>
+      <div className="mx-auto mt-s4 w-[min(360px,80%)]">
+        <OnboardingButton
+          theme="dark"
+          isLoading={isLoading.continue}
+          onClick={() => router.push('/onboarding?stage=5')}
+        >
+          Continue
+        </OnboardingButton>
       </div>
-    );
+    </div>
+  );
 };
 
 // Onboarding success page
@@ -474,14 +489,14 @@ export const OnboardingSuccess = () => {
   const router = useRouter();
   return (
     <div className="m-auto w-[90%]">
-      <h2 className="text-3xl text-center md:text-6xl">Success!</h2>
+      <h2 className="text-center text-3xl md:text-6xl">Success!</h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(430px,100%)] text-center text-lg md:text-xl">
         {/* You&apos;ve completed the onboarding process and joined our waitlist.
         You&apos;ll be contacted soon, thank you */}
-        You&apos;ve completed the onboarding process. Now let&apos;s take a look at your
-        dashboard.
+        You&apos;ve completed the onboarding process. Now let&apos;s take a look
+        at your dashboard.
       </p>
-      <div className="mt-s4 mx-auto w-[min(360px,80%)]">
+      <div className="mx-auto mt-s4 w-[min(360px,80%)]">
         <OnboardingButton
           onClick={() => router.push('/dashboard')}
           theme="dark"

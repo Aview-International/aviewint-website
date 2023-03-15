@@ -1,11 +1,17 @@
 import React from 'react';
+import Loader from '../../UI/loader';
 
-const OnBoardingAccounts = ({ account, clickEvent = () => null, classes }) => {
+const OnBoardingAccounts = ({
+  account,
+  clickEvent = () => null,
+  classes,
+  isLoading,
+}) => {
   return (
     <>
       <div className="relative my-s2">
         <button className={`${classes}`} onClick={clickEvent}>
-          {account}
+          {isLoading ? <Loader /> : account}
         </button>
       </div>
     </>
