@@ -32,27 +32,26 @@ const Upload = () => {
 
   return (
     <>
-    <div className='w-[1111px] mx-auto h-full rounded-xl bg-white-transparent '>
-      <PageTitle title="Upload Video" />
-      <div className="flex flex-col p-s4 text-white lg:flex-row">
-        <div className="w-full lg:w-1/2">
-          <UploadVideo
-            setData={(e) => setVideo(e.target.files[0])}
-            data={video}
-          />
-        </div>
-        <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
-          <TranslateOptions
-            handleServices={handleServices}
-            handleLanguages={handleLanguages}
-            // handleSubmit={handleSubmit}
-            payload={payload}
-            setPayload={setPayload}
-          />
+      <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
+        <PageTitle title="Upload Video" />
+        <div className="flex flex-col p-s4 text-white lg:flex-row">
+          <div className="w-full lg:w-1/2">
+            <UploadVideo
+              setData={(e) => setVideo(e.target.files[0])}
+              data={video}
+            />
+          </div>
+          <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
+            <TranslateOptions
+              handleServices={handleServices}
+              handleLanguages={handleLanguages}
+              // handleSubmit={handleSubmit}
+              payload={payload}
+              setPayload={setPayload}
+            />
+          </div>
         </div>
       </div>
-    </div>
-      
     </>
   );
 };

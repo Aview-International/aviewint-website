@@ -21,7 +21,7 @@ const YoutubeVideoFrame = ({
       <div className="relative">
         <div className="mb-s1 flex text-lg">
           <Image src={Youtube} alt="" with={24} height={24} />
-          <p className="pl-s1">Youtube Video</p>
+          <p className="pl-s1">YouTube Video</p>
         </div>
         <Image
           loader={() => thumbnail}

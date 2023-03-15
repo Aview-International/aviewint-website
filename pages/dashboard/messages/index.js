@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 const SingleMessage = ({ timeStamp, message }) => (
   <div className="my-s3 flex items-start text-sm">
-    <div className='mr-s1'>
+    <div className="mr-s1">
       <Image src={Logo} alt="" width={40} height={40} />
     </div>
     <div>
@@ -61,18 +61,20 @@ const Messages = () => {
   return (
     <>
       <PageTitle title="Messages" />
-      <div className="flex h-full rounded-2xl bg-white-transparent w-[1111px] mx-auto text-white">
+      <div className="mx-auto flex h-full max-w-[1200px] rounded-2xl bg-white-transparent text-white">
         <div className="w-full p-s2">
           <div className="relative flex h-full flex-col justify-between">
-            <div className="flex items-center">
-              <Image
-                src={Logo}
-                alt="Profile Picture"
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
-              <p className="ml-s1 text-2xl">Aview Support</p>
+            <div className="flex items-center gap-2">
+              <div className="-mb-1">
+                <Image
+                  src={Logo}
+                  alt="Profile Picture"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              </div>
+              <p className="ml-s1 text-2xl font-bold">Aview Support</p>
             </div>
             <div>
               <div>

@@ -73,14 +73,14 @@ const Accounts = ({ userData }) => {
         }
       />
       <Container
-        left={<p className={`text-xl`}>Youtube</p>}
+        left={<p className={`text-xl`}>YouTube</p>}
         right={
           <button
             className={`w-full rounded-full border-2 py-s1 text-center ${
               userData.youtubeChannelId && 'bg-[#ff0000]'
             }`}
           >
-            Youtube
+            YouTube
           </button>
         }
       />

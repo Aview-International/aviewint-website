@@ -51,9 +51,9 @@ const Settings = () => {
   const { userInfo } = useContext(UserContext);
   return (
     <>
-     <PageTitle title="Settings" />
+      <PageTitle title="Settings" />
       <DashboardContainer>
-        <div className="text-white w-[1111px] mx-auto">
+        <div className="mx-auto max-w-[1200px] text-white">
           <h2 className="text-7xl">Settings</h2>
           <div className="flex items-center p-s2">
             <Image
@@ -106,8 +106,6 @@ const Settings = () => {
           ))}
         </div>
       </DashboardContainer>
-    
-      
     </>
   );
 };
@@ -148,7 +146,10 @@ export const Settings_Back_Button = ({ children, title }) => {
   const router = useRouter();
   return (
     <div className="relative mb-s5 block md:hidden">
-      <button className="absolute left-0 top-1/2 -translate-y-1/2" onClick={() => router.back()}>
+      <button
+        className="absolute left-0 top-1/2 -translate-y-1/2"
+        onClick={() => router.back()}
+      >
         <Image
           src={Arrow}
           alt=""
