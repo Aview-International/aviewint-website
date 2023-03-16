@@ -28,6 +28,7 @@ const Onboarding = () => {
     }
     if (!window.location.search) router.push('/onboarding?stage=1');
   }, []);
+
   return (
     <>
       <PageTitle title="Aview Onboarding" />
