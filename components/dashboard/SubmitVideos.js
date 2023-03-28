@@ -4,17 +4,16 @@ import Arrow from '../../public/img/icons/arrow-back.svg';
 import { useRouter } from 'next/router';
 import TranslateOptions from './TranslateOptions';
 import YoutubeVideoFrame from './YoutubeVideoFrame';
-import { useState } from 'react';
 
 const SubmitVideos = ({
+  isLoading,
   setIsSelected,
   selectedVideos,
   setPayload,
   payload,
-  handleSubmit
+  handleSubmit,
 }) => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
   const handleLanguages = (value) => {
     const newLanguages = [...payload.languages];
     if (newLanguages.includes(value))

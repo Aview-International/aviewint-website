@@ -10,13 +10,8 @@ export const DashboardContainer = ({ children }) => {
   const { handleGetProfile } = useProfile();
   const [isLoading, setIsLoading] = useState(true);
   const getProfile = async () => {
-    try {
-      await handleGetProfile();
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-    }
+    await handleGetProfile();
+    setIsLoading(false);
   };
   useEffect(() => {
     getProfile();

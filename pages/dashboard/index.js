@@ -7,16 +7,13 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
 import { createANewJob } from '../api/firebase';
-import useProfile from '../../hooks/useProfile';
 
 const DashboardHome = () => {
-  // const { handleGetProfile } = useProfile();
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
   const { userInfo } = useContext(UserContext);
-  // const [profileTrigger, setProfileTrigger] = useState(0);
   const [payload, setPayload] = useState({
     services: [],
     languages: [],
@@ -43,10 +40,6 @@ const DashboardHome = () => {
     if (userInfo.youtubeChannelId) getYoutubeVideos();
   }, [userInfo.youtubeChannelId]);
 
-  // useEffect(() => {
-  //   handleGetProfile();
-  // }, [profileTrigger]);
-
   const handleSubmit = async () => {
     setIsLoading(true);
     if (payload.languages.length < 1) {
@@ -63,14 +56,26 @@ const DashboardHome = () => {
         videoData: selectedVideos,
         services: payload.services,
         languages: payload.languages,
+        otherLanguages: payload.otherLanguages,
+        additionalNote: payload.additionalNote,
+        allowUsPostVideo: payload.allowUsPostVideo,
+        status: 'pending',
+      });
+      setPayload({
+        services: [],
+        languages: [],
         otherLanguages: '',
         additionalNote: '',
         allowUsPostVideo: false,
-        status: 'pending',
+        saveSettingsForFuture: false,
       });
+      setSelectedVideos([]);
       setIsLoading(false);
       setIsSelected(false);
-      // setProfileTrigger(Math.random());
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
       toast('Succesfully submitted tasks');
     } catch (error) {
       console.log(error);
@@ -88,6 +93,7 @@ const DashboardHome = () => {
             setPayload={setPayload}
             payload={payload}
             handleSubmit={handleSubmit}
+            isLoading={isLoading}
           />
         ) : (
           <SelectVideos
