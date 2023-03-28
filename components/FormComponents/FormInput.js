@@ -32,10 +32,11 @@ const FormInput = ({
   textBlack,
   extraClasses = 'mb-s5',
   type,
+  labelClasses,
 }) => {
   return (
     <div className={`relative w-full text-xl text-white ${extraClasses}`}>
-      <label htmlFor={_id} className={`block w-full`}>
+      <label htmlFor={_id} className={`block w-full ${labelClasses}`}>
         {label}
       </label>
       <div>

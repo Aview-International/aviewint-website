@@ -6,6 +6,7 @@ import Logo from '../../../public/img/aview/logo.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
 
 const SingleMessage = ({ timeStamp, message }) => (
   <div className="my-s3 flex items-start text-sm">
@@ -29,7 +30,7 @@ const SingleMessage = ({ timeStamp, message }) => (
 );
 
 const Messages = () => {
-  const uid = localStorage.getItem('uid');
+  const uid = Cookies.get('uid');
 
   const [message, setMessage] = useState('');
   const [chats, setChats] = useState([]);

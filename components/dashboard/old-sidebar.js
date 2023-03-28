@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -85,8 +86,8 @@ const Navlink = () => {
 
 const Signout = () => {
   const handleLogout = () => {
-    localStorage.removeItem('uid');
-    localStorage.removeItem('token');
+    Cookies.remove('uid');
+    Cookies.remove('token');
     window.location.href = '/';
   };
   return (

@@ -32,7 +32,7 @@ const YoutubeVideoFrame = ({
         />
         {selected && (
           <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.6)]">
-            <Image src={CheckMark} alt={'Youtube'} width={24} height={24} />
+            <Image src={CheckMark} alt="" width={24} height={24} />
           </div>
         )}
       </div>

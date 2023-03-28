@@ -1248,6 +1248,7 @@ export const DASHBOARD_NAVLINKS = [
 ];
 
 export const DAHSHBOARD_SERVICES = [
+  'Transcription',
   'Subtitle',
   'Dubs',
   'Shorts',

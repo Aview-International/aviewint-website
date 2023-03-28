@@ -6,7 +6,6 @@ import CheckBox from '../FormComponents/CheckBox';
 import FormInput from '../FormComponents/FormInput';
 import Textarea from '../FormComponents/Textarea';
 import OnboardingButton from '../Onboarding/button';
-import TextInput from '../../components/UI/TextInput';
 
 const TranslateOptions = ({
   handleServices,
@@ -42,6 +41,7 @@ const TranslateOptions = ({
           <FormInput
             label="Please specify language(s), separated with comma"
             value={payload.otherLanguages}
+            labelClasses="mb-3"
             placeholder="Other language(s)"
             onChange={(e) =>
               setPayload({
@@ -52,24 +52,7 @@ const TranslateOptions = ({
           />
         </div>
       )}
-      <p className="mt-s4 mb-3 text-xl">
-        If selected Other, please specify which language(s) :
-      </p>
-      <div className="w-full">
-        <TextInput placeholder="Other language(s)" bgColor="black" />
-        {/* <input
-          type="text"
-          value={payload.inputLanguages}
-          onChange={(e) => {
-            setPayload({
-              ...payload,
-              inputLanguages: e.target.value,
-            });
-          }}
-          placeholder="Other language(s)"
-          className="h-full w-full rounded-[5px] border-2 px-s2 py-2 text-white focus:outline-none"
-        /> */}
-      </div>
+
       <p className="mt-s4 text-xl">What services do you need?</p>
       <div className="mt-s1 mb-s4 flex flex-wrap">
         {DAHSHBOARD_SERVICES.map((service, index) => (
@@ -101,7 +84,7 @@ const TranslateOptions = ({
         onChange={(e) =>
           setPayload({ ...payload, saveSettingsForFuture: e.target.checked })
         }
-        label="Save these settings for future translations"
+        label="Save these settings for future tasks"
       />
       <br />
       <CheckBox

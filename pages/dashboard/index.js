@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 import DashboardLayout from '../../components/dashboard/DashboardLayout';
-import OnboardingButton from '../../components/Onboarding/button';
-import Insights from '../../components/sections/dashboard-home/Insights';
-import Videos from '../../components/sections/dashboard-home/Videos';
 import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { UserContext } from '../../store/user-profile';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import SelectVideos from '../../components/dashboard/SelectVideos';
+import { createANewJob } from '../api/firebase';
+import useProfile from '../../hooks/useProfile';
 
 const DashboardHome = () => {
+  // const { handleGetProfile } = useProfile();
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
   const { userInfo } = useContext(UserContext);
+  // const [profileTrigger, setProfileTrigger] = useState(0);
   const [payload, setPayload] = useState({
     services: [],
     languages: [],
@@ -38,8 +40,42 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    getYoutubeVideos();
-  }, []);
+    if (userInfo.youtubeChannelId) getYoutubeVideos();
+  }, [userInfo.youtubeChannelId]);
+
+  // useEffect(() => {
+  //   handleGetProfile();
+  // }, [profileTrigger]);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    if (payload.languages.length < 1) {
+      toast.error('Please select a language');
+      return;
+    }
+    if (payload.services.length < 1) {
+      toast.error('Please select a service');
+      return;
+    }
+    try {
+      await createANewJob(userInfo._id, {
+        creatorId: userInfo._id,
+        videoData: selectedVideos,
+        services: payload.services,
+        languages: payload.languages,
+        otherLanguages: '',
+        additionalNote: '',
+        allowUsPostVideo: false,
+        status: 'pending',
+      });
+      setIsLoading(false);
+      setIsSelected(false);
+      // setProfileTrigger(Math.random());
+      toast('Succesfully submitted tasks');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -51,7 +87,7 @@ const DashboardHome = () => {
             selectedVideos={selectedVideos}
             setPayload={setPayload}
             payload={payload}
-            userInfo={userInfo}
+            handleSubmit={handleSubmit}
           />
         ) : (
           <SelectVideos
@@ -64,38 +100,6 @@ const DashboardHome = () => {
         )}
       </div>
     </>
-  );
-};
-
-const SelectVideos = ({
-  setIsSelected,
-  isLoading,
-  setSelectedVideos,
-  selectedVideos,
-  videos,
-}) => {
-  const handleTranslate = () => {
-    if (selectedVideos.length < 1) {
-      toast.error('Please select a video');
-    } else {
-      setIsSelected(true);
-    }
-  };
-
-  return (
-    <div>
-      <Insights />
-      <Videos
-        videos={videos}
-        isLoading={isLoading}
-        selectedVideos={selectedVideos}
-        setSelectedVideos={setSelectedVideos}
-      />
-      <br />
-      <div className="w-full md:w-[155px]">
-        <OnboardingButton onClick={handleTranslate}>Translate</OnboardingButton>
-      </div>
-    </div>
   );
 };
 

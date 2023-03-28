@@ -33,6 +33,7 @@ import FormInput from '../FormComponents/FormInput';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
+import Cookies from 'js-cookie';
 
 // Onboarding stage 1
 export const OnboardingStep1 = () => {
@@ -51,8 +52,7 @@ export const OnboardingStep1 = () => {
     if (!data.role) return;
     setData({ ...data, isLoading: true });
     try {
-      await updateAviewUsage(data.role, localStorage.getItem('uid'));
-      localStorage.setItem('role', data.role);
+      await updateAviewUsage(data.role, Cookies.get('uid'));
       router.push('/onboarding?stage=2');
     } catch (error) {
       console.error(error);
@@ -147,7 +147,7 @@ export const OnboardingStep2 = () => {
       setSideEffects({ ...sideEffects, hasSubmitted: true });
       if (usage.length < 1) return;
       setSideEffects({ ...sideEffects, isLoading: true });
-      await updateRequiredServices(usage, localStorage.getItem('uid'));
+      await updateRequiredServices(usage, Cookies.get('uid'));
       router.push('/onboarding?stage=3');
     } catch (error) {
       console.log(error);
@@ -245,7 +245,7 @@ export const OnboardingStep3 = () => {
     }
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
-      await updateUserBio(payload, localStorage.getItem('uid'));
+      await updateUserBio(payload, Cookies.get('uid'));
       router.push('/onboarding?stage=4');
     } catch (error) {
       console.log(error);
@@ -373,7 +373,7 @@ export const OnboardingStep4 = () => {
 
       // save all neccessary info to the database
       await updateUserInstagram(
-        localStorage.getItem('uid'),
+        Cookies.get('uid'),
         getUserProfile.data.username,
         getUserProfile.data.id,
         getUserProfile.data.account_type,
@@ -400,7 +400,7 @@ export const OnboardingStep4 = () => {
 
   useEffect(() => {
     async function getProfile() {
-      const data = await getUserProfile(localStorage.getItem('uid'));
+      const data = await getUserProfile(Cookies.get('uid'));
       setUserData(data);
     }
     getProfile();
@@ -418,7 +418,7 @@ export const OnboardingStep4 = () => {
       await addYoutubeChannelId(
         response.data.items[0].snippet.title,
         response.data.items[0].id,
-        localStorage.getItem('uid')
+        Cookies.get('uid')
       );
       setIsLoading({ ...isLoading, youtube: false });
     } catch (error) {

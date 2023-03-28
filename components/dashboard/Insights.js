@@ -1,15 +1,18 @@
 import Image from 'next/image';
-import Copy from '../../../public/img/icons/copy-to-clipboard.svg';
-import Border from '../../UI/Border';
+import { useContext } from 'react';
+import Copy from '../../public/img/icons/copy-to-clipboard.svg';
+import { UserContext } from '../../store/user-profile';
+import Border from '../UI/Border';
 
 const Insights = () => {
+  const { userInfo } = useContext(UserContext);
   const summary = [
     {
-      value: '#',
+      value: userInfo.pendingVideos ?? 0,
       description: 'Videos Pending',
     },
     {
-      value: '#',
+      value: userInfo.completedVideos ?? 0,
       description: 'Videos Completed',
     },
     {

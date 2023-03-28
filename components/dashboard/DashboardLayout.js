@@ -1,19 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
-import { getUserProfile } from '../../pages/api/firebase';
 import { UserContext } from '../../store/user-profile';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
-import { ProtectedRoutes } from '../../utils/autoLogout';
+import useProfile from '../../hooks/useProfile';
 
+// this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { setUserInfo } = useContext(UserContext);
+  const { handleGetProfile } = useProfile();
   const [isLoading, setIsLoading] = useState(true);
   const getProfile = async () => {
     try {
-      const _id = localStorage.getItem('uid');
-      const res = await getUserProfile(_id);
-      setUserInfo(res);
+      await handleGetProfile();
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -30,6 +28,7 @@ export const DashboardContainer = ({ children }) => {
 const DashboardStructure = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const { userInfo } = useContext(UserContext);
+
   return (
     <>
       <DashboardContainer>
@@ -56,8 +55,6 @@ const DashboardStructure = ({ children }) => {
 };
 
 const DashboardLayout = (page) => (
-  <ProtectedRoutes>
-    <DashboardStructure>{page}</DashboardStructure>
-  </ProtectedRoutes>
+  <DashboardStructure>{page}</DashboardStructure>
 );
 export default DashboardLayout;

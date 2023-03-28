@@ -1,5 +1,5 @@
-import CircleLoader from '../../../public/loaders/CircleLoader';
-import YoutubeVideoFrame from '../../dashboard/YoutubeVideoFrame';
+import CircleLoader from '../../public/loaders/CircleLoader';
+import YoutubeVideoFrame from './YoutubeVideoFrame';
 
 const Videos = ({ setSelectedVideos, selectedVideos, videos, isLoading }) => {
   const BUTTONS = [

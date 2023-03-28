@@ -4,9 +4,6 @@ import Arrow from '../../public/img/icons/arrow-back.svg';
 import { useRouter } from 'next/router';
 import TranslateOptions from './TranslateOptions';
 import YoutubeVideoFrame from './YoutubeVideoFrame';
-import axios from 'axios';
-import { saveVideo } from '../../pages/api/firebase';
-import { toast } from 'react-toastify';
 import { useState } from 'react';
 
 const SubmitVideos = ({
@@ -14,7 +11,7 @@ const SubmitVideos = ({
   selectedVideos,
   setPayload,
   payload,
-  userInfo,
+  handleSubmit
 }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -34,56 +31,6 @@ const SubmitVideos = ({
     setPayload({ ...payload, services: newServices });
   };
 
-  const handleSubmit = async () => {
-    setIsLoading(true);
-    let result = [];
-    try {
-      for (let i = 0; i < selectedVideos.length; i++) {
-        let markup = `## Video - ${i + 1}
- **Title** = ${selectedVideos[i].title} 
- **Link** = https://www.youtube.com/watch?v=${selectedVideos[i].videoId}
- 
----
-`;
-        result.push(markup);
-      }
-      const description = `${result.join(
-        ''
-      )} **Services Required** : ${payload.services.join(', ')} 
-**Language(s) to be translated** : ${payload.languages.join(', ')}, ${
-        payload.otherLanguages
-      }
-${
-  payload.additionalNote
-    ? '**Additional Note** : ' + payload.additionalNote
-    : ''
-}
-**Can we post this video** : ${payload.allowUsPostVideo ? 'Yes' : 'No'}`;
-      console.log(description);
-
-      saveVideo(userInfo.youtubeChannelId, { videos: payload.languages });
-      const res = await axios.post('/api/submit-new-requests?create=board', {
-        boardName: userInfo.youtubeChannelName,
-      });
-      const createList = await axios.post(
-        '/api/submit-new-requests?create=list',
-        {
-          boardName: userInfo.youtubeChannelName,
-          idBoard: res.data.id,
-        }
-      );
-      await axios.post('/api/submit-new-requests?create=card', {
-        cardName: encodeURI('New Video Request'),
-        idList: createList.data.id,
-        desc: encodeURIComponent(description),
-      });
-      setIsLoading(false);
-      toast('Succesfully submitted tasks');
-      // window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="flex p-s4 text-white">
       <div className="w-1/2">

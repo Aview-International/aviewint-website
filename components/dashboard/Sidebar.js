@@ -6,6 +6,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
 import sidebarArrow from '../../public/img/icons/sidebar-arrow.svg';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
@@ -28,7 +29,7 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
           </Link>
         )}
         <button
-          className={!isOpen && 'rotate-180'}
+          className={!isOpen ? 'rotate-180' : ''}
           onClick={() => setIsOpen(!isOpen)}
         >
           <Image src={sidebarArrow} alt="" />
@@ -56,7 +57,7 @@ const Profile = ({ userInfo, isOpen }) => {
       {isOpen && (
         <>
           <h3
-            className={`mt-s2 mb-s1 text-lg text-center ${
+            className={`mt-s2 mb-s1 text-center text-lg ${
               !isOpen && 'invisible opacity-0'
             }`}
           >
@@ -131,8 +132,8 @@ const Navlink = ({ isOpen }) => {
 
 const Signout = ({ isOpen }) => {
   const handleLogout = () => {
-    localStorage.removeItem('uid');
-    localStorage.removeItem('token');
+    Cookies.remove('uid');
+    Cookies.remove('token');
     window.location.href = '/';
   };
 
