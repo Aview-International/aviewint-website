@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 
 const Referral = () => {
   return (
-    <div className="mx-auto h-[822px] w-[1112px] text-white">
+    <div className="mx-auto w-[1200px] text-white">
       <Statistics />
       <HowItWorks />
       <div className="flex gap-6">

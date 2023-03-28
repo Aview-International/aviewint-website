@@ -62,7 +62,7 @@ const Messages = () => {
   return (
     <>
       <PageTitle title="Messages" />
-      <div className="mx-auto flex h-full max-w-[1200px] rounded-2xl bg-white-transparent text-white">
+      <div className="mx-auto flex h-full max-w-[1200px] rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] text-white">
         <div className="w-full p-s2">
           <div className="relative flex h-full flex-col justify-between">
             <div className="flex items-center gap-2">

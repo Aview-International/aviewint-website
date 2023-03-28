@@ -127,11 +127,13 @@ export const OnboardingStep1 = () => {
 // Onboarding stage 2
 export const OnboardingStep2 = () => {
   const router = useRouter();
+
   const [usage, setUsage] = useState([]);
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
   });
+
   const handleSelect = (option) => {
     const newArray = [...usage];
     if (newArray.includes(option)) {
@@ -142,6 +144,7 @@ export const OnboardingStep2 = () => {
       setUsage(newArray);
     }
   };
+
   const handleSubmit = async () => {
     try {
       setSideEffects({ ...sideEffects, hasSubmitted: true });
@@ -153,6 +156,7 @@ export const OnboardingStep2 = () => {
       console.log(error);
     }
   };
+
   const Option = ({ title, content }) => (
     <Shadow>
       <div
@@ -161,14 +165,15 @@ export const OnboardingStep2 = () => {
         } h-full cursor-pointer rounded-2xl bg-black p-s3 md:p-s4`}
         onClick={() => handleSelect(title)}
       >
-        <p className="text-xl md:text-2xl">{title}</p>
+        <p className="text-xl font-bold md:text-2xl">{title}</p>
         <p className="mt-s2 text-lg md:text-xl">{content}</p>
       </div>
     </Shadow>
   );
+
   return (
-    <div className="m-auto w-[min(750px,90%)]">
-      <h2 className="text-5xl md:text-center md:text-6xl">
+    <div className="m-auto w-[min(800px,90%)]">
+      <h2 className="text-5xl font-bold md:text-center md:text-6xl">
         How do you plan to use Aview?
       </h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
@@ -266,7 +271,7 @@ export const OnboardingStep3 = () => {
 
   return (
     <div className="m-auto w-[90%]">
-      <h2 className="text-4xl md:text-center md:text-6xl">
+      <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Tell us about yourself
       </h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
@@ -436,7 +441,7 @@ export const OnboardingStep4 = () => {
 
   return (
     <div className="m-auto w-[90%]">
-      <h2 className="text-center text-3xl md:text-6xl">
+      <h2 className="text-center text-3xl font-bold md:text-6xl">
         Connect your accounts
       </h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(610px,100%)] text-center text-lg md:text-xl">
@@ -489,7 +494,7 @@ export const OnboardingSuccess = () => {
   const router = useRouter();
   return (
     <div className="m-auto w-[90%]">
-      <h2 className="text-center text-3xl md:text-6xl">Success!</h2>
+      <h2 className="text-center text-3xl font-bold md:text-6xl">Success!</h2>
       <p className="mx-auto mt-s2 mb-s4 w-[min(430px,100%)] text-center text-lg md:text-xl">
         {/* You&apos;ve completed the onboarding process and joined our waitlist.
         You&apos;ll be contacted soon, thank you */}

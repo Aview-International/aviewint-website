@@ -81,8 +81,8 @@ const Navlink = ({ isOpen }) => {
         {DASHBOARD_NAVLINKS.map((link, index) => (
           <Link href={link.route} key={`sidebar-link-${index}`}>
             <a
-              className={`hover:gradient-dark group relative mb-s2 flex items-center py-s1 px-s3 ${
-                route === link.route && 'gradient-dark'
+              className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s3 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
+                route === link.route && 'bg-[#fcfcfc] bg-opacity-10'
               }`}
             >
               <span
@@ -117,7 +117,7 @@ const Navlink = ({ isOpen }) => {
                     isOpen
                       ? ''
                       : 'hidden rounded-md bg-white-transparent p-s1 group-hover:inline-block'
-                  } ${route === link.route ? 'gradient-1 gradient-text' : ''}`}
+                  } ${route === link.route ? 'text-[#fcfcfc]' : ''}`}
                 >
                   {link.text}
                 </span>
