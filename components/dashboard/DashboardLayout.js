@@ -4,6 +4,7 @@ import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
 import useProfile from '../../hooks/useProfile';
+import Script from 'next/script';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
@@ -26,6 +27,10 @@ const DashboardStructure = ({ children }) => {
 
   return (
     <>
+      <Script
+        src="https://upload-widget.cloudinary.com/global/all.js"
+        type="text/javascript"
+      />
       <DashboardContainer>
         <main className="flex min-h-screen w-full bg-black">
           <DashboardSidebar

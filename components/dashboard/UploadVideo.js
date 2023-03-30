@@ -2,48 +2,30 @@ import Image from 'next/image';
 import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Link from 'next/link';
+import OnboardingButton from '../Onboarding/button';
 
-const UploadVideo = ({ data, setData, isValid, hasSubmitted }) => {
+const UploadVideo = ({ myWidget }) => {
+  const handleClick = () => {
+    myWidget.open();
+  };
+
   return (
     <div className="w-11/12">
       <DottedBorder classes="relative block md:inline-block w-full">
         <div className="flex flex-col items-center py-s6">
           <div className="flex h-[160px] w-[160px] place-content-center rounded-full bg-gray-1">
-            <Image
-              src={UploadIcon}
-              alt="Upload"
-              width={80}
-              height={80}
-              // layout="responsive"
-            />
+            <Image src={UploadIcon} alt="Upload" width={80} height={80} />
           </div>
-          <p className="py-s2 text-xl text-white">
-            {
-              //   data.resume === null ?
-              'Drag and drop videos files to upload'
-              //   : data.resume.name
-            }
-          </p>
-          <label className="cursor-pointer">
-            <input
-              type="file"
-              name="resume"
-              className="hidden"
-              accept="video/mp4,video/x-m4v,video/*"
-              onChange={setData}
-            />
-            <span className="gradient-1 rounded-full py-s1 px-s4 text-black">
-              Select Files
-            </span>
-          </label>
-          <span className="absolute right-[10px] top-[15px]">
-            {isValid && (
-              <Image src={Correct} alt="Correct" width={25} height={25} />
-            )}
-            {hasSubmitted && !isValid && (
-              <Image src={Incorrect} alt="Incorrect" width={25} height={25} />
-            )}
-          </span>
+
+          <div className="mt-s5 w-[220px]">
+            <OnboardingButton
+              onClick={handleClick}
+              theme="light"
+              disabled={!myWidget ? true : false}
+            >
+              Click to upload
+            </OnboardingButton>
+          </div>
         </div>
       </DottedBorder>
       <p className="py-s2 text-lg">
