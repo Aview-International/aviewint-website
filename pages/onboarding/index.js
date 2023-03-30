@@ -11,7 +11,6 @@ import {
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ArrowBack from '../../public/img/icons/arrow-back.svg';
 import { PageTransition } from '../../components/animations';
-import { ProtectedRoutes } from '../../utils/autoLogout';
 import PageTitle from '../../components/SEO/PageTitle';
 import Link from 'next/link';
 
@@ -78,40 +77,30 @@ const Stages = () => {
       {
         query.stage === '1' && router.push('/onboarding?stage=2')
         // <>
-        //   <ProtectedRoutes>
         //     <PageTransition>
         //       <OnboardingStep1 />
         //     </PageTransition>
-        //   </ProtectedRoutes>
         // </>
       }
       {query.stage === '2' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep2 />
-          </PageTransition>
-        </ProtectedRoutes>
+        <PageTransition>
+          <OnboardingStep2 />
+        </PageTransition>
       )}
       {query.stage === '3' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep3 />
-          </PageTransition>
-        </ProtectedRoutes>
+        <PageTransition>
+          <OnboardingStep3 />
+        </PageTransition>
       )}
       {query.stage === '4' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingStep4 />
-          </PageTransition>
-        </ProtectedRoutes>
+        <PageTransition>
+          <OnboardingStep4 />
+        </PageTransition>
       )}
       {query.stage === '5' && (
-        <ProtectedRoutes>
-          <PageTransition>
-            <OnboardingSuccess />
-          </PageTransition>
-        </ProtectedRoutes>
+        <PageTransition>
+          <OnboardingSuccess />
+        </PageTransition>
       )}
     </>
   );
