@@ -15,15 +15,15 @@ const Videos = ({ setSelectedVideos, selectedVideos, videos, isLoading }) => {
     {
       title: 'YouTube',
     },
-    {
-      title: 'TikTok',
-    },
-    {
-      title: 'Instagram',
-    },
-    {
-      title: 'Facebook',
-    },
+    // {
+    //   title: 'TikTok',
+    // },
+    // {
+    //   title: 'Instagram',
+    // },
+    // {
+    //   title: 'Facebook',
+    // },
   ];
 
   const handleVideos = (value) => {

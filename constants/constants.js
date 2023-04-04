@@ -1210,21 +1210,21 @@ export const DASHBOARD_NAVLINKS = [
     image: upload,
     route: '/dashboard/upload',
   },
-  {
-    text: 'Analytics',
-    image: analytics,
-    route: '/dashboard/analytics',
-  },
+  // {
+  //   text: 'Analytics',
+  //   image: analytics,
+  //   route: '/dashboard/analytics',
+  // },
   {
     text: 'Messages',
     image: messages,
     route: '/dashboard/messages',
   },
-  {
-    text: 'Content',
-    image: content,
-    route: '/dashboard/content',
-  },
+  // {
+  //   text: 'Content',
+  //   image: content,
+  //   route: '/dashboard/content',
+  // },
   {
     text: 'Billing',
     image: billing,
