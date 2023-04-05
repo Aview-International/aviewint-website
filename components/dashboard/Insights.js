@@ -16,12 +16,12 @@ const Insights = () => {
       description: 'Videos Completed',
     },
     {
-      value: '#',
-      description: 'Recommended Videos',
+      value: 'N/A',
+      description: 'Coming Soon',
     },
     {
-      value: '#',
-      description: 'International Growth',
+      value: 'N/A',
+      description: 'Coming Soon',
     },
   ];
 
@@ -39,27 +39,12 @@ const Insights = () => {
 
 const GoalComponent = () => {
   return (
-    <div className="gradient-dark mt-s2 ml-0 flex w-full items-center justify-between rounded-2xl p-s2 md:mt-0 md:ml-s3 md:w-[360px]">
-      <div className="flex flex-col items-start justify-between p-0">
-        <h4 className="text-xl">Redemption Code</h4>
-        <div className="mt-5">
-          <p className="text-2xl font-bold">10% off</p>
-          <small className="text-sm">Your next transaction</small>
-        </div>
-        <div className="mt-14 flex items-center gap-1 text-lg">
-          <p>Your Code: Aview123</p>
-          <Image src={Copy} alt="Copy to clipboard" width={20} height={20} />
-        </div>
-      </div>
-      <div className="pt-10">
-        <Border borderRadius="full">
-          <div className="h-[120px] w-[120px] rounded-full bg-black ">
-            <div className="gradient-dark flex h-full w-full items-center justify-center rounded-full text-lg">
-              Goal
-            </div>
-          </div>
-        </Border>
-      </div>
+    <div className="gradient-dark mt-s2 ml-0 w-full items-center justify-between rounded-2xl p-s2 md:mt-0 md:ml-s3 md:w-[360px]">
+      <h4 className="mb-s2 text-2xl">Referrals are Coming Soon</h4>
+      <p className="text-lg">
+        By sharing your referral code, you can get your next translations at a
+        discount! To share the love, check back soon.
+      </p>
     </div>
   );
 };
