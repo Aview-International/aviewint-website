@@ -25,10 +25,6 @@ const History = () => {
     if (uid) getPendingJobs();
   }, [reloadTrigger]);
 
-  useEffect(() => {
-    console.log(jobs);
-  }, [jobs]);
-
   return (
     <>
       <PageTitle title="History" />

@@ -405,8 +405,7 @@ export const OnboardingStep4 = () => {
 
   useEffect(() => {
     async function getProfile() {
-      const data = await getUserProfile(Cookies.get('uid'));
-      setUserData(data);
+      await getUserProfile(Cookies.get('uid'), (resp) => setUserData(resp));
     }
     getProfile();
   }, []);
@@ -450,26 +449,26 @@ export const OnboardingStep4 = () => {
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
           classes={`${
-            userData.ig_access_token && 'instagram'
+            userData?.ig_access_token && 'instagram'
           } block w-full rounded-full border-2 p-s1.5 text-center`}
           clickEvent={linkInstagramAccount}
           account="Instagram"
         />
         <OnBoardingAccounts
           classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
-            userData.facebook && 'bg-[#0054ff]'
+            userData?.facebook && 'bg-[#0054ff]'
           }`}
           account="Facebook"
         />
         <OnBoardingAccounts
           classes={`block w-full rounded-full border-2 p-s1.5 text-center ${
-            userData.tiktok && 'bg-[#000000]'
+            userData?.tiktok && 'bg-[#000000]'
           }`}
           account="TikTok"
         />
         <OnBoardingAccounts
           classes={`w-full rounded-full border-2 p-s1.5 text-center ${
-            userData.youtubeChannelId && 'bg-[#ff0000]'
+            userData?.youtubeChannelId && 'bg-[#ff0000]'
           }`}
           clickEvent={linkYoutubeAccount}
           account="YouTube"
