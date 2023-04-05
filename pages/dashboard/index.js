@@ -60,6 +60,7 @@ const DashboardHome = () => {
         additionalNote: payload.additionalNote,
         allowUsPostVideo: payload.allowUsPostVideo,
         status: 'pending',
+        createdAt: new Date().toISOString(),
       });
       setPayload({
         services: [],

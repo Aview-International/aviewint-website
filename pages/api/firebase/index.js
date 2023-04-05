@@ -279,7 +279,7 @@ export const getAllPayments = async (_id) => {
 export const createANewJob = async (_id, jobDetails) => {
   let jobId = uuidv4();
 
-  await set(ref(database, `user-jobs/${_id}/${jobId}`), jobDetails);
+  await set(ref(database, `user-jobs/pending/${_id}/${jobId}`), jobDetails);
   await set(ref(database, `admin-jobs/pending/${jobId}`), jobDetails);
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
@@ -298,4 +298,14 @@ export const createANewJob = async (_id, jobDetails) => {
       await update(ref(database), updates);
     }
   });
+};
+
+export const getAllPendingJobs = async (uid) => {
+  const res = await get(ref(database, `user-jobs/pending/${uid}`)).then(
+    (snapshot) => {
+      if (snapshot.exists()) return snapshot.val();
+      else return null;
+    }
+  );
+  return res;
 };

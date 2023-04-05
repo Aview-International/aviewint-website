@@ -26,7 +26,7 @@ const YouCreateWeTranslate = () => {
 
     try {
       const res = await axios.post('/api/invites', {
-        to: email,
+        to: email.toLocaleLowerCase(),
         subject: 'Welcome to Aview International',
         html: new_creator_welcome_mail,
       });
