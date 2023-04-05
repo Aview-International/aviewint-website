@@ -305,3 +305,13 @@ export const getAllPendingJobs = async (uid) => {
   );
   return res;
 };
+
+export const getAllCompletedJobs = async (uid) => {
+  const res = await get(ref(database, `user-jobs/completed/${uid}`)).then(
+    (snapshot) => {
+      if (snapshot.exists()) return snapshot.val();
+      else return null;
+    }
+  );
+  return res;
+};
