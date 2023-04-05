@@ -59,9 +59,6 @@ const Billing = () => {
     if (userInfo._id) getAdminAccount(userInfo._id);
   }, [userInfo._id, reloadTrigger]);
 
-  useEffect(() => {
-    console.log(payments);
-  }, [payments]);
   return (
     <>
       <div className="mx-auto mt-5">
@@ -79,7 +76,6 @@ Billing.getLayout = DashboardLayout;
 export default Billing;
 
 const BillingDetails = ({ userInfo }) => {
-  console.log(userInfo);
   return (
     <div className="text-white">
       <h2 className="mb-4 text-4xl font-bold">Billing Details</h2>

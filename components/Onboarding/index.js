@@ -255,7 +255,6 @@ export const OnboardingStep3 = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(sideEffects.hasSubmitted);
   };
 
   const handleMultipleSelect = (option) => {

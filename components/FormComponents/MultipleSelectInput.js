@@ -7,13 +7,18 @@ import HorizontalLine from '../UI/HorizontalLine';
 import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 
-const MultipleSelectInput = ({ answer, text, options,hasSubmitted, onChange }) => {
+const MultipleSelectInput = ({
+  answer,
+  text,
+  options,
+  hasSubmitted,
+  onChange,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedAnswer = useMemo(() => {
     return answer;
   });
 
-  console.log(typeof(answer))
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
       <p className="mb-s1 text-xl text-white">{text}</p>
@@ -24,16 +29,15 @@ const MultipleSelectInput = ({ answer, text, options,hasSubmitted, onChange }) =
             onClick={() => setIsOpen(!isOpen)}
           >
             <p>
-              {/* {selectedAnswer?.length > 0
-                ? `${selectedAnswer[0]} ${
-                    selectedAnswer.length > 1 ? selectedAnswer[1] : ''
-                  }${selectedAnswer.length > 2 ? ', ...' : ''}`
-                : 'Select Languages'} */}
-               {
-               selectedAnswer.length!=0 ? (selectedAnswer?.length === 1 ? `${selectedAnswer[0]}` : `${selectedAnswer[0]}, ${
-                selectedAnswer.length > 1 ? selectedAnswer[1] : ''
-              },${selectedAnswer.length > 2 ? `${selectedAnswer[2]},`:''}${selectedAnswer.length > 3 ? '...' : ''}`):'Select Languages'
-               } 
+              {selectedAnswer.length != 0
+                ? selectedAnswer?.length === 1
+                  ? `${selectedAnswer[0]}`
+                  : `${selectedAnswer[0]}${
+                      selectedAnswer.length > 1 ? ', ' + selectedAnswer[1] : ''
+                    }${
+                      selectedAnswer.length > 2 ? `, ${selectedAnswer[2]}` : ''
+                    }${selectedAnswer.length > 3 ? ',...' : ''}`
+                : 'Select Languages'}
             </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
@@ -41,7 +45,7 @@ const MultipleSelectInput = ({ answer, text, options,hasSubmitted, onChange }) =
           </div>
         </Border>
         <span className="absolute right-[35px] bottom-[7px]">
-          {(answer.length>0&&!isOpen) && (
+          {answer.length > 0 && !isOpen && (
             <Image src={Correct} alt="Correct" width={20} height={20} />
           )}
           {hasSubmitted && !answer && (

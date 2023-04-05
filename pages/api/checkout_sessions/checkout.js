@@ -44,7 +44,6 @@ export default async function handler(req, res) {
       charge,
       amount: charge,
     });
-    console.log(res);
     res.status(201).json(res);
   } catch (error) {
     console.log(error);

@@ -11,7 +11,6 @@ import ProgressBar from '../../components/UI/ProgressBar';
 
 const Blog = () => {
   const reversedBlogs = [].concat(BLOGS).reverse();
-  console.log(reversedBlogs);
 
   return (
     <>

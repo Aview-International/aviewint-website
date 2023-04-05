@@ -136,8 +136,6 @@ export const updateAviewUsage = async (role, _id) => {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-    } else {
-      console.log('No data available');
     }
   });
 };
@@ -154,8 +152,6 @@ export const updateRequiredServices = async (services, _id) => {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-    } else {
-      console.log('No data available');
     }
   });
 };
