@@ -24,7 +24,7 @@ const Billing = () => {
 
   const getAdminAccount = async (id) => {
     const res = await getAllPayments(id);
-    setPayments(Object.values(res));
+    setPayments(res ? Object.values(res) : []);
   };
 
   const router = useRouter();

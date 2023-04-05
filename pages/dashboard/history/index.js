@@ -45,7 +45,10 @@ const Container = ({ jobs }) => {
       </div>
       <hr className="my-s2 border-[rgba(255,255,255,0.6)]" />
       {jobs.map((job, i) => (
-        <div className="grid grid-cols-[30%_20%_20%_30%]" key={i}>
+        <div
+          className="grid grid-cols-[30%_20%_20%_30%] border-b border-[rgba(252,252,252,0.2)] py-s2"
+          key={i}
+        >
           <div>
             {job.videoData.map(({ title }, idx) => (
               <p key={idx} className="mb-s1">
