@@ -159,7 +159,7 @@ const Invite = () => {
         />
         <OnboardingButton
           disabled={!emailValidator(email)}
-          extraClasses="w-[140px]"
+          extraClasses="w-[100px] text-center"
           onClick={handleClick}
         >
           Invite

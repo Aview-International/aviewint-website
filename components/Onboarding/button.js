@@ -22,6 +22,7 @@ const OnboardingButton = ({
     <Shadow classes="w-full">
       <Border borderRadius="full" classes="w-full">
         <button
+          id='opener'
           className={`transition-300 w-full cursor-pointer rounded-full pt-s1.5 pb-s1 ${extraClasses} ${
             theme === 'light' && 'text-black'
           } ${theme === 'dark' && 'bg-black text-white'}`}

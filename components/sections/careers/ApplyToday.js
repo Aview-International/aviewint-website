@@ -26,6 +26,7 @@ const ApplyToday = () => {
     'Voice acting/Dubbing': '',
     position: '',
     resume: null,
+    isEmpty : false
   });
 
   const handleSubmit = (e) => {
@@ -40,8 +41,10 @@ const ApplyToday = () => {
         !data['Voice acting/Dubbing'] ||
         !data.position ||
         !data.resume
-      )
-        return;
+      ){
+        setData({...data,isEmpty : true})
+        return 
+      }
 
       submitFile('translator-applications', {
         name: data.name,
@@ -105,6 +108,7 @@ const ApplyToday = () => {
             text="What languages can you translate?"
             options={LANGUAGES}
             answer={data.languages}
+            hasSubmitted={hasSubmitted}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
           <input
@@ -145,6 +149,11 @@ const ApplyToday = () => {
           hasSubmitted={hasSubmitted}
           isValid={data.resume}
         />
+        {data.isEmpty && (
+          <p className="my-s3 text-center text-xl text-white">
+            Please select from the options above to continue
+          </p>
+        )}
         <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
             Send Message

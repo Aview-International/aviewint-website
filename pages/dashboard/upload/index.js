@@ -18,9 +18,7 @@ const Upload = () => {
   const uploadCallback = (error, result) => {
     if (!error && result && result.event === 'success') {
       console.log('Done! Here is the image info: ', result.info);
-      document
-        .getElementById('uploadedimage')
-        .setAttribute('src', result.info.secure_url);
+     // document.getElementById('uploadedimage')?.setAttribute('src', result.info.secure_url);
     }
   };
   

@@ -27,7 +27,7 @@ export default function WhyUseAview() {
       <div className="mb-s5 grid gap-s3 md:grid-cols-2 xl:grid-cols-3">
         {ITEMS.map((item, i) => (
           <div key={item.title}>
-            <p className="mb-s3 text-5xl font-bold text-white">{i + 1}.</p>
+            {/* <p className="mb-s3 text-5xl font-bold text-white">{i + 1}.</p> */}
             <p className="mb-s2 text-5xl font-bold text-white">{item.title}</p>
             <p className="body">{item.description}</p>
           </div>

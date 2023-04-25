@@ -22,7 +22,7 @@ export default function Legal() {
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
-        title="Legal Translation <span class='gradient-text gradient-2'>Services</span>"
+        title="Legal Translation <span class='gradient-text gradient-2 block mb-s2'>Services</span>"
         description="Get fast and accurate legal translations with AVIEW."
         buttonText="Get Started"
         buttonLink="#generate-aview"

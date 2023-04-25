@@ -14,7 +14,7 @@ export default function HoverShowImageOrText({ items }) {
               <p className="mb-2 text-center text-5xl font-bold text-white">
                 {item.title}
               </p>
-              <p className="body hidden text-left group-hover:block">
+              <p className="body hidden text-left group-hover:block mt-s4  cursor-pointer">
                 {item.description}
               </p>
             </div>

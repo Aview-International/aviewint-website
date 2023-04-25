@@ -34,8 +34,8 @@ export default function Scientific() {
       <ScientificTranslationOverview />
       <BenefitsOfScientificTranslation />
       <WhyUseAview />
-      <ScientificBranchesWeWorkWith />
       <LanguagesServed />
+      <ScientificBranchesWeWorkWith />
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="corporate" />
       <FeaturedBlogs />

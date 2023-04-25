@@ -62,7 +62,7 @@ const OPTIONS = ({ isOpen, options, onChange }) => {
   return (
     <Border
       borderRadius="[5px]"
-      classes={`w-full absolute left-0 top-full transition-300 z-20 ${
+      classes={`w-full absolute left-0 top-full mt-3 transition-300 z-20 ${
         isOpen ? 'visible opacity-1' : 'invisible opacity-0'
       }`}
     >
