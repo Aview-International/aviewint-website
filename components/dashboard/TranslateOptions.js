@@ -4,7 +4,6 @@ import {
 } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
 import FormInput from '../FormComponents/FormInput';
-import Textarea from '../FormComponents/Textarea';
 import OnboardingButton from '../Onboarding/button';
 
 const TranslateOptions = ({
@@ -15,31 +14,30 @@ const TranslateOptions = ({
   setPayload,
   isLoading,
 }) => {
-  return (
+
+return (
     <div>
       <h3 className="mb-s3 text-2xl">Summary</h3>
-      <p className="mb-s1 text-xl">
+      <p className="mb-s2 text-xl">
         What languages do you need translations for?
       </p>
-      <div className="flex flex-wrap">
-        {DAHSHBOARD_TRANSLATED_LANGUAGES.map((language, index) => (
-          <span
-            className={`mr-s1 mb-s1 cursor-pointer rounded-full py-s1 px-s3 text-lg ${
-              payload.languages.includes(language)
-                ? 'bg-white text-black'
-                : 'bg-gray-1'
-            }`}
-            key={`language-${index}`}
-            onClick={() => handleLanguages(language)}
+      <div className="w-full grid grid-cols-2 grid-flow-row place-items-start gap-2">
+        {
+          DAHSHBOARD_TRANSLATED_LANGUAGES.map((language,index)=>(
+          <span 
+          className='font-light text-lg ' 
+          key={`language-${index}`} 
+          onClick={() => handleLanguages(language)}
           >
-            {language}
+            <input type='radio' value={language} className='mr-2 w-4 h-4 cursor-pointer' name="action" id={language}/>
+            <label htmlFor={language} className='cursor-pointer'>{language}</label>
           </span>
-        ))}
+          ))
+        }
       </div>
-      {payload.languages.includes('Others') && (
         <div className="mt-s4">
           <FormInput
-            label="Please specify language(s), separated with comma"
+            label="If selected Other,please specify which language(s):"
             value={payload.otherLanguages}
             labelClasses="mb-3"
             placeholder="Other language(s)"
@@ -51,51 +49,28 @@ const TranslateOptions = ({
             }
           />
         </div>
-      )}
-
       <p className="mt-s4 text-xl">What services do you need?</p>
-      <div className="mt-s1 mb-s4 flex flex-wrap">
+      <div className="mt-s2 mb-s4 w-full grid  gap-2 place-content-start">
         {DAHSHBOARD_SERVICES.map((service, index) => (
-          <span
-            className={`mr-s1 mb-s1 cursor-pointer rounded-full py-s1 px-s3 text-lg ${
-              payload.services.includes(service)
-                ? 'bg-white text-black'
-                : 'bg-gray-1'
-            }`}
-            key={`service-${index}`}
-            onClick={() => handleServices(service)}
+          <span 
+           className='font-light text-lg text-start' 
+           key={`language-${index}`} 
+           onClick={() => handleServices(service)} 
           >
-            {service}
+           <input type='radio' value={service} className='mr-2 w-4 h-4 cursor-pointer' name="act" id={service}/>
+            <label htmlFor={service} className='cursor-pointer'>{service}</label>
           </span>
         ))}
       </div>
-      <Textarea
-        label="Is there anything else you would like us to know?"
-        placeholder="Additional notes"
-        value={payload.additionalNote}
-        onChange={(e) =>
-          setPayload({
-            ...payload,
-            additionalNote: e.target.value,
-          })
-        }
-      />
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettingsForFuture: e.target.checked })
         }
-        label="Save these settings for future tasks"
-      />
-      <br />
-      <CheckBox
-        onChange={(e) =>
-          setPayload({ ...payload, allowUsPostVideo: e.target.checked })
-        }
-        label="Would you like us to post this video as well?"
+        label="Save these settings for future translations"
       />
       <br />
       <div className="w-full md:w-36">
-        <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+        <OnboardingButton isLoading={isLoading} onClick={handleSubmit} disabled={true}>
           Submit
         </OnboardingButton>
       </div>

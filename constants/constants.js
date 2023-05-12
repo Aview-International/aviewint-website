@@ -738,7 +738,6 @@ export const LANGUAGES = [
   'Chinese',
   'Others',
 ];
-
 export const GROWTH_WITH_AVIEW_CREATORS = [
   {
     name: 'Logan Paul',
@@ -1249,8 +1248,7 @@ export const DASHBOARD_NAVLINKS = [
 ];
 
 export const DAHSHBOARD_SERVICES = [
-  'Transcription',
-  'Subtitle',
+  'Subtitles',
   'Dubs',
   'Shorts',
   'Distribution',
@@ -1258,12 +1256,12 @@ export const DAHSHBOARD_SERVICES = [
 
 export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
   'English',
-  'Spanish',
-  'Portuguese',
-  'French',
-  'Hindi',
   'German',
+  'Spanish',
   'Mandarin',
+  'Portuguese',
   'Arabic',
-  'Others',
+  'French',
+  'Other',
+  'Hindi',
 ];
