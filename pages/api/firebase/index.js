@@ -27,19 +27,36 @@ const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
 
 export const YoutubeAuthenticationLink = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
 
-const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+const prodFirebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:
+    process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_MEASUREMENT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_PRODUCTION_FIREBASE_DATABASE_URL,
+};
+
+const testFirebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:
+    process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_MEASUREMENT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_DEVELOPMENT_FIREBASE_DATABASE_URL,
 };
 
 // Initialize the application
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(
+  process.env.NODE_ENV === 'development'
+    ? testFirebaseConfig
+    : prodFirebaseConfig
+);
 
 // Initialize Realtime Database and get a reference to the service
 const database = getDatabase(app);
