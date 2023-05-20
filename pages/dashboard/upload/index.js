@@ -29,6 +29,7 @@ const Upload = () => {
     );
   }, [window.cloudinary]);
   const [video, setVideo] = useState(undefined);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [payload, setPayload] = useState({
     services: '',
     languages: '',
@@ -63,9 +64,10 @@ const Upload = () => {
         <div className="flex flex-col p-s5 text-white lg:flex-row">
           <div className="w-full lg:w-1/2">
             <UploadVideo
-              setData={(e) => setVideo(e.target.files[0])}
-              data={video}
-              myWidget={myWidget}
+              setVideo={setVideo}
+              video={video}
+              setUploadProgress={setUploadProgress}
+              uploadProgress={uploadProgress}
             />
           </div>
           <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
