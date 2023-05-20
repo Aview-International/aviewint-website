@@ -1262,6 +1262,6 @@ export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
   'Portuguese',
   'Arabic',
   'French',
-  'Other',
   'Hindi',
+  'Other',
 ];
