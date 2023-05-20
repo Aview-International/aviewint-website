@@ -30,34 +30,37 @@ const Upload = () => {
   }, [window.cloudinary]);
   const [video, setVideo] = useState(undefined);
   const [payload, setPayload] = useState({
-    services: [],
-    languages: [],
+    services: '',
+    languages: '',
     otherLanguages: '',
     allowUsPostVideo: false,
     saveSettingsForFuture: false,
   });
 
   const handleServices = (value) => {
-    const newServices = [...payload.services];
-    if (newServices.includes(value))
-      newServices.splice(newServices.indexOf(value), 1);
-    else newServices.push(value);
-    setPayload({ ...payload, services: newServices });
+    // const newServices = [...payload.services];
+    // if (newServices.includes(value))
+    //   newServices.splice(newServices.indexOf(value), 1);
+    // else newServices.push(value);
+    setPayload({ ...payload, services: value });
   };
 
   const handleLanguages = (value) => {
-    const newLanguages = [...payload.languages];
-    if (newLanguages.includes(value))
-      newLanguages.splice(newLanguages.indexOf(value), 1);
-    else newLanguages.push(value);
-    setPayload({ ...payload, languages: newLanguages });
+    // const newLanguages = [...payload.languages];
+    // if (newLanguages.includes(value))
+    //   newLanguages.splice(newLanguages.indexOf(value), 1);
+    // else newLanguages.push(value);
+    setPayload({ ...payload, languages: value });
   };
+
+ 
+
 
   return (
     <>
       <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
         <PageTitle title="Upload Video" />
-        <div className="flex flex-col p-s4 text-white lg:flex-row">
+        <div className="flex flex-col p-s5 text-white lg:flex-row">
           <div className="w-full lg:w-1/2">
             <UploadVideo
               setData={(e) => setVideo(e.target.files[0])}

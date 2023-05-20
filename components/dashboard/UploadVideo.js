@@ -12,25 +12,24 @@ const UploadVideo = ({ myWidget }) => {
   return (
     <div className="w-11/12">
       <DottedBorder classes="relative block md:inline-block w-full">
-        <div className="flex flex-col items-center py-s6">
+        <div className="flex flex-col items-center py-s3">
           <div className="flex h-[160px] w-[160px] place-content-center rounded-full bg-gray-1">
             <Image src={UploadIcon} alt="Upload" width={80} height={80} />
           </div>
-
-          <div className="mt-s5 w-[220px]">
+          <p className='font-normal text-xl mt-s3'>Drapg and drop videos to upload</p>
+          <div className="mt-s3 w-[190px]">
             <OnboardingButton
               onClick={handleClick}
-              theme="light"
+              theme="dark"
               disabled={!myWidget ? true : false}
             >
-              Click to upload
+              Select Files
             </OnboardingButton>
           </div>
         </div>
       </DottedBorder>
-      <p className="py-s2 text-lg">
-        After submission, you will receive your translated content in 1-3
-        business days.
+      <p className="py-s2 text-lg underline text-center cursor-not-allowed opacity-30">
+        Download Transcription
       </p>
       <small className="text-sm">
         If you selected Distribution, you acknowledge that you agree to
