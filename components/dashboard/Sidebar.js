@@ -47,13 +47,15 @@ const Profile = ({ userInfo, isOpen }) => {
     <div
       className={`justify-content mt-s8 mb-s5 flex flex-col items-center gap-2 p-0 duration-300`}
     >
-      <Image
-        src={userInfo?.picture}
-        alt="Profile Picture"
-        width={`${isOpen ? 80 : 40}`}
-        height={`${isOpen ? 80 : 40}`}
-        className="rounded-full"
-      />
+      {userInfo?.picture && (
+        <Image
+          src={userInfo?.picture}
+          alt="Profile Picture"
+          width={`${isOpen ? 80 : 40}`}
+          height={`${isOpen ? 80 : 40}`}
+          className="rounded-full"
+        />
+      )}
       {isOpen && (
         <>
           <h3
