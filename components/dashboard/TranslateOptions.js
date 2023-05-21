@@ -4,6 +4,7 @@ import {
 } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
 import FormInput from '../FormComponents/FormInput';
+import RadioInput from '../FormComponents/RadioInput';
 import OnboardingButton from '../Onboarding/button';
 
 const TranslateOptions = ({
@@ -14,27 +15,27 @@ const TranslateOptions = ({
   setPayload,
   isLoading,
 }) => {
-
-return (
+  return (
     <div>
       <h3 className="mb-s3 text-2xl">Summary</h3>
+
       <p className="mb-s2 text-xl">
         What languages do you need translations for?
       </p>
-      <div className="w-full grid grid-cols-2 grid-flow-row place-items-start gap-2">
-        {
-          DAHSHBOARD_TRANSLATED_LANGUAGES.map((language,index)=>(
-          <span 
-          className='font-light text-lg ' 
-          key={`language-${index}`} 
-          onClick={() => handleLanguages(language)}
-          >
-            <input type='radio' value={language} className='mr-2 w-4 h-4 cursor-pointer' name="action" id={language}/>
-            <label htmlFor={language} className='cursor-pointer'>{language}</label>
-          </span>
-          ))
-        }
+
+      <div className="grid w-full grid-flow-row grid-cols-2 place-items-start gap-2">
+        {DAHSHBOARD_TRANSLATED_LANGUAGES.map((language, index) => (
+          <RadioInput
+            key={index}
+            value={language}
+            name="Select Languages"
+            onChange={() => handleLanguages(language)}
+            chosenValue={payload.languages}
+          />
+        ))}
       </div>
+
+      {payload.languages === 'Other' && (
         <div className="mt-s4">
           <FormInput
             label="If selected Other,please specify which language(s):"
@@ -49,17 +50,17 @@ return (
             }
           />
         </div>
+      )}
       <p className="mt-s4 text-xl">What services do you need?</p>
-      <div className="mt-s2 mb-s4 w-full grid  gap-2 place-content-start">
+      <div className="mt-s2 mb-s4 grid w-full place-content-start gap-2">
         {DAHSHBOARD_SERVICES.map((service, index) => (
-          <span 
-           className='font-light text-lg text-start' 
-           key={`language-${index}`} 
-           onClick={() => handleServices(service)} 
-          >
-           <input type='radio' value={service} className='mr-2 w-4 h-4 cursor-pointer' name="act" id={service}/>
-            <label htmlFor={service} className='cursor-pointer'>{service}</label>
-          </span>
+          <RadioInput
+            key={index}
+            value={service}
+            name="Select Services"
+            onChange={() => handleServices(service)}
+            chosenValue={payload.services}
+          />
         ))}
       </div>
       <CheckBox
@@ -70,7 +71,11 @@ return (
       />
       <br />
       <div className="w-full md:w-36">
-        <OnboardingButton isLoading={isLoading} onClick={handleSubmit} disabled={true}>
+        <OnboardingButton
+          isLoading={isLoading}
+          onClick={handleSubmit}
+          // disabled={true}
+        >
           Submit
         </OnboardingButton>
       </div>
