@@ -54,9 +54,10 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const paths = await getPaths();
+  const filteredPaths = paths.filter((path) => path.params.id);
 
   return {
-    paths: paths,
+    paths: filteredPaths,
     fallback: false,
   };
 }
