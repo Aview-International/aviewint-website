@@ -16,6 +16,7 @@ const UploadVideo = ({
 }) => {
   const { userInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
+
   const handleUpload = async () => {
     try {
       setIsLoading(true);
