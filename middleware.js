@@ -23,7 +23,7 @@ export function middleware(request) {
   const status = authStatus(token);
   if (!status) {
     request.cookies.delete('token');
-    // return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 }
 
