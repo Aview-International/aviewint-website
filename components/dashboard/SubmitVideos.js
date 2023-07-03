@@ -31,15 +31,15 @@ const SubmitVideos = ({
   };
 
   return (
-    <div className="flex p-s4 text-white">
-      <div className="w-1/2">
+    <div className="flex flex-col p-s4 text-white md:flex-row">
+      <div className="w-full md:w-1/2">
         <SelectedVideos
           router={router}
           setIsSelected={setIsSelected}
           selectedVideos={selectedVideos}
         />
       </div>
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <TranslateOptions
           handleServices={handleServices}
           handleLanguages={handleLanguages}
