@@ -37,7 +37,7 @@ const Register = () => {
       _tokenResponse.photoUrl,
       _tokenResponse?.email
     );
-    router.push('/onboarding?stage=2');
+    router.push('/onboarding?stage=1');
   };
 
   const handleGoogle = async (type) => {

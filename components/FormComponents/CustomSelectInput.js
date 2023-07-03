@@ -25,7 +25,7 @@ const CustomSelectInput = ({
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p>{data || 'Select'}</p>
+            <p className='text-white/70'>{data || 'Your response'}</p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>

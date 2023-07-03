@@ -144,6 +144,7 @@ export const updateRequiredServices = async (services, _id) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
+      console.log(data)
       const postData = {
         ...data,
         services,
@@ -152,6 +153,9 @@ export const updateRequiredServices = async (services, _id) => {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
+      const data1 = snapshot.val();
+      console.log(data1)
+      return;
     }
   });
 };
@@ -187,7 +191,7 @@ export const updateUserBio = async (payload, _id) => {
       const postData = {
         ...data,
         monthlyView: payload.monthlyView,
-        languagesRequired: payload.languages,
+        totalFollowers: payload.totalFollowers,
         averageDuration: payload.averageVideoDuration,
       };
       const updates = {

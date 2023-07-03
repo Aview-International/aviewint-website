@@ -81,6 +81,31 @@ import settings from '../public/img/icons/settings.svg';
 import messages from '../public/img/icons/messages.svg';
 import referral from '../public/img/icons/referral.svg';
 
+//onBoarding Icons
+import asia from '../public/img/graphics/asia.svg';
+import europe from '../public/img/graphics/europe.svg';
+import north_america from '../public/img/graphics/north_america.svg';
+import south_america from '../public/img/graphics/south_america.svg';
+import Personal from '../public/img/graphics/user.svg';
+import Team from '../public/img/graphics/team.svg';
+import Brand from '../public/img/graphics/brand_desing.svg';
+
+
+
+//onBoardingLanguages Icons
+import English from '../public/img/graphics/corporate/english.png'
+import Spanish from '../public/img/graphics/corporate/spanish.png'
+import French from '../public/img/graphics/corporate/french.png'
+import Portuguese from '../public/img/graphics/corporate/portuguese.png'
+import Arabic from '../public/img/graphics/corporate/arabic.png'
+import Hindi from '../public/img/graphics/corporate/hindi.png'
+import Chinese from '../public/img/graphics/corporate/english.png'
+import Russian from '../public/img/graphics/corporate/russian.png'
+import Japanese from '../public/img/graphics/corporate/japanese.png'
+import German from '../public/img/graphics/corporate/german.png'
+import Italian from '../public/img/graphics/corporate/italian.png'
+import Turkish from '../public/img/graphics/corporate/turkish.png'
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -1158,24 +1183,39 @@ export const CAREER_PROCESS = [
   },
 ];
 
+export const ONBOARDING_STAGE_1 = [
+  {
+    image: Personal,
+    title: 'For myself',
+    desc: 'Get access to translations for your online content.',
+    data: 'Content Creator',
+  },
+  {
+    image: Team,
+    title: 'For my team',
+    desc: 'Coming Soon',
+    data: 'Content Manager',
+  },
+  {
+    image: Brand,
+    title: 'For my brand',
+    desc: 'Coming Soon',
+    data: 'Brand Manager',
+  }
+];
+
 export const ONBOARDING_STAGE_4 = [
   {
-    title: 'Subtitle Translations',
-    content:
-      'Receive subtitle translations in over 15 different languages with ease.',
+    title: 'International Channels',
+    content: 'Monetize your content internationally through translations, dubbing and distribution. ',
   },
   {
-    title: 'Short-Form Content',
-    content: 'Catchy 1-minute short-form videos from your existing content.',
+    title: 'Native Language',
+    content: 'Monetize your content through short form videos, subtitling and transcriptions.',
   },
   {
-    title: 'Voiceover Dubbing',
-    content: 'Receive professional voiceover dubbing on your existing videos.',
-  },
-  {
-    title: 'Media Distribution',
-    content:
-      'Distribute your content across all social media channels, including YouTube and Instagram.',
+    title: 'Explore the Platform',
+    content: 'Coming soon!',
   },
 ];
 
@@ -1210,21 +1250,11 @@ export const DASHBOARD_NAVLINKS = [
     image: upload,
     route: '/dashboard/upload',
   },
-  // {
-  //   text: 'Analytics',
-  //   image: analytics,
-  //   route: '/dashboard/analytics',
-  // },
   {
     text: 'Messages',
     image: messages,
     route: '/dashboard/messages',
   },
-  // {
-  //   text: 'Content',
-  //   image: content,
-  //   route: '/dashboard/content',
-  // },
   {
     text: 'Billing',
     image: billing,
@@ -1265,3 +1295,106 @@ export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
   'Hindi',
   'Other',
 ];
+
+export const onBoardingRegions = [
+  {
+    title: 'North America',
+    image: north_america,
+    data:[
+      {
+        image: English,
+        languageName:'English'
+      },
+      {
+        image: Spanish,
+        languageName:'Spanish'
+      },
+      {
+        image: French,
+        languageName:'French'
+      }
+    ]
+  },
+  {
+    title: 'South America',
+    image: south_america,
+    data:[
+      {
+        image: Spanish,
+        languageName:'Spanish'
+      },
+      {
+        image: Portuguese,
+        languageName:'Portuguese'
+      },
+      {
+        image: English,
+        languageName:'English'
+      }
+    ]
+  },
+  {
+    title: 'Asia',
+    image: europe,
+    data:[
+      {
+        image: Arabic,
+        languageName:'Arabic'
+      },
+      {
+        image: Hindi,
+        languageName:'Hindi'
+      },
+      {
+        image: Chinese,
+        languageName:'Chinese'
+      },
+      {
+        image: Russian,
+        languageName:'Russian'
+      },
+      {
+        image: Japanese,
+        languageName:'Japanese'
+      }
+    ]
+  },
+  {
+    title: 'Europe',
+    image: asia,
+    data:[
+      {
+        image: German,
+        languageName:'German'
+      },
+      {
+        image: French,
+        languageName:'French'
+      },
+      {
+        image: Italian,
+        languageName:'Italian'
+      },
+      {
+        image: Turkish,
+        languageName:'Turkish'
+      },
+      {
+        image: Spanish,
+        languageName:'Spanish'
+      }
+    ]
+  }
+]
+
+export const onBoardingRecommends = [
+  {
+    language: 'Español'
+  },
+  {
+    language: 'Portuguese'
+  },
+  {
+    language: 'Englih'
+  }
+]
