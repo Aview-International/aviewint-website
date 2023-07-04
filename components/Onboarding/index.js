@@ -500,25 +500,25 @@ export const OnboardingStep4 = () => {
 // Onboarding stage 5
 export const OnboardingStep5 = () => {
   const router = useRouter();
-  // const [usage,setUsage] = useState([]);
-  // const [data, setData] = useState({
-  //   region: '',
-  //   hasSubmitted: false,
-  //   isLoading: false,
-  // });
+  const [usage,setUsage] = useState([]);
+  const [data, setData] = useState({
+    region: '',
+    hasSubmitted: false,
+    isLoading: false,
+  });
 
-  // const handleSelect = (option) => {
-  //   const newArray = [...usage];
-  //   if (newArray.includes(option)) {
-  //     newArray.splice(newArray.indexOf(option), 1);
-  //     setUsage(newArray);
-  //   } else {
-  //     newArray.push(option);
-  //     setUsage(newArray);
-  //   }
-  // };
+  const handleSelect = (option) => {
+    const newArray = [...usage];
+    if (newArray.includes(option)) {
+      newArray.splice(newArray.indexOf(option), 1);
+      setUsage(newArray);
+    } else {
+      newArray.push(option);
+      setUsage(newArray);
+    }
+  };
 
-  // const handleSubmit = async () => {
+   const handleSubmit = async () => {
   //   try {
   //     setData({ ...data, hasSubmitted: true });
   //     if (usage.length < 1) return;
@@ -528,7 +528,7 @@ export const OnboardingStep5 = () => {
     //     console.log(error);
     //   }
         router.push('/onboarding?stage=6');
-  // };
+  };
 
   return (
     <div className='w-[90%] m-auto'>
@@ -543,7 +543,7 @@ export const OnboardingStep5 = () => {
           <div key={`option-${index}`} onClick={()=>handleSelect(item.title)}>
           <div className={`flex flex-col`}>
            <h2 className='font-bold text-3xl mb-4 ml-2'>{item.title}</h2>
-           <div className={`md:w-[283px] md:h-[332px] w-full cursor-pointer rounded-2xl h-full p-s1 text-center ${ usage.includes(item.title) ? 'gradient-1' : 'gradient-dark'}`}>
+           <div className={`md:w-[283px] md:h-[332px] w-full cursor-pointer rounded-2xl h-full p-s1 text-center ${ usage?.includes(item.title) ? 'gradient-1' : 'gradient-dark'}`}>
             <Image
               src={item.image}
               alt={item.title}
@@ -553,7 +553,7 @@ export const OnboardingStep5 = () => {
           </div>
          <div className='flex flex-col'>
           <h2 className='font-bold text-3xl ml-2 my-6'>Languages</h2>
-          <div className={`md:w-[283px] md:h-[247px] w-full cursor-pointer rounded-2xl p-s3 h-full items-start flex flex-col gap-x-4 gap-y-5 ${ usage.includes(item.title) ? 'gradient-1' : 'gradient-dark'}`}>
+          <div className={`md:w-[283px] md:h-[247px] w-full cursor-pointer rounded-2xl p-s3 h-full items-start flex flex-col gap-x-4 gap-y-5 ${ usage?.includes(item.title) ? 'gradient-1' : 'gradient-dark'}`}>
             {
              item.data.map((dataItem,index)=>(
               <div className='flex flex-row justify-center items-center' key={index}>
@@ -610,7 +610,7 @@ export const OnboardingStep6 = () => {
       <div className='grid md:grid-cols-3 gap-2 md:w-[1112px] w-full mx-auto'>
          {
           onBoardingRecommends.map((recommendationItem,index)=>(
-            <div className='w-[360px] h-[61px] flex flex-row p-s1.5 justify-between gradient-dark' key={index}>
+            <div className='min-w-max(320px,360px) h-[61px] flex flex-row p-s1.5 justify-between gradient-dark' key={index}>
               <div className='flex flex-row justify-between'>
                 <Image 
                   src={logan}
