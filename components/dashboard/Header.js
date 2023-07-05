@@ -1,29 +1,17 @@
 import Image from 'next/image';
+import { useContext } from 'react';
+import MenuOpenContext from '../../store/menu-open-context';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import messages from '../../public/img/icons/messages.svg';
-
-const MobileButton = () => {
-  const { pathname } = useRouter();
-
-  return (
-    <>
-      <div className="absolute left-6 flex cursor-pointer flex-col items-start lg:hidden">
-        <div className="mb-2 h-[3px] w-[36px] rounded-full bg-white"></div>
-        <div className="mb-2 h-[3px] w-[21px] rounded-full bg-white"></div>
-        <div className="h-[3px] w-[36px] rounded-full bg-white"></div>
-      </div>
-      <p className="block w-full text-center text-5xl capitalize md:hidden">
-        {pathname.split('/')[2]}
-      </p>
-    </>
-  );
-};
+import DashboardMobileMenu from '../navigation/DashboardMobileMenu';
+import MenuButtonIcon from '../navigation/MenuButtonIcon';
 
 const DashBoardHeader = ({ userInfo }) => {
+  const menuOpenCtx = useContext(MenuOpenContext);
   return (
     <header className="relative flex w-full items-center justify-between px-s4 py-s4 text-white md:px-s9">
-      <MobileButton />
+      <MenuButtonIcon handler={menuOpenCtx.openMenuHandler} styles={'absolute left-6'} />
+      <DashboardMobileMenu />
       <div className="hidden md:block">
         <h3 className="text-xl">
           Welcome, <span className="font-bold">{userInfo.firstName}!</span>
