@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
@@ -32,17 +32,15 @@ export default function DashboardMobileMenu() {
               </div>
             </Link>
           </div>
-        ) }
+        )}
         <div className="h-7 w-7" onClick={menuOpenCtx.closeMenuHandler}>
           <Image src={closeIcon} width={28} height={28} alt="close icon" />
         </div>
       </div>
       <nav className="flex flex-grow flex-col justify-between overflow-hidden">
-       <MainMenu />
+        <MainMenu />
       </nav>
-      <div
-        className={`flex-grow-0 flex-col gap-4`}
-      >
+      <div className={`flex-grow-0 flex-col gap-4`}>
         <Button
           purpose="route"
           route="/login"
@@ -56,8 +54,6 @@ export default function DashboardMobileMenu() {
   );
 }
 
-
-
 export function MainMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
   const { route } = useRouter();
@@ -65,58 +61,57 @@ export function MainMenu() {
     <div className="flex flex-col overflow-y-scroll">
       {DASHBOARD_NAVLINKS.map((menuItem, idx) => {
         return (
-          <div onClick={menuOpenCtx.closeMenuHandler} >
-            <Link href={menuItem.route} key={`link-${idx}`}>
-                <a
-              className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s0 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
-                route === menuItem.route && 'bg-[#fcfcfc] bg-opacity-10'
-              }`}
-            >
-              <span
-                className={`gradient-1 absolute right-0 top-1/2 block h-4 w-1 -translate-y-1/2 rounded-md group-hover:animate-dropin ${
-                  route === menuItem.route
-                    ? 'visible'
-                    : 'invisible group-hover:visible'
-                }`}
-              ></span>
-              <span
-                className={`mr-5 group-hover:animate-popup ${
-                  route === menuItem.route ? 'animate-popup' : 'brightness-0 invert'
-                }`}
-              >
-                <Image
-                  src={menuItem.image}
-                  alt={menuItem.text}
-                  width={25}
-                  height={25}
-                  layout="fixed"
-                />
-              </span>
-              <span
-                className={`${
-                  menuOpenCtx.isMenuOpen
-                    ? ''
-                    : 'absolute left-24 top-1 z-10 rounded-md '
+          <div onClick={menuOpenCtx.closeMenuHandler} key={idx}>
+            <Link href={menuItem.route}>
+              <a
+                className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s0 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
+                  route === menuItem.route && 'bg-[#fcfcfc] bg-opacity-10'
                 }`}
               >
                 <span
-                  className={`text-2xl ${
+                  className={`gradient-1 absolute right-0 top-1/2 block h-4 w-1 -translate-y-1/2 rounded-md group-hover:animate-dropin ${
+                    route === menuItem.route
+                      ? 'visible'
+                      : 'invisible group-hover:visible'
+                  }`}
+                ></span>
+                <span
+                  className={`mr-5 group-hover:animate-popup ${
+                    route === menuItem.route
+                      ? 'animate-popup'
+                      : 'brightness-0 invert'
+                  }`}
+                >
+                  <Image
+                    src={menuItem.image}
+                    alt={menuItem.text}
+                    width={25}
+                    height={25}
+                    layout="fixed"
+                  />
+                </span>
+                <span
+                  className={`${
                     menuOpenCtx.isMenuOpen
                       ? ''
-                      : 'hidden rounded-md  p-s1 group-hover:inline-block'
-                  } ${route === menuItem.route ? 'text-[#fcfcfc]' : ''}`}
+                      : 'absolute left-24 top-1 z-10 rounded-md '
+                  }`}
                 >
-                  {menuItem.text}
+                  <span
+                    className={`text-2xl ${
+                      menuOpenCtx.isMenuOpen
+                        ? ''
+                        : 'hidden rounded-md  p-s1 group-hover:inline-block'
+                    } ${route === menuItem.route ? 'text-[#fcfcfc]' : ''}`}
+                  >
+                    {menuItem.text}
+                  </span>
                 </span>
-              </span>
-             </a>
+              </a>
             </Link>
-           </div>
-          )
-        } 
-      )}
+          </div>
+        );
+      })}
     </div>
   );
 }
-
-
