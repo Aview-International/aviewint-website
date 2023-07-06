@@ -140,24 +140,22 @@ export const updateAviewUsage = async (role, _id) => {
   });
 };
 
-export const updateRequiredServices = async (services, _id) => {
+export const updateRequiredServices = async (payload, _id) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data)
       const postData = {
         ...data,
-        services,
+        ...payload,
       };
       const updates = {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-      const data1 = snapshot.val();
-      console.log(data1)
       return;
-    }
+    } else throw new Error('User does not exist');
   });
+  return;
 };
 
 // save user youtube channel id after connecting youtube account
