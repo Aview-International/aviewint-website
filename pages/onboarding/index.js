@@ -11,7 +11,7 @@ import OnboardingStep2 from '../../components/Onboarding/step2';
 import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
-import OnboardingStep6 from '../../components/Onboarding/step6';
+// import OnboardingStep6 from '../../components/Onboarding/step6';
 import OnboardingSuccess from '../../components/Onboarding/success';
 
 const Onboarding = () => {

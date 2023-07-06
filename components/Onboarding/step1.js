@@ -1,5 +1,4 @@
-import { Fragment, useContext, useState } from 'react';
-import { UserContext } from '../../store/user-profile';
+import { Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
 import { updateAviewUsage } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
@@ -11,8 +10,6 @@ import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
 
 const OnboardingStep1 = () => {
-  const { userInfo } = useContext(UserContext);
-
   const router = useRouter();
 
   const [userData, setUserData] = useState({
