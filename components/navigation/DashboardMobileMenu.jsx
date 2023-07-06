@@ -12,7 +12,7 @@ export default function DashboardMobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-2/4 flex-col gap-12 overflow-hidden bg-black px-6 pt-8 pb-10 lg:hidden ${
+      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-2/4 flex-col gap-12 overflow-hidden bg-black md:px-6 2xs:px-2 pt-8 pb-10 lg:hidden ${
         menuOpenCtx.isMenuOpen
           ? 'translate-x-0 opacity-100'
           : 'translate-x-full opacity-0'
@@ -22,7 +22,7 @@ export default function DashboardMobileMenu() {
         {menuOpenCtx.isMenuOpen && (
           <div onClick={menuOpenCtx.closeMenuHandler}>
             <Link href="/dashboard">
-              <div className="h-12 w-12">
+              <div className="h-12 w-12 ml-4">
                 <Image
                   src={aviewLogo}
                   width={48}
@@ -33,7 +33,7 @@ export default function DashboardMobileMenu() {
             </Link>
           </div>
         )}
-        <div className="h-7 w-7" onClick={menuOpenCtx.closeMenuHandler}>
+        <div className="h-7 w-7 mr-5" onClick={menuOpenCtx.closeMenuHandler}>
           <Image src={closeIcon} width={28} height={28} alt="close icon" />
         </div>
       </div>
@@ -94,14 +94,14 @@ export function MainMenu() {
                   className={`${
                     menuOpenCtx.isMenuOpen
                       ? ''
-                      : 'absolute left-24 top-1 z-10 rounded-md '
+                      : 'absolute left-24 top-1 z-10 rounded-md'
                   }`}
                 >
                   <span
-                    className={`text-2xl ${
+                    className={`text-2xl${
                       menuOpenCtx.isMenuOpen
                         ? ''
-                        : 'hidden rounded-md  p-s1 group-hover:inline-block'
+                        : 'hidden rounded-md p-s1 group-hover:inline-block'
                     } ${route === menuItem.route ? 'text-[#fcfcfc]' : ''}`}
                   >
                     {menuItem.text}
