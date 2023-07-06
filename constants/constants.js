@@ -86,9 +86,9 @@ import asia from '../public/img/graphics/asia.svg';
 import europe from '../public/img/graphics/europe.svg';
 import north_america from '../public/img/graphics/north_america.svg';
 import south_america from '../public/img/graphics/south_america.svg';
-import Personal from '../public/img/graphics/user.svg';
-import Team from '../public/img/graphics/team.svg';
-import Brand from '../public/img/graphics/brand_desing.svg';
+import Personal from '../public/img/graphics/user.webp';
+import Team from '../public/img/graphics/team.webp';
+import Brand from '../public/img/graphics/brand_desing_1.webp';
 
 //onBoardingLanguages Icons
 import English from '../public/img/icons/english.svg';
