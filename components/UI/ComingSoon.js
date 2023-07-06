@@ -9,7 +9,7 @@ const ComingSoon = ({ children, stage }) => {
           stage && 'bg-black/70'
         } z-50 bg-black/70 ${
           stage == 1 &&
-          'flex items-center justify-center text-center text-2xl font-bold'
+          'flex items-center md:mr-8 mr-0 justify-center text-center text-2xl font-bold'
         }`}
       >
         {stage == 1 ? 'Coming Soon' : ''}

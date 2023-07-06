@@ -87,10 +87,10 @@ const OnboardingStep5 = () => {
                   height={303}
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full">
                 <h2 className="my-6 text-2xl font-semibold">Languages</h2>
                 <div
-                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s3 md:h-[247px] md:w-[283px] ${
+                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl md:p-s3 p-s1.5 md:h-[247px] md:w-[283px] ${
                     payload.region.includes(item.title)
                       ? 'gradient-1'
                       : 'gradient-dark'

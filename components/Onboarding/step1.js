@@ -50,7 +50,7 @@ const OnboardingStep1 = () => {
                   <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
                     <Border borderRadius="2xl" classes="h-full w-full">
                       <div
-                        className={`h-full rounded-2xl bg-black pt-s9 text-center`}
+                        className={`h-full rounded-2xl bg-black md:pt-s9 pt-s6 text-center`}
                       >
                         <Image
                           src={option.image}
@@ -58,9 +58,11 @@ const OnboardingStep1 = () => {
                           width={172}
                           height={172}
                         />
-                        <h3 className="mt-7 text-xl font-bold md:text-2xl">
-                          {option.title}
-                        </h3>
+                        <div className='md:mt-7 mt-3 flex flex-col h-[70px]'>
+                          <h3 className="text-xl font-bold md:text-2xl">
+                            {option.title}
+                          </h3>
+                        </div>
                       </div>
                     </Border>
                   </Shadow>

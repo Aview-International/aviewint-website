@@ -10,7 +10,7 @@ const OnboardingSuccess = () => {
         You&apos;ve completed the onboarding process. Now let&apos;s take a look
         at your dashboard.
       </p>
-      <div className="mx-auto mt-s4 w-[min(360px,80%)]">
+      <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
           onClick={() => router.push('/dashboard')}
           theme="light"

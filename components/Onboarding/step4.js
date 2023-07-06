@@ -145,7 +145,7 @@ const OnboardingStep4 = () => {
           isLoading={isLoading.youtube}
         />
       </div>
-      <div className="mx-auto mt-s4 w-[min(360px,80%)]">
+      <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
           theme="dark"
           isLoading={isLoading.continue}
