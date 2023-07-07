@@ -5,6 +5,7 @@ import OnboardingButton from './button';
 import Image from 'next/image';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
+import Shadow from '../UI/Shadow';
 
 const OnboardingStep5 = () => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const OnboardingStep5 = () => {
       selectedRegion.includes(region.title)
     );
 
-    selectedOption.forEach((opt) =>
+    selectedOption?.forEach((opt) =>
       opt.data.forEach((el) => {
         if (!selectedLanguages.includes(el.languageName))
           selectedLanguages.push(el.languageName);
@@ -59,38 +60,38 @@ const OnboardingStep5 = () => {
   };
 
   return (
-    <div className="m-auto w-[90%]">
+    <div className="m-auto w-[90%] 2xl:w-full">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Select by regions of the world
       </h2>
-      <p className="mx-auto mt-s2 mb-s4 text-lg md:w-2/5 md:text-center md:text-xl ">
-        Select region based on your location. So we can suggest which languages
-        you should translate for.{' '}
-        <span className="ml-1 underline hover:cursor-pointer">Why?</span>
+      <p className="mx-auto mt-s2 mb-s6 text-lg md:w-2/5 md:text-center md:text-xl">
+        Let us determine your location to suggest the appropriate language translations for you.
       </p>
-      <div className="grid items-center justify-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid items-center gap-y-6 md:grid-cols-2 xl:grid-cols-4 2xl:ml-s14 xl:ml-s4">
         {ONBOARDING_REGIONS.map((item, index) => (
           <div key={`option-${index}`} onClick={() => handleSelect(item.title)}>
-            <div className={`flex flex-col items-center`}>
-              <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
-              <div
-                className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
+            <div className={`flex flex-col items-start mx-auto`}>
+              <h2 className="mb-4 text-3xl font-semibold md:ml-1.5">{item.title}</h2>
+               <div>
+                <div
+                  className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
                     : 'gradient-dark'
-                }`}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={235}
-                  height={303}
-                />
+                  }`}
+                 >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={235}
+                    height={303}
+                  />
+                </div>
               </div>
-              <div className="flex flex-col w-full">
-                <h2 className="my-6 text-2xl font-semibold">Languages</h2>
+              <div className="flex flex-col w-full items-start">
+                <h2 className="my-6 text-3xl font-semibold md:ml-1.5">Languages</h2>
                 <div
-                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl md:p-s3 p-s1.5 md:h-[247px] md:w-[283px] ${
+                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-3 rounded-2xl md:p-s3 p-s1.5 md:h-[247px] md:w-[283px] ${
                     payload.region.includes(item.title)
                       ? 'gradient-1'
                       : 'gradient-dark'
@@ -100,7 +101,7 @@ const OnboardingStep5 = () => {
                     <div
                       className="flex items-center justify-center"
                       key={index}
-                    >
+                      >
                       <Image
                         src={dataItem.image}
                         alt={dataItem.languageName}
@@ -118,13 +119,14 @@ const OnboardingStep5 = () => {
           </div>
         ))}
       </div>
-      {sideEffects.hasSubmitted && (
+      {/* {(sideEffects.hasSubmitted && payload.region.length < 1 ) && (
         <p className="my-s3 text-center text-xl">
           Please select an option from above to move to next step.
         </p>
-      )}
+      )} */}
       <div className="m-auto mt-12 w-[min(360px,90%)]">
         <OnboardingButton
+          disabled={payload.region.length < 1}
           onClick={handleSubmit}
           isLoading={sideEffects.isLoading}
           theme="dark"

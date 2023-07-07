@@ -1214,10 +1214,6 @@ export const ONBOARDING_STAGE_4 = [
     content:
       'Monetize your content through short form videos, subtitling and transcriptions.',
   },
-  {
-    title: 'Explore the Platform',
-    content: 'Coming soon!',
-  },
 ];
 
 export const AVERAGE_MONTHLY_VIEWS = [
