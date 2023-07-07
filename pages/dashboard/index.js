@@ -32,6 +32,7 @@ const DashboardHome = () => {
       setVideos(getVideos.data.items);
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };

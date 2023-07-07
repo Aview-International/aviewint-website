@@ -28,7 +28,7 @@
   }
 
   .overlay-dark {
-    background: rgba(255, 255, 255, 0.08) ;
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .gradient-dark {
@@ -139,6 +139,27 @@
         #7017ff 89.32%
       );
   }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000017;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #00FFFF;
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00FFFF;
+  }
+
   @keyframes fadeInDown {
     0% {
       opacity: 0;

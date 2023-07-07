@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import { createNewUser, signInWithGoogle } from '../api/firebase';
@@ -9,25 +9,28 @@ import Google from '../../public/img/icons/google.svg';
 import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
-import { UserContext } from '../../store/user-profile';
 import Cookies from 'js-cookie';
+import { setUser } from '../../store/reducers/user';
 
 const Register = () => {
   const router = useRouter();
-  const { userInfo, setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,
   });
 
   const updateDatabase = async (_tokenResponse) => {
-    setUserInfo({
-      ...userInfo,
-      email: _tokenResponse.email,
-      firstName: _tokenResponse.firstName,
-      lastName: _tokenResponse.lastName,
-      picture: _tokenResponse.photoUrl,
-    });
+    dispatch(
+      setUser({
+        email: _tokenResponse.email,
+        firstName: _tokenResponse.firstName,
+        lastName: _tokenResponse.lastName,
+        picture: _tokenResponse.photoUrl,
+        token: _tokenResponse.idToken,
+        uid: _tokenResponse.localId,
+      })
+    );
+
     Cookies.set('token', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
     await createNewUser(

@@ -3,7 +3,7 @@ import { UserContext } from '../../store/user-profile';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
-import useProfile from '../../hooks/useProfile';
+import useProfile from '../../hooks/useUserProfile';
 import Script from 'next/script';
 
 // this component fetches user profile

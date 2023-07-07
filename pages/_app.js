@@ -9,6 +9,8 @@ import '../styles/globals.css';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 const MyApp = ({ Component, pageProps }) => {
   // AOS animation
@@ -27,23 +29,25 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <MenuOpenContextProvider>
-      <UserContextProvider>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-        <Layout Component={Component} pageProps={pageProps} />
-      </UserContextProvider>
-    </MenuOpenContextProvider>
+    <Provider store={store}>
+      <MenuOpenContextProvider>
+        <UserContextProvider>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+          <Layout Component={Component} pageProps={pageProps} />
+        </UserContextProvider>
+      </MenuOpenContextProvider>
+    </Provider>
   );
 };
 

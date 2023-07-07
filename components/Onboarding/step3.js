@@ -1,31 +1,22 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
-import ComingSoon from '../UI/ComingSoon';
 import Shadow from '../UI/Shadow';
 import { ONBOARDING_STAGE_4 } from '../../constants/constants';
 import OnboardingButton from './button';
-import Link from 'next/link';
 import Cookies from 'js-cookie';
 
 const OnboardingStep3 = () => {
   const router = useRouter();
 
-  const [usage, setUsage] = useState([]);
+  const [usage, setUsage] = useState('');
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
   });
 
   const handleSelect = (option) => {
-    const newArray = [...usage];
-    if (newArray.includes(option)) {
-      newArray.splice(newArray.indexOf(option), 1);
-      setUsage(newArray);
-    } else {
-      newArray.push(option);
-      setUsage(newArray);
-    }
+    setUsage(option);
   };
 
   const handleSubmit = async () => {
@@ -41,19 +32,11 @@ const OnboardingStep3 = () => {
   };
 
   const Option = ({ title, content }) => {
-    return content === 'Coming soon!' ? (
-      <ComingSoon>
-        <div className={`overlay- dark h-full rounded-2xl p-s3 md:p-s4`}>
-          <p className={`text-xl font-bold text-white/60 md:text-2xl`}>
-            {title}
-          </p>
-          <p className="mt-s2 text-lg text-white/60 md:text-xl">{content}</p>
-        </div>
-      </ComingSoon>
-    ) : (
+    return (
       <Shadow>
         <div
-          className={`${usage.includes(title) ? 'gradient-1' : `gradient-dark`}
+          className={`${
+            usage === title ? 'gradient-1' : `gradient-dark`
           } my-4 h-full cursor-pointer rounded-2xl bg-black p-s3 md:p-s4`}
           onClick={() => handleSelect(title)}
         >
@@ -84,18 +67,14 @@ const OnboardingStep3 = () => {
       )}
       <div className="m-auto my-s4 w-[min(360px,90%)]">
         <OnboardingButton
-          theme="dark"
+          theme="light"
           onClick={handleSubmit}
           isLoading={sideEffects.isLoading}
+          disabled={!usage}
         >
           Continue
         </OnboardingButton>
       </div>
-      <Link href="/onboarding?stage=4">
-        <a className="m-auto block w-[min(360px,90%)] rounded-full border-2 border-solid border-white p-3 text-center text-lg">
-          Skip
-        </a>
-      </Link>
     </div>
   );
 };

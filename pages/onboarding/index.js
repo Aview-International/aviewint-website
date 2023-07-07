@@ -11,11 +11,17 @@ import OnboardingStep2 from '../../components/Onboarding/step2';
 import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
-// import OnboardingStep6 from '../../components/Onboarding/step6';
+import OnboardingStep6 from '../../components/Onboarding/step6';
 import OnboardingSuccess from '../../components/Onboarding/success';
+import useUserProfile from '../../hooks/useUserProfile';
 
 const Onboarding = () => {
   const router = useRouter();
+  const { handleGetProfile } = useUserProfile();
+
+  useEffect(() => {
+    handleGetProfile();
+  }, []);
 
   useEffect(() => {
     if (window.location.search.split('=')[0].includes('code')) {
@@ -31,7 +37,7 @@ const Onboarding = () => {
   return (
     <>
       <PageTitle title="Aview Onboarding" />
-      <div className="ml-8 flex items-center px-0 py-6 md:ml-24">
+      <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
         {
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
             <a className="flex place-content-center pr-4">
@@ -98,14 +104,14 @@ const Stages = () => {
       )}
       {query.stage === '6' && (
         <PageTransition>
+          <OnboardingStep6 />
+        </PageTransition>
+      )}
+      {query.stage === '7' && (
+        <PageTransition>
           <OnboardingSuccess />
         </PageTransition>
       )}
-      {/* {query.stage === '7' && (
-        <PageTransition>
-          <OnboardingStep6 />
-        </PageTransition>
-      )} */}
     </>
   );
 };

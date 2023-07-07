@@ -1,7 +1,7 @@
 import Border from '../UI/Border';
 import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
@@ -13,19 +13,29 @@ const CustomSelectInput = ({
   hasSubmitted,
   isValid,
 }) => {
+  const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState('');
+  const scroll = window.scrollY;
+
+  const isBottom = useMemo(() => {
+    const elementPosition = elementRef.current?.offsetTop;
+    const windowHeight = window.outerHeight;
+
+    if (elementPosition > windowHeight / 2) return true;
+    else return false;
+  }, [elementRef.current?.offsetTop, scroll]);
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-      <div className="relative mb-s4 text-xl text-white">
+      <div className="relative mb-s4 text-xl text-white" ref={elementRef}>
         <p className="mb-s1">{text}</p>
         <Border borderRadius="[5px] w-full">
           <div
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p className='text-white/70'>{data || 'Your response'}</p>
+            <p className="text-white/70">{data || 'Your response'}</p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>
@@ -45,17 +55,27 @@ const CustomSelectInput = ({
           options={options}
           setIsOpen={setIsOpen}
           onChange={onChange}
+          isBottom={isBottom}
         />
       </div>
     </OutsideClickHandler>
   );
 };
 
-const Options = ({ isOpen, setData, options, setIsOpen, onChange }) => {
+const Options = ({
+  isOpen,
+  setData,
+  options,
+  setIsOpen,
+  onChange,
+  isBottom,
+}) => {
   return (
     <Border
       borderRadius="[5px]"
-      classes={`w-full absolute left-0 top-full mt-3 z-10 transition-300 ${
+      classes={`w-full absolute left-0 ${
+        isBottom ? 'bottom-1/2' : 'top-full'
+      } mt-3 z-10 transition-300 max-h-[300px] overflow-x-hidden overflow-y-scroll ${
         isOpen ? 'visible opacity-1' : 'invisible opacity-0'
       }`}
     >
