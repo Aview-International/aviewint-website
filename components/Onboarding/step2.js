@@ -10,14 +10,13 @@ import {
   AVERAGE_VIDEO_DURATION,
 } from '../../constants/constants';
 
-const OnboardingStep2 = () => {
+export const OnboardingStep2 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
-    totalFollowers: '',
+    languages: '',
     averageVideoDuration: '',
   });
-
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
@@ -33,15 +32,26 @@ const OnboardingStep2 = () => {
     if (!isFormValid()) return;
 
     setSideEffects({ ...sideEffects, isLoading: true });
-
     try {
       await updateUserBio(payload, Cookies.get('uid'));
-      router.push('/onboarding?stage=3');
+      router.push('/onboarding?stage=4');
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleMultipleSelect = (option) => {
+    const newArray = [...payload.languages];
+    if (newArray.includes(option)) {
+      newArray.splice(newArray.indexOf(option), 1);
+      setPayload({ ...payload, languages: newArray });
+    } else {
+      newArray.push(option);
+      setPayload({ ...payload, languages: newArray });
+    }
+  };
+
+  console.log(sideEffects.isEmpty)
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">

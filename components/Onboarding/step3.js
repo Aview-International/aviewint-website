@@ -22,7 +22,7 @@ const OnboardingStep3 = () => {
   const handleSubmit = async () => {
     try {
       setSideEffects({ ...sideEffects, hasSubmitted: true });
-      if (usage.length < 1) return;
+      if (!usage) return;
       setSideEffects({ ...sideEffects, isLoading: true });
       await updateRequiredServices({ usage }, Cookies.get('uid'));
       router.push('/onboarding?stage=4');
@@ -53,18 +53,18 @@ const OnboardingStep3 = () => {
         How do you plan to use Aview?
       </h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
-        Select all that apply.
+        Please choose one option to proceed.
       </p>
       <div className="m-auto">
         {ONBOARDING_STAGE_4.map((option, index) => (
           <Option key={`option-${index}`} {...option} />
         ))}
       </div>
-      {sideEffects.hasSubmitted && (
+      {/* {sideEffects.hasSubmitted && (
         <p className="my-s3 text-center text-xl">
           Please choose an option or skip below
         </p>
-      )}
+      )} */}
       <div className="m-auto my-s4 w-[min(360px,90%)]">
         <OnboardingButton
           theme="light"

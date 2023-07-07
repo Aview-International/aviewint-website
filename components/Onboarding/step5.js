@@ -30,7 +30,7 @@ const OnboardingStep5 = () => {
       selectedRegion.includes(region.title)
     );
 
-    selectedOption.forEach((opt) =>
+    selectedOption?.forEach((opt) =>
       opt.data.forEach((el) => {
         if (!selectedLanguages.includes(el.languageName))
           selectedLanguages.push(el.languageName);
@@ -56,7 +56,7 @@ const OnboardingStep5 = () => {
   };
 
   return (
-    <div className="m-auto w-[90%]">
+    <div className="m-auto w-[90%] 2xl:w-full">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Select by regions of the world
       </h2>
@@ -117,9 +117,10 @@ const OnboardingStep5 = () => {
         <p className="my-s3 text-center text-xl">
           Please select an option from above to move to next step.
         </p>
-      )}
+      )}{' '}
       <div className="m-auto mt-12 w-[min(360px,90%)]">
         <OnboardingButton
+          disabled={payload.region.length < 1}
           onClick={handleSubmit}
           isLoading={sideEffects.isLoading}
           theme="dark"

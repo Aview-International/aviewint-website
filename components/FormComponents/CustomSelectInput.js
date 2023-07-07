@@ -16,11 +16,11 @@ const CustomSelectInput = ({
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState('');
-  const scroll = window.scrollY;
+  const scroll = typeof window !== 'undefined' && window.scrollY;
 
   const isBottom = useMemo(() => {
     const elementPosition = elementRef.current?.offsetTop;
-    const windowHeight = window.outerHeight;
+    const windowHeight = typeof window !== 'undefined' && window.outerHeight;
 
     if (elementPosition > windowHeight / 2) return true;
     else return false;
