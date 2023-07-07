@@ -8,7 +8,7 @@ import FormInput from '../../FormComponents/FormInput';
 import OnboardingButton from '../../Onboarding/button';
 import axios from 'axios';
 import { emailValidator } from '../../../utils/regex';
-import { new_creator_welcome_mail } from '../../../emails';
+import { baseUrl } from '../../baseUrl';
 
 const YouCreateWeTranslate = () => {
   const [email, setEmail] = useState('');
@@ -25,12 +25,9 @@ const YouCreateWeTranslate = () => {
     setSideEffects({ ...sideEffects, isLoading: true });
 
     try {
-      const res = await axios.post('/api/invites', {
-        to: email,
-        subject: 'Welcome to Aview International',
-        html: new_creator_welcome_mail,
+      await axios.post(baseUrl + 'email/welcome', {
+        recipient: email,
       });
-      console.log(res);
       setSideEffects({ ...sideEffects, showText: true });
     } catch (error) {
       console.log(error);
@@ -72,7 +69,6 @@ const YouCreateWeTranslate = () => {
               <div className="w-max md:ml-s2">
                 <OnboardingButton
                   isLoading={sideEffects.isLoading}
-                  // isLoading
                   extraClasses={`px-s2 ${
                     sideEffects.isLoading ? 'w-[116px]' : 'w-max'
                   }`}
