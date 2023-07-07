@@ -12,14 +12,17 @@ import LegalTranslationOverview from '../../components/sections/corporate/legal/
 import BenefitsOfLegalTranslation from '../../components/sections/corporate/legal/BenefitsOfLegalTranslation';
 import LegalBranches from '../../components/sections/corporate/legal/LegalBranches';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar'
 
 export default function Legal() {
   return (
     <>
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Corporate" />
       <Hero
-        title="Legal Translation <span class='gradient-text gradient-2'>Services</span>"
+        title="Legal Translation <span class='gradient-text gradient-2 block mb-s2'>Services</span>"
         description="Get fast and accurate legal translations with AVIEW."
         buttonText="Get Started"
         buttonLink="#generate-aview"
@@ -27,6 +30,7 @@ export default function Legal() {
         imageAlt="Legal Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <LegalTranslationOverview />
       <BenefitsOfLegalTranslation />
       <LanguagesServed />

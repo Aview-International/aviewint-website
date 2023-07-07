@@ -13,6 +13,8 @@ import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
 import HowItWorks from '../../components/sections/reused/HowItWorks';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar';
 
 const Corporate = () => {
   return (
@@ -21,9 +23,11 @@ const Corporate = () => {
         title="Corporate - AVIEW"
         description="Organizations worldwide trust us to ensure they deliver their content in a language and format that meets their audience's needs. Contact Us Today!"
       />
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Corporate" />
       <OurCorporateServices />
+      <ScrollToTopButton />
       <CompaniesWeWorkedWith />
       <CorporateTranslations />
       <BenefitsOfTranslatingContent />

@@ -32,8 +32,8 @@ const ALSO_AVAILABLE = [
   { language: 'Indonesian', icon: indonesian },
   { language: 'German', icon: german },
   { language: 'Japanese', icon: japanese },
-  { language: 'Marthi', icon: marthi },
-  { language: 'Teluga', icon: teluga },
+  { language: 'Marathi', icon: marthi },
+  { language: 'Telugu', icon: teluga },
 ];
 
 const LanguagesServed = () => {

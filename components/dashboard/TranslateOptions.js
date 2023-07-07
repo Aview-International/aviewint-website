@@ -4,7 +4,7 @@ import {
 } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
 import FormInput from '../FormComponents/FormInput';
-import Textarea from '../FormComponents/Textarea';
+import RadioInput from '../FormComponents/RadioInput';
 import OnboardingButton from '../Onboarding/button';
 
 const TranslateOptions = ({
@@ -17,30 +17,30 @@ const TranslateOptions = ({
 }) => {
   return (
     <div>
-      <h3 className="mb-s3 text-2xl">Translate</h3>
-      <p className="mb-s1 text-xl">
+      <h3 className="mb-s3 text-2xl">Summary</h3>
+
+      <p className="mb-s2 text-xl">
         What languages do you need translations for?
       </p>
-      <div className="flex flex-wrap">
+
+      <div className="grid w-full grid-flow-row grid-cols-2 place-items-start gap-2">
         {DAHSHBOARD_TRANSLATED_LANGUAGES.map((language, index) => (
-          <span
-            className={`mr-s1 mb-s1 cursor-pointer rounded-full py-s1 px-s3 text-lg ${
-              payload.languages.includes(language)
-                ? 'bg-white text-black'
-                : 'bg-gray-1'
-            }`}
-            key={`language-${index}`}
-            onClick={() => handleLanguages(language)}
-          >
-            {language}
-          </span>
+          <RadioInput
+            key={index}
+            value={language}
+            name="Select Languages"
+            onChange={() => handleLanguages(language)}
+            chosenValue={payload.languages}
+          />
         ))}
       </div>
-      {payload.languages.includes('Others') && (
+
+      {payload.languages === 'Other' && (
         <div className="mt-s4">
           <FormInput
-            label="Please specify language(s), separated with comma"
+            label="If selected Other,please specify which language(s):"
             value={payload.otherLanguages}
+            labelClasses="mb-3"
             placeholder="Other language(s)"
             onChange={(e) =>
               setPayload({
@@ -52,32 +52,17 @@ const TranslateOptions = ({
         </div>
       )}
       <p className="mt-s4 text-xl">What services do you need?</p>
-      <div className="mt-s1 mb-s4 flex flex-wrap">
+      <div className="mt-s2 mb-s4 grid w-full place-content-start gap-2">
         {DAHSHBOARD_SERVICES.map((service, index) => (
-          <span
-            className={`mr-s1 mb-s1 cursor-pointer rounded-full py-s1 px-s3 text-lg ${
-              payload.services.includes(service)
-                ? 'bg-white text-black'
-                : 'bg-gray-1'
-            }`}
-            key={`service-${index}`}
-            onClick={() => handleServices(service)}
-          >
-            {service}
-          </span>
+          <RadioInput
+            key={index}
+            value={service}
+            name="Select Services"
+            onChange={() => handleServices(service)}
+            chosenValue={payload.services}
+          />
         ))}
       </div>
-      <Textarea
-        label="Is there anything else you would like us to know?"
-        placeholder="Additional notes"
-        value={payload.additionalNote}
-        onChange={(e) =>
-          setPayload({
-            ...payload,
-            additionalNote: e.target.value,
-          })
-        }
-      />
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettingsForFuture: e.target.checked })
@@ -85,15 +70,12 @@ const TranslateOptions = ({
         label="Save these settings for future translations"
       />
       <br />
-      <CheckBox
-        onChange={(e) =>
-          setPayload({ ...payload, allowUsPostVideo: e.target.checked })
-        }
-        label="Would you like us to post this video as well?"
-      />
-      <br />
       <div className="w-full md:w-36">
-        <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+        <OnboardingButton
+          isLoading={isLoading}
+          onClick={handleSubmit}
+          // disabled={true}
+        >
           Submit
         </OnboardingButton>
       </div>

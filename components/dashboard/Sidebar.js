@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { DASHBOARD_NAVLINKS } from '../../constants/constants';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
 import sidebarArrow from '../../public/img/icons/sidebar-arrow.svg';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
@@ -28,7 +28,7 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
           </Link>
         )}
         <button
-          className={!isOpen && 'rotate-180'}
+          className={!isOpen ? 'rotate-180' : ''}
           onClick={() => setIsOpen(!isOpen)}
         >
           <Image src={sidebarArrow} alt="" />
@@ -46,17 +46,19 @@ const Profile = ({ userInfo, isOpen }) => {
     <div
       className={`justify-content mt-s8 mb-s5 flex flex-col items-center gap-2 p-0 duration-300`}
     >
-      <Image
-        src={userInfo?.picture}
-        alt="Profile Picture"
-        width={`${isOpen ? 80 : 40}`}
-        height={`${isOpen ? 80 : 40}`}
-        className="rounded-full"
-      />
+      {userInfo?.picture && (
+        <Image
+          src={userInfo?.picture}
+          alt="Profile Picture"
+          width={`${isOpen ? 80 : 40}`}
+          height={`${isOpen ? 80 : 40}`}
+          className="rounded-full"
+        />
+      )}
       {isOpen && (
         <>
           <h3
-            className={`mt-s2 mb-s1 text-lg ${
+            className={`mt-s2 mb-s1 text-center text-lg ${
               !isOpen && 'invisible opacity-0'
             }`}
           >
@@ -80,8 +82,8 @@ const Navlink = ({ isOpen }) => {
         {DASHBOARD_NAVLINKS.map((link, index) => (
           <Link href={link.route} key={`sidebar-link-${index}`}>
             <a
-              className={`hover:gradient-dark group relative mb-s2 flex items-center py-s1 px-s3 ${
-                route === link.route && 'gradient-dark'
+              className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s3 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
+                route === link.route && 'bg-[#fcfcfc] bg-opacity-10'
               }`}
             >
               <span
@@ -116,7 +118,7 @@ const Navlink = ({ isOpen }) => {
                     isOpen
                       ? ''
                       : 'hidden rounded-md bg-white-transparent p-s1 group-hover:inline-block'
-                  } ${route === link.route ? 'gradient-1 gradient-text' : ''}`}
+                  } ${route === link.route ? 'text-[#fcfcfc]' : ''}`}
                 >
                   {link.text}
                 </span>
@@ -131,8 +133,8 @@ const Navlink = ({ isOpen }) => {
 
 const Signout = ({ isOpen }) => {
   const handleLogout = () => {
-    localStorage.removeItem('uid');
-    localStorage.removeItem('token');
+    Cookies.remove('uid');
+    Cookies.remove('token');
     window.location.href = '/';
   };
 

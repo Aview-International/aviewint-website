@@ -4,12 +4,21 @@ import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import HorizontalLine from '../UI/HorizontalLine';
+import Correct from '../../public/img/icons/green-check-circle.svg';
+import Incorrect from '../../public/img/icons/incorrect.svg';
 
-const MultipleSelectInput = ({ answer, text, options, onChange }) => {
+const MultipleSelectInput = ({
+  answer,
+  text,
+  options,
+  hasSubmitted,
+  onChange,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedAnswer = useMemo(() => {
     return answer;
   });
+
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
       <p className="mb-s1 text-xl text-white">{text}</p>
@@ -20,10 +29,14 @@ const MultipleSelectInput = ({ answer, text, options, onChange }) => {
             onClick={() => setIsOpen(!isOpen)}
           >
             <p>
-              {selectedAnswer?.length > 0
-                ? `${selectedAnswer[0]}, ${
-                    selectedAnswer.length > 1 ? selectedAnswer[1] : ''
-                  }${selectedAnswer.length > 2 ? ', ...' : ''}`
+              {selectedAnswer.length != 0
+                ? selectedAnswer?.length === 1
+                  ? `${selectedAnswer[0]}`
+                  : `${selectedAnswer[0]}${
+                      selectedAnswer.length > 1 ? ', ' + selectedAnswer[1] : ''
+                    }${
+                      selectedAnswer.length > 2 ? `, ${selectedAnswer[2]}` : ''
+                    }${selectedAnswer.length > 3 ? ',...' : ''}`
                 : 'Select Languages'}
             </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
@@ -31,6 +44,14 @@ const MultipleSelectInput = ({ answer, text, options, onChange }) => {
             </span>
           </div>
         </Border>
+        <span className="absolute right-[35px] bottom-[7px]">
+          {answer.length > 0 && !isOpen && (
+            <Image src={Correct} alt="Correct" width={20} height={20} />
+          )}
+          {hasSubmitted && !answer && (
+            <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
+          )}
+        </span>
         <OPTIONS isOpen={isOpen} options={options} onChange={onChange} />
       </div>
     </OutsideClickHandler>
@@ -41,7 +62,7 @@ const OPTIONS = ({ isOpen, options, onChange }) => {
   return (
     <Border
       borderRadius="[5px]"
-      classes={`w-full absolute left-0 top-full transition-300 z-20 ${
+      classes={`w-full absolute left-0 top-full mt-3 transition-300 z-20 ${
         isOpen ? 'visible opacity-1' : 'invisible opacity-0'
       }`}
     >

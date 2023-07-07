@@ -26,6 +26,11 @@
   .gradient-2 {
     background: linear-gradient(54deg, #ff00ff 7.13%, #00ffff 91%);
   }
+
+  .overlay-dark {
+    background: rgba(255, 255, 255, 0.08) ;
+  }
+
   .gradient-dark {
     background: linear-gradient(
       180deg,

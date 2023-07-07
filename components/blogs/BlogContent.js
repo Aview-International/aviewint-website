@@ -38,8 +38,7 @@ const BlogContent = ({ sections }) => {
               } else if (content.type === 'ordered list') {
                 return (
                   <ul key={`section-${i}`}>
-                    {content.items.map((item, i) => {
-                      const listItem = (
+                    {content.items.map((item, i) => (
                         <div
                           className="relative text-lg text-white md:text-xl"
                           key={`item-${i}`}
@@ -53,10 +52,8 @@ const BlogContent = ({ sections }) => {
                             key={`item-${i}`}
                           />
                         </div>
-                      );
-
-                      return listItem;
-                    })}
+                    )
+                    )}
                   </ul>
                 );
               } else if (content.type === 'youtube') {

@@ -1,23 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
-import { getUserProfile } from '../../pages/api/firebase';
 import { UserContext } from '../../store/user-profile';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
+import useProfile from '../../hooks/useProfile';
+import Script from 'next/script';
 
+// this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { setUserInfo } = useContext(UserContext);
+  const { handleGetProfile } = useProfile();
   const [isLoading, setIsLoading] = useState(true);
   const getProfile = async () => {
-    try {
-      const _id = localStorage.getItem('uid');
-      const res = await getUserProfile(_id);
-      setUserInfo(res);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-    }
+    await handleGetProfile();
+    setIsLoading(false);
   };
   useEffect(() => {
     getProfile();
@@ -29,10 +24,15 @@ export const DashboardContainer = ({ children }) => {
 const DashboardStructure = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
   const { userInfo } = useContext(UserContext);
+
   return (
     <>
+      <Script
+        src="https://upload-widget.cloudinary.com/global/all.js"
+        type="text/javascript"
+      />
       <DashboardContainer>
-        <main className="lg:gradient-dark flex min-h-screen w-full bg-black">
+        <main className="flex min-h-screen w-full bg-black">
           <DashboardSidebar
             userInfo={userInfo}
             setIsOpen={setIsOpen}
@@ -44,7 +44,7 @@ const DashboardStructure = ({ children }) => {
             }`}
           >
             <DashBoardHeader userInfo={userInfo} />
-            <div className="mx-auto h-full w-full max-w-[1480px] self-stretch overflow-y-auto bg-black md:p-s4">
+            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto bg-black text-white p-s3 md:p-s4">
               {children}
             </div>
           </div>

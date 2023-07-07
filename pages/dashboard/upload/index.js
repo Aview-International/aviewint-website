@@ -6,48 +6,57 @@ import PageTitle from '../../../components/SEO/PageTitle';
 
 const Upload = () => {
   const [video, setVideo] = useState(undefined);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [payload, setPayload] = useState({
-    services: [],
-    languages: [],
+    services: '',
+    languages: '',
     otherLanguages: '',
     allowUsPostVideo: false,
     saveSettingsForFuture: false,
   });
 
   const handleServices = (value) => {
-    const newServices = [...payload.services];
-    if (newServices.includes(value))
-      newServices.splice(newServices.indexOf(value), 1);
-    else newServices.push(value);
-    setPayload({ ...payload, services: newServices });
+    // const newServices = [...payload.services];
+    // if (newServices.includes(value))
+    //   newServices.splice(newServices.indexOf(value), 1);
+    // else newServices.push(value);
+    setPayload({ ...payload, services: value });
   };
 
   const handleLanguages = (value) => {
-    const newLanguages = [...payload.languages];
-    if (newLanguages.includes(value))
-      newLanguages.splice(newLanguages.indexOf(value), 1);
-    else newLanguages.push(value);
-    setPayload({ ...payload, languages: newLanguages });
+    // const newLanguages = [...payload.languages];
+    // if (newLanguages.includes(value))
+    //   newLanguages.splice(newLanguages.indexOf(value), 1);
+    // else newLanguages.push(value);
+    setPayload({ ...payload, languages: value });
+  };
+
+  const handleSubmit = () => {
+    console.log(payload);
   };
 
   return (
     <>
-      <PageTitle title="Upload Video" />
-      <div className="flex flex-col p-s4 text-white lg:flex-row">
-        <div className="w-full lg:w-1/2">
-          <UploadVideo
-            setData={(e) => setVideo(e.target.files[0])}
-            data={video}
-          />
-        </div>
-        <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
-          <TranslateOptions
-            handleServices={handleServices}
-            handleLanguages={handleLanguages}
-            // handleSubmit={handleSubmit}
-            payload={payload}
-            setPayload={setPayload}
-          />
+      <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
+        <PageTitle title="Upload Video" />
+        <div className="flex flex-col p-s5 text-white lg:flex-row">
+          <div className="w-full lg:w-1/2">
+            <UploadVideo
+              setVideo={setVideo}
+              video={video}
+              setUploadProgress={setUploadProgress}
+              uploadProgress={uploadProgress}
+            />
+          </div>
+          <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
+            <TranslateOptions
+              handleServices={handleServices}
+              handleLanguages={handleLanguages}
+              handleSubmit={handleSubmit}
+              payload={payload}
+              setPayload={setPayload}
+            />
+          </div>
         </div>
       </div>
     </>

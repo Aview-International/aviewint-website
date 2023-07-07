@@ -1175,7 +1175,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: 'The answer is simple. Whether you are a new Youtuber or a veteran with a large channel, the quality of your videos needs to be able to compete with the rest of the creators in your niche.',
+            text: 'The answer is simple. Whether you are a new YouTuber or a veteran with a large channel, the quality of your videos needs to be able to compete with the rest of the creators in your niche.',
           },
           {
             type: 'paragraph',
@@ -2019,7 +2019,7 @@ export const BLOGS = [
           },
           {
             type: 'paragraph',
-            text: "If you're looking to grow a channel, you're in luck because in this post you'll learn the 10 essential skills you need to grow an audience on Youtube.",
+            text: "If you're looking to grow a channel, you're in luck because in this post you'll learn the 10 essential skills you need to grow an audience on YouTube.",
           },
         ],
       },

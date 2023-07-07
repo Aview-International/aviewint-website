@@ -6,10 +6,11 @@ import Logo from '../../../public/img/aview/logo.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
 
 const SingleMessage = ({ timeStamp, message }) => (
   <div className="my-s3 flex items-start text-sm">
-    <div className='mr-s1'>
+    <div className="mr-s1">
       <Image src={Logo} alt="" width={40} height={40} />
     </div>
     <div>
@@ -29,7 +30,7 @@ const SingleMessage = ({ timeStamp, message }) => (
 );
 
 const Messages = () => {
-  const uid = localStorage.getItem('uid');
+  const uid = Cookies.get('uid');
 
   const [message, setMessage] = useState('');
   const [chats, setChats] = useState([]);
@@ -61,18 +62,20 @@ const Messages = () => {
   return (
     <>
       <PageTitle title="Messages" />
-      <div className="flex h-full rounded-2xl bg-white-transparent text-white">
+      <div className="mx-auto flex h-full max-w-[1200px] rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] text-white">
         <div className="w-full p-s2">
           <div className="relative flex h-full flex-col justify-between">
-            <div className="flex items-center">
-              <Image
-                src={Logo}
-                alt="Profile Picture"
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
-              <p className="ml-s1 text-2xl">Aview Support</p>
+            <div className="flex items-center gap-2">
+              <div className="-mb-1">
+                <Image
+                  src={Logo}
+                  alt="Profile Picture"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              </div>
+              <p className="ml-s1 text-2xl font-bold">Aview Support</p>
             </div>
             <div>
               <div>

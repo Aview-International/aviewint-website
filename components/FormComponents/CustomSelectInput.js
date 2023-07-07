@@ -25,13 +25,13 @@ const CustomSelectInput = ({
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p>{data || 'Select'}</p>
+            <p className='text-white/70'>{data || 'Your response'}</p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>
           </div>
         </Border>
-        <span className="absolute right-[30px] bottom-[7px]">
+        <span className="absolute right-[35px] bottom-[7px]">
           {isValid && (
             <Image src={Correct} alt="Correct" width={20} height={20} />
           )}
@@ -55,7 +55,7 @@ const Options = ({ isOpen, setData, options, setIsOpen, onChange }) => {
   return (
     <Border
       borderRadius="[5px]"
-      classes={`w-full absolute left-0 top-full z-10 transition-300 ${
+      classes={`w-full absolute left-0 top-full mt-3 z-10 transition-300 ${
         isOpen ? 'visible opacity-1' : 'invisible opacity-0'
       }`}
     >

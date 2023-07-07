@@ -16,6 +16,7 @@ import {
   onValue,
 } from 'firebase/database';
 import { baseUrl } from '../../../components/baseUrl';
+import { v4 as uuidv4 } from 'uuid';
 
 export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URL}&scope=user_profile,user_media&response_type=code`;
 
@@ -135,28 +136,26 @@ export const updateAviewUsage = async (role, _id) => {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-    } else {
-      console.log('No data available');
     }
   });
 };
 
-export const updateRequiredServices = async (services, _id) => {
+export const updateRequiredServices = async (payload, _id) => {
   get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const postData = {
         ...data,
-        services,
+        ...payload,
       };
       const updates = {
         [`users/${_id}`]: postData,
       };
       await update(ref(database), updates);
-    } else {
-      console.log('No data available');
-    }
+      return;
+    } else throw new Error('User does not exist');
   });
+  return;
 };
 
 // save user youtube channel id after connecting youtube account
@@ -190,7 +189,7 @@ export const updateUserBio = async (payload, _id) => {
       const postData = {
         ...data,
         monthlyView: payload.monthlyView,
-        languagesRequired: payload.languages,
+        totalFollowers: payload.totalFollowers,
         averageDuration: payload.averageVideoDuration,
       };
       const updates = {
@@ -233,17 +232,11 @@ export const updateUserInstagram = async (
 };
 
 // get all user data from the database
-export const getUserProfile = async (_id) => {
-  const res = await get(ref(database, `users/${_id}`)).then((snapshot) => {
-    if (snapshot.exists()) return snapshot.val();
-    else return null;
+export const getUserProfile = async (_id, callback) => {
+  const messages = ref(database, `users/${_id}`);
+  onValue(messages, (snapshot) => {
+    callback(snapshot.val());
   });
-  return res;
-};
-
-// save video to the database
-export const saveVideo = async (channelId, data) => {
-  await set(ref(database, `youtube-videos/${channelId}`), data);
 };
 
 // save user message to db
@@ -271,4 +264,56 @@ export const fetchMessages = async (uid, callback) => {
     });
     callback(chats);
   });
+};
+
+export const getAllPayments = async (_id) => {
+  const res = await get(ref(database, `payments/${_id}`)).then((snapshot) => {
+    if (snapshot.exists()) return snapshot.val();
+    else return null;
+  });
+  return res;
+};
+
+export const createANewJob = async (_id, jobDetails) => {
+  let jobId = uuidv4();
+
+  await set(ref(database, `user-jobs/pending/${_id}/${jobId}`), jobDetails);
+  await set(ref(database, `admin-jobs/pending/${jobId}`), jobDetails);
+  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const newPostData = {
+        ...data,
+        pendingVideos: 1,
+      };
+      const existingPostData = {
+        ...data,
+        pendingVideos: +data.pendingVideos + 1,
+      };
+      const updates = {
+        [`users/${_id}`]: data.pendingVideos ? existingPostData : newPostData,
+      };
+      await update(ref(database), updates);
+    }
+  });
+};
+
+export const getAllPendingJobs = async (uid) => {
+  const res = await get(ref(database, `user-jobs/pending/${uid}`)).then(
+    (snapshot) => {
+      if (snapshot.exists()) return snapshot.val();
+      else return null;
+    }
+  );
+  return res;
+};
+
+export const getAllCompletedJobs = async (uid) => {
+  const res = await get(ref(database, `user-jobs/completed/${uid}`)).then(
+    (snapshot) => {
+      if (snapshot.exists()) return snapshot.val();
+      else return null;
+    }
+  );
+  return res;
 };

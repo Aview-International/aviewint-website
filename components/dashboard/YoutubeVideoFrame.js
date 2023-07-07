@@ -21,7 +21,7 @@ const YoutubeVideoFrame = ({
       <div className="relative">
         <div className="mb-s1 flex text-lg">
           <Image src={Youtube} alt="" with={24} height={24} />
-          <p className="pl-s1">Youtube Video</p>
+          <p className="pl-s1">YouTube Video</p>
         </div>
         <Image
           loader={() => thumbnail}
@@ -32,7 +32,7 @@ const YoutubeVideoFrame = ({
         />
         {selected && (
           <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.6)]">
-            <Image src={CheckMark} alt={'Youtube'} width={24} height={24} />
+            <Image src={CheckMark} alt="" width={24} height={24} />
           </div>
         )}
       </div>

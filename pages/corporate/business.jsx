@@ -13,10 +13,13 @@ import BenefitsOfBusinessTranslation from '../../components/sections/corporate/b
 import AllBusinessSectors from '../../components/sections/corporate/business/AllBusinessSectors';
 import PreppingForBillC96 from '../../components/sections/corporate/PreppingForBillC96';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar'
 
 export default function Business() {
   return (
     <>
+      <ProgressBar />
       <EasterEgg />
       <Header />
       <Hero
@@ -28,6 +31,7 @@ export default function Business() {
         imageAlt="Business Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <BusinessTranslationOverview />
       <BenefitsOfBusinessTranslation />
       <LanguagesServed />
