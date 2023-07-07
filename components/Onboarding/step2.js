@@ -2,43 +2,59 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { updateUserBio } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
-import NumberInput from '../UI/NumberInput';
+import CustomSelectInput from '../FormComponents/CustomSelectInput';
+import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import OnboardingButton from './button';
+import {
+  AVERAGE_MONTHLY_VIEWS,
+  AVERAGE_VIDEO_DURATION,
+  LANGUAGES,
+} from '../../constants/constants';
 
-const OnboardingStep2 = () => {
+export const OnboardingStep2 = () => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
-    totalFollowers: '',
+    languages: '',
     averageVideoDuration: '',
   });
-
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
     isEmpty: false,
   });
-
+  
   const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (
-      payload.monthlyView == '' ||
-      payload.totalFollowers == '' ||
-      payload.averageVideoDuration == ''
+      !payload.monthlyView ||
+      payload.languages.length < 1 ||
+      !payload.averageVideoDuration
     ) {
       setSideEffects({ ...sideEffects, isEmpty: true });
       return;
     }
     setSideEffects({ ...sideEffects, isLoading: true });
-
     try {
       await updateUserBio(payload, Cookies.get('uid'));
-      router.push('/onboarding?stage=3');
+      router.push('/onboarding?stage=4');
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleMultipleSelect = (option) => {
+    const newArray = [...payload.languages];
+    if (newArray.includes(option)) {
+      newArray.splice(newArray.indexOf(option), 1);
+      setPayload({ ...payload, languages: newArray });
+    } else {
+      newArray.push(option);
+      setPayload({ ...payload, languages: newArray });
+    }
+  };
+
+  console.log(sideEffects.isEmpty)
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
@@ -48,62 +64,51 @@ const OnboardingStep2 = () => {
         We&#8217;ll customize your Aview experience based on your choices
       </p>
       <div>
-        <div className="flex flex-col items-center">
-          <div className="flex max-w-[360px] flex-col justify-center gap-5 ">
-            <NumberInput
-              placeholder="Your Response"
-              bgColor="black"
-              textColor="white/80"
-              name="monthlyView"
-              label="How many average monthly views?"
+        <div className="ml-12 flex flex-row justify-center">
+          <div className="flex max-w-[1144px] flex-col  items-stretch lg:flex-row lg:gap-8">
+            <CustomSelectInput
+              text="What are your average monthly views ?"
+              options={AVERAGE_MONTHLY_VIEWS}
+              hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.monthlyView}
-              hasSubmitted={sideEffects.hasSubmitted}
-              value={payload.monthlyView}
-              onChange={(e) =>
-                setPayload({ ...payload, [e.target.name]: e.target.value })
+              onChange={(option) =>
+                setPayload({ ...payload, monthlyView: option })
               }
             />
-            <NumberInput
-              placeholder="Your Response"
-              bgColor="black"
-              textColor="white/80"
-              name="totalFollowers"
-              label="Total followers across all socials? (approx)"
-              isValid={payload.totalFollowers}
+            <MultipleSelectInput
+              text="What languages do you need translations for ?"
+              options={LANGUAGES}
+              answer={payload.languages}
               hasSubmitted={sideEffects.hasSubmitted}
-              value={payload.totalFollowers}
-              onChange={(e) =>
-                setPayload({ ...payload, [e.target.name]: e.target.value })
-              }
+              onChange={(event) => handleMultipleSelect(event)}
             />
-            <NumberInput
-              placeholder="Your Response"
-              bgColor="black"
-              textColor="white/80"
-              name="averageVideoDuration"
-              label="Average duratio of videos?"
+            <CustomSelectInput
+              text="How long is your average duration of videos ?"
+              options={AVERAGE_VIDEO_DURATION}
+              hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.averageVideoDuration}
-              hasSubmitted={sideEffects.hasSubmitted}
-              value={payload.averageVideoDuration}
-              onChange={(e) =>
-                setPayload({ ...payload, [e.target.name]: e.target.value })
+              onChange={(option) =>
+                setPayload({ ...payload, averageVideoDuration: option })
               }
             />
           </div>
-          {sideEffects.isEmpty && (
-            <p className="my-s3 text-center text-xl">
-              Please fill up the all inputs above to continue
-            </p>
-          )}
-          <div className="m-auto mt-10 w-[min(360px,90%)]">
-            <OnboardingButton
-              onClick={handleSubmit}
-              isLoading={sideEffects.isLoading}
-              theme="dark"
-            >
-              Continue
-            </OnboardingButton>
-          </div>
+        </div>
+        {/* {sideEffects.isEmpty && (
+          <p className="my-s3 text-center text-xl">
+            Please select from the options above to continue
+          </p>
+        )} */}
+        <div className="m-auto mt-s4 w-[min(360px,90%)]">
+          <OnboardingButton
+            disabled={!payload.monthlyView ||
+              payload.languages.length < 1 ||
+              !payload.averageVideoDuration}
+            onClick={handleSubmit}
+            isLoading={sideEffects.isLoading}
+            theme="dark"
+          >
+            Continue
+          </OnboardingButton>
         </div>
       </div>
     </div>

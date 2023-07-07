@@ -7,37 +7,26 @@ import HorizontalLine from '../UI/HorizontalLine';
 import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 
-const MultipleSelectInput = ({
-  answer,
-  text,
-  options,
-  hasSubmitted,
-  onChange,
-}) => {
+const MultipleSelectInput = ({ answer, text, options, hasSubmitted, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedAnswer = useMemo(() => {
     return answer;
   });
-
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-      <p className="mb-s1 text-xl text-white">{text}</p>
-      <div className="relative mb-s4 text-xl text-white">
+      <p className="mb-s1 text-xl">{text}</p>
+      <div className="relative mb-s4 text-xl">
         <Border borderRadius="[5px] w-full">
           <div
             className="flex w-full cursor-pointer items-center justify-between rounded-[5px] bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p>
-              {selectedAnswer.length != 0
-                ? selectedAnswer?.length === 1
-                  ? `${selectedAnswer[0]}`
-                  : `${selectedAnswer[0]}${
-                      selectedAnswer.length > 1 ? ', ' + selectedAnswer[1] : ''
-                    }${
-                      selectedAnswer.length > 2 ? `, ${selectedAnswer[2]}` : ''
-                    }${selectedAnswer.length > 3 ? ',...' : ''}`
-                : 'Select Languages'}
+            <p className='text-white/70'>
+              {
+                selectedAnswer.length!=0 ? (selectedAnswer?.length === 1 ? `${selectedAnswer[0]}` : `${selectedAnswer[0]}, ${
+                selectedAnswer.length > 1 ? selectedAnswer[1] : ''
+                },${selectedAnswer.length > 2 ? `${selectedAnswer[2]},`:''}${selectedAnswer.length > 3 ? '...' : ''}`):'Your Response'
+              } 
             </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
@@ -45,7 +34,7 @@ const MultipleSelectInput = ({
           </div>
         </Border>
         <span className="absolute right-[35px] bottom-[7px]">
-          {answer.length > 0 && !isOpen && (
+          {(answer.length>0 && !isOpen) && (
             <Image src={Correct} alt="Correct" width={20} height={20} />
           )}
           {hasSubmitted && !answer && (
@@ -62,11 +51,11 @@ const OPTIONS = ({ isOpen, options, onChange }) => {
   return (
     <Border
       borderRadius="[5px]"
-      classes={`w-full absolute left-0 top-full mt-3 transition-300 z-20 ${
+      classes={`w-full absolute left-0 top-full transition-300 z-20 overflow-x-hidden ${
         isOpen ? 'visible opacity-1' : 'invisible opacity-0'
       }`}
     >
-      <div className="gradient-1 max-h-48 overflow-scroll rounded-[5px]">
+      <div className="gradient-1 max-h-60 rounded-[5px]">
         {options.map((option, i) => (
           <CHECKBOX
             option={option}
@@ -107,4 +96,5 @@ const CHECKBOX = ({ option, onChange }) => {
     </>
   );
 };
+
 export default MultipleSelectInput;
