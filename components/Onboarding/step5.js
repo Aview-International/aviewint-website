@@ -67,7 +67,7 @@ const OnboardingStep5 = () => {
       <p className="mx-auto mt-s2 mb-s6 text-lg md:w-2/5 md:text-center md:text-xl">
         Let us determine your location to suggest the appropriate language translations for you.
       </p>
-      <div className="grid items-center gap-y-6 md:grid-cols-2 xl:grid-cols-4 2xl:ml-s14 xl:ml-s4">
+      <div className="grid items-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:ml-s14 xl:ml-s5 md:ml-s14">
         {ONBOARDING_REGIONS.map((item, index) => (
           <div key={`option-${index}`} onClick={() => handleSelect(item.title)}>
             <div className={`flex flex-col items-start mx-auto`}>
@@ -91,7 +91,7 @@ const OnboardingStep5 = () => {
               <div className="flex flex-col w-full items-start">
                 <h2 className="my-6 text-3xl font-semibold md:ml-1.5">Languages</h2>
                 <div
-                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-3 rounded-2xl md:p-s3 p-s1.5 md:h-[247px] md:w-[283px] ${
+                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl md:p-s3 p-s1.5 md:h-[247px] md:w-[283px] ${
                     payload.region.includes(item.title)
                       ? 'gradient-1'
                       : 'gradient-dark'
