@@ -102,7 +102,7 @@ const OnboardingStep1 = () => {
           disabled={!userData.role}
           onClick={handleSubmit}
           isLoading={userData.isLoading}
-          theme="dark"
+          theme="light"
         >
           Continue
         </OnboardingButton>

@@ -2,13 +2,12 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { updateUserBio } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
-import CustomSelectInput from '../FormComponents/CustomSelectInput';
-import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import OnboardingButton from './button';
+import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import {
   AVERAGE_MONTHLY_VIEWS,
+  AVERAGE_SOCIAL_FOLLOWERS,
   AVERAGE_VIDEO_DURATION,
-  LANGUAGES,
 } from '../../constants/constants';
 
 export const OnboardingStep2 = () => {
@@ -21,19 +20,17 @@ export const OnboardingStep2 = () => {
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
-    isEmpty: false,
   });
-  
+
+  const isFormValid = () =>
+    !!payload.monthlyView &&
+    !!payload.totalFollowers &&
+    !!payload.averageVideoDuration;
+
   const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
-    if (
-      !payload.monthlyView ||
-      payload.languages.length < 1 ||
-      !payload.averageVideoDuration
-    ) {
-      setSideEffects({ ...sideEffects, isEmpty: true });
-      return;
-    }
+    if (!isFormValid()) return;
+
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
       await updateUserBio(payload, Cookies.get('uid'));
@@ -64,10 +61,10 @@ export const OnboardingStep2 = () => {
         We&#8217;ll customize your Aview experience based on your choices
       </p>
       <div>
-        <div className="ml-12 flex flex-row justify-center">
-          <div className="flex max-w-[1144px] flex-col  items-stretch lg:flex-row lg:gap-8">
+        <div className="flex flex-col items-center">
+          <div className="flex max-w-[360px] flex-col justify-center gap-5 ">
             <CustomSelectInput
-              text="What are your average monthly views ?"
+              text="What are your average monthly views?"
               options={AVERAGE_MONTHLY_VIEWS}
               hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.monthlyView}
@@ -75,15 +72,17 @@ export const OnboardingStep2 = () => {
                 setPayload({ ...payload, monthlyView: option })
               }
             />
-            <MultipleSelectInput
-              text="What languages do you need translations for ?"
-              options={LANGUAGES}
-              answer={payload.languages}
+            <CustomSelectInput
+              text="Total followers across all socials? (approx)"
+              options={AVERAGE_SOCIAL_FOLLOWERS}
               hasSubmitted={sideEffects.hasSubmitted}
-              onChange={(event) => handleMultipleSelect(event)}
+              isValid={payload.totalFollowers}
+              onChange={(option) =>
+                setPayload({ ...payload, totalFollowers: option })
+              }
             />
             <CustomSelectInput
-              text="How long is your average duration of videos ?"
+              text="Average duratio of videos ?"
               options={AVERAGE_VIDEO_DURATION}
               hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.averageVideoDuration}
@@ -92,23 +91,21 @@ export const OnboardingStep2 = () => {
               }
             />
           </div>
-        </div>
-        {/* {sideEffects.isEmpty && (
-          <p className="my-s3 text-center text-xl">
-            Please select from the options above to continue
-          </p>
-        )} */}
-        <div className="m-auto mt-s4 w-[min(360px,90%)]">
-          <OnboardingButton
-            disabled={!payload.monthlyView ||
-              payload.languages.length < 1 ||
-              !payload.averageVideoDuration}
-            onClick={handleSubmit}
-            isLoading={sideEffects.isLoading}
-            theme="dark"
-          >
-            Continue
-          </OnboardingButton>
+          {sideEffects.hasSubmitted && !isFormValid() && (
+            <p className="my-s3 text-center text-xl">
+              Please fill up the all inputs above to continue
+            </p>
+          )}
+          <div className="m-auto mt-10 w-[min(360px,90%)]">
+            <OnboardingButton
+              onClick={handleSubmit}
+              isLoading={sideEffects.isLoading}
+              theme="light"
+              disabled={!isFormValid()}
+            >
+              Continue
+            </OnboardingButton>
+          </div>
         </div>
       </div>
     </div>

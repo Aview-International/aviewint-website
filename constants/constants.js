@@ -1228,6 +1228,18 @@ export const AVERAGE_MONTHLY_VIEWS = [
   '1,000,000+',
 ];
 
+export const AVERAGE_SOCIAL_FOLLOWERS = [
+  '0 - 10,000',
+  '10,000 - 25,000',
+  '25,000 - 100,000',
+  '100,000 - 250,000',
+  '250,000 - 1,000,000',
+  '1,000,000 - 2,500,000',
+  '2,500,000 - 5,000,000',
+  '5,000,000 - 10,000,00',
+  '10,000,000+',
+];
+
 export const AVERAGE_VIDEO_DURATION = [
   '1 - 5 minutes',
   '5 - 15 minutes',
@@ -1293,7 +1305,7 @@ export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
   'Other',
 ];
 
-export const ONBOARDING_REGIONS = [
+export const SUPPORTED_REGIONS = [
   {
     title: 'North America',
     image: north_america,
@@ -1301,14 +1313,17 @@ export const ONBOARDING_REGIONS = [
       {
         image: English,
         languageName: 'English',
+        localDialect: 'English',
       },
       {
         image: Spanish2,
         languageName: 'Spanish',
+        localDialect: 'Español',
       },
       {
         image: French,
         languageName: 'French',
+        localDialect: 'Français',
       },
     ],
   },
@@ -1319,14 +1334,17 @@ export const ONBOARDING_REGIONS = [
       {
         image: Spanish2,
         languageName: 'Spanish',
+        localDialect: 'Español',
       },
       {
         image: Portuguese,
         languageName: 'Portuguese',
+        localDialect: 'Português',
       },
       {
         image: English,
         languageName: 'English',
+        localDialect: 'English',
       },
     ],
   },
@@ -1337,22 +1355,27 @@ export const ONBOARDING_REGIONS = [
       {
         image: Arabic,
         languageName: 'Arabic',
+        localDialect: 'العربية (Al - ʿarabiyyah)',
       },
       {
         image: Hindi,
         languageName: 'Hindi',
+        localDialect: 'हिन्दी (Hindī)',
       },
       {
         image: Chinese,
         languageName: 'Chinese',
+        localDialect: '中文 (Zhōngwén)',
       },
       {
         image: Russian,
         languageName: 'Russian',
+        localDialect: 'Русский (Russkiy)',
       },
       {
         image: Japanese,
         languageName: 'Japanese',
+        localDialect: '日本語 (Nihongo)',
       },
     ],
   },
@@ -1363,35 +1386,28 @@ export const ONBOARDING_REGIONS = [
       {
         image: German,
         languageName: 'German',
+        localDialect: 'Deutsch',
       },
       {
         image: French,
         languageName: 'French',
+        localDialect: 'Français',
       },
       {
         image: Italian,
         languageName: 'Italian',
+        localDialect: 'Italiano',
       },
       {
         image: Turkish,
         languageName: 'Turkish',
+        localDialect: 'Türkçe',
       },
       {
         image: Spanish,
         languageName: 'Spanish',
+        localDialect: 'Español',
       },
     ],
-  },
-];
-
-export const onBoardingRecommends = [
-  {
-    language: 'Español',
-  },
-  {
-    language: 'Portuguese',
-  },
-  {
-    language: 'Englih',
   },
 ];

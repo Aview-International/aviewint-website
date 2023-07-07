@@ -29,7 +29,7 @@ const SelectVideos = ({
       />
       <br />
       <div className="w-full md:w-[155px]">
-        <OnboardingButton onClick={handleTranslate}>Translate</OnboardingButton>
+        <OnboardingButton onClick={handleTranslate}>Continue</OnboardingButton>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
@@ -11,11 +11,12 @@ import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
-import { UserContext } from '../../store/user-profile';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/reducers/user';
 
 const Login = () => {
   const router = useRouter();
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -23,17 +24,19 @@ const Login = () => {
     const { _tokenResponse } = await signInWithGoogle();
     const res = await checkUserEmail(_tokenResponse.localId);
     if (!res) router.push('/register?account=false');
-    // if (!res) router.push('/onboarding?stage=1&account=false');
     else {
       Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
       Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
-      setUserInfo({
-        ...userInfo,
-        email: _tokenResponse.email,
-        firstName: _tokenResponse.firstName,
-        lastName: _tokenResponse.lastName,
-        picture: _tokenResponse.photoUrl,
-      });
+      dispatch(
+        setUser({
+          email: _tokenResponse.email,
+          firstName: _tokenResponse.firstName,
+          lastName: _tokenResponse.lastName,
+          picture: _tokenResponse.photoUrl,
+          token: _tokenResponse.idToken,
+          uid: _tokenResponse.localId,
+        })
+      );
       router.push('/dashboard');
     }
   };
