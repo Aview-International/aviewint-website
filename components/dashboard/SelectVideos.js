@@ -28,8 +28,8 @@ const SelectVideos = ({
         setSelectedVideos={setSelectedVideos}
       />
       <br />
-      <div className="w-full md:w-[155px]">
-        <OnboardingButton onClick={handleTranslate}>Continue</OnboardingButton>
+      <div className="ml-auto w-full md:w-[155px]">
+        <OnboardingButton onClick={handleTranslate}>Next</OnboardingButton>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import UserContextProvider from '../store/user-profile';
 
 import { MenuOpenContextProvider } from '../store/menu-open-context';
 
@@ -31,21 +30,19 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <MenuOpenContextProvider>
-        <UserContextProvider>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-          <Layout Component={Component} pageProps={pageProps} />
-        </UserContextProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <Layout Component={Component} pageProps={pageProps} />
       </MenuOpenContextProvider>
     </Provider>
   );

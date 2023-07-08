@@ -48,7 +48,7 @@ const Profile = ({ userInfo, isOpen }) => {
     >
       {userInfo?.picture && (
         <Image
-          src={userInfo?.picture}
+          src={userInfo.picture}
           alt="Profile Picture"
           width={`${isOpen ? 80 : 40}`}
           height={`${isOpen ? 80 : 40}`}

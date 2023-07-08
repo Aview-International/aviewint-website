@@ -4,9 +4,9 @@ import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Link from 'next/link';
 import FormData from 'form-data';
 import uploadVideo from '../../services/upload';
-import { useContext, useState } from 'react';
-import { UserContext } from '../../store/user-profile';
+import { useState } from 'react';
 import Border from '../UI/Border';
+import { useSelector } from 'react-redux';
 
 const UploadVideo = ({
   setVideo,
@@ -14,7 +14,7 @@ const UploadVideo = ({
   setUploadProgress,
   uploadProgress,
 }) => {
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleUpload = async () => {
