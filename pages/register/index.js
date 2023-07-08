@@ -10,10 +10,12 @@ import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
 import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user';
 
 const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,
