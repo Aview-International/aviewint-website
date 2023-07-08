@@ -41,7 +41,7 @@ const Textarea = ({
             className={`peer block min-h-[120px] w-full resize-none rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             value={value}
           ></textarea>
           <div

@@ -16,6 +16,8 @@ const initialState = {
   youtubeChannelName: '',
   uid: '',
   token: '',
+  preferences: [],
+  saveSettings: false,
 };
 
 const userSlice = createSlice({

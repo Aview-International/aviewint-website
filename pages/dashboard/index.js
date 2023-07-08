@@ -1,33 +1,30 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DashboardLayout from '../../components/dashboard/DashboardLayout';
 import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
-import { UserContext } from '../../store/user-profile';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
-import { createANewJob } from '../api/firebase';
+import { createANewJob, updateRequiredServices } from '../api/firebase';
+import { useSelector } from 'react-redux';
 
 const DashboardHome = () => {
+  const userData = useSelector((state) => state.user);
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [videos, setVideos] = useState([]);
-  const { userInfo } = useContext(UserContext);
   const [payload, setPayload] = useState({
-    services: [],
     languages: [],
-    otherLanguages: '',
     additionalNote: '',
-    allowUsPostVideo: false,
-    saveSettingsForFuture: false,
+    saveSettings: false,
   });
 
   const getYoutubeVideos = async () => {
     try {
       const getVideos = await axios.post(
         '/api/onboarding/link-youtube?get=videos',
-        { youtubeChannelId: userInfo.youtubeChannelId }
+        { youtubeChannelId: userData.youtubeChannelId }
       );
       setVideos(getVideos.data.items);
       setIsLoading(false);
@@ -38,8 +35,8 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    if (userInfo.youtubeChannelId) getYoutubeVideos();
-  }, [userInfo.youtubeChannelId]);
+    if (userData.youtubeChannelId) getYoutubeVideos();
+  }, [userData.youtubeChannelId]);
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -47,29 +44,25 @@ const DashboardHome = () => {
       toast.error('Please select a language');
       return;
     }
-    if (payload.services.length < 1) {
-      toast.error('Please select a service');
-      return;
-    }
+    const preferences = {
+      preferences: payload.languages,
+      saveSettings: payload.saveSettings,
+    };
     try {
-      await createANewJob(userInfo._id, {
-        creatorId: userInfo._id,
+      if (payload.saveSettings)
+        updateRequiredServices(preferences, userData.uid);
+      await createANewJob(userData.uid, {
+        creatorId: userData.uid,
         videoData: selectedVideos,
-        services: payload.services,
         languages: payload.languages,
-        otherLanguages: payload.otherLanguages,
         additionalNote: payload.additionalNote,
-        allowUsPostVideo: payload.allowUsPostVideo,
         status: 'pending',
         createdAt: new Date().toISOString(),
       });
       setPayload({
-        services: [],
         languages: [],
-        otherLanguages: '',
         additionalNote: '',
-        allowUsPostVideo: false,
-        saveSettingsForFuture: false,
+        saveSettings: false,
       });
       setSelectedVideos([]);
       setIsLoading(false);

@@ -5,6 +5,7 @@ import OnboardingButton from './button';
 import Image from 'next/image';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
+import Shadow from '../UI/Shadow';
 
 const OnboardingStep5 = () => {
   const router = useRouter();
@@ -66,58 +67,65 @@ const OnboardingStep5 = () => {
       </p>
       <div className="grid items-center justify-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {SUPPORTED_REGIONS.map((item, index) => (
-          <div
-            className={`flex flex-col items-center`}
-            key={`option-${index}`}
-            onClick={() => handleSelect(item.title)}
-          >
-            <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
+          <Shadow>
             <div
-              className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
-                payload.region.includes(item.title)
-                  ? 'gradient-1'
-                  : 'gradient-dark'
-              }`}
+              className={`flex flex-col items-center`}
+              key={`option-${index}`}
+              onClick={() => handleSelect(item.title)}
             >
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={235}
-                height={303}
-              />
-            </div>
-            <div className="">
-              <h2 className="my-6 text-2xl font-semibold">Languages</h2>
+              <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
               <div
-                className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
+                className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
                     : 'gradient-dark'
                 }`}
               >
-                {item.data.map((dataItem, index) => (
-                  <div className="flex items-center justify-center" key={index}>
-                    <Image
-                      src={dataItem.image}
-                      alt={dataItem.languageName}
-                      width={24}
-                      height={22}
-                    />
-                    <p className="ml-2 text-lg font-medium">
-                      {dataItem.languageName}
-                    </p>
-                  </div>
-                ))}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={235}
+                  height={303}
+                />
+              </div>
+              {/* </Shadow> */}
+              <div className="">
+                <h2 className="my-6 text-2xl font-semibold">Languages</h2>
+                {/* <Shadow> */}
+                <div
+                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
+                    payload.region.includes(item.title)
+                      ? 'gradient-1'
+                      : 'gradient-dark'
+                  }`}
+                >
+                  {item.data.map((dataItem, index) => (
+                    <div
+                      className="flex items-center justify-center"
+                      key={index}
+                    >
+                      <Image
+                        src={dataItem.image}
+                        alt={dataItem.languageName}
+                        width={24}
+                        height={22}
+                      />
+                      <p className="ml-2 text-lg font-medium">
+                        {dataItem.languageName}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </Shadow>
         ))}
       </div>
       {sideEffects.hasSubmitted && payload.region.length < 1 && (
         <p className="my-s3 text-center text-xl">
           Please select an option from above to move to next step.
         </p>
-      )}{' '}
+      )}
       <div className="m-auto mt-12 w-[min(360px,90%)]">
         <OnboardingButton
           disabled={payload.region.length < 1}

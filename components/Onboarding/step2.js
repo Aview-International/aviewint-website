@@ -40,18 +40,6 @@ export const OnboardingStep2 = () => {
     }
   };
 
-  const handleMultipleSelect = (option) => {
-    const newArray = [...payload.languages];
-    if (newArray.includes(option)) {
-      newArray.splice(newArray.indexOf(option), 1);
-      setPayload({ ...payload, languages: newArray });
-    } else {
-      newArray.push(option);
-      setPayload({ ...payload, languages: newArray });
-    }
-  };
-
-  console.log(sideEffects.isEmpty)
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
@@ -73,7 +61,7 @@ export const OnboardingStep2 = () => {
               }
             />
             <CustomSelectInput
-              text="Total followers across all socials? (approx)"
+              text="Total followers across all socials?"
               options={AVERAGE_SOCIAL_FOLLOWERS}
               hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.totalFollowers}
@@ -82,7 +70,7 @@ export const OnboardingStep2 = () => {
               }
             />
             <CustomSelectInput
-              text="Average duratio of videos ?"
+              text="Average duratio of videos?"
               options={AVERAGE_VIDEO_DURATION}
               hasSubmitted={sideEffects.hasSubmitted}
               isValid={payload.averageVideoDuration}
