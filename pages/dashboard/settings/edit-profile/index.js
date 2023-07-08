@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SettingsLayout, Settings_Back_Button } from '..';
-import { UserContext } from '../../../../store/user-profile';
 import Correct from '../../../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../../../public/img/icons/incorrect.svg';
 import Border from '../../../../components/UI/Border';
 import OnboardingButton from '../../../../components/Onboarding/button';
 import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
+import { useSelector } from 'react-redux';
 
 const INPUT_FIELDS = [
   {
@@ -89,7 +89,8 @@ const Accounts = ({ userData }) => {
 };
 
 const EditProfile = () => {
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
+
   useEffect(() => {
     setPayload({
       ...payload,

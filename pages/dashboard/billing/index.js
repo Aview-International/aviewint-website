@@ -6,19 +6,19 @@ import Blobs from '../../../components/UI/Blobs';
 import Button from '../../../components/UI/Button';
 import Visa from '../../../public/img/icons/visa.svg';
 import Stripe from '../../../public/img/icons/stripe.svg';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../store/user-profile';
+import { useEffect, useState } from 'react';
 import { PaymentElement } from '@stripe/react-stripe-js';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { getAllPayments } from '../../api/firebase';
+import { useSelector } from 'react-redux';
 // import { loadStripe } from '@stripe/stripe-js';
 
 // const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEYS);
 
 const Billing = () => {
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
   const [payments, setPayments] = useState([]);
   const [reloadTrigger, setReloadTrigger] = useState(0);
 

@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
 import DashboardLayout, {
   DashboardContainer,
 } from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
 import Arrow from '../../../public/img/icons/arrow-back.svg';
-import { UserContext } from '../../../store/user-profile';
+import { useSelector } from 'react-redux';
 
 const SETTINGS_LINKS = [
   {
@@ -48,7 +47,7 @@ const EXTERNAL_LINKS = [
 ];
 
 const Settings = () => {
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
   return (
     <>
       <PageTitle title="Settings" />

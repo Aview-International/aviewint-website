@@ -1,11 +1,7 @@
-import Image from 'next/image';
-import { useContext } from 'react';
-import Copy from '../../public/img/icons/copy-to-clipboard.svg';
-import { UserContext } from '../../store/user-profile';
-import Border from '../UI/Border';
+import { useSelector } from 'react-redux';
 
 const Insights = () => {
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
   const summary = [
     {
       value: userInfo.pendingVideos ?? 0,

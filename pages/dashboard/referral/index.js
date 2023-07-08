@@ -5,12 +5,11 @@ import info from '../../../public/img/icons/info.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
 import OnboardingButton from '../../../components/Onboarding/button';
 import Border from '../../../components/UI/Border';
-import Shadow from '../../../components/UI/Shadow';
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { emailValidator } from '../../../utils/regex';
 import axios from 'axios';
-import { UserContext } from '../../../store/user-profile';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const Referral = () => {
   return (
@@ -129,7 +128,7 @@ const HowItWorks = () => {
 
 const Invite = () => {
   const [email, setEmail] = useState('');
-  const { userInfo } = useContext(UserContext);
+  const userInfo = useSelector((state) => state.user);
 
   const handleClick = async (e) => {
     e.preventDefault();

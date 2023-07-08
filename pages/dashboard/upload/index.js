@@ -12,7 +12,7 @@ const Upload = () => {
     languages: '',
     otherLanguages: '',
     allowUsPostVideo: false,
-    saveSettingsForFuture: false,
+    saveSettings: false,
   });
 
   const handleServices = (value) => {

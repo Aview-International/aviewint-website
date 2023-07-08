@@ -140,8 +140,8 @@ export const updateAviewUsage = async (role, _id) => {
   });
 };
 
-export const updateRequiredServices = async (payload, _id) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+export const updateRequiredServices = async (payload, uid) => {
+  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const postData = {
@@ -149,7 +149,7 @@ export const updateRequiredServices = async (payload, _id) => {
         ...payload,
       };
       const updates = {
-        [`users/${_id}`]: postData,
+        [`users/${uid}`]: postData,
       };
       await update(ref(database), updates);
       return;

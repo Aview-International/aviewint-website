@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../store/user-profile';
+import { useEffect, useState } from 'react';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
 import useProfile from '../../hooks/useUserProfile';
 import Script from 'next/script';
+import { useSelector } from 'react-redux';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
@@ -23,8 +23,7 @@ export const DashboardContainer = ({ children }) => {
 // this component renders the dashboard structure
 const DashboardStructure = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const { userInfo } = useContext(UserContext);
-
+  const userInfo = useSelector((state) => state.user);
   return (
     <>
       <Script
@@ -44,7 +43,7 @@ const DashboardStructure = ({ children }) => {
             }`}
           >
             <DashBoardHeader userInfo={userInfo} />
-            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto bg-black text-white p-s3 md:p-s4">
+            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto bg-black p-s3 text-white md:p-s4">
               {children}
             </div>
           </div>
