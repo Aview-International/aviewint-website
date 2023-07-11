@@ -57,7 +57,7 @@ const OnboardingStep5 = () => {
   };
 
   return (
-    <div className="m-auto w-[90%] 2xl:w-full">
+    <div className="m-auto w-[90%] 2xl:w-[80%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Select by regions of the world
       </h2>
@@ -67,7 +67,7 @@ const OnboardingStep5 = () => {
       </p>
       <div className="grid items-center justify-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {SUPPORTED_REGIONS.map((item, index) => (
-          <Shadow key={index}>
+          <Shadow key={index} translateOnY={true}>
             <div
               className={`flex flex-col items-center`}
               key={`option-${index}`}
@@ -75,7 +75,7 @@ const OnboardingStep5 = () => {
             >
               <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
               <div
-                className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
+                className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center bg-black md:h-[332px] md:w-[283px] ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
                     : 'gradient-dark'
@@ -90,10 +90,10 @@ const OnboardingStep5 = () => {
               </div>
               {/* </Shadow> */}
               <div className="">
-                <h2 className="my-6 text-2xl font-semibold">Languages</h2>
+                <h2 className="my-6 text-2xl font-semibold ml-2">Languages</h2>
                 {/* <Shadow> */}
                 <div
-                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
+                  className={`flex h-full w-full cursor-pointer bg-black flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
                     payload.region.includes(item.title)
                       ? 'gradient-1'
                       : 'gradient-dark'

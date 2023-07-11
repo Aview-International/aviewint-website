@@ -46,7 +46,7 @@ const OnboardingStep6 = () => {
   };
 
   return (
-    <div className="m-auto w-[90%]">
+    <div className="m-auto w-[80%] 2xl:w-[70%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Received recommended languages
       </h2>
@@ -57,7 +57,7 @@ const OnboardingStep6 = () => {
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {languages.map((language, index) => (
           <div
-            className="min-w-max(100%,360px) gradient-dark flex flex-row justify-between rounded-md p-s1.5"
+            className="max-w-[360px] gradient-dark flex flex-row justify-between rounded-md p-s1.5"
             key={index}
           >
             <div className="flex flex-row items-center justify-between">

@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
+import Video_Status from '../../public/img/graphics/video_status.svg';
 
 const Insights = () => {
   const userInfo = useSelector((state) => state.user);
@@ -33,14 +35,57 @@ const Insights = () => {
   );
 };
 
+const MoreSettings = () => {
+  return (
+    <div className='flex flex-row cursor-pointer justify-start bg-gray-1 px-s1 py-s1 rounded-full mb-1 mr-2 items-center gap-x-[1px]'>
+      <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
+      <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
+      <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
+    </div>
+  )
+};
+
+const EmptyStatus = () => {
+  return (
+    <div className='w-full h-full flex flex-col items-center justify-center px-s1 py-s2'>
+     <Image
+      src={Video_Status}
+      height={140}
+      width={110}
+      alt='Video Status'
+     />
+     <p className='text-lg'>You have no videos currently uploading.</p>
+    </div>
+  );
+};
+
+const ModalOnVideoStatus = () => {
+  return (
+    <div className=''>
+
+    </div>
+  );
+};
+
 const GoalComponent = () => {
   return (
-    <div className="gradient-dark mt-s2 ml-0 w-full items-center justify-between rounded-2xl p-s2 md:mt-0 md:ml-s3 md:w-[360px]">
-      <h4 className="mb-s2 text-2xl">Referrals are Coming Soon</h4>
-      <p className="text-lg">
-        By sharing your referral code, you can get your next translations at a
-        discount! To share the love, check back soon.
-      </p>
+    <div className="gradient-dark mt-s2 w-full rounded-2xl p-s1.5 md:mt-0 md:ml-s3 md:max-w-[380px] h-[170px]">
+       <div className='w-full h-full flex flex-col items-start gap-y-2 overflow-y-scroll'>
+        <div className='w-[95%]'>
+          <div className='w-full flex flex-row justify-between'>
+            <h4 className='text-lg font-semibold'>Logan Paul and KSI Surprise Fa...</h4>
+            <MoreSettings />
+          </div>
+          <div className='rounded-2xl p-1 my-[6px] bg-white'>
+          </div>
+          <div className='flex flex-row justify-between items-center w-full'>
+            <p>35%</p>
+            <p>15 mins left</p>
+          </div>
+        </div>
+       </div> 
+       {/* render emtystatus component when there is no video uploaded */}
+      {/* <EmptyStatus /> */}
     </div>
   );
 };
