@@ -86,6 +86,8 @@ import asia from '../public/img/graphics/asia.svg';
 import europe from '../public/img/graphics/europe.svg';
 import north_america from '../public/img/graphics/north_america.svg';
 import south_america from '../public/img/graphics/south_america.svg';
+import air_delivery from '../public/img/graphics/air_delivery.svg';
+import global_location from '../public/img/graphics/global_location.svg';
 import Personal from '../public/img/graphics/user.webp';
 import Team from '../public/img/graphics/team.webp';
 import Brand from '../public/img/graphics/brand_desing_1.webp';
@@ -750,17 +752,22 @@ export const CREATORS_SLIDERS = [
   },
 ];
 
-export const LANGUAGES = [
-  'English',
-  'French',
-  'German',
-  'Spanish',
-  'Swedish',
-  'Portuguese',
-  'Arabic',
-  'Russian',
-  'Chinese',
-  'Others',
+export const CATEGORIES = [
+  'Entertainment',
+  'Comedy',
+  'Education',
+  'Gaming',
+  'Sports',
+  'Music videos',
+  'Travel & Events',
+  'Film & Animation',
+  'Pets & Animals',
+  'Autos & Vehicles',
+  'News & Politics',
+  'Science & Technology',
+  'How to & Style',
+  'Non-Profit & Activism',
+  'People & Blogs',
 ];
 export const GROWTH_WITH_AVIEW_CREATORS = [
   {
@@ -1203,13 +1210,15 @@ export const ONBOARDING_STAGE_1 = [
   },
 ];
 
-export const ONBOARDING_STAGE_4 = [
+export const ONBOARDING_STAGE_3 = [
   {
+    image: air_delivery,
     title: 'International Channels',
     content:
-      'Monetize your content internationally through translations, dubbing and distribution. ',
+      'Monetize your content internationally through translations, dubbing and redistribution.',
   },
   {
+    image: global_location,
     title: 'Native Language',
     content:
       'Monetize your content through short form videos, subtitling and transcriptions.',
