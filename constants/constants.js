@@ -752,6 +752,19 @@ export const CREATORS_SLIDERS = [
   },
 ];
 
+export const LANGUAGES = [
+  'English',
+  'French',
+  'German',
+  'Spanish',
+  'Swedish',
+  'Portuguese',
+  'Arabic',
+  'Russian',
+  'Chinese',
+  'Others',
+];
+
 export const CATEGORIES = [
   'Entertainment',
   'Comedy',
