@@ -12,7 +12,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../store/reducers/user';
+import { setUser } from '../../store/reducers/user.reducer';
 
 const Login = () => {
   const router = useRouter();

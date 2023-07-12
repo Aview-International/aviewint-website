@@ -202,27 +202,27 @@ export const updateUserBio = async (payload, _id) => {
   });
 };
 
-export const updateUserInstagram = async (
-  _id,
-  ig_username,
-  ig_account_id,
-  ig_account_type,
-  ig_access_token,
-  ig_access_token_expiry
-) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+export const updateUserInstagram = async ({
+  uid,
+  instagram_username,
+  instagram_account_id,
+  instagram_account_type,
+  instagram_access_token,
+  instagram_access_token_expiry,
+}) => {
+  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const postData = {
         ...data,
-        ig_username,
-        ig_account_id,
-        ig_account_type,
-        ig_access_token,
-        ig_access_token_expiry,
+        instagram_username,
+        instagram_account_id,
+        instagram_account_type,
+        instagram_access_token,
+        instagram_access_token_expiry,
       };
       const updates = {
-        [`users/${_id}`]: postData,
+        [`users/${uid}`]: postData,
       };
       await update(ref(database), updates);
     } else {
@@ -232,8 +232,8 @@ export const updateUserInstagram = async (
 };
 
 // get all user data from the database
-export const getUserProfile = async (_id, callback) => {
-  const messages = ref(database, `users/${_id}`);
+export const getUserProfile = async (uid, callback) => {
+  const messages = ref(database, `users/${uid}`);
   onValue(messages, (snapshot) => {
     callback(snapshot.val());
   });

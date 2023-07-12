@@ -68,28 +68,33 @@ const OnboardingStep4 = () => {
       </p>
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
-          isAccountConnected={userData?.ig_access_token}
-          classes="instagram"
-          clickEvent={linkInstagramAccount}
-          account="Instagram"
-        />
-        <OnBoardingAccounts
-          isAccountConnected={userData?.facebook}
-          classes="bg-[#0054ff]"
-          account="Facebook"
-        />
-        <OnBoardingAccounts
-          classes="bg-[#000000]"
-          isAccountConnected={userData?.tiktok}
-          account="TikTok"
-        />
-        <OnBoardingAccounts
           classes="bg-[#ff0000]"
           isAccountConnected={userData?.youtubeChannelId}
           clickEvent={linkYoutubeAccount}
           account="YouTube"
           isLoading={isLoading.youtube}
         />
+        <OnBoardingAccounts
+          isAccountConnected={true}
+          classes="bg-[#0054ff]"
+          account="Facebook"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.instagram_account_id}
+          classes="instagram"
+          clickEvent={linkInstagramAccount}
+          account="Instagram"
+        />
+        {/* <OnBoardingAccounts
+          classes="bg-[#1DA1F2]"
+          isAccountConnected={true}
+          account="Twitter"
+        /> */}
+        {/* <OnBoardingAccounts
+          classes="bg-[#000000]"
+          isAccountConnected={true}
+          account="TikTok"
+        /> */}
       </div>
       <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton

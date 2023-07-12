@@ -10,7 +10,7 @@ import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
 import Cookies from 'js-cookie';
-import { setUser } from '../../store/reducers/user';
+import { setUser } from '../../store/reducers/user.reducer';
 
 const Register = () => {
   const router = useRouter();

@@ -1,34 +1,46 @@
 import Image from 'next/image';
 import CheckMark from '../../public/img/icons/white-check-circle.svg';
 import Youtube from '../../public/img/icons/youtube-red.svg';
+import Instagram from '../../public/img/icons/instagram-2.svg';
+import { Fragment } from 'react';
 
-const YoutubeVideoFrame = ({
-  channelTitle,
-  title,
+const VideoFrame = ({
+  caption,
   thumbnail,
-  publishedAt,
-  videoId,
+  timestamp,
+  id,
   handleVideos,
+  type,
   selected,
+  isReel,
 }) => {
   return (
     <div
       className="cursor-pointer justify-self-center"
-      onClick={() =>
-        handleVideos({ videoId, channelTitle, title, thumbnail, publishedAt })
-      }
+      onClick={() => handleVideos({ id, caption, thumbnail, timestamp })}
     >
       <div className="relative">
         <div className="mb-s1 flex text-lg">
-          <Image src={Youtube} alt="" with={24} height={24} />
-          <p className="pl-s1">YouTube Video</p>
+          {type === 'youtube' && (
+            <Fragment>
+              <Image src={Youtube} alt="" with={24} height={24} />
+              <p className="pl-s1">YouTube Video</p>
+            </Fragment>
+          )}
+          {type === 'instagram' && (
+            <Fragment>
+              <Image src={Instagram} alt="" with={24} height={24} />
+              <p className="pl-s1">Instagram {isReel ? 'Reel' : 'Video'}</p>
+            </Fragment>
+          )}
         </div>
         <Image
           loader={() => thumbnail}
           src={thumbnail}
-          alt={'Youtube'}
+          alt={type}
           width={250}
           height={150}
+          unoptimized
         />
         {selected && (
           <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.6)]">
@@ -39,12 +51,12 @@ const YoutubeVideoFrame = ({
       <div className="flex">
         <div>
           <p className="mb-s1 text-lg">
-            {title.substring(0, 17)}
-            {title.length > 17 && '...'}
+            {caption.substring(0, 17)}
+            {caption.length > 17 && '...'}
           </p>
           <p className="text-sm">
             <span>
-              {new Date(publishedAt).toLocaleString('en-US', {
+              {new Date(timestamp).toLocaleString('en-US', {
                 day: '2-digit',
                 month: 'short',
                 year: 'numeric',
@@ -57,4 +69,4 @@ const YoutubeVideoFrame = ({
   );
 };
 
-export default YoutubeVideoFrame;
+export default VideoFrame;
