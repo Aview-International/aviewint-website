@@ -1,25 +1,42 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import { createNewUser, signInWithGoogle } from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
-import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
 import Cookies from 'js-cookie';
 import { setUser } from '../../store/reducers/user.reducer';
 import { useDispatch } from 'react-redux';
+import FormInput from '../../components/FormComponents/FormInput';
+import { emailValidator } from '../../utils/regex';
+import OnboardingButton from '../../components/Onboarding/button';
+import { singleSignOnRegister } from '../../services/apis';
+import {
+  getAuth,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from 'firebase/auth';
+import useUserProfile from '../../hooks/useUserProfile';
 
 const Register = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { handleGetProfile } = useUserProfile();
   const [isLoading, setIsLoading] = useState({
     google: false,
-    facebook: false,
+    email: false,
   });
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const { query } = router;
+    if (query.apiKey && query.oobCode && query.mode === 'signIn')
+      handleSSOWithCode();
+  }, [router.query]);
 
   const updateDatabase = async (_tokenResponse) => {
     dispatch(
@@ -45,19 +62,49 @@ const Register = () => {
     router.push('/onboarding?stage=1');
   };
 
-  const handleGoogle = async (type) => {
+  const handleSSOWithCode = () => {
+    const auth = getAuth();
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = window.localStorage.getItem('emailForSignIn');
+      if (!email)
+        email = window.prompt('Please provide your email for confirmation');
+
+      signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          window.localStorage.removeItem('emailForSignIn');
+          if (result._tokenResponse.isNewUser)
+            createNewUser(
+              result._tokenResponse.localId,
+              '',
+              '',
+              '',
+              result._tokenResponse.email
+            );
+          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
+          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
+          handleGetProfile();
+          router.push('/dashboard');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const handleGoogle = async () => {
     setIsLoading({ ...isLoading, google: true });
     const { _tokenResponse } = await signInWithGoogle();
     updateDatabase(_tokenResponse);
   };
 
-  const handleFacebook = async () => {
-    setIsLoading({ ...isLoading, facebook: true });
-    const { _tokenResponse } = await signInWithFacebook();
-    updateDatabase(_tokenResponse);
+  const handleSSO = async () => {
+    setIsLoading({ ...isLoading, email: true });
+    localStorage.setItem('emailForSignIn', email);
+    await singleSignOnRegister(email);
   };
 
   const { account } = router.query;
+
   return (
     <>
       <PageTitle title="Register - Aview International" />
@@ -80,6 +127,25 @@ const Register = () => {
                 You don&apos;t have an account yet, begin here
               </p>
             )}
+
+            <FormInput
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              isValid={emailValidator(email)}
+              hideCheckmark
+              extraClasses="mb-4"
+              label="Email Address"
+            />
+            <OnboardingButton
+              theme="light"
+              disabled={!emailValidator(email)}
+              onClick={handleSSO}
+              isLoading={isLoading.email}
+            >
+              Continue
+            </OnboardingButton>
+            <p className="my-s2 text-center">or</p>
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
                 <button
@@ -99,30 +165,6 @@ const Register = () => {
                         />
                       </span>
                       Continue with Google
-                    </>
-                  )}
-                </button>
-              </Border>
-            </Shadow>
-            <Shadow classes="w-full">
-              <Border borderRadius="full" classes="w-full">
-                <button
-                  className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3"
-                  onClick={handleFacebook}
-                >
-                  {isLoading.facebook ? (
-                    <Loader />
-                  ) : (
-                    <>
-                      <span className="flex items-center justify-center pr-s1">
-                        <Image
-                          src={Facebook}
-                          alt="Facebook"
-                          width={20}
-                          height={20}
-                        />
-                      </span>
-                      Continue with Facebook
                     </>
                   )}
                 </button>

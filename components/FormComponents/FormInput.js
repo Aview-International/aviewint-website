@@ -33,6 +33,7 @@ const FormInput = ({
   extraClasses = 'mb-s5',
   type,
   labelClasses,
+  hideCheckmark,
 }) => {
   return (
     <div className={`relative w-full text-xl text-white ${extraClasses}`}>
@@ -50,21 +51,23 @@ const FormInput = ({
             className={`peer w-full rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             value={value}
           />
           {/* <div
-            className={`gradient-1 transition-300 absolute -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl peer-focus:opacity-80`}
+            className={`gradient-1 transition-300 absolute top-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl peer-focus:opacity-80`}
           ></div> */}
         </Border>
-        <span className="absolute right-[10px] bottom-[2px]">
-          {isValid && (
-            <Image src={Correct} alt="Correct" width={30} height={30} />
-          )}
-          {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
-          )}
-        </span>
+        {!hideCheckmark && (
+          <span className="absolute right-[10px] bottom-[2px]">
+            {isValid && (
+              <Image src={Correct} alt="Correct" width={30} height={30} />
+            )}
+            {hasSubmitted && !isValid && (
+              <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
+            )}
+          </span>
+        )}
       </div>
     </div>
   );

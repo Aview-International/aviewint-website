@@ -6,9 +6,8 @@ import { useState, useRef, useEffect } from 'react';
 import { useOnScreen } from '../../../hooks/useOnScreen';
 import FormInput from '../../FormComponents/FormInput';
 import OnboardingButton from '../../Onboarding/button';
-import axios from 'axios';
 import { emailValidator } from '../../../utils/regex';
-import { baseUrl } from '../../baseUrl';
+import { welcomeNewUser } from '../../../services/apis';
 
 const YouCreateWeTranslate = () => {
   const [email, setEmail] = useState('');
@@ -25,9 +24,7 @@ const YouCreateWeTranslate = () => {
     setSideEffects({ ...sideEffects, isLoading: true });
 
     try {
-      await axios.post(baseUrl + 'email/welcome', {
-        recipient: email,
-      });
+      await welcomeNewUser(email);
       setSideEffects({ ...sideEffects, showText: true });
     } catch (error) {
       console.log(error);

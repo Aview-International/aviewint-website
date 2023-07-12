@@ -1,10 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  getAuth,
-  FacebookAuthProvider,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -77,14 +72,6 @@ export const checkUserEmail = async (uid) => {
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const response = await signInWithPopup(auth, provider);
-  return response;
-};
-
-// get user credentials from facebook account
-export const signInWithFacebook = async () => {
-  const provider = new FacebookAuthProvider();
-  const response = await signInWithPopup(auth, provider);
-  console.log(response);
   return response;
 };
 

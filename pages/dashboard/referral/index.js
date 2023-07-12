@@ -7,9 +7,7 @@ import OnboardingButton from '../../../components/Onboarding/button';
 import Border from '../../../components/UI/Border';
 import { useRef, useState } from 'react';
 import { emailValidator } from '../../../utils/regex';
-import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
 
 const Referral = () => {
   return (
@@ -128,19 +126,9 @@ const HowItWorks = () => {
 
 const Invite = () => {
   const [email, setEmail] = useState('');
-  const userInfo = useSelector((state) => state.user);
 
   const handleClick = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post('/api/invites', {
-        firstName: userInfo?.firstName,
-        lastName: userInfo?.lastName,
-      });
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

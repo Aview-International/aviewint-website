@@ -18,3 +18,4 @@ const uploadVideo = async (data, setProgress) => {
 };
 
 export default uploadVideo;
+
