@@ -8,7 +8,6 @@ const SelectVideos = ({
   isLoading,
   setSelectedVideos,
   selectedVideos,
-  videos,
 }) => {
   const handleTranslate = () => {
     if (selectedVideos.length < 1) {
@@ -22,7 +21,6 @@ const SelectVideos = ({
     <div>
       <Insights />
       <Videos
-        videos={videos}
         isLoading={isLoading}
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}

@@ -1,5 +1,5 @@
-import { Fragment, useRouter } from 'next/router';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Shadow from '../UI/Shadow';
 import Border from '../UI/Border';
@@ -8,14 +8,17 @@ import { ONBOARDING_STAGE_3 } from '../../constants/constants';
 import OnboardingButton from './button';
 import Cookies from 'js-cookie';
 
-const OnboardingStep3 = () => {
+const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
-
   const [usage, setUsage] = useState('');
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
   });
+
+  useEffect(() => {
+    setUsage(userData.usage);
+  }, [userData]);
 
   const handleSelect = (option) => {
     setUsage(option);
@@ -46,30 +49,30 @@ const OnboardingStep3 = () => {
           return (
             <div key={index}>
               <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
-                  <Border borderRadius="2xl" classes="h-full w-full">
-                    <div
-                      className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
-                        usage == option.title && 'gradient-1'
-                      }`}
-                      onClick={()=>handleSelect(option.title)}
-                    >
-                      <Image
-                        src={option.image}
-                        alt={option.title}
-                        width={172}
-                        height={172}
-                      />
-                      <div className="mt-3 flex h-full flex-col items-center justify-around md:mt-7 md:h-[127px]">
-                        <h2 className="text-xl font-bold md:text-2xl">
-                          {option.title}
-                        </h2>
-                        <p className="mt-s2 text-lg w-[85%] text-center">
-                          {option.content}
-                        </p>
-                      </div>
+                <Border borderRadius="2xl" classes="h-full w-full">
+                  <div
+                    className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
+                      usage == option.title && 'gradient-1'
+                    }`}
+                    onClick={() => handleSelect(option.title)}
+                  >
+                    <Image
+                      src={option.image}
+                      alt={option.title}
+                      width={172}
+                      height={172}
+                    />
+                    <div className="mt-3 flex h-full flex-col items-center justify-around md:mt-7 md:h-[127px]">
+                      <h2 className="text-xl font-bold md:text-2xl">
+                        {option.title}
+                      </h2>
+                      <p className="mt-s2 w-[85%] text-center text-lg">
+                        {option.content}
+                      </p>
                     </div>
-                  </Border>
-                </Shadow>
+                  </div>
+                </Border>
+              </Shadow>
             </div>
           );
         })}

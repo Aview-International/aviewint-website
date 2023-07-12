@@ -3,7 +3,7 @@ import DashboardLayout from './DashboardLayout';
 import Arrow from '../../public/img/icons/arrow-back.svg';
 import { useRouter } from 'next/router';
 import TranslateOptions from './TranslateOptions';
-import YoutubeVideoFrame from './YoutubeVideoFrame';
+import VideoFrame from './VideoFrame';
 
 const SubmitVideos = ({
   isLoading,
@@ -50,7 +50,7 @@ const SelectedVideos = ({ setIsSelected, selectedVideos }) => {
       </div>
       <div className="grid grid-cols-2 gap-2">
         {selectedVideos.map((item, index) => (
-          <YoutubeVideoFrame
+          <VideoFrame
             key={`video-${index}`}
             handleVideos={() => null}
             {...item}

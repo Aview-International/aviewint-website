@@ -1,6 +1,6 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { updateAviewUsage } from '../../pages/api/firebase';
+import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ComingSoon from '../UI/ComingSoon';
 import Border from '../UI/Border';
@@ -9,21 +9,24 @@ import Shadow from '../UI/Shadow';
 import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
 
-const OnboardingStep1 = () => {
+const OnboardingStep1 = ({ userData }) => {
   const router = useRouter();
-
-  const [userData, setUserData] = useState({
+  const [payload, setPayload] = useState({
     role: '',
     hasSubmitted: false,
     isLoading: false,
   });
 
+  useEffect(() => {
+    setPayload({ ...payload, role: userData.role });
+  }, [userData]);
+
   const handleSubmit = async () => {
-    setUserData({ ...userData, hasSubmitted: true });
-    if (!userData.role) return;
-    setUserData({ ...userData, isLoading: true });
+    setPayload({ ...payload, hasSubmitted: true });
+    if (!payload.role) return;
+    setPayload({ ...payload, isLoading: true });
     try {
-      await updateAviewUsage(userData.role, Cookies.get('uid'));
+      await updateRequiredServices({ role: payload.role }, Cookies.get('uid'));
       router.push('/onboarding?stage=2');
     } catch (error) {
       console.error(error);
@@ -47,7 +50,7 @@ const OnboardingStep1 = () => {
                   <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
                     <Border borderRadius="2xl" classes="h-full w-full">
                       <div
-                        className={`h-full rounded-2xl bg-black md:pt-s9 pt-s6 text-center`}
+                        className={`h-full rounded-2xl bg-black pt-s6 text-center md:pt-s9`}
                       >
                         <Image
                           src={option.image}
@@ -55,7 +58,7 @@ const OnboardingStep1 = () => {
                           width={172}
                           height={172}
                         />
-                        <div className='md:mt-7 mt-3 flex flex-col h-[70px]'>
+                        <div className="mt-3 flex h-[70px] flex-col md:mt-7">
                           <h3 className="text-xl font-bold md:text-2xl">
                             {option.title}
                           </h3>
@@ -69,10 +72,10 @@ const OnboardingStep1 = () => {
                   <Border borderRadius="2xl" classes="h-full w-full">
                     <div
                       className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
-                        userData.role === option.data && 'gradient-1'
+                        payload.role === option.data && 'gradient-1'
                       }`}
                       onClick={() =>
-                        setUserData({ ...userData, role: option.data })
+                        setPayload({ ...payload, role: option.data })
                       }
                     >
                       <Image
@@ -99,9 +102,9 @@ const OnboardingStep1 = () => {
       </div>
       <div className="m-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
-          disabled={!userData.role}
+          disabled={!payload.role}
           onClick={handleSubmit}
-          isLoading={userData.isLoading}
+          isLoading={payload.isLoading}
           theme="light"
         >
           Continue

@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { getUserProfile } from '../pages/api/firebase';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../store/reducers/user';
+import { setUser } from '../store/reducers/user.reducer';
 
 const useUserProfile = () => {
   const dispatch = useDispatch();

@@ -12,10 +12,11 @@ const CustomSelectInput = ({
   onChange,
   hasSubmitted,
   isValid,
+  hideCheckmark,
+  value,
 }) => {
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState('');
   const scroll = typeof window !== 'undefined' && window.scrollY;
 
   const isBottom = useMemo(() => {
@@ -35,23 +36,24 @@ const CustomSelectInput = ({
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p className="text-white/70">{data || 'Your response'}</p>
+            <p className="text-white/70">{value || 'Your response'}</p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
               <Image src={Arrow} alt="arrow" />
             </span>
           </div>
         </Border>
-        <span className="absolute right-[35px] bottom-[7px]">
-          {isValid && (
-            <Image src={Correct} alt="Correct" width={20} height={20} />
-          )}
-          {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
-          )}
-        </span>
+        {!hideCheckmark && (
+          <span className="absolute right-[35px] bottom-[7px]">
+            {isValid && (
+              <Image src={Correct} alt="Correct" width={20} height={20} />
+            )}
+            {hasSubmitted && !isValid && (
+              <Image src={Incorrect} alt="Incorrect" width={20} height={20} />
+            )}
+          </span>
+        )}
         <Options
           isOpen={isOpen}
-          setData={setData}
           options={options}
           setIsOpen={setIsOpen}
           onChange={onChange}
@@ -62,14 +64,7 @@ const CustomSelectInput = ({
   );
 };
 
-const Options = ({
-  isOpen,
-  setData,
-  options,
-  setIsOpen,
-  onChange,
-  isBottom,
-}) => {
+const Options = ({ isOpen, options, setIsOpen, onChange, isBottom }) => {
   return (
     <Border
       borderRadius="[5px]"
@@ -86,7 +81,6 @@ const Options = ({
             key={`option-${i}`}
             onClick={() => {
               onChange(option);
-              setData(option);
               setIsOpen(false);
             }}
           >

@@ -14,8 +14,10 @@ import OnboardingStep5 from '../../components/Onboarding/step5';
 import OnboardingStep6 from '../../components/Onboarding/step6';
 import OnboardingSuccess from '../../components/Onboarding/success';
 import useUserProfile from '../../hooks/useUserProfile';
+import { useSelector } from 'react-redux';
 
 const Onboarding = () => {
+  const userData = useSelector((state) => state.user);
   const router = useRouter();
   const { handleGetProfile } = useUserProfile();
 
@@ -38,13 +40,14 @@ const Onboarding = () => {
     <>
       <PageTitle title="Aview Onboarding" />
       <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
-        {
+        {Number(router.query.stage) > 1 && (
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
             <a className="flex place-content-center pr-4">
               <Image src={ArrowBack} alt="Go back" width={10} height={20} />
             </a>
           </Link>
-        }
+        )}
+
         <Image
           src={aviewLogo}
           alt="AVIEW International logo"
@@ -54,17 +57,17 @@ const Onboarding = () => {
       </div>
       <div className="bg-gray-1">
         <div
-          style={{ width: `${Math.ceil((+router.query.stage * 100) / 6)}%` }}
+          style={{ width: `${Math.ceil((+router.query.stage * 100) / 7)}%` }}
           className="gradient-1 h-1 transition-all ease-in-out"
         ></div>
       </div>
       <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
         {router.query.stage > 0 && (
           <small className="mb-s2 block text-center text-lg">
-            Step {router.query.stage} of 6
+            Step {router.query.stage} of 7
           </small>
         )}
-        <Stages />
+        <Stages userData={userData} />
       </div>
     </>
   );
@@ -72,39 +75,39 @@ const Onboarding = () => {
 
 export default Onboarding;
 
-const Stages = () => {
+const Stages = ({ userData }) => {
   const { query } = useRouter();
 
   return (
     <>
       {query.stage === '1' && (
         <PageTransition>
-          <OnboardingStep1 />
+          <OnboardingStep1 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '2' && (
         <PageTransition>
-          <OnboardingStep2 />
+          <OnboardingStep2 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '3' && (
         <PageTransition>
-          <OnboardingStep3 />
+          <OnboardingStep3 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '4' && (
         <PageTransition>
-          <OnboardingStep4 />
+          <OnboardingStep4 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '5' && (
         <PageTransition>
-          <OnboardingStep5 />
+          <OnboardingStep5 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '6' && (
         <PageTransition>
-          <OnboardingStep6 />
+          <OnboardingStep6 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '7' && (
