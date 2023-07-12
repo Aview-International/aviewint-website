@@ -86,7 +86,7 @@ const OnboardingStep6 = ({ userData }) => {
                       {userData.youtubeChannelName}{' '}
                       {findLocalDialect(language)['localDialect']}
                     </h2>
-                    <p className="text-sm">Youtube</p>
+                    <p className="text-sm">YouTube</p>
                   </div>
                 </div>
                 <button

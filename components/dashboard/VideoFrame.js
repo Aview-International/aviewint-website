@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import CheckMark from '../../public/img/icons/white-check-circle.svg';
-import Youtube from '../../public/img/icons/youtube-red.svg';
+import YouTube from '../../public/img/icons/youtube-red.svg';
 import Instagram from '../../public/img/icons/instagram-2.svg';
 import { Fragment } from 'react';
 
@@ -22,7 +22,7 @@ const VideoFrame = ({
       <div className="mb-s1 flex text-lg">
         {type === 'youtube' && (
           <Fragment>
-            <Image src={Youtube} alt="" with={24} height={24} />
+            <Image src={YouTube} alt="" with={24} height={24} />
             <p className="pl-s1">YouTube Video</p>
           </Fragment>
         )}
