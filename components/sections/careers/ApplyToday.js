@@ -26,7 +26,7 @@ const ApplyToday = () => {
     'Voice acting/Dubbing': '',
     position: '',
     resume: null,
-    isEmpty : false
+    isEmpty: false,
   });
 
   const handleSubmit = (e) => {
@@ -41,9 +41,9 @@ const ApplyToday = () => {
         !data['Voice acting/Dubbing'] ||
         !data.position ||
         !data.resume
-      ){
-        setData({...data,isEmpty : true})
-        return 
+      ) {
+        setData({ ...data, isEmpty: true });
+        return;
       }
 
       submitFile('translator-applications', {
@@ -124,8 +124,9 @@ const ApplyToday = () => {
             options={['No', 'Yes']}
             isValid={data['Voice acting/Dubbing']}
             onChange={(option) =>
-              setData({ ...data, 'Voice acting/Dubbing': option })
+              setData({ ...data, ['Voice acting/Dubbing']: option })
             }
+            value={data['Voice acting/Dubbing']}
           />
           <input
             type="hidden"
@@ -140,6 +141,7 @@ const ApplyToday = () => {
             isValid={data.position}
             options={TEAM_OPEN_POSITIONS}
             onChange={(option) => setData({ ...data, position: option })}
+            value={data.position}
           />
           <input type="hidden" name="position" value={data.position} />
         </div>

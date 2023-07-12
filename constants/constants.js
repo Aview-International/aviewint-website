@@ -39,7 +39,6 @@ import amandaCerney from '../public/img/creators/amanda-cerney.png';
 // Benefits of Translations
 import visibility from '../public/img/graphics/visibility.png';
 import growth from '../public/img/graphics/growth.png';
-import userFriendly from '../public/img/graphics/user-friendly.png';
 import expand from '../public/img/graphics/expand.png';
 import saveTime from '../public/img/graphics/save-time.png';
 import increaseRevenue from '../public/img/graphics/increase-revenue.png';
@@ -53,11 +52,8 @@ import akshay from '../public/img/team/akshay.png';
 import andrew from '../public/img/team/andrew.png';
 import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
-import jon from '../public/img/team/jon.png';
-import taehun from '../public/img/team/taehun.png';
 import victor from '../public/img/team/victor.png';
 import luis from '../public/img/team/luis.png';
-import defaultPicture from '../public/img/team/default.png';
 
 // content creators summary
 import LoganPaulSummary from '../public/img/summary/logan-paul.png';
@@ -68,13 +64,11 @@ import ActiveSelfProtectionSummary from '../public/img/summary/active-self-prote
 import keyMetrics from '../public/img/graphics/key-metrics.png';
 
 // input validators
-import { emailValidator, urlValidator } from '../utils/regex';
+import { emailValidator } from '../utils/regex';
 
 // dashboard sidebar icons
 import home from '../public/img/icons/home.svg';
 import upload from '../public/img/icons/upload.svg';
-import analytics from '../public/img/icons/analytics.svg';
-import content from '../public/img/icons/content.svg';
 import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
@@ -86,6 +80,8 @@ import asia from '../public/img/graphics/asia.svg';
 import europe from '../public/img/graphics/europe.svg';
 import north_america from '../public/img/graphics/north_america.svg';
 import south_america from '../public/img/graphics/south_america.svg';
+import air_delivery from '../public/img/graphics/air-delivery.png';
+import global_location from '../public/img/graphics/global-location.png';
 import Personal from '../public/img/graphics/user.webp';
 import Team from '../public/img/graphics/team.webp';
 import Brand from '../public/img/graphics/brand_desing_1.webp';
@@ -491,27 +487,6 @@ export const AVIEW_GROWTH = [
   },
 ];
 
-export const TESTIMONIALS = [
-  {
-    id: 'testimonial-1',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
-  },
-  {
-    id: 'testimonial-2',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
-  },
-  {
-    id: 'testimonial-3',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
-  },
-];
-
 export const HOW_WE_CAN_HELP = [
   {
     id: 'help-1',
@@ -623,92 +598,6 @@ export const CORPORATE_PAGE_FAQ = [
   },
 ];
 
-export const GENERATE_AVIEW_INPUT = [
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Name',
-    _id: 'name',
-    name: 'name',
-    type: 'text',
-    placeholder: 'Your name',
-  },
-  {
-    validator: (value) => urlValidator(value),
-    label: 'Channel Link',
-    _id: 'channel_url',
-    name: 'url',
-    type: 'text',
-    placeholder: 'URL to your social media channel',
-  },
-  {
-    validator: (value) => emailValidator(value),
-    label: 'Email Address',
-    _id: 'email',
-    name: 'email',
-    type: 'email',
-    placeholder: 'Your email address',
-  },
-];
-
-export const GENERATE_AVIEW_CHECKBOX = [
-  {
-    name: 'Translations/Subtitles',
-    label: 'Translations/Subtitles',
-    value: 'Translations/Subtitles',
-    tooltip:
-      'Receive a translation file that can be uploaded directly to your YouTube video.',
-  },
-  {
-    name: 'Dubbing',
-    label: 'Dubbing',
-    value: 'Dubbing',
-    tooltip:
-      'Receive your videos completely translated with voice-overs in the language of your choosing.',
-  },
-  {
-    name: 'Shorts',
-    label: 'Shorts',
-    value: 'Shorts',
-    tooltip:
-      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook.',
-  },
-];
-
-export const GENERATE_AVIEW_COMPANY_INPUT = [
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Name',
-    _id: 'name',
-    name: 'name',
-    type: 'text',
-    placeholder: 'Your name',
-  },
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Company',
-    _id: 'companyName',
-    name: 'companyName',
-    type: 'text',
-    placeholder: 'Company name',
-  },
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Company Website',
-    _id: 'companyUrl',
-    name: 'companyUrl',
-    type: 'text',
-    placeholder: 'URL to company website',
-  },
-  {
-    validator: (value) => emailValidator(value),
-    label: 'Email Address',
-    _id: 'email',
-    name: 'email',
-    type: 'email',
-    placeholder: 'Your email address',
-  },
-];
-
 export const CREATORS_SLIDERS = [
   {
     label: 'Uploads per month',
@@ -750,18 +639,25 @@ export const CREATORS_SLIDERS = [
   },
 ];
 
-export const LANGUAGES = [
-  'English',
-  'French',
-  'German',
-  'Spanish',
-  'Swedish',
-  'Portuguese',
-  'Arabic',
-  'Russian',
-  'Chinese',
+export const CATEGORIES = [
+  'Entertainment',
+  'Comedy',
+  'Education',
+  'Gaming',
+  'Sports',
+  'Music videos',
+  'Travel & Events',
+  'Film & Animation',
+  'Pets & Animals',
+  'Autos & Vehicles',
+  'News & Politics',
+  'Science & Technology',
+  'How to & Style',
+  'Non-Profit & Activism',
+  'People & Blogs',
   'Others',
 ];
+
 export const GROWTH_WITH_AVIEW_CREATORS = [
   {
     name: 'Logan Paul',
@@ -1203,13 +1099,15 @@ export const ONBOARDING_STAGE_1 = [
   },
 ];
 
-export const ONBOARDING_STAGE_4 = [
+export const ONBOARDING_STAGE_3 = [
   {
+    image: air_delivery,
     title: 'International Channels',
     content:
-      'Monetize your content internationally through translations, dubbing and distribution. ',
+      'Monetize your content internationally through translations, dubbing and redistribution.',
   },
   {
+    image: global_location,
     title: 'Native Language',
     content:
       'Monetize your content through short form videos, subtitling and transcriptions.',
@@ -1284,25 +1182,6 @@ export const DASHBOARD_NAVLINKS = [
     image: settings,
     route: '/dashboard/settings/edit-profile',
   },
-];
-
-export const DAHSHBOARD_SERVICES = [
-  'Subtitles',
-  'Dubs',
-  'Shorts',
-  'Distribution',
-];
-
-export const DAHSHBOARD_TRANSLATED_LANGUAGES = [
-  'English',
-  'German',
-  'Spanish',
-  'Mandarin',
-  'Portuguese',
-  'Arabic',
-  'French',
-  'Hindi',
-  'Other',
 ];
 
 export const SUPPORTED_REGIONS = [
@@ -1410,4 +1289,20 @@ export const SUPPORTED_REGIONS = [
       },
     ],
   },
+];
+
+export const LANGUAGES = [
+  'English',
+  'French',
+  'German',
+  'Spanish',
+  'Hindi',
+  'Portuguese',
+  'Arabic',
+  'Russian',
+  'Italian',
+  'Chinese',
+  'Japanese',
+  'Turkish',
+  'Others',
 ];

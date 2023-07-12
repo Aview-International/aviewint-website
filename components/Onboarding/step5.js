@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import OnboardingButton from './button';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import Shadow from '../UI/Shadow';
 
-const OnboardingStep5 = () => {
+const OnboardingStep5 = ({ userData }) => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     region: [],
@@ -18,6 +18,13 @@ const OnboardingStep5 = () => {
     hasSubmitted: false,
     isLoading: false,
   });
+
+  useEffect(() => {
+    setPayload({
+      region: userData.region,
+      languages: userData.languages,
+    });
+  }, [userData]);
 
   const handleSelect = (option) => {
     // set selected regions and languages
@@ -57,7 +64,7 @@ const OnboardingStep5 = () => {
   };
 
   return (
-    <div className="m-auto w-[90%] 2xl:w-full">
+    <div className="m-auto w-[90%] 2xl:w-[80%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
         Select by regions of the world
       </h2>
@@ -67,58 +74,57 @@ const OnboardingStep5 = () => {
       </p>
       <div className="grid items-center justify-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {SUPPORTED_REGIONS.map((item, index) => (
-          <Shadow key={index}>
+          <div
+            key={index}
+            className={`group flex flex-col items-center`}
+            onClick={() => handleSelect(item.title)}
+          >
+            <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
             <div
-              className={`flex flex-col items-center`}
-              key={`option-${index}`}
-              onClick={() => handleSelect(item.title)}
+              className={`relative h-full w-full cursor-pointer rounded-2xl bg-black p-s1 text-center md:h-[332px] md:w-[283px] ${
+                payload.region.includes(item.title)
+                  ? 'gradient-1'
+                  : 'gradient-dark'
+              }`}
             >
-              <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={235}
+                height={303}
+              />
               <div
-                className={`h-full w-full cursor-pointer rounded-2xl p-s1 text-center md:h-[332px] md:w-[283px] ${
+                className={`gradient-1 transition-300 absolute inset-0 left-1/2 -z-10 h-[calc(100%+3px)] w-[104%] -translate-x-1/2 rounded-2xl opacity-0 blur-lg group-hover:opacity-70`}
+              ></div>
+            </div>
+            <div>
+              <h2 className="my-6 ml-2 text-2xl font-semibold">Languages</h2>
+              <div
+                className={`relative flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl bg-black p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
                     : 'gradient-dark'
                 }`}
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={235}
-                  height={303}
-                />
-              </div>
-              {/* </Shadow> */}
-              <div className="">
-                <h2 className="my-6 text-2xl font-semibold">Languages</h2>
-                {/* <Shadow> */}
                 <div
-                  className={`flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
-                    payload.region.includes(item.title)
-                      ? 'gradient-1'
-                      : 'gradient-dark'
-                  }`}
-                >
-                  {item.data.map((dataItem, index) => (
-                    <div
-                      className="flex items-center justify-center"
-                      key={index}
-                    >
-                      <Image
-                        src={dataItem.image}
-                        alt={dataItem.languageName}
-                        width={24}
-                        height={22}
-                      />
-                      <p className="ml-2 text-lg font-medium">
-                        {dataItem.languageName}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                  className={`gradient-1 transition-300 absolute inset-0 left-1/2 -z-10 h-[calc(100%+3px)] w-[104%] -translate-x-1/2 rounded-2xl opacity-0 blur-lg group-hover:opacity-70`}
+                ></div>
+                {item.data.map((dataItem, index) => (
+                  <div className="flex items-center justify-center" key={index}>
+                    <Image
+                      src={dataItem.image}
+                      alt={dataItem.languageName}
+                      width={24}
+                      height={22}
+                    />
+                    <p className="ml-2 text-lg font-medium">
+                      {dataItem.languageName}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </Shadow>
+          </div>
         ))}
       </div>
       {sideEffects.hasSubmitted && payload.region.length < 1 && (
@@ -131,7 +137,7 @@ const OnboardingStep5 = () => {
           disabled={payload.region.length < 1}
           onClick={handleSubmit}
           isLoading={sideEffects.isLoading}
-          theme="dark"
+          theme="light"
         >
           Proceed
         </OnboardingButton>

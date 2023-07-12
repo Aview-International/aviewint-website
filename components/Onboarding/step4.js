@@ -4,18 +4,14 @@ import { useEffect, useState } from 'react';
 import {
   InstagramAuthenticationLink,
   YoutubeAuthenticationLink,
-  addYoutubeChannelId,
-  getUserProfile,
-  updateUserInstagram,
+  updateRequiredServices,
 } from '../../pages/api/firebase';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
 import Cookies from 'js-cookie';
-import { useSelector } from 'react-redux';
 
-const OnboardingStep4 = () => {
+const OnboardingStep4 = ({ userData }) => {
   const router = useRouter();
-  const userData = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -35,13 +31,13 @@ const OnboardingStep4 = () => {
     try {
       const response = await axios.post(
         'api/onboarding/link-youtube?get=channel',
-        {
-          token,
-        }
+        { token }
       );
-      await addYoutubeChannelId(
-        response.data.items[0].snippet.title,
-        response.data.items[0].id,
+      await updateRequiredServices(
+        {
+          youtubeChannelName: response.data.items[0].snippet.title,
+          youtubeChannelId: response.data.items[0].id,
+        },
         Cookies.get('uid')
       );
       setIsLoading({ ...isLoading, youtube: false });
@@ -75,15 +71,15 @@ const OnboardingStep4 = () => {
           isLoading={isLoading.youtube}
         />
         <OnBoardingAccounts
-          isAccountConnected={true}
-          classes="bg-[#0054ff]"
-          account="Facebook"
-        />
-        <OnBoardingAccounts
           isAccountConnected={userData?.instagram_account_id}
           classes="instagram"
           clickEvent={linkInstagramAccount}
           account="Instagram"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.facebook}
+          classes="bg-[#0054ff]"
+          account="Facebook"
         />
         {/* <OnBoardingAccounts
           classes="bg-[#1DA1F2]"
@@ -98,7 +94,7 @@ const OnboardingStep4 = () => {
       </div>
       <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
-          theme="dark"
+          theme="light"
           isLoading={isLoading.continue}
           onClick={() => router.push('/onboarding?stage=5')}
         >

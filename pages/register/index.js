@@ -11,9 +11,11 @@ import PageTitle from '../../components/SEO/PageTitle';
 import Loader from '../../components/UI/loader';
 import Cookies from 'js-cookie';
 import { setUser } from '../../store/reducers/user.reducer';
+import { useDispatch } from 'react-redux';
 
 const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState({
     google: false,
     facebook: false,

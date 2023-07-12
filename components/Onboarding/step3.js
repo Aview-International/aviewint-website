@@ -1,19 +1,24 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Shadow from '../UI/Shadow';
-import { ONBOARDING_STAGE_4 } from '../../constants/constants';
+import Border from '../UI/Border';
+import Image from 'next/image';
+import { ONBOARDING_STAGE_3 } from '../../constants/constants';
 import OnboardingButton from './button';
 import Cookies from 'js-cookie';
 
-const OnboardingStep3 = () => {
+const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
-
   const [usage, setUsage] = useState('');
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
   });
+
+  useEffect(() => {
+    setUsage(userData.usage);
+  }, [userData]);
 
   const handleSelect = (option) => {
     setUsage(option);
@@ -31,22 +36,6 @@ const OnboardingStep3 = () => {
     }
   };
 
-  const Option = ({ title, content }) => {
-    return (
-      <Shadow>
-        <div
-          className={`${
-            usage === title ? 'gradient-1' : `gradient-dark`
-          } my-4 h-full cursor-pointer rounded-2xl bg-black p-s3 md:p-s4`}
-          onClick={() => handleSelect(title)}
-        >
-          <p className="text-xl font-bold md:text-2xl">{title}</p>
-          <p className="mt-s2 text-lg md:text-xl">{content}</p>
-        </div>
-      </Shadow>
-    );
-  };
-
   return (
     <div className="m-auto w-[min(800px,90%)]">
       <h2 className="text-5xl font-bold md:text-center md:text-6xl">
@@ -55,16 +44,39 @@ const OnboardingStep3 = () => {
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
         Please choose one option to proceed.
       </p>
-      <div className="m-auto">
-        {ONBOARDING_STAGE_4.map((option, index) => (
-          <Option key={`option-${index}`} {...option} />
-        ))}
+      <div className="flex flex-col items-stretch justify-center gap-4 md:flex-row md:gap-0">
+        {ONBOARDING_STAGE_3.map((option, index) => {
+          return (
+            <div key={index}>
+              <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
+                <Border borderRadius="2xl" classes="h-full w-full">
+                  <div
+                    className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
+                      usage == option.title && 'gradient-1'
+                    }`}
+                    onClick={() => handleSelect(option.title)}
+                  >
+                    <Image
+                      src={option.image}
+                      alt={option.title}
+                      width={172}
+                      height={172}
+                    />
+                    <div className="mt-3 flex h-full flex-col items-center justify-around md:mt-7 md:h-[127px]">
+                      <h2 className="text-xl font-bold md:text-2xl">
+                        {option.title}
+                      </h2>
+                      <p className="mt-s2 w-[85%] text-center text-lg">
+                        {option.content}
+                      </p>
+                    </div>
+                  </div>
+                </Border>
+              </Shadow>
+            </div>
+          );
+        })}
       </div>
-      {/* {sideEffects.hasSubmitted && (
-        <p className="my-s3 text-center text-xl">
-          Please choose an option or skip below
-        </p>
-      )} */}
       <div className="m-auto my-s4 w-[min(360px,90%)]">
         <OnboardingButton
           theme="light"

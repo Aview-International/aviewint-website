@@ -124,22 +124,6 @@ export const createNewUser = async (
 };
 
 // update user preferences
-export const updateAviewUsage = async (role, _id) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        role,
-      };
-      const updates = {
-        [`users/${_id}`]: postData,
-      };
-      await update(ref(database), updates);
-    }
-  });
-};
-
 export const updateRequiredServices = async (payload, uid) => {
   get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
@@ -156,79 +140,6 @@ export const updateRequiredServices = async (payload, uid) => {
     } else throw new Error('User does not exist');
   });
   return;
-};
-
-// save user youtube channel id after connecting youtube account
-export const addYoutubeChannelId = async (
-  youtubeChannelName,
-  youtubeChannelId,
-  _id
-) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        youtubeChannelName,
-        youtubeChannelId,
-      };
-      const updates = {
-        [`users/${_id}`]: postData,
-      };
-      await update(ref(database), updates);
-    } else {
-      console.log('No data available');
-    }
-  });
-};
-
-export const updateUserBio = async (payload, _id) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        monthlyView: payload.monthlyView,
-        totalFollowers: payload.totalFollowers,
-        averageDuration: payload.averageVideoDuration,
-      };
-      const updates = {
-        [`users/${_id}`]: postData,
-      };
-      await update(ref(database), updates);
-    } else {
-      console.log('No data available');
-    }
-  });
-};
-
-export const updateUserInstagram = async ({
-  uid,
-  instagram_username,
-  instagram_account_id,
-  instagram_account_type,
-  instagram_access_token,
-  instagram_access_token_expiry,
-}) => {
-  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        instagram_username,
-        instagram_account_id,
-        instagram_account_type,
-        instagram_access_token,
-        instagram_access_token_expiry,
-      };
-      const updates = {
-        [`users/${uid}`]: postData,
-      };
-      await update(ref(database), updates);
-    } else {
-      console.log('No data available');
-    }
-  });
 };
 
 // get all user data from the database

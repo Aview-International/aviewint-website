@@ -105,6 +105,7 @@ const JoinTheTeam = () => {
           hasSubmitted={hasSubmitted}
           isValid={data.position}
           onChange={(option) => setData({ ...data, position: option })}
+          value={data.position}
         />
         <input type="hidden" name="position" value={data.position} />
         <UploadFile

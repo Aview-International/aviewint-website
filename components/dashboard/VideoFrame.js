@@ -19,21 +19,21 @@ const VideoFrame = ({
       className="cursor-pointer justify-self-center"
       onClick={() => handleVideos({ id, caption, thumbnail, timestamp })}
     >
+      <div className="mb-s1 flex text-lg">
+        {type === 'youtube' && (
+          <Fragment>
+            <Image src={Youtube} alt="" with={24} height={24} />
+            <p className="pl-s1">YouTube Video</p>
+          </Fragment>
+        )}
+        {type === 'instagram' && (
+          <Fragment>
+            <Image src={Instagram} alt="" with={24} height={24} />
+            <p className="pl-s1">Instagram {isReel ? 'Reel' : 'Video'}</p>
+          </Fragment>
+        )}
+      </div>
       <div className="relative">
-        <div className="mb-s1 flex text-lg">
-          {type === 'youtube' && (
-            <Fragment>
-              <Image src={Youtube} alt="" with={24} height={24} />
-              <p className="pl-s1">YouTube Video</p>
-            </Fragment>
-          )}
-          {type === 'instagram' && (
-            <Fragment>
-              <Image src={Instagram} alt="" with={24} height={24} />
-              <p className="pl-s1">Instagram {isReel ? 'Reel' : 'Video'}</p>
-            </Fragment>
-          )}
-        </div>
         <Image
           loader={() => thumbnail}
           src={thumbnail}

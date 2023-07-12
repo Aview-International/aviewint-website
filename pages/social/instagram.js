@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { updateUserInstagram } from '../api/firebase';
+import { updateRequiredServices } from '../api/firebase';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 
 const InstagramConnect = () => {
   const router = useRouter();
   const { code } = router.query;
+  const uid = Cookies.get('uid');
   const getInstagramToken = async (ig_access_code) => {
     console.log(ig_access_code);
     // get short lived acces token
@@ -33,14 +34,16 @@ const InstagramConnect = () => {
       );
 
       // save all neccessary info to the database
-      await updateUserInstagram({
-        uid: Cookies.get('uid'),
-        instagram_username: getUserProfile.data.username,
-        instagram_account_id: getUserProfile.data.id,
-        instagram_account_type: getUserProfile.data.account_type,
-        instagram_access_token: getToken.data.access_token,
-        instagram_access_token_expiry: getToken.data.expires_in,
-      });
+      await updateRequiredServices(
+        {
+          instagram_username: getUserProfile.data.username,
+          instagram_account_id: getUserProfile.data.id,
+          instagram_account_type: getUserProfile.data.account_type,
+          instagram_access_token: getToken.data.access_token,
+          instagram_access_token_expiry: getToken.data.expires_in,
+        },
+        uid
+      );
       router.push('/onboarding?stage=4');
     } catch (error) {
       console.log(error);
