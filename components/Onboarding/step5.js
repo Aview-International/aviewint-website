@@ -91,7 +91,7 @@ const OnboardingStep5 = ({ userData }) => {
             <div>
               <h2 className="my-6 ml-2 text-2xl font-semibold">Languages</h2>
               <div
-                className={`relative flex h-full w-full cursor-pointer flex-col items-start gap-x-4 gap-y-5 rounded-2xl bg-black p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
+                className={`relative h-full w-full cursor-pointer rounded-2xl bg-black p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
                     : 'gradient-dark'
@@ -100,19 +100,21 @@ const OnboardingStep5 = ({ userData }) => {
                 <div
                   className={`gradient-1 transition-300 absolute inset-0 left-1/2 -z-10 h-[calc(100%+3px)] w-[104%] -translate-x-1/2 rounded-2xl opacity-0 blur-lg group-hover:opacity-70`}
                 ></div>
-                {item.data.map((dataItem, index) => (
-                  <div className="flex items-center justify-center" key={index}>
-                    <Image
-                      src={dataItem.image}
-                      alt={dataItem.languageName}
-                      width={24}
-                      height={22}
-                    />
-                    <p className="ml-2 text-lg font-medium">
+                 <div className='overflow-y-auto w-full h-full flex-col items-start gap-x-4 gap-y-5 flex'>
+                  {item.data.map((dataItem, index) => (
+                    <div className="flex items-center justify-center" key={index}>
+                     <Image
+                       src={dataItem.image}
+                       alt={dataItem.languageName}
+                       width={24}
+                       height={22}
+                     />
+                     <p className="ml-2 text-lg font-medium">
                       {dataItem.languageName}
-                    </p>
-                  </div>
-                ))}
+                     </p>
+                    </div>
+                   ))}
+                 </div>
               </div>
             </div>
           </div>
