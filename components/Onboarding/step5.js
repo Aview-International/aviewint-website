@@ -5,7 +5,6 @@ import OnboardingButton from './button';
 import Image from 'next/image';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
-import Shadow from '../UI/Shadow';
 
 const OnboardingStep5 = ({ userData }) => {
   const router = useRouter();
@@ -14,10 +13,7 @@ const OnboardingStep5 = ({ userData }) => {
     languages: [],
   });
 
-  const [sideEffects, setSideEffects] = useState({
-    hasSubmitted: false,
-    isLoading: false,
-  });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setPayload({
@@ -49,12 +45,7 @@ const OnboardingStep5 = ({ userData }) => {
   };
 
   const handleSubmit = async () => {
-    setSideEffects({ hasSubmitted: true, isLoading: true });
-
-    if (payload.region.length < 1) {
-      setSideEffects({ hasSubmitted: true, isLoading: false });
-      return;
-    }
+    setIsLoading(true);
     try {
       await updateRequiredServices(payload, Cookies.get('uid'));
     } catch (error) {
@@ -127,16 +118,12 @@ const OnboardingStep5 = ({ userData }) => {
           </div>
         ))}
       </div>
-      {sideEffects.hasSubmitted && payload.region.length < 1 && (
-        <p className="my-s3 text-center text-xl">
-          Please select an option from above to move to next step.
-        </p>
-      )}
+
       <div className="m-auto mt-12 w-[min(360px,90%)]">
         <OnboardingButton
           disabled={payload.region.length < 1}
           onClick={handleSubmit}
-          isLoading={sideEffects.isLoading}
+          isLoading={isLoading}
           theme="light"
         >
           Proceed
