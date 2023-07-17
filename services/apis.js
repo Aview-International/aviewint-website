@@ -14,3 +14,9 @@ export const singleSignOnRegister = async (email) => {
 export const singleSignOn = async (email) => {
   return await axios.post(baseUrl + 'email/login', { email });
 };
+
+export const transcribeSocialLink = async () => {
+  return await axios.post(baseUrl + 'transcription/social',{
+    
+  });
+};

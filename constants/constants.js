@@ -100,6 +100,9 @@ import Japanese from '../public/img/icons/japanese.svg';
 import German from '../public/img/icons/german.svg';
 import Italian from '../public/img/icons/italian.svg';
 import Turkish from '../public/img/icons/turkish.svg';
+import Filipino from '../public/img/icons/filipino.svg';
+import Indonesian from '../public/img/icons/indonesian.svg';
+import Korean from '../public/img/icons/korean.svg';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -1191,17 +1194,17 @@ export const SUPPORTED_REGIONS = [
     data: [
       {
         image: English,
-        languageName: 'English',
+        languageName: 'English (US)',
         localDialect: 'English',
       },
       {
         image: Spanish2,
-        languageName: 'Spanish',
+        languageName: 'Spanish (Mexican)',
         localDialect: 'Español',
       },
       {
         image: French,
-        languageName: 'French',
+        languageName: 'French (Quebecois)',
         localDialect: 'Français',
       },
     ],
@@ -1212,18 +1215,13 @@ export const SUPPORTED_REGIONS = [
     data: [
       {
         image: Spanish2,
-        languageName: 'Spanish',
+        languageName: 'Spanish (Mexican)',
         localDialect: 'Español',
       },
       {
         image: Portuguese,
-        languageName: 'Portuguese',
+        languageName: 'Portuguese (Brazilian)',
         localDialect: 'Português',
-      },
-      {
-        image: English,
-        languageName: 'English',
-        localDialect: 'English',
       },
     ],
   },
@@ -1232,9 +1230,9 @@ export const SUPPORTED_REGIONS = [
     image: asia,
     data: [
       {
-        image: Arabic,
-        languageName: 'Arabic',
-        localDialect: 'العربية (Al - ʿarabiyyah)',
+        image: Chinese,
+        languageName: 'Chinese (Mandarin)',
+        localDialect: '中文 (Zhōngwén)',
       },
       {
         image: Hindi,
@@ -1242,18 +1240,38 @@ export const SUPPORTED_REGIONS = [
         localDialect: 'हिन्दी (Hindī)',
       },
       {
-        image: Chinese,
-        languageName: 'Chinese',
-        localDialect: '中文 (Zhōngwén)',
-      },
-      {
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Русский (Russkiy)',
       },
       {
+        image: Arabic,
+        languageName: 'Arabic',
+        localDialect: 'العربية (Al - ʿarabiyyah)',
+      },
+      {
+        image: Korean,
+        languageName: 'Korean',
+        localDialect: 'العربية (Al - ʿarabiyyah)',
+      },
+      {
         image: Japanese,
         languageName: 'Japanese',
+        localDialect: '日本語 (Nihongo)',
+      },
+      {
+        image: Indonesian,
+        languageName: 'Indonesian',
+        localDialect: '日本語 (Nihongo)',
+      },
+      {
+        image: Hindi,
+        languageName: 'Bengali',
+        localDialect: '日本語 (Nihongo)',
+      },
+      {
+        image: Filipino,
+        languageName: 'Filipino',
         localDialect: '日本語 (Nihongo)',
       },
     ],
@@ -1263,9 +1281,19 @@ export const SUPPORTED_REGIONS = [
     image: europe,
     data: [
       {
+        image: Russian,
+        languageName: 'Russian',
+        localDialect: 'Russian',
+      },
+      {
         image: German,
         languageName: 'German',
         localDialect: 'Deutsch',
+      },
+      {
+        image: English,
+        languageName: 'English (UK)',
+        localDialect: 'English',
       },
       {
         image: French,

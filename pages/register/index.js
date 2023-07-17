@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import { createNewUser, signInWithGoogle } from '../api/firebase';
@@ -20,15 +20,14 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from 'firebase/auth';
-import useUserProfile from '../../hooks/useUserProfile';
 
 const Register = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { handleGetProfile } = useUserProfile();
   const [isLoading, setIsLoading] = useState({
     google: false,
     email: false,
+    hasSubmitted: false,
   });
   const [email, setEmail] = useState('');
 
@@ -82,7 +81,6 @@ const Register = () => {
             );
           Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
           Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-          handleGetProfile();
           router.push('/dashboard');
         })
         .catch((error) => {
@@ -101,6 +99,7 @@ const Register = () => {
     setIsLoading({ ...isLoading, email: true });
     localStorage.setItem('emailForSignIn', email);
     await singleSignOnRegister(email);
+    setIsLoading({ ...isLoading, hasSubmitted: true });
   };
 
   const { account } = router.query;
@@ -127,24 +126,33 @@ const Register = () => {
                 You don&apos;t have an account yet, begin here
               </p>
             )}
-
-            <FormInput
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              isValid={emailValidator(email)}
-              hideCheckmark
-              extraClasses="mb-4"
-              label="Email Address"
-            />
-            <OnboardingButton
-              theme="light"
-              disabled={!emailValidator(email)}
-              onClick={handleSSO}
-              isLoading={isLoading.email}
-            >
-              Continue
-            </OnboardingButton>
+            {!isLoading.hasSubmitted ? (
+              <Fragment>
+                <FormInput
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  isValid={emailValidator(email)}
+                  hideCheckmark
+                  extraClasses="mb-4"
+                  label="Email Address"
+                />
+                <OnboardingButton
+                  theme="light"
+                  disabled={!emailValidator(email)}
+                  onClick={handleSSO}
+                  isLoading={isLoading.email}
+                >
+                  Continue
+                </OnboardingButton>
+              </Fragment>
+            ) : (
+              <p className="text-center text-xl">
+                An email is on the way 🚀
+                <br />
+                Check your inbox to proceed
+              </p>
+            )}
             <p className="my-s2 text-center">or</p>
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
