@@ -2,11 +2,7 @@ import { useRouter } from 'next/router';
 import OnboardingButton from './button';
 import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
-import {
-  CATEGORIES,
-  LANGUAGES,
-  SUPPORTED_REGIONS,
-} from '../../constants/constants';
+import { LANGUAGES, SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
@@ -35,6 +31,9 @@ const OnboardingStep6 = ({ userData }) => {
     SUPPORTED_REGIONS.forEach(({ data }) => {
       data.forEach((el) => allLanguages.push(el));
     });
+    console.log(allLanguages);
+    console.log(userData.languages);
+    console.log(allLanguages.find((el) => el.languageName === language));
     return allLanguages.find((el) => el.languageName === language);
   };
 

@@ -78,12 +78,7 @@ const DashboardHome = () => {
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
     if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();
-  }, [
-    userData.youtubeChannelId,
-    userData.instagram_access_token,
-    // youtubeDataFetched,
-    // instagramDataFetched,
-  ]);
+  }, [userData.youtubeChannelId, userData.instagram_access_token]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {

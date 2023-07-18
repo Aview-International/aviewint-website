@@ -12,6 +12,7 @@ import {
 } from 'firebase/database';
 import { baseUrl } from '../../../components/baseUrl';
 import { v4 as uuidv4 } from 'uuid';
+import { transcribeSocialLink } from '../../../services/apis';
 
 export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URL}&scope=user_profile,user_media&response_type=code`;
 
@@ -155,12 +156,19 @@ export const getAllPayments = async (_id) => {
   return res;
 };
 
-export const createANewJob = async (_id, jobDetails) => {
+export const createANewJob = async (uid, jobDetails) => {
   let jobId = uuidv4();
-
-  await set(ref(database, `user-jobs/pending/${_id}/${jobId}`), jobDetails);
-  await set(ref(database, `admin-jobs/pending/${jobId}`), jobDetails);
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
+  await transcribeSocialLink({
+    creatorid: uid,
+    jobId,
+    videoData: jobDetails.videoData,
+  });
+  await set(ref(database, `user-jobs/pending/${uid}/${jobId}`), jobDetails);
+  await set(
+    ref(database, `admin-jobs/pending/transcription/${jobId}`),
+    jobDetails
+  );
+  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       const newPostData = {
@@ -172,7 +180,7 @@ export const createANewJob = async (_id, jobDetails) => {
         pendingVideos: +data.pendingVideos + 1,
       };
       const updates = {
-        [`users/${_id}`]: data.pendingVideos ? existingPostData : newPostData,
+        [`users/${uid}`]: data.pendingVideos ? existingPostData : newPostData,
       };
       await update(ref(database), updates);
     }

@@ -14,6 +14,9 @@ const TranslateOptions = ({ handleSubmit, payload, setPayload, isLoading }) => {
     SUPPORTED_REGIONS.forEach(({ data }) => {
       data.forEach((el) => allLanguages.push(el));
     });
+    console.log(allLanguages);
+    console.log(userData.languages);
+    console.log(allLanguages.find((el) => el.languageName === language));
     return allLanguages.find((el) => el.languageName === language);
   };
 
