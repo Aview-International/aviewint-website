@@ -15,7 +15,7 @@ export default function DashboardMobileMenu() {
       className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-2/4 flex-col gap-12 overflow-hidden bg-black md:px-6 2xs:px-2 pt-8 pb-10 lg:hidden ${
         menuOpenCtx.isMenuOpen
           ? 'translate-x-0 opacity-100'
-          : 'translate-x-full opacity-0'
+          : '-translate-x-full opacity-0'
       }`}
     >
       <div className="flex h-12 flex-grow-0 items-center justify-between">
