@@ -41,13 +41,13 @@ const OnboardingStep1 = ({ userData }) => {
       <p className="mt-4 mb-8 text-lg text-white/90 md:text-center md:text-[19px]">
         We&#8217;ll streamline your setup experience accordingly.
       </p>
-      <div className="flex flex-col items-stretch justify-center gap-4 md:flex-row md:gap-0">
+      <div className="flex flex-col items-stretch justify-center gap-4 lg:flex-row lg:gap-0">
         {ONBOARDING_STAGE_1.map((option, index) => {
           return (
             <Fragment key={index}>
               {option.desc === 'Coming Soon' ? (
                 <ComingSoon stage={1}>
-                  <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
+                  <Shadow classes="lg:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
                     <Border borderRadius="2xl" classes="h-full w-full">
                       <div
                         className={`h-full rounded-2xl bg-black pt-s6 text-center md:pt-s9`}
@@ -68,7 +68,7 @@ const OnboardingStep1 = ({ userData }) => {
                   </Shadow>
                 </ComingSoon>
               ) : (
-                <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
+                <Shadow classes="lg:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
                   <Border borderRadius="2xl" classes="h-full w-full">
                     <div
                       className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${

@@ -97,8 +97,6 @@ const DashboardHome = () => {
         videoData: selectedVideos,
         languages: payload.languages,
         additionalNote: payload.additionalNote,
-        status: 'pending',
-        createdAt: new Date().toISOString(),
       });
       setPayload({
         languages: [],
