@@ -65,15 +65,15 @@ const Container = ({ pendingJobs, completedJobs }) => {
           key={i}
         >
           <div>
-            {job.videoData.map(({ title }, idx) => (
+            {job.videoData.map(({ caption }, idx) => (
               <p key={idx} className="mb-s1">
-                {title}
+                {caption}
               </p>
             ))}
           </div>
           <p>{new Date(job.createdAt).toDateString()}</p>
           <div>
-            {job.services.map((service, idx) => (
+            {job.languages.map((service, idx) => (
               <p key={idx} className="mb-s1">
                 {service}
               </p>
