@@ -68,6 +68,7 @@ import { emailValidator } from '../utils/regex';
 
 // dashboard sidebar icons
 import home from '../public/img/icons/home.svg';
+import ai_voice from '../public/img/icons/ai_voice.svg';
 import upload from '../public/img/icons/upload.svg';
 import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
@@ -1154,6 +1155,11 @@ export const DASHBOARD_NAVLINKS = [
     text: 'Home',
     image: home,
     route: '/dashboard',
+  },
+  {
+    text: 'AI Voice',
+    image: ai_voice,
+    route: '/dashboard/ai-voice'
   },
   {
     text: 'Upload',
