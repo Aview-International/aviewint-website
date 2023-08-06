@@ -2,34 +2,22 @@ import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Fragment, useEffect, useState } from 'react';
+import { useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
+import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
-import FormInput from '../../components/FormComponents/FormInput';
-import { emailValidator } from '../../utils/regex';
-import OnboardingButton from '../../components/Onboarding/button';
-import { getAuth } from 'firebase/auth';
-import { singleSignOnRegister } from '../../services/apis';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/reducers/user.reducer';
 
 const Login = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState({
-    google: false,
-    email: false,
-    hasSubmitted: false,
-  });
-  const [email, setEmail] = useState('');
-
-  useEffect(() => {
-    const { query } = router;
-    if (query.apiKey && query.oobCode && query.mode === 'signIn')
-      handleSSOWithCode();
-  }, [router.query]);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -39,40 +27,23 @@ const Login = () => {
     else {
       Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
       Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+      dispatch(
+        setUser({
+          email: _tokenResponse.email,
+          firstName: _tokenResponse.firstName,
+          lastName: _tokenResponse.lastName,
+          picture: _tokenResponse.photoUrl,
+          token: _tokenResponse.idToken,
+          uid: _tokenResponse.localId,
+        })
+      );
       router.push('/dashboard');
     }
   };
 
-  const handleSSOWithCode = () => {
-    const auth = getAuth();
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email)
-        email = window.prompt('Please provide your email for confirmation');
-
-      signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
-          window.localStorage.removeItem('emailForSignIn');
-          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
-          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-          router.push('/dashboard');
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
-
-  const handleSSO = async () => {
-    setIsLoading({ ...isLoading, email: true });
-    localStorage.setItem('emailForSignIn', email);
-    await singleSignOnRegister(email);
-    setIsLoading({ ...isLoading, hasSubmitted: true });
-  };
-
   return (
     <>
-      <PageTitle title="Login" />
+      <PageTitle title="Login - Aview International" />
       <div className="">
         <div className="flex items-center py-6 pl-s14">
           <Image
@@ -94,43 +65,13 @@ const Login = () => {
                 <a className="underline">here</a>
               </Link>
             </p>
-
-            {!isLoading.hasSubmitted ? (
-              <Fragment>
-                <FormInput
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  isValid={emailValidator(email)}
-                  hideCheckmark
-                  extraClasses="mb-4"
-                  label="Email Address"
-                />
-                <OnboardingButton
-                  theme="light"
-                  disabled={!emailValidator(email)}
-                  onClick={handleSSO}
-                  isLoading={isLoading.email}
-                >
-                  Continue
-                </OnboardingButton>
-              </Fragment>
-            ) : (
-              <p className="text-center text-xl">
-                An email is on the way 🚀
-                <br />
-                Check your inbox to proceed
-              </p>
-            )}
-            <p className="my-s2 text-center">or</p>
-
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
                 <button
                   className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
                   onClick={handleSubmit}
                 >
-                  {isLoading.google ? (
+                  {isLoading ? (
                     <ButtonLoader />
                   ) : (
                     <>
@@ -145,6 +86,21 @@ const Login = () => {
                       Continue with Google
                     </>
                   )}
+                </button>
+              </Border>
+            </Shadow>
+            <Shadow classes="w-full">
+              <Border borderRadius="full" classes="w-full">
+                <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3">
+                  <span className="flex items-center justify-center pr-s1">
+                    <Image
+                      src={Facebook}
+                      alt="Facebook"
+                      width={20}
+                      height={20}
+                    />
+                  </span>
+                  Continue with Facebook
                 </button>
               </Border>
             </Shadow>

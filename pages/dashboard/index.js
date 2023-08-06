@@ -75,7 +75,16 @@ const DashboardHome = () => {
     }
   };
 
+  const details = async () => {
+    const response = await axios.get(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=localizations,statistics,status,snippet&id=iaf2rFazytY&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+    );
+    console.log(response);
+  };
+
   useEffect(() => {
+    details();
+
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
     if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();

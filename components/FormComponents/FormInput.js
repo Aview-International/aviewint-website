@@ -54,9 +54,9 @@ const FormInput = ({
             onChange={onChange}
             value={value}
           />
-          {/* <div
-            className={`gradient-1 transition-300 absolute top-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl peer-focus:opacity-80`}
-          ></div> */}
+          <div
+            className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
+          ></div>
         </Border>
         {!hideCheckmark && (
           <span className="absolute right-[10px] bottom-[2px]">
