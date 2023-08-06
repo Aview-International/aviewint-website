@@ -20,6 +20,7 @@ const DashboardHome = () => {
     (state) => state.youtube.dataFetched
   );
   const [isSelected, setIsSelected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [payload, setPayload] = useState({
     languages: [],
@@ -74,22 +75,27 @@ const DashboardHome = () => {
     }
   };
 
+  const details = async () => {
+    const response = await axios.get(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=localizations,statistics,status,snippet&id=iaf2rFazytY&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
+    );
+    console.log(response);
+  };
+
   useEffect(() => {
+    details();
+
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
     if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();
-  }, [
-    userData.youtubeChannelId,
-    userData.instagram_access_token,
-    // youtubeDataFetched,
-    // instagramDataFetched,
-  ]);
+  }, [userData.youtubeChannelId, userData.instagram_access_token]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {
       toast.error('Please select a language');
       return;
     }
+    setIsLoading(true);
     const preferences = {
       preferences: payload.languages,
       saveSettings: payload.saveSettings,
@@ -102,8 +108,6 @@ const DashboardHome = () => {
         videoData: selectedVideos,
         languages: payload.languages,
         additionalNote: payload.additionalNote,
-        status: 'pending',
-        createdAt: new Date().toISOString(),
       });
       setPayload({
         languages: [],
@@ -116,8 +120,10 @@ const DashboardHome = () => {
         top: 0,
         behavior: 'smooth',
       });
+      setIsLoading(false);
       toast('Succesfully submitted tasks');
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -133,11 +139,11 @@ const DashboardHome = () => {
             setPayload={setPayload}
             payload={payload}
             handleSubmit={handleSubmit}
-            isLoading={false}
+            isLoading={isLoading}
           />
         ) : (
           <SelectVideos
-            isLoading={false}
+            isLoading={isLoading}
             setIsSelected={setIsSelected}
             selectedVideos={selectedVideos}
             setSelectedVideos={setSelectedVideos}

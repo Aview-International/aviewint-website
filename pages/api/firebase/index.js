@@ -1,10 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  getAuth,
-  FacebookAuthProvider,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -15,18 +10,18 @@ import {
   push,
   onValue,
 } from 'firebase/database';
-import { baseUrl } from '../../../components/baseUrl';
 import { v4 as uuidv4 } from 'uuid';
+import { transcribeSocialLink } from '../../../services/apis';
 
 export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URL}&scope=user_profile,user_media&response_type=code`;
 
 const scope = 'https://www.googleapis.com/auth/youtube';
 const include_granted_scopes = true;
 const state = 'state_parameter_passthrough_value';
-const redirect_uri = `${baseUrl}/onboarding?stage=4`;
 const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-export const YoutubeAuthenticationLink = `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
+export const YoutubeAuthenticationLink = (redirect_uri) =>
+  `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -60,14 +55,6 @@ export const checkUserEmail = async (uid) => {
 export const signInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const response = await signInWithPopup(auth, provider);
-  return response;
-};
-
-// get user credentials from facebook account
-export const signInWithFacebook = async () => {
-  const provider = new FacebookAuthProvider();
-  const response = await signInWithPopup(auth, provider);
-  console.log(response);
   return response;
 };
 
@@ -168,28 +155,37 @@ export const getAllPayments = async (_id) => {
   return res;
 };
 
-export const createANewJob = async (_id, jobDetails) => {
+export const createANewJob = async (uid, jobDetails) => {
   let jobId = uuidv4();
+  await transcribeSocialLink(
+    jobDetails
+    // creatorid: uid,
+    // jobId,
+    // videoData: jobDetails.videoData,
+  );
 
-  await set(ref(database, `user-jobs/pending/${_id}/${jobId}`), jobDetails);
-  await set(ref(database, `admin-jobs/pending/${jobId}`), jobDetails);
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const newPostData = {
-        ...data,
-        pendingVideos: 1,
-      };
-      const existingPostData = {
-        ...data,
-        pendingVideos: +data.pendingVideos + 1,
-      };
-      const updates = {
-        [`users/${_id}`]: data.pendingVideos ? existingPostData : newPostData,
-      };
-      await update(ref(database), updates);
-    }
-  });
+  // await set(ref(database, `user-jobs/pending/${uid}/${jobId}`), jobDetails);
+  // await set(
+  //   ref(database, `admin-jobs/pending/transcription/${jobId}`),
+  //   jobDetails
+  // );
+  // get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
+  //   if (snapshot.exists()) {
+  //     const data = snapshot.val();
+  //     const newPostData = {
+  //       ...data,
+  //       pendingVideos: 1,
+  //     };
+  //     const existingPostData = {
+  //       ...data,
+  //       pendingVideos: +data.pendingVideos + 1,
+  //     };
+  //     const updates = {
+  //       [`users/${uid}`]: data.pendingVideos ? existingPostData : newPostData,
+  //     };
+  //     await update(ref(database), updates);
+  //   }
+  // });
 };
 
 export const getAllPendingJobs = async (uid) => {
