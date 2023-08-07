@@ -1,20 +1,37 @@
 import Image from 'next/image';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MenuOpenContext from '../../store/menu-open-context';
 import Link from 'next/link';
 import messages from '../../public/img/icons/messages.svg';
 import DashboardMobileMenu from '../navigation/DashboardMobileMenu';
 import MenuButtonIcon from '../navigation/MenuButtonIcon';
+// import useGreeting from '../../hooks/useGreeting';
+import { customGreeting } from '../../utils/greeting';
 
 const DashBoardHeader = ({ userInfo }) => {
+  const [time, setTime] = useState(customGreeting());
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(customGreeting());
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   const menuOpenCtx = useContext(MenuOpenContext);
+
   return (
     <header className="relative flex w-full items-center justify-between px-s4 py-s4 text-white md:px-s9">
-      <MenuButtonIcon handler={menuOpenCtx.openMenuHandler} styles={'absolute left-6'} />
+      <MenuButtonIcon
+        handler={menuOpenCtx.openMenuHandler}
+        styles={'absolute left-6'}
+      />
       <DashboardMobileMenu />
       <div className="hidden md:block">
         <h3 className="text-xl">
-          Welcome, <span className="font-bold">{userInfo.firstName}!</span>
+          {time} <span className="font-bold">{userInfo.firstName}!</span>
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>

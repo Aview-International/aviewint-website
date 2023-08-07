@@ -1,7 +1,7 @@
 import Border from '../UI/Border';
 import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
@@ -17,15 +17,22 @@ const CustomSelectInput = ({
 }) => {
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const scroll = typeof window !== 'undefined' && window.scrollY;
+  const [isBottom, setisBottom] = useState(false);
 
-  const isBottom = useMemo(() => {
-    const elementPosition = elementRef.current?.offsetTop;
-    const windowHeight = typeof window !== 'undefined' && window.outerHeight;
+  useEffect(() => {
+    const windowHeight = window.outerHeight;
 
-    if (elementPosition > windowHeight / 2) return true;
-    else return false;
-  }, [elementRef.current?.offsetTop, scroll]);
+    const updateElementPosition = () => {
+      const element = elementRef.current;
+      if (element && isOpen) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top > windowHeight / 2) setisBottom(true);
+        else return setisBottom(false);
+      }
+    };
+
+    updateElementPosition();
+  }, [isOpen]);
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>

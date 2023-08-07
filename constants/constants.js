@@ -1329,7 +1329,6 @@ export const LANGUAGES = [
   'English (US)',
   'Spanish (Mexican)',
   'French (Quebecois)',
-  'Spanish (Mexican)',
   'Portuguese (Brazilian)',
   'Chinese (Mandarin)',
   'Hindi',
