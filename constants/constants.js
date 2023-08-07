@@ -104,6 +104,9 @@ import Turkish from '../public/img/icons/turkish.svg';
 import Filipino from '../public/img/icons/filipino.svg';
 import Indonesian from '../public/img/icons/indonesian.svg';
 import Korean from '../public/img/icons/korean.svg';
+import Canada from '../public/img/icons/canada.svg';
+import Portugal from '../public/img/icons/portugal.svg';
+import Uk from '../public/img/icons/uk.svg';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -1209,7 +1212,7 @@ export const SUPPORTED_REGIONS = [
         localDialect: 'Español',
       },
       {
-        image: French,
+        image: Canada,
         languageName: 'French (Quebecois)',
         localDialect: 'Français',
       },
@@ -1297,13 +1300,13 @@ export const SUPPORTED_REGIONS = [
         localDialect: 'Deutsch',
       },
       {
-        image: English,
+        image: Uk,
         languageName: 'English (UK)',
         localDialect: 'English',
       },
       {
         image: French,
-        languageName: 'French',
+        languageName: 'French (France)',
         localDialect: 'Français',
       },
       {
@@ -1318,9 +1321,14 @@ export const SUPPORTED_REGIONS = [
       },
       {
         image: Spanish,
-        languageName: 'Spanish',
+        languageName: 'Spanish (Spain)',
         localDialect: 'Español',
       },
+      {
+        image: Portugal,
+        languageName: 'Portuguese (Portugal)',
+        localDialect: 'Portugués'
+      }
     ],
   },
 ];

@@ -103,7 +103,7 @@ const OnboardingStep5 = ({ userData }) => {
                 <div className="flex h-full w-full flex-col items-start gap-x-4 gap-y-5 overflow-y-auto">
                   {item.data.map((dataItem, index) => (
                     <div
-                      className="flex items-center justify-center"
+                      className="flex items-center justify-center gap-x-[6px]"
                       key={index}
                     >
                       <Image
@@ -112,7 +112,7 @@ const OnboardingStep5 = ({ userData }) => {
                         width={24}
                         height={22}
                       />
-                      <p className="ml-2 text-lg font-medium">
+                      <p className="text-lg font-medium">
                         {dataItem.languageName}
                       </p>
                     </div>
