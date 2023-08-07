@@ -1,30 +1,36 @@
-import React from 'react'
+import React from 'react';
 import record from '../../public/img/icons/record.svg';
 import Image from 'next/image';
 
 const AiVoice = () => {
   return (
-    <div className='w-2/5 container mx-auto py-32'>
-       <p>Record yourself reading through at least five prompts so we can create an AI voice tailored to yur own voice. Feel free to do more to achieve a more accurate voice.</p>
-         <div className='w-full border-2 rounded-2xl flex flex-col my-10 gap-3 justify-center items-start p-s2'>
-            <p className='text-xl'>Prompt 1</p>
-            <p className=" font-medium text-lg">"Like and subscribe to stay updated whenever I come out with a new video."</p>
-            <div className='rounded-full bg-gray-1 p-[10px] my-4 mx-auto cursor-pointer'>
-                <div className='rounded-full p-[2px] gradient-1'>
-                  <div className='bg-gray-1 rounded-full flex justify-center items-center p-[4px]'>
-                    <Image src={record} alt="record" width={20} height={20}/>
-                  </div>
-                </div>
+    <div className="container mx-auto w-2/5 py-32">
+      <p>
+        Record yourself reading through at least five prompts so we can create
+        an AI voice tailored to yur own voice. Feel free to do more to achieve a
+        more accurate voice.
+      </p>
+      <div className="my-10 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2">
+        <p className="text-xl">Prompt 1</p>
+        <p className=" text-lg font-medium">
+          &#8220;Like and subscribe to stay updated whenever I come out with a
+          new video.&#8221;
+        </p>
+        <div className="my-4 mx-auto cursor-pointer rounded-full bg-gray-1 p-[10px]">
+          <div className="gradient-1 rounded-full p-[2px]">
+            <div className="flex items-center justify-center rounded-full bg-gray-1 p-[4px]">
+              <Image src={record} alt="record" width={20} height={20} />
             </div>
-         </div>
-         <div className='rounded-2xl p-1 my-[6px] gradient-1 w-full'>
-         </div>
-         <div className='flex flex-row justify-between text-xs'>
-            <p>0%</p>
-            <p>0 / 5</p>
-         </div>
+          </div>
+        </div>
+      </div>
+      <div className="gradient-1 my-[6px] w-full rounded-2xl p-1"></div>
+      <div className="flex flex-row justify-between text-xs">
+        <p>0%</p>
+        <p>0 / 5</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AiVoice
+export default AiVoice;

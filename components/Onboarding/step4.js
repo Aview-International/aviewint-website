@@ -15,7 +15,7 @@ const OnboardingStep4 = ({ userData }) => {
 
   const windowLocation = useMemo(() => {
     return window.location.href;
-  }, [window]);
+  }, []);
 
   const [isLoading, setIsLoading] = useState({
     youtube: false,
