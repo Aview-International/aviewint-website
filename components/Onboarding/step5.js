@@ -102,16 +102,16 @@ const OnboardingStep5 = ({ userData }) => {
                 ></div>
                  <div className='overflow-y-auto w-full h-full flex-col items-start gap-x-4 gap-y-5 flex'>
                   {item.data.map((dataItem, index) => (
-                    <div className="flex items-center justify-center" key={index}>
+                    <div className="flex items-center justify-center gap-x-[6px]" key={index}>
+                     <p className="text-lg font-medium">
+                      {dataItem.languageName}
+                     </p>
                      <Image
                        src={dataItem.image}
                        alt={dataItem.languageName}
                        width={24}
                        height={22}
                      />
-                     <p className="ml-2 text-lg font-medium">
-                      {dataItem.languageName}
-                     </p>
                     </div>
                    ))}
                  </div>
