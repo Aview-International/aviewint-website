@@ -20,6 +20,7 @@ const DashboardHome = () => {
     (state) => state.youtube.dataFetched
   );
   const [isSelected, setIsSelected] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
   const [payload, setPayload] = useState({
     languages: [],
@@ -33,12 +34,13 @@ const DashboardHome = () => {
         '/api/onboarding/link-youtube?get=videos',
         { youtubeChannelId: userData.youtubeChannelId }
       );
+
       const youtubeVideos = getVideos.data.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
         caption: vid.snippet.title,
         timestamp: vid.snippet.publishedAt,
-        thumbnail: vid.snippet.thumbnails.default.url,
+        thumbnail: vid.snippet.thumbnails.maxres.url,
         permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
         videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
       }));
@@ -78,18 +80,14 @@ const DashboardHome = () => {
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
     if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();
-  }, [
-    userData.youtubeChannelId,
-    userData.instagram_access_token,
-    // youtubeDataFetched,
-    // instagramDataFetched,
-  ]);
+  }, [userData.youtubeChannelId, userData.instagram_access_token]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {
       toast.error('Please select a language');
       return;
     }
+    setIsLoading(true);
     const preferences = {
       preferences: payload.languages,
       saveSettings: payload.saveSettings,
@@ -102,8 +100,6 @@ const DashboardHome = () => {
         videoData: selectedVideos,
         languages: payload.languages,
         additionalNote: payload.additionalNote,
-        status: 'pending',
-        createdAt: new Date().toISOString(),
       });
       setPayload({
         languages: [],
@@ -116,8 +112,10 @@ const DashboardHome = () => {
         top: 0,
         behavior: 'smooth',
       });
+      setIsLoading(false);
       toast('Succesfully submitted tasks');
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -133,11 +131,11 @@ const DashboardHome = () => {
             setPayload={setPayload}
             payload={payload}
             handleSubmit={handleSubmit}
-            isLoading={false}
+            isLoading={isLoading}
           />
         ) : (
           <SelectVideos
-            isLoading={false}
+            isLoading={isLoading}
             setIsSelected={setIsSelected}
             selectedVideos={selectedVideos}
             setSelectedVideos={setSelectedVideos}

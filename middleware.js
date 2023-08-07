@@ -20,8 +20,7 @@ const authStatus = (token) => {
 
 export function middleware(request) {
   const token = request.cookies.get('token');
-  const status = authStatus(token);
-  if (!status) {
+  if (!authStatus(token)) {
     request.cookies.delete('token');
     return NextResponse.redirect(new URL('/login', request.url));
   }

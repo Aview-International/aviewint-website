@@ -85,7 +85,7 @@ const OnboardingStep5 = ({ userData }) => {
                 height={303}
               />
               <div
-                className={`gradient-1 transition-300 absolute inset-0 left-1/2 -z-10 h-[calc(100%+3px)] w-[104%] -translate-x-1/2 rounded-2xl opacity-0 blur-lg group-hover:opacity-70`}
+                className={`gradient-1 transition-300 absolute left-1/2 top-1/2 -z-10 h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2 rounded-2xl opacity-0 blur-[8px] group-hover:opacity-60`}
               ></div>
             </div>
             <div>
@@ -98,23 +98,26 @@ const OnboardingStep5 = ({ userData }) => {
                 }`}
               >
                 <div
-                  className={`gradient-1 transition-300 absolute inset-0 left-1/2 -z-10 h-[calc(100%+3px)] w-[104%] -translate-x-1/2 rounded-2xl opacity-0 blur-lg group-hover:opacity-70`}
+                  className={`gradient-1 transition-300 absolute left-1/2 top-1/2 -z-10 h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2 rounded-2xl opacity-0 blur-[8px] group-hover:opacity-60`}
                 ></div>
-                 <div className='overflow-y-auto w-full h-full flex-col items-start gap-x-4 gap-y-5 flex'>
+                <div className="flex h-full w-full flex-col items-start gap-x-4 gap-y-5 overflow-y-auto">
                   {item.data.map((dataItem, index) => (
-                    <div className="flex items-center justify-center gap-x-[6px]" key={index}>
-                     <p className="text-lg font-medium">
-                      {dataItem.languageName}
-                     </p>
-                     <Image
-                       src={dataItem.image}
-                       alt={dataItem.languageName}
-                       width={24}
-                       height={22}
-                     />
+                    <div
+                      className="flex items-center justify-center gap-x-[6px]"
+                      key={index}
+                    >
+                      <Image
+                        src={dataItem.image}
+                        alt={dataItem.languageName}
+                        width={24}
+                        height={22}
+                      />
+                      <p className="text-lg font-medium">
+                        {dataItem.languageName}
+                      </p>
                     </div>
-                   ))}
-                 </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

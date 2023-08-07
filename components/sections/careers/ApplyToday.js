@@ -103,7 +103,7 @@ const ApplyToday = () => {
           isValid={emailValidator(data.email)}
           {...CAREER_APPLY_TODAY[1]}
         />
-        <div className="w-full md:w-3/5">
+        <div className="w-full md:w-3/5 text-white">
           <MultipleSelectInput
             text="What languages can you translate?"
             options={LANGUAGES}

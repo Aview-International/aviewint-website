@@ -1,36 +1,28 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { updateRequiredServices } from '../api/firebase';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import {
+  getInstagramLongLivedAccess,
+  getInstagramProfile,
+  getInstagramShortAccess,
+} from '../../services/apis';
 
 const InstagramConnect = () => {
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');
   const getInstagramToken = async (ig_access_code) => {
-    console.log(ig_access_code);
     // get short lived acces token
     try {
-      const response = await axios.post(
-        '/api/onboarding/link-instagram?get=short_lived_access',
-        {
-          code: ig_access_code,
-        }
-      );
+      const response = await getInstagramShortAccess(ig_access_code);
       // get long lived token
-      const getToken = await axios.post(
-        '/api/onboarding/link-instagram?get=long_lived_access',
-        {
-          code: response.data.access_token,
-        }
+      const getToken = await getInstagramLongLivedAccess(
+        response.data.access_token
       );
       // get user instagram data
-      const getUserProfile = await axios.post(
-        '/api/onboarding/link-instagram?get=user_account_info',
-        {
-          code: getToken.data.access_token,
-        }
+      const getUserProfile = await getInstagramProfile(
+        getToken.data.access_token
       );
 
       // save all neccessary info to the database

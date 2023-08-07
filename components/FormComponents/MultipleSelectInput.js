@@ -1,7 +1,7 @@
 import Border from '../UI/Border';
 import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import HorizontalLine from '../UI/HorizontalLine';
 import Correct from '../../public/img/icons/green-check-circle.svg';
@@ -16,20 +16,23 @@ const MultipleSelectInput = ({
   hideCheckmark,
 }) => {
   const elementRef = useRef(null);
-  const scroll = typeof window !== 'undefined' && window.scrollY;
-
   const [isOpen, setIsOpen] = useState(false);
-  const selectedAnswer = useMemo(() => {
-    return answer;
-  });
+  const [isBottom, setisBottom] = useState(false);
 
-  const isBottom = useMemo(() => {
-    const elementPosition = elementRef.current?.offsetTop;
-    const windowHeight = typeof window !== 'undefined' && window.outerHeight;
+  useEffect(() => {
+    const windowHeight = window.outerHeight;
 
-    if (elementPosition > windowHeight / 2) return true;
-    else return false;
-  }, [elementRef.current?.offsetTop, scroll]);
+    const updateElementPosition = () => {
+      const element = elementRef.current;
+      if (element && isOpen) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top > windowHeight / 2) setisBottom(true);
+        else return setisBottom(false);
+      }
+    };
+
+    updateElementPosition();
+  }, [isOpen]);
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
@@ -41,14 +44,12 @@ const MultipleSelectInput = ({
             onClick={() => setIsOpen(!isOpen)}
           >
             <p className="text-white/70">
-              {selectedAnswer.length != 0
-                ? selectedAnswer.length === 1
-                  ? `${selectedAnswer[0]}`
-                  : `${selectedAnswer[0]}, ${
-                      selectedAnswer.length > 1 ? selectedAnswer[1] : ''
-                    },${
-                      selectedAnswer.length > 2 ? ` ${selectedAnswer[2]}` : ''
-                    }${selectedAnswer.length > 3 ? ',...' : ''}`
+              {answer.length != 0
+                ? answer.length === 1
+                  ? `${answer[0]}`
+                  : `${answer[0]}, ${answer.length > 1 ? answer[1] : ''},${
+                      answer.length > 2 ? ` ${answer[2]}` : ''
+                    }${answer.length > 3 ? ',...' : ''}`
                 : 'Your response'}
             </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
@@ -70,7 +71,7 @@ const MultipleSelectInput = ({
           isOpen={isOpen}
           options={options}
           onChange={onChange}
-          selectedAnswer={selectedAnswer}
+          selectedAnswer={answer}
           isBottom={isBottom}
         />
       </div>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   InstagramAuthenticationLink,
   YoutubeAuthenticationLink,
@@ -12,6 +12,11 @@ import Cookies from 'js-cookie';
 
 const OnboardingStep4 = ({ userData }) => {
   const router = useRouter();
+
+  const windowLocation = useMemo(() => {
+    return window.location.href;
+  }, []);
+
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -51,7 +56,7 @@ const OnboardingStep4 = ({ userData }) => {
   };
 
   const linkYoutubeAccount = async () => {
-    router.push(YoutubeAuthenticationLink);
+    router.push(YoutubeAuthenticationLink(windowLocation));
   };
 
   return (

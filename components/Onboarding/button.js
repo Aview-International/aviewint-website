@@ -33,7 +33,7 @@ const OnboardingButton = ({
             theme === 'white' &&
             'border-[3px] border-solid border-white bg-black text-white hover:bg-white hover:text-black'
           }`}
-          onClick={onClick}
+          onClick={isLoading ? () => null : onClick}
         >
           {isLoading ? <Loader /> : children}
         </button>
