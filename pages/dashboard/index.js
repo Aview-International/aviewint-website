@@ -34,12 +34,13 @@ const DashboardHome = () => {
         '/api/onboarding/link-youtube?get=videos',
         { youtubeChannelId: userData.youtubeChannelId }
       );
+
       const youtubeVideos = getVideos.data.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
         caption: vid.snippet.title,
         timestamp: vid.snippet.publishedAt,
-        thumbnail: vid.snippet.thumbnails.default.url,
+        thumbnail: vid.snippet.thumbnails.maxres.url,
         permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
         videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
       }));
@@ -75,16 +76,7 @@ const DashboardHome = () => {
     }
   };
 
-  const details = async () => {
-    const response = await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=localizations,statistics,status,snippet&id=iaf2rFazytY&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
-    );
-    console.log(response);
-  };
-
   useEffect(() => {
-    details();
-
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
     if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();
