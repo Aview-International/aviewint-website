@@ -1258,7 +1258,7 @@ export const SUPPORTED_REGIONS = [
       {
         image: Korean,
         languageName: 'Korean',
-        localDialect: 'العربية (Al - ʿarabiyyah)',
+        localDialect: '한국어 (Hangugeo)',
       },
       {
         image: Japanese,
@@ -1268,17 +1268,17 @@ export const SUPPORTED_REGIONS = [
       {
         image: Indonesian,
         languageName: 'Indonesian',
-        localDialect: '日本語 (Nihongo)',
+        localDialect: 'Bahasa Indonesia',
       },
       {
         image: Hindi,
         languageName: 'Bengali',
-        localDialect: '日本語 (Nihongo)',
+        localDialect: 'বাংলা (Bangla)',
       },
       {
         image: Filipino,
         languageName: 'Filipino',
-        localDialect: '日本語 (Nihongo)',
+        localDialect: 'Wikang Filipino',
       },
     ],
   },
