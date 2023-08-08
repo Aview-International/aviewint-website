@@ -147,12 +147,14 @@
   /* Track */
   ::-webkit-scrollbar-track {
     background: #000017;
+    border-radius: 100vw;
+    
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #99999C;
-    border-radius: 5px;
+    border-radius: 100vw;
   }
 
   /* Handle on hover */
