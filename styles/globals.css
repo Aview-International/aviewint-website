@@ -27,6 +27,10 @@
     background: linear-gradient(54deg, #ff00ff 7.13%, #00ffff 91%);
   }
 
+  .gradient-3 {
+    background: linear-gradient(180deg, #ae00ff25 19.44%, #01ffff2a 100%);
+  }
+
   .overlay-dark {
     background: rgba(255, 255, 255, 0.08);
   }

@@ -3,6 +3,7 @@ import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
 import useProfile from '../../hooks/useUserProfile';
+import DashboardGradient from '../UI/DashboardGradient';
 import Script from 'next/script';
 import { useSelector } from 'react-redux';
 
@@ -17,7 +18,11 @@ export const DashboardContainer = ({ children }) => {
   useEffect(() => {
     getProfile();
   }, []);
-  return <> {isLoading ? <FullScreenLoader /> : children}</>;
+  return (
+     <> 
+     {isLoading ? <FullScreenLoader /> : <DashboardGradient>{children}</DashboardGradient>}
+     </>
+  );
 };
 
 // this component renders the dashboard structure
@@ -31,7 +36,7 @@ const DashboardStructure = ({ children }) => {
         type="text/javascript"
       />
       <DashboardContainer>
-        <main className="flex min-h-screen w-full bg-black">
+        <main className="flex min-h-screen w-full bg-white-transparent">
           <DashboardSidebar
             userInfo={userInfo}
             setIsOpen={setIsOpen}
@@ -43,7 +48,7 @@ const DashboardStructure = ({ children }) => {
             }`}
           >
             <DashBoardHeader userInfo={userInfo} />
-            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto bg-black p-s3 text-white md:p-s4">
+            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto h-full bg-black/60 p-s3 text-white md:p-s4">
               {children}
             </div>
           </div>
