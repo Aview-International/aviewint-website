@@ -95,7 +95,7 @@ const OnboardingStep6 = ({ userData }) => {
                     )
                   }
                 >
-                  <Image src={Trash} alt="" width={24} height={24} />
+                  <Image src={Trash} alt="Delete" width={24} height={24} />
                 </button>
               </div>
             )

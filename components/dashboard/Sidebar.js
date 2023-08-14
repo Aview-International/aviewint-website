@@ -31,7 +31,7 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
           className={!isOpen ? 'rotate-180' : ''}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <Image src={sidebarArrow} alt="" />
+          <Image src={sidebarArrow} alt="arrow" />
         </button>
       </div>
       <Profile userInfo={userInfo} isOpen={isOpen} />

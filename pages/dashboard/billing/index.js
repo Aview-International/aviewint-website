@@ -83,7 +83,7 @@ const BillingDetails = ({ userInfo }) => {
         <div className="flex items-center">
           <p className="text-2xl font-bold">Payment Partner :</p>
           <div className="ml-s3">
-            <Image src={Stripe} alt="" width={60} height={35} />
+            <Image src={Stripe} alt="Stripe" width={60} height={35} />
           </div>
         </div>
         <div className="flex items-center">

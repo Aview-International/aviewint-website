@@ -22,7 +22,7 @@ const OnBoardingAccounts = ({
       </button>
       {isAccountConnected && (
         <span className="absolute -right-12 top-1/2 -translate-y-1/2">
-          <Image src={GreenCheckmark} alt="" />
+          <Image src={GreenCheckmark} alt="connect" />
         </span>
       )}
     </div>

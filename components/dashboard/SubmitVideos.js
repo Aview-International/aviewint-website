@@ -44,7 +44,7 @@ const SelectedVideos = ({ setIsSelected, selectedVideos }) => {
         onClick={() => setIsSelected(false)}
       >
         <span className="mr-s2 brightness-0 invert">
-          <Image src={Arrow} alt="" width={8} height={16} />
+          <Image src={Arrow} alt="Select-Arrow" width={8} height={16} />
         </span>
         <span>Videos Selected</span>
       </div>

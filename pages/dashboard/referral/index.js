@@ -34,7 +34,7 @@ const Statistics = () => {
         <div>
           <div className="mb-2 flex items-center gap-4">
             <div className="-mt-3 grid place-content-center">
-              <Image src={referralFilled} alt="" width={64} height={64} />
+              <Image src={referralFilled} alt="referral-filled" width={64} height={64} />
             </div>
             <p className="text-9xl font-bold">1,200</p>
           </div>
@@ -42,7 +42,7 @@ const Statistics = () => {
           <div className="flex items-center gap-3">
             <p className="text-xl text-white">Aview credits earned</p>
             <div className="-mt-1 grid place-content-center">
-              <Image src={info} alt="" width={20} height={20} />
+              <Image src={info} alt="info" width={20} height={20} />
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ const Statistics = () => {
           <div className="flex items-center gap-3">
             <p className="text-xl text-white">Creators referred</p>
             <div className="-mt-1 grid place-content-center">
-              <Image src={info} alt="" width={20} height={20} />
+              <Image src={info} alt="info" width={20} height={20} />
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ const Statistics = () => {
           <div className="flex items-center gap-3">
             <p className="text-xl text-white">Total savings available</p>
             <div className="-mt-1 grid place-content-center">
-              <Image src={info} alt="" width={20} height={20} />
+              <Image src={info} alt="info" width={20} height={20} />
             </div>
           </div>
         </div>

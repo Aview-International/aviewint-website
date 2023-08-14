@@ -73,7 +73,7 @@ const Settings = () => {
                 {text}
                 <Image
                   src={Arrow}
-                  alt=""
+                  alt="nav-link"
                   width={6}
                   height={12}
                   className="rotate-180 brightness-0 invert"
@@ -96,7 +96,7 @@ const Settings = () => {
               {text}
               <Image
                 src={Arrow}
-                alt=""
+                alt="arrow"
                 width={6}
                 height={12}
                 className="rotate-180 brightness-0 invert"
