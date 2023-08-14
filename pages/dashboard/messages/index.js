@@ -1,16 +1,40 @@
 import { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { fetchMessages, sendMessage } from '../../api/firebase';
 import Logo from '../../../public/img/aview/logo.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { socket } from '../../../socket';
+import { getUserMessages } from '../../../services/apis';
+import { setMessages } from '../../../store/reducers/messages.reducer';
 
-const SingleMessage = ({ timeStamp, message }) => (
+const AdminMessage = ({ timeStamp, message }) => (
   <div className="my-s3 flex items-start text-sm">
-    <div className="mr-s1">
+    <div className="mx-s1">
+      <Image src={Logo} alt="" width={40} height={40} />
+    </div>
+    <div>
+      <p>
+        Julia from Aview{' '}
+        <span className="pl-s2 font-light">
+          {new Date(timeStamp).toLocaleString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+          })}
+        </span>
+      </p>
+      <p className="mt-s1">{message}</p>
+    </div>
+  </div>
+);
+
+const UserMessage = ({ timeStamp, message }) => (
+  <div className="my-s3 flex flex-row-reverse items-start text-sm">
+    <div className="mx-s1">
       <Image src={Logo} alt="" width={40} height={40} />
     </div>
     <div>
@@ -30,15 +54,15 @@ const SingleMessage = ({ timeStamp, message }) => (
 );
 
 const Messages = () => {
+  const dispatch = useDispatch();
   const uid = Cookies.get('uid');
-
+  const { user, messages } = useSelector((state) => state);
   const [message, setMessage] = useState('');
-  const [chats, setChats] = useState([]);
 
-  const callback = (e) => setChats(e);
   const fetchUserMessages = async () => {
     try {
-      const res = await fetchMessages(uid, callback);
+      const res = await getUserMessages(uid);
+      dispatch(setMessages(res));
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -49,15 +73,28 @@ const Messages = () => {
     fetchUserMessages();
   }, []);
 
+  const handleChange = (e) => {
+    const { value } = e.target;
+    if (value.length > 0)
+      //  socket.emit('user_typing', user._id);
+      setMessage(e.target.value);
+  };
+
+  useEffect(() => {
+    socket.on('new_message', (message) => {
+      console.log(message);
+    });
+    return socket.disconnect();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await sendMessage(uid, message);
-      console.log(res);
-      setMessage('');
-    } catch (error) {
-      console.log(error);
-    }
+    const data = {
+      message: message,
+      userId: user._id,
+    };
+    socket.emit('user_message', data);
+    setMessage('');
   };
   return (
     <>
@@ -79,8 +116,13 @@ const Messages = () => {
             </div>
             <div>
               <div>
-                {chats.map((item, index) => (
-                  <SingleMessage key={`message-${index}`} {...item} />
+                {messages.map((item, index) => (
+                  <UserMessage key={`message-${index}`} {...item} />
+                ))}
+              </div>
+              <div>
+                {messages.map((item, index) => (
+                  <AdminMessage key={`message-${index}`} {...item} />
                 ))}
               </div>
               <form className="relative flex w-full" onSubmit={handleSubmit}>
@@ -88,12 +130,11 @@ const Messages = () => {
                   placeholder="Type something..."
                   extraClasses="mb-0"
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={handleChange}
                 />
                 <button
                   type="submit"
-                  className="mx-s1 flex items-center justify-center
-          p-s1"
+                  className="mx-s1 flex items-center justify-center p-s1"
                 >
                   <Image src={SendIcon} alt="" width={24} height={24} />
                 </button>

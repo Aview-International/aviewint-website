@@ -8,7 +8,7 @@ import {
   getInstagramShortAccess,
 } from '../../services/apis';
 
-const InstagramConnect = () => {
+const InstagramConnection = () => {
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');
@@ -49,4 +49,4 @@ const InstagramConnect = () => {
   return;
 };
 
-export default InstagramConnect;
+export default InstagramConnection;

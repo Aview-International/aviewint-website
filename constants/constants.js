@@ -1166,11 +1166,11 @@ export const DASHBOARD_NAVLINKS = [
     image: upload,
     route: '/dashboard/upload',
   },
-  {
-    text: 'Messages',
-    image: messages,
-    route: '/dashboard/messages',
-  },
+  // {
+  //   text: 'Messages',
+  //   image: messages,
+  //   route: '/dashboard/messages',
+  // },
   {
     text: 'Billing',
     image: billing,

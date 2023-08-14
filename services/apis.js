@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '../components/baseUrl';
+import { baseUrl } from './baseUrl';
 
 export const welcomeNewUser = async (email) =>
   await axios.post(baseUrl + 'email/welcome', {
@@ -29,3 +29,41 @@ export const getInstagramProfile = async (access_token) =>
   await axios.post('/api/onboarding/link-instagram?get=user_account_info', {
     code: access_token,
   });
+
+export const oauth2callback = async (code) => {
+  await axios.post(baseUrl + 'auth/oauth2callback', { code });
+};
+
+export const authorizeUser = async () => {
+  const response = await axios.get(baseUrl + 'auth/authorize-user');
+  return response.data;
+};
+
+export const finalizeYoutubeAuth = async (tempId, userId) => {
+  return await axios.get(
+    baseUrl + `auth/youtube-save?tempId=${tempId}&userId=${userId}`
+  );
+};
+
+export const getUserMessages = async (id) => {
+  const response = await axios.get(baseUrl + 'messages/convo?userId=' + id);
+  console.log(response.data);
+  return response.data;
+};
+
+export const uploadVideo = async (data, setProgress) => {
+  const response = await axios({
+    method: 'POST',
+    url: baseUrl + 'user/upload-videos',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    data: data,
+    onUploadProgress: (progressEvent) =>
+      setProgress(
+        Math.round((progressEvent.loaded * 100) / progressEvent.total)
+      ),
+  });
+  return response;
+};
