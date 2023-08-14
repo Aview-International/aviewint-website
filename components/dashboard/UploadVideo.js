@@ -3,10 +3,10 @@ import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Link from 'next/link';
 import FormData from 'form-data';
-import uploadVideo from '../../services/upload';
 import { useState } from 'react';
 import Border from '../UI/Border';
 import { useSelector } from 'react-redux';
+import { uploadVideo } from '../../services/apis';
 
 const UploadVideo = ({
   setVideo,

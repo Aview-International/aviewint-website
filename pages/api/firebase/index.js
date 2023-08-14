@@ -7,21 +7,11 @@ import {
   child,
   update,
   get,
-  push,
   onValue,
 } from 'firebase/database';
-import { v4 as uuidv4 } from 'uuid';
 import { transcribeSocialLink } from '../../../services/apis';
 
 export const InstagramAuthenticationLink = `https://api.instagram.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URL}&scope=user_profile,user_media&response_type=code`;
-
-const scope = 'https://www.googleapis.com/auth/youtube';
-const include_granted_scopes = true;
-const state = 'state_parameter_passthrough_value';
-const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
-
-export const YoutubeAuthenticationLink = (redirect_uri) =>
-  `https://accounts.google.com/o/oauth2/v2/auth?scope=${scope}&include_granted_scopes=${include_granted_scopes}&state=${state}&redirect_uri=${redirect_uri}&response_type=token&client_id=${client_id}`;
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -120,33 +110,6 @@ export const getUserProfile = async (uid, callback) => {
   });
 };
 
-// save user message to db
-export const sendMessage = async (uid, message) => {
-  const data = {
-    message: message,
-    timeStamp: Date.now(),
-  };
-
-  // get message key
-  const dataKey = push(child(ref(database), 'chats')).key;
-  const updates = {};
-  updates['/chats/' + uid + '/' + dataKey] = data;
-
-  return update(ref(database), updates);
-};
-
-// fetch user messages
-export const fetchMessages = async (uid, callback) => {
-  const messages = ref(database, 'chats/' + uid);
-  onValue(messages, (snapshot) => {
-    let chats = [];
-    snapshot.forEach((el) => {
-      chats.push(el.val());
-    });
-    callback(chats);
-  });
-};
-
 export const getAllPayments = async (_id) => {
   const res = await get(ref(database, `payments/${_id}`)).then((snapshot) => {
     if (snapshot.exists()) return snapshot.val();
@@ -156,36 +119,7 @@ export const getAllPayments = async (_id) => {
 };
 
 export const createANewJob = async (uid, jobDetails) => {
-  let jobId = uuidv4();
-  await transcribeSocialLink(
-    jobDetails
-    // creatorid: uid,
-    // jobId,
-    // videoData: jobDetails.videoData,
-  );
-
-  // await set(ref(database, `user-jobs/pending/${uid}/${jobId}`), jobDetails);
-  // await set(
-  //   ref(database, `admin-jobs/pending/transcription/${jobId}`),
-  //   jobDetails
-  // );
-  // get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
-  //   if (snapshot.exists()) {
-  //     const data = snapshot.val();
-  //     const newPostData = {
-  //       ...data,
-  //       pendingVideos: 1,
-  //     };
-  //     const existingPostData = {
-  //       ...data,
-  //       pendingVideos: +data.pendingVideos + 1,
-  //     };
-  //     const updates = {
-  //       [`users/${uid}`]: data.pendingVideos ? existingPostData : newPostData,
-  //     };
-  //     await update(ref(database), updates);
-  //   }
-  // });
+  await transcribeSocialLink(jobDetails);
 };
 
 export const getAllPendingJobs = async (uid) => {
