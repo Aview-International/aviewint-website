@@ -57,7 +57,7 @@ const TranslateOptions = ({ handleSubmit, payload, setPayload, isLoading }) => {
               <div className="ml-3 flex flex-col">
                 <h2 className="text-lg">
                   {userData.youtubeChannelName}{' '}
-                  {findLocalDialect(language)['localDialect']}
+                  {findLocalDialect(language)?.['localDialect']}
                 </h2>
                 <p className="text-sm">YouTube</p>
               </div>
