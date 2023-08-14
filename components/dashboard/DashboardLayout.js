@@ -6,22 +6,30 @@ import useProfile from '../../hooks/useUserProfile';
 import DashboardGradient from '../UI/DashboardGradient';
 import Script from 'next/script';
 import { useSelector } from 'react-redux';
+import { getUserYoutubeChannel } from '../../services/apis';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { handleGetProfile } = useProfile();
+  const { handleGetProfile, handleGetYoutubeChannel } = useProfile();
   const [isLoading, setIsLoading] = useState(true);
   const getProfile = async () => {
     await handleGetProfile();
+    await handleGetYoutubeChannel();
     setIsLoading(false);
   };
+
   useEffect(() => {
     getProfile();
   }, []);
+
   return (
-     <> 
-     {isLoading ? <FullScreenLoader /> : <DashboardGradient>{children}</DashboardGradient>}
-     </>
+    <>
+      {isLoading ? (
+        <FullScreenLoader />
+      ) : (
+        <DashboardGradient>{children}</DashboardGradient>
+      )}
+    </>
   );
 };
 
@@ -48,7 +56,7 @@ const DashboardStructure = ({ children }) => {
             }`}
           >
             <DashBoardHeader userInfo={userInfo} />
-            <div className="mx-auto w-full max-w-[1480px] self-stretch overflow-y-auto h-full bg-black/60 p-s3 text-white md:p-s4">
+            <div className="mx-auto h-full w-full max-w-[1480px] self-stretch overflow-y-auto bg-black/60 p-s3 text-white md:p-s4">
               {children}
             </div>
           </div>

@@ -13,11 +13,11 @@ import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
 const DashboardHome = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
-  const youtubeDataFetched = useSelector(
-    (state) => state.instagram.dataFetched
+  const { dataFetched: youtubeDataFetched, channelId } = useSelector(
+    (state) => state.youtube
   );
   const instagramDataFetched = useSelector(
-    (state) => state.youtube.dataFetched
+    (state) => state.instagram.dataFetched
   );
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +32,7 @@ const DashboardHome = () => {
     try {
       const getVideos = await axios.post(
         '/api/onboarding/link-youtube?get=videos',
-        { youtubeChannelId: userData.youtubeChannelId }
+        { youtubeChannelId: channelId }
       );
 
       const youtubeVideos = getVideos.data.items.map((vid) => ({
@@ -79,8 +79,8 @@ const DashboardHome = () => {
   useEffect(() => {
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
-    if (!youtubeDataFetched && userData.youtubeChannelId) getYoutubeVideos();
-  }, [userData.youtubeChannelId, userData.instagram_access_token]);
+    if (!youtubeDataFetched && channelId) getYoutubeVideos();
+  }, [channelId, userData.instagram_access_token]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {
