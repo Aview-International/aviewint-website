@@ -95,7 +95,7 @@ const Messages = () => {
                   className="mx-s1 flex items-center justify-center
           p-s1"
                 >
-                  <Image src={SendIcon} alt="" width={24} height={24} />
+                  <Image src={SendIcon} alt="Send" width={24} height={24} />
                 </button>
               </form>
             </div>

@@ -22,13 +22,13 @@ const VideoFrame = ({
       <div className="mb-s1 flex text-lg">
         {type === 'youtube' && (
           <Fragment>
-            <Image src={YouTube} alt="" with={24} height={24} />
+            <Image src={YouTube} alt="Youtube" with={24} height={24} />
             <p className="pl-s1">YouTube Video</p>
           </Fragment>
         )}
         {type === 'instagram' && (
           <Fragment>
-            <Image src={Instagram} alt="" with={24} height={24} />
+            <Image src={Instagram} alt="instagram" with={24} height={24} />
             <p className="pl-s1">Instagram {isReel ? 'Reel' : 'Video'}</p>
           </Fragment>
         )}
@@ -44,7 +44,7 @@ const VideoFrame = ({
         />
         {selected && (
           <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.6)]">
-            <Image src={CheckMark} alt="" width={24} height={24} />
+            <Image src={CheckMark} alt="Checkmark" width={24} height={24} />
           </div>
         )}
       </div>
