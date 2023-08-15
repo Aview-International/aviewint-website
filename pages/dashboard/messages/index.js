@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
 import Logo from '../../../public/img/aview/logo.svg';
@@ -7,39 +7,33 @@ import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { socket } from '../../../socket';
+import { useSocket } from '../../../socket';
 import { getUserMessages } from '../../../services/apis';
-import { setMessages } from '../../../store/reducers/messages.reducer';
+import {
+  setMessages,
+  setNewMessageDot,
+} from '../../../store/reducers/messages.reducer';
 
-const AdminMessage = ({ timeStamp, message }) => (
-  <div className="my-s3 flex items-start text-sm">
-    <div className="mx-s1">
-      <Image src={Logo} alt="" width={40} height={40} />
+const SingleMessage = ({ timeStamp, message, sender, user }) => (
+  <div
+    className={`my-s3 flex items-start text-sm ${
+      sender === 'user' ? 'flex-row-reverse' : 'flex-row'
+    }`}
+  >
+    <div className="mx-s2">
+      <Image
+        src={sender === 'admin' ? Logo : user.picture}
+        alt=""
+        width={40}
+        height={40}
+        className="rounded-full"
+      />
     </div>
     <div>
       <p>
-        Julia from Aview{' '}
-        <span className="pl-s2 font-light">
-          {new Date(timeStamp).toLocaleString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true,
-          })}
-        </span>
-      </p>
-      <p className="mt-s1">{message}</p>
-    </div>
-  </div>
-);
-
-const UserMessage = ({ timeStamp, message }) => (
-  <div className="my-s3 flex flex-row-reverse items-start text-sm">
-    <div className="mx-s1">
-      <Image src={Logo} alt="" width={40} height={40} />
-    </div>
-    <div>
-      <p>
-        Julia from Aview{' '}
+        {sender === 'admin'
+          ? 'Julia from Aview'
+          : user.firstName + ' ' + user.lastName}
         <span className="pl-s2 font-light">
           {new Date(timeStamp).toLocaleString('en-US', {
             hour: '2-digit',
@@ -56,14 +50,15 @@ const UserMessage = ({ timeStamp, message }) => (
 const Messages = () => {
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
-  const { user, messages } = useSelector((state) => state);
+  const user = useSelector((state) => state.user);
+  const messages = useSelector((state) => state.messages.messages);
   const [message, setMessage] = useState('');
-
+  const socket = useSocket();
+  const inputRef = useRef(null);
   const fetchUserMessages = async () => {
     try {
       const res = await getUserMessages(uid);
       dispatch(setMessages(res));
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +66,15 @@ const Messages = () => {
 
   useEffect(() => {
     fetchUserMessages();
+    dispatch(setNewMessageDot(true));
   }, []);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current[0].scrollIntoView({ behavior: 'smooth' });
+      inputRef.current[0].focus();
+    }
+  }, [inputRef.current]);
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -79,13 +82,6 @@ const Messages = () => {
       //  socket.emit('user_typing', user._id);
       setMessage(e.target.value);
   };
-
-  useEffect(() => {
-    socket.on('new_message', (message) => {
-      console.log(message);
-    });
-    return socket.disconnect();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,6 +92,7 @@ const Messages = () => {
     socket.emit('user_message', data);
     setMessage('');
   };
+
   return (
     <>
       <PageTitle title="Messages" />
@@ -117,15 +114,18 @@ const Messages = () => {
             <div>
               <div>
                 {messages.map((item, index) => (
-                  <UserMessage key={`message-${index}`} {...item} />
+                  <SingleMessage
+                    key={`message-${index}`}
+                    user={user}
+                    {...item}
+                  />
                 ))}
               </div>
-              <div>
-                {messages.map((item, index) => (
-                  <AdminMessage key={`message-${index}`} {...item} />
-                ))}
-              </div>
-              <form className="relative flex w-full" onSubmit={handleSubmit}>
+              <form
+                className="relative flex w-full"
+                onSubmit={handleSubmit}
+                ref={inputRef}
+              >
                 <FormInput
                   placeholder="Type something..."
                   extraClasses="mb-0"

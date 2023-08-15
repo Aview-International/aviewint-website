@@ -5,11 +5,12 @@ import Link from 'next/link';
 import messages from '../../public/img/icons/messages.svg';
 import DashboardMobileMenu from '../navigation/DashboardMobileMenu';
 import MenuButtonIcon from '../navigation/MenuButtonIcon';
-// import useGreeting from '../../hooks/useGreeting';
 import { customGreeting } from '../../utils/greeting';
+import { useSelector } from 'react-redux';
 
 const DashBoardHeader = ({ userInfo }) => {
   const [time, setTime] = useState(customGreeting());
+  const messageStatus = useSelector((state) => state.messages.status);
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(customGreeting());
@@ -41,8 +42,10 @@ const DashBoardHeader = ({ userInfo }) => {
             <span className="mr-s1.5 grid place-content-center brightness-0 invert">
               <Image src={messages} alt="Messages" />
             </span>
-            <span className="absolute -bottom-0.5 -right-0.5 inline-block h-4 w-4 rounded-full bg-red" />
             <span className="mt-0.5">Messages</span>
+            {messageStatus.readByUser === false && (
+              <span className="absolute -bottom-0.5 -right-0.5 inline-block h-4 w-4 rounded-full bg-red" />
+            )}
           </a>
         </Link>
       </div>
