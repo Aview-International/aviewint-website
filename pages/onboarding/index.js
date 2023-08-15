@@ -19,10 +19,10 @@ import { useSelector } from 'react-redux';
 const Onboarding = () => {
   const userData = useSelector((state) => state.user);
   const router = useRouter();
-  const { handleGetProfile } = useUserProfile();
+  const { getProfile } = useUserProfile();
 
   useEffect(() => {
-    handleGetProfile();
+    getProfile();
   }, []);
 
   useEffect(() => {

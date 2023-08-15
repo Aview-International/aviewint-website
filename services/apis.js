@@ -67,9 +67,16 @@ export const uploadVideo = async (data, setProgress) => {
   return response;
 };
 
-export const getUserYoutubeChannel = async (id) => {
+export const getUserYoutubeChannel = async (userId) => {
   const response = await axios.get(
-    baseUrl + 'auth/youtube-channel?userId=' + id
+    baseUrl + 'auth/youtube-channel?userId=' + userId
+  );
+  return response.data;
+};
+
+export const getMessageStatus = async (userId) => {
+  const response = await axios.get(
+    baseUrl + 'messages/status?userId=' + userId
   );
   return response.data;
 };

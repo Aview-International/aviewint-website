@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import Textarea from '../FormComponents/Textarea';
 
 const TranslateOptions = ({ handleSubmit, payload, setPayload, isLoading }) => {
-  console.log(isLoading);
   const userData = useSelector((state) => state.user);
   const findLocalDialect = (language) => {
     let allLanguages = [];
