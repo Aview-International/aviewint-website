@@ -45,6 +45,13 @@ export const finalizeYoutubeAuth = async (tempId, userId) => {
   );
 };
 
+export const getChannelVideos = async (channelId) => {
+  const response = await axios.get(
+    baseUrl + `auth/youtube-videos?channelId=${channelId}`
+  );
+  return response.data;
+};
+
 export const getUserMessages = async (id) => {
   const response = await axios.get(baseUrl + 'messages/convo?userId=' + id);
   return response.data;

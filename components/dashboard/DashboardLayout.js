@@ -36,7 +36,6 @@ const DashboardStructure = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(router);
     if (uid) {
       socket.auth = { userId: uid };
       socket.on('connect', () => {

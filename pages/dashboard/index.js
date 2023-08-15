@@ -9,6 +9,7 @@ import { createANewJob, updateRequiredServices } from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
+import { getChannelVideos } from '../../services/apis';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
@@ -30,12 +31,8 @@ const DashboardHome = () => {
 
   const getYoutubeVideos = async () => {
     try {
-      const getVideos = await axios.post(
-        '/api/onboarding/link-youtube?get=videos',
-        { youtubeChannelId: channelId }
-      );
-
-      const youtubeVideos = getVideos.data.items.map((vid) => ({
+      const getVideos = await getChannelVideos(channelId);
+      const youtubeVideos = getVideos.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
         caption: vid.snippet.title,
