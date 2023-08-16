@@ -82,6 +82,10 @@
     height: calc(var(--vh, 1vh) * 100);
     @apply min-h-[640px] !important;
   }
+  .animate-marquee {
+    animation: slide-text 18s linear infinite;
+  }
+
   /* For Chrome browsers */
   .slider-thumb::-webkit-slider-thumb {
     background-color: #ffffff;
@@ -178,5 +182,15 @@
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
     }
+  }
+
+  @keyframes slide-text {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+    
   }
 }
