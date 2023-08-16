@@ -12,6 +12,7 @@ import Loader from '../../components/UI/loader';
 import Cookies from 'js-cookie';
 import { setUser } from '../../store/reducers/user.reducer';
 import { useDispatch } from 'react-redux';
+import Link from 'next/link';
 
 const Register = () => {
   const router = useRouter();
@@ -61,7 +62,7 @@ const Register = () => {
   return (
     <>
       <PageTitle title="Register - Aview International" />
-      <div className="">
+      <div>
         <div className="flex items-center py-6 pl-s14">
           <Image
             src={aviewLogo}
@@ -71,63 +72,72 @@ const Register = () => {
           />
         </div>
         <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white  md:mt-s12">
-          <div className=" fixed top-2/4 left-2/4 w-[min(380px,90%)]  -translate-x-2/4 -translate-y-2/4">
-            <h2 className="mb-8 text-center text-7xl font-bold md:text-8xl">
-              Sign Up
-            </h2>
-            {account && (
-              <p className="mb-s3 text-center text-lg">
-                You don&apos;t have an account yet, begin here
+          <div className="fixed top-2/4 left-2/4 w-[min(380px,90%)]  -translate-x-2/4 -translate-y-2/4">
+            <div data-aos="zoom-in-up">
+              <h2 className="text-center text-7xl font-bold md:text-8xl">
+                Sign Up
+              </h2>
+              <p className="my-s3 text-center text-lg md:text-xl">
+                Already have an account?
+                <br /> Login{' '}
+                <Link href="/login">
+                  <a className="underline">here</a>
+                </Link>
               </p>
-            )}
-            <Shadow classes="w-full mb-4">
-              <Border borderRadius="full" classes="w-full">
-                <button
-                  className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
-                  onClick={handleGoogle}
-                >
-                  {isLoading.google ? (
-                    <Loader />
-                  ) : (
-                    <>
-                      <span className="flex items-center justify-center pr-s1">
-                        <Image
-                          src={Google}
-                          alt="Google"
-                          width={20}
-                          height={20}
-                        />
-                      </span>
-                      Continue with Google
-                    </>
-                  )}
-                </button>
-              </Border>
-            </Shadow>
-            <Shadow classes="w-full">
-              <Border borderRadius="full" classes="w-full">
-                <button
-                  className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3"
-                  onClick={handleFacebook}
-                >
-                  {isLoading.facebook ? (
-                    <Loader />
-                  ) : (
-                    <>
-                      <span className="flex items-center justify-center pr-s1">
-                        <Image
-                          src={Facebook}
-                          alt="Facebook"
-                          width={20}
-                          height={20}
-                        />
-                      </span>
-                      Continue with Facebook
-                    </>
-                  )}
-                </button>
-              </Border>
-            </Shadow>
+              {account && (
+                <p className="mb-s3 text-center text-lg">
+                  You don&apos;t have an account yet, begin here
+                </p>
+              )}
+              <Shadow classes="w-full mb-4">
+                <Border borderRadius="full" classes="w-full">
+                  <button
+                    className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
+                    onClick={handleGoogle}
+                  >
+                    {isLoading.google ? (
+                      <Loader />
+                    ) : (
+                      <>
+                        <span className="flex items-center justify-center pr-s1">
+                          <Image
+                            src={Google}
+                            alt="Google"
+                            width={20}
+                            height={20}
+                          />
+                        </span>
+                        Continue with Google
+                      </>
+                    )}
+                  </button>
+                </Border>
+              </Shadow>
+              <Shadow classes="w-full">
+                <Border borderRadius="full" classes="w-full">
+                  <button
+                    className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3"
+                    onClick={handleFacebook}
+                  >
+                    {isLoading.facebook ? (
+                      <Loader />
+                    ) : (
+                      <>
+                        <span className="flex items-center justify-center pr-s1">
+                          <Image
+                            src={Facebook}
+                            alt="Facebook"
+                            width={20}
+                            height={20}
+                          />
+                        </span>
+                        Continue with Facebook
+                      </>
+                    )}
+                  </button>
+                </Border>
+              </Shadow>
+            </div>
           </div>
         </div>
       </div>
