@@ -7,6 +7,7 @@ import Border from '../../../../components/UI/Border';
 import OnboardingButton from '../../../../components/Onboarding/button';
 import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
 import { useSelector } from 'react-redux';
+import FormInput from '../../../../components/FormComponents/FormInput';
 
 const INPUT_FIELDS = [
   {
@@ -29,7 +30,7 @@ const INPUT_FIELDS = [
 const Container = ({ left, right }) => (
   <div className="flex w-full flex-col items-start p-s2 md:mb-s2 md:flex-row md:items-center md:p-0">
     <div className="w-full text-left md:w-2/5 md:text-right">{left}</div>
-    <div className="ml-0 w-4/5 md:ml-s5 md:w-2/5">{right}</div>
+    <div className="ml-0 w-full md:ml-s5 md:w-2/5">{right}</div>
   </div>
 );
 
@@ -60,7 +61,7 @@ const Accounts = ({ userData }) => {
           </button>
         }
       />
-      <Container
+      {/* <Container
         left={<p className={`text-xl`}>TikTok</p>}
         right={
           <button
@@ -71,7 +72,7 @@ const Accounts = ({ userData }) => {
             TikTok
           </button>
         }
-      />
+      /> */}
       <Container
         left={<p className={`text-xl`}>YouTube</p>}
         right={
@@ -197,28 +198,38 @@ const InputField = ({
         </label>
       }
       right={
-        <Border classes="relative w-full" borderRadius="[5px]">
-          <input
-            id={_id}
-            name={name}
-            type={type || 'text'}
-            placeholder={placeholder}
-            className={`peer w-full rounded-[5px] bg-black px-s2 py-2 text-white focus:outline-none`}
-            onChange={handleChange}
-            value={value}
-          />
-          <div
-            className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
-          ></div>
-          <span className="absolute right-[10px] bottom-[2px]">
-            {isValid && (
-              <Image src={Correct} alt="Correct" width={30} height={30} />
-            )}
-            {hasSubmitted && !isValid && (
-              <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
-            )}
-          </span>
-        </Border>
+        <FormInput
+          placeholder={placeholder}
+          type={type || 'text'}
+          extraClasses=""
+          onChange={handleChange}
+          value={value}
+          id={_id}
+          name={name}
+        />
+
+        // <Border classes="relative w-full" borderRadius="[5px]">
+        //   <input
+        //     id={_id}
+        //     name={name}
+        //     type={type || 'text'}
+        //     placeholder={placeholder}
+        //     className={`peer w-full rounded-[5px] bg-black px-s2 py-2 text-white focus:outline-none`}
+        //     onChange={handleChange}
+        //     value={value}
+        //   />
+        //   <div
+        //     className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
+        //   ></div>
+        //   <span className="absolute right-[10px] bottom-[2px]">
+        //     {isValid && (
+        //       <Image src={Correct} alt="Correct" width={30} height={30} />
+        //     )}
+        //     {hasSubmitted && !isValid && (
+        //       <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
+        //     )}
+        //   </span>
+        // </Border>
       }
     />
   );

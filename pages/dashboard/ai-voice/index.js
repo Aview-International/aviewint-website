@@ -9,7 +9,7 @@ const Aivoice = () => {
     <>
       <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
         <PageTitle title="Upload Video" />
-        <div className="p-s5">
+        <div className="p-5">
           <AiVoice />
         </div>
       </div>

@@ -10,9 +10,10 @@ import { DASHBOARD_NAVLINKS } from '../../constants/constants';
 
 export default function DashboardMobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
+
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-2/4 flex-col gap-12 overflow-hidden bg-black md:px-6 2xs:px-2 pt-8 pb-10 lg:hidden ${
+      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-2/4 flex-col gap-12 overflow-hidden bg-black pt-8 pb-10 2xs:px-2 md:px-6 lg:hidden ${
         menuOpenCtx.isMenuOpen
           ? 'translate-x-0 opacity-100'
           : '-translate-x-full opacity-0'
@@ -22,7 +23,7 @@ export default function DashboardMobileMenu() {
         {menuOpenCtx.isMenuOpen && (
           <div onClick={menuOpenCtx.closeMenuHandler}>
             <Link href="/dashboard">
-              <div className="h-12 w-12 ml-4">
+              <div className="ml-4 h-12 w-12">
                 <Image
                   src={aviewLogo}
                   width={48}
@@ -33,7 +34,7 @@ export default function DashboardMobileMenu() {
             </Link>
           </div>
         )}
-        <div className="h-7 w-7 mr-5" onClick={menuOpenCtx.closeMenuHandler}>
+        <div className="mr-5 h-7 w-7" onClick={menuOpenCtx.closeMenuHandler}>
           <Image src={closeIcon} width={28} height={28} alt="close icon" />
         </div>
       </div>
@@ -57,12 +58,13 @@ export default function DashboardMobileMenu() {
 export function MainMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
   const { route } = useRouter();
+
   return (
     <div className="flex flex-col overflow-y-scroll">
       {DASHBOARD_NAVLINKS.map((menuItem, idx) => {
         return (
           <div onClick={menuOpenCtx.closeMenuHandler} key={idx}>
-            <Link href={menuItem.route}>
+            <Link href={menuItem.route('/dashboard/settings/edit-profile')}>
               <a
                 className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s0 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
                   route === menuItem.route && 'bg-[#fcfcfc] bg-opacity-10'

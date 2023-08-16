@@ -80,7 +80,10 @@ const Navlink = ({ isOpen }) => {
     <>
       <div className="w-full text-sm">
         {DASHBOARD_NAVLINKS.map((link, index) => (
-          <Link href={link.route} key={`sidebar-link-${index}`}>
+          <Link
+            href={link.route('/dashboard/settings/edit-profile')}
+            key={`sidebar-link-${index}`}
+          >
             <a
               className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s3 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
                 route === link.route && 'bg-[#fcfcfc] bg-opacity-10'

@@ -1157,42 +1157,42 @@ export const DASHBOARD_NAVLINKS = [
   {
     text: 'Home',
     image: home,
-    route: '/dashboard',
+    route: () => '/dashboard',
   },
   {
     text: 'AI Voice',
     image: ai_voice,
-    route: '/dashboard/ai-voice'
+    route: () => '/dashboard/ai-voice',
   },
   {
     text: 'Upload',
     image: upload,
-    route: '/dashboard/upload',
+    route: () => '/dashboard/upload',
   },
   // {
   //   text: 'Messages',
   //   image: messages,
-  //   route: '/dashboard/messages',
+  //   route:() => '/dashboard/messages',
   // },
   {
     text: 'Billing',
     image: billing,
-    route: '/dashboard/billing',
+    route: () => '/dashboard/billing',
   },
   {
     text: 'History',
     image: history,
-    route: '/dashboard/history',
+    route: () => '/dashboard/history',
   },
   {
     text: 'Referral',
     image: referral,
-    route: '/dashboard/referral',
+    route: () => '/dashboard/referral',
   },
   {
     text: 'Settings',
     image: settings,
-    route: '/dashboard/settings/edit-profile',
+    route: (route) => route,
   },
 ];
 
@@ -1327,8 +1327,8 @@ export const SUPPORTED_REGIONS = [
       {
         image: Portugal,
         languageName: 'Portuguese (Portugal)',
-        localDialect: 'Portugués'
-      }
+        localDialect: 'Portugués',
+      },
     ],
   },
 ];
