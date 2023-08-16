@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const AiVoice = () => {
   return (
-    <div className="container mx-auto w-2/5 py-32">
+    <div className="container mx-auto md:w-2/5 w-[95%] py-16 md:py-32">
       <p>
         Record yourself reading through at least five prompts so we can create
         an AI voice tailored to yur own voice. Feel free to do more to achieve a
