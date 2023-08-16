@@ -64,7 +64,7 @@ export function MainMenu() {
       {DASHBOARD_NAVLINKS.map((menuItem, idx) => {
         return (
           <div onClick={menuOpenCtx.closeMenuHandler} key={idx}>
-            <Link href={menuItem.route('/dashboard/settings/edit-profile')}>
+            <Link href={menuItem.route('/dashboard/settings')}>
               <a
                 className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s0 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
                   route === menuItem.route && 'bg-[#fcfcfc] bg-opacity-10'
