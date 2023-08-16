@@ -39,7 +39,7 @@ const DashboardHome = () => {
         timestamp: vid.snippet.publishedAt,
         thumbnail: vid.snippet.thumbnails.maxres
           ? vid.snippet.thumbnails.maxres.url
-          : vid.snippet.thumbnails.maxres.default,
+          : vid.snippet.thumbnails.default.url,
         permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
         videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
       }));

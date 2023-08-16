@@ -39,11 +39,10 @@ const DashboardStructure = ({ children }) => {
     if (uid) {
       socket.auth = { userId: uid };
       socket.on('connect', () => {
-        console.log('socket connected, id: ' + socket.id, socket.auth);
+        return;
       });
 
       socket.on('new_message', (message) => {
-        console.log(message);
         dispatch(setIncomingMessages(message));
         if (router.pathname !== '/dashboard/messages')
           dispatch(setNewMessageDot(false));
