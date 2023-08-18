@@ -4,7 +4,7 @@ import Info from '../../public/img/icons/info.svg';
 import Border from '../UI/Border';
 import { useState } from 'react';
 
-const CheckBox = ({ label, onChange, tooltip, name }) => {
+const CheckBox = ({ label, onChange, tooltip, name, labelClasses }) => {
   const [isChecked, setIschecked] = useState(false);
   return (
     <label className={`flex cursor-pointer items-center text-xl text-white`}>
@@ -29,7 +29,7 @@ const CheckBox = ({ label, onChange, tooltip, name }) => {
         name={name}
         className="hidden"
       />
-      {label}
+      <span className={`${labelClasses}`}>{label}</span>
       {tooltip && (
         <div className="group relative mx-s2 mt-s1 p-2">
           <Image src={Info} alt="info" />

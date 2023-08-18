@@ -34,12 +34,17 @@ const FormInput = ({
   type,
   labelClasses,
   hideCheckmark,
+  isImportant,
 }) => {
   return (
     <div className={`relative w-full text-xl text-white ${extraClasses}`}>
+      {label && 
       <label htmlFor={_id} className={`block w-full ${labelClasses}`}>
-        {label}
+        <span class={`${isImportant && `after:content-['*'] after:ml-0.5`}`}>
+         {label}
+        </span>
       </label>
+      }
       <div>
         <Border classes="w-full relative" borderRadius="[5px]">
           <div className="gradient-1 transition-300 peer-focus:opacity-1 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg"></div>
@@ -48,7 +53,7 @@ const FormInput = ({
             name={name}
             type={type || 'text'}
             placeholder={placeholder}
-            className={`peer w-full rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
+            className={`peer w-full rounded-[5px] px-s1 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
             onChange={onChange}

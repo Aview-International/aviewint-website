@@ -37,7 +37,11 @@ const CustomSelectInput = ({
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
       <div className="relative mb-s4 text-xl text-white" ref={elementRef}>
-        <p className="mb-s1">{text}</p>
+        <p className="mb-s1">
+          <span class="after:content-['*'] after:ml-0.5">
+           {text}
+          </span>
+        </p>
         <Border borderRadius="[5px] w-full">
           <div
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"

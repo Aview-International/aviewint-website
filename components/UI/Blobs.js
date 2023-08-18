@@ -12,21 +12,21 @@ const Blobs = () => {
   return (
     <>
       <div
-        className={`absolute -top-[5%] -right-[5%] -z-30 w-[70vw] ${
+        className={`absolute -top-[5%] -right-[25%] -z-30 w-[70vw] ${
           menuOpenCtx.isMenuOpen && 'hidden'
         }`}
       >
         <Image src={blob1} alt="blob2" />
       </div>
       <div
-        className={`absolute top-[80vh] -left-[30vw] -z-30 w-[70vw] ${
+        className={`absolute top-[100vh] -left-[30vw] -z-30 w-[70vw] ${
           menuOpenCtx.isMenuOpen && 'hidden'
         }`}
       >
-        <Image src={blob2} alt="blob2" />
+        <Image src={blob3} alt="blob2" />
       </div>
       <div
-        className={`absolute top-[200vh] -right-[30vw] -z-30 w-[90vw] ${
+        className={`absolute top-[150vh] -right-[25vw] -z-30 w-[90vw] ${
           menuOpenCtx.isMenuOpen && 'hidden'
         }`}
       >
@@ -34,6 +34,13 @@ const Blobs = () => {
       </div>
       <div
         className={`absolute top-[250vh] -left-[10vw] -z-30 w-[80vw] ${
+          menuOpenCtx.isMenuOpen && 'hidden'
+        }`}
+      >
+        <Image src={blob4} alt="blob4" />
+      </div>
+      <div
+        className={`absolute top-[450vh] -right-[30vw] -z-30 w-[80vw] ${
           menuOpenCtx.isMenuOpen && 'hidden'
         }`}
       >
