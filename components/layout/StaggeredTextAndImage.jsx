@@ -11,11 +11,11 @@ export default function StaggeredTextAndGraphic({ items, staggeredStyle }) {
           className="flex flex-col md:flex-row gap-s2 md:gap-s3 md:items-center justify-between"
           key={item.title}
         >
-          <div className={`order-2 w-full md:w-[50%] md:pl-s10 ${i % 2 != 0 ? 'md:order-1 ' : ''}`}>
+          <div className={`order-2 w-full md:w-[50%] md:pl-s10 ${i % 2 != 0 ? 'md:order-1' : ''}`}>
             <h3 className="mb-s1 mtext-2xl font-bold text-white">
               {item.title}
             </h3>
-            <p className="body">{item.description}</p>
+            <p className="w-[65%] body">{item.description}</p>
           </div>
           <div
             className={`order-1 group relative mx-auto w-full h-full md:w-[45%] cursor-pointer ${
@@ -28,7 +28,8 @@ export default function StaggeredTextAndGraphic({ items, staggeredStyle }) {
           </div>
         </div>
       ))}
-      </>:
+      </>
+      :
       <>
        {items.map((item, i) => (
         <div

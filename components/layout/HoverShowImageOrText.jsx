@@ -12,22 +12,20 @@ export default function HoverShowImageOrText({ items, borderStyle }) {
       {items.map((item)=>{
         return (
           <div key={item.title}>
-            <div className={`h-full rounded-2xl  bg-white-transparent flex flex-col justify-center items-center gap-y-6 py-s4
-          
-            `}>
+            <div className={`h-[380px] group rounded-2xl cursor-pointer transition-transform duration-300 bg-white-transparent flex flex-col justify-center items-center gap-y-6 ${isHovered ? 'py-s2' : 'py-s4'}`} 
+             onMouseEnter={() => setIsHovered(true)}>
               <div className="mx-auto">
                 <Image src={item.image} alt={item.title} />
               </div>
               <p className={`text-3xl font-bold text-white text-center`}>
                 {item.title}
               </p>
-              <a className={`italic cursor-pointer text-center underline duration-300 text-white/80  block`} 
-             // onMouseEnter={() => setIsHovered(true)} 
-              //onMouseLeave={() => setIsHovered(false)}
+              <a className={`italic cursor-pointer text-center underline duration-300 text-white/80 block ${isHovered&& 'group-hover:hidden'}`} 
+               onMouseLeave={() => setIsHovered(false)}
               >
                 Learn more
               </a>
-              <p className={`hidden px-5 duration-300`}>{item.description}</p>
+              <p className={`hidden px-5 duration-300 text-lg ${isHovered&&'group-hover:block opacity-100'}`}>{item.description}</p>
             </div>
           </div>
         )
