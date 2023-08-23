@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <>
       <PageTitle title="Login - Aview International" />
-      <div className="">
+      <div>
         <div className="flex items-center py-6 pl-s14">
           <Image
             src={aviewLogo}
