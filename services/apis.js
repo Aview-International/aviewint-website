@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
+import FormData from 'form-data';
 
 export const welcomeNewUser = async (email) =>
   await axios.post(baseUrl + 'email/welcome', {
@@ -90,4 +91,43 @@ export const getMessageStatus = async (userId) => {
 
 export const joinWaitlist = async (data) => {
   return axios.post(baseUrl + 'auth/join-waitlist', data);
+};
+
+export const uploadMultipleVoiceSamples = async (speakers, userId) => {
+  let formData = new FormData();
+
+  for (const speaker of speakers) {
+    for (const audio of speaker.audios) {
+      formData.append('voiceSample', audio);
+      formData.append('speaker', speaker.name);
+    }
+  }
+
+  await axios.post(
+    baseUrl + 'dubbing/multiple-voice-cloning?userId=' + userId,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
+};
+
+export const uploadSingleVoiceSamples = async (audios, userId) => {
+  let formData = new FormData();
+
+  for (const audio of audios) {
+    formData.append('voiceSample', audio);
+  }
+
+  await axios.post(
+    baseUrl + 'dubbing/single-voice-cloning?userId=' + userId,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
 };
