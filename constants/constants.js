@@ -39,7 +39,6 @@ import amandaCerney from '../public/img/creators/amanda-cerney.png';
 // Benefits of Translations
 import visibility from '../public/img/graphics/visibility.png';
 import growth from '../public/img/graphics/growth.png';
-import userFriendly from '../public/img/graphics/user-friendly.png';
 import expand from '../public/img/graphics/expand.png';
 import saveTime from '../public/img/graphics/save-time.png';
 import increaseRevenue from '../public/img/graphics/increase-revenue.png';
@@ -53,11 +52,8 @@ import akshay from '../public/img/team/akshay.png';
 import andrew from '../public/img/team/andrew.png';
 import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
-import jon from '../public/img/team/jon.png';
-import taehun from '../public/img/team/taehun.png';
 import victor from '../public/img/team/victor.png';
 import luis from '../public/img/team/luis.png';
-import defaultPicture from '../public/img/team/default.png';
 
 // content creators summary
 import LoganPaulSummary from '../public/img/summary/logan-paul.png';
@@ -68,7 +64,59 @@ import ActiveSelfProtectionSummary from '../public/img/summary/active-self-prote
 import keyMetrics from '../public/img/graphics/key-metrics.png';
 
 // input validators
-import { emailValidator, urlValidator } from '../utils/regex';
+import { emailValidator } from '../utils/regex';
+
+// dashboard sidebar icons
+import home from '../public/img/icons/home.svg';
+import ai_voice from '../public/img/icons/ai_voice.svg';
+import upload from '../public/img/icons/upload.svg';
+import billing from '../public/img/icons/billing.svg';
+import history from '../public/img/icons/history.svg';
+import settings from '../public/img/icons/settings.svg';
+import messages from '../public/img/icons/messages.svg';
+import referral from '../public/img/icons/referral.svg';
+
+//onBoarding Icons
+import asia from '../public/img/graphics/asia.svg';
+import europe from '../public/img/graphics/europe.svg';
+import north_america from '../public/img/graphics/north_america.svg';
+import south_america from '../public/img/graphics/south_america.svg';
+import air_delivery from '../public/img/graphics/air-delivery.png';
+import global_location from '../public/img/graphics/global-location.png';
+import Personal from '../public/img/graphics/user.webp';
+import Team from '../public/img/graphics/team.webp';
+import Brand from '../public/img/graphics/brand_desing_1.webp';
+
+//onBoardingLanguages Icons
+import English from '../public/img/icons/english.svg';
+import Spanish from '../public/img/icons/spanish.svg';
+import Spanish2 from '../public/img/icons/spanish-2.svg';
+import French from '../public/img/icons/french.svg';
+import Portuguese from '../public/img/icons/portuguese.svg';
+import Arabic from '../public/img/icons/arabic.svg';
+import Hindi from '../public/img/icons/hindi.svg';
+import Chinese from '../public/img/icons/chinese.svg';
+import Russian from '../public/img/icons/russian.svg';
+import Japanese from '../public/img/icons/japanese.svg';
+import German from '../public/img/icons/german.svg';
+import Italian from '../public/img/icons/italian.svg';
+import Turkish from '../public/img/icons/turkish.svg';
+import Filipino from '../public/img/icons/filipino.svg';
+import Indonesian from '../public/img/icons/indonesian.svg';
+import Korean from '../public/img/icons/korean.svg';
+import Canada from '../public/img/icons/canada.svg';
+import Portugal from '../public/img/icons/portugal.svg';
+import Uk from '../public/img/icons/uk.svg';
+
+//Waitlist Page Images
+import group from '../public/img/waitlist/group.svg';
+import clock from '../public/img/waitlist/clock.svg';
+import handshake from '../public/img/waitlist/handshake.svg';
+import Step1 from '../public/img/waitlist/Step1.svg';
+import Step2 from '../public/img/waitlist/Step2.svg';
+import Step3 from '../public/img/waitlist/Step3.svg';
+import Step4 from '../public/img/waitlist/Step4.svg';
+import Step5 from '../public/img/waitlist/Step5.svg';
 
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
@@ -340,7 +388,7 @@ export const BENEFITS_OF_TRANSLATIONS = [
     id: 'benefit-4',
     title: 'Visibility',
     description:
-      'Translated metadata will help increase your visibility on Youtube’s algorithm.',
+      'Translated metadata will help increase your visibility on YouTube’s algorithm.',
     graphic: visibility,
   },
 ];
@@ -453,27 +501,6 @@ export const AVIEW_GROWTH = [
     description:
       'Given the increase in demand from content creators to go global, we expanded our offerings to include video dubbing and translated short-form content. With this fast expansion, Aview is always looking for more translators, dubbers and editors to join our team!',
     icon: expand,
-  },
-];
-
-export const TESTIMONIALS = [
-  {
-    id: 'testimonial-1',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
-  },
-  {
-    id: 'testimonial-2',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
-  },
-  {
-    id: 'testimonial-3',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus purus neque tellus elementum nibh elementum. Lorem donec suspendisse viverra massa at."',
-    clientName: 'Lorem ipsum',
-    clientPicture: defaultPicture,
   },
 ];
 
@@ -767,16 +794,23 @@ export const CREATORS_SLIDERS = [
   },
 ];
 
-export const LANGUAGES = [
-  'English',
-  'French',
-  'German',
-  'Spanish',
-  'Swedish',
-  'Portuguese',
-  'Arabic',
-  'Russian',
-  'Chinese',
+export const CATEGORIES = [
+  'Entertainment',
+  'Comedy',
+  'Education',
+  'Gaming',
+  'Sports',
+  'Music videos',
+  'Travel & Events',
+  'Film & Animation',
+  'Pets & Animals',
+  'Autos & Vehicles',
+  'News & Politics',
+  'Science & Technology',
+  'How to & Style',
+  'Non-Profit & Activism',
+  'People & Blogs',
+  'Others',
 ];
 
 export const GROWTH_WITH_AVIEW_CREATORS = [
@@ -1109,6 +1143,55 @@ export const COUNTRIES = [
   'Åland Islands',
 ];
 
+export const WAITLIST_HOVER_ITEMS = [
+  {
+    title: 'Discover Global Fans',
+    image: group,
+    description:
+      'Unlock new international audiences with our seamless translation and localization services. Aview\u0027s one-click solution ensures your content resonates worldwide, expanding your fan base like never before.',
+  },
+  {
+    title: 'Effortless Expansion, Cost-Effective Growth',
+    image: clock,
+    description:
+      'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; we\u0027ll handle the rest.',
+  },
+  {
+    title: 'Brand Partnerships & Sponsorships Made Easy',
+    image: handshake,
+    description:
+      'Align your content with the perfect brand deals and sponsorship opportunities. Aview\u0027s global distribution network connects you with the right partners, maximizing your monetization potential across borders.',
+  },
+];
+
+export const WAITLIST_STAGGERED_ITEMS = [
+  {
+    title: 'Step 1',
+    image: Step1,
+    description: 'We integrate your social media channels to one place',
+  },
+  {
+    title: 'Step 2',
+    image: Step2,
+    description: 'Choose what audiences you want to reach',
+  },
+  {
+    title: 'Step 3',
+    image: Step3,
+    description: 'Select what content you want monetized',
+  },
+  {
+    title: 'Step 4',
+    image: Step4,
+    description: 'We distribute your content so you don’t have to',
+  },
+  {
+    title: 'Step 5',
+    image: Step5,
+    description: 'Connect with international brands',
+  },
+];
+
 export const OUR_TRANSLATION_SERVICES = [
   {
     id: 'service-1',
@@ -1199,22 +1282,39 @@ export const CAREER_PROCESS = [
   },
 ];
 
-export const ONBOARDING_STAGE_4 = [
+export const ONBOARDING_STAGE_1 = [
   {
-    title: 'Translations',
-    content: 'Translations of your content in any language of your choice.',
+    image: Personal,
+    title: 'For myself',
+    desc: 'Get access to translations for your online content.',
+    data: 'Content Creator',
   },
   {
-    title: 'Shorts',
-    content: 'Your content edited into 15-30 second clips.',
+    image: Team,
+    title: 'For my team',
+    desc: 'Coming Soon',
+    data: 'Content Manager',
   },
   {
-    title: 'Dubbing',
-    content: 'Dubbing and subtitles for your content. ',
+    image: Brand,
+    title: 'For my brand',
+    desc: 'Coming Soon',
+    data: 'Brand Manager',
+  },
+];
+
+export const ONBOARDING_STAGE_3 = [
+  {
+    image: air_delivery,
+    title: 'International Channels',
+    content:
+      'Monetize your content internationally through translations, dubbing and redistribution.',
   },
   {
-    title: 'Distribution',
-    content: 'We will manage and distribute your translated content for you.',
+    image: global_location,
+    title: 'Native Language',
+    content:
+      'Monetize your content through short form videos, subtitling and transcriptions.',
   },
 ];
 
@@ -1230,10 +1330,227 @@ export const AVERAGE_MONTHLY_VIEWS = [
   '1,000,000+',
 ];
 
+export const AVERAGE_SOCIAL_FOLLOWERS = [
+  '0 - 10,000',
+  '10,000 - 25,000',
+  '25,000 - 100,000',
+  '100,000 - 250,000',
+  '250,000 - 1,000,000',
+  '1,000,000 - 2,500,000',
+  '2,500,000 - 5,000,000',
+  '5,000,000 - 10,000,00',
+  '10,000,000+',
+];
+
 export const AVERAGE_VIDEO_DURATION = [
   '1 - 5 minutes',
   '5 - 15 minutes',
   '15 - 30 minutes',
   '30 - 60 minutes',
   '60+ minutes',
+];
+
+export const DASHBOARD_NAVLINKS = [
+  {
+    text: 'Home',
+    image: home,
+    route: () => '/dashboard',
+  },
+  {
+    text: 'AI Voice',
+    image: ai_voice,
+    route: () => '/dashboard/ai-voice',
+  },
+  {
+    text: 'Upload',
+    image: upload,
+    route: () => '/dashboard/upload',
+  },
+  // {
+  //   text: 'Messages',
+  //   image: messages,
+  //   route:() => '/dashboard/messages',
+  // },
+  {
+    text: 'Billing',
+    image: billing,
+    route: () => '/dashboard/billing',
+  },
+  {
+    text: 'History',
+    image: history,
+    route: () => '/dashboard/history',
+  },
+  {
+    text: 'Referral',
+    image: referral,
+    route: () => '/dashboard/referral',
+  },
+  {
+    text: 'Settings',
+    image: settings,
+    route: (route) => route,
+  },
+];
+
+export const SUPPORTED_REGIONS = [
+  {
+    title: 'North America',
+    image: north_america,
+    data: [
+      {
+        image: English,
+        languageName: 'English (US)',
+        localDialect: 'English',
+      },
+      {
+        image: Spanish2,
+        languageName: 'Spanish (Mexican)',
+        localDialect: 'Español',
+      },
+      {
+        image: Canada,
+        languageName: 'French (Quebecois)',
+        localDialect: 'Français',
+      },
+    ],
+  },
+  {
+    title: 'South America',
+    image: south_america,
+    data: [
+      {
+        image: Spanish2,
+        languageName: 'Spanish (Mexican)',
+        localDialect: 'Español',
+      },
+      {
+        image: Portuguese,
+        languageName: 'Portuguese (Brazilian)',
+        localDialect: 'Português',
+      },
+    ],
+  },
+  {
+    title: 'Asia',
+    image: asia,
+    data: [
+      {
+        image: Chinese,
+        languageName: 'Chinese (Mandarin)',
+        localDialect: '中文 (Zhōngwén)',
+      },
+      {
+        image: Hindi,
+        languageName: 'Hindi',
+        localDialect: 'हिन्दी (Hindī)',
+      },
+      {
+        image: Russian,
+        languageName: 'Russian',
+        localDialect: 'Русский (Russkiy)',
+      },
+      {
+        image: Arabic,
+        languageName: 'Arabic',
+        localDialect: 'العربية (Al - ʿarabiyyah)',
+      },
+      {
+        image: Korean,
+        languageName: 'Korean',
+        localDialect: '한국어 (Hangugeo)',
+      },
+      {
+        image: Japanese,
+        languageName: 'Japanese',
+        localDialect: '日本語 (Nihongo)',
+      },
+      {
+        image: Indonesian,
+        languageName: 'Indonesian',
+        localDialect: 'Bahasa Indonesia',
+      },
+      {
+        image: Hindi,
+        languageName: 'Bengali',
+        localDialect: 'বাংলা (Bangla)',
+      },
+      {
+        image: Filipino,
+        languageName: 'Filipino',
+        localDialect: 'Wikang Filipino',
+      },
+    ],
+  },
+  {
+    title: 'Europe',
+    image: europe,
+    data: [
+      {
+        image: Russian,
+        languageName: 'Russian',
+        localDialect: 'Russian',
+      },
+      {
+        image: German,
+        languageName: 'German',
+        localDialect: 'Deutsch',
+      },
+      {
+        image: Uk,
+        languageName: 'English (UK)',
+        localDialect: 'English',
+      },
+      {
+        image: French,
+        languageName: 'French (France)',
+        localDialect: 'Français',
+      },
+      {
+        image: Italian,
+        languageName: 'Italian',
+        localDialect: 'Italiano',
+      },
+      {
+        image: Turkish,
+        languageName: 'Turkish',
+        localDialect: 'Türkçe',
+      },
+      {
+        image: Spanish,
+        languageName: 'Spanish (Spain)',
+        localDialect: 'Español',
+      },
+      {
+        image: Portugal,
+        languageName: 'Portuguese (Portugal)',
+        localDialect: 'Portugués',
+      },
+    ],
+  },
+];
+
+export const LANGUAGES = [
+  'English (US)',
+  'Spanish (Mexican)',
+  'French (Quebecois)',
+  'Portuguese (Brazilian)',
+  'Chinese (Mandarin)',
+  'Hindi',
+  'Russian',
+  'Arabic',
+  'Korean',
+  'Japanese',
+  'Indonesian',
+  'Bengali',
+  'Filipino',
+  'Europe',
+  'Russian',
+  'German',
+  'English (UK)',
+  'French',
+  'Italian',
+  'Turkish',
+  'Spanish',
+  'Others',
 ];

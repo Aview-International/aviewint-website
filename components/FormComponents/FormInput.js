@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Correct from '../../public/img/icons/correct.svg';
+import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 import Border from '../UI/Border';
 
@@ -25,42 +25,56 @@ const FormInput = ({
   label,
   onChange,
   placeholder,
+  value,
   name,
   hasSubmitted,
   bgColor,
   textBlack,
-  bottomMargin = 'mb-s5',
+  extraClasses = 'mb-s5',
   type,
+  labelClasses,
+  hideCheckmark,
+  isImportant,
 }) => {
   return (
-    <div className={`relative w-full text-xl text-white ${bottomMargin}`}>
-      <label htmlFor={_id} className={`mb-s1 block w-full`}>
-        {label}
-      </label>
+    <div className={`relative w-full text-xl text-white ${extraClasses}`}>
+      {label && (
+        <label htmlFor={_id} className={`block w-full ${labelClasses}`}>
+          <span
+            className={`${isImportant && `after:ml-0.5 after:content-['*']`}`}
+          >
+            {label}
+          </span>
+        </label>
+      )}
       <div>
         <Border classes="w-full relative" borderRadius="[5px]">
+          <div className="gradient-1 transition-300 peer-focus:opacity-1 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg"></div>
           <input
             id={_id}
             name={name}
             type={type || 'text'}
             placeholder={placeholder}
-            className={`peer w-full rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
+            className={`peer w-full rounded-[5px] px-s1 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
+            value={value}
           />
           <div
             className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
           ></div>
         </Border>
-        <span className="absolute right-[10px] bottom-[2px]">
-          {isValid && (
-            <Image src={Correct} alt="Correct" width={30} height={30} />
-          )}
-          {hasSubmitted && !isValid && (
-            <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
-          )}
-        </span>
+        {!hideCheckmark && (
+          <span className="absolute right-[10px] bottom-[2px]">
+            {isValid && (
+              <Image src={Correct} alt="Correct" width={30} height={30} />
+            )}
+            {hasSubmitted && !isValid && (
+              <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
+            )}
+          </span>
+        )}
       </div>
     </div>
   );

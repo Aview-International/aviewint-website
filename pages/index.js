@@ -14,6 +14,8 @@ import FeaturedBlogs from '../components/sections/reused/FeaturedBlogs';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import EasterEgg from '../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../components/UI/ScrollToTopButton';
+import ProgressBar from '../components/UI/ProgressBar';
 
 const Home = () => {
   return (
@@ -22,9 +24,11 @@ const Home = () => {
         title="Video Translation & Subtitling - AVIEW"
         description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
       />
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Home" />
       <YouCreateWeTranslate />
+      <ScrollToTopButton />
       <OurServices />
       <ContentCreators />
       <OurTranslatedContent />

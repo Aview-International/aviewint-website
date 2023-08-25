@@ -4,7 +4,7 @@ import Shadow from '../../UI/Shadow';
 
 const TranslatedContent = () => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="zoom-out">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
         Our Translated <span className="gradient-text gradient-2">Content</span>
       </h2>

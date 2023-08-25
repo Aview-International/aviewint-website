@@ -12,7 +12,7 @@ const TableOfContents = ({ sections }) => {
             className="mb-s2 grid grid-cols-[auto_auto] justify-start gap-3"
             key={`section-${i}`}
           >
-            <div className="mt-1.5 h-2 w-2 rounded-full bg-blue"></div>
+            <div className="mt-2 h-2 w-2 rounded-full bg-blue"></div>
             <Link href={section.link}>
               <a className="text-lg text-blue underline md:text-xl">
                 {section.title}

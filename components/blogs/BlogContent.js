@@ -38,8 +38,7 @@ const BlogContent = ({ sections }) => {
               } else if (content.type === 'ordered list') {
                 return (
                   <ul key={`section-${i}`}>
-                    {content.items.map((item, i) => {
-                      const listItem = (
+                    {content.items.map((item, i) => (
                         <div
                           className="relative text-lg text-white md:text-xl"
                           key={`item-${i}`}
@@ -53,10 +52,8 @@ const BlogContent = ({ sections }) => {
                             key={`item-${i}`}
                           />
                         </div>
-                      );
-
-                      return listItem;
-                    })}
+                    )
+                    )}
                   </ul>
                 );
               } else if (content.type === 'youtube') {
@@ -77,16 +74,21 @@ const BlogContent = ({ sections }) => {
                 );
               } else if (content.type === 'subtitle') {
                 return (
-                  <h5 className="-mb-3 mt-2 text-lg font-bold text-white md:mt-4 md:text-2xl">
+                  <h5
+                    className="-mb-3 mt-2 text-lg font-bold text-white md:mt-4 md:text-2xl"
+                    key={`content-${i}`}
+                  >
                     {content.text}
                   </h5>
                 );
               } else if (content.type === 'quote') {
                 return (
-                  <div className="mx-auto my-8 max-w-[400px]">
+                  <div
+                    className="mx-auto my-8 max-w-[400px]"
+                    key={`content-${i}`}
+                  >
                     <p
                       className="mb-s3 text-lg text-white md:text-xl"
-                      key={`content-${i}`}
                       dangerouslySetInnerHTML={{ __html: content.quote }}
                     />
                     <p
@@ -98,7 +100,10 @@ const BlogContent = ({ sections }) => {
                 );
               } else if (content.type === 'image') {
                 return (
-                  <div className={`${content.maxWidth} mx-auto my-8`}>
+                  <div
+                    className={`${content.maxWidth} mx-auto my-8`}
+                    key={`content-${i}`}
+                  >
                     <Image src={content.src} alt={content.alt} />
                   </div>
                 );

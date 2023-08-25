@@ -13,6 +13,7 @@ import Blobs from '../../components/UI/Blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import SEO from '../../components/SEO/SEO';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 const ITEMS = [
   {
@@ -47,6 +48,7 @@ export default function Marketing() {
         imageAlt="Marketing Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <MarketingServices />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />

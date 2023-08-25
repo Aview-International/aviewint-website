@@ -3,7 +3,10 @@ import GraphicCard from '../../UI/GraphicCard';
 
 const BenefitsOfTranslations = () => {
   return (
-    <section className="section m-horizontal md:text-center">
+    <section
+      className="section m-horizontal md:text-center"
+      data-aos="zoom-out-up"
+    >
       <h2 className="title mb-s4 md:mb-s10">
         Benefits of Translating Your{' '}
         <span className="gradient-text gradient-2">Content</span>

@@ -13,6 +13,7 @@ import Blobs from '../../components/UI/Blobs';
 import financialTranslations from '../../public/img/graphics/corporate/financial/financial-translation-services.png';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import SEO from '../../components/SEO/SEO';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 const ITEMS = [
   {
@@ -47,6 +48,7 @@ export default function Financial() {
         imageAlt="Financial Translation Services"
       />
       <CompaniesWeWorkedWith />
+      <ScrollToTopButton />
       <FinancialTranslationOverview />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />

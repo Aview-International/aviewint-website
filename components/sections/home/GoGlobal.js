@@ -2,30 +2,30 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { GLOBAL_NEWSLETTER } from '../../../constants/constants';
 import { emailValidator } from '../../../utils/regex';
-import { submitForm } from '../../../utils/submit-form';
 import Form from '../../FormComponents/Form';
 import FormInput from '../../FormComponents/FormInput';
 import Banner from '../../layout/Banner';
 import Button from '../../UI/Button';
+import { welcomeNewUser } from '../../../services/apis';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const GoGlobal = () => {
   const router = useRouter();
-
   const [mail, setMail] = useState({
     email: '',
     hasSubmitted: false,
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setMail({ ...mail, hasSubmitted: true });
       if (!emailValidator(mail.email)) return;
-      submitForm('newsletter', { email: mail.email });
+      await welcomeNewUser(mail.email);
       router.push('/success');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
   return (

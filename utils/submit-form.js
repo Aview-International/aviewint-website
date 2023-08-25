@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const submitForm = (name, data) => {
   const encode = (data) => {
     return Object.keys(data)
@@ -33,9 +31,4 @@ export const submitFile = (name, data) => {
     }),
     method: 'POST',
   });
-};
-
-export const initiateBot = async (data) => {
-  const res = await axios.post(`/api/submit-phone`, data);
-  return res;
 };

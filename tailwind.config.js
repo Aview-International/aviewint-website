@@ -4,6 +4,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './public/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
@@ -12,7 +13,10 @@ module.exports = {
       blue: '#00FFFF',
       'gray-1': '#494B5B',
       'gray-2': '#99999C',
-      white: '#FCFCFC',
+      white: {
+        DEFAULT: '#FCFCFC',
+        transparent: 'rgba(252, 252, 252, 0.10)',
+      },
       green: '#00C874',
       red: '#FF3939',
       transparent: 'transparent',
@@ -35,6 +39,7 @@ module.exports = {
       '6xl': ['36px', { lineHeight: '45px' }],
       '7xl': ['40px', { lineHeight: '50px' }],
       '8xl': ['48px', { lineHeight: '60px' }],
+      '9xl': ['64px', { lineHeight: '81px' }],
     },
     screens: {
       '2xs': '360px',
@@ -47,6 +52,7 @@ module.exports = {
     },
     extend: {
       spacing: {
+        s0: '4px',
         s1: '8px',
         's1.5': '12px',
         s2: '16px',
@@ -78,15 +84,41 @@ module.exports = {
       keyframes: {
         roll: {
           '0%': {
-            transform: ' translate(-50%, -50%) rotate(0deg)',
+            transform: 'translate(-50%, -50%) rotate(0deg)',
           },
           '100%': {
             transform: 'translate(-50%, -50%) rotate(360deg)',
           },
         },
+        popup: {
+          '0%': {
+            transform: 'scale(1)',
+          },
+          '50%': {
+            transform: 'scale(0.5)',
+          },
+          '100%': {
+            transform: 'scale(1)',
+          },
+        },
+        dropin: {
+          '0%': {
+            transform: 'translateY(-12px)',
+            // height: '20px',
+          },
+          '90%': {
+            transform: 'translateY(3px)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            // height: '16px',
+          },
+        },
       },
       animation: {
         roll: 'roll 1s linear infinite',
+        popup: 'popup 0.4s ease-in-out 1',
+        dropin: 'dropin 0.5s cubic-bezier(.25,.75,.5,1.25) 1',
       },
     },
   },

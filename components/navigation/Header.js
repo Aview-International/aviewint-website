@@ -6,8 +6,10 @@ import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import aviewLogo from '../../public/img/aview/logo.svg';
+import MenuButtonIcon from './MenuButtonIcon';
 
 const Header = ({ curPage }) => {
+  const menuOpenCtx = useContext(MenuOpenContext);
   return (
     <>
       <header className="navigation relative z-50 mt-10 flex items-center justify-between">
@@ -25,7 +27,7 @@ const Header = ({ curPage }) => {
           <DesktopMenu curPage={curPage} />
         </div>
         <HeaderButtons />
-        <MenuButton />
+        <MenuButtonIcon handler={menuOpenCtx.openMenuHandler}/>
       </header>
       <MobileMenu />
     </>
@@ -38,24 +40,9 @@ const HeaderButtons = () => {
       <Button purpose="route" route="/#generate-aview" type="primary">
         Contact Us
       </Button>
-      {/* <Button purpose="route" route="/login" type="secondary">
-        Log In
-      </Button> */}
-    </div>
-  );
-};
-
-const MenuButton = () => {
-  const menuOpenCtx = useContext(MenuOpenContext);
-
-  return (
-    <div
-      className="flex cursor-pointer flex-col items-end lg:hidden"
-      onClick={menuOpenCtx.openMenuHandler}
-    >
-      <div className="mb-2 h-[3px] w-[36px] rounded-full bg-white"></div>
-      <div className="mb-2 h-[3px] w-[21px] rounded-full bg-white"></div>
-      <div className="h-[3px] w-[36px] rounded-full bg-white"></div>
+      <Button purpose="route" route="/waitlist" type="secondary">
+        Join Waitlist
+      </Button>
     </div>
   );
 };

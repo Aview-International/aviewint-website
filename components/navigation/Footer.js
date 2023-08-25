@@ -2,10 +2,11 @@ import Image from 'next/image';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
+import { baseUrl } from '../../services/baseUrl';
 
 const Footer = ({ curPage }) => {
   return (
-    <div className="navigation mb-s5">
+    <div className="navigation mb-s5" data-aos="zoom-in-down">
       <hr className="gradient-1 mb-s5 h-[3px]" />
       <div className="flex items-center justify-between md:items-start">
         <div className="flex flex-col items-center gap-s2 md:items-start">
@@ -51,6 +52,15 @@ const Footer = ({ curPage }) => {
               </a>
             </Link>
           ))}
+          <a
+            className={`text-md hover:gradient-text hover:gradient-2 } 
+            text-white xl:text-lg`}
+            href={`${baseUrl}/privacy-policy`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </a>
         </div>
       </div>
     </div>

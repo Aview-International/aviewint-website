@@ -21,6 +21,7 @@ const Textarea = ({
   label,
   onChange,
   placeholder,
+  value,
   name,
   bgColor,
   textBlack,
@@ -37,10 +38,11 @@ const Textarea = ({
             name={name}
             type="text"
             placeholder={placeholder}
-            className={`peer block w-full resize-none min-h-[120px] rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
+            className={`peer block min-h-[120px] w-full resize-none rounded-[5px] px-s2 py-2 text-white focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
+            value={value}
           ></textarea>
           <div
             className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}

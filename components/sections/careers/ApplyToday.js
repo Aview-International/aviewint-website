@@ -26,6 +26,7 @@ const ApplyToday = () => {
     'Voice acting/Dubbing': '',
     position: '',
     resume: null,
+    isEmpty: false,
   });
 
   const handleSubmit = (e) => {
@@ -40,8 +41,10 @@ const ApplyToday = () => {
         !data['Voice acting/Dubbing'] ||
         !data.position ||
         !data.resume
-      )
+      ) {
+        setData({ ...data, isEmpty: true });
         return;
+      }
 
       submitFile('translator-applications', {
         name: data.name,
@@ -75,7 +78,11 @@ const ApplyToday = () => {
   };
 
   return (
-    <section className="section m-horizontal" id="apply-today">
+    <section
+      className="section m-horizontal"
+      id="apply-today"
+      data-aos="zoom-out-up"
+    >
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">Apply Today!</span>
       </h2>
@@ -96,17 +103,17 @@ const ApplyToday = () => {
           isValid={emailValidator(data.email)}
           {...CAREER_APPLY_TODAY[1]}
         />
-        <div className="w-full md:w-3/5">
+        <div className="w-full md:w-3/5 text-white">
           <MultipleSelectInput
             text="What languages can you translate?"
             options={LANGUAGES}
             answer={data.languages}
+            hasSubmitted={hasSubmitted}
             onChange={(event) => handleMutlipleCheckbox(event)}
           />
           <input
             type="hidden"
             name="languages"
-            answer
             value={data.languages.toString()}
           />
         </div>
@@ -117,8 +124,9 @@ const ApplyToday = () => {
             options={['No', 'Yes']}
             isValid={data['Voice acting/Dubbing']}
             onChange={(option) =>
-              setData({ ...data, 'Voice acting/Dubbing': option })
+              setData({ ...data, ['Voice acting/Dubbing']: option })
             }
+            value={data['Voice acting/Dubbing']}
           />
           <input
             type="hidden"
@@ -133,6 +141,7 @@ const ApplyToday = () => {
             isValid={data.position}
             options={TEAM_OPEN_POSITIONS}
             onChange={(option) => setData({ ...data, position: option })}
+            value={data.position}
           />
           <input type="hidden" name="position" value={data.position} />
         </div>
@@ -142,6 +151,11 @@ const ApplyToday = () => {
           hasSubmitted={hasSubmitted}
           isValid={data.resume}
         />
+        {data.isEmpty && (
+          <p className="my-s3 text-center text-xl text-white">
+            Please select from the options above to continue
+          </p>
+        )}
         <div className="mt-s5 flex justify-center ">
           <Button purpose="submit" type="primary">
             Send Message

@@ -48,7 +48,11 @@ const JoinTheTeam = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   return (
-    <section className="section m-horizontal" id="join-the-team">
+    <section
+      className="section m-horizontal"
+      id="join-the-team"
+      data-aos="fade-up-left"
+    >
       <h2 className="title mb-s4 text-center">
         <span className="gradient-text gradient-2">Join the Team</span>
       </h2>
@@ -101,6 +105,7 @@ const JoinTheTeam = () => {
           hasSubmitted={hasSubmitted}
           isValid={data.position}
           onChange={(option) => setData({ ...data, position: option })}
+          value={data.position}
         />
         <input type="hidden" name="position" value={data.position} />
         <UploadFile

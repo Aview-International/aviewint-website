@@ -1,5 +1,4 @@
 import twitter from '../public/img/creators/creator-landing/twitter.svg';
-import instagram from '../public/img/creators/creator-landing/instagram.svg';
 import facebook from '../public/img/creators/creator-landing/facebook.svg';
 import tumblr from '../public/img/creators/creator-landing/tumblr.svg';
 import twitch from '../public/img/creators/creator-landing/twitch.svg';

@@ -1,20 +1,45 @@
 import Border from '../UI/Border';
-import Loader from '../UI/loader';
+import Loader from '../../public/loaders/ButtonLoader';
 import Shadow from '../UI/Shadow';
 
-const OnbaordingButton = ({ children, isLoading, onClick }) => {
-  return (
+const OnboardingButton = ({
+  children,
+  isLoading,
+  onClick,
+  disabled,
+  theme,
+  extraClasses = 'px-s5',
+}) => {
+  return disabled ? (
+    <button
+      className={`transition-300 w-full cursor-not-allowed rounded-full bg-gray-1 pt-s1.5 pb-s1 text-lg font-medium text-black ${extraClasses}`}
+      onClick={null}
+      disabled
+    >
+      {children}
+    </button>
+  ) : (
     <Shadow classes="w-full">
-      <Border borderRadius="full" classes="w-full">
+      <div
+        className={`${
+          theme !== 'white' && 'gradient-1'
+        } inline-block w-full rounded-full p-[3px]`}
+      >
         <button
-          className={`transition-300 w-full cursor-pointer rounded-full px-s5 pt-s1.5 pb-s1 text-black`}
-          onClick={onClick}
+          id="opener"
+          className={`transition-300 w-full cursor-pointer rounded-full pt-s1.5 pb-s1 text-lg font-medium ${extraClasses} ${
+            theme === 'light' && 'text-black'
+          } ${theme === 'dark' && 'bg-black text-white'} ${
+            theme === 'white' &&
+            'border-[3px] border-solid border-white bg-black text-white hover:bg-white hover:text-black'
+          }`}
+          onClick={isLoading ? () => null : onClick}
         >
           {isLoading ? <Loader /> : children}
         </button>
-      </Border>
+      </div>
     </Shadow>
   );
 };
 
-export default OnbaordingButton;
+export default OnboardingButton;

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React,{ useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
@@ -7,11 +7,10 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-left.svg';
 import rightChevronIcon from '../../public/img/icons/chevron-right.svg';
-import React from 'react';
+
 
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
-
   return (
     <div
       className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen flex-col overflow-hidden bg-black px-6 pt-8 pb-10 lg:hidden ${
@@ -69,11 +68,11 @@ export default function MobileMenu() {
       >
         <Button
           purpose="route"
-          route="/login"
+          route="/waitlist"
           type="secondary"
           fullWidth={true}
         >
-          Login
+          Join the Waitlist
         </Button>
         {/* <Button
           purpose="route"
@@ -96,6 +95,7 @@ const MAIN_MENU = [
   { type: 'route', title: 'About', link: 'about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },
+  { type: 'route', title: 'Pricing', link: '/pricing' },
 ];
 
 export function MainMenu() {

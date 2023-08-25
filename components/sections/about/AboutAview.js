@@ -3,7 +3,10 @@ import aboutGraphic from '../../../public/img/graphics/about-aview.png';
 
 const AboutAview = () => {
   return (
-    <section className="section m-horizontal mt-s6 lg:mt-s17">
+    <section
+      className="section m-horizontal mt-s6 lg:mt-s17"
+      data-aos="zoom-in-left"
+    >
       <div className="grid items-center lg:grid-cols-6">
         <div className="col-span-3">
           <h1 className="title mb-s4">

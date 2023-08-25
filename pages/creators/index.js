@@ -7,12 +7,14 @@ import SEO from '../../components/SEO/SEO';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import ContentCreators from '../../components/sections/home/ContentCreators';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
-import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
 import OurCreators from '../../components/sections/creators/OurCreatorsServices';
 import CreatorTranslations from '../../components/sections/creators/CreatorTranslations';
 import HowItWorks from '../../components/sections/reused/HowItWorks';
+import StartGenerating from '../../components/sections/home/StartGenerating';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import ProgressBar from '../../components/UI/ProgressBar';
 
 const Creators = () => {
   return (
@@ -21,9 +23,11 @@ const Creators = () => {
         title="Creators - AVIEW"
         description="Our customized approach ensures that you get the best service for your brand. Find Your International Growth by visiting Aview!"
       />
+      <ProgressBar />
       <EasterEgg />
       <Header curPage="Creators" />
       <OurCreators />
+      <ScrollToTopButton />
       <HowItWorks />
       <ContentCreators />
       <CreatorTranslations />

@@ -7,7 +7,7 @@ import Slider from '../../UI/Slider';
 
 const InternationalGrowth = () => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="fade">
       <h2 className="title md:text-center">
         Uncover Your Full{' '}
         <span className="gradient-text gradient-2">Revenue Potential</span>
