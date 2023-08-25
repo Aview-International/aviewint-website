@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Waitlist from '../../components/sections/waitlist/Waitlist';
 import SEO from '../../components/SEO/SEO';
 import Header from '../../components/navigation/Header';
@@ -11,7 +11,7 @@ const index = () => {
   return (
     <>
       <SEO
-        title="Waitlist - AVIEW International"
+        title="Waitlist"
         description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
       />
       <ProgressBar />
@@ -21,7 +21,7 @@ const index = () => {
       <Footer />
       <Blobs />
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;
