@@ -38,9 +38,7 @@ const CustomSelectInput = ({
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
       <div className="relative mb-s4 text-xl text-white" ref={elementRef}>
         <p className="mb-s1">
-          <span class="after:content-['*'] after:ml-0.5">
-           {text}
-          </span>
+          <span className="after:ml-0.5 after:content-['*']">{text}</span>
         </p>
         <Border borderRadius="[5px] w-full">
           <div
