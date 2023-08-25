@@ -108,6 +108,16 @@ import Canada from '../public/img/icons/canada.svg';
 import Portugal from '../public/img/icons/portugal.svg';
 import Uk from '../public/img/icons/uk.svg';
 
+//Waitlist Page Images
+import group from '../public/img/waitlist/group.svg';
+import clock from '../public/img/waitlist/clock.svg';
+import handshake from '../public/img/waitlist/handshake.svg';
+import Step1 from '../public/img/waitlist/Step1.svg';
+import Step2 from '../public/img/waitlist/Step2.svg';
+import Step3 from '../public/img/waitlist/Step3.svg';
+import Step4 from '../public/img/waitlist/Step4.svg';
+import Step5 from '../public/img/waitlist/Step5.svg';
+
 export const ROUTES = [
   { id: 'route-1', text: 'Home', route: '/' },
   { id: 'route-2', text: 'Creators', route: '/creators' },
@@ -993,6 +1003,52 @@ export const COUNTRIES = [
   'Zambia',
   'Zimbabwe',
   'Åland Islands',
+];
+
+export const WAITLIST_HOVER_ITEMS = [
+  {
+   title: 'Discover Global Fans',
+   image: group,
+   description: 'Unlock new international audiences with our seamless translation and localization services. Aviews one-click solution ensures your content resonates worldwide, expanding your fan base like never before.'
+  },
+  {
+   title: 'Effortless Expansion, Cost-Effective Growth',
+   image: clock,
+   description: 'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; well handle the rest.'
+  },
+  {
+   title: 'Brand Partnerships & Sponsorships Made Easy',
+   image: handshake,
+   description: 'Align your content with the perfect brand deals and sponsorship opportunities. Aviews global distribution network connects you with the right partners, maximizing your monetization potential across borders.'
+  }
+];
+
+export const WAITLIST_STAGGERED_ITEMS = [
+  {
+   title: 'Step 1',
+   image: Step1,
+   description: 'We integrate your social media channels to one place'
+  },
+  {
+   title: 'Step 2',
+   image: Step2,
+   description: 'Choose what audiences you want to reach'
+  },
+  {
+    title: 'Step 3',
+    image: Step3,
+    description: 'Select what content you want monetized'
+  },
+  {
+    title: 'Step 4',
+    image: Step4,
+    description: 'We distribute your content so you don’t have to'
+  },
+  {
+    title: 'Step 5',
+    image: Step5,
+    description: 'Connect with international brands'
+  },
 ];
 
 export const OUR_TRANSLATION_SERVICES = [

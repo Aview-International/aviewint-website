@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
@@ -45,63 +46,68 @@ const SEO = ({ title, description, image = '/images/og-image.png' }) => {
   const path = router.pathname;
 
   return (
-    <Head>
-      <title>{title}</title>
-      {description && <meta name="description" content={description} />}
-      <meta name="keywords" content="Video Translation & Subtitling" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta charSet="UTF-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="robots" content="index, follow" />
-      <meta property="og:title" content={title} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={`www.aviewint.com${path}`} />
-      <meta property="og:image" content={image} />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:description" content={description} />
-      <link rel="canonical" href={`www.aviewint.com${path}`} />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/img/favicon/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/img/favicon/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/img/favicon/favicon-16x16.png"
-      />
+    <>
+      <Head>
+        <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+        <meta name="keywords" content="Video Translation & Subtitling" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`www.aviewint.com${path}`} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={image} />
+        <meta name="twitter:description" content={description} />
+        <link rel="canonical" href={`www.aviewint.com${path}`} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/img/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/img/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/img/favicon/favicon-16x16.png"
+        />
+      </Head>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <script
+      <Script
+        id="gtag"
         async
         src={`https://www.googletagmanager.com/gtag/js?id=G-MNQ5EGQKS8`}
       />
-      <script
+      <Script
+        id="gtag-manager"
         dangerouslySetInnerHTML={{
           __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MNQ5EGQKS8', {
-              page_path: window.location.pathname,
-            });
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MNQ5EGQKS8', {
+            page_path: window.location.pathname,
+          });
           `,
         }}
       />
       {path === '/' && (
-        <script
+        <Script
+          id="application/ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
         />
       )}
-    </Head>
+    </>
   );
 };
 

@@ -66,11 +66,11 @@ export default function MobileMenu() {
       >
         <Button
           purpose="route"
-          route="/login"
+          route="/waitlist"
           type="secondary"
           fullWidth={true}
         >
-          Login
+          Join the Waitlist
         </Button>
         {/* <Button
           purpose="route"
