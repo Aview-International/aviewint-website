@@ -87,3 +87,7 @@ export const getMessageStatus = async (userId) => {
   );
   return response.data;
 };
+
+export const joinWaitlist = async (data) => {
+  return axios.post(baseUrl + 'auth/join-waitlist', data);
+};

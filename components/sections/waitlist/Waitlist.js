@@ -10,9 +10,14 @@ import FormInput from '../../FormComponents/FormInput';
 import Button from '../../UI/Button';
 import WaitlistImages from './WaitlistImages';
 import AboutCreator from './AboutCreator';
+import { useRouter } from 'next/router';
+import { welcomeNewUser } from '../../../services/apis';
+import ErrorHandler from '../../../utils/errorHandler';
+import { emailValidator } from '../../../utils/regex';
 
 const Waitlist = () => {
-  const [userEmail, setUserEmail] = useState('');
+  const router = useRouter();
+  const [email, setEmail] = useState('');
   const [sideEffects, setSideEffects] = useState({
     hasSubmitted: false,
     isLoading: false,
@@ -20,19 +25,20 @@ const Waitlist = () => {
 
   const handleSubmit = async () => {
     setSideEffects({ ...sideEffects, hasSubmitted: true });
-    if (!isFormValid()) return;
+    if (!emailValidator(email)) return;
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
-      // router.push('/dashboard');
+      await welcomeNewUser(email);
+      router.push('/success');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
   return (
     <>
       <section className="mx-auto my-10 flex h-full w-[90%] flex-col gap-y-24 md:my-28 md:gap-y-40">
-        <div className="flex flex-col justify-between md:mx-s6 md:flex-row">
+        <div className="flex flex-col justify-between lg:flex-row">
           <div className="mx-auto flex flex-col justify-start gap-y-4 text-white md:gap-y-6">
             <h3 className="text-5xl font-bold md:text-7xl">
               Global Content{' '}
@@ -89,15 +95,18 @@ const Waitlist = () => {
           </p>
           <div className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/4 md:flex-row md:gap-y-4 md:gap-x-2">
             <FormInput
-              _id="waitlist_input"
-              onChange={(option) => setUserEmail(option.target.value)}
+              _id="email"
+              onChange={(option) => setEmail(option.target.value)}
               placeholder="Enter your email here"
-              value={userEmail}
-              name="waitlist_input"
-              hideCheckmark={true}
+              value={email}
+              name="email"
+              hasSubmitted={sideEffects.hasSubmitted}
+              isValid={emailValidator(email)}
+              type="email"
+              extraClasses=""
             />
             <div>
-              <Button type="tertiary" purpose="submit" onClick={handleSubmit}>
+              <Button type="tertiary" purpose="onClick" onClick={handleSubmit}>
                 Join Waitlist
               </Button>
             </div>
