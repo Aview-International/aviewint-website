@@ -38,13 +38,15 @@ const FormInput = ({
 }) => {
   return (
     <div className={`relative w-full text-xl text-white ${extraClasses}`}>
-      {label && 
-      <label htmlFor={_id} className={`block w-full ${labelClasses}`}>
-        <span class={`${isImportant && `after:content-['*'] after:ml-0.5`}`}>
-         {label}
-        </span>
-      </label>
-      }
+      {label && (
+        <label htmlFor={_id} className={`block w-full ${labelClasses}`}>
+          <span
+            className={`${isImportant && `after:ml-0.5 after:content-['*']`}`}
+          >
+            {label}
+          </span>
+        </label>
+      )}
       <div>
         <Border classes="w-full relative" borderRadius="[5px]">
           <div className="gradient-1 transition-300 peer-focus:opacity-1 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg"></div>
