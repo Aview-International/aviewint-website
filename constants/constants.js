@@ -1009,17 +1009,17 @@ export const WAITLIST_HOVER_ITEMS = [
   {
    title: 'Discover Global Fans',
    image: group,
-   description: 'Unlock new international audiences with our seamless translation and localization services. Aviews one-click solution ensures your content resonates worldwide, expanding your fan base like never before.'
+   description: 'Unlock new international audiences with our seamless translation and localization services. Aview\u0027s one-click solution ensures your content resonates worldwide, expanding your fan base like never before.'
   },
   {
    title: 'Effortless Expansion, Cost-Effective Growth',
    image: clock,
-   description: 'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; well handle the rest.'
+   description: 'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; we\u0027ll handle the rest.'
   },
   {
    title: 'Brand Partnerships & Sponsorships Made Easy',
    image: handshake,
-   description: 'Align your content with the perfect brand deals and sponsorship opportunities. Aviews global distribution network connects you with the right partners, maximizing your monetization potential across borders.'
+   description: 'Align your content with the perfect brand deals and sponsorship opportunities. Aview\u0027s global distribution network connects you with the right partners, maximizing your monetization potential across borders.'
   }
 ];
 
