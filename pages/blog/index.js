@@ -5,13 +5,11 @@ import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 
-import { BLOGS } from '../../constants/blogs';
+import { getBlogPreviews } from '../../lib/notion';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
 
-const Blog = () => {
-  const reversedBlogs = [].concat(BLOGS).reverse();
-
+const Blogs = ({ blogs }) => {
   return (
     <>
       <SEO title="Blog - AVIEW" />
@@ -20,10 +18,10 @@ const Blog = () => {
       <Header curPage="Blog" />
       <ScrollToTopButton />
       <section className="section m-horizontal">
-        <h1 className="title mt-s6 mb-s4 text-center md:mt-s18 md:mb-s8">
+        <h1 className="title mb-s4 mt-s6 text-center md:mb-s8 md:mt-s18">
           Enjoy our <span className="gradient-text gradient-2">Blogs.</span>
         </h1>
-        <BlogRow blogs={reversedBlogs} />
+        <BlogRow blogs={blogs} />
       </section>
       <Footer curPage="Blog" />
       <Blobs />
@@ -31,4 +29,25 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Blogs;
+
+export async function getStaticProps() {
+  const blogs = await getBlogPreviews();
+
+  blogs.sort((blog1, blog2) => {
+    if (blog1.date > blog2.date) {
+      return -1;
+    } else if (blog1.date < blog2.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  return {
+    props: {
+      blogs: JSON.parse(JSON.stringify(blogs)),
+    },
+    revalidate: 1,
+  };
+}

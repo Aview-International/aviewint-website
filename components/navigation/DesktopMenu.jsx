@@ -11,37 +11,42 @@ const MENU = [
     type: 'dropdown',
     title: 'Corporate',
     dropdown: [
-      // {
-      //   type: 'route',
-      //   title: 'Creators',
-      //   link: '/creators',
-      // items: [
-      //   { title: 'Subtitles', link: '/subtitles' },
-      //   { title: 'Dubs', link: '/dubs' },
-      //   { title: 'Shorts', link: '/shorts' },
-      //   { title: 'Distribution', link: '/distribution' },
-      // ],
-      // },
-      {
-        type: 'list',
-        title: 'Corporate',
-        items: [
-          { title: 'Business', link: '/corporate/business' },
-          { title: 'Financial', link: '/corporate/financial' },
-          { title: 'Legal', link: '/corporate/legal' },
-          { title: 'Marketing', link: '/corporate/marketing' },
-          { title: 'Scientific', link: '/corporate/scientific' },
-        ],
-      },
+      { title: 'Scientific', link: '/corporate/scientific' },
+      { title: 'Financial', link: '/corporate/financial' },
+      { title: 'Legal', link: '/corporate/legal' },
+      { title: 'Business', link: '/corporate/business' },
+      { title: 'Marketing', link: '/corporate/marketing' },
+      { title: 'E-Learning', link: '/corporate/e-learning' },
+      { title: 'Medical', link: '/corporate/medical' },
+      { title: 'Voice Over', link: '/corporate/voice-over' },
     ],
   },
-  // { type: 'route', title: 'Languages', link: '/languages' },
+  {
+    type: 'dropdown',
+    title: 'Languages',
+    dropdown: [
+      { title: 'English', link: '/languages/english' },
+      { title: 'French', link: '/languages/french' },
+      { title: 'Hindi', link: '/languages/hindi' },
+      { title: 'Spanish', link: '/languages/spanish' },
+      { title: 'Arabic', link: '/languages/arabic' },
+      { title: 'Portuguese', link: '/languages/portuguese' },
+      { title: 'Bengali', link: '/languages/bengali' },
+      { title: 'Russian', link: '/languages/russian' },
+      { title: 'Urdu', link: '/languages/urdu' },
+      { title: 'Indonesian', link: '/languages/indonesian' },
+      { title: 'German', link: '/languages/german' },
+      { title: 'Japanese', link: '/languages/japanese' },
+      { title: 'Marathi', link: '/languages/marathi' },
+      { title: 'Telugu', link: '/languages/telugu' },
+      { title: 'Dutch', link: '/languages/dutch' },
+      { title: 'Tagalog', link: '/languages/tagalog' },
+    ],
+  },
   { type: 'route', title: 'About', link: '/about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },
-  { type: 'route', title: 'Pricing', link: '/pricing' },
 ];
-
 
 export default function DesktopMenu({ curPage }) {
   return (
@@ -62,7 +67,14 @@ export default function DesktopMenu({ curPage }) {
             </Link>
           );
         } else if (menuItem.type === 'dropdown') {
-          return <Dropdown menuItem={menuItem} key={menuItem.title} />;
+          return (
+            <Dropdown
+              title={menuItem.title}
+              dropdown={menuItem.dropdown}
+              curPage={curPage}
+              key={menuItem.title}
+            />
+          );
         } else {
           return null;
         }
@@ -71,8 +83,14 @@ export default function DesktopMenu({ curPage }) {
   );
 }
 
-function Dropdown({ menuItem }) {
+function Dropdown({ title, dropdown, curPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const dropdownColumns = [];
+
+  for (let i = 0; i < dropdown.length; i += 4) {
+    dropdownColumns.push(dropdown.slice(i, i + 4));
+  }
 
   return (
     <span
@@ -83,14 +101,20 @@ function Dropdown({ menuItem }) {
       <div className="inline-flex items-center gap-1">
         <p
           className={`text-md cursor-default xl:text-lg ${
-            dropdownOpen ? 'gradient-text gradient-1' : 'text-white'
+            dropdownOpen || curPage === title
+              ? 'gradient-text gradient-1'
+              : 'text-white'
           }`}
         >
-          {menuItem.title}
+          {title}
         </p>
-        <div className={`h-6 w-6 duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
+        <div className={`h-6 w-6 ${dropdownOpen ? 'rotate-180' : ''}`}>
           <Image
-            src={dropdownOpen ? downChevronGradient : downChevronWhite}
+            src={
+              dropdownOpen || curPage === title
+                ? downChevronGradient
+                : downChevronWhite
+            }
             width={48}
             height={48}
             alt="chevron"
@@ -103,36 +127,19 @@ function Dropdown({ menuItem }) {
         }`}
       >
         <div className="flex w-max gap-10 rounded-md bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
-          {menuItem.dropdown.map((dropdownItem, index) => {
-            if (dropdownItem.type === 'list') {
-              return (
-                <div className="flex flex-col gap-4" key={dropdownItem.title}>
-                  {/* <p className="text-xl font-semibold text-white">
-                    {dropdownItem.title}
-                  </p> */}
-                  <div className="flex w-28 flex-col gap-4">
-                    {dropdownItem.items.map((item) => (
-                      <Link href={item.link} key={item.title}>
-                        <a className="group font-light">
-                          <span className="group-hover:gradient-text group-hover:gradient-2 text-white">
-                            {item.title}
-                          </span>
-                        </a>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            } else if (dropdownItem.type === 'route') {
-              return (
-                <Link href={dropdownItem.link} key={index}>
-                  <a className="hover:gradient-text hover:gradient-2 h-min text-xl font-semibold text-white">
-                    {dropdownItem.title}
-                  </a>
-                </Link>
-              );
-            }
-          })}
+          {dropdownColumns.map((col, i) => (
+            <div className="flex flex-col gap-4" key={`col-${i}`}>
+              {col.map((item) => {
+                return (
+                  <Link href={item.link} key={item.title}>
+                    <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
+                      {item.title}
+                    </a>
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </span>

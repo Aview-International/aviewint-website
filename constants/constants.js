@@ -615,6 +615,144 @@ export const CORPORATE_PAGE_FAQ = [
   },
 ];
 
+export const E_LEARNING_FAQ = [
+  {
+    question: 'Is my information secure?',
+    answer:
+      'Yes, the security of your information is of the utmost importance to us. We take all necessary measures to ensure the confidentiality of your eLearning content, including secure storage and strict access controls.',
+    _id: 'q1',
+  },
+  {
+    question: 'Can I translate different types of material?',
+    answer:
+      'Yes, we provide much more than eLearning translation services. Our solutions include presentations, audio recordings, and interactive activities. Just let us know your specific needs, and we will work with you to find the best solution.',
+    _id: 'q2',
+  },
+  {
+    question:
+      'Can I include notes or special requests with my eLearning material?',
+    answer:
+      'Yes, we welcome and encourage our clients to include any notes or special requests that they have for their eLearning content. This allows us to better understand your goals and ensure that the final product meets your expectations.',
+    _id: 'q3',
+  },
+  {
+    question: 'How long does it take?',
+    answer:
+      'The timeline for our eLearning translation services will depend on the complexity and size of your content, as well as the target language(s). We will provide you with an estimated timeline after our initial assessment and will work with you to meet your deadline.',
+    _id: 'q4',
+  },
+];
+
+export const VOICEOVER_FAQ = [
+  {
+    question: 'Are the voiceovers manual or A.I. generated?',
+    answer:
+      'Our translated voice-overs are done by professional voice actors. Looking for A.I.-generated translation? Contact us and we can set up a custom plan for you.',
+    _id: 'q1',
+  },
+  {
+    question: 'Who have you worked with?',
+    answer:
+      'We have been working with some of the largest media brands, venture capital funds, mental health associations, and many more. We have a wide depth of translators, dubbers, and editors who will fit your content.',
+    _id: 'q2',
+  },
+  {
+    question: 'Does AVIEW offer other services?',
+    answer: `1. Receive a translation file that can be uploaded directly to your videos. The file will be sent within 24 hours and will auto-match the audio from the video. Simply add the translations and target a new market.<br /><br/>
+    2. Voice-over Translations</br>
+    Receive your videos completely translated with voice-overs that match your subject's voice in the language of your choosing. Aview will edit and send this back within 48 hours.<br /><br/>
+    3. Short-form Content<br/>
+    Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok, and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
+    4. Document Translation: Get your business or technical documents translated by our certified professionals. We provide scientific, business, legal, and financial document translations.`,
+    _id: 'q3',
+  },
+];
+
+export const GENERATE_AVIEW_INPUT = [
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Name',
+    _id: 'name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Your name',
+  },
+  {
+    validator: (value) => urlValidator(value),
+    label: 'Channel Link',
+    _id: 'channel_url',
+    name: 'url',
+    type: 'text',
+    placeholder: 'URL to your social media channel',
+  },
+  {
+    validator: (value) => emailValidator(value),
+    label: 'Email Address',
+    _id: 'email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Your email address',
+  },
+];
+
+export const GENERATE_AVIEW_CHECKBOX = [
+  {
+    name: 'Translations/Subtitles',
+    label: 'Translations/Subtitles',
+    value: 'Translations/Subtitles',
+    tooltip:
+      'Receive a translation file that can be uploaded directly to your YouTube video.',
+  },
+  {
+    name: 'Dubbing',
+    label: 'Dubbing',
+    value: 'Dubbing',
+    tooltip:
+      'Receive your videos completely translated with voice-overs in the language of your choosing.',
+  },
+  {
+    name: 'Shorts',
+    label: 'Shorts',
+    value: 'Shorts',
+    tooltip:
+      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook.',
+  },
+];
+
+export const GENERATE_AVIEW_COMPANY_INPUT = [
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Name',
+    _id: 'name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Your name',
+  },
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Company',
+    _id: 'companyName',
+    name: 'companyName',
+    type: 'text',
+    placeholder: 'Company name',
+  },
+  {
+    validator: (value) => value.length >= 3,
+    label: 'Company Website',
+    _id: 'companyUrl',
+    name: 'companyUrl',
+    type: 'text',
+    placeholder: 'URL to company website',
+  },
+  {
+    validator: (value) => emailValidator(value),
+    label: 'Email Address',
+    _id: 'email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'Your email address',
+  },
+];
 export const CREATORS_SLIDERS = [
   {
     label: 'Uploads per month',
@@ -1007,47 +1145,50 @@ export const COUNTRIES = [
 
 export const WAITLIST_HOVER_ITEMS = [
   {
-   title: 'Discover Global Fans',
-   image: group,
-   description: 'Unlock new international audiences with our seamless translation and localization services. Aview\u0027s one-click solution ensures your content resonates worldwide, expanding your fan base like never before.'
+    title: 'Discover Global Fans',
+    image: group,
+    description:
+      'Unlock new international audiences with our seamless translation and localization services. Aview\u0027s one-click solution ensures your content resonates worldwide, expanding your fan base like never before.',
   },
   {
-   title: 'Effortless Expansion, Cost-Effective Growth',
-   image: clock,
-   description: 'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; we\u0027ll handle the rest.'
+    title: 'Effortless Expansion, Cost-Effective Growth',
+    image: clock,
+    description:
+      'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; we\u0027ll handle the rest.',
   },
   {
-   title: 'Brand Partnerships & Sponsorships Made Easy',
-   image: handshake,
-   description: 'Align your content with the perfect brand deals and sponsorship opportunities. Aview\u0027s global distribution network connects you with the right partners, maximizing your monetization potential across borders.'
-  }
+    title: 'Brand Partnerships & Sponsorships Made Easy',
+    image: handshake,
+    description:
+      'Align your content with the perfect brand deals and sponsorship opportunities. Aview\u0027s global distribution network connects you with the right partners, maximizing your monetization potential across borders.',
+  },
 ];
 
 export const WAITLIST_STAGGERED_ITEMS = [
   {
-   title: 'Step 1',
-   image: Step1,
-   description: 'We integrate your social media channels to one place'
+    title: 'Step 1',
+    image: Step1,
+    description: 'We integrate your social media channels to one place',
   },
   {
-   title: 'Step 2',
-   image: Step2,
-   description: 'Choose what audiences you want to reach'
+    title: 'Step 2',
+    image: Step2,
+    description: 'Choose what audiences you want to reach',
   },
   {
     title: 'Step 3',
     image: Step3,
-    description: 'Select what content you want monetized'
+    description: 'Select what content you want monetized',
   },
   {
     title: 'Step 4',
     image: Step4,
-    description: 'We distribute your content so you don’t have to'
+    description: 'We distribute your content so you don’t have to',
   },
   {
     title: 'Step 5',
     image: Step5,
-    description: 'Connect with international brands'
+    description: 'Connect with international brands',
   },
 ];
 
