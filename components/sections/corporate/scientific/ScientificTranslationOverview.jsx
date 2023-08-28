@@ -1,7 +1,6 @@
 import scientificArticles from '../../../../public/img/graphics/corporate/scientific-articles.png';
 import manuals from '../../../../public/img/graphics/corporate/manuals.png';
 import clinicalTrialReports from '../../../../public/img/graphics/corporate/clinical-trial-reports.png';
-import Image from 'next/image';
 import StaggeredTextAndGraphic from '../../../layout/StaggeredTextAndImage';
 
 const ITEMS = [
