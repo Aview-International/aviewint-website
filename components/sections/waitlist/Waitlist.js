@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Step3 from '../../../public/img/waitlist/Step3.svg';
 import HoverShowImageOrText from '../../layout/HoverShowImageOrText';
-import StaggeredTextAndImage from '../../layout/StaggeredTextAndImage';
+import StaggeredTextAndGraphic from '../../layout/StaggeredTextAndImage';
 import {
   WAITLIST_HOVER_ITEMS,
   WAITLIST_STAGGERED_ITEMS,
@@ -37,15 +37,15 @@ const Waitlist = () => {
 
   return (
     <>
-      <section className="mx-auto my-10 flex h-full w-[90%] flex-col gap-y-24 md:my-28 md:gap-y-40">
-        <div className="flex flex-col justify-between lg:flex-row">
-          <div className="mx-auto flex flex-col justify-start gap-y-4 text-white md:gap-y-6">
+      <section className="m-horizontal mt-12 lg:my-32">
+        <div className="flex flex-col justify-between md:mb-40 lg:flex-row">
+          <div className="mx-auto text-white">
             <h3 className="text-5xl font-bold md:text-7xl">
               Global Content{' '}
               <span className="md:block">Monetization: Reach</span>{' '}
               <span className="md:block">New Markets with Aview</span>
             </h3>
-            <p className="md:mb-8 md:text-lg">
+            <p className="mb-s5 mt-s2 md:mb-8 md:text-lg">
               Break language barriers, grow your fan base, and monetize
               <span className="md:block">
                 internationally. Join our exclusive waitlist today!
@@ -55,7 +55,7 @@ const Waitlist = () => {
           </div>
           <AboutCreator />
         </div>
-        <div className="flex flex-col items-center justify-center text-white">
+        <div className="md:my-25 my-s18 flex flex-col items-center justify-center text-white">
           <h3 className="mb-10 text-center text-5xl font-bold md:text-6xl">
             Empower your global react with Aview:
             <span className="md:block">
@@ -83,17 +83,17 @@ const Waitlist = () => {
               opportunities—all in one platform.&#8221;
             </span>
           </p>
-          <StaggeredTextAndImage
+          <StaggeredTextAndGraphic
             items={WAITLIST_STAGGERED_ITEMS}
             staggeredStyle="true"
           />
         </div>
-        <div className="gradient-2 h-full w-full rounded-xl p-s1.5 py-s3 md:p-0 md:py-s6">
+        <div className="gradient-2 mt-24 h-full w-full rounded-xl p-s1.5 py-s3 md:mt-40 md:p-0 md:py-s6">
           <p className="mb-4 p-2 text-center text-3xl font-bold text-white md:p-0 md:text-4xl">
             Want to go global? Join the{' '}
             <span className="md:block">waitlist now to reserve a spot!</span>
           </p>
-          <div className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/4 md:flex-row md:gap-y-4 md:gap-x-2">
+          <div className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/4 md:flex-row md:gap-x-2 md:gap-y-4">
             <FormInput
               _id="email"
               onChange={(option) => setEmail(option.target.value)}
