@@ -15,8 +15,8 @@ export default function StaggeredTextAndGraphic({ items, staggeredStyle }) {
               key={item.title}
             >
               <div
-                className={`order-2 w-full md:w-[50%] md:pl-s10 ${
-                  i % 2 != 0 ? 'md:order-1' : ''
+                className={`order-1 w-full md:w-[50%] md:pl-s10 ${
+                  i % 2 != 0 ? '' : 'md:order-2'
                 }`}
               >
                 <h3 className="gradient-text gradient-1 mb-s1 text-2xl font-bold">
@@ -25,8 +25,8 @@ export default function StaggeredTextAndGraphic({ items, staggeredStyle }) {
                 <p className="body w-[65%]">{item.description}</p>
               </div>
               <div
-                className={`group relative order-1 mx-auto h-full w-full cursor-pointer md:w-[45%] ${
-                  i % 2 != 0 ? 'order-2' : ''
+                className={`group relative order-2 mx-auto h-full w-full cursor-pointer md:w-[45%] ${
+                  i % 2 != 0 ? '' : 'md:order-1'
                 }`}
               >
                 <Image src={item.image} alt={item.title} />
@@ -46,15 +46,15 @@ export default function StaggeredTextAndGraphic({ items, staggeredStyle }) {
               className="grid items-center gap-s2.5 md:grid-cols-2"
               key={item.title}
             >
-              <div className={`order-2 ${i % 2 === 0 ? 'md:order-1' : ''}`}>
+              <div className={`order-1 ${i % 2 === 0 ? '' : 'md:order-2'}`}>
                 <h3 className="mb-s2 text-5xl font-bold text-white">
                   {item.title}
                 </h3>
                 <p className="body">{item.description}</p>
               </div>
               <div
-                className={`order-1 mx-auto w-[240px] md:w-[300px] ${
-                  i % 2 === 0 ? 'order-2' : ''
+                className={`order-2 mx-auto w-[240px] md:w-[300px] ${
+                  i % 2 === 0 ? '' : 'md:order-1'
                 }`}
               >
                 <Image src={item.image} alt={item.title} />
