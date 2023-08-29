@@ -72,7 +72,7 @@ const Register = () => {
           />
         </div>
         <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white  md:mt-s12">
-          <div className="fixed top-2/4 left-2/4 w-[min(380px,90%)]  -translate-x-2/4 -translate-y-2/4">
+          <div className="fixed left-2/4 top-2/4 w-[min(380px,90%)]  -translate-x-2/4 -translate-y-2/4">
             <div data-aos="zoom-in-up">
               <h2 className="text-center text-7xl font-bold md:text-8xl">
                 Sign Up

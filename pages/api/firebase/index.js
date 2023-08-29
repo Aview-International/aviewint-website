@@ -66,6 +66,7 @@ export const createNewUser = async (
         firstName,
         lastName,
         picture,
+        updatedAt: Date.now(),
       };
       const updates = {
         [`users/${_id}`]: postData,
@@ -78,6 +79,8 @@ export const createNewUser = async (
         firstName,
         lastName,
         picture,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       });
     }
   });
