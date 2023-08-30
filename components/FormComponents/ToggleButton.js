@@ -8,7 +8,7 @@ const ToggleButton = ({ handleChange, isChecked }) => {
       <input
         type="checkbox"
         className="invisible"
-        checked={isChecked}
+        defaultChecked={isChecked}
         onChange={handleChange}
       />
       <div
