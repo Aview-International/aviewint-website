@@ -34,6 +34,18 @@ export const OnboardingStep2 = ({ userData }) => {
     });
   }, [userData]);
 
+  useEffect(() => {
+   if(payload.monthlyView == null && payload.categories == null && payload.averageVideoDuration == null && payload.defaultLanguage == null) return;
+   const handleWarnUser = (event) => {
+     event.preventDefault();
+     return (event.returnValue = '');
+   }
+   window.addEventListener('beforeunload', handleWarnUser, { capture: true });
+   return () => {
+    window.removeEventListener('beforeunload', handleWarnUser, { capture: true });
+   }
+  },[payload]);
+
   const isFormValid = () =>
     !!payload.monthlyView &&
     !!payload.categories.length >= 1 &&
