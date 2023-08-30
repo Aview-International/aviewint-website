@@ -7,7 +7,6 @@ import SEO from '../../components/SEO/SEO';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import ContentCreators from '../../components/sections/home/ContentCreators';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
-import FAQ from '../../components/sections/home/FAQ';
 import OurCreators from '../../components/sections/creators/OurCreatorsServices';
 import CreatorTranslations from '../../components/sections/creators/CreatorTranslations';
 import HowItWorks from '../../components/sections/reused/HowItWorks';
@@ -35,7 +34,6 @@ const Creators = () => {
       <BenefitsOfTranslations />
       <InternationalGrowth />
       <StartGenerating formId="t5dW3MSY" />
-      <FAQ />
       <FeaturedBlogs />
       <Footer curPage="Creators" />
       <Blobs />
