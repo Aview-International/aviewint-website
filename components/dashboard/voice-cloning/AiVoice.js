@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import AudioWave from './AudioWave';
 import OnboardingButton from '../../Onboarding/button';
-import { uploadNewVoiceSamples } from '../../../services/apis';
 
 const AiVoice = () => {
   const [micState, setMicState] = useState('waiting');
@@ -26,7 +25,7 @@ const AiVoice = () => {
   const uploadVoiceSamples = async () => {
     try {
       setIsLoading(true);
-      await uploadNewVoiceSamples(recordings);
+      // await uploadNewVoiceSamples(recordings);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
