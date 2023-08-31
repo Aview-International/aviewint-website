@@ -43,6 +43,8 @@ const Login = () => {
         const path = new URL(redirectUrl);
         router.push(path.pathname);
         Cookies.remove('redirectUrl');
+      } else {
+        router.push('/dashboard');
       }
     }
   };
