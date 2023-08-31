@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
-import record from '../../public/img/icons/record.svg';
+import record from '../../../public/img/icons/record.svg';
 import WaveSurfer from 'wavesurfer.js';
 import RecordPlugin from 'wavesurfer.js/dist/plugins/record';
 import Image from 'next/image';

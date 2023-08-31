@@ -20,9 +20,16 @@ const authStatus = (token) => {
 
 export function middleware(request) {
   const token = request.cookies.get('token');
+
   if (!authStatus(token)) {
+    const currentUrl = request.url;
     request.cookies.delete('token');
-    return NextResponse.redirect(new URL('/login', request.url));
+
+    const response = NextResponse.redirect(
+      new URL('/login?rdr=true', request.url)
+    );
+    response.cookies.set('redirectUrl', currentUrl);
+    return response;
   }
 }
 

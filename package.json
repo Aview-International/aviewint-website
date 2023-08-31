@@ -34,8 +34,7 @@
     "socket.io-client": "^4.7.2",
     "stripe": "^11.15.0",
     "uuid": "^9.0.0",
-    "wavesurfer-react": "^2.2.3",
-    "wavesurfer.js": "^7.1.5"
+    "wavesurfer.js": "^7.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",

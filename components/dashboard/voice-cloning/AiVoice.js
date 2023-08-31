@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import AudioWave from './AudioWave';
-import OnboardingButton from '../Onboarding/button';
-import { uploadNewVoiceSamples } from '../../services/apis';
+import OnboardingButton from '../../Onboarding/button';
+import { uploadNewVoiceSamples } from '../../../services/apis';
 
 const AiVoice = () => {
   const [micState, setMicState] = useState('waiting');
