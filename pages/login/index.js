@@ -37,7 +37,13 @@ const Login = () => {
           uid: _tokenResponse.localId,
         })
       );
-      router.push('/dashboard');
+      const { rdr } = router.query;
+      if (rdr) {
+        const redirectUrl = Cookies.get('redirectUrl');
+        const path = new URL(redirectUrl);
+        router.push(path.pathname);
+        Cookies.remove('redirectUrl');
+      }
     }
   };
 

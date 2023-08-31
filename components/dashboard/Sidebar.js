@@ -75,7 +75,6 @@ const Profile = ({ userInfo, isOpen }) => {
 
 const Navlink = ({ isOpen }) => {
   const { route } = useRouter();
-
   return (
     <>
       <div className="w-full text-sm">
@@ -86,19 +85,21 @@ const Navlink = ({ isOpen }) => {
           >
             <a
               className={`group relative mb-s2 flex items-center rounded-[4px] py-s1 px-s3 hover:bg-[#fcfcfc] hover:bg-opacity-10 ${
-                route === link.route && 'bg-[#fcfcfc] bg-opacity-10'
+                route === link.route() && 'bg-[#fcfcfc] bg-opacity-10'
               }`}
             >
               <span
                 className={`gradient-1 absolute right-0 top-1/2 block h-4 w-1 -translate-y-1/2 rounded-md group-hover:animate-dropin ${
-                  route === link.route
+                  route === link.route()
                     ? 'visible'
                     : 'invisible group-hover:visible'
                 }`}
               ></span>
               <span
                 className={`mr-5 group-hover:animate-popup ${
-                  route === link.route ? 'animate-popup' : 'brightness-0 invert'
+                  route === link.route()
+                    ? 'animate-popup'
+                    : 'brightness-0 invert'
                 }`}
               >
                 <Image
@@ -121,7 +122,7 @@ const Navlink = ({ isOpen }) => {
                     isOpen
                       ? ''
                       : 'hidden rounded-md bg-white-transparent p-s1 group-hover:inline-block'
-                  } ${route === link.route ? 'text-[#fcfcfc]' : ''}`}
+                  } ${route === link.route() ? 'text-[#fcfcfc]' : ''}`}
                 >
                   {link.text}
                 </span>
