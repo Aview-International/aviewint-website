@@ -59,7 +59,7 @@ const SelectAIOption = ({ setOption }) => {
             </div>
           </div>
 
-          <div className="ml-s2 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2">
+          <div className="mt-s3 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2 md:mt-0 md:ml-s2">
             <p>
               Uploaded pre-recorded voice samples of you speaking clearly that
               is devoid of noise and loud background. Upload at least 5 samples
