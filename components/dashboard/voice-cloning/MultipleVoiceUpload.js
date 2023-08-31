@@ -57,7 +57,7 @@ const MultipleVoiceUpload = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2">
+      <div className="flex flex-col md:grid md:grid-cols-2">
         {speakers.map((speaker, i) => (
           <Speaker
             key={i}
