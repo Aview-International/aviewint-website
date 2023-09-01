@@ -131,3 +131,21 @@ export const uploadSingleVoiceSamples = async (audios, userId) => {
     }
   );
 };
+
+export const uploadRecordedVoice = async (audios, userId) => {
+  let formData = new FormData();
+
+  for (const audio of audios) {
+    formData.append('voiceSample', audio);
+  }
+
+  return await axios.post(
+    baseUrl + 'dubbing/recorded-voice-cloning?userId=' + userId,
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
+};

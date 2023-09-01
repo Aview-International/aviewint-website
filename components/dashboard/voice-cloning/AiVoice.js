@@ -1,11 +1,18 @@
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import AudioWave from './AudioWave';
 import OnboardingButton from '../../Onboarding/button';
+import { uploadRecordedVoice } from '../../../services/apis';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const AiVoice = () => {
+  const router = useRouter();
   const [micState, setMicState] = useState('waiting');
   const [isLoading, setIsLoading] = useState(false);
+  const userId = useSelector((state) => state.user.uid);
   const [recordings, setIsRecordings] = useState([]);
+  const [destroyMic, setDestroyMic] = useState(false);
 
   const getPermissionInitializeRecorder = async () => {
     try {
@@ -25,18 +32,16 @@ const AiVoice = () => {
   const uploadVoiceSamples = async () => {
     try {
       setIsLoading(true);
-      // await uploadNewVoiceSamples(recordings);
+      await uploadRecordedVoice(recordings, userId);
+      toast.success('Voice samples saved successfully');
       setIsLoading(false);
+      setDestroyMic(true);
+      router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
       console.log(error);
     }
   };
-
-  const recordingPercentage = useMemo(() => {
-    if (recordings.length < 5) return (recordings.length * 100) / 5;
-    else return (recordings.length * 100) / 25;
-  }, [recordings]);
 
   return (
     <>
@@ -54,11 +59,16 @@ const AiVoice = () => {
             microphone usage 😪🎙️
           </p>
         )}
-        {micState === 'allowed' && (
+        {micState === 'allowed' && recordings.length < 5 ? (
           <AudioWave
             recordings={recordings}
             setIsRecordings={setIsRecordings}
+            destroyMic={destroyMic}
           />
+        ) : (
+          <p className="w-full py-s2 text-center text-xl">
+            Voice Recording complete 🎤🔥
+          </p>
         )}
       </div>
 
@@ -66,13 +76,11 @@ const AiVoice = () => {
         <Fragment>
           <div
             className="gradient-1 my-s1 rounded-2xl p-1 transition-all"
-            style={{ width: recordingPercentage + '%' }}
+            style={{ width: (recordings.length * 100) / 5 + '%' }}
           ></div>
           <div className="flex flex-row justify-between text-xs">
-            <p>{recordingPercentage}%</p>
-            <p>
-              {recordings.length} / {recordings.length < 5 ? '5' : '25'}
-            </p>
+            <p>{(recordings.length * 100) / 5}%</p>
+            <p>{recordings.length} / 5</p>
           </div>
         </Fragment>
       )}
