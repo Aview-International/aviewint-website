@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
@@ -7,7 +7,6 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-left.svg';
 import rightChevronIcon from '../../public/img/icons/chevron-right.svg';
-
 
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
@@ -68,11 +67,11 @@ export default function MobileMenu() {
       >
         <Button
           purpose="route"
-          route="/waitlist"
+          route="/login"
           type="secondary"
           fullWidth={true}
         >
-          Join the Waitlist
+          Login
         </Button>
         {/* <Button
           purpose="route"
