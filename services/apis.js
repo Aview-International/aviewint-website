@@ -149,3 +149,17 @@ export const uploadRecordedVoice = async (audios, userId) => {
     }
   );
 };
+
+export const testVoiceCloning = async (text, voiceId) => {
+  const body = {
+    text,
+    voiceId,
+  };
+  const response = await axios.post(
+    baseUrl + 'dubbing/test-voice-cloning',
+    body,
+    { responseType: 'blob' }
+  );
+
+  return response;
+};

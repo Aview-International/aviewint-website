@@ -1,17 +1,22 @@
 import { toast } from 'react-toastify';
 
 const ErrorHandler = (error, message) => {
+  try {
+  } catch (error) {}
   if (!error) {
     toast.error(message || 'Oops, something went wrong');
     return;
   }
-  const { data } = error.response;
-  if (!!data) {
-    if (typeof data.message === 'string') {
-      toast.error(data.message);
-    } else toast.error(data.message[0]);
+
+  if (!error.response?.data) {
+    toast.error(error.message);
     return;
-  } else toast.error(error.message);
+  } else {
+    if (typeof error.response.data.message === 'string') {
+      toast.error(error.response.data.message);
+    } else toast.error(error.response.data.message[0]);
+    return;
+  }
 };
 
 export default ErrorHandler;
