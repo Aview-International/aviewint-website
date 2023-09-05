@@ -7,6 +7,7 @@ import {
   getInstagramProfile,
   getInstagramShortAccess,
 } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
 
 const InstagramConnection = () => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const InstagramConnection = () => {
       );
       router.push('/onboarding?stage=4');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

@@ -6,6 +6,7 @@ import { LANGUAGES, SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
+import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep6 = ({ userData }) => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const OnboardingStep6 = ({ userData }) => {
       updateRequiredServices({ languages }, userData.uid);
       router.push('/onboarding?stage=7');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

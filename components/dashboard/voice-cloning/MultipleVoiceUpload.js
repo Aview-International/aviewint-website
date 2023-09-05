@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { uploadMultipleVoiceSamples } from '../../../services/apis';
 import { useRouter } from 'next/router';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const MultipleVoiceUpload = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const MultipleVoiceUpload = () => {
       router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

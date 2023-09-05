@@ -8,6 +8,7 @@ import FormInput from '../../FormComponents/FormInput';
 import OnboardingButton from '../../Onboarding/button';
 import { emailValidator } from '../../../utils/regex';
 import { welcomeNewUser } from '../../../services/apis';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const YouCreateWeTranslate = () => {
   const [email, setEmail] = useState('');
@@ -27,7 +28,7 @@ const YouCreateWeTranslate = () => {
       await welcomeNewUser(email);
       setSideEffects({ ...sideEffects, showText: true });
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

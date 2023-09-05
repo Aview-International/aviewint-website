@@ -11,6 +11,7 @@ import {
   CATEGORIES,
   LANGUAGES,
 } from '../../constants/constants';
+import ErrorHandler from '../../utils/errorHandler';
 
 export const OnboardingStep2 = ({ userData }) => {
   const router = useRouter();
@@ -35,16 +36,24 @@ export const OnboardingStep2 = ({ userData }) => {
   }, [userData]);
 
   useEffect(() => {
-   if(payload.monthlyView == null && payload.categories == null && payload.averageVideoDuration == null && payload.defaultLanguage == null) return;
-   const handleWarnUser = (event) => {
-     event.preventDefault();
-     return (event.returnValue = '');
-   }
-   window.addEventListener('beforeunload', handleWarnUser, { capture: true });
-   return () => {
-    window.removeEventListener('beforeunload', handleWarnUser, { capture: true });
-   }
-  },[payload]);
+    if (
+      payload.monthlyView == null &&
+      payload.categories == null &&
+      payload.averageVideoDuration == null &&
+      payload.defaultLanguage == null
+    )
+      return;
+    const handleWarnUser = (event) => {
+      event.preventDefault();
+      return (event.returnValue = '');
+    };
+    window.addEventListener('beforeunload', handleWarnUser, { capture: true });
+    return () => {
+      window.removeEventListener('beforeunload', handleWarnUser, {
+        capture: true,
+      });
+    };
+  }, [payload]);
 
   const isFormValid = () =>
     !!payload.monthlyView &&
@@ -60,7 +69,7 @@ export const OnboardingStep2 = ({ userData }) => {
       await updateRequiredServices(payload, Cookies.get('uid'));
       router.push('/onboarding?stage=3');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
