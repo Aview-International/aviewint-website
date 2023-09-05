@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Border from '../UI/Border';
 import { useSelector } from 'react-redux';
 import { uploadVideo } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
 
 const UploadVideo = ({
   setVideo,
@@ -27,7 +28,7 @@ const UploadVideo = ({
       setIsLoading(false);
       window.location.href = res.data.downloadUrl;
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

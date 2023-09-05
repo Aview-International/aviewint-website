@@ -5,8 +5,7 @@ import { useState } from 'react';
 import AiVoice from '../../../components/dashboard/voice-cloning/AiVoice';
 import UploadVoiceSamples from '../../../components/dashboard/voice-cloning/UploadVoiceSamples';
 import { useSelector } from 'react-redux';
-import Graphics from '../../../public/img/graphics/translator-landing.png';
-import Image from 'next/image';
+import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoiceSample';
 
 const AIvoice = () => {
   const [option, setOption] = useState('');
@@ -31,16 +30,7 @@ const SelectAIOption = ({ setOption }) => {
   return (
     <div>
       {voiceId ? (
-        <div>
-          <p className="text-center text-xl">
-            {Object.keys(voiceId).length} voice{' '}
-            {Object.keys(voiceId).length > 1 ? 'samples' : 'sample'} currently
-            available
-          </p>
-          <div className="mx-auto my-s3 block w-3/5">
-            <Image src={Graphics} alt="" layout="responsive" />
-          </div>
-        </div>
+        <PlayVoiceSample voiceId={voiceId} />
       ) : (
         <div className="mt-s8 flex flex-col md:flex-row" data-aos="zoom-in-up">
           <div className="flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2">

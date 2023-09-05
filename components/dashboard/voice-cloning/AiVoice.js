@@ -5,6 +5,7 @@ import { uploadRecordedVoice } from '../../../services/apis';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const AiVoice = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const AiVoice = () => {
       router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
