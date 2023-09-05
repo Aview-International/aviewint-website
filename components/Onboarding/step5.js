@@ -5,6 +5,7 @@ import OnboardingButton from './button';
 import Image from 'next/image';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
+import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep5 = ({ userData }) => {
   const router = useRouter();
@@ -49,7 +50,7 @@ const OnboardingStep5 = ({ userData }) => {
     try {
       await updateRequiredServices(payload, Cookies.get('uid'));
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
     router.push('/onboarding?stage=6');
   };

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ONBOARDING_STAGE_3 } from '../../constants/constants';
 import OnboardingButton from './button';
 import Cookies from 'js-cookie';
+import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const OnboardingStep3 = ({ userData }) => {
       await updateRequiredServices({ usage }, Cookies.get('uid'));
       router.push('/onboarding?stage=4');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

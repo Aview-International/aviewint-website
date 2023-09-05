@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
 import { getChannelVideos } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const DashboardHome = () => {
       }));
       dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
@@ -71,7 +72,7 @@ const DashboardHome = () => {
         setInstagramVideos({ dataFetched: true, videos: instagramVideos })
       );
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
@@ -115,7 +116,7 @@ const DashboardHome = () => {
       toast('Succesfully submitted tasks');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

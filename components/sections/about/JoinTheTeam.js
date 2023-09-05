@@ -12,6 +12,7 @@ import Form from '../../FormComponents/Form';
 import { submitFile } from '../../../utils/submit-form';
 import { useRouter } from 'next/router';
 import UploadFile from '../../FormComponents/UploadFile';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const JoinTheTeam = () => {
   let router = useRouter();
@@ -40,7 +41,7 @@ const JoinTheTeam = () => {
       submitFile('team-applications', data);
       router.push('/success');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

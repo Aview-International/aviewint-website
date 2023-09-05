@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { uploadSingleVoiceSamples } from '../../../services/apis';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const SingleVoiceUpload = () => {
   const [audios, setAudios] = useState([]);
@@ -36,7 +37,7 @@ const SingleVoiceUpload = () => {
       router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

@@ -13,6 +13,7 @@ import {
   setMessages,
   setNewMessageDot,
 } from '../../../store/reducers/messages.reducer';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const SingleMessage = ({ timeStamp, message, sender, user }) => (
   <div
@@ -60,7 +61,7 @@ const Messages = () => {
       const res = await getUserMessages(uid);
       dispatch(setMessages(res));
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

@@ -8,6 +8,7 @@ import Button from '../../components/UI/Button';
 import comingSoon from '../../public/img/graphics/coming-soon.png';
 import { emailValidator } from '../../utils/regex';
 import { submitForm } from '../../utils/submit-form';
+import ErrorHandler from '../../utils/errorHandler';
 
 export default function ComingSoon() {
   const [mail, setMail] = useState({
@@ -25,7 +26,7 @@ export default function ComingSoon() {
       submitForm('newsletter', { email: mail.email });
       setShowText(true);
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
   function emailChangeHandler(event) {
