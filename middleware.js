@@ -34,5 +34,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/onboarding'],
+  matcher: ['/dashboard/:path*', '/onboarding', '/onboard/new-voice/creator-unique'],
 };
