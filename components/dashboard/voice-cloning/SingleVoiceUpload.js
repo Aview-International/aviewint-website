@@ -52,7 +52,7 @@ const SingleVoiceUpload = () => {
             <Image src={UploadIcon} alt="Upload" width={40} height={40} />
             <input
               type="file"
-              accept="audio/mp3, audio/mpeg, audio/webm"
+              accept="audio/mp3, audio/mpeg, audio/wav"
               id="upload"
               className="hidden"
               multiple
