@@ -2,22 +2,42 @@ import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
-import Facebook from '../../public/img/icons/facebook-logo-onboarding.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../public/loaders/ButtonLoader';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
+import FormInput from '../../components/FormComponents/FormInput';
+import { emailValidator } from '../../utils/regex';
+import OnboardingButton from '../../components/Onboarding/button';
+import {
+  getAuth,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from 'firebase/auth';
+import { singleSignOnLogin } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
 
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState({
+    google: false,
+    email: false,
+    hasSubmitted: false,
+  });
+
+  useEffect(() => {
+    const { query } = router;
+    if (query.apiKey && query.oobCode && query.mode === 'signIn')
+      handleSSOWithCode();
+  }, [router.query]);
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -37,22 +57,46 @@ const Login = () => {
           uid: _tokenResponse.localId,
         })
       );
-      const { rdr } = router.query;
-      if (rdr) {
-        const redirectUrl = Cookies.get('redirectUrl');
-        const path = new URL(redirectUrl);
-        router.push(path.pathname);
-        Cookies.remove('redirectUrl');
-      } else {
-        router.push('/dashboard');
-      }
+      router.push('/dashboard');
+    }
+  };
+
+  const handleSSOWithCode = () => {
+    const auth = getAuth();
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      let email = window.localStorage.getItem('emailForSignIn');
+      if (!email)
+        email = window.prompt('Please provide your email for confirmation');
+
+      signInWithEmailLink(auth, email, window.location.href)
+        .then((result) => {
+          window.localStorage.removeItem('emailForSignIn');
+          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
+          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
+          router.push('/dashboard');
+        })
+        .catch((error) => {
+          ErrorHandler(error);
+        });
+    }
+  };
+
+  const handleSSO = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading({ ...isLoading, email: true });
+      localStorage.setItem('emailForSignIn', email);
+      await singleSignOnLogin(email, window.location.origin);
+      setIsLoading({ ...isLoading, hasSubmitted: true });
+    } catch (error) {
+      ErrorHandler(error);
     }
   };
 
   return (
     <>
-      <PageTitle title="Login - Aview International" />
-      <div>
+      <PageTitle title="Login" />
+      <div className="">
         <div className="flex items-center py-6 pl-s14">
           <Image
             src={aviewLogo}
@@ -66,20 +110,21 @@ const Login = () => {
             <h2 className="text-center text-7xl font-bold md:text-8xl">
               Log In
             </h2>
-            <p className="my-s3 text-center text-lg md:text-xl">
+            <p className="my-s3 text-center text-lg">
               Don&apos;t have an account?
               <br /> Get started{' '}
               <Link href="/register">
                 <a className="underline">here</a>
               </Link>
             </p>
+
             <Shadow classes="w-full mb-4">
               <Border borderRadius="full" classes="w-full">
                 <button
                   className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
                   onClick={handleSubmit}
                 >
-                  {isLoading ? (
+                  {isLoading.google ? (
                     <ButtonLoader />
                   ) : (
                     <>
@@ -97,21 +142,34 @@ const Login = () => {
                 </button>
               </Border>
             </Shadow>
-            <Shadow classes="w-full">
-              <Border borderRadius="full" classes="w-full">
-                <button className="align-center flex w-full justify-center rounded-full bg-black p-2 text-lg text-white md:p-3">
-                  <span className="flex items-center justify-center pr-s1">
-                    <Image
-                      src={Facebook}
-                      alt="Facebook"
-                      width={20}
-                      height={20}
-                    />
-                  </span>
-                  Continue with Facebook
-                </button>
-              </Border>
-            </Shadow>
+
+            <p className="my-s2 text-center">or</p>
+
+            {!isLoading.hasSubmitted ? (
+              <form onSubmit={handleSSO}>
+                <FormInput
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  isValid={emailValidator(email)}
+                  hideCheckmark
+                  extraClasses="mb-4"
+                  label="Email Address"
+                  type="email"
+                />
+                {emailValidator(email) && (
+                  <OnboardingButton theme="light" isLoading={isLoading.email}>
+                    Continue
+                  </OnboardingButton>
+                )}
+              </form>
+            ) : (
+              <p className="text-center text-xl">
+                An email is on the way 🚀
+                <br />
+                Check your inbox to proceed
+              </p>
+            )}
           </div>
         </div>
       </div>

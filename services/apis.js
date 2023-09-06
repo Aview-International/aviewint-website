@@ -7,11 +7,11 @@ export const welcomeNewUser = async (email) =>
     recipient: email,
   });
 
-export const singleSignOnRegister = async (email) =>
-  await axios.post(baseUrl + 'email/register', { email });
+export const singleSignOnRegister = async (email, origin) =>
+  await axios.post(baseUrl + 'email/register', { email, origin });
 
-export const singleSignOn = async (email) =>
-  await axios.post(baseUrl + 'email/login', { email });
+export const singleSignOnLogin = async (email, origin) =>
+  await axios.post(baseUrl + 'email/login', { email, origin });
 
 export const transcribeSocialLink = async (body) =>
   await axios.post(baseUrl + 'transcription/social', body);
