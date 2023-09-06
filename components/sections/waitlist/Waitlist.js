@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Step3 from '../../../public/img/waitlist/Step3.svg';
 import HoverShowImageOrText from '../../layout/HoverShowImageOrText';
 import StaggeredTextAndGraphic from '../../layout/StaggeredTextAndImage';
@@ -6,38 +6,22 @@ import {
   WAITLIST_HOVER_ITEMS,
   WAITLIST_STAGGERED_ITEMS,
 } from '../../../constants/constants';
-import FormInput from '../../FormComponents/FormInput';
 import Button from '../../UI/Button';
 import WaitlistImages from './WaitlistImages';
 import AboutCreator from './AboutCreator';
-import { useRouter } from 'next/router';
-import { welcomeNewUser } from '../../../services/apis';
-import ErrorHandler from '../../../utils/errorHandler';
-import { emailValidator } from '../../../utils/regex';
 
 const Waitlist = () => {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [sideEffects, setSideEffects] = useState({
-    hasSubmitted: false,
-    isLoading: false,
-  });
-
+  const scrollRef = useRef(null);
+  
   const handleSubmit = async () => {
-    setSideEffects({ ...sideEffects, hasSubmitted: true });
-    if (!emailValidator(email)) return;
-    setSideEffects({ ...sideEffects, isLoading: true });
-    try {
-      await welcomeNewUser(email);
-      router.push('/success');
-    } catch (error) {
-      ErrorHandler(error);
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <>
-      <section className="m-horizontal mt-12 lg:my-32">
+      <section className="m-horizontal mt-12 lg:my-32" ref={scrollRef}>
         <div className="flex flex-col justify-between md:mb-40 lg:flex-row">
           <div className="mx-auto text-white">
             <h3 className="text-5xl font-bold md:text-7xl">
@@ -93,23 +77,10 @@ const Waitlist = () => {
             Want to go global? Join the{' '}
             <span className="md:block">waitlist now to reserve a spot!</span>
           </p>
-          <div className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-2/4 md:flex-row md:gap-x-2 md:gap-y-4">
-            <FormInput
-              _id="email"
-              onChange={(option) => setEmail(option.target.value)}
-              placeholder="Enter your email here"
-              value={email}
-              name="email"
-              hasSubmitted={sideEffects.hasSubmitted}
-              isValid={emailValidator(email)}
-              type="email"
-              extraClasses=""
-            />
-            <div>
-              <Button type="tertiary" purpose="onClick" onClick={handleSubmit}>
+          <div className="mx-auto h-full w-full flex justify-center gap-y-4">
+            <Button type="tertiary" purpose="onClick" onClick={handleSubmit}>
                 Join Waitlist
-              </Button>
-            </div>
+            </Button>
           </div>
         </div>
       </section>
