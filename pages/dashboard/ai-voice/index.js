@@ -6,15 +6,32 @@ import AiVoice from '../../../components/dashboard/voice-cloning/AiVoice';
 import UploadVoiceSamples from '../../../components/dashboard/voice-cloning/UploadVoiceSamples';
 import { useSelector } from 'react-redux';
 import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoiceSample';
+import Arrow from '../../../public/img/icons/arrow-right.svg';
+import Image from 'next/image';
 
 const AIvoice = () => {
   const [option, setOption] = useState('');
 
   return (
     <>
-      <PageTitle title="Upload Video" />
+      <PageTitle title="AI Voice Cloning" />
       <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
         <div className="container mx-auto w-[95%] py-10 md:py-16 lg:w-4/5">
+          {option && (
+            <button
+              className="mb-s4 flex items-center hover:underline"
+              onClick={() => setOption('')}
+            >
+              <Image
+                src={Arrow}
+                alt=""
+                className="rotate-180"
+                width={18}
+                height={18}
+              />
+              <span>Go back</span>
+            </button>
+          )}
           {!option && <SelectAIOption setOption={setOption} />}
           {option === 'record' && <AiVoice />}
           {option === 'upload' && <UploadVoiceSamples />}
@@ -25,12 +42,12 @@ const AIvoice = () => {
 };
 
 const SelectAIOption = ({ setOption }) => {
-  const { voiceId } = useSelector((state) => state.user);
+  const { voiceId, uid } = useSelector((state) => state.user);
 
   return (
     <div>
       {voiceId ? (
-        <PlayVoiceSample voiceId={voiceId} />
+        <PlayVoiceSample voiceId={voiceId} uid={uid} />
       ) : (
         <div className="mt-s8 flex flex-col md:flex-row" data-aos="zoom-in-up">
           <div className="flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2">

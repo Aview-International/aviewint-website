@@ -28,6 +28,9 @@ const AiVoice = () => {
 
   useEffect(() => {
     getPermissionInitializeRecorder();
+    return () => {
+      setDestroyMic(true);
+    };
   }, []);
 
   const uploadVoiceSamples = async () => {

@@ -3,19 +3,13 @@ import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import OnboardingButton from '../../../components/Onboarding/button';
 import PageTitle from '../../../components/SEO/PageTitle';
 import Blobs from '../../../components/UI/Blobs';
-import Button from '../../../components/UI/Button';
-import Visa from '../../../public/img/icons/visa.svg';
 import Stripe from '../../../public/img/icons/stripe.svg';
 import { useEffect, useState } from 'react';
-import { PaymentElement } from '@stripe/react-stripe-js';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { getAllPayments } from '../../api/firebase';
 import { useSelector } from 'react-redux';
-// import { loadStripe } from '@stripe/stripe-js';
-
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEYS);
 
 const Billing = () => {
   const userInfo = useSelector((state) => state.user);
@@ -87,9 +81,7 @@ const BillingDetails = ({ userInfo }) => {
           </div>
         </div>
         <div className="flex items-center">
-          <span className="text-2xl">
-            Current Bill : $ {userInfo.charge ?? 12}
-          </span>
+          <span className="text-2xl">Current Bill : $0</span>
           <div className="pl-s3">
             <form action="/api/checkout_sessions" method="POST">
               <input type="hidden" value={userInfo.email} name="email" />
@@ -100,9 +92,7 @@ const BillingDetails = ({ userInfo }) => {
                 name="charge"
               />
               <input type="hidden" value={1000} name="quantity" />
-              <Button purpose="submit" type="secondary">
-                Pay Now
-              </Button>
+              <OnboardingButton disabled>Pay Now</OnboardingButton>
             </form>
           </div>
         </div>
@@ -112,62 +102,6 @@ const BillingDetails = ({ userInfo }) => {
 };
 
 const Transactions = ({ payments }) => {
-  const TableData = [
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-    {
-      date: '11/26/2022',
-      services: 'Translation, short, dubs, distribution',
-      payment: 'Visa ending in 6099',
-      total: '$40.00',
-    },
-  ];
   return (
     <div className="mt-s4 text-white">
       <h3 className="mb-s2 text-2xl font-bold">Transactions</h3>
@@ -181,17 +115,21 @@ const Transactions = ({ payments }) => {
               <th className="pb-s2">Amount</th>
             </tr>
           </thead>
-          <tbody>
-            {payments.map((data, index) => (
-              <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
-                <td className="py-s3">{data.date}</td>
-                <td className="py-s3">{data.time}</td>
-                <td className="py-s3">{data.services}</td>
-                <td className="py-s3">${data.amount}</td>
-              </tr>
+          {payments.length > 0 &&
+            payments.map((data, index) => (
+              <tbody>
+                <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
+                  <td className="py-s3">{data.date}</td>
+                  <td className="py-s3">{data.time}</td>
+                  <td className="py-s3">{data.services}</td>
+                  <td className="py-s3">${data.amount}</td>
+                </tr>
+              </tbody>
             ))}
-          </tbody>
         </table>
+        <p className="my-s2 text-center text-xl">
+          No transaction record available
+        </p>
       </div>
     </div>
   );
