@@ -115,17 +115,17 @@ const Transactions = ({ payments }) => {
               <th className="pb-s2">Amount</th>
             </tr>
           </thead>
-          {payments.length > 0 &&
-            payments.map((data, index) => (
-              <tbody>
+          <tbody>
+            {payments.length > 0 &&
+              payments.map((data, index) => (
                 <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
                   <td className="py-s3">{data.date}</td>
                   <td className="py-s3">{data.time}</td>
                   <td className="py-s3">{data.services}</td>
                   <td className="py-s3">${data.amount}</td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+          </tbody>
         </table>
         <p className="my-s2 text-center text-xl">
           No transaction record available
