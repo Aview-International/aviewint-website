@@ -163,3 +163,11 @@ export const testVoiceCloning = async (text, voiceId) => {
 
   return response;
 };
+
+export const deleteVoiceClone = async (userId, voiceId) => {
+  const res = await axios.patch(
+    `${baseUrl}dubbing/delete-voice-cloning/${userId}`,
+    { voiceId }
+  );
+  return res;
+};

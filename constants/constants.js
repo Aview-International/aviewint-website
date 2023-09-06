@@ -1381,16 +1381,16 @@ export const DASHBOARD_NAVLINKS = [
     image: history,
     route: () => '/dashboard/history',
   },
-  {
-    text: 'Referral',
-    image: referral,
-    route: () => '/dashboard/referral',
-  },
-  {
-    text: 'Settings',
-    image: settings,
-    route: (route) => route,
-  },
+  // {
+  //   text: 'Referral',
+  //   image: referral,
+  //   route: () => '/dashboard/referral',
+  // },
+  // {
+  //   text: 'Settings',
+  //   image: settings,
+  //   route: (route) => route,
+  // },
 ];
 
 export const SUPPORTED_REGIONS = [

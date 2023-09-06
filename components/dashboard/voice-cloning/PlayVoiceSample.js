@@ -2,16 +2,19 @@ import Graphics from '../../../public/img/graphics/translator-landing.png';
 import Image from 'next/image';
 import OnboardingButton from '../../Onboarding/button';
 import { VOICEPROMPTS } from '../../../constants/constants';
-import { testVoiceCloning } from '../../../services/apis';
+import { deleteVoiceClone, testVoiceCloning } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import { useRef, useState } from 'react';
 import Trash from '../../../public/img/icons/trash.svg';
+import { useRouter } from 'next/router';
 
-const PlayVoiceSample = ({ voiceId }) => {
+const PlayVoiceSample = ({ voiceId, uid }) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
   const [showText, setShowText] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   const audioRef = useRef(null);
   const testVoice = async () => {
@@ -42,6 +45,18 @@ const PlayVoiceSample = ({ voiceId }) => {
     setDeleteModal(false);
   };
 
+  const handleDeleteVoice = async () => {
+    try {
+      setDeleteLoading(true);
+      await deleteVoiceClone(uid, voiceId);
+      setDeleteLoading(false);
+      router.reload();
+    } catch (error) {
+      setDeleteLoading(false);
+      ErrorHandler(error);
+    }
+  };
+
   return (
     <div>
       {deleteModal && (
@@ -52,7 +67,13 @@ const PlayVoiceSample = ({ voiceId }) => {
             </p>
 
             <div className="flex w-[400px] items-center gap-s2">
-              <OnboardingButton theme="light">Yes, Delete</OnboardingButton>
+              <OnboardingButton
+                isLoading={deleteLoading}
+                theme="light"
+                onClick={handleDeleteVoice}
+              >
+                Yes, Delete
+              </OnboardingButton>
               <OnboardingButton theme="white" onClick={handleCancelDelete}>
                 No, Cancel
               </OnboardingButton>
