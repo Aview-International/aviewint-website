@@ -156,6 +156,7 @@ const Login = () => {
                   extraClasses="mb-4"
                   label="Email Address"
                   type="email"
+                  name="email"
                 />
                 {emailValidator(email) && (
                   <OnboardingButton theme="light" isLoading={isLoading.email}>

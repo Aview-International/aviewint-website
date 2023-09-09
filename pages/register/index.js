@@ -11,6 +11,16 @@ import Cookies from 'js-cookie';
 import { setUser } from '../../store/reducers/user.reducer';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import FormInput from '../../components/FormComponents/FormInput';
+import OnboardingButton from '../../components/Onboarding/button';
+import { emailValidator } from '../../utils/regex';
+import ErrorHandler from '../../utils/errorHandler';
+import { singleSignOnRegister } from '../../services/apis';
+import {
+  getAuth,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from 'firebase/auth';
 
 const Register = () => {
   const router = useRouter();
@@ -99,7 +109,7 @@ const Register = () => {
     try {
       setIsLoading({ ...isLoading, email: true });
       localStorage.setItem('emailForSignIn', email);
-      await singleSignOnLogin(email, window.location.origin);
+      await singleSignOnRegister(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });
     } catch (error) {
       ErrorHandler(error);
@@ -176,6 +186,7 @@ const Register = () => {
                     extraClasses="mb-4"
                     label="Email Address"
                     type="email"
+                    name="email"
                   />
                   {emailValidator(email) && (
                     <OnboardingButton theme="light" isLoading={isLoading.email}>
