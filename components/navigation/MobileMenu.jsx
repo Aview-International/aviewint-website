@@ -95,7 +95,7 @@ const MAIN_MENU = [
   { type: 'route', title: 'About', link: 'about' },
   { type: 'route', title: 'Careers', link: '/careers' },
   { type: 'route', title: 'Blog', link: '/blog' },
-  { type: 'route', title: 'Pricing', link: '/pricing' },
+  // { type: 'route', title: 'Pricing', link: '/pricing' },
 ];
 
 export function MainMenu() {
