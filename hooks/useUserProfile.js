@@ -29,7 +29,7 @@ const useUserProfile = () => {
       const res = await getUserYoutubeChannel(uid);
       dispatch(setYoutubeChannel(res));
     } catch (error) {
-      ErrorHandler(error);
+      console.log(error);
     }
   };
 
@@ -38,7 +38,7 @@ const useUserProfile = () => {
       const res = await getMessageStatus(uid);
       dispatch(setMessageStatus(res));
     } catch (error) {
-      ErrorHandler(error);
+      console.log(error);
     }
   };
 

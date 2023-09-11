@@ -22,6 +22,7 @@ import {
 } from 'firebase/auth';
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const router = useRouter();
@@ -76,7 +77,10 @@ const Login = () => {
           router.push('/dashboard');
         })
         .catch((error) => {
-          ErrorHandler(error);
+          toast.error(
+            'Login link has expired or invalid email, please try again'
+          );
+          return;
         });
     }
   };
@@ -153,8 +157,8 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   isValid={emailValidator(email)}
                   hideCheckmark
-                  extraClasses="mb-4"
-                  label="Email Address"
+                  // extraClasses="mb-4 text-center"
+                  label=""
                   type="email"
                   name="email"
                 />

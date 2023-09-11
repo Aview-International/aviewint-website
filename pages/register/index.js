@@ -3,7 +3,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { createNewUser, signInWithGoogle } from '../api/firebase';
+import {
+  // createNewUser,
+  signInWithGoogle,
+} from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
@@ -15,12 +18,13 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import { singleSignOnRegister } from '../../services/apis';
+import { registerUser, singleSignOnRegister } from '../../services/apis';
 import {
   getAuth,
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const router = useRouter();
@@ -32,29 +36,29 @@ const Register = () => {
     hasSubmitted: false,
   });
 
-  const updateDatabase = async (_tokenResponse) => {
-    dispatch(
-      setUser({
-        email: _tokenResponse.email,
-        firstName: _tokenResponse.firstName,
-        lastName: _tokenResponse.lastName,
-        picture: _tokenResponse.photoUrl,
-        token: _tokenResponse.idToken,
-        uid: _tokenResponse.localId,
-      })
-    );
+  // const updateDatabase = async (_tokenResponse) => {
+  //   dispatch(
+  //     setUser({
+  //       email: _tokenResponse.email,
+  //       firstName: _tokenResponse.firstName,
+  //       lastName: _tokenResponse.lastName,
+  //       picture: _tokenResponse.photoUrl,
+  //       token: _tokenResponse.idToken,
+  //       uid: _tokenResponse.localId,
+  //     })
+  //   );
 
-    Cookies.set('token', _tokenResponse.idToken);
-    Cookies.set('uid', _tokenResponse.localId);
-    await createNewUser(
-      _tokenResponse.localId,
-      _tokenResponse.firstName,
-      _tokenResponse.lastName,
-      _tokenResponse.photoUrl,
-      _tokenResponse?.email
-    );
-    router.push('/onboarding?stage=1');
-  };
+  //   Cookies.set('token', _tokenResponse.idToken);
+  //   Cookies.set('uid', _tokenResponse.localId);
+  //   await createNewUser(
+  //     _tokenResponse.localId,
+  //     _tokenResponse.firstName,
+  //     _tokenResponse.lastName,
+  //     _tokenResponse.photoUrl,
+  //     _tokenResponse?.email
+  //   );
+  //   router.push('/onboarding?stage=1');
+  // };
 
   useEffect(() => {
     const { query } = router;
@@ -92,14 +96,23 @@ const Register = () => {
         email = window.prompt('Please provide your email for confirmation');
 
       signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
+        .then(async (result) => {
+          console.log(result);
           window.localStorage.removeItem('emailForSignIn');
+
           Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
           Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-          router.push('/dashboard');
+          await registerUser(
+            result._tokenResponse.localId,
+            result._tokenResponse.email
+          );
+          router.push('/onboarding?stage=profile');
         })
         .catch((error) => {
-          ErrorHandler(error);
+          toast.error(
+            'Register link has expired or invalid email, please try again'
+          );
+          return;
         });
     }
   };

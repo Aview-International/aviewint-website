@@ -15,6 +15,7 @@ import OnboardingStep6 from '../../components/Onboarding/step6';
 import OnboardingSuccess from '../../components/Onboarding/success';
 import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
+import UserProfileOnboarding from '../../components/Onboarding/profile';
 
 const Onboarding = () => {
   const userData = useSelector((state) => state.user);
@@ -80,6 +81,11 @@ const Stages = ({ userData }) => {
 
   return (
     <>
+      {query.stage === 'profile' && (
+        <PageTransition>
+          <UserProfileOnboarding userData={userData} />
+        </PageTransition>
+      )}
       {query.stage === '1' && (
         <PageTransition>
           <OnboardingStep1 userData={userData} />
