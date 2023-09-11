@@ -63,6 +63,7 @@ const YouCreateWeTranslate = () => {
                 hasSubmitted={sideEffects.hasSubmitted}
                 extraClasses="mb-2 md:mb-s5"
                 name="email"
+                type="email"
               />
               <div className="w-max md:ml-s2">
                 <OnboardingButton

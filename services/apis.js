@@ -2,16 +2,34 @@ import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 
+export const getHomePage = async () => await axios.get(baseUrl + 'health');
+
 export const welcomeNewUser = async (email) =>
   await axios.post(baseUrl + 'email/welcome', {
     recipient: email,
   });
 
-export const singleSignOnRegister = async (email) =>
-  await axios.post(baseUrl + 'email/register', { email });
+export const singleSignOnRegister = async (email, origin) =>
+  await axios.post(baseUrl + 'email/register', { email, origin });
 
-export const singleSignOn = async (email) =>
-  await axios.post(baseUrl + 'email/login', { email });
+export const registerUser = async (creatorId, email) =>
+  await axios.post(baseUrl + 'auth/register', { creatorId, email });
+
+export const updateProfileDetails = async (payload) => {
+  let formdata = new FormData();
+  formdata.append('firstName', payload.firstName);
+  formdata.append('creatorId', payload.creatorId);
+  formdata.append('lastName', payload.lastName);
+  formdata.append('picture', payload.picture);
+
+  return await axios.post(
+    baseUrl + 'auth/update-profile',
+    payload.picture ? formdata : payload
+  );
+};
+
+export const singleSignOnLogin = async (email, origin) =>
+  await axios.post(baseUrl + 'email/login', { email, origin });
 
 export const transcribeSocialLink = async (body) =>
   await axios.post(baseUrl + 'transcription/social', body);

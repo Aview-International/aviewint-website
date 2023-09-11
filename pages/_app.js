@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
+import { getHomePage } from '../services/apis';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -35,6 +36,7 @@ const MyApp = ({ Component, pageProps }) => {
 
 const Layout = ({ Component, pageProps }) => {
   useEffect(() => {
+    // getHome();
     // AOS animation
     AOS.init();
     AOS.refresh();
@@ -45,6 +47,10 @@ const Layout = ({ Component, pageProps }) => {
     setViewportHeight();
     window.onresize = setViewportHeight;
   }, []);
+
+  const getHome = async () => {
+    await getHomePage();
+  };
 
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
