@@ -25,6 +25,7 @@ import {
   signInWithEmailLink,
 } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import ButtonLoader from '../../public/loaders/ButtonLoader';
 
 const Register = () => {
   const router = useRouter();
