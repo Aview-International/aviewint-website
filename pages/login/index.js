@@ -93,6 +93,7 @@ const Login = () => {
       await singleSignOnLogin(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });
     } catch (error) {
+      setIsLoading({ ...isLoading, hasSubmitted: false });
       ErrorHandler(error);
     }
   };
