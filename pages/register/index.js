@@ -3,10 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import {
-  // createNewUser,
-  signInWithGoogle,
-} from '../api/firebase';
+import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
