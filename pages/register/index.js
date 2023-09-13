@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { checkUserEmail, signInWithGoogle } from '../api/firebase';
+import { createNewUser, signInWithGoogle } from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
@@ -34,29 +34,29 @@ const Register = () => {
     hasSubmitted: false,
   });
 
-  // const updateDatabase = async (_tokenResponse) => {
-  //   dispatch(
-  //     setUser({
-  //       email: _tokenResponse.email,
-  //       firstName: _tokenResponse.firstName,
-  //       lastName: _tokenResponse.lastName,
-  //       picture: _tokenResponse.photoUrl,
-  //       token: _tokenResponse.idToken,
-  //       uid: _tokenResponse.localId,
-  //     })
-  //   );
+  const updateDatabase = async (_tokenResponse) => {
+    dispatch(
+      setUser({
+        email: _tokenResponse.email,
+        firstName: _tokenResponse.firstName,
+        lastName: _tokenResponse.lastName,
+        picture: _tokenResponse.photoUrl,
+        token: _tokenResponse.idToken,
+        uid: _tokenResponse.localId,
+      })
+    );
 
-  //   Cookies.set('token', _tokenResponse.idToken);
-  //   Cookies.set('uid', _tokenResponse.localId);
-  //   await createNewUser(
-  //     _tokenResponse.localId,
-  //     _tokenResponse.firstName,
-  //     _tokenResponse.lastName,
-  //     _tokenResponse.photoUrl,
-  //     _tokenResponse?.email
-  //   );
-  //   router.push('/onboarding?stage=1');
-  // };
+    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('uid', _tokenResponse.localId);
+    await createNewUser(
+      _tokenResponse.localId,
+      _tokenResponse.firstName,
+      _tokenResponse.lastName,
+      _tokenResponse.photoUrl,
+      _tokenResponse?.email
+    );
+    router.push('/onboarding?stage=1');
+  };
 
   useEffect(() => {
     const { query } = router;
@@ -64,26 +64,10 @@ const Register = () => {
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleSubmit = async () => {
+  const handleGoogleSignIn = async () => {
     setIsLoading(true);
     const { _tokenResponse } = await signInWithGoogle();
-    const res = await checkUserEmail(_tokenResponse.localId);
-    if (!res) router.push('/register?account=false');
-    else {
-      Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-      Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
-      dispatch(
-        setUser({
-          email: _tokenResponse.email,
-          firstName: _tokenResponse.firstName,
-          lastName: _tokenResponse.lastName,
-          picture: _tokenResponse.photoUrl,
-          token: _tokenResponse.idToken,
-          uid: _tokenResponse.localId,
-        })
-      );
-      router.push('/dashboard');
-    }
+    updateDatabase(_tokenResponse);
   };
 
   const handleSSOWithCode = () => {
@@ -164,7 +148,7 @@ const Register = () => {
                 <Border borderRadius="full" classes="w-full">
                   <button
                     className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
-                    onClick={handleSubmit}
+                    onClick={handleGoogleSignIn}
                   >
                     {isLoading.google ? (
                       <ButtonLoader />
