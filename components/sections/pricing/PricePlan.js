@@ -93,12 +93,12 @@ const PricePlan = () => {
      return () =>{
       document.body.removeEventListener("pointermove", callFunction);
      }
-   },[]);
+  },[]);
 
  return (
    <>
-   <div className="flex flex-col relative cards">
-    <div className="min-w-[1080px] h-full grid grid-cols-4 gap-10 text-white" ref={divRelativeHook}>
+   <div className="flex flex-col md:my-12 relative cards">
+    <div className="w-full md:min-w-[1080px] h-full grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-10 text-white" ref={divRelativeHook}>
     {priceListItems
         .map((item, index) => {
             return (
@@ -109,7 +109,7 @@ const PricePlan = () => {
         })
      }
     </div>
-    <div className="min-w-[1080px] h-full grid grid-cols-4 gap-10 text-white overlay">
+    <div className="w-full md:min-w-[1080px] h-full grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-10 text-white overlay">
       { animeProps ? 
          animeProps.map((props, index) => (
            <div key={index}>
@@ -124,4 +124,4 @@ const PricePlan = () => {
    )
 };
 
-export default PricePlan
+export default PricePlan;
