@@ -41,24 +41,28 @@ const Login = () => {
   }, [router.query]);
 
   const handleSubmit = async () => {
-    setIsLoading(true);
-    const { _tokenResponse } = await signInWithGoogle();
-    const res = await checkUserEmail(_tokenResponse.localId);
-    if (!res) router.push('/register?account=false');
-    else {
-      Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-      Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
-      dispatch(
-        setUser({
-          email: _tokenResponse.email,
-          firstName: _tokenResponse.firstName,
-          lastName: _tokenResponse.lastName,
-          picture: _tokenResponse.photoUrl,
-          token: _tokenResponse.idToken,
-          uid: _tokenResponse.localId,
-        })
-      );
-      router.push('/dashboard');
+    try {
+      setIsLoading(true);
+      const { _tokenResponse } = await signInWithGoogle();
+      const res = await checkUserEmail(_tokenResponse.localId);
+      if (!res) router.push('/register?account=false');
+      else {
+        Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
+        Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+        dispatch(
+          setUser({
+            email: _tokenResponse.email,
+            firstName: _tokenResponse.firstName,
+            lastName: _tokenResponse.lastName,
+            picture: _tokenResponse.photoUrl,
+            token: _tokenResponse.idToken,
+            uid: _tokenResponse.localId,
+          })
+        );
+        router.push('/dashboard');
+      }
+    } catch (error) {
+      ErrorHandler(null, 'Something went wrong, please try again');
     }
   };
 

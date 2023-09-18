@@ -65,9 +65,13 @@ const Register = () => {
   }, [router.query]);
 
   const handleGoogleSignIn = async () => {
-    setIsLoading(true);
-    const { _tokenResponse } = await signInWithGoogle();
-    updateDatabase(_tokenResponse);
+    try {
+      setIsLoading(true);
+      const { _tokenResponse } = await signInWithGoogle();
+      updateDatabase(_tokenResponse);
+    } catch (error) {
+      ErrorHandler(null, 'Something went wrong, please try again');
+    }
   };
 
   const handleSSOWithCode = () => {
@@ -132,16 +136,17 @@ const Register = () => {
               <h2 className="text-center text-7xl font-bold md:text-8xl">
                 Sign Up
               </h2>
-              <p className="my-s3 text-center text-lg md:text-xl">
-                Already have an account?
-                <br /> Login{' '}
-                <Link href="/login">
-                  <a className="underline">here</a>
-                </Link>
-              </p>
-              {account && (
+              {account ? (
                 <p className="mb-s3 text-center text-lg">
                   You don&apos;t have an account yet, begin here
+                </p>
+              ) : (
+                <p className="my-s3 text-center text-lg md:text-xl">
+                  Already have an account?
+                  <br /> Login{' '}
+                  <Link href="/login">
+                    <a className="underline">here</a>
+                  </Link>
                 </p>
               )}
               <Shadow classes="w-full mb-4">
