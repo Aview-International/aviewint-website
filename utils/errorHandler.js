@@ -1,8 +1,6 @@
 import { toast } from 'react-toastify';
 
 const ErrorHandler = (error, message) => {
-  try {
-  } catch (error) {}
   if (!error) {
     toast.error(message || 'Oops, something went wrong');
     return;
