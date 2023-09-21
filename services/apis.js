@@ -30,7 +30,7 @@ export const updateProfileDetails = async (payload) => {
   formdata.append('lastName', payload.lastName);
   formdata.append('picture', payload.picture);
 
-  return await axios.post(
+  return await axiosInstance.post(
     baseUrl + 'auth/update-profile',
     payload.picture ? formdata : payload
   );
@@ -40,7 +40,7 @@ export const singleSignOnLogin = async (email, origin) =>
   await axios.post(baseUrl + 'email/login', { email, origin });
 
 export const transcribeSocialLink = async (body) =>
-  await axios.post(baseUrl + 'transcription/social', body);
+  await axiosInstance.post(baseUrl + 'transcription/social', body);
 
 export const getInstagramShortAccess = async (ig_access_code) =>
   await axios.post('/api/onboarding/link-instagram?get=short_lived_access', {
@@ -67,7 +67,7 @@ export const authorizeUser = async () => {
 };
 
 export const finalizeYoutubeAuth = async (tempId, userId) => {
-  return await axios.get(
+  return await axiosInstance.get(
     baseUrl + `auth/youtube-save?tempId=${tempId}&userId=${userId}`
   );
 };
