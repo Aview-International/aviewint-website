@@ -13,7 +13,6 @@ import whatIf from '../public/img/creators/what-if.png';
 import yesTheory from '../public/img/creators/yes-theory.png';
 import markRober from '../public/img/creators/mark-rober.png';
 import nextCanada from '../public/img/creators/next-canada.png';
-import rippleVentures from '../public/img/creators/ripple-ventures.png';
 import wayfoundHealth from '../public/img/creators/wayfound-health.png';
 import valnetMedia from '../public/img/creators/valnet-media.png';
 import underknownMedia from '../public/img/creators/underknown-media.png';
@@ -294,10 +293,9 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
   { id: 'customer-4', name: 'What If', icon: whatIf },
   { id: 'customer-5', name: 'Yes Theory', icon: yesTheory },
   { id: 'customer-6', name: 'NEXT Canada', icon: nextCanada },
-  // { id: 'customer-7', name: 'Ripple Ventures', icon: rippleVentures },
-  { id: 'customer-8', name: 'Wayfound Health', icon: wayfoundHealth },
-  { id: 'customer-9', name: 'Valnet Media', icon: valnetMedia },
-  { id: 'customer-10', name: 'Underknown Media', icon: underknownMedia },
+  { id: 'customer-7', name: 'Wayfound Health', icon: wayfoundHealth },
+  { id: 'customer-8', name: 'Valnet Media', icon: valnetMedia },
+  { id: 'customer-9', name: 'Underknown Media', icon: underknownMedia },
 ];
 
 export const OUR_SERVICES = [

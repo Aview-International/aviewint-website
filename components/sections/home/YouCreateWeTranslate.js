@@ -18,7 +18,7 @@ const YouCreateWeTranslate = () => {
     isLoading: false,
   });
 
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (!emailValidator(email)) return;
@@ -28,6 +28,7 @@ const YouCreateWeTranslate = () => {
       await welcomeNewUser(email);
       setSideEffects({ ...sideEffects, showText: true });
     } catch (error) {
+      setSideEffects({ ...sideEffects, isLoading: false });
       ErrorHandler(error);
     }
   };
@@ -56,7 +57,7 @@ const YouCreateWeTranslate = () => {
               Check your inbox to finish your setup!&nbsp;&nbsp;✅
             </p>
           ) : (
-            <form className="flex flex-col md:flex-row">
+            <form className="flex flex-col md:flex-row" onSubmit={handleSubmit}>
               <FormInput
                 placeholder="Email Address"
                 onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +72,6 @@ const YouCreateWeTranslate = () => {
                   extraClasses={`px-s2 ${
                     sideEffects.isLoading ? 'w-[116px]' : 'w-max'
                   }`}
-                  onClick={handleClick}
                 >
                   Get Started
                 </OnboardingButton>

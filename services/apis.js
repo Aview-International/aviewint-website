@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
+import Cookies from 'js-cookie';
 
-export const getHomePage = async () => await axios.get(baseUrl + 'health');
+const token = Cookies.get('token');
+
+const axiosInstance = axios.create({
+  baseURL: baseUrl,
+  headers: {
+    Authorization: 'Bearer ' + token,
+  },
+});
 
 export const welcomeNewUser = async (email) =>
   await axios.post(baseUrl + 'email/welcome', {
@@ -65,8 +73,8 @@ export const finalizeYoutubeAuth = async (tempId, userId) => {
 };
 
 export const getChannelVideos = async (channelId) => {
-  const response = await axios.get(
-    baseUrl + `auth/youtube-videos?channelId=${channelId}`
+  const response = await axiosInstance.get(
+    `auth/youtube-videos?channelId=${channelId}`
   );
   return response.data;
 };
@@ -76,32 +84,41 @@ export const getUserMessages = async (id) => {
   return response.data;
 };
 
+// export const uploadVideo = async (data, setProgress) => {
+//   const response = await axios({
+//     method: 'POST',
+//     url: baseUrl + 'user/upload-videos',
+//     headers: {
+//       'Content-Type': 'multipart/form-data',
+//       Authorization: `Bearer ${localStorage.getItem('token')}`,
+//     },
+//     data: data,
+//     onUploadProgress: (progressEvent) =>
+//       setProgress(
+//         Math.round((progressEvent.loaded * 100) / progressEvent.total)
+//       ),
+//   });
+//   return response;
+// };
+
 export const uploadVideo = async (data, setProgress) => {
-  const response = await axios({
-    method: 'POST',
-    url: baseUrl + 'user/upload-videos',
+  const response = await axiosInstance.post('user/upload-videos', data, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    data: data,
-    onUploadProgress: (progressEvent) =>
-      setProgress(
-        Math.round((progressEvent.loaded * 100) / progressEvent.total)
-      ),
   });
   return response;
 };
 
 export const getUserYoutubeChannel = async (userId) => {
-  const response = await axios.get(
-    baseUrl + 'auth/youtube-channel?userId=' + userId
+  const response = await axiosInstance.get(
+    'auth/youtube-channel?userId=' + userId
   );
   return response.data;
 };
 
 export const getMessageStatus = async (userId) => {
-  const response = await axios.get(
+  const response = await axiosInstance.get(
     baseUrl + 'messages/status?userId=' + userId
   );
   return response.data;
@@ -121,7 +138,7 @@ export const uploadMultipleVoiceSamples = async (speakers, userId) => {
     }
   }
 
-  await axios.post(
+  await axiosInstance.post(
     baseUrl + 'dubbing/multiple-voice-cloning?userId=' + userId,
     formData,
     {
@@ -139,7 +156,7 @@ export const uploadSingleVoiceSamples = async (audios, userId) => {
     formData.append('voiceSample', audio);
   }
 
-  await axios.post(
+  await axiosInstance.post(
     baseUrl + 'dubbing/single-voice-cloning?userId=' + userId,
     formData,
     {
@@ -157,7 +174,7 @@ export const uploadRecordedVoice = async (audios, userId) => {
     formData.append('voiceSample', audio);
   }
 
-  return await axios.post(
+  return await axiosInstance.post(
     baseUrl + 'dubbing/recorded-voice-cloning?userId=' + userId,
     formData,
     {
@@ -173,7 +190,7 @@ export const testVoiceCloning = async (text, voiceId) => {
     text,
     voiceId,
   };
-  const response = await axios.post(
+  const response = await axiosInstance.post(
     baseUrl + 'dubbing/test-voice-cloning',
     body,
     { responseType: 'blob' }
@@ -183,7 +200,7 @@ export const testVoiceCloning = async (text, voiceId) => {
 };
 
 export const deleteVoiceClone = async (userId, voiceId) => {
-  const res = await axios.patch(
+  const res = await axiosInstance.patch(
     `${baseUrl}dubbing/delete-voice-cloning/${userId}`,
     { voiceId }
   );
