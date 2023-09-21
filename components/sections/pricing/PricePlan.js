@@ -1,5 +1,4 @@
-import React from 'react';
-import Card from '../../UI/Card';
+import React, { useRef,useEffect, useState } from 'react';
 import PriceComponent from './PriceComponent';
 
 const priceListItems = [
@@ -54,27 +53,75 @@ const priceListItems = [
 ];
 
 const PricePlan = () => {
+   const basicref = useRef([])
+   const divRelativeHook=useRef(null)
+   const [animeProps, setAnimeProps] = useState([
+      { style: null, className : '' },
+      { style: null, className : '' },
+      { style: null, className : '' },
+      { style: null, className : '' },
+   ]);
+   useEffect(()=>{
+     const cardsContainer = document.querySelector('.cards')
+     basicref.current = Array.from( document.querySelectorAll('.card'))
+     
+     function callFunction(e){
+       const overlayEl = e.currentTarget;
+       const x = e.pageX - cardsContainer.offsetLeft;
+       const y = e.pageY - cardsContainer.offsetTop;
+       overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
+     }
+     
+     const observer = new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+        const cardIndex = basicref.current.indexOf(entry.target);
+        const width = entry.borderBoxSize[0].inlineSize;
+        const height = entry.borderBoxSize[0].blockSize;
+        if (cardIndex >= 0) {
+          const updatedProps = animeProps.map(() => ({ style: { width, height }, className : 'card' }));
+          setAnimeProps(updatedProps);
+        }
+       });
+     });
+
+     const initElement = (cardEl) => {
+       observer.observe(cardEl)
+     };
+
+     divRelativeHook.current.childNodes.forEach(initElement);
+     document.body.addEventListener("pointermove", callFunction);
+     return () =>{
+      document.body.removeEventListener("pointermove", callFunction);
+     }
+  },[]);
+
  return (
-    <>
-    <section className="min-w-[1080px] h-full grid grid-cols-4 gap-10 mt-3 text-white">
-     {
-        priceListItems.map((item,index) => {
+   <>
+   <div className="flex flex-col md:my-12 relative cards">
+    <div className="w-full md:min-w-[1080px] h-full grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-10 text-white" ref={divRelativeHook}>
+    {priceListItems
+        .map((item, index) => {
             return (
-             <div key={index}>
-                { item.title === "Basic" ? 
-                 <Card borderRadius="2xl">
-                  <PriceComponent item={item}/> 
-                 </Card>
-                 : 
-                 <PriceComponent item={item}/> 
-                }
+             <div key={index} className="card">
+              <PriceComponent item={item}/> 
              </div>
             )
         })
      }
-    </section>
-    </>
-  )
-}
+    </div>
+    <div className="w-full md:min-w-[1080px] h-full grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-10 text-white overlay">
+      { animeProps ? 
+         animeProps.map((props, index) => (
+           <div key={index}>
+            {React.createElement("div", props)}
+          </div>
+         ))
+         : null
+      }
+    </div> 
+   </div>
+   </>
+   )
+};
 
-export default PricePlan
+export default PricePlan;

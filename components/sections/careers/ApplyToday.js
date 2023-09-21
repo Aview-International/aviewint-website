@@ -13,6 +13,7 @@ import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
 import { useRouter } from 'next/router';
 import UploadFile from '../../FormComponents/UploadFile';
 import { emailValidator } from '../../../utils/regex';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const ApplyToday = () => {
   const router = useRouter();
@@ -57,7 +58,7 @@ const ApplyToday = () => {
 
       router.push('/success');
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

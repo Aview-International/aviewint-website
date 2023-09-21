@@ -13,7 +13,6 @@ import whatIf from '../public/img/creators/what-if.png';
 import yesTheory from '../public/img/creators/yes-theory.png';
 import markRober from '../public/img/creators/mark-rober.png';
 import nextCanada from '../public/img/creators/next-canada.png';
-import rippleVentures from '../public/img/creators/ripple-ventures.png';
 import wayfoundHealth from '../public/img/creators/wayfound-health.png';
 import valnetMedia from '../public/img/creators/valnet-media.png';
 import underknownMedia from '../public/img/creators/underknown-media.png';
@@ -294,10 +293,9 @@ export const GROW_CUSTOMERS_INTERNATIONALLY = [
   { id: 'customer-4', name: 'What If', icon: whatIf },
   { id: 'customer-5', name: 'Yes Theory', icon: yesTheory },
   { id: 'customer-6', name: 'NEXT Canada', icon: nextCanada },
-  // { id: 'customer-7', name: 'Ripple Ventures', icon: rippleVentures },
-  { id: 'customer-8', name: 'Wayfound Health', icon: wayfoundHealth },
-  { id: 'customer-9', name: 'Valnet Media', icon: valnetMedia },
-  { id: 'customer-10', name: 'Underknown Media', icon: underknownMedia },
+  { id: 'customer-7', name: 'Wayfound Health', icon: wayfoundHealth },
+  { id: 'customer-8', name: 'Valnet Media', icon: valnetMedia },
+  { id: 'customer-9', name: 'Underknown Media', icon: underknownMedia },
 ];
 
 export const OUR_SERVICES = [
@@ -1381,16 +1379,16 @@ export const DASHBOARD_NAVLINKS = [
     image: history,
     route: () => '/dashboard/history',
   },
-  {
-    text: 'Referral',
-    image: referral,
-    route: () => '/dashboard/referral',
-  },
-  {
-    text: 'Settings',
-    image: settings,
-    route: (route) => route,
-  },
+  // {
+  //   text: 'Referral',
+  //   image: referral,
+  //   route: () => '/dashboard/referral',
+  // },
+  // {
+  //   text: 'Settings',
+  //   image: settings,
+  //   route: (route) => route,
+  // },
 ];
 
 export const SUPPORTED_REGIONS = [
@@ -1553,4 +1551,12 @@ export const LANGUAGES = [
   'Turkish',
   'Spanish',
   'Others',
+];
+
+export const VOICEPROMPTS = [
+  "Cats are like little balls of mystery and charm. Their playful antics and independent personalities bring joy to countless households. Whether they're chasing a laser pointer or curling up for a cozy nap, cats remind us to appreciate the simple pleasures in life",
+  "Content creation is the modern art of storytelling. Just like a painter expresses emotions through colors, content creators use words, images, and videos to connect with audiences. Whether it's a blog post, a YouTube video, or a social media update, the goal is to captivate, inform, or entertain.",
+  "Our world is a dynamic tapestry of cultures, landscapes, and ideas. It's a place where we can explore, learn, and grow. From the bustling streets of Tokyo to the serene beaches of Fiji, every corner of the world has something unique to offer. It's up to us to embrace diversity and work together to make it a better place for everyone",
+  'Imagine creating content centered around the mysterious allure of cats. You could craft engaging blog posts about decoding feline behavior or make hilarious videos capturing their quirky moments. Cats have a universal appeal that can make your content stand out and resonate with a wide audience.',
+  'Content creation has the power to shape how we see the world. You could create captivating documentaries that shed light on lesser-known parts of the globe, bringing awareness to important issues. By sharing stories from different cultures and perspectives, you contribute to a more informed and connected world.',
 ];

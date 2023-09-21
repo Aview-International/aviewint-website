@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
@@ -7,7 +7,6 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-left.svg';
 import rightChevronIcon from '../../public/img/icons/chevron-right.svg';
-
 
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
@@ -66,6 +65,14 @@ export default function MobileMenu() {
           menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
         }`}
       >
+        {/* <Button
+          purpose="route"
+          route="/login"
+          type="secondary"
+          fullWidth={true}
+        >
+          Login
+        </Button> */}
         <Button
           purpose="route"
           route="/waitlist"
@@ -74,14 +81,6 @@ export default function MobileMenu() {
         >
           Join the Waitlist
         </Button>
-        {/* <Button
-          purpose="route"
-          route="/#generate-aview"
-          type="primary"
-          fullWidth={true}
-        >
-          Contact Us
-        </Button> */}
       </div>
     </div>
   );

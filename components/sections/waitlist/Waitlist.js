@@ -19,7 +19,6 @@ const Waitlist = () => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [sideEffects, setSideEffects] = useState({
-    hasSubmitted: false,
     isLoading: false,
   });
 

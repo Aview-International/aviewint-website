@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // Initialize the auth service
-const auth = getAuth();
+export const auth = getAuth();
 
 export const checkUserEmail = async (uid) => {
   const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {
@@ -66,6 +66,7 @@ export const createNewUser = async (
         firstName,
         lastName,
         picture,
+        updatedAt: Date.now(),
       };
       const updates = {
         [`users/${_id}`]: postData,
@@ -78,6 +79,8 @@ export const createNewUser = async (
         firstName,
         lastName,
         picture,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
       });
     }
   });

@@ -6,6 +6,7 @@ import { getMessageStatus, getUserYoutubeChannel } from '../services/apis';
 import { setYoutubeChannel } from '../store/reducers/youtube.reducer';
 import { setMessageStatus } from '../store/reducers/messages.reducer';
 import { useState } from 'react';
+import ErrorHandler from '../utils/errorHandler';
 
 const useUserProfile = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const useUserProfile = () => {
         dispatch(setUser({ ...resp, uid, token }))
       );
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

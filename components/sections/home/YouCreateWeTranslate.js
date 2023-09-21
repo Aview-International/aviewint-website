@@ -8,6 +8,7 @@ import FormInput from '../../FormComponents/FormInput';
 import OnboardingButton from '../../Onboarding/button';
 import { emailValidator } from '../../../utils/regex';
 import { welcomeNewUser } from '../../../services/apis';
+import ErrorHandler from '../../../utils/errorHandler';
 
 const YouCreateWeTranslate = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ const YouCreateWeTranslate = () => {
     isLoading: false,
   });
 
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (!emailValidator(email)) return;
@@ -27,7 +28,8 @@ const YouCreateWeTranslate = () => {
       await welcomeNewUser(email);
       setSideEffects({ ...sideEffects, showText: true });
     } catch (error) {
-      console.log(error);
+      setSideEffects({ ...sideEffects, isLoading: false });
+      ErrorHandler(error);
     }
   };
 
@@ -55,13 +57,14 @@ const YouCreateWeTranslate = () => {
               Check your inbox to finish your setup!&nbsp;&nbsp;✅
             </p>
           ) : (
-            <form className="flex flex-col md:flex-row">
+            <form className="flex flex-col md:flex-row" onSubmit={handleSubmit}>
               <FormInput
                 placeholder="Email Address"
                 onChange={(e) => setEmail(e.target.value)}
                 hasSubmitted={sideEffects.hasSubmitted}
                 extraClasses="mb-2 md:mb-s5"
                 name="email"
+                type="email"
               />
               <div className="w-max md:ml-s2">
                 <OnboardingButton
@@ -69,7 +72,6 @@ const YouCreateWeTranslate = () => {
                   extraClasses={`px-s2 ${
                     sideEffects.isLoading ? 'w-[116px]' : 'w-max'
                   }`}
-                  onClick={handleClick}
                 >
                   Get Started
                 </OnboardingButton>
