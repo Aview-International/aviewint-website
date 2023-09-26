@@ -4,7 +4,7 @@ import {
   CORPORATE_PAGE_FAQ,
   LANDING_PAGE_FAQ,
 } from '../../../constants/constants';
-import HorizontalLine from '../../UI/HorizontalLine';
+
 
 const FAQs = ({ page }) => {
   return (
@@ -17,7 +17,6 @@ const FAQs = ({ page }) => {
         <a href="mailto:julai@aviewint.com">julia@aviewint.com</a>
       </p>
       <div>
-        <HorizontalLine />
         {page === 'corporate'
           ? CORPORATE_PAGE_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />

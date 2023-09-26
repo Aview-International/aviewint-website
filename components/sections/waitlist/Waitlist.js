@@ -7,8 +7,8 @@ import {
   WAITLIST_STAGGERED_ITEMS,
 } from '../../../constants/constants';
 import Button from '../../UI/Button';
-import WaitlistImages from './WaitlistImages';
 import AboutCreator from './AboutCreator';
+import ImageGradientBlur from '../reused/ImageGradientBlur';
 
 const Waitlist = () => {
   const scrollRef = useRef(null);
@@ -35,7 +35,7 @@ const Waitlist = () => {
                 internationally. Join our exclusive waitlist today!
               </span>
             </p>
-            <WaitlistImages image={Step3} width="540" height="385" />
+            <ImageGradientBlur image={Step3} styles={true} width="540" height="385" />
           </div>
           <AboutCreator />
         </div>
