@@ -4,6 +4,7 @@ import {
   CORPORATE_PAGE_FAQ,
   LANDING_PAGE_FAQ,
 } from '../../../constants/constants';
+import HorizontalLine from '../../UI/HorizontalLine';
 
 
 const FAQs = ({ page }) => {

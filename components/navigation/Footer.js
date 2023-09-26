@@ -21,9 +21,9 @@ const Footer = ({ curPage }) => {
               />
             </a>
           </Link>
-         {ROUTES.map((routeArray) => {
+         {ROUTES.map((routeArray, index) => {
           return (
-            <div className='flex flex-col gap-y-1'>
+            <div className='flex flex-col gap-y-1' key={index}>
              <h5 className='text-xl font-semibold mb-2'>{routeArray.title}</h5>
              { routeArray.routes.map((route) => (
                  <Link href={route.route} key={route.text}>

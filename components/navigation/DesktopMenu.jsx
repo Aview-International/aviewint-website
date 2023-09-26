@@ -136,8 +136,9 @@ function Dropdown({ title, dropdown, curPage }) {
       { dropdown.length <=1 ? 
         <Card borderRadius="xl" fullWidth={true}>
          <div className='w-max grid grid-cols-1 p-4 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black'>
-          { dropdown.map((dropItem, i) => (
-              <div className='flex flex-col gap-2'>
+          { dropdown.map((dropItem, index) => {
+            return (
+              <div className='flex flex-col gap-2' key={index}>
                 <div>
                  <p className='text-xl'>{dropItem.name}</p>
                  <p className='text-sm'>{dropItem.subtext}</p>
@@ -154,7 +155,7 @@ function Dropdown({ title, dropdown, curPage }) {
                   })
                 }
               </div>
-            ))
+            )})
           }
          </div> 
         </Card> : 

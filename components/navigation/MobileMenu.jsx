@@ -95,7 +95,7 @@ export function MainMenu() {
         } else if (menuItem.type === 'dropdown') {
            if( menuItem.dropdown === 'services') {
             return (
-              <>
+              <React.Fragment key={idx}>
                 <DropDownHandle menuItem={menuItem} onChange={handleDropDown} isChecked={dropDownService}/>
                 {
                  dropDownService ? 
@@ -104,12 +104,12 @@ export function MainMenu() {
                  </div> 
                  : null
                 }
-              </>
+              </React.Fragment>
             )
           }
           else if( menuItem.dropdown === 'languages') {
             return (
-            <>
+            <React.Fragment key={idx}>
               <DropDownHandle menuItem={menuItem} onChange={handleDropDown} isChecked={dropDownLanguage}/>
                {
                  dropDownLanguage ? 
@@ -118,7 +118,7 @@ export function MainMenu() {
                  </div> 
                  : null
                }
-            </>
+            </React.Fragment>
           
            )
           }
