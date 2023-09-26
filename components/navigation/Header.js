@@ -36,7 +36,7 @@ const Header = ({ curPage }) => {
 
 const HeaderButtons = () => {
   return (
-    <div className="gap-5 flex">
+    <div className="gap-5 md:block hidden">
       <Button purpose="route" route="/waitlist" type="primary">
         Join Wailtlist
       </Button>

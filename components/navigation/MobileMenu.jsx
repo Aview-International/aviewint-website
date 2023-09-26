@@ -41,8 +41,8 @@ export default function MobileMenu() {
       <div className='w-3/5'>
         <Button
           purpose="route"
-          route="/waitlist"
-          type="primary"
+          route="/login"
+          type="secondary"
           fullWidth={true}
         >
           Join Waitlist

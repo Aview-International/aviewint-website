@@ -99,7 +99,7 @@ export default function DesktopMenu({ curPage }) {
 function Dropdown({ title, dropdown, curPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   
-return (
+  return (
     <span
       className="relative ml-10 inline"
       onMouseEnter={() => setDropdownOpen(true)}
