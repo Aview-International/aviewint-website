@@ -5,28 +5,28 @@ import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
-import aviewLogo from '../../public/img/aview/logo.svg';
+import aviewLogo from '../../public/img/aview/logo.png';
 import MenuButtonIcon from './MenuButtonIcon';
 
 const Header = ({ curPage }) => {
   const menuOpenCtx = useContext(MenuOpenContext);
   return (
     <>
-      <header className="navigation relative z-50 mt-10 flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/">
-            <a className="w-16">
-              <Image
-                src={aviewLogo}
-                alt="AVIEW International logo"
-                width={70}
-                height={70}
-              />
-            </a>
-          </Link>
+      <header className="navigation relative z-50 mt-10 flex items-center justify-between rounded-full bg-gray-1 p-2 text-white">
+        <Link href="/">
+          <a className="-mb-1 mt-1 w-32 md:w-60">
+            <Image
+              src={aviewLogo}
+              alt="AVIEW International logo"
+              width="180"
+              height="50"
+            />
+          </a>
+        </Link>
+        <div className="flex items-center md:gap-x-10">
           <DesktopMenu curPage={curPage} />
+          <HeaderButtons />
         </div>
-        <HeaderButtons />
         <MenuButtonIcon handler={menuOpenCtx.openMenuHandler} />
       </header>
       <MobileMenu />

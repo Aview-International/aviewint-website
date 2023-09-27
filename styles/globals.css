@@ -59,6 +59,10 @@
     @apply text-5xl font-bold text-white md:text-6xl;
   }
 
+  .heading {
+    @apply text-6xl font-bold md:text-7xl;
+  }
+
   .body {
     @apply text-lg text-white md:text-xl;
   }
@@ -84,6 +88,14 @@
   }
   .animate-marquee {
     animation: slide-text 18s linear infinite;
+  }
+
+  .animate-images {
+    animation : slide-testimonial 18s linear infinite;
+  }
+
+  .animate-images-reverse {
+    animation : slide-testimonial-reverse 18s linear infinite;
   }
 
   /* For Chrome browsers */
@@ -263,5 +275,23 @@
       transform: translateX(-100%);
     }
     
+  }
+
+  @keyframes slide-testimonial {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes slide-testimonial-reverse {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }

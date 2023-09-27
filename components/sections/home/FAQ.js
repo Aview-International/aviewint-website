@@ -5,20 +5,15 @@ import {
   LANDING_PAGE_FAQ,
   VOICEOVER_FAQ,
 } from '../../../constants/constants';
-import HorizontalLine from '../../UI/HorizontalLine';
+
 
 const FAQ = ({ page }) => {
   return (
     <section className="section m-horizontal">
-      <h2 className="title mb-s2 text-center">
-        <span className="gradient-text gradient-2">FAQ</span>
+      <h2 className="h2 text-center">
+        Frequently Asked Questions
       </h2>
-      <p className="body mb-s6 text-center md:mb-s10">
-        Question not answered below? Email us at{' '}
-        <a href="mailto:julai@aviewint.com">julia@aviewint.com</a>
-      </p>
-      <div>
-        <HorizontalLine />
+      <div className='flex flex-col gap-y-5 mt-s2'>
         {page === 'e-learning'
           ? E_LEARNING_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
@@ -52,7 +47,7 @@ const Question = ({ question, answer }) => {
   return (
     <>
       <div
-        className="cursor-pointer px-3 py-5 md:px-6 md:py-8"
+        className="cursor-pointer bg-white-transparent rounded-2xl px-3 py-4 md:px-6 md:py-7"
         onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
       >
         <div className="flex items-center justify-between">
@@ -77,7 +72,7 @@ const Question = ({ question, answer }) => {
           }}
         />
       </div>
-      <HorizontalLine />
+     
     </>
   );
 };

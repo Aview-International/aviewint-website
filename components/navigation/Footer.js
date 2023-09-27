@@ -1,66 +1,69 @@
+import React from 'react';
 import Image from 'next/image';
-import aviewLogo from '../../public/img/aview/logo.svg';
+import aviewLogo from '../../public/img/aview/logo.png';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
-import { baseUrl } from '../../services/baseUrl';
+import Button from '../UI/Button';
+
 
 const Footer = ({ curPage }) => {
   return (
-    <div className="navigation mb-s5" data-aos="zoom-in-down">
-      <hr className="gradient-1 mb-s5 h-[3px]" />
-      <div className="flex items-center justify-between md:items-start">
-        <div className="flex flex-col items-center gap-s2 md:items-start">
-          <Link href="/#">
+    <div className="mb-s5 text-white m-horizontal bg-white-transparent rounded-2xl" data-aos="zoom-in-down">
+      <div className="flex flex-col items-center gap-y-s5 justify-between md:items-start h-full p-s2 md:p-s4">
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full gap-s3 md:gap-x-s25">
+        <Link href="/#">
             <a>
               <Image
                 src={aviewLogo}
-                width="70px"
-                height="70px"
+                width="150"
+                height="35"
                 alt="AVIEW International logo"
               />
             </a>
           </Link>
-          <div className="grid grid-cols-2 gap-s2 md:grid-cols-5">
-            {SOCIALS.map((social) => (
-              <a
-                href={social.link}
-                target="_blank"
-                rel="noreferrer"
-                key={social.id}
-              >
-                <Image
-                  src={social.icon}
-                  alt={social.altText}
-                  width="24px"
-                  height="24px"
-                />
-              </a>
-            ))}
-          </div>
+         {ROUTES.map((routeArray, index) => {
+          return (
+            <div className='flex flex-col gap-y-1' key={index}>
+             <h5 className='text-xl font-semibold mb-2'>{routeArray.title}</h5>
+             { routeArray.routes.map((route) => (
+                 <Link href={route.route} key={route.text}>
+                  <a
+                   className={`text-md hover:gradient-text hover:gradient-2 xl:text-lg ${
+                     curPage === route.text
+                       ? 'gradient-text gradient-2'
+                       : 'text-white'
+                   }`}
+                  >
+                   {route.text}
+                  </a>
+                 </Link>
+             ))}
+            </div>
+          )
+          })}
         </div>
-        <div className="flex flex-col gap-s1 text-right md:flex-row md:gap-s5 md:text-left">
-          {ROUTES.map((route) => (
-            <Link href={route.route} key={route.id}>
+        <div className="flex flex-col md:flex-row justify-between w-full h-full">
+         <Button type="tertiary">Join Waitlist</Button>
+          <div className="flex flex-row md:grid gap-s1 mt-5 md:mt-0 lg:gap-s3 md:grid-cols-6">
+            {SOCIALS.map((social) => {
+              return (
+             React.Children.toArray(
               <a
-                className={`text-md hover:gradient-text hover:gradient-2 xl:text-lg ${
-                  curPage === route.text
-                    ? 'gradient-text gradient-2'
-                    : 'text-white'
-                }`}
+              href={social.link}
+              target="_blank"
+              rel="noreferrer"
+              key={social.id}
               >
-                {route.text}
+               <Image
+                src={social.icon}
+                alt={social.altText}
+                width="24px"
+                height="24px"
+               />
               </a>
-            </Link>
-          ))}
-          <a
-            className={`text-md hover:gradient-text hover:gradient-2 } 
-            text-white xl:text-lg`}
-            href={`${baseUrl}/privacy-policy`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Privacy Policy
-          </a>
+             )
+            )})}
+          </div>
         </div>
       </div>
     </div>

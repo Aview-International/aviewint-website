@@ -8,12 +8,13 @@ import {
 } from '../../../constants/constants';
 import FormInput from '../../FormComponents/FormInput';
 import Button from '../../UI/Button';
-import WaitlistImages from './WaitlistImages';
 import AboutCreator from './AboutCreator';
+import ImageGradientBlur from '../reused/ImageGradientBlur';
 import { useRouter } from 'next/router';
 import { welcomeNewUser } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import { emailValidator } from '../../../utils/regex';
+
 
 const Waitlist = () => {
   const router = useRouter();
@@ -50,7 +51,7 @@ const Waitlist = () => {
                 internationally. Join our exclusive waitlist today!
               </span>
             </p>
-            <WaitlistImages image={Step3} width="540" height="385" />
+            <ImageGradientBlur image={Step3} styles={true} width="540" height="385" />
           </div>
           <AboutCreator />
         </div>
