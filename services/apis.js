@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
-import Cookies from 'js-cookie';
-import { firebaseApp } from '../pages/_app';
 // import { getAuth } from 'firebase/auth';
 
 // const token = Cookies.get('token');
