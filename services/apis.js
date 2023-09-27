@@ -1,15 +1,19 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
-import Cookies from 'js-cookie';
+// import { getAuth } from 'firebase/auth';
 
-const token = Cookies.get('token');
+// const token = Cookies.get('token');
+
+// const auth = getAuth().currentUser;
+
+// console.log(auth);
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
-  headers: {
-    Authorization: 'Bearer ' + token,
-  },
+  // headers: {
+  //   Authorization: 'Bearer ' + token,
+  // },
 });
 
 export const welcomeNewUser = async (email) =>
@@ -40,7 +44,7 @@ export const singleSignOnLogin = async (email, origin) =>
   await axios.post(baseUrl + 'email/login', { email, origin });
 
 export const transcribeSocialLink = async (body) =>
-  await axiosInstance.post(baseUrl + 'transcription/social', body);
+  await axiosInstance.post('transcription/social', body);
 
 export const getInstagramShortAccess = async (ig_access_code) =>
   await axios.post('/api/onboarding/link-instagram?get=short_lived_access', {
@@ -68,7 +72,7 @@ export const authorizeUser = async () => {
 
 export const finalizeYoutubeAuth = async (tempId, userId) => {
   return await axiosInstance.get(
-    baseUrl + `auth/youtube-save?tempId=${tempId}&userId=${userId}`
+    `auth/youtube-save?tempId=${tempId}&userId=${userId}`
   );
 };
 
@@ -118,9 +122,7 @@ export const getUserYoutubeChannel = async (userId) => {
 };
 
 export const getMessageStatus = async (userId) => {
-  const response = await axiosInstance.get(
-    baseUrl + 'messages/status?userId=' + userId
-  );
+  const response = await axiosInstance.get('messages/status?userId=' + userId);
   return response.data;
 };
 
@@ -139,7 +141,7 @@ export const uploadMultipleVoiceSamples = async (speakers, userId) => {
   }
 
   await axiosInstance.post(
-    baseUrl + 'dubbing/multiple-voice-cloning?userId=' + userId,
+    'dubbing/multiple-voice-cloning?userId=' + userId,
     formData,
     {
       headers: {
@@ -157,7 +159,7 @@ export const uploadSingleVoiceSamples = async (audios, userId) => {
   }
 
   await axiosInstance.post(
-    baseUrl + 'dubbing/single-voice-cloning?userId=' + userId,
+    'dubbing/single-voice-cloning?userId=' + userId,
     formData,
     {
       headers: {
@@ -175,7 +177,7 @@ export const uploadRecordedVoice = async (audios, userId) => {
   }
 
   return await axiosInstance.post(
-    baseUrl + 'dubbing/recorded-voice-cloning?userId=' + userId,
+    'dubbing/recorded-voice-cloning?userId=' + userId,
     formData,
     {
       headers: {
@@ -191,7 +193,7 @@ export const testVoiceCloning = async (text, voiceId) => {
     voiceId,
   };
   const response = await axiosInstance.post(
-    baseUrl + 'dubbing/test-voice-cloning',
+    'dubbing/test-voice-cloning',
     body,
     { responseType: 'blob' }
   );
@@ -201,7 +203,7 @@ export const testVoiceCloning = async (text, voiceId) => {
 
 export const deleteVoiceClone = async (userId, voiceId) => {
   const res = await axiosInstance.patch(
-    `${baseUrl}dubbing/delete-voice-cloning/${userId}`,
+    `dubbing/delete-voice-cloning/${userId}`,
     { voiceId }
   );
   return res;
