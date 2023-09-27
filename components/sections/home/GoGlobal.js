@@ -3,17 +3,20 @@ import Image from 'next/image';
 import Go_Global from '../../../public/img/graphics/new-landing-images/go_global.webp';
 
 const GoGlobal = () => {
-  
   return (
-    <section className="section max-w-[1200px]  mx-auto text-center text-white">
-      <div className='h-full lg:w-[90%]  grid grid-cols-1 md:grid-cols-2 place-items-center p-s3 md:p-0'>
-        <Image src={Go_Global} alt='go_global' width="300" height="300"/>
-        <div className='flex flex-col gap-y-6 justify-start items-start mt-s2 md:mt-0'>
-          <h2 className='h2 text-start'>Unlock your global potential.</h2>
-          <p className='text-lg md:text-xl text-start'>
-            Step into a world of international growth, monetization, and limitless opportunities. Secure your spot on the Aview waitlist now.
+    <section className="section mx-auto  max-w-[1200px] text-center text-white">
+      <div className="grid h-full  grid-cols-1 place-items-center p-s3 md:grid-cols-2 md:p-0 lg:w-[90%]">
+        <Image src={Go_Global} alt="go_global" width="300" height="300" />
+        <div className="mt-s2 flex flex-col items-start justify-start gap-y-6 md:mt-0">
+          <h2 className="h2 text-start">Unlock your global potential.</h2>
+          <p className="text-start text-lg md:text-xl">
+            Step into a world of international growth, monetization, and
+            limitless opportunities. Secure your spot on the Aview waitlist now.
           </p>
-          <Button type="tertiary">Join Waitlist</Button>
+
+          <Button purpose="route" route="/waitlist" type="tertiary">
+            Join Waitlist
+          </Button>
         </div>
       </div>
     </section>

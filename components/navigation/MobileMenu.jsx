@@ -38,15 +38,27 @@ export default function MobileMenu() {
       <nav className="mb-5 flex flex-col">
          <MainMenu /> 
       </nav>
-      <div className='w-3/5'>
+      <div
+        className={`flex-grow-0 flex-col gap-4 ${
+          menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
+        }`}
+      >
         <Button
           purpose="route"
           route="/login"
           type="secondary"
           fullWidth={true}
         >
-          Join Waitlist
+          Login
         </Button>
+        {/* <Button
+          purpose="route"
+          route="/waitlist"
+          type="secondary"
+          fullWidth={true}
+        >
+          Join the Waitlist
+        </Button> */}
       </div>
     </div>
   );
