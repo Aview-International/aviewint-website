@@ -12,6 +12,7 @@ import Blobs from '../components/UI/Blobs';
 import EasterEgg from '../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
+import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <UnlockGlobalGrowth />
       <ScrollToTopButton />
       <ContentCreators />
+      <ScrollVerticalAnime />
       <EmpowerGlobal />
       <MetricsAnime />
       <FAQ page="landing" />
@@ -38,5 +40,3 @@ const Home = () => {
 };
 
 export default Home;
-
- 

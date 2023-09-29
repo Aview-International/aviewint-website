@@ -125,7 +125,6 @@ import monetize from '../public/img/graphics/new-landing-images/monetize.webp';
 import table_globe from '../public/img/graphics/new-landing-images/table_globe.webp';
 import workspace from '../public/img/graphics/new-landing-images/Workspace.webp';
 
-
 //new landing-page empower section
 import target from '../public/img/graphics/new-landing-images/target.webp';
 import empower from '../public/img/graphics/new-landing-images/empower.webp';
@@ -142,58 +141,91 @@ import filipino from '../public/img/graphics/corporate/filipino.png';
 import korean from '../public/img/graphics/corporate/korean.png';
 import japanese from '../public/img/graphics/corporate/japanese.png';
 
+// testominials
+import testimonial_1 from '../public/img/graphics/new-landing-images/testimonial-1.webp';
+import testimonial_2 from '../public/img/graphics/new-landing-images/testimonial-2.webp';
+import testimonial_3 from '../public/img/graphics/new-landing-images/testimonial-3.webp';
+import testimonial_4 from '../public/img/graphics/new-landing-images/testimonial-4.webp';
+import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial-5.webp';
+import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
+import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
+import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+
+export const LANDNG_PAGE_TESTIMONIALS = [
+  testimonial_1,
+  testimonial_2,
+  testimonial_3,
+  testimonial_4,
+  testimonial_5,
+  testimonial_6,
+  testimonial_7,
+  testimonial_8,
+];
+
 export const LANDING_PAGE_TYPES = [
   {
-    id: 1,
-    image : workspace,
+    image: workspace,
     title: 'Global Content Control Made Easy',
-    description: 'Seamlessly integrate, manage, and distribute your content on a global scale with Aview',
-    button_text: 'Explore content management'
+    description:
+      'Seamlessly integrate, manage, and distribute your content on a global scale with Aview',
+    button_text: 'Explore content management',
+    imageWidth: 483,
+    imageHeight: 300,
   },
   {
-    id: 2,
-    image : language_translator,
+    image: language_translator,
     title: 'Speak Every Language, Reach Every Audience',
-    description: 'Unlock international markets with precise translations and voice over dubbing tailored for your content',
-    button_text: 'Explore translations'
+    description:
+      'Unlock international markets with precise translations and voice over dubbing tailored for your content',
+    button_text: 'Explore translations',
+    imageWidth: 320,
+    imageHeight: 320,
   },
   {
-    id: 3,
-    image : table_globe,
+    image: brand_collab,
     title: 'Brand Collaborations That Resonate',
-    description: 'Discover and partner with global brands that align perfectly with your content\u0027s essence',
-    button_text: 'Explore AI voice'
+    description:
+      'Discover and partner with global brands that align perfectly with your content\u0027s essence',
+    button_text: 'Explore AI voice',
+    imageWidth: 470,
+    imageHeight: 300,
   },
   {
-    id: 4,
-    image : brand_collab,
+    image: table_globe,
     title: 'Discover Your Global Fanbase',
-    description: 'Optimize and tailor your content to resonate with diverse audiences, expanding your reach and influence',
-    button_text: 'Explore'
+    description:
+      'Optimize and tailor your content to resonate with diverse audiences, expanding your reach and influence',
+    button_text: 'Explore',
+    imageWidth: 320,
+    imageHeight: 320,
   },
   {
-    id: 5,
-    image : monetize,
+    image: monetize,
     title: 'Monetization Beyond Borders',
-    description: 'Transform your content into a global revenue stream, tapping into untapped markets and audiences',
-    button_text: 'Explore distribution'
+    description:
+      'Transform your content into a global revenue stream, tapping into untapped markets and audiences',
+    button_text: 'Explore distribution',
+    imageWidth: 400,
+    imageHeight: 400,
   },
-]
+];
 
 export const LANDNG_PAGE_EMPOWER_SECTION = [
   {
-   id:1,
-   image: empower,
-   sectionTitle: 'Tools for Global Dominance',
-   sectionText: 'Harness a suite of powerful tools designed to propel your content onto the international stage.'
+    image: empower,
+    imageWidth: 508,
+    sectionTitle: 'Tools for Global Dominance',
+    sectionText:
+      'Harness a suite of powerful tools designed to propel your content onto the international stage.',
   },
   {
-    id:2,
     image: target,
+    imageWidth: 326,
     sectionTitle: 'Insights for International Impact',
-    sectionText: 'Dive deep into analytics, understand your global reach, and monetize effectively in every language.'
-   },
-]
+    sectionText:
+      'Dive deep into analytics, understand your global reach, and monetize effectively in every language.',
+  },
+];
 
 export const LANDING_PAGE_METRICS = [
   {
@@ -246,7 +278,7 @@ export const LANDING_PAGE_METRICS = [
       {
         name: 'Japanese',
         flag: japanese,
-      }
+      },
     ],
     suffix: '+',
   },
@@ -273,17 +305,27 @@ export const LANDING_PAGE_METRICS = [
     id: 6,
     number: 10,
     text: 'Other Applications',
-    nestedContainer: ['Scientific','Financial','Legal','Business','Marketing','E-Learning','Voice Overs','Resumes','Video Games','Brochures'],
-    suffix: '+'
+    nestedContainer: [
+      'Scientific',
+      'Financial',
+      'Legal',
+      'Business',
+      'Marketing',
+      'E-Learning',
+      'Voice Overs',
+      'Resumes',
+      'Video Games',
+      'Brochures',
+    ],
+    suffix: '+',
   },
   {
     id: 7,
     number: 500,
     text: 'International Views',
-    suffix: 'M+'
+    suffix: 'M+',
   },
-  
-]
+];
 
 export const ROUTES = [
   // { id: 'route-1', title: 'Creators', routes: [
@@ -307,75 +349,80 @@ export const ROUTES = [
   //   text: 'Brands',
   //   route: '/pricing'
   //  },
-   
-  // ]},
-  { id: 'route-2', title: 'Corporate', routes: [
-    {
-    text: 'Scientific Documents',
-    route: '/corporate/scientific'
-   },
-   {
-    text: 'Financial Documents',
-    route: '/corporate/financial'
-   },
-   {
-    text: 'Business Documents',
-    route: '/corporate/business'
-   },
-   {
-    text: 'Legal Documents',
-    route: '/corporate/legal'
-   },
-   {
-    text: 'Marketing Documents',
-    route: '/corporate/marketing'
-   },
-   {
-    text: 'eLearning Documents',
-    route: '/corporate/e-learning'
-   },
-   {
-    text: 'Medical Documents',
-    route: '/corporate/medical'
-   },
-   {
-    text: 'Voice Overs',
-    route: '/corporate/voice-over'
-   },
-   {
-    text: 'Resumes',
-    route: '/corporate/resume'
-   },
-  ] },
-  { id: 'route-3', title: 'Resources', routes: [
-  {
-   text: 'Pricing',
-   route: '/pricing'
-  },
-  {
-    text: 'Blog',
-    route: '/blog'
-   },
-   {
-    text: 'About',
-    route: '/about'
-   },
-   {
-    text: 'Careers',
-    route: '/careers'
-   },
-   {
-    text: 'Contact',
-    route: '/contact'
-   },
-   {
-    text: 'Join Waitlist',
-    route: '/waitlist'
-   },
 
-] 
+  // ]},
+  {
+    id: 'route-2',
+    title: 'Corporate',
+    routes: [
+      {
+        text: 'Scientific Documents',
+        route: '/corporate/scientific',
+      },
+      {
+        text: 'Financial Documents',
+        route: '/corporate/financial',
+      },
+      {
+        text: 'Business Documents',
+        route: '/corporate/business',
+      },
+      {
+        text: 'Legal Documents',
+        route: '/corporate/legal',
+      },
+      {
+        text: 'Marketing Documents',
+        route: '/corporate/marketing',
+      },
+      {
+        text: 'eLearning Documents',
+        route: '/corporate/e-learning',
+      },
+      {
+        text: 'Medical Documents',
+        route: '/corporate/medical',
+      },
+      {
+        text: 'Voice Overs',
+        route: '/corporate/voice-over',
+      },
+      {
+        text: 'Resumes',
+        route: '/corporate/resume',
+      },
+    ],
   },
- 
+  {
+    id: 'route-3',
+    title: 'Resources',
+    routes: [
+      {
+        text: 'Pricing',
+        route: '/pricing',
+      },
+      {
+        text: 'Blog',
+        route: '/blog',
+      },
+      {
+        text: 'About',
+        route: '/about',
+      },
+      {
+        text: 'Careers',
+        route: '/careers',
+      },
+      {
+        text: 'Contact',
+        route: '/contact',
+      },
+      {
+        text: 'Join Waitlist',
+        route: '/waitlist',
+      },
+    ],
+  },
 ];
 
 export const SOCIALS = [
@@ -510,22 +557,18 @@ export const GENERATING_AVIEW_FOR = [
     subscribers: '23.5M+ Subs',
     icon: logan2,
   },
-  { id: 'creator-2', 
-    name: 'Ninja', 
-    subscribers: '23.9M+ Subs', 
-    icon: ninja2 
-  },
+  { id: 'creator-2', name: 'Ninja', subscribers: '23.9M+ Subs', icon: ninja2 },
   {
     id: 'creator-3',
     name: 'Saud Brothers',
     subscribers: '6.7M+ Subs',
     icon: saudBrothers,
   },
-  { 
-   id: 'creator-4', 
-   name: 'What If', 
-   subscribers: '6.7M+ Subs', 
-   icon: whatIf 
+  {
+    id: 'creator-4',
+    name: 'What If',
+    subscribers: '6.7M+ Subs',
+    icon: whatIf,
   },
   {
     id: 'creator-5',
