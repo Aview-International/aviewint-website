@@ -8,11 +8,11 @@ const MetricsAnime = () => {
     <section className="section m-horizontal flex flex-col gap-y-5 text-white">
       <h2 className="heading md:mb-s5">Our Impact, By the Numbers</h2>
       <div className="grid grid-cols-1 items-center gap-7 md:grid-cols-3">
-        {LANDING_PAGE_METRICS.map((metricItem) =>
+        {LANDING_PAGE_METRICS.map((metricItem, i) =>
           metricItem.id === 2 || metricItem.id === 6 ? (
-            <MetricBigContainer metric={metricItem} />
+            <MetricBigContainer metric={metricItem} key={i} />
           ) : (
-            <MetricSmallContainer metric={metricItem} />
+            <MetricSmallContainer metric={metricItem} key={i} />
           )
         )}
       </div>
@@ -69,8 +69,11 @@ const MetricBigContainer = ({ metric }) => {
             ))}
           </>
         ) : (
-          metric.nestedContainer.map((item) => (
-            <span className="flex items-center rounded-full bg-gray-1 py-1 px-s2 md:px-s3 md:text-lg">
+          metric.nestedContainer.map((item, i) => (
+            <span
+              className="flex items-center rounded-full bg-gray-1 py-1 px-s2 md:px-s3 md:text-lg"
+              key={i}
+            >
               {item}
             </span>
           ))
