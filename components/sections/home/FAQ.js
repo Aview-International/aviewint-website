@@ -6,14 +6,11 @@ import {
   VOICEOVER_FAQ,
 } from '../../../constants/constants';
 
-
 const FAQ = ({ page }) => {
   return (
     <section className="section m-horizontal">
-      <h2 className="h2 text-center">
-        Frequently Asked Questions
-      </h2>
-      <div className='flex flex-col gap-y-5 mt-s2'>
+      <h2 className="h2 text-center">Frequently Asked Questions</h2>
+      <div className="mt-s2 flex flex-col gap-y-5">
         {page === 'e-learning'
           ? E_LEARNING_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
@@ -47,7 +44,7 @@ const Question = ({ question, answer }) => {
   return (
     <>
       <div
-        className="cursor-pointer bg-white-transparent rounded-2xl px-3 py-4 md:px-6 md:py-7"
+        className="cursor-pointer rounded-2xl bg-white-transparent px-3 py-4 md:px-6 md:py-7"
         onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
       >
         <div className="flex items-center justify-between">
@@ -72,7 +69,6 @@ const Question = ({ question, answer }) => {
           }}
         />
       </div>
-     
     </>
   );
 };
