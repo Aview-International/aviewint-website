@@ -12,7 +12,7 @@ const UnlockGlobalGrowth = () => {
           with Aview.
         </p>
         <div className="flex w-full justify-start md:justify-center">
-          <Button type="tertiary" purpose="submit">
+          <Button purpose="route" route="/waitlist" type="tertiary">
             Join Waitlist
           </Button>
         </div>

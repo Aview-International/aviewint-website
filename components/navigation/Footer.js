@@ -43,7 +43,9 @@ const Footer = ({ curPage }) => {
           })}
         </div>
         <div className="flex flex-col md:flex-row justify-between w-full h-full">
-         <Button type="tertiary">Join Waitlist</Button>
+          <Button type="tertiary" purpose="route" route="/waitlist">
+            Join Waitlist
+          </Button>
           <div className="flex flex-row md:grid gap-s1 mt-5 md:mt-0 lg:gap-s3 md:grid-cols-6">
             {SOCIALS.map((social) => {
               return (
