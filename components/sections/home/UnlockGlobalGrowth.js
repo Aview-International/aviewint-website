@@ -7,9 +7,9 @@ const UnlockGlobalGrowth = () => {
     <section className="section m-horizontal mt-12 lg:mt-28">
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
         <div className="mt-10 mb-20 flex box-content">
-          <h2 className="title text-white">You create we - </h2>
+          <h2 className="title">You Create - we</h2>
           <div className="h-10 ml-s1 mt-s1 leading-4 overflow-hidden">
-             <span className="roll text-7xl md:text-8xl font-bold gradient-text gradient-2">
+             <span className="roll text-2xl md:text-8xl font-bold gradient-text gradient-2">
               transcibe<br/>
               translate<br/>
               edit<br/>
