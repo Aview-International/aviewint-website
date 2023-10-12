@@ -22,7 +22,7 @@ const Pricing = () => {
       <Footer curPage="Pricing" />
       <Blobs />
     </>
-  )
-}
+  );
+};
 
-export default Pricing
+export default Pricing;
