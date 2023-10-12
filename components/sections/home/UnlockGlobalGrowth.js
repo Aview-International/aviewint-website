@@ -12,6 +12,7 @@ const UnlockGlobalGrowth = () => {
     'Distribute',
     'Monetize',
     'Manage',
+    'Globalize',
   ];
   return (
     <section className="section m-horizontal mt-12 lg:mt-28">
