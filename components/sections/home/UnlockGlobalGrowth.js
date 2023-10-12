@@ -1,22 +1,34 @@
-import React from 'react';
 import Button from '../../UI/Button';
 import videoAsset from '../../../public/img/aview/landing_page_video.mp4';
+import ReactTyped from 'react-typed';
 
 const UnlockGlobalGrowth = () => {
+  const displayTexts = [
+    'Transcribe',
+    'Subtitle',
+    'Translate',
+    'Voiceover',
+    'Dub',
+    'Distribute',
+    'Monetize',
+    'Manage',
+  ];
   return (
     <section className="section m-horizontal mt-12 lg:mt-28">
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
-        <div className="mt-10 mb-20 flex box-content">
-          <h2 className="title">You Create - we</h2>
-          <div className="h-10 ml-s1 mt-s1 leading-4 overflow-hidden">
-             <span className="roll text-2xl md:text-8xl font-bold gradient-text gradient-2">
-              transcibe<br/>
-              translate<br/>
-              edit<br/>
-              dub<br/>
-              distribute<br/>
+        <div className="mt-10 mb-20 box-content flex">
+          <h2 className="title">
+            You Create - We{' '}
+            <span className="gradient-text gradient-2">
+              <ReactTyped
+                strings={displayTexts}
+                typeSpeed={100}
+                backSpeed={40}
+                loop
+                showCursor={false}
+              />
             </span>
-          </div>
+          </h2>
         </div>
         <h1 className="title">Unlock Global Growth, One Click at a Time</h1>
         <p className="body mt-2 mb-8 max-w-full md:mt-0 md:text-center">
