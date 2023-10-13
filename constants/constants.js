@@ -313,7 +313,6 @@ export const LANDING_PAGE_METRICS = [
       'Marketing',
       'E-Learning',
       'Voice Overs',
-      'Resumes',
       'Video Games',
       'Brochures',
     ],
@@ -386,10 +385,6 @@ export const ROUTES = [
       {
         text: 'Voice Overs',
         route: '/corporate/voice-over',
-      },
-      {
-        text: 'Resumes',
-        route: '/corporate/resume',
       },
     ],
   },
