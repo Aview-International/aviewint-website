@@ -34,7 +34,7 @@ const MENU = [
       } 
     ], 
   },
-  { type: 'route', title: 'Pricing', link: '/pricing' },
+  // { type: 'route', title: 'Pricing', link: '/pricing' },
   { type: 'route', title: 'Blog', link: '/blog' },
   {
     type: 'dropdown',

@@ -7,58 +7,55 @@ import aviewLogo from '../../public/img/aview/logo_short.png';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-down-white.svg';
 
-
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
   return (
     <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen overflow-y-scroll flex-col bg-black px-6 pt-8 pb-10 lg:hidden text-white ${
+      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen flex-col overflow-y-scroll bg-black px-6 pt-8 pb-10 text-white lg:hidden ${
         menuOpenCtx.isMenuOpen
           ? 'translate-x-0 opacity-100'
           : 'translate-x-full opacity-0'
       }`}
     >
-      <div className="mb-6 flex h-12 items-center justify-between bg-white-transparent rounded-full p-2">
-          <div onClick={menuOpenCtx.closeMenuHandler}>
-            <Link href="/">
-              <a className="mt-2 w-20">
-                <Image
-                  src={aviewLogo}
-                  width="40"
-                  height="40"
-                  alt="aview logo"
-                />
-              </a>
-            </Link>
-          </div>
-          <div className="h-8 w-8 bg-black p-2 rounded-full" onClick={menuOpenCtx.closeMenuHandler}>
-            <Image src={closeIcon} width={32} height={32} alt="close icon" />
-          </div>
+      <div className="mb-6 flex h-12 items-center justify-between rounded-full bg-white-transparent p-2">
+        <div onClick={menuOpenCtx.closeMenuHandler}>
+          <Link href="/">
+            <a className="mt-2 w-20">
+              <Image src={aviewLogo} width="40" height="40" alt="aview logo" />
+            </a>
+          </Link>
+        </div>
+        <div
+          className="h-8 w-8 rounded-full bg-black p-2"
+          onClick={menuOpenCtx.closeMenuHandler}
+        >
+          <Image src={closeIcon} width={32} height={32} alt="close icon" />
+        </div>
       </div>
       <nav className="mb-5 flex flex-col">
-         <MainMenu /> 
+        <MainMenu />
       </nav>
       <div
         className={`flex-grow-0 flex-col gap-4 ${
           menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
         }`}
       >
-        <Button
+        {/* <Button
           purpose="route"
           route="/login"
           type="secondary"
           fullWidth={true}
         >
           Login
-        </Button>
-        {/* <Button
+        </Button> */}
+        <Button
           purpose="route"
           route="/waitlist"
           type="secondary"
           fullWidth={true}
         >
           Join the Waitlist
-        </Button> */}
+        </Button>
       </div>
     </div>
   );
@@ -76,17 +73,16 @@ export function MainMenu() {
   const [dropDownService, setDropDownService] = useState(false);
   const [dropDownLanguage, setDropDownLanguage] = useState(false);
   const menuOpenCtx = useContext(MenuOpenContext);
- 
+
   const handleDropDown = (item) => {
-    if(item === 'services') {
-      setDropDownService( (prevValue) => !prevValue )
+    if (item === 'services') {
+      setDropDownService((prevValue) => !prevValue);
+    } else {
+      setDropDownLanguage((prevValue) => !prevValue);
     }
-    else {
-      setDropDownLanguage( (prevValue) => !prevValue )
-    }
-    menuOpenCtx.setMenu(item)
-  }
-  
+    menuOpenCtx.setMenu(item);
+  };
+
   return (
     <div className="flex flex-col">
       {MAIN_MENU.map((menuItem, idx) => {
@@ -94,47 +90,46 @@ export function MainMenu() {
           return (
             <Link href={menuItem.link} key={`link-${idx}`}>
               <div
-                className="flex h-12 p-1 items-center"
+                className="flex h-12 items-center p-1"
                 onClick={menuOpenCtx.closeMenuHandler}
                 key={menuItem.title}
               >
-                <p className="text-2xl font-bold">
-                  {menuItem.title}
-                </p>
+                <p className="text-2xl font-bold">{menuItem.title}</p>
               </div>
             </Link>
           );
         } else if (menuItem.type === 'dropdown') {
-           if( menuItem.dropdown === 'services') {
+          if (menuItem.dropdown === 'services') {
             return (
               <React.Fragment key={idx}>
-                <DropDownHandle menuItem={menuItem} onChange={handleDropDown} isChecked={dropDownService}/>
-                {
-                 dropDownService ? 
-                 <div className='px-s4 overflow-y-scroll'>
-                  <ServicesMenu /> 
-                 </div> 
-                 : null
-                }
+                <DropDownHandle
+                  menuItem={menuItem}
+                  onChange={handleDropDown}
+                  isChecked={dropDownService}
+                />
+                {dropDownService ? (
+                  <div className="overflow-y-scroll px-s4">
+                    <ServicesMenu />
+                  </div>
+                ) : null}
               </React.Fragment>
-            )
-          }
-          else if( menuItem.dropdown === 'languages') {
+            );
+          } else if (menuItem.dropdown === 'languages') {
             return (
-            <React.Fragment key={idx}>
-              <DropDownHandle menuItem={menuItem} onChange={handleDropDown} isChecked={dropDownLanguage}/>
-               {
-                 dropDownLanguage ? 
-                 <div className='px-s4 overflow-y-scroll'>
-                   <LanguagesMenu /> 
-                 </div> 
-                 : null
-               }
-            </React.Fragment>
-          
-           )
-          }
-          else {
+              <React.Fragment key={idx}>
+                <DropDownHandle
+                  menuItem={menuItem}
+                  onChange={handleDropDown}
+                  isChecked={dropDownLanguage}
+                />
+                {dropDownLanguage ? (
+                  <div className="overflow-y-scroll px-s4">
+                    <LanguagesMenu />
+                  </div>
+                ) : null}
+              </React.Fragment>
+            );
+          } else {
             return null;
           }
         } else {
@@ -148,15 +143,17 @@ export function MainMenu() {
 export function DropDownHandle({ menuItem, onChange, isChecked }) {
   return (
     <div
-      className="flex flex-col relative "
-      onClick={()=>onChange(menuItem.dropdown)}
+      className="relative flex flex-col "
+      onClick={() => onChange(menuItem.dropdown)}
       key={menuItem.title}
     >
-      <div className={` ${isChecked && 'h-full'} h-12 p-1 flex flex-row items-center justify-between`}>
-       <p className="text-2xl font-bold">
-          {menuItem.title}
-       </p>
-       <div className={`h-10 w-10 ${isChecked && 'rotate-180'} duration-300`}>
+      <div
+        className={` ${
+          isChecked && 'h-full'
+        } flex h-12 flex-row items-center justify-between p-1`}
+      >
+        <p className="text-2xl font-bold">{menuItem.title}</p>
+        <div className={`h-10 w-10 ${isChecked && 'rotate-180'} duration-300`}>
           <Image
             src={leftChevronIcon}
             alt="right chevron icon"
@@ -166,7 +163,7 @@ export function DropDownHandle({ menuItem, onChange, isChecked }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 const ServiceMenu = [
@@ -200,14 +197,12 @@ export function ServicesMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
 
   return (
-    <div className="gap-y-2 my-2 flex flex-col">
+    <div className="my-2 flex flex-col gap-y-2">
       {ServiceMenu.map((menuItem) => (
         <React.Fragment key={menuItem.title}>
           <Link href={menuItem.link}>
             <div key={menuItem.title} onClick={menuOpenCtx.closeMenuHandler}>
-              <p className=" text-white">
-                {menuItem.title}
-              </p>
+              <p className=" text-white">{menuItem.title}</p>
             </div>
           </Link>
         </React.Fragment>
@@ -239,7 +234,7 @@ export function LanguagesMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
 
   return (
-    <div className="gap-1 grid grid-cols-2 my-2">
+    <div className="my-2 grid grid-cols-2 gap-1">
       {LANGUAGES_MENU.map((menuItem) => (
         <React.Fragment key={menuItem}>
           <Link href={`/languages/${menuItem.toLowerCase()}`}>
