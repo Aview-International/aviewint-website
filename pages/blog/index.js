@@ -4,7 +4,6 @@ import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
-
 import { getBlogPreviews } from '../../lib/notion';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';

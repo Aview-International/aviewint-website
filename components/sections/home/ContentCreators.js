@@ -1,34 +1,30 @@
-import Button from '../../UI/Button';
-import { WORKED_WITH } from '../../../constants/constants';
+import { LANDING_PAGE_TYPES } from '../../../constants/constants';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const ContentCreators = () => {
   return (
-    <section className="section m-horizontal text-center" data-aos="zoom-in">
-      <h2 className="title mb-s4 text-left md:mb-s10 md:text-center">
-        <span className="gradient-text gradient-2">Content Creators</span>{' '}
-        We&apos;ve Worked With
-      </h2>
-      <div className="mx-auto mb-s4 grid max-w-[400px] grid-cols-2 gap-s5 md:mb-s10 md:max-w-[820px] md:grid-cols-3 md:gap-x-s22 md:gap-y-s5">
-        {WORKED_WITH.map((creator) => (
-          <Link key={creator.id} href={creator.link}>
-            <a className="group">
-              <Image
-                src={creator.icon}
-                alt={creator.name}
-                className="overflow-hidden rounded-full"
-              />
-              <p className="group-hover:gradient-text group-hover:gradient-2 mt-s2 text-lg text-white group-hover:inline-block md:text-xl">
-                {creator.name}
+    <section className="section m-horizontal text-white" data-aos="zoom-in">
+      <div className="mx-auto grid w-full grid-cols-1 place-content-center place-items-center gap-s25 p-3">
+        {LANDING_PAGE_TYPES.map((itemType, idx) => (
+          <div
+            className="flex w-full flex-col items-center justify-between gap-s5 md:flex-row md:gap-s14"
+            key={idx}
+          >
+            <Image
+              src={itemType.image}
+              alt={`about-${itemType.title}`}
+              width={itemType.imageWidth}
+              height={itemType.imageHeight}
+            />
+            <div className="flex w-full max-w-[430px] flex-col gap-y-5 p-0">
+              <p className="w-full text-4xl font-semibold md:w-5/6 md:text-6xl">
+                {itemType.title}
               </p>
-            </a>
-          </Link>
+              <p className="text-base md:text-lg">{itemType.description}</p>
+            </div>
+          </div>
         ))}
       </div>
-      <Button type="primary" purpose="route" route="#generate-aview">
-        Become a Creator
-      </Button>
     </section>
   );
 };

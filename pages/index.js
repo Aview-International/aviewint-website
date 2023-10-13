@@ -1,21 +1,18 @@
 import SEO from '../components/SEO/SEO';
 import Header from '../components/navigation/Header';
-import YouCreateWeTranslate from '../components/sections/home/YouCreateWeTranslate';
-import OurServices from '../components/sections/reused/OurServices';
+import UnlockGlobalGrowth from '../components/sections/home/UnlockGlobalGrowth';
 import ContentCreators from '../components/sections/home/ContentCreators';
-import OurTranslatedContent from '../components/sections/home/TranslatedContent';
-import LeaderInTranslations from '../components/sections/home/LeaderInTranslations';
-import BreadAndButter from '../components/sections/home/BreadAndButter';
-import WhyWorkWithUs from '../components/sections/home/LeadInTranslations';
+import EmpowerGlobal from '../components/sections/home/EmpowerGlobal';
+import MetricsAnime from '../components/sections/home/MetricsAnime';
 import StartGenerating from '../components/sections/home/StartGenerating';
 import FAQ from '../components/sections/home/FAQ';
 import GoGlobal from '../components/sections/home/GoGlobal';
-import FeaturedBlogs from '../components/sections/reused/FeaturedBlogs';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import EasterEgg from '../components/sections/reused/EasterEgg';
-import ScrollToTopButton from '../components/UI/ScrollToTopButton';
+// import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
+import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 
 const Home = () => {
   return (
@@ -27,18 +24,15 @@ const Home = () => {
       <ProgressBar />
       <EasterEgg />
       <Header curPage="Home" />
-      <YouCreateWeTranslate />
-      <ScrollToTopButton />
-      <OurServices />
+      <UnlockGlobalGrowth />
+      {/* <ScrollToTopButton /> */}
       <ContentCreators />
-      <OurTranslatedContent />
-      <LeaderInTranslations />
-      <BreadAndButter />
-      <WhyWorkWithUs />
-      <StartGenerating formId="t5dW3MSY" />
+      <ScrollVerticalAnime />
+      <EmpowerGlobal />
+      <MetricsAnime />
       <FAQ page="landing" />
+      <StartGenerating formId="t5dW3MSY" />
       <GoGlobal />
-      <FeaturedBlogs />
       <Footer curPage="Home" />
       <Blobs />
     </>

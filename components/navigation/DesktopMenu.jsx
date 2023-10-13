@@ -1,26 +1,41 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import downChevronWhite from '../../public/img/icons/chevron-down-white.svg';
 import downChevronGradient from '../../public/img/icons/chevron-down-gradient.svg';
-import { useState } from 'react';
+import Card from '../UI/Card';
 
 const MENU = [
-  { type: 'route', title: 'Home', link: '/' },
-  { type: 'route', title: 'Creators', link: '/creators' },
-  {
-    type: 'dropdown',
-    title: 'Corporate',
+  { 
+    type: 'dropdown', 
+    title: 'Services', 
     dropdown: [
-      { title: 'Scientific', link: '/corporate/scientific' },
-      { title: 'Financial', link: '/corporate/financial' },
-      { title: 'Legal', link: '/corporate/legal' },
-      { title: 'Business', link: '/corporate/business' },
-      { title: 'Marketing', link: '/corporate/marketing' },
-      { title: 'E-Learning', link: '/corporate/e-learning' },
-      { title: 'Medical', link: '/corporate/medical' },
-      { title: 'Voice Over', link: '/corporate/voice-over' },
-    ],
+      // {
+      //   name: 'Creators',
+      //   subtext: 'All-in-one content platform',
+      //   dropdownItems: [
+      //     { title: 'Translation', link: '/corporate/scientific' },
+      //     { title: 'Dubbing', link: '/corporate/scientific' },
+      //     { title: 'AI Voice', link: '/corporate/scientific' },
+      //     { title: 'Distribution', link: '/corporate/scientific' },
+      //     { title: 'Brands', link: '/corporate/scientific' },
+      //   ]
+      // },
+      {
+        name: 'Corporate',
+        subtext: 'Services for corporate material',
+        dropdownItems: [
+          { title: 'Scientific', link: '/corporate/scientific' },
+        { title: 'Financial', link: '/corporate/financial' },
+       { title: 'Business', link: '/corporate/business' },
+       { title: 'Legal', link: '/corporate/legal' },
+       { title: 'Medical', link: '/corporate/medical' },
+        ]
+      } 
+    ], 
   },
+  // { type: 'route', title: 'Pricing', link: '/pricing' },
+  { type: 'route', title: 'Blog', link: '/blog' },
   {
     type: 'dropdown',
     title: 'Languages',
@@ -44,8 +59,6 @@ const MENU = [
     ],
   },
   { type: 'route', title: 'About', link: '/about' },
-  { type: 'route', title: 'Careers', link: '/careers' },
-  { type: 'route', title: 'Blog', link: '/blog' },
 ];
 
 export default function DesktopMenu({ curPage }) {
@@ -56,7 +69,7 @@ export default function DesktopMenu({ curPage }) {
           return (
             <Link href={menuItem.link} key={menuItem.title}>
               <a
-                className={`text-md hover:gradient-text hover:gradient-1 ml-10 xl:text-lg ${
+                className={`text-md hover:gradient-text hover:gradient-1 ml-10 xl:text-lg cursor-pointer ${
                   curPage === menuItem.title
                     ? `gradient-text gradient-1`
                     : `text-white`
@@ -85,22 +98,16 @@ export default function DesktopMenu({ curPage }) {
 
 function Dropdown({ title, dropdown, curPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const dropdownColumns = [];
-
-  for (let i = 0; i < dropdown.length; i += 4) {
-    dropdownColumns.push(dropdown.slice(i, i + 4));
-  }
-
+  
   return (
     <span
       className="relative ml-10 inline"
       onMouseEnter={() => setDropdownOpen(true)}
       onMouseLeave={() => setDropdownOpen(false)}
     >
-      <div className="inline-flex items-center gap-1">
+      <div className="inline-flex items-center gap-1 cursor-pointer">
         <p
-          className={`text-md cursor-default xl:text-lg ${
+          className={`text-md md:text-xl ${
             dropdownOpen || curPage === title
               ? 'gradient-text gradient-1'
               : 'text-white'
@@ -108,7 +115,7 @@ function Dropdown({ title, dropdown, curPage }) {
         >
           {title}
         </p>
-        <div className={`h-6 w-6 ${dropdownOpen ? 'rotate-180' : ''}`}>
+        <div className={`h-6 w-6 duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}>
           <Image
             src={
               dropdownOpen || curPage === title
@@ -126,21 +133,44 @@ function Dropdown({ title, dropdown, curPage }) {
           dropdownOpen ? 'absolute' : 'hidden'
         }`}
       >
-        <div className="flex w-max gap-10 rounded-md bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
-          {dropdownColumns.map((col, i) => (
-            <div className="flex flex-col gap-4" key={`col-${i}`}>
-              {col.map((item) => {
-                return (
-                  <Link href={item.link} key={item.title}>
-                    <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
-                      {item.title}
-                    </a>
-                  </Link>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+      { dropdown.length <=1 ? 
+        <Card borderRadius="xl" fullWidth={true}>
+         <div className='w-max grid grid-cols-1 p-4 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black'>
+          { dropdown.map((dropItem, index) => {
+            return (
+              <div className='flex flex-col gap-2' key={index}>
+                <div>
+                 <p className='text-xl'>{dropItem.name}</p>
+                 <p className='text-sm'>{dropItem.subtext}</p>
+                </div>
+                {
+                  dropItem.dropdownItems.map((item) => {
+                    return (
+                      <Link href={item.link} key={item.title}>
+                        <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
+                        {item.title}
+                        </a>
+                      </Link>
+                    )
+                  })
+                }
+              </div>
+            )})
+          }
+         </div> 
+        </Card> : 
+        <Card borderRadius="xl" fullWidth={true}>
+         <div className="grid grid-cols-2 w-max gap-2 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
+           { dropdown.map((item) => (
+            <Link href={item.link} key={item.title}>
+              <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
+                {item.title}
+              </a>
+            </Link>
+           ))}
+         </div>
+        </Card>
+      }
       </div>
     </span>
   );

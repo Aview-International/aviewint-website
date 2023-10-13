@@ -4,6 +4,7 @@ import facebook from '../public/img/icons/facebook.svg';
 import youtube from '../public/img/icons/youtube.svg';
 import tiktok from '../public/img/icons/tiktok.svg';
 import instagram from '../public/img/icons/instagram.svg';
+import twitter from '../public/img/icons/twitter.svg';
 
 // Content Creators
 import logan1 from '../public/img/creators/logan-1.png';
@@ -117,45 +118,344 @@ import Step3 from '../public/img/waitlist/Step3.svg';
 import Step4 from '../public/img/waitlist/Step4.svg';
 import Step5 from '../public/img/waitlist/Step5.svg';
 
+//new landing-page main-section images
+import brand_collab from '../public/img/graphics/new-landing-images/brand_collab.webp';
+import language_translator from '../public/img/graphics/new-landing-images/lanuage_translate.webp';
+import monetize from '../public/img/graphics/new-landing-images/monetize.webp';
+import table_globe from '../public/img/graphics/new-landing-images/table_globe.webp';
+import workspace from '../public/img/graphics/new-landing-images/Workspace.webp';
+
+//new landing-page empower section
+import target from '../public/img/graphics/new-landing-images/target.webp';
+import empower from '../public/img/graphics/new-landing-images/empower.webp';
+
+//new landing-page corporate language icons
+import english from '../public/img/graphics/corporate/english.png';
+import french from '../public/img/graphics/corporate/french.png';
+import hindi from '../public/img/graphics/corporate/hindi.png';
+import spanish from '../public/img/graphics/corporate/spanish.png';
+import portuguese from '../public/img/graphics/corporate/portuguese.png';
+import russian from '../public/img/graphics/corporate/russian.png';
+import german from '../public/img/graphics/corporate/german.png';
+import filipino from '../public/img/graphics/corporate/filipino.png';
+import korean from '../public/img/graphics/corporate/korean.png';
+import japanese from '../public/img/graphics/corporate/japanese.png';
+
+// testominials
+import testimonial_1 from '../public/img/graphics/new-landing-images/testimonial-1.webp';
+import testimonial_2 from '../public/img/graphics/new-landing-images/testimonial-2.webp';
+import testimonial_3 from '../public/img/graphics/new-landing-images/testimonial-3.webp';
+import testimonial_4 from '../public/img/graphics/new-landing-images/testimonial-4.webp';
+import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial-5.webp';
+import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
+import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
+import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+
+export const LANDNG_PAGE_TESTIMONIALS = [
+  testimonial_1,
+  testimonial_2,
+  testimonial_3,
+  testimonial_4,
+  testimonial_5,
+  testimonial_6,
+  testimonial_7,
+  testimonial_8,
+];
+
+export const LANDING_PAGE_TYPES = [
+  {
+    image: workspace,
+    title: 'Global Content Control Made Easy',
+    description:
+      'Seamlessly integrate, manage, and distribute your content on a global scale with Aview',
+    button_text: 'Explore content management',
+    imageWidth: 483,
+    imageHeight: 300,
+  },
+  {
+    image: language_translator,
+    title: 'Speak Every Language, Reach Every Audience',
+    description:
+      'Unlock international markets with precise translations and voice over dubbing tailored for your content',
+    button_text: 'Explore translations',
+    imageWidth: 320,
+    imageHeight: 320,
+  },
+  {
+    image: brand_collab,
+    title: 'Brand Collaborations That Resonate',
+    description:
+      'Discover and partner with global brands that align perfectly with your content\u0027s essence',
+    button_text: 'Explore AI voice',
+    imageWidth: 470,
+    imageHeight: 300,
+  },
+  {
+    image: table_globe,
+    title: 'Discover Your Global Fanbase',
+    description:
+      'Optimize and tailor your content to resonate with diverse audiences, expanding your reach and influence',
+    button_text: 'Explore',
+    imageWidth: 320,
+    imageHeight: 320,
+  },
+  {
+    image: monetize,
+    title: 'Monetization Beyond Borders',
+    description:
+      'Transform your content into a global revenue stream, tapping into untapped markets and audiences',
+    button_text: 'Explore distribution',
+    imageWidth: 400,
+    imageHeight: 400,
+  },
+];
+
+export const LANDNG_PAGE_EMPOWER_SECTION = [
+  {
+    image: empower,
+    imageWidth: 508,
+    sectionTitle: 'Tools for Global Dominance',
+    sectionText:
+      'Harness a suite of powerful tools designed to propel your content onto the international stage.',
+  },
+  {
+    image: target,
+    imageWidth: 326,
+    sectionTitle: 'Insights for International Impact',
+    sectionText:
+      'Dive deep into analytics, understand your global reach, and monetize effectively in every language.',
+  },
+];
+
+export const LANDING_PAGE_METRICS = [
+  {
+    id: 1,
+    number: 100,
+    text: 'Total Creator Reach',
+    suffix: 'M+',
+  },
+  {
+    id: 2,
+    number: 50,
+    text: 'Languages',
+    nestedContainer: [
+      {
+        name: 'English',
+        flag: english,
+      },
+      {
+        name: 'French',
+        flag: french,
+      },
+      {
+        name: 'Hindi',
+        flag: hindi,
+      },
+      {
+        name: 'Spanish',
+        flag: spanish,
+      },
+      {
+        name: 'Filipino',
+        flag: filipino,
+      },
+      {
+        name: 'German',
+        flag: german,
+      },
+      {
+        name: 'Portguese',
+        flag: portuguese,
+      },
+      {
+        name: 'Korean',
+        flag: korean,
+      },
+      {
+        name: 'Russian',
+        flag: russian,
+      },
+      {
+        name: 'Japanese',
+        flag: japanese,
+      },
+    ],
+    suffix: '+',
+  },
+  {
+    id: 3,
+    number: 10,
+    text: 'International Subscribers',
+    suffix: 'M+',
+  },
+  {
+    id: 4,
+    number: 25,
+    text: 'Monetized Regions',
+    suffix: '+',
+  },
+  {
+    id: 5,
+    number: 5,
+    text: 'Turnaround Time',
+    prefix: '<',
+    suffix: 'hrs',
+  },
+  {
+    id: 6,
+    number: 10,
+    text: 'Other Applications',
+    nestedContainer: [
+      'Scientific',
+      'Financial',
+      'Legal',
+      'Business',
+      'Marketing',
+      'E-Learning',
+      'Voice Overs',
+      'Video Games',
+      'Brochures',
+    ],
+    suffix: '+',
+  },
+  {
+    id: 7,
+    number: 500,
+    text: 'International Views',
+    suffix: 'M+',
+  },
+];
+
 export const ROUTES = [
-  { id: 'route-1', text: 'Home', route: '/' },
-  { id: 'route-2', text: 'Creators', route: '/creators' },
-  { id: 'route-3', text: 'Corporate', route: '/corporate' },
-  { id: 'route-4', text: 'About', route: '/about' },
-  { id: 'route-5', text: 'Careers', route: '/careers' },
-  { id: 'route-6', text: 'Blog', route: '/blog' },
+  // { id: 'route-1', title: 'Creators', routes: [
+  //   {
+  //   text: 'Content Management',
+  //   route: '/pricing'
+  //  },
+  //  {
+  //   text: 'Dubbing',
+  //   route: '/pricing'
+  //  },
+  //  {
+  //   text: 'Ai Voice',
+  //   route: '/pricing'
+  //  },
+  //  {
+  //   text: 'Translation',
+  //   route: '/pricing'
+  //  },
+  //  {
+  //   text: 'Brands',
+  //   route: '/pricing'
+  //  },
+
+  // ]},
+  {
+    id: 'route-2',
+    title: 'Corporate',
+    routes: [
+      {
+        text: 'Scientific Documents',
+        route: '/corporate/scientific',
+      },
+      {
+        text: 'Financial Documents',
+        route: '/corporate/financial',
+      },
+      {
+        text: 'Business Documents',
+        route: '/corporate/business',
+      },
+      {
+        text: 'Legal Documents',
+        route: '/corporate/legal',
+      },
+      {
+        text: 'Marketing Documents',
+        route: '/corporate/marketing',
+      },
+      {
+        text: 'eLearning Documents',
+        route: '/corporate/e-learning',
+      },
+      {
+        text: 'Medical Documents',
+        route: '/corporate/medical',
+      },
+      {
+        text: 'Voice Overs',
+        route: '/corporate/voice-over',
+      },
+    ],
+  },
+  {
+    id: 'route-3',
+    title: 'Resources',
+    routes: [
+      {
+        text: 'Pricing',
+        route: '/pricing',
+      },
+      {
+        text: 'Blog',
+        route: '/blog',
+      },
+      {
+        text: 'About',
+        route: '/about',
+      },
+      {
+        text: 'Careers',
+        route: '/careers',
+      },
+      {
+        text: 'Contact',
+        route: '/contact',
+      },
+      {
+        text: 'Join Waitlist',
+        route: '/waitlist',
+      },
+    ],
+  },
 ];
 
 export const SOCIALS = [
   {
     id: 'social-1',
-    link: 'https://www.linkedin.com/company/aview-international',
-    icon: linkedin,
-    altText: 'LinkedIn icon',
+    link: 'https://twitter.com/Aviewint',
+    icon: twitter,
+    altText: 'Twitter icon',
   },
   {
     id: 'social-2',
-    link: 'https://www.facebook.com/aviewinternational',
-    icon: facebook,
-    altText: 'Facebook icon',
-  },
-  {
-    id: 'social-3',
     link: 'https://youtube.com/channel/UCjBLxbcY1w0qn8UGiMR2n6w',
     icon: youtube,
     altText: 'YouTube icon',
   },
   {
+    id: 'social-3',
+    link: 'https://www.instagram.com/aviewint/',
+    icon: instagram,
+    altText: 'Instagram icon',
+  },
+  {
     id: 'social-4',
+    link: 'https://www.facebook.com/aviewinternational',
+    icon: facebook,
+    altText: 'Facebook icon',
+  },
+  {
+    id: 'social-5',
     link: 'https://vm.tiktok.com/ZMNQRxbLd/',
     icon: tiktok,
     altText: 'TikTok icon',
   },
   {
-    id: 'social-5',
-    link: 'https://www.instagram.com/aviewint/',
-    icon: instagram,
-    altText: 'Instagram icon',
+    id: 'social-6',
+    link: 'https://www.linkedin.com/company/aview-international',
+    icon: linkedin,
+    altText: 'LinkedIn icon',
   },
 ];
 
@@ -259,7 +559,12 @@ export const GENERATING_AVIEW_FOR = [
     subscribers: '6.7M+ Subs',
     icon: saudBrothers,
   },
-  { id: 'creator-4', name: 'What If', subscribers: '6.7M+ Subs', icon: whatIf },
+  {
+    id: 'creator-4',
+    name: 'What If',
+    subscribers: '6.7M+ Subs',
+    icon: whatIf,
+  },
   {
     id: 'creator-5',
     name: 'Yes Theory',
@@ -386,7 +691,7 @@ export const BENEFITS_OF_TRANSLATIONS = [
     id: 'benefit-4',
     title: 'Visibility',
     description:
-      'Translated metadata will help increase your visibility on YouTube’s algorithm.',
+      'Translated metadata will help increase your visibility on YouTube\u0027s algorithm.',
     graphic: visibility,
   },
 ];

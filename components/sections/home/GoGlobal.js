@@ -1,60 +1,24 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { GLOBAL_NEWSLETTER } from '../../../constants/constants';
-import { emailValidator } from '../../../utils/regex';
-import Form from '../../FormComponents/Form';
-import FormInput from '../../FormComponents/FormInput';
-import Banner from '../../layout/Banner';
 import Button from '../../UI/Button';
-import { welcomeNewUser } from '../../../services/apis';
-import ErrorHandler from '../../../utils/errorHandler';
+import Image from 'next/image';
+import Go_Global from '../../../public/img/graphics/new-landing-images/go_global.webp';
 
 const GoGlobal = () => {
-  const router = useRouter();
-  const [mail, setMail] = useState({
-    email: '',
-    hasSubmitted: false,
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      setMail({ ...mail, hasSubmitted: true });
-      if (!emailValidator(mail.email)) return;
-      await welcomeNewUser(mail.email);
-      router.push('/success');
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
   return (
-    <section className="section text-center">
-      <Banner>
-        <h2 className="title mb-s2">Want To Go Global?</h2>
-        <p className="body mb-s2 md:mb-s4">
-          Give us your email. We will do the rest.
-        </p>
-        <Form name="newsletter" submitHandler={handleSubmit}>
-          <div className="mx-auto max-w-[610px]">
-            <FormInput
-              onChange={(e) => setMail({ ...mail, email: e.target.value })}
-              hasSubmitted={mail.hasSubmitted}
-              isValid={emailValidator(mail.email)}
-              {...GLOBAL_NEWSLETTER}
-            />
-          </div>
-          <p className="-mt-s4 mb-s4 text-left text-xs text-white md:text-center md:text-sm">
-            By signing up you agree to receive communications via email. For
-            more information please refer to our Privacy Policy.
+    <section className="section mx-auto  max-w-[1200px] text-center text-white">
+      <div className="grid h-full  grid-cols-1 place-items-center p-s3 md:grid-cols-2 md:p-0 lg:w-[90%]">
+        <Image src={Go_Global} alt="go_global" width="300" height="300" />
+        <div className="mt-s2 flex flex-col items-start justify-start gap-y-6 md:mt-0">
+          <h2 className="h2 text-start">Unlock your global potential.</h2>
+          <p className="text-start text-lg md:text-xl">
+            Step into a world of international growth, monetization, and
+            limitless opportunities. Secure your spot on the Aview waitlist now.
           </p>
-          <div className="inline-block">
-            <Button type="tertiary" purpose="submit">
-              Subscribe
-            </Button>
-          </div>
-        </Form>
-      </Banner>
+
+          <Button purpose="route" route="/waitlist" type="tertiary">
+            Join Waitlist
+          </Button>
+        </div>
+      </div>
     </section>
   );
 };
