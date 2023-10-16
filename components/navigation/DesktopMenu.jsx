@@ -107,7 +107,7 @@ function Dropdown({ title, dropdown, curPage }) {
     >
       <div className="inline-flex items-center gap-1 cursor-pointer">
         <p
-          className={`text-md md:text-xl ${
+          className={`text-md md:text-lg ${
             dropdownOpen || curPage === title
               ? 'gradient-text gradient-1'
               : 'text-white'
