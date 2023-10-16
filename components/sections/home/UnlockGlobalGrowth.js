@@ -19,7 +19,9 @@ const UnlockGlobalGrowth = () => {
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
         <div className="mt-10 mb-20 box-content flex">
           <h2 className="title">
-            You Create - We{' '}
+            You Create
+            <span className="hidden md:inline"> - </span>
+            <br className="inline md:hidden" /> We{' '}
             <span className="gradient-text gradient-2">
               <ReactTyped
                 strings={displayTexts}
