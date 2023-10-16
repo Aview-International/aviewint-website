@@ -40,22 +40,22 @@ export default function MobileMenu() {
           menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
         }`}
       >
-        {/* <Button
+        <Button
           purpose="route"
           route="/login"
           type="secondary"
           fullWidth={true}
         >
           Login
-        </Button> */}
-        <Button
+        </Button>
+        {/* <Button
           purpose="route"
           route="/waitlist"
           type="secondary"
           fullWidth={true}
         >
           Join the Waitlist
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
