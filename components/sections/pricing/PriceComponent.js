@@ -7,7 +7,7 @@ import Border from '../../UI/Border';
 const PriceComponent = ({ item }) => {
   return (
     <>
-      <div className={`relative h-[634px] md:h-[820px] flex flex-col items-center justify-between py-s4 px-s0 md:px-s3 bg-white-transparent rounded-2xl cursor-pointer`}>
+      <div className={`relative h-[634px] md:h-[820px] flex flex-col items-center justify-between py-s4 px-s0 md:px-s3 bg-white-transparent rounded-2xl cursor-pointer ${item.title === 'Basic' && ''}`}>
         <div className="flex flex-col gap-y-4 items-center">
           <h5 className="text-2xl font-bold gradient-text gradient-1">{item.title}</h5>
           <p className="text-6xl font-bold">{item.subTitle}</p>
@@ -18,9 +18,9 @@ const PriceComponent = ({ item }) => {
             item.options.map((option,index) => {
             return (
               <>
-               <div>
+               <div key={index}>
                 <div className='h-[1px] bg-white/50'></div>
-                 <div className="flex flex-row gap-2 py-3" key={index}>
+                 <div className="flex flex-row gap-2 py-3">
                   <Image src={check} alt="check-mark"/>
                   <p>{option}</p>
                  </div>

@@ -40,9 +40,14 @@ const SubTranslatedContent = ({
 }) => {
   return (
     <div className="flex flex-col items-center justify-between rounded-2xl bg-white-transparent p-4 md:p-8">
-      <Image src={image} alt="" height={326} width={imageWidth} />
-
-      <div className='mt-5'>
+      <Image 
+        src={image} 
+        alt={sectionTitle} 
+        height={326} 
+        width={imageWidth} 
+        placeholder="blur"
+      />
+      <div className="mt-5">
         <h3 className="mb-s2 text-5xl font-semibold md:text-6xl">
           {sectionTitle}
         </h3>
