@@ -171,6 +171,7 @@ export const LANDING_PAGE_TYPES = [
     button_text: 'Explore content management',
     imageWidth: 483,
     imageHeight: 300,
+    hash: 'VDIhjfQ,1G*0-oOcxVx[9~vxFqtQm.VZ%ft-IorC-ApJ',
   },
   {
     image: language_translator,
@@ -180,6 +181,7 @@ export const LANDING_PAGE_TYPES = [
     button_text: 'Explore translations',
     imageWidth: 320,
     imageHeight: 320,
+    hash: 'VGH_$JD262+sGI:dF,xlr_wO@sMxJSXT#oyYbLxGS}OT',
   },
   {
     image: brand_collab,
@@ -187,8 +189,9 @@ export const LANDING_PAGE_TYPES = [
     description:
       'Discover and partner with global brands that align perfectly with your content\u0027s essence',
     button_text: 'Explore AI voice',
-    imageWidth: 470,
-    imageHeight: 300,
+    imageWidth: 420,
+    imageHeight: 340,
+    hash: 'eIH2g4R$2$$+xbTOobxUWF$^-bt7N6NHt7x,RljLkAVzTwjbZ*WTxo',
   },
   {
     image: table_globe,
@@ -198,6 +201,7 @@ export const LANDING_PAGE_TYPES = [
     button_text: 'Explore',
     imageWidth: 320,
     imageHeight: 320,
+    hash: 'LYFFO6%jDzD~-?OZniw]9XRPNKs8',
   },
   {
     image: monetize,
@@ -207,6 +211,7 @@ export const LANDING_PAGE_TYPES = [
     button_text: 'Explore distribution',
     imageWidth: 400,
     imageHeight: 400,
+    hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
   },
 ];
 
