@@ -35,12 +35,6 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  .gradient-border {
-    border-image-source: linear-gradient(54deg, #ff00ff 7.13%, #00ffff 91%);
-    border-image-width: 2px;
-    border-radius: 15px;
-  }
-
   .gradient-dark {
     background: linear-gradient(
       180deg,
@@ -171,7 +165,7 @@
     --hsl: var(--hue), var(--saturation), var(--lightness);
     background-color: #080808b5;
     color: #eceff1;
-    
+    border: 1px solid #eceff133;
     border-radius: 15px;
   }
 
