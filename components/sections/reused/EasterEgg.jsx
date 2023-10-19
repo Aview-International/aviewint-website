@@ -4,7 +4,7 @@ export default function EasterEgg() {
   const numberOfIterations = 2;
   const dummyArray = Array.from({ length: numberOfIterations });
   return (
-    <Link href="/coming-soon">
+    <Link href="/waitlist">
       <div className="gradient-2 cursor-pointer py-3 flex justify-start whitespace-nowrap overflow-hidden">
         {
           dummyArray.map(( _ , index ) => {
