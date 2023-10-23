@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import FullScreenLoader from '../../public/loaders/FullScreenLoader';
 import DashBoardHeader from './Header';
 import DashboardSidebar from './Sidebar';
-import useProfile from '../../hooks/useUserProfile';
+import useUserProfile from '../../hooks/useUserProfile';
 import DashboardGradient from '../UI/DashboardGradient';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSocket } from '../../socket';
@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { getProfile, isLoading } = useProfile();
+  const { getProfile, isLoading } = useUserProfile();
 
   useEffect(() => {
     getProfile();

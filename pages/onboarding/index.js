@@ -58,14 +58,14 @@ const Onboarding = () => {
       </div>
       <div className="bg-gray-1">
         <div
-          style={{ width: `${Math.ceil((+router.query.stage * 100) / 7)}%` }}
+          style={{ width: `${Math.ceil((+router.query.stage * 100) / 6)}%` }}
           className="gradient-1 h-1 transition-all ease-in-out"
         ></div>
       </div>
       <div className="min-w-2/4 mx-auto mb-s12 mt-s6 text-white md:mt-s12">
         {router.query.stage > 0 && (
           <small className="mb-s2 block text-center text-lg">
-            Step {router.query.stage} of 7
+            Step {router.query.stage} of 6
           </small>
         )}
         <Stages userData={userData} />
@@ -96,27 +96,27 @@ const Stages = ({ userData }) => {
           <OnboardingStep2 userData={userData} />
         </PageTransition>
       )}
-      {query.stage === '3' && (
+      {/* {query.stage === '3' && (
         <PageTransition>
           <OnboardingStep3 userData={userData} />
         </PageTransition>
-      )}
-      {query.stage === '4' && (
+      )} */}
+      {query.stage === '3' && (
         <PageTransition>
           <OnboardingStep4 userData={userData} />
         </PageTransition>
       )}
-      {query.stage === '5' && (
+      {query.stage === '4' && (
         <PageTransition>
           <OnboardingStep5 userData={userData} />
         </PageTransition>
       )}
-      {query.stage === '6' && (
+      {query.stage === '5' && (
         <PageTransition>
           <OnboardingStep6 userData={userData} />
         </PageTransition>
       )}
-      {query.stage === '7' && (
+      {query.stage === '6' && (
         <PageTransition>
           <OnboardingSuccess />
         </PageTransition>

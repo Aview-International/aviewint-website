@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   dataFetched: false,
-  channelId: '',
+  channelDetails: {
+    id: '',
+    description: '',
+    title: '',
+    thumbnail: '',
+  },
   videos: [],
 };
 
@@ -17,7 +22,7 @@ const youtubeSlice = createSlice({
 
     setYoutubeChannel(state, action) {
       const { payload } = action;
-      state.channelId = payload;
+      state.channelDetails = payload;
     },
   },
 });

@@ -7,7 +7,6 @@ import { authorizeUser } from '../../services/apis';
 
 const OnboardingStep4 = ({ userData }) => {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -39,6 +38,7 @@ const OnboardingStep4 = ({ userData }) => {
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
           classes="bg-[#ff0000]"
+          // isAccountConnected={false}
           isAccountConnected={userData?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
           account="YouTube"
@@ -55,12 +55,17 @@ const OnboardingStep4 = ({ userData }) => {
           classes="bg-[#0054ff]"
           account="Facebook"
         />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.facebook}
+          classes="bg-[#0054ff]"
+          account="TikTok"
+        />
       </div>
       <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
           theme="light"
           isLoading={isLoading.continue}
-          onClick={() => router.push('/onboarding?stage=5')}
+          onClick={() => router.push('/onboarding?stage=4')}
         >
           Continue
         </OnboardingButton>

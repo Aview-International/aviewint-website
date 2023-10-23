@@ -27,7 +27,13 @@ const useUserProfile = () => {
   const handleGetYoutubeChannel = async () => {
     try {
       const res = await getUserYoutubeChannel(uid);
-      dispatch(setYoutubeChannel(res));
+      const data = {
+        id: res.id,
+        description: res.snippet.description,
+        title: res.snippet.title,
+        thumbnail: res.snippet.thumbnails.default.url,
+      };
+      dispatch(setYoutubeChannel(data));
     } catch (error) {
       console.log(error);
     }
