@@ -49,12 +49,12 @@ const SingleMessage = ({ timeStamp, message, sender, user }) => (
 );
 
 const Messages = () => {
+  const socket = useSocket();
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
   const user = useSelector((state) => state.user);
   const messages = useSelector((state) => state.messages.messages);
   const [message, setMessage] = useState('');
-  const socket = useSocket();
   const inputRef = useRef(null);
   const fetchUserMessages = async () => {
     try {
@@ -68,6 +68,9 @@ const Messages = () => {
   useEffect(() => {
     fetchUserMessages();
     dispatch(setNewMessageDot(true));
+    socket.on('new_message', () => {
+      fetchUserMessages();
+    });
   }, []);
 
   useEffect(() => {
