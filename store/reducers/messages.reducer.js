@@ -26,7 +26,9 @@ const messagesSlice = createSlice({
 
     setNewMessageDot(state, action) {
       const { payload } = action;
-      state.status.readByUser = payload;
+      if (state.status?.readByUser) {
+        state.status.readByUser = payload;
+      }
     },
   },
 });
