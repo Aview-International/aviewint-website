@@ -56,7 +56,7 @@ const MetricBigContainer = ({ metric }) => {
           <>
             {metric.nestedContainer.map((country, i) => (
               <span
-                className="flex items-center justify-start gap-1 rounded-full bg-gray-1 px-s1 md:px-s2"
+                className="flex items-center justify-start gap-1 rounded-full bg-gray-1 px-s1 md:py-1 md:px-s2"
                 key={i}
               >
                 <div className="flex items-center gap-s1.5 py-1">

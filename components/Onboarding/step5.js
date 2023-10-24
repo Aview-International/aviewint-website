@@ -52,7 +52,7 @@ const OnboardingStep5 = ({ userData }) => {
     } catch (error) {
       ErrorHandler(error);
     }
-    router.push('/onboarding?stage=6');
+    router.push('/onboarding?stage=5');
   };
 
   return (

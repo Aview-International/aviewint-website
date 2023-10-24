@@ -5,10 +5,9 @@ import ReactTyped from 'react-typed';
 const UnlockGlobalGrowth = () => {
   const displayTexts = [
     'Transcribe',
-    'Subtitle',
     'Translate',
+    'Subtitle',
     'Voiceover',
-    'Dub',
     'Distribute',
     'Monetize',
     'Manage',

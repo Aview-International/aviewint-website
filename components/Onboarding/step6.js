@@ -7,9 +7,12 @@ import { useEffect, useState } from 'react';
 import { updateRequiredServices } from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
+import { useSelector } from 'react-redux';
 
 const OnboardingStep6 = ({ userData }) => {
   const router = useRouter();
+  const youtubeChannel = useSelector((el) => el.youtube);
+  console.log(youtubeChannel);
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);
   const [selectLanguages, setSelectLanguages] = useState(false);
@@ -21,7 +24,7 @@ const OnboardingStep6 = ({ userData }) => {
   const handleSubmit = async () => {
     try {
       updateRequiredServices({ languages }, userData.uid);
-      router.push('/onboarding?stage=7');
+      router.push('/onboarding?stage=6');
     } catch (error) {
       ErrorHandler(error);
     }
@@ -32,9 +35,6 @@ const OnboardingStep6 = ({ userData }) => {
     SUPPORTED_REGIONS.forEach(({ data }) => {
       data.forEach((el) => allLanguages.push(el));
     });
-    console.log(allLanguages);
-    console.log(userData.languages);
-    console.log(allLanguages.find((el) => el.languageName === language));
     return allLanguages.find((el) => el.languageName === language);
   };
 
@@ -66,41 +66,43 @@ const OnboardingStep6 = ({ userData }) => {
         list as you please!
       </p>
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {languages.map(
-          (language, index) =>
-            language !== 'Others' && (
-              <div
-                className="gradient-dark flex max-w-[360px] flex-row justify-between rounded-md p-s1.5"
-                key={index}
-              >
-                <div className="flex flex-row items-center justify-between">
-                  <Image
-                    src={userData.picture}
-                    alt="profile-image"
-                    height={40}
-                    width={40}
-                    className="block rounded-full"
-                  />
-                  <div className="ml-3 flex flex-col">
-                    <h2 className="text-lg">
-                      {userData.youtubeChannelName}{' '}
-                      {findLocalDialect(language)?.['localDialect']}
-                    </h2>
-                    <p className="text-sm">YouTube</p>
-                  </div>
-                </div>
-                <button
-                  onClick={() =>
-                    handleRemoveLanguage(
-                      findLocalDialect(language)['languageName']
-                    )
-                  }
+        {languages
+          .filter((el) => el !== userData.defaultLanguage)
+          .map(
+            (language, index) =>
+              language !== 'Others' && (
+                <div
+                  className="gradient-dark flex max-w-[360px] flex-row justify-between rounded-md p-s1.5"
+                  key={index}
                 >
-                  <Image src={Trash} alt="Delete" width={24} height={24} />
-                </button>
-              </div>
-            )
-        )}
+                  <div className="flex flex-row items-center justify-between">
+                    <Image
+                      src={youtubeChannel.channelDetails.thumbnail}
+                      alt="profile-image"
+                      height={40}
+                      width={40}
+                      className="block rounded-full"
+                    />
+                    <div className="ml-3 flex flex-col">
+                      <h2 className="text-lg">
+                        {userData.youtubeChannelName}{' '}
+                        {findLocalDialect(language)?.['localDialect']}
+                      </h2>
+                      <p className="text-sm">YouTube</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() =>
+                      handleRemoveLanguage(
+                        findLocalDialect(language)['languageName']
+                      )
+                    }
+                  >
+                    <Image src={Trash} alt="Delete" width={24} height={24} />
+                  </button>
+                </div>
+              )
+          )}
       </div>
       {isError && (
         <p className="my-s3 text-center text-xl text-red">

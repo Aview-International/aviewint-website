@@ -3,7 +3,12 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['s3.us-west-2.amazonaws.com', 'drive.google.com','lh3.googleusercontent.com'],
+    domains: [
+      's3.us-west-2.amazonaws.com',
+      'drive.google.com',
+      'lh3.googleusercontent.com',
+      'yt3.ggpht.com',
+    ],
   },
   webpack: (config) => {
     config.module.rules.push({
@@ -17,7 +22,7 @@ const nextConfig = {
       },
     });
     return config;
-  }, 
+  },
 };
 
 module.exports = nextConfig;

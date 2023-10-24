@@ -15,7 +15,7 @@ import ErrorHandler from '../../utils/errorHandler';
 const DashboardHome = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
-  const { dataFetched: youtubeDataFetched, channelId } = useSelector(
+  const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
     (state) => state.youtube
   );
   const instagramDataFetched = useSelector(
@@ -32,7 +32,7 @@ const DashboardHome = () => {
 
   const getYoutubeVideos = async () => {
     try {
-      const getVideos = await getChannelVideos(channelId);
+      const getVideos = await getChannelVideos(channelDetails.id);
       const youtubeVideos = getVideos.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
@@ -79,8 +79,8 @@ const DashboardHome = () => {
   useEffect(() => {
     if (!instagramDataFetched && userData.instagram_access_token)
       getInstagramVideos();
-    if (!youtubeDataFetched && channelId) getYoutubeVideos();
-  }, [channelId, userData.instagram_access_token]);
+    if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
+  }, [channelDetails, userData.instagram_access_token]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {

@@ -47,9 +47,9 @@ const MultipleSelectInput = ({
               {answer.length != 0
                 ? answer.length === 1
                   ? `${answer[0]}`
-                  : `${answer[0]}, ${answer.length > 1 ? answer[1] : ''},${
-                      answer.length > 2 ? ` ${answer[2]}` : ''
-                    }${answer.length > 3 ? ',...' : ''}`
+                  : `${answer[0]}, ${answer.length > 1 ? answer[1] : ''} ${
+                      answer.length > 2 ? ',...' : ''
+                    }`
                 : 'Your response'}
             </p>
             <span className={`transition-300  ${isOpen && 'rotate-180'}`}>
