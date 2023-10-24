@@ -37,7 +37,7 @@ const InstagramConnection = () => {
         },
         uid
       );
-      router.push('/onboarding?stage=4');
+      router.push('/onboarding?stage=3');
     } catch (error) {
       ErrorHandler(error);
     }
