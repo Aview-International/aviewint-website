@@ -12,7 +12,7 @@ const YoutubeConnection = () => {
   const finalizeYoutube = async () => {
     try {
       await finalizeYoutubeAuth(tempid, uid);
-      router.push('/onboarding?stage=4');
+      router.push('/onboarding?stage=3');
     } catch (error) {
       toast.error('Something went wrong');
     }
