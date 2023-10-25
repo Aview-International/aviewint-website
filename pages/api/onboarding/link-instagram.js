@@ -31,7 +31,6 @@ export default async function handler(req, res) {
       const response = await axios.get(
         `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=${process.env.NEXT_PUBLIC_INSTAGRAM_SECRET_KEY}&access_token=${code}`
       );
-      console.log(response.data);
       return res.status(200).json(response.data);
     } catch (error) {
       return res.status(500).json({ message: 'Error connecting to instagram' });

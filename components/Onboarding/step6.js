@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 const OnboardingStep6 = ({ userData }) => {
   const router = useRouter();
   const youtubeChannel = useSelector((el) => el.youtube);
-  console.log(youtubeChannel);
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);
   const [selectLanguages, setSelectLanguages] = useState(false);

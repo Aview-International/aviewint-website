@@ -1,13 +1,6 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
-// import { getAuth } from 'firebase/auth';
-
-// const token = Cookies.get('token');
-
-// const auth = getAuth().currentUser;
-
-// console.log(auth);
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
