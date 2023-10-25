@@ -19,7 +19,7 @@ const OnBoardingAccounts = ({
           (account === 'Facebook' || account === 'TikTok') &&
           'cursor-not-allowed'
         }`}
-        onClick={isAccountConnected ? null : clickEvent}
+        onClick={clickEvent}
       >
         {isLoading ? <Loader /> : account}{' '}
         {(account === 'Facebook' || account === 'TikTok') && (
