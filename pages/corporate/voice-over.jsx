@@ -14,6 +14,7 @@ import Footer from '../../components/navigation/Footer';
 import voiceOver from '../../public/img/graphics/corporate/voice-over/voice-over.png';
 import workflowSm from '../../public/img/graphics/corporate/voice-over/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/voice-over/workflow-lg.svg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 const ITEMS = [
   {
@@ -50,6 +51,7 @@ export default function VoiceOver() {
       <ProfessionalVoiceOvers />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
+      <ScrollToTopButton />
       <CompaniesWeWorkedWith />
       <Workflow
         title="Languages <span class='gradient-text gradient-2'>Workflow</span>"
@@ -59,7 +61,7 @@ export default function VoiceOver() {
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="voiceover" />
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Voice Overs" />
     </>
   );
 }

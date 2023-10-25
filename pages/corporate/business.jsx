@@ -38,9 +38,9 @@ export default function Business() {
       <AllBusinessSectors />
       <PreppingForBillC96 />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
-      <Footer />
+      <Footer curPage="Business Documents"/>
       <Blobs />
     </>
   );

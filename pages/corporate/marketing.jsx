@@ -54,9 +54,9 @@ export default function Marketing() {
       <LanguagesServed />
       <MarketingMaterials />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Marketing Documents" />
       <Blobs />
     </>
   );

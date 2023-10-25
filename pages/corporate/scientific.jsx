@@ -56,9 +56,9 @@ export default function Scientific() {
       <LanguagesServed />
       <ScientificBranchesWeWorkWith />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="corporate" />
+      <FAQ page="landing" />
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Scientific Documents" />
       <Blobs />
     </>
   );

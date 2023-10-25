@@ -54,9 +54,9 @@ export default function Financial() {
       <LanguagesServed />
       <AllFinancialDocuments />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Financial Documents" />
       <Blobs />
     </>
   );

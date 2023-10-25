@@ -6,6 +6,7 @@ import MakeImpact from '../../components/sections/careers/MakeImpact';
 import CompanyCulture from '../../components/sections/careers/CompanyCulture';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
+import FAQ from '../../components/sections/home/FAQ';
 import ApplyToday from '../../components/sections/careers/ApplyToday';
 import Process from '../../components/sections/careers/Process';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
@@ -30,6 +31,7 @@ const Careers = () => {
       <CompanyCulture />
       <Process />
       <ApplyToday />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
       <Footer curPage="Careers" />
       <Blobs />
