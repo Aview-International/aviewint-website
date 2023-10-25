@@ -15,6 +15,10 @@ const OnboardingStep4 = ({ userData }) => {
   });
 
   const linkInstagramAccount = async () => {
+    setIsLoading((prev) => ({
+      ...prev,
+      instagram: true,
+    }));
     router.push(InstagramAuthenticationLink);
   };
 
@@ -38,7 +42,6 @@ const OnboardingStep4 = ({ userData }) => {
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
           classes="bg-[#ff0000]"
-          // isAccountConnected={false}
           isAccountConnected={userData?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
           account="YouTube"

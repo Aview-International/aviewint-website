@@ -8,7 +8,7 @@ const Contact = () => {
     <>
       <Header curPage="Corporate" />
       <GenerateAviewForCompany />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Contact" />
       <Blobs />
     </>
   );

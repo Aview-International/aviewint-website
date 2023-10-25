@@ -1694,11 +1694,11 @@ export const DASHBOARD_NAVLINKS = [
   //   image: referral,
   //   route: () => '/dashboard/referral',
   // },
-  // {
-  //   text: 'Settings',
-  //   image: settings,
-  //   route: (route) => route,
-  // },
+  {
+    text: 'Settings',
+    image: settings,
+    route: (route) => route,
+  },
 ];
 
 export const SUPPORTED_REGIONS = [

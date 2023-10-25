@@ -35,7 +35,7 @@ const ScrollToTopButton = () => {
     <>
       {scrollPosition && (
         <div
-          className={`fixed bottom-5 right-5 z-50 cursor-pointer`}
+          className={`fixed bottom-20 right-5 z-50 cursor-pointer`}
           onClick={topFunction}
         >
           <button className=" ">

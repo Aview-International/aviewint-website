@@ -13,7 +13,7 @@ const InstagramConnection = () => {
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');
-  const getInstagramToken = async (ig_access_code) => {
+  const getInstagramToken = async (ig_access_code, path) => {
     // get short lived acces token
     try {
       const response = await getInstagramShortAccess(ig_access_code);
@@ -37,14 +37,20 @@ const InstagramConnection = () => {
         },
         uid
       );
-      router.push('/onboarding?stage=3');
+      if (path) window.location.href = path;
+      else router.push(path);
     } catch (error) {
       ErrorHandler(error);
     }
   };
 
   useEffect(() => {
-    if (code) getInstagramToken(code);
+    const rdr = localStorage.getItem('instagramRedirect');
+    if (rdr) {
+      if (code) getInstagramToken(code, rdr);
+    } else {
+      if (code) getInstagramToken(code, '/onboarding?stage=3');
+    }
   }, [code]);
 
   return;

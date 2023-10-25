@@ -13,22 +13,22 @@ const SETTINGS_LINKS = [
     link: '/dashboard/settings/edit-profile',
     text: 'Edit Profile',
   },
-  {
-    link: '/dashboard/settings/distribution-accounts',
-    text: 'Distribution accounts',
-  },
-  {
-    link: '/dashboard/settings/email-notifications',
-    text: 'Email notifications',
-  },
-  {
-    link: '/dashboard/settings/privacy',
-    text: 'Privacy and security',
-  },
-  {
-    link: '/dashboard/settings/saved-settings',
-    text: 'Saved settings',
-  },
+  // {
+  //   link: '/dashboard/settings/distribution-accounts',
+  //   text: 'Distribution accounts',
+  // },
+  // {
+  //   link: '/dashboard/settings/email-notifications',
+  //   text: 'Email notifications',
+  // },
+  // {
+  //   link: '/dashboard/settings/privacy',
+  //   text: 'Privacy and security',
+  // },
+  // {
+  //   link: '/dashboard/settings/saved-settings',
+  //   text: 'Saved settings',
+  // },
 ];
 
 const EXTERNAL_LINKS = [

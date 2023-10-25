@@ -17,7 +17,7 @@ const VideoFrame = ({
   return (
     <div
       className="cursor-pointer justify-self-center"
-      onClick={() => handleVideos({ id, caption, thumbnail, timestamp })}
+      onClick={() => handleVideos({ id, caption, thumbnail, timestamp, type })}
     >
       <div className="mb-s1 flex text-lg">
         {type === 'youtube' && (

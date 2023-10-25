@@ -43,7 +43,7 @@ const UnlockGlobalGrowth = () => {
           </Button>
         </div>
         <div className="relative mt-12 h-[85%] cursor-pointer">
-          <video className="rounded-md md:rounded-3xl" autoPlay loop muted>
+          <video className="rounded-md md:rounded-2xl" autoPlay loop muted>
             <source src={videoAsset} type="video/mp4" />
           </video>
           <div

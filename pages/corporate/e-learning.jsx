@@ -14,6 +14,7 @@ import Footer from '../../components/navigation/Footer';
 import eLearning from '../../public/img/graphics/corporate/e-learning/e-learning.png';
 import workflowSm from '../../public/img/graphics/corporate/e-learning/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/e-learning/workflow-lg.svg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 const ITEMS = [
   {
@@ -50,6 +51,7 @@ export default function ELearning() {
       <LearningServices />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
+      <ScrollToTopButton />
       <CompaniesWeWorkedWith />
       <Workflow
         title="eLearning Localization <span class='gradient-text gradient-2'>Workflow</span>"
@@ -59,7 +61,7 @@ export default function ELearning() {
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="e-learning" />
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="eLearning Documents" />
     </>
   );
 }

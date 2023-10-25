@@ -36,9 +36,9 @@ export default function Legal() {
       <LanguagesServed />
       <LegalBranches />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
-      <Footer curPage="Corporate" />
+      <Footer curPage="Legal Documents" />
       <Blobs />
     </>
   );

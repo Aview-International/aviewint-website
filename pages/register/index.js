@@ -83,7 +83,6 @@ const Register = () => {
 
       signInWithEmailLink(auth, email, window.location.href)
         .then(async (result) => {
-          console.log(result);
           window.localStorage.removeItem('emailForSignIn');
 
           Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });

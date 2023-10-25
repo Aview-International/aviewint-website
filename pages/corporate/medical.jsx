@@ -15,6 +15,7 @@ import Footer from '../../components/navigation/Footer';
 import medical from '../../public/img/graphics/corporate/medical/medical.png';
 import workflowSm from '../../public/img/graphics/corporate/medical/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/medical/workflow-lg.svg';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 const ITEMS = [
   {
@@ -52,6 +53,7 @@ export default function Medical() {
       <MedicalTranslations />
       <WhyUseAview items={ITEMS} />
       <LanguagesServed />
+      <ScrollToTopButton />
       <MedicalFields />
       <Workflow
         title="Medical Localization <span class='gradient-text gradient-2'>Workflow</span>"
@@ -59,9 +61,9 @@ export default function Medical() {
         workflowLg={workflowLg}
       />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="corporate" />
+      <FAQ page="landing" />
       <FeaturedBlogs />
-      <Footer curPage="Corporate"/>
+      <Footer curPage="Medical Documents"/>
     </>
   );
 }

@@ -8,6 +8,9 @@ import OnboardingButton from '../../../../components/Onboarding/button';
 import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
 import { useSelector } from 'react-redux';
 import FormInput from '../../../../components/FormComponents/FormInput';
+import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
+import { useRouter } from 'next/router';
+import { InstagramAuthenticationLink } from '../../../api/firebase';
 
 const INPUT_FIELDS = [
   {
@@ -35,54 +38,71 @@ const Container = ({ left, right }) => (
 );
 
 const Accounts = ({ userData }) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState({
+    youtube: false,
+    instagram: false,
+    tiktok: false,
+    facebook: false,
+  });
+
+  const linkInstagramAccount = async () => {
+    localStorage.setItem('instagramRedirect', window.location.href);
+    router.push(InstagramAuthenticationLink);
+  };
+
+  const linkYoutubeAccount = async () => {
+    localStorage.setItem('userId', userData._id);
+    setIsLoading((prev) => ({
+      ...prev,
+      youtube: true,
+    }));
+    window.location = await authorizeUser();
+  };
+
   return (
     <>
       <Container
+        left={<p className={`text-xl`}>YouTube</p>}
+        right={
+          <OnBoardingAccounts
+            classes="bg-[#ff0000]"
+            isAccountConnected={userData?.youtubeConnected}
+            clickEvent={linkYoutubeAccount}
+            account="YouTube"
+            isLoading={isLoading.youtube}
+          />
+        }
+      />
+      <Container
         left={<p className={`text-xl`}>Instagram</p>}
         right={
-          <button
-            className={`w-full rounded-full border-2 py-s1 text-center ${
-              userData.youtubeChannelId && 'instagram'
-            }`}
-          >
-            Instagram
-          </button>
+          <OnBoardingAccounts
+            isAccountConnected={userData?.instagram_account_id}
+            classes="instagram"
+            clickEvent={linkInstagramAccount}
+            account="Instagram"
+          />
         }
       />
       <Container
         left={<p className={`text-xl`}>Facebook</p>}
         right={
-          <button
-            className={`w-full rounded-full border-2 py-s1  text-center ${
-              userData.youtubeChannelId && 'bg-[#0054ff]'
-            }`}
-          >
-            Facebook
-          </button>
+          <OnBoardingAccounts
+            isAccountConnected={userData?.facebook}
+            classes="bg-[#0054ff]"
+            account="Facebook"
+          />
         }
       />
-      {/* <Container
+      <Container
         left={<p className={`text-xl`}>TikTok</p>}
         right={
-          <button
-            className={`w-full rounded-full border-2 py-s1 text-center ${
-              userData.youtubeChannelId && 'bg-[#000000]'
-            }`}
-          >
-            TikTok
-          </button>
-        }
-      /> */}
-      <Container
-        left={<p className={`text-xl`}>YouTube</p>}
-        right={
-          <button
-            className={`w-full rounded-full border-2 py-s1 text-center ${
-              userData.youtubeChannelId && 'bg-[#ff0000]'
-            }`}
-          >
-            YouTube
-          </button>
+          <OnBoardingAccounts
+            isAccountConnected={userData?.facebook}
+            classes="bg-[#0054ff]"
+            account="TikTok"
+          />
         }
       />
     </>

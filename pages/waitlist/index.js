@@ -18,7 +18,7 @@ const index = () => {
       <Header />
       <Waitlist />
       <ScrollToTopButton />
-      <Footer />
+      <Footer curPage="Join Waitlist"/>
       <Blobs />
     </>
   );
