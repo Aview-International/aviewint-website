@@ -43,9 +43,9 @@ const HeaderButtons = () => {
       <Button purpose="route" route="/waitlist" type="secondary">
         Join Waitlist
       </Button>
-      <Button purpose="route" route="/login" type="secondary">
+      {/* <Button purpose="route" route="/login" type="secondary">
         Login
-      </Button>
+      </Button> */}
     </div>
   );
 };
