@@ -4,6 +4,7 @@ import BenefitsOfTranslations from '../../components/sections/creators/BenefitsO
 import InternationalGrowth from '../../components/sections/creators/InternationalGrowth';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
+import FAQ from '../../components/sections/home/FAQ';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import ContentCreators from '../../components/sections/home/ContentCreators';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
@@ -34,6 +35,7 @@ const Creators = () => {
       <BenefitsOfTranslations />
       <InternationalGrowth />
       <StartGenerating formId="t5dW3MSY" />
+      <FAQ page="landing"/>
       <FeaturedBlogs />
       <Footer curPage="Creators" />
       <Blobs />
