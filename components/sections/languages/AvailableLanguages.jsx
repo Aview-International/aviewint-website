@@ -28,11 +28,11 @@ export default function AvailableLanguages() {
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
         {LANGUAGES.map((language) => (
           <Link href={`/languages/${language.toLowerCase()}`} key={language}>
-            <a className="flex cursor-pointer items-center gap-6">
-              <div className="h-6 w-6">
+            <a className="flex cursor-pointer items-center gap-6 bg-white-transparent rounded-2xl p-2">
+              <div className="h-7 w-7">
                 <Image src={arrowRight} alt="arrow right" />
               </div>
-              <p className="mt-1 text-lg text-white md:text-xl">{language}</p>
+              <p className="text-lg text-white md:text-xl">{language}</p>
             </a>
           </Link>
         ))}

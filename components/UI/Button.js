@@ -21,7 +21,7 @@ const Button = ({
             type === 'tertiary' &&
             `border-[3px] border-solid border-white bg-transparent text-white hover:bg-white hover:text-black `
           }
-          transition-300 relative block cursor-pointer rounded-full px-s5 pt-s1.5 pb-s1 text-lg ${
+          transition-300 relative block cursor-pointer rounded-full px-s5 pt-s1.5 pb-s1 font-medium text-lg ${
             fullWidth ? 'w-full text-center' : 'w-max'
           }
         `}
