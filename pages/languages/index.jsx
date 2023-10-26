@@ -8,6 +8,7 @@ import languages from '../../public/img/graphics/languages/languages.png';
 import YouCreateWeTranslation from '../../components/sections/languages/YouCreateWeTranslate';
 import Footer from '../../components/navigation/Footer';
 import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
+import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 export default function Languages() {
   return (
@@ -23,6 +24,7 @@ export default function Languages() {
         image={languages}
         imageAlt="languages"
       />
+      <ScrollToTopButton />
       <AvailableLanguages />
       <StartGenerating formId="JhSA3lfn" />
       <YouCreateWeTranslation />
