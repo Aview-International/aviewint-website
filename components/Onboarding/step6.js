@@ -15,6 +15,22 @@ const OnboardingStep6 = ({ userData }) => {
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);
   const [selectLanguages, setSelectLanguages] = useState(false);
+  const [allLanguages, setAllLanguages] = useState([]);
+
+  console.log(allLanguages);
+
+  useEffect(() => {
+    const allFilteredLangs = [];
+    SUPPORTED_REGIONS.map(({ data }) => {
+      data.map((el) => {
+        if (!allLanguages.includes(el.languageName)) {
+          allFilteredLangs.push(el.languageName);
+        }
+      });
+    });
+
+    setAllLanguages(allFilteredLangs);
+  }, []);
 
   useEffect(() => {
     setLanguages(userData.languages);
@@ -87,7 +103,9 @@ const OnboardingStep6 = ({ userData }) => {
                         {userData.youtubeChannelName}{' '}
                         {findLocalDialect(language)?.['localDialect']}
                       </h2>
-                      <p className="text-sm">YouTube</p>
+                      <p className="text-sm">
+                        {findLocalDialect(language)?.['languageName']}
+                      </p>
                     </div>
                   </div>
                   <button
@@ -114,7 +132,7 @@ const OnboardingStep6 = ({ userData }) => {
           <MultipleSelectInput
             hideCheckmark
             text="Edit suggested languages"
-            options={LANGUAGES}
+            options={allLanguages}
             answer={languages}
             hasSubmitted={true}
             onChange={(event) => handleMultipleLanguages(event)}
