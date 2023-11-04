@@ -50,7 +50,7 @@ const OnboardingStep4 = ({ userData }) => {
         <OnBoardingAccounts
           isAccountConnected={userData?.instagram_account_id}
           classes="instagram"
-          clickEvent={linkInstagramAccount}
+          // clickEvent={linkInstagramAccount}
           account="Instagram"
         />
         <OnBoardingAccounts

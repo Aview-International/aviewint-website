@@ -1665,14 +1665,14 @@ export const DASHBOARD_NAVLINKS = [
     route: () => '/dashboard',
   },
   {
-    text: 'AI Voice',
-    image: ai_voice,
-    route: () => '/dashboard/ai-voice',
-  },
-  {
     text: 'Upload',
     image: upload,
     route: () => '/dashboard/upload',
+  },
+  {
+    text: 'AI Voice',
+    image: ai_voice,
+    route: () => '/dashboard/ai-voice',
   },
   // {
   //   text: 'Messages',
@@ -1709,17 +1709,19 @@ export const SUPPORTED_REGIONS = [
       {
         image: English,
         languageName: 'English (US)',
-        localDialect: 'English',
+        localDialect: 'English (US)',
+        id: 'English',
       },
       {
         image: Spanish2,
-        languageName: 'Spanish (Mexican)',
-        localDialect: 'Español',
+        languageName: 'Spanish (LATAM)',
+        localDialect: 'Español (LATAM)',
       },
       {
         image: Canada,
-        languageName: 'French (Quebecois)',
-        localDialect: 'Français',
+        languageName: 'French (QB)',
+        localDialect: 'Français (QB)',
+        id: 'Français',
       },
     ],
   },
@@ -1729,13 +1731,15 @@ export const SUPPORTED_REGIONS = [
     data: [
       {
         image: Spanish2,
-        languageName: 'Spanish (Mexican)',
-        localDialect: 'Español',
+        languageName: 'Spanish (LATAM)',
+        localDialect: 'Español (LATAM)',
+        id: 'Español',
       },
       {
         image: Portuguese,
-        languageName: 'Portuguese (Brazilian)',
-        localDialect: 'Português',
+        languageName: 'Portuguese (BR)',
+        localDialect: 'Português (BR)',
+        id: 'Português',
       },
     ],
   },
@@ -1807,7 +1811,8 @@ export const SUPPORTED_REGIONS = [
       {
         image: Uk,
         languageName: 'English (UK)',
-        localDialect: 'English',
+        localDialect: 'English (UK)',
+        id: 'English ',
       },
       {
         image: French,
@@ -1826,12 +1831,12 @@ export const SUPPORTED_REGIONS = [
       },
       {
         image: Spanish,
-        languageName: 'Spanish (Spain)',
+        languageName: 'Spanish',
         localDialect: 'Español',
       },
       {
         image: Portugal,
-        languageName: 'Portuguese (Portugal)',
+        languageName: 'Portuguese',
         localDialect: 'Portugués',
       },
     ],
