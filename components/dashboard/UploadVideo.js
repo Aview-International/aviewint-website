@@ -1,37 +1,9 @@
 import Image from 'next/image';
 import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
-import Link from 'next/link';
-import FormData from 'form-data';
-import { useState } from 'react';
 import Border from '../UI/Border';
-import { useSelector } from 'react-redux';
-import { uploadVideo } from '../../services/apis';
-import ErrorHandler from '../../utils/errorHandler';
 
-const UploadVideo = ({
-  setVideo,
-  video,
-  setUploadProgress,
-  uploadProgress,
-}) => {
-  const userInfo = useSelector((state) => state.user);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleUpload = async () => {
-    try {
-      setIsLoading(true);
-      const formData = new FormData();
-      formData.append('video', video);
-      formData.append('uid', userInfo._id);
-      const res = await uploadVideo(formData, setUploadProgress);
-      setIsLoading(false);
-      window.location.href = res.data.downloadUrl;
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
-
+const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   return (
     <div className="w-11/12">
       <DottedBorder classes="relative block md:inline-block w-full">
@@ -43,14 +15,7 @@ const UploadVideo = ({
             Remove
           </button>
         )}
-        {video && (
-          <button
-            onClick={handleUpload}
-            className={`gradient-2 absolute bottom-4 right-1/2 left-1/2 z-50 mx-auto block w-[140px] -translate-x-1/2 cursor-pointer rounded-full pt-s1.5 pb-s1 text-center`}
-          >
-            Proceed
-          </button>
-        )}
+
         <input
           type="file"
           className="hidden"
@@ -59,7 +24,11 @@ const UploadVideo = ({
           id="video_upload"
         />
         {video ? (
-          <video width="400" controls className="h-full w-full">
+          <video
+            width="400"
+            controls
+            className="max-h-md h-full w-full max-w-md"
+          >
             <source src={URL.createObjectURL(video)} type="video/mp4" />
           </video>
         ) : (
@@ -80,9 +49,7 @@ const UploadVideo = ({
           </div>
         )}
       </DottedBorder>
-      <p className="cursor-not-allowed py-s2 text-center text-lg underline opacity-30">
-        Download Transcription
-      </p>
+
       {isLoading && (
         <>
           <p>Please wait</p>
@@ -99,9 +66,9 @@ const UploadVideo = ({
         If you selected Distribution, you acknowledge that you agree to
         Aview&#39;s &nbsp;
         <span className="gradient-1 gradient-text">
-          <Link href="/privacy-policy">
-            <a>Terms of Service</a>
-          </Link>
+          <a href="/privacy-policy" target="_blank" rel="noferrer">
+            Terms of Service
+          </a>
         </span>
         &nbsp;and give us permission to post translated content on your behalf.
       </small>

@@ -3,36 +3,42 @@ import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import TranslateOptions from '../../../components/dashboard/TranslateOptions';
 import UploadVideo from '../../../components/dashboard/UploadVideo';
 import PageTitle from '../../../components/SEO/PageTitle';
+import { uploadCreatorVideo } from '../../../services/apis';
+import ErrorHandler from '../../../utils/errorHandler';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Upload = () => {
+  const userId = useSelector((el) => el.user._id);
   const [video, setVideo] = useState(undefined);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [payload, setPayload] = useState({
-    services: '',
     languages: '',
     otherLanguages: '',
-    allowUsPostVideo: false,
     saveSettings: false,
   });
-
-  const handleServices = (value) => {
-    // const newServices = [...payload.services];
-    // if (newServices.includes(value))
-    //   newServices.splice(newServices.indexOf(value), 1);
-    // else newServices.push(value);
-    setPayload({ ...payload, services: value });
-  };
 
   const handleLanguages = (value) => {
     // const newLanguages = [...payload.languages];
     // if (newLanguages.includes(value))
     //   newLanguages.splice(newLanguages.indexOf(value), 1);
     // else newLanguages.push(value);
-    setPayload({ ...payload, languages: value });
+    setPayload((prevState) => ({ ...prevState, languages: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(payload);
+    try {
+      setIsLoading(true);
+      const res = await uploadCreatorVideo(video, userId, setUploadProgress);
+      console.log(res);
+      setIsLoading(false);
+      toast.success('Tasks subÏmitted succesfully 🚀');
+    } catch (error) {
+      setIsLoading(false);
+      ErrorHandler(error);
+    }
   };
 
   return (
@@ -44,17 +50,16 @@ const Upload = () => {
             <UploadVideo
               setVideo={setVideo}
               video={video}
-              setUploadProgress={setUploadProgress}
               uploadProgress={uploadProgress}
             />
           </div>
           <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
             <TranslateOptions
-              handleServices={handleServices}
               handleLanguages={handleLanguages}
               handleSubmit={handleSubmit}
               payload={payload}
               setPayload={setPayload}
+              isLoading={isLoading}
             />
           </div>
         </div>

@@ -10,7 +10,7 @@ import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import EasterEgg from '../components/sections/reused/EasterEgg';
-// import ScrollToTopButton from '../components/UI/ScrollToTopButton';
+import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 
@@ -25,7 +25,7 @@ const Home = () => {
       <EasterEgg />
       <Header curPage="Home" />
       <UnlockGlobalGrowth />
-      {/* <ScrollToTopButton /> */}
+      <ScrollToTopButton />
       <ContentCreators />
       <ScrollVerticalAnime />
       <EmpowerGlobal />

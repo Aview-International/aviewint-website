@@ -81,32 +81,6 @@ export const getUserMessages = async (id) => {
   return response.data;
 };
 
-// export const uploadVideo = async (data, setProgress) => {
-//   const response = await axios({
-//     method: 'POST',
-//     url: baseUrl + 'user/upload-videos',
-//     headers: {
-//       'Content-Type': 'multipart/form-data',
-//       Authorization: `Bearer ${localStorage.getItem('token')}`,
-//     },
-//     data: data,
-//     onUploadProgress: (progressEvent) =>
-//       setProgress(
-//         Math.round((progressEvent.loaded * 100) / progressEvent.total)
-//       ),
-//   });
-//   return response;
-// };
-
-export const uploadVideo = async (data, setProgress) => {
-  const response = await axiosInstance.post('user/upload-videos', data, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-  return response;
-};
-
 export const getUserYoutubeChannel = async (userId) => {
   const response = await axiosInstance.get(
     'auth/youtube-channel?userId=' + userId
@@ -200,4 +174,17 @@ export const deleteVoiceClone = async (userId, voiceId) => {
     { voiceId }
   );
   return res;
+};
+
+export const uploadCreatorVideo = async (video, userId, setUploadProgress) => {
+  let formData = new FormData();
+  formData.append('video', video);
+  formData.append('userId', userId);
+  await axiosInstance.post('transcription/upload-creator-video', formData, {
+    onUploadProgress: (progressEvent) =>
+      setUploadProgress(
+        Math.round((progressEvent.loaded * 100) / progressEvent.total)
+      ),
+  });
+  return;
 };

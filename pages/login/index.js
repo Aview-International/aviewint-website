@@ -48,9 +48,9 @@ const Login = () => {
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleSubmit = async () => {
+  const handleLoginWithGoogle = async () => {
     try {
-      setIsLoading(true);
+      setIsLoading({ ...isLoading, google: true });
       const { _tokenResponse } = await signInWithGoogle();
       const res = await checkUserEmail(_tokenResponse.localId);
       if (!res) router.push('/register?account=false');
@@ -70,30 +70,36 @@ const Login = () => {
         router.push('/dashboard');
       }
     } catch (error) {
+      setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
     }
   };
 
   const handleSSOWithCode = () => {
-    const auth = getAuth();
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email)
-        email = window.prompt('Please provide your email for confirmation');
+    try {
+      const auth = getAuth();
+      if (isSignInWithEmailLink(auth, window.location.href)) {
+        let email = window.localStorage.getItem('emailForSignIn');
+        if (!email)
+          email = window.prompt('Please provide your email for confirmation');
 
-      signInWithEmailLink(auth, email, window.location.href)
-        .then((result) => {
-          window.localStorage.removeItem('emailForSignIn');
-          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
-          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-          router.push('/dashboard');
-        })
-        .catch((error) => {
-          toast.error(
-            'Login link has expired or invalid email, please try again'
-          );
-          return;
-        });
+        signInWithEmailLink(auth, email, window.location.href)
+          .then((result) => {
+            window.localStorage.removeItem('emailForSignIn');
+            Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
+            Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
+            router.push('/dashboard');
+          })
+          .catch((error) => {
+            toast.error(
+              'Login link has expired or invalid email, please try again'
+            );
+            return;
+          });
+      }
+    } catch (error) {
+      ErrorHandler(null, 'Something went wrong, please try again');
+      setIsLoading({ ...isLoading, google: false });
     }
   };
 
@@ -139,7 +145,7 @@ const Login = () => {
               <Border borderRadius="full" classes="w-full">
                 <button
                   className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
-                  onClick={handleSubmit}
+                  onClick={handleLoginWithGoogle}
                 >
                   {isLoading.google ? (
                     <ButtonLoader />
