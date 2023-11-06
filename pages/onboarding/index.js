@@ -17,10 +17,9 @@ import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
 
 const Onboarding = () => {
-  const {
-    userData: userProfile,
-    aview: { allLanguages },
-  } = useSelector((state) => state.user);
+  const userData = useSelector((state) => state.user);
+  const allLanguages = useSelector((state) => state.aview.allLanguages);
+
   const router = useRouter();
   const { getProfile } = useUserProfile();
 
@@ -70,7 +69,7 @@ const Onboarding = () => {
             Step {router.query.stage} of 6
           </small>
         )}
-        <Stages userData={userProfile} allLanguages={allLanguages} />
+        <Stages userData={userData} allLanguages={allLanguages} />
       </div>
     </>
   );
