@@ -95,7 +95,7 @@ const DashboardHome = () => {
     try {
       if (payload.saveSettings)
         updateRequiredServices(preferences, userData.uid);
-      await createANewJob(userData.uid, {
+      await createANewJob({
         creatorId: userData.uid,
         videoData: selectedVideos,
         languages: payload.languages,

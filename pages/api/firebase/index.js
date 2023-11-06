@@ -121,7 +121,7 @@ export const getAllPayments = async (_id) => {
   return res;
 };
 
-export const createANewJob = async (uid, jobDetails) => {
+export const createANewJob = async (jobDetails) => {
   await transcribeSocialLink(jobDetails);
 };
 
