@@ -8,7 +8,6 @@ import twitter from '../public/img/icons/twitter.svg';
 
 // Content Creators
 import logan1 from '../public/img/creators/logan-1.png';
-import ninja1 from '../public/img/creators/ninja-1.png';
 import saudBrothers from '../public/img/creators/saud-brothers.png';
 import whatIf from '../public/img/creators/what-if.png';
 import yesTheory from '../public/img/creators/yes-theory.png';
@@ -17,7 +16,6 @@ import nextCanada from '../public/img/creators/next-canada.png';
 import wayfoundHealth from '../public/img/creators/wayfound-health.png';
 import valnetMedia from '../public/img/creators/valnet-media.png';
 import underknownMedia from '../public/img/creators/underknown-media.png';
-import activeSelfProtection from '../public/img/creators/underknown-media.png';
 
 // Why We Lead in Translations
 import fastAndEasy from '../public/img/graphics/fast-and-easy.png';
@@ -54,11 +52,6 @@ import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
 import victor from '../public/img/team/victor.png';
 import luis from '../public/img/team/luis.png';
-
-// content creators summary
-import LoganPaulSummary from '../public/img/summary/logan-paul.png';
-import YesTheorySummary from '../public/img/summary/yes-theory.png';
-import ActiveSelfProtectionSummary from '../public/img/summary/active-self-protection.png';
 
 // Aview's Growth
 import keyMetrics from '../public/img/graphics/key-metrics.png';
@@ -464,68 +457,6 @@ export const SOCIALS = [
   },
 ];
 
-export const WORKED_WITH = [
-  {
-    id: 'creator-1',
-    name: 'Logan Paul',
-    link: 'https://www.youtube.com/c/loganpaulvlogs',
-    icon: logan1,
-  },
-  {
-    id: 'creator-2',
-    name: 'Ninja',
-    link: 'https://www.youtube.com/c/Ninja',
-    icon: ninja1,
-  },
-  {
-    id: 'creator-3',
-    name: 'Saud Brothers',
-    link: 'https://www.youtube.com/c/SaudBrothers',
-    icon: saudBrothers,
-  },
-  {
-    id: 'creator-4',
-    name: 'What If',
-    link: 'https://www.youtube.com/c/WhatIfScienceShow',
-    icon: whatIf,
-  },
-  {
-    id: 'creator-5',
-    name: 'Yes Theory',
-    link: 'https://www.youtube.com/c/YesTheory',
-    icon: yesTheory,
-  },
-  {
-    id: 'creator-6',
-    name: 'Mark Rober',
-    link: 'https://www.youtube.com/c/MarkRober',
-    icon: markRober,
-  },
-];
-
-export const TRANSLATED_CONTENT = [
-  {
-    id: 'video-1',
-    title: 'Logan Paul',
-    link: 'https://www.youtube.com/embed/mnzxkkoGROM',
-  },
-  {
-    id: 'video-2',
-    title: 'Mark Rober',
-    link: 'https://www.youtube.com/embed/tRMbUkN0DNc',
-  },
-  {
-    id: 'video-3',
-    title: 'Saud Bros',
-    link: 'https://www.youtube.com/embed/7Jbx0tzIKok',
-  },
-  {
-    id: 'video-4',
-    title: 'Yes Theory',
-    link: 'https://www.youtube.com/embed/T-LOpmmWLW4',
-  },
-];
-
 export const LEAD_IN_TRANSLATIONS = [
   {
     id: 'card-1',
@@ -751,18 +682,18 @@ export const TEAM = [
     role: 'Development Team',
     members: [
       {
-        id: 'member-1',
-        name: 'Andrew Qiao',
-        description: 'Software Engineer',
-        picture: andrew,
-        linkedin: 'https://www.linkedin.com/in/andrewqiao/',
-      },
-      {
         id: 'member-2',
         name: 'Victor Ogunjobi',
         description: 'Software Engineer',
         picture: victor,
         linkedin: 'https://www.linkedin.com/in/victor-ogunjobi/',
+      },
+      {
+        id: 'member-1',
+        name: 'Andrew Qiao',
+        description: 'Software Engineer',
+        picture: andrew,
+        linkedin: 'https://www.linkedin.com/in/andrewqiao/',
       },
     ],
   },
@@ -976,91 +907,6 @@ export const VOICEOVER_FAQ = [
   },
 ];
 
-export const GENERATE_AVIEW_INPUT = [
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Name',
-    _id: 'name',
-    name: 'name',
-    type: 'text',
-    placeholder: 'Your name',
-  },
-  {
-    validator: (value) => urlValidator(value),
-    label: 'Channel Link',
-    _id: 'channel_url',
-    name: 'url',
-    type: 'text',
-    placeholder: 'URL to your social media channel',
-  },
-  {
-    validator: (value) => emailValidator(value),
-    label: 'Email Address',
-    _id: 'email',
-    name: 'email',
-    type: 'email',
-    placeholder: 'Your email address',
-  },
-];
-
-export const GENERATE_AVIEW_CHECKBOX = [
-  {
-    name: 'Translations/Subtitles',
-    label: 'Translations/Subtitles',
-    value: 'Translations/Subtitles',
-    tooltip:
-      'Receive a translation file that can be uploaded directly to your YouTube video.',
-  },
-  {
-    name: 'Dubbing',
-    label: 'Dubbing',
-    value: 'Dubbing',
-    tooltip:
-      'Receive your videos completely translated with voice-overs in the language of your choosing.',
-  },
-  {
-    name: 'Shorts',
-    label: 'Shorts',
-    value: 'Shorts',
-    tooltip:
-      'Receive translated short form content that can be uploaded to YouTube, Instagram, TikTok and Facebook.',
-  },
-];
-
-export const GENERATE_AVIEW_COMPANY_INPUT = [
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Name',
-    _id: 'name',
-    name: 'name',
-    type: 'text',
-    placeholder: 'Your name',
-  },
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Company',
-    _id: 'companyName',
-    name: 'companyName',
-    type: 'text',
-    placeholder: 'Company name',
-  },
-  {
-    validator: (value) => value.length >= 3,
-    label: 'Company Website',
-    _id: 'companyUrl',
-    name: 'companyUrl',
-    type: 'text',
-    placeholder: 'URL to company website',
-  },
-  {
-    validator: (value) => emailValidator(value),
-    label: 'Email Address',
-    _id: 'email',
-    name: 'email',
-    type: 'email',
-    placeholder: 'Your email address',
-  },
-];
 export const CREATORS_SLIDERS = [
   {
     label: 'Uploads per month',
@@ -1121,27 +967,6 @@ export const CATEGORIES = [
   'Others',
 ];
 
-export const GROWTH_WITH_AVIEW_CREATORS = [
-  {
-    name: 'Logan Paul',
-    subscribers: '23.5M+',
-    picture: logan2,
-    summary: LoganPaulSummary,
-  },
-  {
-    name: 'Yes Theory',
-    subscribers: '7.5M+',
-    picture: yesTheory,
-    summary: YesTheorySummary,
-  },
-  {
-    name: 'Active Self Protection',
-    subscribers: '2.62M+',
-    picture: activeSelfProtection,
-    summary: ActiveSelfProtectionSummary,
-  },
-];
-
 export const TEAM_OPEN_POSITIONS = [
   'Translators',
   'Thumbnail Designer',
@@ -1190,14 +1015,6 @@ export const CAREER_APPLY_TODAY = [
     name: 'email',
   },
 ];
-
-export const GLOBAL_NEWSLETTER = {
-  placeholder: 'Your email address',
-  type: 'email',
-  name: 'email',
-  bgColor: 'bg-white',
-  textBlack: true,
-};
 
 export const COUNTRIES = [
   'Afghanistan',
