@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   CAREER_APPLY_TODAY,
-  LANGUAGES,
   TEAM_OPEN_POSITIONS,
 } from '../../../constants/constants';
 import FormInput from '../../FormComponents/FormInput';
@@ -14,8 +13,10 @@ import { useRouter } from 'next/router';
 import UploadFile from '../../FormComponents/UploadFile';
 import { emailValidator } from '../../../utils/regex';
 import ErrorHandler from '../../../utils/errorHandler';
+import { useSelector } from 'react-redux';
 
 const ApplyToday = () => {
+  const allLanguages = useSelector((el) => el.aview.allLanguages);
   const router = useRouter();
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -104,10 +105,10 @@ const ApplyToday = () => {
           isValid={emailValidator(data.email)}
           {...CAREER_APPLY_TODAY[1]}
         />
-        <div className="w-full md:w-3/5 text-white">
+        <div className="w-full text-white md:w-3/5">
           <MultipleSelectInput
             text="What languages can you translate?"
-            options={LANGUAGES}
+            options={allLanguages}
             answer={data.languages}
             hasSubmitted={hasSubmitted}
             onChange={(event) => handleMutlipleCheckbox(event)}

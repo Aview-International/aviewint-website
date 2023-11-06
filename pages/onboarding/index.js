@@ -11,14 +11,16 @@ import OnboardingStep2 from '../../components/Onboarding/step2';
 import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
-import OnboardingStep6 from '../../components/Onboarding/step6';
 import OnboardingSuccess from '../../components/Onboarding/success';
 import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
 
 const Onboarding = () => {
-  const userData = useSelector((state) => state.user);
+  const {
+    userData: userProfile,
+    aview: { allLanguages },
+  } = useSelector((state) => state.user);
   const router = useRouter();
   const { getProfile } = useUserProfile();
 
@@ -68,7 +70,7 @@ const Onboarding = () => {
             Step {router.query.stage} of 6
           </small>
         )}
-        <Stages userData={userData} />
+        <Stages userData={userProfile} allLanguages={allLanguages} />
       </div>
     </>
   );
@@ -76,7 +78,7 @@ const Onboarding = () => {
 
 export default Onboarding;
 
-const Stages = ({ userData }) => {
+const Stages = ({ userData, allLanguages }) => {
   const { query } = useRouter();
 
   return (
@@ -93,27 +95,22 @@ const Stages = ({ userData }) => {
       )}
       {query.stage === '2' && (
         <PageTransition>
-          <OnboardingStep2 userData={userData} />
+          <OnboardingStep2 userData={userData} languages={allLanguages} />
         </PageTransition>
       )}
-      {/* {query.stage === '3' && (
-        <PageTransition>
-          <OnboardingStep3 userData={userData} />
-        </PageTransition>
-      )} */}
       {query.stage === '3' && (
         <PageTransition>
-          <OnboardingStep4 userData={userData} />
+          <OnboardingStep3 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '4' && (
         <PageTransition>
-          <OnboardingStep5 userData={userData} />
+          <OnboardingStep4 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '5' && (
         <PageTransition>
-          <OnboardingStep6 userData={userData} />
+          <OnboardingStep5 userData={userData} />
         </PageTransition>
       )}
       {query.stage === '6' && (
