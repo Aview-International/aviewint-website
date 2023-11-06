@@ -1,13 +1,7 @@
 import twitter from '../public/img/creators/creator-landing/twitter.svg';
-import facebook from '../public/img/creators/creator-landing/facebook.svg';
-import tumblr from '../public/img/creators/creator-landing/tumblr.svg';
-import twitch from '../public/img/creators/creator-landing/twitch.svg';
 import blameItOnJorgeMockup from '../public/img/creators/blame-it-on-jorge/mockup.png';
 import blameItOnJorgeIcon1 from '../public/img/creators/blame-it-on-jorge/icon-1.png';
 import blameItOnJorgeIcon2 from '../public/img/creators/blame-it-on-jorge/icon-2.png';
-import blameItOnJorgeFan1 from '../public/img/creators/blame-it-on-jorge/fan-1.png';
-import blameItOnJorgeFan2 from '../public/img/creators/blame-it-on-jorge/fan-2.png';
-import blameItOnJorgeFan3 from '../public/img/creators/blame-it-on-jorge/fan-3.png';
 
 export const CREATORS = {
   blameitonjorge: {
