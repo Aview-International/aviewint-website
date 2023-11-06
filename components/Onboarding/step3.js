@@ -1,89 +1,74 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
-import Shadow from '../UI/Shadow';
-import Border from '../UI/Border';
-import Image from 'next/image';
-import { ONBOARDING_STAGE_3 } from '../../constants/constants';
+import { useState } from 'react';
+import { InstagramAuthenticationLink } from '../../pages/api/firebase';
+import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
-import Cookies from 'js-cookie';
-import ErrorHandler from '../../utils/errorHandler';
+import { authorizeUser } from '../../services/apis';
 
 const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
-  const [usage, setUsage] = useState('');
-  const [sideEffects, setSideEffects] = useState({
-    hasSubmitted: false,
-    isLoading: false,
+  const [isLoading, setIsLoading] = useState({
+    youtube: false,
+    instagram: false,
+    tiktok: false,
+    facebook: false,
   });
 
-  useEffect(() => {
-    setUsage(userData.usage);
-  }, [userData]);
-
-  const handleSelect = (option) => {
-    setUsage(option);
+  const linkInstagramAccount = async () => {
+    setIsLoading((prev) => ({
+      ...prev,
+      instagram: true,
+    }));
+    router.push(InstagramAuthenticationLink);
   };
 
-  const handleSubmit = async () => {
-    try {
-      setSideEffects({ ...sideEffects, hasSubmitted: true });
-      if (!usage) return;
-      setSideEffects({ ...sideEffects, isLoading: true });
-      await updateRequiredServices({ usage }, Cookies.get('uid'));
-      router.push('/onboarding?stage=4');
-    } catch (error) {
-      ErrorHandler(error);
-    }
+  const linkYoutubeAccount = async () => {
+    localStorage.setItem('userId', userData._id);
+    setIsLoading((prev) => ({
+      ...prev,
+      youtube: true,
+    }));
+    window.location = await authorizeUser();
   };
 
   return (
-    <div className="m-auto w-[min(800px,90%)]">
-      <h2 className="text-5xl font-bold md:text-center md:text-6xl">
-        How do you plan to use Aview?
+    <div className="m-auto w-[90%]">
+      <h2 className="text-center text-3xl font-bold md:text-6xl">
+        Connect your accounts
       </h2>
-      <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
-        Please choose one option to proceed.
+      <p className="mx-auto mt-s2 mb-s4 w-[min(610px,100%)] text-center text-lg md:text-xl">
+        Connect your socials to get started!
       </p>
-      <div className="flex flex-col items-stretch justify-center gap-4 md:flex-row md:gap-0">
-        {ONBOARDING_STAGE_3.map((option, index) => {
-          return (
-            <div key={index}>
-              <Shadow classes="md:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
-                <Border borderRadius="2xl" classes="h-full w-full">
-                  <div
-                    className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
-                      usage == option.title && 'gradient-1'
-                    }`}
-                    onClick={() => handleSelect(option.title)}
-                  >
-                    <Image
-                      src={option.image}
-                      alt={option.title}
-                      width={172}
-                      height={172}
-                    />
-                    <div className="mt-3 flex h-full flex-col items-center justify-around md:mt-7 md:h-[127px]">
-                      <h2 className="text-xl font-bold md:text-2xl">
-                        {option.title}
-                      </h2>
-                      <p className="mt-s2 w-[85%] text-center text-lg">
-                        {option.content}
-                      </p>
-                    </div>
-                  </div>
-                </Border>
-              </Shadow>
-            </div>
-          );
-        })}
+      <div className="m-auto w-[min(360px,80%)]">
+        <OnBoardingAccounts
+          classes="bg-[#ff0000]"
+          isAccountConnected={userData?.youtubeConnected}
+          clickEvent={linkYoutubeAccount}
+          account="YouTube"
+          isLoading={isLoading.youtube}
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.instagram_account_id}
+          classes="instagram"
+          // clickEvent={linkInstagramAccount}
+          account="Instagram"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.facebook}
+          classes="bg-[#0054ff]"
+          account="Facebook"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.facebook}
+          classes="bg-[#0054ff]"
+          account="TikTok"
+        />
       </div>
-      <div className="m-auto my-s4 w-[min(360px,90%)]">
+      <div className="mx-auto mt-s4 w-[min(360px,90%)]">
         <OnboardingButton
           theme="light"
-          onClick={handleSubmit}
-          isLoading={sideEffects.isLoading}
-          disabled={!usage}
+          isLoading={isLoading.continue}
+          onClick={() => router.push('/onboarding?stage=4')}
         >
           Continue
         </OnboardingButton>
@@ -91,4 +76,5 @@ const OnboardingStep3 = ({ userData }) => {
     </div>
   );
 };
+
 export default OnboardingStep3;

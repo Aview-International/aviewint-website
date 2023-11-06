@@ -9,11 +9,10 @@ import {
   AVERAGE_MONTHLY_VIEWS,
   AVERAGE_VIDEO_DURATION,
   CATEGORIES,
-  LANGUAGES,
 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
 
-export const OnboardingStep2 = ({ userData }) => {
+export const OnboardingStep2 = ({ userData, allLanguages }) => {
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
@@ -98,7 +97,7 @@ export const OnboardingStep2 = ({ userData }) => {
             <CustomSelectInput
               hideCheckmark
               text="What language is your channel?"
-              options={LANGUAGES}
+              options={allLanguages}
               hasSubmitted={sideEffects.hasSubmitted}
               onChange={(option) =>
                 setPayload({ ...payload, defaultLanguage: option })

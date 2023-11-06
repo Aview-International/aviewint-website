@@ -1660,31 +1660,6 @@ export const SUPPORTED_REGIONS = [
   },
 ];
 
-export const LANGUAGES = [
-  'English (US)',
-  'Spanish (Mexican)',
-  'French (Quebecois)',
-  'Portuguese (Brazilian)',
-  'Chinese (Mandarin)',
-  'Hindi',
-  'Russian',
-  'Arabic',
-  'Korean',
-  'Japanese',
-  'Indonesian',
-  'Bengali',
-  'Filipino',
-  'Europe',
-  'Russian',
-  'German',
-  'English (UK)',
-  'French',
-  'Italian',
-  'Turkish',
-  'Spanish',
-  'Others',
-];
-
 export const VOICEPROMPTS = [
   "Cats are like little balls of mystery and charm. Their playful antics and independent personalities bring joy to countless households. Whether they're chasing a laser pointer or curling up for a cozy nap, cats remind us to appreciate the simple pleasures in life",
   "Content creation is the modern art of storytelling. Just like a painter expresses emotions through colors, content creators use words, images, and videos to connect with audiences. Whether it's a blog post, a YouTube video, or a social media update, the goal is to captivate, inform, or entertain.",

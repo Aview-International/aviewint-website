@@ -5,9 +5,10 @@ import { MenuOpenContextProvider } from '../store/menu-open-context';
 import '../styles/globals.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
+import { setAllLanguages } from '../store/reducers/aview.reducer';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -34,7 +35,10 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 const Layout = ({ Component, pageProps }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
+    // get all languages from the regions array
+    dispatch(setAllLanguages());
     // AOS animation
     AOS.init();
     AOS.refresh();

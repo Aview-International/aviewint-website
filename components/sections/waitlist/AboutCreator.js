@@ -7,14 +7,15 @@ import {
   AVERAGE_MONTHLY_VIEWS,
   AVERAGE_SOCIAL_FOLLOWERS,
   AVERAGE_VIDEO_DURATION,
-  LANGUAGES,
 } from '../../../constants/constants';
 import { toast } from 'react-toastify';
 import { joinWaitlist } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const AboutCreator = () => {
+  const allLanguages = useSelector((el) => el.aview.allLanguages);
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
@@ -113,7 +114,7 @@ const AboutCreator = () => {
           <CustomSelectInput
             hideCheckmark
             text="Primary Language?"
-            options={LANGUAGES}
+            options={allLanguages}
             hasSubmitted={sideEffects.hasSubmitted}
             onChange={(option) => handleChange('primaryLanguage', option)}
             value={payload.primaryLanguage}
