@@ -176,10 +176,19 @@ export const deleteVoiceClone = async (userId, voiceId) => {
   return res;
 };
 
-export const uploadCreatorVideo = async (video, userId, setUploadProgress) => {
+export const uploadCreatorVideo = async (
+  video,
+  creatorId,
+  languages,
+  additionalNote,
+  setUploadProgress
+) => {
   let formData = new FormData();
   formData.append('video', video);
-  formData.append('userId', userId);
+  formData.append('creatorId', creatorId);
+  formData.append('languages', languages);
+  formData.append('additionalNote', additionalNote);
+
   await axiosInstance.post('transcription/upload-creator-video', formData, {
     onUploadProgress: (progressEvent) =>
       setUploadProgress(

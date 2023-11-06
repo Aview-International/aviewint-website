@@ -7,8 +7,10 @@ import { uploadCreatorVideo } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const Upload = () => {
+  const router = useRouter();
   const userId = useSelector((el) => el.user._id);
   const [video, setVideo] = useState(undefined);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -17,6 +19,7 @@ const Upload = () => {
     languages: '',
     otherLanguages: '',
     saveSettings: false,
+    additionalNote: '',
   });
 
   const handleLanguages = (value) => {
@@ -31,10 +34,17 @@ const Upload = () => {
     console.log(payload);
     try {
       setIsLoading(true);
-      const res = await uploadCreatorVideo(video, userId, setUploadProgress);
+      const res = await uploadCreatorVideo(
+        video,
+        userId,
+        payload.languages,
+        payload.additionalNote,
+        setUploadProgress
+      );
       console.log(res);
       setIsLoading(false);
       toast.success('Tasks subÏmitted succesfully 🚀');
+      router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
       ErrorHandler(error);
