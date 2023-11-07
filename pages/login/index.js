@@ -72,7 +72,7 @@ const Login = () => {
       const { _tokenResponse } = await signInWithGoogle();
       const res = await checkUserEmail(_tokenResponse.localId);
       if (!res) router.push('/register?account=false');
-      else handleRedirect();
+      else handleRedirect(_tokenResponse);
     } catch (error) {
       setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
