@@ -1633,7 +1633,7 @@ export const SUPPORTED_REGIONS = [
       },
       {
         image: French,
-        languageName: 'French (France)',
+        languageName: 'French',
         localDialect: 'Français',
       },
       {
