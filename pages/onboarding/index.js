@@ -94,7 +94,7 @@ const Stages = ({ userData, allLanguages }) => {
       )}
       {query.stage === '2' && (
         <PageTransition>
-          <OnboardingStep2 userData={userData} languages={allLanguages} />
+          <OnboardingStep2 userData={userData} allLanguages={allLanguages} />
         </PageTransition>
       )}
       {query.stage === '3' && (
