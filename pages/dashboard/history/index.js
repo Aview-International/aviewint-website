@@ -40,6 +40,8 @@ const History = () => {
     if (uid) getAll();
   }, [reloadTrigger]);
 
+  console.log('pending jobs', pendingJobs);
+
   return (
     <>
       <PageTitle title="History" />
@@ -52,16 +54,16 @@ const History = () => {
 const Container = ({ pendingJobs, completedJobs }) => {
   return (
     <div className="w-full rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] p-s3">
-      <div className="grid grid-cols-[30%_20%_20%_30%]">
+      <div className="grid grid-cols-[30%_20%_30%_20%]">
         <p>Name</p>
         <p>Date</p>
-        <p>Service</p>
-        <p>Link</p>
+        <p>Languages</p>
+        <p>Status</p>
       </div>
       <hr className="my-s2 border-[rgba(255,255,255,0.6)]" />
       {pendingJobs.map((job, i) => (
         <div
-          className="grid grid-cols-[30%_20%_20%_30%] border-b border-[rgba(252,252,252,0.2)] py-s2"
+          className="grid grid-cols-[30%_20%_30%_20%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
           <div>
@@ -73,9 +75,9 @@ const Container = ({ pendingJobs, completedJobs }) => {
           </div>
           <p>{new Date(job.createdAt).toDateString()}</p>
           <div>
-            {job.languages.map((service, idx) => (
+            {job.languages.map((lang, idx) => (
               <p key={idx} className="mb-s1">
-                {service}
+                {lang}
               </p>
             ))}
           </div>

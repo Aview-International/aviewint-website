@@ -34,14 +34,13 @@ const Upload = () => {
     console.log(payload);
     try {
       setIsLoading(true);
-      const res = await uploadCreatorVideo(
+      await uploadCreatorVideo(
         video,
         userId,
         payload.languages,
         payload.additionalNote,
         setUploadProgress
       );
-      console.log(res);
       setIsLoading(false);
       toast.success('Tasks subÏmitted succesfully 🚀');
       router.push('/dashboard');

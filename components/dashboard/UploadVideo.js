@@ -27,7 +27,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
           <video
             width="400"
             controls
-            className="max-h-md h-full w-full max-w-md"
+            className="max-h-sm h-full w-full max-w-sm"
           >
             <source src={URL.createObjectURL(video)} type="video/mp4" />
           </video>
@@ -62,9 +62,8 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         </>
       )}
 
-      <small className="text-sm">
-        If you selected Distribution, you acknowledge that you agree to
-        Aview&#39;s &nbsp;
+      <small className="my-s2 block text-sm">
+        You acknowledge that you agree to Aview&#39;s &nbsp;
         <span className="gradient-1 gradient-text">
           <a href="/privacy-policy" target="_blank" rel="noferrer">
             Terms of Service

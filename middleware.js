@@ -11,6 +11,7 @@ export function middleware(request) {
     const response = NextResponse.redirect(
       new URL('/login?rdr=true', request.url)
     );
+
     response.cookies.set('redirectUrl', currentUrl);
     return response;
   }
