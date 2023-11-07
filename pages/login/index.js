@@ -48,27 +48,31 @@ const Login = () => {
       handleSSOWithCode();
   }, [router.query]);
 
+  const handleRedirect = (_tokenResponse) => {
+    Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
+    Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+    dispatch(
+      setUser({
+        email: _tokenResponse.email,
+        firstName: _tokenResponse.firstName,
+        lastName: _tokenResponse.lastName,
+        picture: _tokenResponse.photoUrl,
+        token: _tokenResponse.idToken,
+        uid: _tokenResponse.localId,
+      })
+    );
+    const prevRoute = Cookies.get('redirectUrl');
+    if (prevRoute) router.push(decodeURIComponent(prevRoute));
+    else router.push('/dashboard');
+  };
+
   const handleLoginWithGoogle = async () => {
     try {
       setIsLoading({ ...isLoading, google: true });
       const { _tokenResponse } = await signInWithGoogle();
       const res = await checkUserEmail(_tokenResponse.localId);
       if (!res) router.push('/register?account=false');
-      else {
-        Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-        Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
-        dispatch(
-          setUser({
-            email: _tokenResponse.email,
-            firstName: _tokenResponse.firstName,
-            lastName: _tokenResponse.lastName,
-            picture: _tokenResponse.photoUrl,
-            token: _tokenResponse.idToken,
-            uid: _tokenResponse.localId,
-          })
-        );
-        router.push('/dashboard');
-      }
+      else handleRedirect();
     } catch (error) {
       setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
@@ -86,9 +90,7 @@ const Login = () => {
         signInWithEmailLink(auth, email, window.location.href)
           .then((result) => {
             window.localStorage.removeItem('emailForSignIn');
-            Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
-            Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-            router.push('/dashboard');
+            handleRedirect(result._tokenResponse);
           })
           .catch((error) => {
             toast.error(

@@ -186,8 +186,8 @@ export const uploadCreatorVideo = async (
   let formData = new FormData();
   formData.append('video', video);
   formData.append('creatorId', creatorId);
-  formData.append('languages', languages);
   formData.append('additionalNote', additionalNote);
+  for (const lang of languages) formData.append('languages', lang);
 
   await axiosInstance.post('transcription/upload-creator-video', formData, {
     onUploadProgress: (progressEvent) =>
