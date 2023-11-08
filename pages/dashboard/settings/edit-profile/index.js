@@ -80,7 +80,7 @@ const Accounts = ({ userData }) => {
           <OnBoardingAccounts
             isAccountConnected={userData?.instagram_account_id}
             classes="instagram"
-            clickEvent={linkInstagramAccount}
+            // clickEvent={linkInstagramAccount}
             account="Instagram"
           />
         }
@@ -180,7 +180,7 @@ const EditProfile = () => {
         handleChange={handleChange}
         {...INPUT_FIELDS[2]}
       />
-      <Container
+      {/* <Container
         left={<label className={`text-xl`}>Phone Number</label>}
         right={
           <div className="">
@@ -190,10 +190,10 @@ const EditProfile = () => {
             />
           </div>
         }
-      />
+      /> */}
 
       <div className="mx-auto w-36">
-        <OnboardingButton disabled>Submit</OnboardingButton>
+        {/* <OnboardingButton disabled>Submit</OnboardingButton> */}
       </div>
     </div>
   );
@@ -227,29 +227,6 @@ const InputField = ({
           id={_id}
           name={name}
         />
-
-        // <Border classes="relative w-full" borderRadius="[5px]">
-        //   <input
-        //     id={_id}
-        //     name={name}
-        //     type={type || 'text'}
-        //     placeholder={placeholder}
-        //     className={`peer w-full rounded-[5px] bg-black px-s2 py-2 text-white focus:outline-none`}
-        //     onChange={handleChange}
-        //     value={value}
-        //   />
-        //   <div
-        //     className={`gradient-1 transition-300 absolute inset-0 -z-10 h-[calc(100%+3px)] w-[calc(100%+3px)] rounded-2xl opacity-0 blur-lg peer-focus:opacity-80`}
-        //   ></div>
-        //   <span className="absolute right-[10px] bottom-[2px]">
-        //     {isValid && (
-        //       <Image src={Correct} alt="Correct" width={30} height={30} />
-        //     )}
-        //     {hasSubmitted && !isValid && (
-        //       <Image src={Incorrect} alt="Incorrect" width={30} height={30} />
-        //     )}
-        //   </span>
-        // </Border>
       }
     />
   );
