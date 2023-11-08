@@ -11,24 +11,11 @@ import { useSelector } from 'react-redux';
 
 const OnboardingStep5 = ({ userData }) => {
   const router = useRouter();
+  const allLanguages = useSelector((state) => state.aview.allLanguages);
   const youtubeChannel = useSelector((el) => el.youtube);
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);
   const [selectLanguages, setSelectLanguages] = useState(false);
-  const [allLanguages, setAllLanguages] = useState([]);
-
-  useEffect(() => {
-    const allFilteredLangs = [];
-    SUPPORTED_REGIONS.map(({ data }) => {
-      data.map((el) => {
-        if (!allLanguages.includes(el.languageName)) {
-          allFilteredLangs.push(el.languageName);
-        }
-      });
-    });
-
-    setAllLanguages(allFilteredLangs);
-  }, []);
 
   useEffect(() => {
     setLanguages(userData.languages);
@@ -68,6 +55,8 @@ const OnboardingStep5 = ({ userData }) => {
     else allLanguages.push(option);
     setLanguages(allLanguages);
   };
+
+  console.log(allLanguages);
 
   return (
     <div className="m-auto w-[80%] 2xl:w-[70%]">
