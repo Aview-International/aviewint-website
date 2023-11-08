@@ -56,8 +56,6 @@ const OnboardingStep5 = ({ userData }) => {
     setLanguages(allLanguages);
   };
 
-  console.log(allLanguages);
-
   return (
     <div className="m-auto w-[80%] 2xl:w-[70%]">
       <h2 className="text-4xl font-bold md:text-center md:text-6xl">
