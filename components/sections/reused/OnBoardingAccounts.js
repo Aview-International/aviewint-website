@@ -16,17 +16,15 @@ const OnBoardingAccounts = ({
         className={`block w-full rounded-full border-2 p-s1.5 text-center ${
           isAccountConnected ? classes : ''
         } ${
-          (account === 'Facebook' ||
-            account === 'TikTok' ||
-            account === 'Instagram') &&
+          (account === 'Facebook' || account === 'TikTok') &&
           'cursor-not-allowed'
         }`}
         onClick={clickEvent}
       >
         {isLoading ? <Loader /> : account}{' '}
-        {(account === 'Facebook' ||
-          account === 'TikTok' ||
-          account === 'Instagram') && <span>(Coming soon)</span>}
+        {(account === 'Facebook' || account === 'TikTok') && (
+          <span>(Coming soon)</span>
+        )}
       </button>
       {isAccountConnected && (
         <span className="absolute -right-12 top-1/2 -translate-y-1/2">

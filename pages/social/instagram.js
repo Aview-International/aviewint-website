@@ -53,7 +53,11 @@ const InstagramConnection = () => {
     }
   }, [code]);
 
-  return;
+  return (
+    <div className="h-screen w-screen bg-black">
+      <p className="text-xl text-white">Please wait</p>
+    </div>
+  );
 };
 
 export default InstagramConnection;

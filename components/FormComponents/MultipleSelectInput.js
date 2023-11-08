@@ -47,7 +47,7 @@ const MultipleSelectInput = ({
               {answer.length != 0
                 ? answer.length === 1
                   ? `${answer[0]}`
-                  : `${answer[0]}, ${answer.length > 1 ? answer[1] : ''} ${
+                  : `${answer[0]}, ${answer.length > 1 ? answer[1] : ''}${
                       answer.length > 2 ? ',...' : ''
                     }`
                 : 'Your response'}
