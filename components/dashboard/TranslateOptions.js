@@ -7,7 +7,13 @@ import ToggleButton from '../FormComponents/ToggleButton';
 import { useEffect } from 'react';
 import Textarea from '../FormComponents/Textarea';
 
-const TranslateOptions = ({ handleSubmit, payload, setPayload, isLoading }) => {
+const TranslateOptions = ({
+  handleSubmit,
+  payload,
+  setPayload,
+  isLoading,
+  uploadProgress,
+}) => {
   const userData = useSelector((state) => state.user);
   const findLocalDialect = (language) => {
     let allLanguages = [];
@@ -86,11 +92,25 @@ const TranslateOptions = ({ handleSubmit, payload, setPayload, isLoading }) => {
         label="Save these settings for future translations"
       />
       <br />
-      <div className="w-full md:w-36">
-        <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
-          Submit
-        </OnboardingButton>
-      </div>
+      {isLoading &&
+        (uploadProgress < 100 ? (
+          <div className="h-3 w-full rounded-full">
+            <div
+              className="gradient-2 h-full rounded-full"
+              style={{ width: uploadProgress + '%' }}
+            ></div>
+          </div>
+        ) : (
+          <p>Processing video please wait</p>
+        ))}
+
+      {!isLoading && (
+        <div className="w-full md:w-36">
+          <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+            Submit
+          </OnboardingButton>
+        </div>
+      )}
     </div>
   );
 };
