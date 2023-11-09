@@ -50,17 +50,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         )}
       </DottedBorder>
 
-      {isLoading && (
-        <>
-          <p>Please wait</p>
-          <div className="mt-4 h-3 w-full rounded-full">
-            <div
-              className="gradient-2 h-full rounded-full"
-              style={{ width: uploadProgress + '%' }}
-            ></div>
-          </div>
-        </>
-      )}
+      {isLoading && <p>Uploading Video</p>}
 
       <small className="my-s2 block text-sm">
         You acknowledge that you agree to Aview&#39;s &nbsp;

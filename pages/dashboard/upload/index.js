@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import TranslateOptions from '../../../components/dashboard/TranslateOptions';
 import UploadVideo from '../../../components/dashboard/UploadVideo';
@@ -31,7 +31,6 @@ const Upload = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(payload);
     try {
       setIsLoading(true);
       await uploadCreatorVideo(
@@ -41,8 +40,8 @@ const Upload = () => {
         payload.additionalNote,
         setUploadProgress
       );
+      toast.success('Tasks submitted succesfully 🚀');
       setIsLoading(false);
-      toast.success('Tasks subÏmitted succesfully 🚀');
       router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
@@ -69,6 +68,7 @@ const Upload = () => {
               payload={payload}
               setPayload={setPayload}
               isLoading={isLoading}
+              uploadProgress={uploadProgress}
             />
           </div>
         </div>
