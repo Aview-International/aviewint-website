@@ -62,8 +62,10 @@ const Login = () => {
       })
     );
     const prevRoute = Cookies.get('redirectUrl');
-    if (prevRoute) router.push(decodeURIComponent(prevRoute));
-    else router.push('/dashboard');
+    if (prevRoute) {
+      Cookies.remove('redirectUrl');
+      router.push(decodeURIComponent(prevRoute));
+    } else router.push('/dashboard');
   };
 
   const handleLoginWithGoogle = async () => {
