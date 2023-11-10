@@ -54,7 +54,7 @@ const DashboardHome = () => {
     try {
       const response = await axios.post(
         '/api/onboarding/link-instagram?get=videos',
-        { access_token: userData.instagram_access_token }
+        { access_token: userData.instagram.instagram_access_token }
       );
       const instagramVideos = response.data.data
         .filter((vid) => vid.media_type === 'VIDEO')
@@ -77,10 +77,10 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    if (!instagramDataFetched && userData.instagram_access_token)
+    if (!instagramDataFetched && userData.instagram?.instagramConnected)
       getInstagramVideos();
     if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
-  }, [channelDetails, userData.instagram_access_token]);
+  }, [channelDetails, userData]);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {
