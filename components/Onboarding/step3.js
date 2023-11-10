@@ -4,6 +4,7 @@ import { InstagramAuthenticationLink } from '../../pages/api/firebase';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
 import { authorizeUser } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
@@ -28,7 +29,11 @@ const OnboardingStep3 = ({ userData }) => {
       ...prev,
       youtube: true,
     }));
-    window.location = await authorizeUser();
+    try {
+      window.location = await authorizeUser();
+    } catch (error) {
+      ErrorHandler(error);
+    }
   };
 
   return (
@@ -42,13 +47,13 @@ const OnboardingStep3 = ({ userData }) => {
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
           classes="bg-[#ff0000]"
-          isAccountConnected={userData?.youtubeConnected}
+          isAccountConnected={userData?.youtube?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
           account="YouTube"
           isLoading={isLoading.youtube}
         />
         <OnBoardingAccounts
-          isAccountConnected={userData?.instagram_account_id}
+          isAccountConnected={userData?.instagram?.instagramConnected}
           classes="instagram"
           clickEvent={linkInstagramAccount}
           account="Instagram"

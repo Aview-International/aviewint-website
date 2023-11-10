@@ -47,7 +47,7 @@ const Accounts = ({ userData }) => {
   });
 
   const linkInstagramAccount = async () => {
-    localStorage.setItem('instagramRedirect', window.location.href);
+    localStorage.setItem('instagramRedirect', window.location.pathname);
     router.push(InstagramAuthenticationLink);
   };
 
