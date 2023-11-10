@@ -88,20 +88,7 @@ export const createNewUser = async (
 
 // update user preferences
 export const updateRequiredServices = async (payload, uid) => {
-  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        ...payload,
-      };
-      const updates = {
-        [`users/${uid}`]: postData,
-      };
-      await update(ref(database), updates);
-      return;
-    } else throw new Error('User does not exist');
-  });
+  await set(ref(database, `users/${uid}/instagram`), payload);
   return;
 };
 

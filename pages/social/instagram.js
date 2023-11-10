@@ -34,11 +34,12 @@ const InstagramConnection = () => {
           instagram_account_type: getUserProfile.data.account_type,
           instagram_access_token: getToken.data.access_token,
           instagram_access_token_expiry: getToken.data.expires_in,
+          instagramConnected: true,
         },
         uid
       );
-      if (path) window.location.href = path;
-      else router.push(path);
+      localStorage.removeItem('instagramRedirect');
+      router.push(path);
     } catch (error) {
       ErrorHandler(error);
     }
@@ -46,10 +47,9 @@ const InstagramConnection = () => {
 
   useEffect(() => {
     const rdr = localStorage.getItem('instagramRedirect');
-    if (rdr) {
-      if (code) getInstagramToken(code, rdr);
-    } else {
-      if (code) getInstagramToken(code, '/onboarding?stage=3');
+    if (code) {
+      if (rdr) getInstagramToken(code, rdr);
+      else getInstagramToken(code, '/onboarding?stage=3');
     }
   }, [code]);
 
