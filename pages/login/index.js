@@ -20,7 +20,7 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from 'firebase/auth';
-import { igAccountTest, singleSignOnLogin } from '../../services/apis';
+import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
 import { verifyAuthStatus } from '../../utils/authStatus';
@@ -107,33 +107,16 @@ const Login = () => {
     }
   };
 
-  const handleIgTestLogin = async () => {
-    try {
-      const res = await igAccountTest();
-      console.log(res.data);
-
-      Cookies.set('token', res.data.idToken, { expires: 3 });
-      Cookies.set('uid', res.data.uid, { expires: 3 });
-      router.push('/onboarding?stage=3');
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
-
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
-    if (email === 'instagramverification@aviewint.com') {
-      handleIgTestLogin();
-    } else {
-      try {
-        localStorage.setItem('emailForSignIn', email);
-        await singleSignOnLogin(email, window.location.origin);
-        setIsLoading({ ...isLoading, hasSubmitted: true });
-      } catch (error) {
-        setIsLoading({ ...isLoading, hasSubmitted: false });
-        ErrorHandler(error);
-      }
+    try {
+      localStorage.setItem('emailForSignIn', email);
+      await singleSignOnLogin(email, window.location.origin);
+      setIsLoading({ ...isLoading, hasSubmitted: true });
+    } catch (error) {
+      setIsLoading({ ...isLoading, hasSubmitted: false });
+      ErrorHandler(error);
     }
   };
 
