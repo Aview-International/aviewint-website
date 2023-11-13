@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { updateRequiredServices } from '../api/firebase';
+import { updateInstagramDetails } from '../api/firebase';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import {
@@ -27,7 +27,7 @@ const InstagramConnection = () => {
       );
 
       // save all neccessary info to the database
-      await updateRequiredServices(
+      await updateInstagramDetails(
         {
           instagram_username: getUserProfile.data.username,
           instagram_account_id: getUserProfile.data.id,
