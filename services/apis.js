@@ -59,7 +59,9 @@ export const oauth2callback = async (code) => {
 };
 
 export const authorizeUser = async () => {
-  const response = await axios.get(baseUrl + 'auth/authorize-user');
+  const response = await axios.get(
+    `${baseUrl}auth/authorize-user?rdr=${process.env.YOUTUBE_REDIRECT_ENVIRONMENT}`
+  );
   return response.data;
 };
 
