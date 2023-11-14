@@ -4,8 +4,11 @@ import aviewLogo from '../../public/img/aview/logo.png';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
 import Button from '../UI/Button';
+import { useRouter } from 'next/router';
 
 const Footer = ({ curPage }) => {
+  const router = useRouter();
+
   return (
     <div
       className="m-horizontal mb-s5 rounded-2xl bg-white-transparent text-white"
@@ -13,16 +16,30 @@ const Footer = ({ curPage }) => {
     >
       <div className="flex h-full flex-col items-center justify-between gap-y-s5 p-s2 md:items-start md:p-s4">
         <div className="grid h-full w-full grid-cols-1 gap-s3 md:grid-cols-3 md:gap-x-s25">
-          <Link href="/#">
-            <a className="">
-              <Image
-                src={aviewLogo}
-                width="114"
-                height="32"
-                alt="AVIEW International logo"
-              />
-            </a>
-          </Link>
+          <div>
+            <Link href="/#">
+              <a className="block">
+                <Image
+                  src={aviewLogo}
+                  width="114"
+                  height="32"
+                  alt="AVIEW International logo"
+                />
+              </a>
+            </Link>
+
+            <Link href="/privacy-policy">
+              <a
+                className={`hover:gradient-text hover:gradient-2 mt-s2 block ${
+                  router.pathname === '/privacy-policy'
+                    ? 'gradient-text gradient-2'
+                    : ''
+                }`}
+              >
+                Privacy Policy
+              </a>
+            </Link>
+          </div>
           {ROUTES.map((routeArray, index) => {
             return (
               <div className="flex flex-col gap-y-1" key={index}>
