@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 const Footer = ({ curPage }) => {
   const router = useRouter();
-  console.log(router);
+
   return (
     <div
       className="m-horizontal mb-s5 rounded-2xl bg-white-transparent text-white"
