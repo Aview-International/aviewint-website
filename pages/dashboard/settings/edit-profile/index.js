@@ -67,9 +67,13 @@ const Accounts = ({ userData }) => {
         right={
           <OnBoardingAccounts
             classes="bg-[#ff0000]"
-            isAccountConnected={userData?.youtubeConnected}
+            isAccountConnected={userData?.youtube?.youtubeConnected}
             clickEvent={linkYoutubeAccount}
-            account="YouTube"
+            account={
+              userData?.youtube?.youtubeConnected
+                ? 'Disconnect Youtube'
+                : 'Connect Youtube'
+            }
             isLoading={isLoading.youtube}
           />
         }
