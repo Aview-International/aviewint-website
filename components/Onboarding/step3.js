@@ -5,6 +5,8 @@ import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
 import { authorizeUser } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import Image from 'next/image';
+import WhiteYoutube from '../../public/img/icons/white-youtube.png';
 
 const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();
@@ -49,7 +51,9 @@ const OnboardingStep3 = ({ userData }) => {
           classes="bg-[#ff0000]"
           isAccountConnected={userData?.youtube?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
-          account="YouTube"
+          account={
+            <Image src={WhiteYoutube} alt="connect" width={100} height={22.5} />
+          }
           isLoading={isLoading.youtube}
         />
         <OnBoardingAccounts

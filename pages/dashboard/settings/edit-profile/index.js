@@ -11,6 +11,7 @@ import FormInput from '../../../../components/FormComponents/FormInput';
 import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
 import { useRouter } from 'next/router';
 import { InstagramAuthenticationLink } from '../../../api/firebase';
+import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
 
 const INPUT_FIELDS = [
   {
@@ -70,9 +71,12 @@ const Accounts = ({ userData }) => {
             isAccountConnected={userData?.youtube?.youtubeConnected}
             clickEvent={linkYoutubeAccount}
             account={
-              userData?.youtube?.youtubeConnected
-                ? 'Disconnect Youtube'
-                : 'Connect Youtube'
+              <Image
+                src={WhiteYoutube}
+                alt="connect"
+                width={100}
+                height={22.5}
+              />
             }
             isLoading={isLoading.youtube}
           />
