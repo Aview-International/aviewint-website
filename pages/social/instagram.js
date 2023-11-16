@@ -8,10 +8,9 @@ import {
   getInstagramShortAccess,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
-import { useSelector } from 'react-redux';
 
 const InstagramConnection = () => {
-  const { token } = useSelector((state) => state.user);
+  const token = Cookies.get('token');
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');

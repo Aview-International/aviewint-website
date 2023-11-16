@@ -11,10 +11,9 @@ import Image from 'next/image';
 import Shadow from '../UI/Shadow';
 import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
-import { useSelector } from 'react-redux';
 
 const OnboardingStep1 = ({ userData }) => {
-  const { token } = useSelector((state) => state.user);
+  const token = Cookies.get('token');
   const router = useRouter();
   const [payload, setPayload] = useState({
     role: '',

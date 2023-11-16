@@ -14,10 +14,9 @@ import {
   CATEGORIES,
 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
-import { useSelector } from 'react-redux';
 
 export const OnboardingStep2 = ({ userData, allLanguages }) => {
-  const { token } = useSelector((state) => state.user);
+  const token = Cookies.get('token');
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',

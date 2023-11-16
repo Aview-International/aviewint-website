@@ -159,6 +159,7 @@ export const authCustomUser = async (token, payload, uid) => {
   const auth = getAuth();
   return await signInWithCustomToken(auth, token)
     .then(async (user) => {
+      console.log(user);
       return await updateRequiredServices(payload, uid);
     })
     .catch((error) => {

@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 
 const OnboardingStep5 = ({ userData }) => {
-  const { token } = useSelector((state) => state.user);
+  const token = Cookies.get('token');
   const router = useRouter();
   const allLanguages = useSelector((state) => state.aview.allLanguages);
   const youtubeChannel = useSelector((el) => el.youtube);

@@ -9,10 +9,9 @@ import {
 } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ErrorHandler from '../../utils/errorHandler';
-import { useSelector } from 'react-redux';
 
 const OnboardingStep4 = ({ userData }) => {
-  const { token } = useSelector((state) => state.user);
+  const token = Cookies.get('token');
   const router = useRouter();
   const [payload, setPayload] = useState({
     region: [],
