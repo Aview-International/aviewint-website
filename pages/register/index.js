@@ -83,6 +83,7 @@ const Register = () => {
       const res = await igAccountTest();
       Cookies.set('token', res.data.idToken, { expires: 3 });
       Cookies.set('uid', res.data.uid, { expires: 3 });
+      Cookies.set('testUser', true, { expires: 3 });
       router.push('/onboarding?stage=1');
     } catch (error) {
       ErrorHandler(error);

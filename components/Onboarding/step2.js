@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
@@ -11,8 +14,10 @@ import {
   CATEGORIES,
 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
+import { useSelector } from 'react-redux';
 
 export const OnboardingStep2 = ({ userData, allLanguages }) => {
+  const { token } = useSelector((state) => state.user);
   const router = useRouter();
   const [payload, setPayload] = useState({
     monthlyView: '',
@@ -61,11 +66,17 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
     !!payload.averageVideoDuration;
 
   const handleSubmit = async () => {
+    const testUser = Cookies.get('testUser');
+
     setSideEffects({ ...sideEffects, hasSubmitted: true });
     if (!isFormValid()) return;
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
-      await updateRequiredServices(payload, Cookies.get('uid'));
+      if (testUser) {
+        await authCustomUser(token, payload, Cookies.get('uid'));
+      } else {
+        await updateRequiredServices(payload, Cookies.get('uid'));
+      }
       router.push('/onboarding?stage=3');
     } catch (error) {
       ErrorHandler(error);

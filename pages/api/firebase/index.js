@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signInWithCustomToken,
+} from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -148,4 +153,15 @@ export const getAllCompletedJobs = async (uid) => {
     }
   );
   return res;
+};
+
+export const authCustomUser = async (token, payload, uid) => {
+  const auth = getAuth();
+  return await signInWithCustomToken(auth, token)
+    .then(async (user) => {
+      return await updateRequiredServices(payload, uid);
+    })
+    .catch((error) => {
+      console.error('Error authenticating with custom token:', error);
+    });
 };
