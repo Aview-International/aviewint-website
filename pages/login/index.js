@@ -109,8 +109,8 @@ const Login = () => {
 
   const handleSSO = async (e) => {
     e.preventDefault();
+    setIsLoading({ ...isLoading, email: true });
     try {
-      setIsLoading({ ...isLoading, email: true });
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnLogin(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });

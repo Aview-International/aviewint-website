@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { finalizeYoutubeAuth } from '../../services/apis';
-import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import ErrorHandler from '../../utils/errorHandler';
 
 const YoutubeConnection = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const YoutubeConnection = () => {
       await finalizeYoutubeAuth(tempid, uid);
       router.push('/onboarding?stage=3');
     } catch (error) {
-      toast.error('Something went wrong');
+      ErrorHandler(error);
     }
   };
 
