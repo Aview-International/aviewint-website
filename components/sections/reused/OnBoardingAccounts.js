@@ -13,7 +13,7 @@ const OnBoardingAccounts = ({
   return (
     <div className="relative my-s2">
       <button
-        className={`block w-full rounded-full border-2 p-s1.5 text-center ${
+        className={`block flex w-full items-center justify-center rounded-full border-2 p-s1.5 text-center ${
           isAccountConnected ? classes : ''
         } ${
           (account === 'Facebook' ||
