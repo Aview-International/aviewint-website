@@ -7,8 +7,8 @@ const PrivacyData = () => {
       <div className="my-s4">
         <h2 className="text-xl font-semibold underline md:text-3xl">Purpose</h2>
         <h4 className="my-s2">
-          The purpose of this privacy policy (this &#34;Privacy Policy&#34;) is to
-          inform users of our Site of the following:
+          The purpose of this privacy policy (this &#34;Privacy Policy&#34;) is
+          to inform users of our Site of the following:
         </h4>
         <ol className="ml-s1 list-decimal">
           <li>The personal data we will collect;</li>
@@ -27,9 +27,9 @@ const PrivacyData = () => {
       <p className="mt-s1 mb-s3">
         For users in the European Union, we adhere to the Regulation (EU)
         2016/679 of the European Parliament and of the Council of 27 April 2016,
-        known as the General Data Protection Regulation (the &#34;GDPR&#34;). For users
-        in the United Kingdom, we adhere to the GDPR as enshrined in the Data
-        Protection Act 2018.
+        known as the General Data Protection Regulation (the &#34;GDPR&#34;).
+        For users in the United Kingdom, we adhere to the GDPR as enshrined in
+        the Data Protection Act 2018.
       </p>
       <h2 className="text-xl font-semibold underline md:text-3xl">Consent</h2>
       <p className="mt-s1 mb-s3">
@@ -100,7 +100,7 @@ const PrivacyData = () => {
       <ol className="ml-s1 list-decimal">
         <li className="my-s2">Creating an account; and</li>
         <li>
-          Linking social media account (Meta, TikTok, YouTube, Snapchat,
+          Linking social media account- Meta, TikTok, YouTube, Snapchat,
           LinkedIn.
         </li>
       </ol>
@@ -121,6 +121,22 @@ const PrivacyData = () => {
       <ol className="ml-s1 list-decimal">
         <li>Determine the best content to translate, dub and distribute.</li>
       </ol>
+      <br />
+
+      <p className="gradient-text gradient-1 my-s3" id="google-policy">
+        Aview International&#39;s use and transfer to any other app of
+        information received from Google APIs will adhere to{' '}
+        <a
+          className="text-blue underline"
+          href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Google API Services User Data Policy
+        </a>
+        , including the Limited Use requirements
+      </p>
+      <br />
       <br />
       <h2 className="text-xl font-semibold underline md:text-3xl">
         Who We Share Personal Data With
@@ -226,10 +242,10 @@ const PrivacyData = () => {
         Do Not Track Notice
       </h2>
       <p className="mt-s1 mb-s3">
-        Do Not Track (&#34;DNT&#34;) is a privacy preference that you can set in certain
-        web browsers. We do not track the users of our Site over time and across
-        third party websites and therefore do not respond to browser- initiated
-        DNT signals.
+        Do Not Track (&#34;DNT&#34;) is a privacy preference that you can set in
+        certain web browsers. We do not track the users of our Site over time
+        and across third party websites and therefore do not respond to browser-
+        initiated DNT signals.
       </p>
       <h2 className="text-xl font-semibold underline md:text-3xl">
         How to Opt-Out of Data Collection, Use or Disclosure
@@ -252,11 +268,12 @@ const PrivacyData = () => {
         Cookie Policy
       </h2>
       <p className="mt-s1 mb-s3">
-        A cookie is a small file, stored on a user&#39;s hard drive by a website.
-        Its purpose is to collect data relating to the user&#39;s browsing habits.
-        You can choose to be notified each time a cookie is transmitted. You can
-        also choose to disable cookies entirely in your internet browser, but
-        this may decrease the quality of your user experience.
+        A cookie is a small file, stored on a user&#39;s hard drive by a
+        website. Its purpose is to collect data relating to the user&#39;s
+        browsing habits. You can choose to be notified each time a cookie is
+        transmitted. You can also choose to disable cookies entirely in your
+        internet browser, but this may decrease the quality of your user
+        experience.
       </p>
       <p>We use the following types of cookies on our Site:</p>
       <br />
@@ -292,10 +309,10 @@ const PrivacyData = () => {
         This Privacy Policy may be amended from time to time in order to
         maintain compliance with the law and to reflect any changes to our data
         collection process. When we amend this Privacy Policy we will update the
-        &#34;Effective Date&#34; at the top of this Privacy Policy. We recommend that
-        our users periodically review our Privacy Policy to ensure that they are
-        notified of any updates. If necessary, we may notify users by email of
-        changes to this Privacy Policy.
+        &#34;Effective Date&#34; at the top of this Privacy Policy. We recommend
+        that our users periodically review our Privacy Policy to ensure that
+        they are notified of any updates. If necessary, we may notify users by
+        email of changes to this Privacy Policy.
       </p>
       <h2 className="text-xl font-semibold underline md:text-3xl">
         Complaints
