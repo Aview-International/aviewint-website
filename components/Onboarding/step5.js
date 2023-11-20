@@ -4,12 +4,17 @@ import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
 
 const OnboardingStep5 = ({ userData }) => {
+  const token = Cookies.get('token');
   const router = useRouter();
   const allLanguages = useSelector((state) => state.aview.allLanguages);
   const youtubeChannel = useSelector((el) => el.youtube);
@@ -22,8 +27,13 @@ const OnboardingStep5 = ({ userData }) => {
   }, [userData.languages]);
 
   const handleSubmit = async () => {
+    const testUser = Cookies.get('testUser');
     try {
-      updateRequiredServices({ languages }, userData.uid);
+      if (testUser) {
+        await authCustomUser(token, { languages }, Cookies.get('uid'));
+      } else {
+        await updateRequiredServices({ languages }, userData.uid);
+      }
       router.push('/onboarding?stage=6');
     } catch (error) {
       ErrorHandler(error);

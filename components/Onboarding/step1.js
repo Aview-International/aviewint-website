@@ -1,6 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { updateRequiredServices } from '../../pages/api/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ComingSoon from '../UI/ComingSoon';
 import Border from '../UI/Border';
@@ -10,6 +13,7 @@ import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
 
 const OnboardingStep1 = ({ userData }) => {
+  const token = Cookies.get('token');
   const router = useRouter();
   const [payload, setPayload] = useState({
     role: '',
@@ -22,11 +26,19 @@ const OnboardingStep1 = ({ userData }) => {
   }, [userData]);
 
   const handleSubmit = async () => {
+    const testUser = Cookies.get('testUser');
     setPayload({ ...payload, hasSubmitted: true });
     if (!payload.role) return;
     setPayload({ ...payload, isLoading: true });
     try {
-      await updateRequiredServices({ role: payload.role }, Cookies.get('uid'));
+      if (testUser) {
+        await authCustomUser(token, { role: payload.role }, Cookies.get('uid'));
+      } else {
+        await updateRequiredServices(
+          { role: payload.role },
+          Cookies.get('uid')
+        );
+      }
       router.push('/onboarding?stage=2');
     } catch (error) {
       console.error(error);

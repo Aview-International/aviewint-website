@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signInWithCustomToken,
+} from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -88,6 +93,24 @@ export const createNewUser = async (
 
 // update user preferences
 export const updateRequiredServices = async (payload, uid) => {
+  get(child(ref(database), `users/${uid}`)).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const postData = {
+        ...data,
+        ...payload,
+      };
+      const updates = {
+        [`users/${uid}`]: postData,
+      };
+      await update(ref(database), updates);
+      return;
+    } else throw new Error('User does not exist');
+  });
+  return;
+};
+
+export const updateInstagramDetails = async (payload, uid) => {
   await set(ref(database, `users/${uid}/instagram`), payload);
   return;
 };
@@ -130,4 +153,16 @@ export const getAllCompletedJobs = async (uid) => {
     }
   );
   return res;
+};
+
+export const authCustomUser = async (token, payload, uid) => {
+  const auth = getAuth();
+  return await signInWithCustomToken(auth, token)
+    .then(async (user) => {
+      console.log(user);
+      return await updateRequiredServices(payload, uid);
+    })
+    .catch((error) => {
+      console.error('Error authenticating with custom token:', error);
+    });
 };

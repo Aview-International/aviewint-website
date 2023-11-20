@@ -199,3 +199,8 @@ export const uploadCreatorVideo = async (
   });
   return;
 };
+
+export const igAccountTest = async () => {
+  const res = await axiosInstance.post('auth/ig-test');
+  return res;
+};

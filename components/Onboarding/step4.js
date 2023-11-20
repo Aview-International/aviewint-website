@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import OnboardingButton from './button';
 import Image from 'next/image';
-import { updateRequiredServices } from '../../pages/api/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep4 = ({ userData }) => {
+  const token = Cookies.get('token');
   const router = useRouter();
   const [payload, setPayload] = useState({
     region: [],
@@ -46,9 +50,14 @@ const OnboardingStep4 = ({ userData }) => {
   };
 
   const handleSubmit = async () => {
+    const testUser = Cookies.get('testUser');
     setIsLoading(true);
     try {
-      await updateRequiredServices(payload, Cookies.get('uid'));
+      if (testUser) {
+        await authCustomUser(token, payload, Cookies.get('uid'));
+      } else {
+        await updateRequiredServices(payload, Cookies.get('uid'));
+      }
     } catch (error) {
       ErrorHandler(error);
     }
