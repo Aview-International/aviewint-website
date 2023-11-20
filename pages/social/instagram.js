@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { authCustomUser, updateInstagramDetails } from '../api/firebase';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import {
@@ -8,9 +7,9 @@ import {
   getInstagramShortAccess,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import { updateRequiredServices } from '../api/firebase';
 
 const InstagramConnection = () => {
-  const token = Cookies.get('token');
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');
@@ -26,27 +25,10 @@ const InstagramConnection = () => {
       const getUserProfile = await getInstagramProfile(
         getToken.data.access_token
       );
-
-      const testUser = Cookies.get('testUser');
-      if (testUser) {
-        await authCustomUser(
-          token,
-          {
-            instagram: {
-              instagram_username: getUserProfile.data.username,
-              instagram_account_id: getUserProfile.data.id,
-              instagram_account_type: getUserProfile.data.account_type,
-              instagram_access_token: getToken.data.access_token,
-              instagram_access_token_expiry: getToken.data.expires_in,
-              instagramConnected: true,
-            },
-          },
-          uid
-        );
-      } else {
-        // save all neccessary info to the database
-        await updateInstagramDetails(
-          {
+      // save all neccessary info to the database
+      await updateRequiredServices(
+        {
+          instagram: {
             instagram_username: getUserProfile.data.username,
             instagram_account_id: getUserProfile.data.id,
             instagram_account_type: getUserProfile.data.account_type,
@@ -54,10 +36,11 @@ const InstagramConnection = () => {
             instagram_access_token_expiry: getToken.data.expires_in,
             instagramConnected: true,
           },
-          uid
-        );
-        localStorage.removeItem('instagramRedirect');
-      }
+        },
+        uid
+      );
+      localStorage.removeItem('instagramRedirect');
+
       router.push(path);
     } catch (error) {
       ErrorHandler(error);

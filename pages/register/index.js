@@ -15,11 +15,7 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import {
-  igAccountTest,
-  registerUser,
-  singleSignOnRegister,
-} from '../../services/apis';
+import { registerUser, singleSignOnRegister } from '../../services/apis';
 import {
   getAuth,
   isSignInWithEmailLink,
@@ -78,18 +74,6 @@ const Register = () => {
     }
   };
 
-  const handleIgTestLogin = async () => {
-    try {
-      const res = await igAccountTest();
-      Cookies.set('token', res.data.idToken, { expires: 3 });
-      Cookies.set('uid', res.data.uid, { expires: 3 });
-      Cookies.set('testUser', true, { expires: 3 });
-      router.push('/onboarding?stage=1');
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
-
   const handleSSOWithCode = () => {
     const auth = getAuth();
     if (isSignInWithEmailLink(auth, window.location.href)) {
@@ -121,17 +105,13 @@ const Register = () => {
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
-    if (email === 'instagramverification@aviewint.com') {
-      handleIgTestLogin();
-    } else {
-      try {
-        localStorage.setItem('emailForSignIn', email);
-        await singleSignOnRegister(email, window.location.origin);
-        setIsLoading({ ...isLoading, hasSubmitted: true });
-      } catch (error) {
-        setIsLoading({ ...isLoading, hasSubmitted: false });
-        ErrorHandler(error);
-      }
+    try {
+      localStorage.setItem('emailForSignIn', email);
+      await singleSignOnRegister(email, window.location.origin);
+      setIsLoading({ ...isLoading, hasSubmitted: true });
+    } catch (error) {
+      setIsLoading({ ...isLoading, hasSubmitted: false });
+      ErrorHandler(error);
     }
   };
 

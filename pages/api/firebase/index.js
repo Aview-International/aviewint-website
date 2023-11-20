@@ -1,10 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  getAuth,
-  signInWithCustomToken,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -110,11 +105,6 @@ export const updateRequiredServices = async (payload, uid) => {
   return;
 };
 
-export const updateInstagramDetails = async (payload, uid) => {
-  await set(ref(database, `users/${uid}/instagram`), payload);
-  return;
-};
-
 // get all user data from the database
 export const getUserProfile = async (uid, callback) => {
   const messages = ref(database, `users/${uid}`);
@@ -153,16 +143,4 @@ export const getAllCompletedJobs = async (uid) => {
     }
   );
   return res;
-};
-
-export const authCustomUser = async (token, payload, uid) => {
-  const auth = getAuth();
-  return await signInWithCustomToken(auth, token)
-    .then(async (user) => {
-      console.log(user);
-      return await updateRequiredServices(payload, uid);
-    })
-    .catch((error) => {
-      console.error('Error authenticating with custom token:', error);
-    });
 };
