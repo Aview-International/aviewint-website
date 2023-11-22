@@ -90,11 +90,9 @@ const SingleVoiceUpload = () => {
         {audios.map((blob, i) => (
           <div key={i} className="mx-2 rounded-2xl bg-gray-1 p-3">
             <div className='flex flex-row justify-between items-center'>
-
               <p className='mb-2 ml-2'>Audio Sample {i + 1}</p>
               <div className='cursor-pointer' onClick={()=>deleteSampleHandler(i)}>
-
-              <Image src={DeleteIcon} alt="Delete sample" width={20} height={20}/>
+               <Image src={DeleteIcon} alt="Delete sample" width={20} height={20}/>
               </div>
             </div>
             <audio controls>

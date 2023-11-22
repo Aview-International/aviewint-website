@@ -65,6 +65,7 @@ const VoiceRecordList = ({ audioRecordings }) => {
       <div className="grid h-full w-full grid-cols-3 gap-3">
         {initialData.map((blob, i) => (
           <VoiceSample
+            key={i}
             id={i+1}
             type="record"
             audioData={blob}
