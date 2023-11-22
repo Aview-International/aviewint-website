@@ -6,11 +6,11 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { VOICEPROMPTS } from '../../../constants/constants';
 
-const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
+const AudioWave = ({ destroyMic, recordings, setIsRecordings, promptNumber }) => {
   const [wavesurfer, setWavesurfer] = useState(null);
   const [recorder, setRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [prompt, setPrompt] = useState(0);
+  const [prompt, setPrompt] = useState(promptNumber);
   const containerRef = useRef();
 
   useEffect(() => {
@@ -59,8 +59,9 @@ const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
 
   const stopRecording = () => {
     recorder.on('record-end', (blob) => {
+      let blobObject = { id: Math.floor(Math.random() * 90) + 10, audio: blob, isSaved: false }
       let array = [...recordings];
-      array.push(blob);
+      array.push(blobObject);
       setIsRecordings(array);
     });
     setPrompt(prompt + 1);

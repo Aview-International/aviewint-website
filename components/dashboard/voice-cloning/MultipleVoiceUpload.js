@@ -1,19 +1,25 @@
+
 import DottedBorder from '../../UI/DottedBorder';
 import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import EditIcon from '../../../public/img/icons/edit.svg';
 import PlusIcon from '../../../public/img/icons/plus.svg';
 import Avatar from '../../../public/img/graphics/user.webp';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { uploadMultipleVoiceSamples } from '../../../services/apis';
 import { useRouter } from 'next/router';
 import ErrorHandler from '../../../utils/errorHandler';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../store/reducers/user.reducer';
+import AddMoreComponent from './AddMoreComponent';
+import Border from '../../UI/Border';
 
-const MultipleVoiceUpload = () => {
-  const router = useRouter();
+const MultipleVoiceUpload = ({ optionHandler }) => {
+  const dispatch = useDispatch();
+  //const router = useRouter();
   const { firstName, lastName, uid } = useSelector((state) => state.user);
   const name = firstName + ' ' + lastName;
   const [isLoading, setIsLoading] = useState(false);
@@ -46,19 +52,29 @@ const MultipleVoiceUpload = () => {
     }
     try {
       setIsLoading(true);
+      dispatch(setUser({ uploadVoiceSamples : speakers}))
       await uploadMultipleVoiceSamples(speakers, uid);
       setIsLoading(false);
       toast.success('Voice samples saved successfully');
-      router.push('/dashboard');
+      optionHandler((prevState) => !prevState)
+      // router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
       ErrorHandler(error);
     }
   };
 
+  const getAudioSampleLength = () => {
+    let totalAudioLength = 0;
+    for(const speaker of speakers){
+      totalAudioLength = totalAudioLength + speaker.audios.length
+    }
+    return totalAudioLength
+  };
+
   return (
-    <div>
-      <div className="flex flex-col md:grid md:grid-cols-2">
+    <div className=''>
+      <div className="flex h-full w-full flex-col gap-s3 md:grid md:grid-cols-5 overflow-x-auto">
         {speakers.map((speaker, i) => (
           <Speaker
             key={i}
@@ -71,14 +87,20 @@ const MultipleVoiceUpload = () => {
         ))}
 
         {speakers.length < 5 && (
-          <button className="cursor-pointer text-sm" onClick={addSpeaker}>
-            <span className="mb-s1 block">Add Speaker</span>
-            <Image src={PlusIcon} alt="Add Voice" width={40} height={40} />
-          </button>
+          <AddMoreComponent addVoiceOrSpeaker={addSpeaker} padding={15}/>
         )}
       </div>
-
-      <div className="mx-auto my-s3 w-[250px]">
+     <Fragment>
+         <div
+            className="gradient-1 my-s1 rounded-2xl p-1 transition-all"
+            style={{ width: (getAudioSampleLength() * 100) / 25 + '%' }}
+          ></div>
+          <div className="flex flex-row justify-between w-full text-xs">
+            <p>{(getAudioSampleLength() * 100) / 25}%</p>
+            <p>{getAudioSampleLength()} / 25</p>
+          </div>
+     </Fragment>
+      <div className="mx-auto  max-w-[350px] mt-s5">
         <OnboardingButton onClick={uploadVoiceSamples} isLoading={isLoading}>
           Upload voice samples
         </OnboardingButton>
@@ -112,52 +134,54 @@ const Speaker = ({ audios, name, setSpeakers, speakers, idx }) => {
   };
 
   return (
-    <DottedBorder classes="w-full my-s5 relative mx-auto block max-w-[260px]">
-      <small className="absolute left-[85%] top-[10px] text-center">
-        {audios.length}/{audios.length > 5 ? 25 : 5}
-      </small>
-      <div className="relative mx-auto my-s3 flex h-[80px] w-[80px] items-center justify-center rounded-full bg-gray-1">
-        <Image src={Avatar} alt="Upload" layout="fill" />
-      </div>
-      <div className="flex items-center justify-between px-s1">
-        <input
-          type="text"
-          className="mb-s1 block bg-transparent text-center"
-          defaultValue={name}
-          ref={inputRef}
-          onChange={handleNameChange}
-        />
-        <button onClick={toggleInputFocus}>
-          <Image src={EditIcon} alt="" width={18} height={18} />
-        </button>
-      </div>
-
-      <label
-        htmlFor={'upload' + idx}
-        className="max-w-8/10 my-s3 mx-auto block cursor-pointer"
-      >
-        <div className="mx-auto my-s3 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-gray-1">
-          <Image src={UploadIcon} alt="Upload" width={25} height={25} />
-          <input
-            type="file"
-            accept="audio/mp3, audio/mpeg, audio/wav"
-            id={'upload' + idx}
-            className="hidden"
-            multiple
-            onChange={handleAudioChange}
-          />
-        </div>
-        <small className="mb-s1 block text-center">Click to upload</small>
-
-        <div>
-          {audios.map((blob, i) => (
-            <p key={i} className="pl-2">
-              {blob.name}
-            </p>
-          ))}
-        </div>
-      </label>
-    </DottedBorder>
+    <div className="flex h-full w-full flex-row items-center justify-start">
+      <DottedBorder  classes="relative inline-block border-2">
+         <div className='w-full h-full p-3 flex flex-col gap-x-2 gap-y-4'>
+           <Image src={Avatar} alt='voice-sample-person' width={150} height={150}/>
+           <div className='w-full flex flex-row justify-between items-center'>
+              <div class="relative w-[85%]" onClick={()=>toggleInputFocus}>
+                 <input
+                  type="text"
+                  placeholder="Speaker 1" 
+                  class="outline-none border-b border-white focus:border-blue-500 py-2  text-white bg-transparent"
+                  id="speaker"
+                  ref={inputRef}
+                  defaultValue={name}
+                  onChange={handleNameChange}
+                 />
+                 <label for="speaker" class="absolute top-0 left-0  py-1 transition-all duration-300 ease-in-out h-2 text-white cursor-text"></label>
+              </div>
+              <button onClick={toggleInputFocus}>
+               <Image src={EditIcon} alt="voice-sample-check-mark" width={18} height={18}  /> 
+              </button>
+           </div>
+            <input
+              type="file"
+              accept="audio/mp3, audio/mpeg, audio/wav"
+              id={'upload' + idx}
+              className="hidden"
+              multiple
+              onChange={handleAudioChange}
+            />
+            <label className="mt-s1 ml-6 cursor-pointer" htmlFor={'upload' + idx}>
+              <Border borderRadius="full">
+                <span
+                  className={`transition-300 mx-auto block rounded-full bg-gray-1 px-s3 py-s1 text-center text-white`}
+                >
+                  Upload files
+                </span>
+              </Border>
+            </label>
+            <div>
+            {audios.map((blob, i) => (
+             <p key={i} className="pl-2">
+               {blob.name}
+             </p>
+            ))}
+          </div>
+       </div>
+      </DottedBorder>
+    </div>
   );
 };
 
