@@ -135,21 +135,21 @@ const Speaker = ({ audios, name, setSpeakers, speakers, idx }) => {
 
   return (
     <div className="flex h-full w-full flex-row items-center justify-start">
-      <DottedBorder  classes="relative inline-block border-2">
+      <DottedBorder classes="relative inline-block border-2">
          <div className='w-full h-full p-3 flex flex-col gap-x-2 gap-y-4'>
            <Image src={Avatar} alt='voice-sample-person' width={150} height={150}/>
            <div className='w-full flex flex-row justify-between items-center'>
-              <div class="relative w-[85%]" onClick={()=>toggleInputFocus}>
+              <div className="relative w-[85%]" onClick={()=>toggleInputFocus}>
                  <input
                   type="text"
                   placeholder="Speaker 1" 
-                  class="outline-none border-b border-white focus:border-blue-500 py-2  text-white bg-transparent"
+                  className="outline-none border-b border-white focus:border-blue-500 py-2  text-white bg-transparent"
                   id="speaker"
                   ref={inputRef}
                   defaultValue={name}
                   onChange={handleNameChange}
                  />
-                 <label for="speaker" class="absolute top-0 left-0  py-1 transition-all duration-300 ease-in-out h-2 text-white cursor-text"></label>
+                 <label htmlFor="speaker" className="absolute top-0 left-0  py-1 transition-all duration-300 ease-in-out h-2 text-white cursor-text"></label>
               </div>
               <button onClick={toggleInputFocus}>
                <Image src={EditIcon} alt="voice-sample-check-mark" width={18} height={18}  /> 
