@@ -1,9 +1,9 @@
-import React from 'react'
-import Image from 'next/image'
-import Avatar from '../../public/img/graphics/user.webp'
-import DottedBorder from './DottedBorder'
-import Button from './Button'
-import check from '../../public/img/icons/check.svg'
+import React from 'react';
+import Image from 'next/image';
+import Avatar from '../../public/img/graphics/user.webp';
+import DottedBorder from './DottedBorder';
+import Button from './Button';
+import check from '../../public/img/icons/check.svg';
 
 const VoiceSamplePerson = ({ onClick }) => {
   return (
@@ -29,7 +29,7 @@ const VoiceSamplePerson = ({ onClick }) => {
        </div>
      </DottedBorder> 
     </>
-  )
-}
+  );
+};
 
-export default VoiceSamplePerson
+export default VoiceSamplePerson;

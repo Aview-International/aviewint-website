@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import Button from '../../UI/Button';
 import VoiceSample from '../../UI/VoiceSample';
-
 import AddMoreComponent from './AddMoreComponent';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import DeleteVoiceComponent from './DeleteVoiceComponent'
+import DeleteVoiceComponent from './DeleteVoiceComponent';
 import { uploadRecordedVoice } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import AiVoice from './AiVoice';
@@ -14,7 +13,6 @@ import AiVoice from './AiVoice';
 const VoiceRecordList = ({ audioRecordings }) => {
   const router= useRouter();
   const [isDeletedOption, setIsDeletedOption] = useState(false)
-  
   const [isLoading, setIsLoading] = useState(false);
   const [option, setOption] = useState(false)
   const [finalVoiceSample, setFinalVoiceSample] = useState([]);
@@ -30,25 +28,15 @@ const VoiceRecordList = ({ audioRecordings }) => {
     setIsDeletedOption(!isDeletedOption)
   }
   
-
-  const deleteVoiceRecordings = (blob) => {
-    
+ const deleteVoiceRecordings = (blob) => {
     const updatedArray = initialData.filter(audioRecord => audioRecord.id !== blob.id)
-    
     setInitialData(updatedArray)
-    
   }
   
-
-  const saveVoiceRecordings = (blob) => {
-    
+ const saveVoiceRecordings = (blob) => {
     const blobToSave = initialData.find(audioRecord => audioRecord.id === blob.id)
-    
-
     if(blobToSave){
-      
       blobToSave.isSaved = true
-      
       setFinalVoiceSample([...finalVoiceSample, blobToSave])
     }
   }
@@ -56,8 +44,6 @@ const VoiceRecordList = ({ audioRecordings }) => {
   const saveAllRecordedVoiceSamplesHandler = async () => {
     try {
       setIsLoading(!isLoading)
-      
-
       await uploadRecordedVoice(finalVoiceSample, userId)
       setIsLoading(!isLoading)
       router.push('/dashboard')
@@ -68,8 +54,6 @@ const VoiceRecordList = ({ audioRecordings }) => {
     }
   }
 
- 
-  
   return (
     <div>
     {

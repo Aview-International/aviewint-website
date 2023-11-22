@@ -1,25 +1,13 @@
 import { Fragment, useEffect, useState } from 'react';
 import AudioWave from './AudioWave';
 import OnboardingButton from '../../Onboarding/button';
-
-
-
 import VoiceRecordList from './VoiceRecordList';
 
-
 const AiVoice = ({ prompt=0, initialRecordings=[] }) => {
-  
-  
-  
-  
   const [micState, setMicState] = useState('waiting');
-  
   const [option, setOption] = useState(false);
- 
   const [recordings, setIsRecordings] = useState(initialRecordings);
   const [destroyMic, setDestroyMic] = useState(false);
-
- 
 
   const getPermissionInitializeRecorder = async () => {
     try {
@@ -32,17 +20,17 @@ const AiVoice = ({ prompt=0, initialRecordings=[] }) => {
     }
   };
 
+  const uploadVoiceSamples = () => {
+    setDestroyMic(!destroyMic)
+    setOption(!option)
+  };
+
   useEffect(() => {
     getPermissionInitializeRecorder();
     return () => {
       setDestroyMic(true);
     };
   }, []);
-
-  const uploadVoiceSamples = () => {
-    setDestroyMic(!destroyMic)
-    setOption(!option)
-  };
 
   return (
     <div className='w-full flex flex-col justify-center items-center '>

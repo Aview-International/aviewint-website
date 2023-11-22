@@ -9,7 +9,6 @@ import Arrow from '../../../public/img/icons/arrow-right.svg';
 import Image from 'next/image';
 import Card from '../../../components/UI/Card';
 
-
 const AiVoiceSteps = [
   {
    title: 'Record',
@@ -49,7 +48,6 @@ const AIvoice = () => {
           {option === 'Record' && <AiVoice />}
           {option === 'Upload' && <UploadVoiceSamples />}
           </div>
-          
         </div>
       </div>
     </>

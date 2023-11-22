@@ -1,8 +1,8 @@
-import React from 'react'
-import Image from 'next/image'
-import Button from './Button'
-import TrashIcon from '../../public/img/icons/trash.svg'
-import whiteCheckCircle from '../../public/img/icons/white-check-circle.svg'
+import React from 'react';
+import Image from 'next/image';
+import Button from './Button';
+import TrashIcon from '../../public/img/icons/trash.svg';
+import whiteCheckCircle from '../../public/img/icons/white-check-circle.svg';
 
 const VoiceSample = ({ id, audioData, type, deleteAudioSample, saveAudioSample }) => {
   return (
@@ -16,30 +16,21 @@ const VoiceSample = ({ id, audioData, type, deleteAudioSample, saveAudioSample }
         } 
        </div>
       </div>
-      
-        <audio controls>
-           <source src={URL.createObjectURL(audioData.audio)} type='audio/webm'/> 
-           Your browser does not support the audio tag.
-        </audio>
-      
-         
-        { !audioData.isSaved ?  
-         <Button type="primary" purpose="onClick" fullWidth={true} onClick={()=> saveAudioSample(audioData)}>
+      <audio controls>
+        <source src={URL.createObjectURL(audioData.audio)} type='audio/webm'/> 
+          Your browser does not support the audio tag.
+      </audio>
+      { !audioData.isSaved ?  
+        <Button type="primary" purpose="onClick" fullWidth={true} onClick={()=> saveAudioSample(audioData)}>
          Save
-         </Button> 
+        </Button> 
          : 
-         <Button type="secondary" fullWidth={true}>
-          Saved successfully
-         </Button>
-
-        }
-         
-         
-        
-        
-        
+        <Button type="secondary" fullWidth={true}>
+         Saved successfully
+        </Button>
+      }
     </div>
-  )
-}
+  );
+};
 
-export default VoiceSample
+export default VoiceSample;
