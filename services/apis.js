@@ -37,7 +37,7 @@ export const singleSignOnLogin = async (email, origin) =>
   await axios.post(baseUrl + 'email/login', { email, origin });
 
 export const transcribeSocialLink = async (body) =>
-  await axiosInstance.post('transcription/social', body);
+  await axiosInstance.post('transcription/new-task', body);
 
 export const getInstagramShortAccess = async (ig_access_code) =>
   await axios.post('/api/onboarding/link-instagram?get=short_lived_access', {

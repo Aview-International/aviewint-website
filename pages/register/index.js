@@ -66,10 +66,11 @@ const Register = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      setIsLoading(true);
+      setIsLoading({ ...isLoading, google: true });
       const { _tokenResponse } = await signInWithGoogle();
       updateDatabase(_tokenResponse);
     } catch (error) {
+      setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
     }
   };
@@ -110,7 +111,7 @@ const Register = () => {
       await singleSignOnRegister(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });
     } catch (error) {
-      setIsLoading({ ...isLoading, hasSubmitted: false });
+      setIsLoading({ ...isLoading, hasSubmitted: false, email: false });
       ErrorHandler(error);
     }
   };
