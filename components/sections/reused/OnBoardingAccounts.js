@@ -23,7 +23,7 @@ const OnBoardingAccounts = ({
       >
         {isLoading ? <Loader /> : account}{' '}
         {(account === 'Facebook' || account === 'TikTok') && (
-          <span>(Coming soon)</span>
+          <span> (Coming soon)</span>
         )}
       </button>
       {isAccountConnected && (
