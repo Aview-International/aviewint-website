@@ -15,6 +15,9 @@ const TranslateOptions = ({
   uploadProgress,
 }) => {
   const userData = useSelector((state) => state.user);
+  const youtubePicture = useSelector(
+    (state) => state.youtube?.channelDetails?.thumbnail
+  );
   const findLocalDialect = (language) => {
     let allLanguages = [];
     SUPPORTED_REGIONS.forEach(({ data }) => {
@@ -53,7 +56,7 @@ const TranslateOptions = ({
           >
             <div className="flex items-center justify-between">
               <Image
-                src={userData.picture}
+                src={youtubePicture}
                 alt="profile-image"
                 height={40}
                 width={40}
