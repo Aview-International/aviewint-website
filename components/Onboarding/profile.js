@@ -54,6 +54,7 @@ const UserProfileOnboarding = ({ userData }) => {
     }));
 
     try {
+      payload['creatorId'] = userData.uid;
       updateProfileDetails(payload);
       router.push('/onboarding?stage=1');
     } catch (error) {

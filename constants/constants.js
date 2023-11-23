@@ -325,29 +325,6 @@ export const LANDING_PAGE_METRICS = [
 ];
 
 export const ROUTES = [
-  // { id: 'route-1', title: 'Creators', routes: [
-  //   {
-  //   text: 'Content Management',
-  //   route: '/pricing'
-  //  },
-  //  {
-  //   text: 'Dubbing',
-  //   route: '/pricing'
-  //  },
-  //  {
-  //   text: 'Ai Voice',
-  //   route: '/pricing'
-  //  },
-  //  {
-  //   text: 'Translation',
-  //   route: '/pricing'
-  //  },
-  //  {
-  //   text: 'Brands',
-  //   route: '/pricing'
-  //  },
-
-  // ]},
   {
     id: 'route-2',
     title: 'Corporate',
@@ -390,10 +367,10 @@ export const ROUTES = [
     id: 'route-3',
     title: 'Resources',
     routes: [
-      {
-        text: 'Pricing',
-        route: '/pricing',
-      },
+      // {
+      //   text: 'Pricing',
+      //   route: '/pricing',
+      // },
       {
         text: 'Blog',
         route: '/blog',
