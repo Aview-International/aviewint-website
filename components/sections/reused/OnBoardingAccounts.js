@@ -26,7 +26,7 @@ const OnBoardingAccounts = ({
         {isLoading ? <Loader /> : account}{' '}
         {(account === 'Facebook' ||
           account === 'TikTok' ||
-          account === 'Instagram') && <span>(Coming soon)</span>}
+          account === 'Instagram') && <span> (Coming soon)</span>}
       </button>
       {isAccountConnected && (
         <span className="absolute -right-12 top-1/2 -translate-y-1/2">
