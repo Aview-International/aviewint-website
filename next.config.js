@@ -8,6 +8,7 @@ const nextConfig = {
       'drive.google.com',
       'lh3.googleusercontent.com',
       'yt3.ggpht.com',
+      'aview-public.s3.amazonaws.com',
     ],
   },
   webpack: (config) => {
