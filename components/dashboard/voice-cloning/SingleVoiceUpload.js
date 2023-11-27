@@ -9,8 +9,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ErrorHandler from '../../../utils/errorHandler';
 import Border from '../../UI/Border';
-import Button from '../../UI/Button'
-import DeleteIcon from '../../../public/img/icons/trash.svg'
+import DeleteIcon from '../../../public/img/icons/trash.svg';
 
 const SingleVoiceUpload = () => {
   const [audios, setAudios] = useState([]);
@@ -28,10 +27,11 @@ const SingleVoiceUpload = () => {
   };
 
   const deleteSampleHandler = (indexToDelete) => {
-    const newAudioesArray = audios.filter(( _, index) => index !== indexToDelete)
-    setAudios(newAudioesArray)
-  }
-
+    const newAudioesArray = audios.filter(
+      (_, index) => index !== indexToDelete
+    );
+    setAudios(newAudioesArray);
+  };
 
   const handleSubmit = async () => {
     if (audios.length < 5) {
@@ -50,49 +50,52 @@ const SingleVoiceUpload = () => {
     }
   };
 
-
   return (
-    <div className='w-full h-full'>
-    <div className='w-2/5 mx-auto'>
-      <label
-        htmlFor="video_upload"
-        className="mx-auto cursor-pointer"
-      >
-        <DottedBorder classes="relative block md:inline-block w-full h-full mt-s1 border-2">
-          
-          <div className="flex flex-col items-center py-s3">
-            <div className="flex h-[100px] w-[100px] place-content-center rounded-full bg-gray-1">
-              <Image src={UploadIcon} alt="Upload" width={60} height={60} />
+    <div className="h-full w-full overflow-y-auto md:overflow-y-hidden">
+      <div className="mx-auto w-3/4 md:w-2/5">
+        <label htmlFor="video_upload" className="mx-auto cursor-pointer">
+          <DottedBorder classes="relative block md:inline-block w-full h-full mt-s8 md:mt-s1 border-2">
+            <div className="flex flex-col items-center py-s3">
+              <div className="flex h-[100px] w-[100px] place-content-center rounded-full bg-gray-1">
+                <Image src={UploadIcon} alt="Upload" width={60} height={60} />
+              </div>
+              <input
+                type="file"
+                accept="audio/mp3, audio/mpeg, audio/wav"
+                id="video_upload"
+                className="hidden"
+                multiple
+                onChange={handleChange}
+              />
+              <p className="mt-3 text-2xl">Drag files to upload</p>
+              <label className="mt-s1 cursor-pointer" htmlFor="video_upload">
+                <Border borderRadius="full">
+                  <span
+                    className={`transition-300 mx-auto block rounded-full bg-gray-1 px-s3 py-s1 text-center text-white`}
+                  >
+                    Select files
+                  </span>
+                </Border>
+              </label>
             </div>
-            <input
-              type="file"
-              accept="audio/mp3, audio/mpeg, audio/wav"
-              id="video_upload"
-              className="hidden"
-              multiple
-              onChange={handleChange}
-            />
-            <p className='text-2xl mt-3'>Drag files to upload</p>
-            <label className="mt-s1 cursor-pointer" htmlFor="video_upload">
-              <Border borderRadius="full">
-                <span
-                  className={`transition-300 mx-auto block rounded-full bg-gray-1 px-s3 py-s1 text-center text-white`}
-                >
-                  Select files
-                </span>
-              </Border>
-            </label>
-          </div>
-        </DottedBorder>
-      </label>
-    </div>
-    <div className="grid grid-cols-3 my-3 gap-3">
+          </DottedBorder>
+        </label>
+      </div>
+      <div className="my-3 flex h-[360px] w-full flex-col gap-3 overflow-y-auto md:grid md:h-full md:grid-cols-3">
         {audios.map((blob, i) => (
           <div key={i} className="mx-2 rounded-2xl bg-gray-1 p-3">
-            <div className='flex flex-row justify-between items-center'>
-              <p className='mb-2 ml-2'>Audio Sample {i + 1}</p>
-              <div className='cursor-pointer' onClick={()=>deleteSampleHandler(i)}>
-               <Image src={DeleteIcon} alt="Delete sample" width={20} height={20}/>
+            <div className="flex flex-row items-center justify-between">
+              <p className="mb-2 ml-2">Audio Sample {i + 1}</p>
+              <div
+                className="cursor-pointer"
+                onClick={() => deleteSampleHandler(i)}
+              >
+                <Image
+                  src={DeleteIcon}
+                  alt="Delete sample"
+                  width={20}
+                  height={20}
+                />
               </div>
             </div>
             <audio controls>
@@ -105,7 +108,7 @@ const SingleVoiceUpload = () => {
         ))}
       </div>
       {audios.length > 0 && (
-        <div className="mx-auto w-full max-w-[350px]">
+        <div className="mx-auto max-w-[350px]">
           <OnboardingButton
             disabled={audios.length < 25}
             onClick={handleSubmit}
