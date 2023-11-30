@@ -11,10 +11,10 @@ const InstagramConnection = () => {
 
   useEffect(() => {
     if (code) {
-      (async (ig_access_code, path) => {
+      (async () => {
         // get short lived acces token
         try {
-          await completeIgConnection(ig_access_code, uid);
+          await completeIgConnection(code, uid);
           router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);

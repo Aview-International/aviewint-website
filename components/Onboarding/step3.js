@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { InstagramAuthenticationLink } from '../../pages/api/firebase';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
 import { authorizeUser, getIgAuthLink } from '../../services/apis';
@@ -24,7 +23,6 @@ const OnboardingStep3 = ({ userData }) => {
         instagram: true,
       }));
       window.location = await getIgAuthLink();
-      // console.log(await getIgAuthLink());
     } catch (error) {
       setIsLoading((prev) => ({
         ...prev,
