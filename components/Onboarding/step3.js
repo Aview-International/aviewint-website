@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { InstagramAuthenticationLink } from '../../pages/api/firebase';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
-import { authorizeUser } from '../../services/apis';
+import { authorizeUser, getIgAuthLink } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import Image from 'next/image';
 import WhiteYoutube from '../../public/img/icons/white-youtube.png';
@@ -18,11 +18,19 @@ const OnboardingStep3 = ({ userData }) => {
   });
 
   const linkInstagramAccount = async () => {
-    setIsLoading((prev) => ({
-      ...prev,
-      instagram: true,
-    }));
-    router.push(InstagramAuthenticationLink);
+    try {
+      setIsLoading((prev) => ({
+        ...prev,
+        instagram: true,
+      }));
+      // window.location = await getIgAuthLink();
+      console.log(await getIgAuthLink());
+    } catch (error) {
+      setIsLoading((prev) => ({
+        ...prev,
+        instagram: false,
+      }));
+    }
   };
 
   const linkYoutubeAccount = async () => {

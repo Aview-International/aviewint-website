@@ -199,3 +199,13 @@ export const uploadCreatorVideo = async (
   });
   return;
 };
+
+export const getIgAuthLink = async () => {
+  const res = await axiosInstance.get('auth/instagram/get_auth_link');
+  return res.data;
+};
+
+export const completeIgConnection = async (code, uid) => {
+  const res = await axiosInstance.post('instagram/get_ig_code', { code, uid });
+  return res.data;
+};
