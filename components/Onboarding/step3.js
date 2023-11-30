@@ -28,6 +28,7 @@ const OnboardingStep3 = ({ userData }) => {
         ...prev,
         instagram: false,
       }));
+      ErrorHandler(error);
     }
   };
 
