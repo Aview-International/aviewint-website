@@ -11,6 +11,8 @@ import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardin
 import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
 import { getIgAuthLink } from '../../../../services/apis';
 import ErrorHandler from '../../../../utils/errorHandler';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const INPUT_FIELDS = [
   {
@@ -38,6 +40,7 @@ const Container = ({ left, right }) => (
 );
 
 const Accounts = ({ userData }) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -46,6 +49,7 @@ const Accounts = ({ userData }) => {
   });
 
   const linkInstagramAccount = async () => {
+    Cookies.set('instagramRedirect', router.pathname);
     try {
       setIsLoading((prev) => ({
         ...prev,

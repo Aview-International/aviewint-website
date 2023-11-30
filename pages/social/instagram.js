@@ -8,6 +8,7 @@ const InstagramConnection = () => {
   const router = useRouter();
   const { code } = router.query;
   const uid = Cookies.get('uid');
+  const igRdr = Cookies.get('instagramRedirect');
 
   useEffect(() => {
     if (code) {
@@ -15,7 +16,9 @@ const InstagramConnection = () => {
         // get short lived acces token
         try {
           await completeIgConnection(code, uid);
-          router.push('/onboarding?stage=3');
+          Cookies.remove('instagramRedirect');
+          if (igRdr) router.push(igRdr);
+          else router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);
         }
