@@ -3,15 +3,16 @@ import { useEffect, useState } from 'react';
 import { SettingsLayout, Settings_Back_Button } from '..';
 import Correct from '../../../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../../../public/img/icons/incorrect.svg';
-import Border from '../../../../components/UI/Border';
 import OnboardingButton from '../../../../components/Onboarding/button';
 import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
 import { useSelector } from 'react-redux';
 import FormInput from '../../../../components/FormComponents/FormInput';
 import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
-import { useRouter } from 'next/router';
-import { InstagramAuthenticationLink } from '../../../api/firebase';
 import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
+import { getIgAuthLink } from '../../../../services/apis';
+import ErrorHandler from '../../../../utils/errorHandler';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const INPUT_FIELDS = [
   {
@@ -48,8 +49,20 @@ const Accounts = ({ userData }) => {
   });
 
   const linkInstagramAccount = async () => {
-    localStorage.setItem('instagramRedirect', window.location.pathname);
-    router.push(InstagramAuthenticationLink);
+    Cookies.set('instagramRedirect', router.pathname);
+    try {
+      setIsLoading((prev) => ({
+        ...prev,
+        instagram: true,
+      }));
+      window.location = await getIgAuthLink();
+    } catch (error) {
+      setIsLoading((prev) => ({
+        ...prev,
+        instagram: false,
+      }));
+      ErrorHandler(error);
+    }
   };
 
   const linkYoutubeAccount = async () => {
@@ -86,9 +99,9 @@ const Accounts = ({ userData }) => {
         left={<p className={`text-xl`}>Instagram</p>}
         right={
           <OnBoardingAccounts
-            isAccountConnected={userData?.instagram_account_id}
+            isAccountConnected={userData?.instagram?.instagramConnected}
             classes="instagram"
-            // clickEvent={linkInstagramAccount}
+            clickEvent={linkInstagramAccount}
             account="Instagram"
           />
         }
