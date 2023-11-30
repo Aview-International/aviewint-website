@@ -23,8 +23,8 @@ const OnboardingStep3 = ({ userData }) => {
         ...prev,
         instagram: true,
       }));
-      // window.location = await getIgAuthLink();
-      console.log(await getIgAuthLink());
+      window.location = await getIgAuthLink();
+      // console.log(await getIgAuthLink());
     } catch (error) {
       setIsLoading((prev) => ({
         ...prev,
