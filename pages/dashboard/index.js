@@ -9,7 +9,7 @@ import { createANewJob, updateRequiredServices } from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
-import { getChannelVideos } from '../../services/apis';
+import { getChannelVideos, getIgVideos } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 
 const DashboardHome = () => {
@@ -52,24 +52,27 @@ const DashboardHome = () => {
 
   const getInstagramVideos = async () => {
     try {
-      const response = await axios.post(
-        '/api/onboarding/link-instagram?get=videos',
-        { access_token: userData.instagram.instagram_access_token }
+      const response = await getIgVideos(
+        userData.instagram.instagram_access_token
       );
-      const instagramVideos = response.data.data
-        .filter((vid) => vid.media_type === 'VIDEO')
-        .map((vid) => ({
-          type: 'instagram',
-          id: vid.id,
-          caption: vid.caption,
-          timestamp: vid.timestamp,
-          thumbnail: vid.thumbnail_url,
-          permalink: vid.permalink,
-          videoUrl: vid.media_url,
-          isReel: !vid.is_shared_to_feed,
-        }));
+
+      // await axios.post('/api/onboarding/link-instagram?get=videos', {
+      //   access_token: userData.instagram.instagram_access_token,
+      // });
+      // const instagramVideos = response.data.data
+      //   .filter((vid) => vid.media_type === 'VIDEO')
+      //   .map((vid) => ({
+      //     type: 'instagram',
+      //     id: vid.id,
+      //     caption: vid.caption,
+      //     timestamp: vid.timestamp,
+      //     thumbnail: vid.thumbnail_url,
+      //     permalink: vid.permalink,
+      //     videoUrl: vid.media_url,
+      //     isReel: !vid.is_shared_to_feed,
+      //   }));
       dispatch(
-        setInstagramVideos({ dataFetched: true, videos: instagramVideos })
+        setInstagramVideos({ dataFetched: true, videos: response.data })
       );
     } catch (error) {
       ErrorHandler(error);

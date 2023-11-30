@@ -206,10 +206,12 @@ export const getIgAuthLink = async () => {
 };
 
 export const completeIgConnection = async (code, uid) => {
-  console.log(code, uid);
   const res = await axiosInstance.post('auth/instagram/get_ig_code', {
     code,
     uid,
   });
   return res.data;
 };
+
+export const getIgVideos = async (code) =>
+  await axiosInstance.post('auth/instagram/get_videos', { code });
