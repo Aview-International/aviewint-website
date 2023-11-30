@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import {
+  completeIgConnection,
   getInstagramLongLivedAccess,
   getInstagramProfile,
   getInstagramShortAccess,
