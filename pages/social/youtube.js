@@ -12,10 +12,10 @@ const YoutubeConnection = () => {
   const finalizeYoutube = async () => {
     try {
       await finalizeYoutubeAuth(tempid, uid);
-      router.push('/onboarding?stage=3');
     } catch (error) {
       ErrorHandler(error);
     }
+    router.push('/onboarding?stage=3');
   };
 
   useEffect(() => {
