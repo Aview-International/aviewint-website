@@ -3,51 +3,56 @@ import PriceComponent from './PriceComponent';
 
 const priceListItems = [
   {
-    title: 'Starter',
-    subTitle: 'Free',
+    title: 'FREE',
+    subTitle: '$0/mo',
     description: 'Best for users who want to try out the platform',
     options: [
-      '50 translated videos',
-      '50 dubbed videos',
-      '25 subtitles videos',
-      '10 edited shorts',
-      'Access to brand deals',
+      '10 Relevant Content Hashtags Generation',
+      '1 Title and Description Generator',
+      '5 Minutes Video Script Generator',
+      '5 Minutes of Translated Dubbing (AI)',
+      '1 Trained Multi-Language Voiceover',
+      '50 Languages',
     ],
   },
   {
-    title: 'Basic',
-    subTitle: '$50/mo',
+    title: 'BASIC',
+    subTitle: '$49.99/mo',
     description: 'Best for users with +100,000 sucscribers',
     options: [
-      '1000 translated videos',
-      '1000 dubbed videos',
-      '1000 subtitles videos',
-      '1000 edited shorts',
-      'Access to brand deals',
+      '50 Relevant Content Hashtags Generation',
+      '5 Title and Description Generator',
+      '45 Minutes Video Script Generator',
+      '5 Minutes of Translated Dubbing (AI)',
+      '45 Minutes of Context-Based Translated Subtites',
+      '3 Trained Multi-Language Voiceovers',
+      '50 Languages',
+      'International Video Analytics',
+      '5 Video Content Distribution',
+      '1 Short-From Content',
+      'International Brand Deals',
+      '0.50%	Profit Sharing',
     ],
   },
   {
-    title: 'Pro',
+    title: 'PRO',
     subTitle: '$100/mo',
     description: 'Best for users with +500,000 sucscribers',
     options: [
-      '+10000 translated videos',
-      '+5000 dubbed videos',
-      '+5000 subtitles videos',
-      '+5000 edited shorts',
-      'Access to brand deals',
-    ],
-  },
-  {
-    title: 'Enterprise',
-    subTitle: 'Contact Us',
-    description: 'Best for users with +1 million sucscribers',
-    options: [
-      '+10000 translated videos',
-      '+5000 dubbed videos',
-      '+5000 subtitles videos',
-      '+5000 edited shorts',
-      'Access to brand deals',
+      '300 Relevant Content Hashtags Generation',
+      '15 Title and Description Generator',
+      '300 Minutes Video Script Generator',
+      '300 Minutes of Translated Dubbing (AI)',
+      '300 Minutes of Context-Based Translated Subtites',
+      '5 Trained Multi-Language Voiceovers',
+      '50 Languages',
+      'International Video Analytics',
+      '30 Video Content Distribution',
+      'Content Censorship',
+      '7 Short-From Contents',
+      'Global Channel Management',
+      'International Brand Deals',
+      '2%	Profit Sharing',
     ],
   },
 ];
@@ -102,18 +107,16 @@ const PricePlan = () => {
     <section>
       <div className="cards relative flex flex-col md:my-12">
         <div
-          className="grid h-full w-full grid-cols-1 gap-12 text-white md:min-w-[1080px] md:grid-cols-4 md:gap-10"
+          className="grid h-full w-full grid-cols-1 gap-12 text-white md:min-w-[1080px] md:grid-cols-3 md:gap-10"
           ref={divRelativeHook}
         >
-          {priceListItems.map((item, index) => {
-            return (
-              <div key={index} className="card">
-                <PriceComponent item={item} />
-              </div>
-            );
-          })}
+          {priceListItems.map((item, index) => (
+            <div key={index} className="card">
+              <PriceComponent item={item} />
+            </div>
+          ))}
         </div>
-        <div className="overlay grid h-full w-full grid-cols-1 gap-12 text-white md:min-w-[1080px] md:grid-cols-4 md:gap-10">
+        <div className="overlay grid h-full w-full grid-cols-1 gap-12 text-white md:min-w-[1080px] md:grid-cols-3 md:gap-10">
           {animeProps
             ? animeProps.map((props, index) => (
                 <div key={index}>{React.createElement('div', props)}</div>

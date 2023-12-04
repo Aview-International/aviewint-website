@@ -10,6 +10,7 @@ import {
   onValue,
 } from 'firebase/database';
 import { transcribeSocialLink } from '../../../services/apis';
+import Cookies from 'js-cookie';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -30,6 +31,13 @@ const database = getDatabase(firebaseApp);
 
 // Initialize the auth service
 export const auth = getAuth();
+
+// getAuth().onIdTokenChanged(async (user) => {
+//   getAuth().verifyIdToken;
+
+//   const token = await user.getIdToken(true);
+//   Cookies.set('token', token);
+// });
 
 export const checkUserEmail = async (uid) => {
   const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {

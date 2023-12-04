@@ -23,7 +23,6 @@ import {
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
-import { verifyAuthStatus } from '../../utils/authStatus';
 
 const Login = () => {
   const router = useRouter();
@@ -34,13 +33,6 @@ const Login = () => {
     email: false,
     hasSubmitted: false,
   });
-
-  useEffect(() => {
-    const token = Cookies.get('token');
-    if (!verifyAuthStatus(token)) {
-      Cookies.remove('token');
-    }
-  }, []);
 
   useEffect(() => {
     const { query } = router;
