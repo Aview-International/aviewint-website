@@ -6,7 +6,7 @@ import Border from '../UI/Border';
 const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   return (
     <div className="w-11/12">
-      <DottedBorder classes="relative block md:inline-block w-full border-4">
+      <DottedBorder classes="relative block md:inline-block w-full">
         {video && (
           <button
             onClick={() => setVideo(null)}
