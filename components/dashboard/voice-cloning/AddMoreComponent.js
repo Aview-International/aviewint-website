@@ -3,15 +3,15 @@ import DottedBorder from '../../UI/DottedBorder';
 import PlusIcon from '../../../public/img/icons/plus.svg';
 import Image from 'next/image';
 
-const AddMoreComponent = ({ addVoiceOrSpeaker, padding }) => {
+const AddMoreComponent = ({ addVoiceOrSpeaker }) => {
   return (
-    <div>
-      <DottedBorder classes="relative md:inline-block border-2 w-full h-full">
+    <div className="h-full max-h-[298px] w-full max-w-[225px]">
+      <DottedBorder classes="md:inline-block border-2 w-full h-full">
         <div
-          className={`flex flex-col items-center rounded-2xl py-[${padding}px] justify-center`}
+          className={`flex h-full flex-col place-content-center rounded-2xl`}
           onClick={addVoiceOrSpeaker}
         >
-          <div onClick={() => 'added sample'} className="mt-3 cursor-pointer">
+          <div className="mx-auto mt-3 block cursor-pointer">
             <Image
               src={PlusIcon}
               alt="add-more-sample"
@@ -19,7 +19,7 @@ const AddMoreComponent = ({ addVoiceOrSpeaker, padding }) => {
               height={20}
             />
           </div>
-          <p className="mb-s1 block">Add more samples</p>
+          <p className="mb-s1 text-center">Add another speaker</p>
         </div>
       </DottedBorder>
     </div>

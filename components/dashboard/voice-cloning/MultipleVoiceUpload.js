@@ -70,7 +70,7 @@ const MultipleVoiceUpload = ({ optionHandler }) => {
 
   return (
     <div>
-      <div className="mt-4 grid h-[450px] w-full grid-cols-1 items-center justify-center gap-s2 overflow-y-auto md:mt-0 md:h-full md:grid-cols-5">
+      <div className="mt-4 flex h-[450px] w-full flex-wrap items-center justify-center gap-s2 overflow-y-auto md:mt-0 md:h-full">
         {speakers.map((speaker, i) => (
           <Speaker
             key={i}
@@ -82,9 +82,7 @@ const MultipleVoiceUpload = ({ optionHandler }) => {
           />
         ))}
         {speakers.length < 5 && (
-          <div className="">
-            <AddMoreComponent addVoiceOrSpeaker={addSpeaker} padding={122} />
-          </div>
+          <AddMoreComponent addVoiceOrSpeaker={addSpeaker} />
         )}
       </div>
       <Fragment>
@@ -131,21 +129,18 @@ const Speaker = ({ audios, name, setSpeakers, speakers, idx }) => {
   };
 
   return (
-    <div className="mt-4 flex h-[310px] w-full flex-row items-center justify-center md:mt-0 md:h-full md:justify-start">
+    <div className="max-h-[298px] w-full max-w-[225px]">
       <DottedBorder classes="relative inline-block border-2">
-        <div className="flex h-full w-full flex-col gap-x-2 gap-y-4 p-3">
-          <Image
-            src={Avatar}
-            alt="voice-sample-person"
-            width={150}
-            height={150}
-          />
-          <div className="flex w-full flex-row items-center justify-between">
+        <div className="p-3">
+          <div className="mx-auto flex h-32 w-32 place-content-center">
+            <Image src={Avatar} alt="" />
+          </div>
+          <div className="my-s3 flex w-full flex-row items-center justify-between">
             <div className="relative w-[85%]" onClick={() => toggleInputFocus}>
               <input
                 type="text"
                 placeholder="Speaker 1"
-                className="focus:border-blue-500 border-b border-white bg-transparent py-2  text-white outline-none"
+                className="border-b-4 border-white bg-transparent py-2 text-white outline-none focus:border-b-purple"
                 id="speaker"
                 ref={inputRef}
                 defaultValue={name}

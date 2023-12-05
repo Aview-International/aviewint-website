@@ -3,10 +3,10 @@ import AudioWave from './AudioWave';
 import OnboardingButton from '../../Onboarding/button';
 import VoiceRecordList from './VoiceRecordList';
 
-const AiVoice = ({ prompt = 0, initialRecordings = [] }) => {
+const VoiceRecordingFromPrompts = () => {
   const [micState, setMicState] = useState('waiting');
   const [option, setOption] = useState(false);
-  const [recordings, setIsRecordings] = useState(initialRecordings);
+  const [recordings, setRecordings] = useState([]);
   const [destroyMic, setDestroyMic] = useState(false);
 
   const getPermissionInitializeRecorder = async () => {
@@ -50,12 +50,11 @@ const AiVoice = ({ prompt = 0, initialRecordings = [] }) => {
                 microphone usage 😪🎙️
               </p>
             )}
-            {micState === 'allowed' && recordings.length < 5 ? (
+            {micState === 'allowed' && recordings.length < 25 ? (
               <AudioWave
                 recordings={recordings}
-                setIsRecordings={setIsRecordings}
+                setRecordings={setRecordings}
                 destroyMic={destroyMic}
-                promptNumber={prompt}
               />
             ) : null}
           </div>
@@ -64,31 +63,39 @@ const AiVoice = ({ prompt = 0, initialRecordings = [] }) => {
             <Fragment>
               <div
                 className="gradient-1 my-s1 rounded-2xl p-1 transition-all"
-                style={{ width: (recordings.length * 100) / 5 + '%' }}
+                style={{
+                  width:
+                    (recordings.length * 100) /
+                      (recordings.length >= 5 ? 25 : 5) +
+                    '%',
+                }}
               ></div>
               <div className="flex w-full flex-row justify-between text-xs">
                 <p>{(recordings.length * 100) / 5}%</p>
-                <p>{recordings.length} / 5</p>
+                <p>
+                  {recordings.length} / {recordings.length >= 5 ? 25 : 5}
+                </p>
               </div>
             </Fragment>
           )}
-          {
-            <div
-              className={`mx-auto my-s3 w-[250px] ${
-                recordings.length < 5 ? 'hidden' : 'block'
-              }`}
+
+          <div className={`mx-auto my-s3 w-[250px]`}>
+            <OnboardingButton
+              onClick={uploadVoiceSamples}
+              disabled={recordings.length < 5}
             >
-              <OnboardingButton onClick={uploadVoiceSamples}>
-                Save voice samples
-              </OnboardingButton>
-            </div>
-          }
+              Preview recordings
+            </OnboardingButton>
+          </div>
         </div>
       ) : (
-        <VoiceRecordList audioRecordings={recordings} />
+        <VoiceRecordList
+          recordings={recordings}
+          setRecordings={setRecordings}
+        />
       )}
     </div>
   );
 };
 
-export default AiVoice;
+export default VoiceRecordingFromPrompts;

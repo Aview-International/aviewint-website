@@ -1,18 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import Button from './Button';
 import TrashIcon from '../../public/img/icons/trash.svg';
-import whiteCheckCircle from '../../public/img/icons/white-check-circle.svg';
 
-const VoiceSample = ({
-  id,
-  audioData,
-  type,
-  deleteAudioSample,
-  saveAudioSample,
-}) => {
+const VoiceSample = ({ id, audioData, type, deleteAudioSample }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 rounded-2xl bg-gray-1 p-3 text-white md:w-full md:p-4">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl bg-gray-1 p-3 text-white md:w-full md:p-4">
       <div className="flex w-full items-center justify-between">
         <p>
           {type == 'record' ? 'Audio Sample' : 'Speaker'} <span>{id}</span>
@@ -21,36 +13,13 @@ const VoiceSample = ({
           onClick={() => deleteAudioSample(audioData)}
           className="cursor-pointer"
         >
-          {!audioData.isSaved ? (
-            <Image src={TrashIcon} alt="Delete-Voice" width={20} height={20} />
-          ) : (
-            <Image
-              src={whiteCheckCircle}
-              alt="sample-saved"
-              width={20}
-              height={20}
-            />
-          )}
+          <Image src={TrashIcon} alt="Delete-Voice" width={20} height={20} />
         </div>
       </div>
-      <audio controls>
-        <source src={URL.createObjectURL(audioData.audio)} type="audio/webm" />
+      <audio controls className="w-full rounded-full bg-white-transparent">
+        <source src={URL.createObjectURL(audioData)} type="audio/webm" />
         Your browser does not support the audio tag.
       </audio>
-      {!audioData.isSaved ? (
-        <Button
-          type="primary"
-          purpose="onClick"
-          fullWidth={true}
-          onClick={() => saveAudioSample(audioData)}
-        >
-          Save
-        </Button>
-      ) : (
-        <Button type="secondary" fullWidth={true}>
-          Saved successfully
-        </Button>
-      )}
     </div>
   );
 };

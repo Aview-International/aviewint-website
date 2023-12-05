@@ -93,10 +93,10 @@ const PlayVoiceSample = ({ voiceId, uid }) => {
       </p>
       <br />
 
-      <div className="mt-s3 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2 md:mt-0 md:ml-s2">
+      <div className="mx-auto mt-s3 flex w-full max-w-[450px] flex-col items-center justify-center gap-3 rounded-2xl border-2 p-s2 md:mt-0">
         {showText && <p>{VOICEPROMPTS[0]}</p>}
 
-        <div className="mx-auto mt-s2 w-full">
+        <div className=" mt-s2">
           <OnboardingButton
             theme="light"
             isLoading={isLoading}
