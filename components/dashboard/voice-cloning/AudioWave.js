@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { VOICEPROMPTS } from '../../../constants/constants';
 
-const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
+const AudioWave = ({ destroyMic, recordings, setRecordings }) => {
   const [wavesurfer, setWavesurfer] = useState(null);
   const [recorder, setRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -61,7 +61,7 @@ const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
     recorder.on('record-end', (blob) => {
       let array = [...recordings];
       array.push(blob);
-      setIsRecordings(array);
+      setRecordings(array);
     });
     setPrompt(prompt + 1);
     recorder.stopRecording();
