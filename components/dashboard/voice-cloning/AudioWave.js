@@ -42,7 +42,7 @@ const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
 
   const startRecording = async () => {
     try {
-      if (recordings.length >= 5) {
+      if (recordings.length >= 25) {
         toast('Maximum voice samples reached');
         return;
       }
@@ -85,13 +85,13 @@ const AudioWave = ({ destroyMic, recordings, setIsRecordings }) => {
               <Image src={record} alt="record" width={20} height={20} />
             </button>
           </div>
-          <p className="w-full text-center">Click to record</p>
+          <p className="my-1 w-full text-center text-lg">Click to record</p>
         </Fragment>
       )}
 
       <div className={`w-full ${isRecording ? 'block' : 'hidden'}`}>
         <div ref={containerRef} id="mic"></div>
-        <button className="mx-auto block" onClick={stopRecording}>
+        <button className="mx-auto block text-lg" onClick={stopRecording}>
           Stop Recording
         </button>
       </div>
