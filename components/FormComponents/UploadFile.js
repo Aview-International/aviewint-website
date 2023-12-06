@@ -6,7 +6,7 @@ import Incorrect from '../../public/img/icons/incorrect.svg';
 
 const UploadFile = ({ data, setData, isValid, hasSubmitted }) => {
   return (
-    <DottedBorder classes="relative block md:inline-block">
+    <DottedBorder classes="relative md:inline-block">
       <label
         className={`flex cursor-pointer flex-col items-center ${
           data.resume && 'py-s1'

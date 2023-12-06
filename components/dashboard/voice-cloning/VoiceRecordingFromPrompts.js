@@ -71,7 +71,11 @@ const VoiceRecordingFromPrompts = () => {
                 }}
               ></div>
               <div className="flex w-full flex-row justify-between text-xs">
-                <p>{(recordings.length * 100) / 5}%</p>
+                <p>
+                  {(recordings.length * 100) /
+                    (recordings.length >= 5 ? 25 : 5)}
+                  %
+                </p>
                 <p>
                   {recordings.length} / {recordings.length >= 5 ? 25 : 5}
                 </p>

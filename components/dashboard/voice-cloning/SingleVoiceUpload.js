@@ -67,7 +67,7 @@ const SingleVoiceUpload = () => {
                 multiple
                 onChange={handleChange}
               />
-              <p className="mt-3 text-2xl">Drag files to upload</p>
+              <p className="mt-3 text-lg">Click below to upload</p>
               <label className="mt-s1 cursor-pointer" htmlFor="video_upload">
                 <Border borderRadius="full">
                   <span
@@ -81,11 +81,11 @@ const SingleVoiceUpload = () => {
           </DottedBorder>
         </label>
       </div>
-      <div className="my-3 flex h-[360px] w-full flex-col gap-3 overflow-y-auto md:grid md:h-full md:grid-cols-3">
+      <div className="my-s3 mx-auto grid grid-cols-[repeat(auto-fill,280px)] justify-center gap-3 overflow-y-auto">
         {audios.map((blob, i) => (
           <div key={i} className="mx-2 rounded-2xl bg-gray-1 p-3">
             <div className="flex flex-row items-center justify-between">
-              <p className="mb-2 ml-2">Audio Sample {i + 1}</p>
+              <p className="mb-2 ml-2">{blob.name}</p>
               <div
                 className="cursor-pointer"
                 onClick={() => deleteSampleHandler(i)}
@@ -98,7 +98,7 @@ const SingleVoiceUpload = () => {
                 />
               </div>
             </div>
-            <audio controls>
+            <audio controls className="w-full">
               <source src={URL.createObjectURL(blob)} type="audio/webm" />
               <source src={URL.createObjectURL(blob)} type="audio/mp3" />
               <source src={URL.createObjectURL(blob)} type="audio/mpeg" />
@@ -110,7 +110,7 @@ const SingleVoiceUpload = () => {
       {audios.length > 0 && (
         <div className="mx-auto max-w-[350px]">
           <OnboardingButton
-            disabled={audios.length < 25}
+            disabled={audios.length < 5}
             onClick={handleSubmit}
             isLoading={isLoading}
           >

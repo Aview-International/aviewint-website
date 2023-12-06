@@ -2,7 +2,7 @@ import DottedBorder from '../../UI/DottedBorder';
 import EditIcon from '../../../public/img/icons/edit.svg';
 import Avatar from '../../../public/img/graphics/user.webp';
 import Image from 'next/image';
-import { Fragment, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
@@ -15,16 +15,10 @@ import Border from '../../UI/Border';
 
 const MultipleVoiceUpload = ({ optionHandler }) => {
   const dispatch = useDispatch();
-  //const router = useRouter();
   const { firstName, lastName, uid } = useSelector((state) => state.user);
   const name = firstName + ' ' + lastName;
   const [isLoading, setIsLoading] = useState(false);
-  const [speakers, setSpeakers] = useState([
-    {
-      name,
-      audios: [],
-    },
-  ]);
+  const [speakers, setSpeakers] = useState([{ name, audios: [] }]);
 
   const addSpeaker = () => {
     if (speakers.length >= 5) {
@@ -60,17 +54,9 @@ const MultipleVoiceUpload = ({ optionHandler }) => {
     }
   };
 
-  const getAudioSampleLength = () => {
-    let totalAudioLength = 0;
-    for (const speaker of speakers) {
-      totalAudioLength = totalAudioLength + speaker.audios.length;
-    }
-    return totalAudioLength;
-  };
-
   return (
     <div>
-      <div className="mt-4 flex h-[450px] w-full flex-wrap items-center justify-center gap-s2 overflow-y-auto md:mt-0 md:h-full">
+      <div className="mt-4 grid h-[450px] w-full grid-cols-[repeat(auto-fill,260px)] items-start justify-center gap-s2 md:mt-0 md:h-full">
         {speakers.map((speaker, i) => (
           <Speaker
             key={i}
@@ -85,16 +71,7 @@ const MultipleVoiceUpload = ({ optionHandler }) => {
           <AddMoreComponent addVoiceOrSpeaker={addSpeaker} />
         )}
       </div>
-      <Fragment>
-        <div
-          className="gradient-1 my-s2 ml-2 rounded-2xl p-1 transition-all md:ml-0"
-          style={{ width: (getAudioSampleLength() * 100) / 25 + '%' }}
-        ></div>
-        <div className="flex w-full flex-row justify-between text-xs">
-          <p className="ml-2">{(getAudioSampleLength() * 100) / 25}%</p>
-          <p className="mr-2">{getAudioSampleLength()} / 25</p>
-        </div>
-      </Fragment>
+
       <div className="mx-auto  mt-s5 max-w-[310px]">
         <OnboardingButton onClick={uploadVoiceSamples} isLoading={isLoading}>
           Upload voice samples
@@ -129,7 +106,7 @@ const Speaker = ({ audios, name, setSpeakers, speakers, idx }) => {
   };
 
   return (
-    <div className="max-h-[298px] w-full max-w-[225px]">
+    <div className="w-full max-w-[225px]">
       <DottedBorder classes="relative inline-block border-2">
         <div className="p-3">
           <div className="mx-auto flex h-32 w-32 place-content-center">
@@ -139,17 +116,11 @@ const Speaker = ({ audios, name, setSpeakers, speakers, idx }) => {
             <div className="relative w-[85%]" onClick={() => toggleInputFocus}>
               <input
                 type="text"
-                placeholder="Speaker 1"
                 className="border-b-4 border-white bg-transparent py-2 text-white outline-none focus:border-b-purple"
-                id="speaker"
                 ref={inputRef}
                 defaultValue={name}
                 onChange={handleNameChange}
               />
-              <label
-                htmlFor="speaker"
-                className="absolute top-0 left-0  h-2 cursor-text py-1 text-white transition-all duration-300 ease-in-out"
-              ></label>
             </div>
             <button onClick={toggleInputFocus}>
               <Image
