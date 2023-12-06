@@ -56,7 +56,7 @@ const VoiceRecordList = ({ recordings, setRecordings }) => {
           <p className="text-center text-xl md:text-5xl">
             Voice Recording complete 🎤🔥
           </p>
-          <div className="my-10 grid h-full w-full grid-cols-[repeat(auto-fill,259px)] flex-col items-center justify-center gap-4 md:gap-3">
+          <div className="my-10 grid h-full w-full grid-cols-[repeat(auto-fill,259px)] items-center justify-center gap-4 md:gap-3">
             {recordings.map((blob, i) => (
               <VoiceSample
                 key={i}

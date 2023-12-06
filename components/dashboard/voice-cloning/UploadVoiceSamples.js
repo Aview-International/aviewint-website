@@ -36,7 +36,7 @@ const UploadVoiceSamples = () => {
         ) : (
           <MultipleVoiceUpload optionHandler={setOption} />
         )}
-        {option ? <VoiceSample /> : null}
+        {/* {option ? <VoiceSample /> : null} */}
       </div>
     </div>
   );

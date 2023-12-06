@@ -114,7 +114,10 @@ const PlayVoiceSample = ({ voiceId, uid }) => {
         className="mt-s3 flex w-full items-center justify-center hover:underline"
         onClick={handleDelete}
       >
-        <span className="pr-s2">Delete voice and start over</span>
+        <span className="pr-s2">
+          Delete {Object.keys(voiceId).length > 1 ? 'voices' : 'voice'} and
+          start over
+        </span>
         <Image src={Trash} alt="" />
       </button>
     </div>

@@ -16,11 +16,11 @@ const AiVoiceSteps = [
     description:
       'Record yourself reading through at least five prompts so we can create an AI voice tailored to your own voice. Feel free to do more to achieve a more accurate voice.',
   },
-  // {
-  //   title: 'Upload',
-  //   description:
-  //     'Uploaded pre-recorded voice samples of you speaking clearly that is devoid of noise and loud background. Upload at least 5 samples to achieve a better voice cloning effect.',
-  // },
+  {
+    title: 'Upload',
+    description:
+      'Uploaded pre-recorded voice samples of you speaking clearly that is devoid of noise and loud background. Upload at least 5 samples to achieve a better voice cloning effect.',
+  },
 ];
 
 const AIvoice = () => {
@@ -80,7 +80,7 @@ const SelectAIOption = ({ setOption }) => {
               onClick={() => setOption(stepItem.title)}
               theme={stepItem.title === 'Record' ? 'light' : 'dark'}
             >
-              Begin
+              Select
             </OnboardingButton>
           </div>
         </div>
