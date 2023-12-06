@@ -68,7 +68,7 @@ const SelectAIOption = ({ setOption }) => {
       data-aos="zoom-in-up"
     >
       {AiVoiceSteps.map((stepItem, idx) => (
-        <div key={idx} className="w-1/2">
+        <div key={idx} className="group w-1/2">
           <Card borderRadius="2xl">
             <div className="bg-white-transparent p-s4">
               <h3 className="text-4xl">{stepItem.title}</h3>
