@@ -32,7 +32,6 @@ const VoiceRecordList = ({ recordings, setRecordings }) => {
   };
 
   const saveAllRecordedVoiceSamplesHandler = async () => {
-    console.log(recordings);
     try {
       setIsLoading(true);
       await uploadRecordedVoice(recordings, userId);
