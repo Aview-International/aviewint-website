@@ -142,7 +142,7 @@ export const uploadRecordedVoice = async (audios, userId) => {
   let formData = new FormData();
 
   for (const audio of audios) {
-    formData.append('voiceSample', audio);
+    formData.append('files', audio);
   }
 
   return await axiosInstance.post(
