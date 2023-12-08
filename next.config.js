@@ -9,6 +9,7 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'yt3.ggpht.com',
       'aview-public.s3.amazonaws.com',
+      'prod-files-secure.s3.us-west-2.amazonaws.com',
     ],
   },
   webpack: (config) => {
