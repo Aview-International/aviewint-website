@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 // Function to get the token asynchronously
 const getToken = async () => {
   try {
-    const token = await Cookies.get('token');
+    const token = Cookies.get('token');
     return token;
   } catch (error) {
     // Handle token retrieval errors here
@@ -23,19 +23,9 @@ const axiosInstance = axios.create({
 // Add an interceptor to set the Authorization header before each request
 axiosInstance.interceptors.request.use(
   async (config) => {
-    // Get the token before making the request
+    // get the token before making the request
     const token = await getToken();
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      // Handle the case where token is not available
-      // For example, redirect to login or handle unauthorized access
-      // You can customize this based on your application's requirements
-      console.error('Token is not available.');
-      // You might want to redirect to login or handle unauthorized access here
-    }
-
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => {

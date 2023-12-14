@@ -5,7 +5,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
 import sidebarArrow from '../../public/img/icons/sidebar-arrow.svg';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
+import { logoutUser } from '../../pages/api/firebase';
 
 const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
@@ -136,49 +136,41 @@ const Navlink = ({ isOpen }) => {
 };
 
 const Signout = ({ isOpen }) => {
-  const handleLogout = () => {
-    Cookies.remove('uid');
-    Cookies.remove('token');
-    window.location.href = '/';
-  };
-
   return (
-    <>
-      <button
-        onClick={handleLogout}
-        className={`hover:gradient-dark group relative mb-s2 mt-s10 flex w-full items-center py-s1 px-s3 text-sm`}
+    <button
+      onClick={logoutUser}
+      className={`hover:gradient-dark group relative mb-s2 mt-s10 flex w-full items-center py-s1 px-s3 text-sm`}
+    >
+      <span
+        className={`gradient-1 invisible absolute right-0 top-1/2 block h-4 w-1 -translate-y-1/2 rounded-md group-hover:visible group-hover:animate-dropin`}
+      ></span>
+      <span
+        className={`mr-5 brightness-0 invert group-hover:animate-popup group-hover:brightness-100 group-hover:invert-0`}
+      >
+        <Image
+          src={signout}
+          alt={'Sign Out'}
+          width={20}
+          height={20}
+          layout="fixed"
+        />
+      </span>
+      <span
+        className={`${
+          isOpen ? '' : 'gradient-dark absolute left-24 top-1 z-10 rounded-md'
+        }`}
       >
         <span
-          className={`gradient-1 invisible absolute right-0 top-1/2 block h-4 w-1 -translate-y-1/2 rounded-md group-hover:visible group-hover:animate-dropin`}
-        ></span>
-        <span
-          className={`mr-5 brightness-0 invert group-hover:animate-popup group-hover:brightness-100 group-hover:invert-0`}
+          className={
+            isOpen
+              ? ''
+              : 'hidden w-max rounded-md bg-white-transparent p-s1 group-hover:inline-block'
+          }
         >
-          <Image
-            src={signout}
-            alt={'Sign Out'}
-            width={20}
-            height={20}
-            layout="fixed"
-          />
+          Sign Out
         </span>
-        <span
-          className={`${
-            isOpen ? '' : 'gradient-dark absolute left-24 top-1 z-10 rounded-md'
-          }`}
-        >
-          <span
-            className={
-              isOpen
-                ? ''
-                : 'hidden w-max rounded-md bg-white-transparent p-s1 group-hover:inline-block'
-            }
-          >
-            Sign Out
-          </span>
-        </span>
-      </button>
-    </>
+      </span>
+    </button>
   );
 };
 

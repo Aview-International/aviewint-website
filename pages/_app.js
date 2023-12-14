@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { MenuOpenContextProvider } from '../store/menu-open-context';
@@ -9,6 +9,9 @@ import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
 import { setAllLanguages } from '../store/reducers/aview.reducer';
+import { auth } from './api/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -36,7 +39,22 @@ const MyApp = ({ Component, pageProps }) => {
 
 const Layout = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
+  // const { pathname, push } = useRouter();
+  // const protectedPaths = ['/dashboard', '/onboarding'];
+  // const [authState, setAuthState] = useState(false);
+
   useEffect(() => {
+    // console.log(pathname);
+
+    // onAuthStateChanged(auth, (user) => {
+    //   if (!user && protectedPaths.includes(pathname)) {
+    //     push('/login');
+    //     // setAuthState(true);
+    //     // console.log('userData', user);
+    //   } else {
+    //     setAuthState(true);
+    //   }
+    // });
     // get all languages from the regions array
     dispatch(setAllLanguages());
     // AOS animation
@@ -50,10 +68,13 @@ const Layout = ({ Component, pageProps }) => {
     window.onresize = setViewportHeight;
   }, []);
 
+  // if (!authState) return null;
+  // else {
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
   } else {
     return <Component {...pageProps} />;
+    // }
   }
 };
 

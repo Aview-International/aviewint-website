@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -32,12 +38,26 @@ const database = getDatabase(firebaseApp);
 // Initialize the auth service
 export const auth = getAuth();
 
-// getAuth().onIdTokenChanged(async (user) => {
-//   getAuth().verifyIdToken;
+export const logoutUser = () => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      // Cookies.remove('uid');
+      // Cookies.remove('token');
+      console.log('logged out!');
+      window.location.href = '/';
+    })
+    .catch((error) => {
+      console.log('nahhh!');
+      // An error happened.
+    });
+};
 
-//   const token = await user.getIdToken(true);
-//   Cookies.set('token', token);
-// });
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('userData', user);
+  }
+});
 
 export const checkUserEmail = async (uid) => {
   const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {
