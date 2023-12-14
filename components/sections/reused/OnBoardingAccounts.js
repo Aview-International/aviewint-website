@@ -16,9 +16,7 @@ const OnBoardingAccounts = ({
         className={`block flex w-full items-center justify-center rounded-full border-2 p-s1.5 text-center ${
           isAccountConnected ? classes : ''
         } ${
-          (account === 'Facebook' ||
-            account === 'TikTok' ||
-            account === 'Instagram') &&
+          (account === 'Facebook' || account === 'TikTok') &&
           'cursor-not-allowed'
         }`}
         onClick={clickEvent}

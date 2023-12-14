@@ -35,7 +35,7 @@ const VoiceRecordingFromPrompts = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center ">
       {!option ? (
-        <div className="w-4/5 md:w-2/5">
+        <div className="w-4/5">
           <div className="my-5 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2 ">
             {micState === 'waiting' && (
               <p data-aos="zoom-in-up" className="m-s3 text-lg font-medium">
