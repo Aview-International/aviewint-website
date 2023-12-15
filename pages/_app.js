@@ -60,6 +60,7 @@ const Layout = ({ Component, pageProps }) => {
     }, 50 * 60 * 1000);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log(user);
       if (!user) logoutUser();
       else getProfile();
     });
