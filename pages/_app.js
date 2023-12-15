@@ -60,9 +60,12 @@ const Layout = ({ Component, pageProps }) => {
     }, 50 * 60 * 1000);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user);
       if (!user) logoutUser();
-      else getProfile();
+      else {
+        Cookies.set('uid', user.uid);
+        Cookies.set('token', user.accessToken);
+        getProfile();
+      }
     });
 
     // clean up setInterval and auth listener
