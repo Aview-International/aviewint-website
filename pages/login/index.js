@@ -41,8 +41,8 @@ const Login = () => {
   }, [router.query]);
 
   const handleRedirect = (_tokenResponse) => {
-    Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-    Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('uid', _tokenResponse.localId);
     dispatch(
       setUser({
         email: _tokenResponse.email,

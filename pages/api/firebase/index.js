@@ -3,7 +3,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   getAuth,
-  onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
 import {
@@ -38,26 +37,12 @@ const database = getDatabase(firebaseApp);
 // Initialize the auth service
 export const auth = getAuth();
 
-export const logoutUser = () => {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      // Cookies.remove('uid');
-      // Cookies.remove('token');
-      console.log('logged out!');
-      window.location.href = '/';
-    })
-    .catch((error) => {
-      console.log('nahhh!');
-      // An error happened.
-    });
+export const logoutUser = async () => {
+  await signOut(auth).then(() => {
+    Cookies.remove('uid');
+    Cookies.remove('token');
+  });
 };
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log('userData', user);
-  }
-});
 
 export const checkUserEmail = async (uid) => {
   const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {

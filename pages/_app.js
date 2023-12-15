@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { MenuOpenContextProvider } from '../store/menu-open-context';
@@ -9,9 +9,10 @@ import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
 import { setAllLanguages } from '../store/reducers/aview.reducer';
-import { auth } from './api/firebase';
+import { auth, logoutUser } from './api/firebase';
+import Cookies from 'js-cookie';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import useUserProfile from '../hooks/useUserProfile';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -39,22 +40,8 @@ const MyApp = ({ Component, pageProps }) => {
 
 const Layout = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
-  // const { pathname, push } = useRouter();
-  // const protectedPaths = ['/dashboard', '/onboarding'];
-  // const [authState, setAuthState] = useState(false);
-
+  const { getProfile } = useUserProfile();
   useEffect(() => {
-    // console.log(pathname);
-
-    // onAuthStateChanged(auth, (user) => {
-    //   if (!user && protectedPaths.includes(pathname)) {
-    //     push('/login');
-    //     // setAuthState(true);
-    //     // console.log('userData', user);
-    //   } else {
-    //     setAuthState(true);
-    //   }
-    // });
     // get all languages from the regions array
     dispatch(setAllLanguages());
     // AOS animation
@@ -66,15 +53,28 @@ const Layout = ({ Component, pageProps }) => {
     };
     setViewportHeight();
     window.onresize = setViewportHeight;
+    // refresh token after 55 mins
+    const handle = setInterval(async () => {
+      const token = await auth.currentUser.getIdToken(true);
+      if (token) Cookies.set('token', _tokenResponse.idToken);
+    }, 50 * 60 * 1000);
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) logoutUser();
+      else getProfile();
+    });
+
+    // clean up setInterval and auth listener
+    return () => {
+      unsubscribe;
+      clearInterval(handle);
+    };
   }, []);
 
-  // if (!authState) return null;
-  // else {
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
   } else {
     return <Component {...pageProps} />;
-    // }
   }
 };
 

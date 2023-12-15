@@ -1,19 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
-import Cookies from 'js-cookie';
-
-// Function to get the token asynchronously
-const getToken = async () => {
-  try {
-    const token = Cookies.get('token');
-    return token;
-  } catch (error) {
-    // Handle token retrieval errors here
-    console.error('Error getting token:', error);
-    return null;
-  }
-};
+import { auth } from '../pages/api/firebase';
 
 // Create an Axios instance without default headers
 const axiosInstance = axios.create({
@@ -24,7 +12,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async (config) => {
     // get the token before making the request
-    const token = await getToken();
+    const token = await auth.currentUser.getIdToken(true);
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },

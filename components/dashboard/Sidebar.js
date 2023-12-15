@@ -136,9 +136,13 @@ const Navlink = ({ isOpen }) => {
 };
 
 const Signout = ({ isOpen }) => {
+  const handleLogout = async () => {
+    await logoutUser();
+    window.location.href = '/';
+  };
   return (
     <button
-      onClick={logoutUser}
+      onClick={handleLogout}
       className={`hover:gradient-dark group relative mb-s2 mt-s10 flex w-full items-center py-s1 px-s3 text-sm`}
     >
       <span
