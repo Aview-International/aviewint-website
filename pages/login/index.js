@@ -162,7 +162,7 @@ const Login = () => {
               </Border>
             </Shadow>
 
-            <p className="my-s2 text-center">or</p>
+            <p className="my-s2 text-center text-2xl">or</p>
 
             {!isLoading.hasSubmitted ? (
               <form onSubmit={handleSSO}>

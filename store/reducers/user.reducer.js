@@ -21,6 +21,8 @@ const initialState = {
   youtubeChannelId: '',
   youtubeChannelName: '',
   _id: '',
+  recordedVoiceSamples: [],
+  uploadedVoiceSamples: [],
 };
 
 const userSlice = createSlice({

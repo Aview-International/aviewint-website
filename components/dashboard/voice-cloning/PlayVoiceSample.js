@@ -58,7 +58,7 @@ const PlayVoiceSample = ({ voiceId, uid }) => {
   };
 
   return (
-    <div>
+    <div className="h-full w-full">
       {deleteModal && (
         <div className="fixed top-0 left-0 z-10 h-screen w-screen bg-[rgba(0,0,0,0.8)]">
           <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md bg-black p-s2">
@@ -93,10 +93,10 @@ const PlayVoiceSample = ({ voiceId, uid }) => {
       </p>
       <br />
 
-      <div className="mt-s3 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2 md:mt-0 md:ml-s2">
+      <div className="mx-auto mt-s3 flex w-full max-w-[450px] flex-col items-center justify-center gap-3 rounded-2xl border-2 p-s2 md:mt-0">
         {showText && <p>{VOICEPROMPTS[0]}</p>}
 
-        <div className="mx-auto mt-s2 w-full">
+        <div className=" mt-s2">
           <OnboardingButton
             theme="light"
             isLoading={isLoading}
@@ -114,7 +114,10 @@ const PlayVoiceSample = ({ voiceId, uid }) => {
         className="mt-s3 flex w-full items-center justify-center hover:underline"
         onClick={handleDelete}
       >
-        <span className="pr-s2">Delete voice and start over</span>
+        <span className="pr-s2">
+          Delete {Object.keys(voiceId).length > 1 ? 'voices' : 'voice'} and
+          start over
+        </span>
         <Image src={Trash} alt="" />
       </button>
     </div>

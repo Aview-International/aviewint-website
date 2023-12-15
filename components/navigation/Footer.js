@@ -7,7 +7,7 @@ import Button from '../UI/Button';
 import { useRouter } from 'next/router';
 
 const Footer = ({ curPage }) => {
-  const router = useRouter();
+  const { pathname } = useRouter();
 
   return (
     <div
@@ -31,7 +31,7 @@ const Footer = ({ curPage }) => {
             <Link href="/privacy-policy">
               <a
                 className={`hover:gradient-text hover:gradient-2 mt-s2 block ${
-                  router.pathname === '/privacy-policy'
+                  pathname === '/privacy-policy'
                     ? 'gradient-text gradient-2'
                     : ''
                 }`}
