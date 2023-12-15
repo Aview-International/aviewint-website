@@ -56,7 +56,7 @@ const Layout = ({ Component, pageProps }) => {
     // refresh token after 55 mins
     const handle = setInterval(async () => {
       const token = await auth.currentUser.getIdToken(true);
-      if (token) Cookies.set('token', _tokenResponse.idToken);
+      if (token) Cookies.set('token', token);
     }, 30 * 60 * 1000);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
