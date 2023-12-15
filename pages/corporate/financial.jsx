@@ -7,7 +7,6 @@ import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import AllFinancialDocuments from '../../components/sections/corporate/financial/AllFinancialDocuments';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import financialTranslations from '../../public/img/graphics/corporate/financial/financial-translation-services.png';
@@ -54,8 +53,7 @@ export default function Financial() {
       <LanguagesServed />
       <AllFinancialDocuments />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="landing"/>
-      <FeaturedBlogs />
+      <FAQ page="landing" />
       <Footer curPage="Financial Documents" />
       <Blobs />
     </>

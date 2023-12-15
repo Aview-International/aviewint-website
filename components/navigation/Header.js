@@ -40,10 +40,9 @@ const Header = ({ curPage }) => {
 const HeaderButtons = () => {
   const token = useSelector((data) => data.user.token);
   const isLoggedIn = useMemo(() => {
-    console.log(checkTokenExpiry(token));
-    console.log(token);
     return checkTokenExpiry(token);
   }, [token]);
+
   return (
     <div className="hidden gap-5 lg:flex">
       {!isLoggedIn && (

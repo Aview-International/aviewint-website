@@ -57,7 +57,7 @@ const Layout = ({ Component, pageProps }) => {
     const handle = setInterval(async () => {
       const token = await auth.currentUser.getIdToken(true);
       if (token) Cookies.set('token', _tokenResponse.idToken);
-    }, 50 * 60 * 1000);
+    }, 30 * 60 * 1000);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) logoutUser();

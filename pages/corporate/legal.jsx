@@ -4,7 +4,6 @@ import CompaniesWeWorkedWith from '../../components/sections/corporate/Companies
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import legalTranslations from '../../public/img/graphics/corporate/legal/legal-services.png';
@@ -36,8 +35,7 @@ export default function Legal() {
       <LanguagesServed />
       <LegalBranches />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="landing"/>
-      <FeaturedBlogs />
+      <FAQ page="landing" />
       <Footer curPage="Legal Documents" />
       <Blobs />
     </>

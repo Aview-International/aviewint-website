@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
-import { auth } from '../pages/api/firebase';
+import Cookies from 'js-cookie';
 
 // Create an Axios instance without default headers
 const axiosInstance = axios.create({
@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async (config) => {
     // get the token before making the request
-    const token = await auth.currentUser.getIdToken(true);
+    const token = Cookies.get('token');
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },

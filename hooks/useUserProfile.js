@@ -27,6 +27,7 @@ const useUserProfile = () => {
   const handleGetYoutubeChannel = async () => {
     try {
       const res = await getUserYoutubeChannel(uid);
+      if (res === 'No youtube channel connected') return;
       const data = {
         id: res.id,
         description: res.snippet.description,

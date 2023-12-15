@@ -9,7 +9,6 @@ import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import Workflow from '../../components/sections/reused/Workflow';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import voiceOver from '../../public/img/graphics/corporate/voice-over/voice-over.png';
 import workflowSm from '../../public/img/graphics/corporate/voice-over/workflow-sm.svg';
@@ -60,7 +59,6 @@ export default function VoiceOver() {
       />
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="voiceover" />
-      <FeaturedBlogs />
       <Footer curPage="Voice Overs" />
     </>
   );

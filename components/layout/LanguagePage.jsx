@@ -11,7 +11,6 @@ import HowItWorks from '../sections/languages/HowItWorks';
 import StartGenerating from '../sections/home/StartGenerating';
 import YouCreateWeTranslation from '../sections/languages/YouCreateWeTranslate';
 import FAQ from '../sections/home/FAQ';
-import FeaturedBlogs from '../sections/reused/FeaturedBlogs';
 import Footer from '../navigation/Footer';
 
 export default function LanguagePage({
@@ -62,7 +61,6 @@ export default function LanguagePage({
       <StartGenerating formId="JhSA3lfn" />
       <YouCreateWeTranslation />
       <FAQ page="corporate" />
-      <FeaturedBlogs />
       <Footer curPage="Languages" />
     </>
   );

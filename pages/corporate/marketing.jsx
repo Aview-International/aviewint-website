@@ -7,7 +7,6 @@ import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
 import MarketingMaterials from '../../components/sections/corporate/marketing/MarketingMaterials';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import Blobs from '../../components/UI/Blobs';
 import marketingServices from '../../public/img/graphics/corporate/marketing/marketing-services.png';
@@ -54,8 +53,7 @@ export default function Marketing() {
       <LanguagesServed />
       <MarketingMaterials />
       <StartGenerating formId="JhSA3lfn" />
-      <FAQ page="landing"/>
-      <FeaturedBlogs />
+      <FAQ page="landing" />
       <Footer curPage="Marketing Documents" />
       <Blobs />
     </>
