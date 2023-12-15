@@ -1,15 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import aviewLogo from '../../public/img/aview/logo.png';
 import MenuButtonIcon from './MenuButtonIcon';
+import { checkTokenExpiry } from '../../utils/jwtExpiry';
+import { useSelector } from 'react-redux';
 
 const Header = ({ curPage }) => {
   const menuOpenCtx = useContext(MenuOpenContext);
+
   return (
     <>
       <header className="navigation relative z-50 mt-10 flex items-center justify-between rounded-full bg-gray-1 p-2 text-white">
@@ -35,17 +38,32 @@ const Header = ({ curPage }) => {
 };
 
 const HeaderButtons = () => {
+  const token = useSelector((data) => data.user.token);
+  const isLoggedIn = useMemo(() => {
+    console.log(checkTokenExpiry(token));
+    console.log(token);
+    return checkTokenExpiry(token);
+  }, [token]);
   return (
     <div className="hidden gap-5 lg:flex">
-      <Button purpose="route" route="/#generate-aview" type="primary">
-        Contact Us
-      </Button>
+      {!isLoggedIn && (
+        <Button purpose="route" route="/#generate-aview" type="primary">
+          Contact Us
+        </Button>
+      )}
+
       {/* <Button purpose="route" route="/waitlist" type="secondary">
         Join Waitlist
       </Button> */}
-      <Button purpose="route" route="/login" type="secondary">
-        Login
-      </Button>
+      {!isLoggedIn ? (
+        <Button purpose="route" route="/login" type="secondary">
+          Login
+        </Button>
+      ) : (
+        <Button purpose="route" route="/dashboard" type="secondary">
+          Dashboard
+        </Button>
+      )}
     </div>
   );
 };

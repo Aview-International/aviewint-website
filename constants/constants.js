@@ -367,10 +367,10 @@ export const ROUTES = [
     id: 'route-3',
     title: 'Resources',
     routes: [
-      // {
-      //   text: 'Pricing',
-      //   route: '/pricing',
-      // },
+      {
+        text: 'Pricing',
+        route: '/pricing',
+      },
       {
         text: 'Blog',
         route: '/blog',

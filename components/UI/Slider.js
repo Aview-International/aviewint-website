@@ -26,7 +26,7 @@ const Slider = ({ label, name, max, setRanges, value, values }) => {
     } else {
       return (value * 100) / max + 2;
     }
-  }, [value]);
+  }, [value, max]);
 
   return (
     <div className="mt-s2 mb-s3 bg-black p-s2">
