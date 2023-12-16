@@ -47,7 +47,7 @@ import tailoredForCreators from '../public/img/graphics/tailored-for-creators.pn
 
 // Our Team
 import akshay from '../public/img/team/akshay.png';
-import andrew from '../public/img/team/andrew.png';
+import chandhu from '../public/img/team/chandhu.png';
 import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
 import victor from '../public/img/team/victor.png';
@@ -667,10 +667,10 @@ export const TEAM = [
       },
       {
         id: 'member-1',
-        name: 'Andrew Qiao',
+        name: 'Chandhu Mamidi',
         description: 'Software Engineer',
-        picture: andrew,
-        linkedin: 'https://www.linkedin.com/in/andrewqiao/',
+        picture: chandhu,
+        linkedin: 'https://www.linkedin.com/in/chandhudev/',
       },
     ],
   },
