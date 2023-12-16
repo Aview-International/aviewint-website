@@ -1,13 +1,26 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
+import Cookies from 'js-cookie';
 
+// Create an Axios instance without default headers
 const axiosInstance = axios.create({
   baseURL: baseUrl,
-  // headers: {
-  //   Authorization: 'Bearer ' + token,
-  // },
 });
+
+// Add an interceptor to set the Authorization header before each request
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    // get the token before making the request
+    const token = Cookies.get('token');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    // Handle request errors
+    return Promise.reject(error);
+  }
+);
 
 export const welcomeNewUser = async (email) =>
   await axios.post(baseUrl + 'email/welcome', {

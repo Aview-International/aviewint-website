@@ -46,7 +46,6 @@ export default async function handler(req, res) {
     });
     res.status(201).json(res);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: 'Failed to complete purchase' });
   }
 }

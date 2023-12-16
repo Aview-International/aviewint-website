@@ -10,8 +10,11 @@ import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
 import { getChannelVideos, getIgVideos } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import useAuth from '../../utils/pageProtector';
 
 const DashboardHome = () => {
+  useAuth();
+
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user);
   const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(

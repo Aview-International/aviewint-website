@@ -9,6 +9,10 @@ import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
 import { setAllLanguages } from '../store/reducers/aview.reducer';
+import { auth, logoutUser } from './api/firebase';
+import Cookies from 'js-cookie';
+import { onAuthStateChanged } from 'firebase/auth';
+import useUserProfile from '../hooks/useUserProfile';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -36,6 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
 
 const Layout = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
+  const { getProfile } = useUserProfile();
   useEffect(() => {
     // get all languages from the regions array
     dispatch(setAllLanguages());
@@ -48,6 +53,26 @@ const Layout = ({ Component, pageProps }) => {
     };
     setViewportHeight();
     window.onresize = setViewportHeight;
+    // refresh token after 55 mins
+    const handle = setInterval(async () => {
+      const token = await auth.currentUser.getIdToken(true);
+      if (token) Cookies.set('token', token);
+    }, 30 * 60 * 1000);
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) logoutUser();
+      else {
+        Cookies.set('uid', user.uid);
+        Cookies.set('token', user.accessToken);
+        getProfile();
+      }
+    });
+
+    // clean up setInterval and auth listener
+    return () => {
+      unsubscribe;
+      clearInterval(handle);
+    };
   }, []);
 
   if (Component.getLayout) {

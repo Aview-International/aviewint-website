@@ -9,7 +9,6 @@ import LanguagesServed from '../../components/sections/reused/LanguagesServed';
 import Workflow from '../../components/sections/reused/Workflow';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import eLearning from '../../public/img/graphics/corporate/e-learning/e-learning.png';
 import workflowSm from '../../public/img/graphics/corporate/e-learning/workflow-sm.svg';
@@ -60,7 +59,6 @@ export default function ELearning() {
       />
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="e-learning" />
-      <FeaturedBlogs />
       <Footer curPage="eLearning Documents" />
     </>
   );

@@ -12,7 +12,6 @@ import WhyName from '../../components/sections/about/WhyName';
 import JoinTheTeam from '../../components/sections/about/JoinTheTeam';
 import SEO from '../../components/SEO/SEO';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
@@ -37,8 +36,7 @@ const About = () => {
       <MeetTheTeam />
       <WhyName />
       <JoinTheTeam />
-      <FAQ page="landing"/>
-      <FeaturedBlogs />
+      <FAQ page="landing" />
       <Footer curPage="About" />
       <Blobs />
     </>

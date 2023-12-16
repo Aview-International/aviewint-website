@@ -14,7 +14,7 @@ const UploadFile = ({ data, setData, isValid, hasSubmitted }) => {
       >
         {!data.resume && <Image src={UploadIcon} alt="Upload" />}
         {data.resume ? (
-          <img
+          <Image
             src={URL.createObjectURL(data.resume)}
             alt="Uploaded resume"
             width={250}

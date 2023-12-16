@@ -23,7 +23,6 @@ import {
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
-import { verifyAuthStatus } from '../../utils/authStatus';
 
 const Login = () => {
   const router = useRouter();
@@ -36,21 +35,14 @@ const Login = () => {
   });
 
   useEffect(() => {
-    const token = Cookies.get('token');
-    if (!verifyAuthStatus(token)) {
-      Cookies.remove('token');
-    }
-  }, []);
-
-  useEffect(() => {
     const { query } = router;
     if (query.apiKey && query.oobCode && query.mode === 'signIn')
       handleSSOWithCode();
   }, [router.query]);
 
   const handleRedirect = (_tokenResponse) => {
-    Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-    Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('uid', _tokenResponse.localId);
     dispatch(
       setUser({
         email: _tokenResponse.email,

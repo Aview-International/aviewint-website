@@ -7,7 +7,6 @@ import StartGenerating from '../../components/sections/home/StartGenerating';
 import languages from '../../public/img/graphics/languages/languages.png';
 import YouCreateWeTranslation from '../../components/sections/languages/YouCreateWeTranslate';
 import Footer from '../../components/navigation/Footer';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 
 export default function Languages() {
@@ -28,7 +27,6 @@ export default function Languages() {
       <AvailableLanguages />
       <StartGenerating formId="JhSA3lfn" />
       <YouCreateWeTranslation />
-      <FeaturedBlogs />
       <Footer />
     </>
   );

@@ -63,7 +63,7 @@ export default function MobileMenu() {
 
 const MAIN_MENU = [
   { type: 'dropdown', title: 'Services', dropdown: 'services' },
-  // { type: 'route', title: 'Pricing', link: '/pricing' },
+  { type: 'route', title: 'Pricing', link: '/pricing' },
   { type: 'route', title: 'Blog', link: '/blog' },
   { type: 'dropdown', title: 'Languages', dropdown: 'languages' },
   { type: 'route', title: 'About', link: '/about' },

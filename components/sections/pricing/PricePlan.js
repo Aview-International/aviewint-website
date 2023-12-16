@@ -178,7 +178,7 @@ const PricePlan = ({ isChecked }) => {
   };
 
   return (
-    <section className="mx-auto h-full w-full md:w-[1280px]">
+  <section className="mx-auto h-full w-full md:w-[1280px]">
       <div className="mb-10 grid w-full grid-cols-1 gap-8 px-4 md:grid-cols-3 md:gap-4 md:px-0">
         {priceListItems.map((priceList, index) => {
           return (

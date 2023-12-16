@@ -1,6 +1,6 @@
 import { decodeJwt } from 'jose';
 
-export const verifyAuthStatus = (token) => {
+export const checkTokenExpiry = (token) => {
   if (!token) return false;
   else {
     const data = decodeJwt(token);

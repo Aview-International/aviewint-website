@@ -13,7 +13,7 @@ const Pricing = () => {
   return (
     <>
       <SEO
-        title="Careers - AVIEW"
+        title="Pricing - AVIEW"
         description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
       />
       <ProgressBar />

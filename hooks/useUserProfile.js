@@ -27,6 +27,7 @@ const useUserProfile = () => {
   const handleGetYoutubeChannel = async () => {
     try {
       const res = await getUserYoutubeChannel(uid);
+      if (res === 'No youtube channel connected') return;
       const data = {
         id: res.id,
         description: res.snippet.description,
@@ -35,7 +36,7 @@ const useUserProfile = () => {
       };
       dispatch(setYoutubeChannel(data));
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 
@@ -44,7 +45,7 @@ const useUserProfile = () => {
       const res = await getMessageStatus(uid);
       dispatch(setMessageStatus(res));
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     }
   };
 

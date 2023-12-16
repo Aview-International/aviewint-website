@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { Fragment, useState } from 'react';
 import Image from 'next/image';
 import Button from '../../UI/Button';
 import checkMark from '../../../public/img/icons/check.svg';
