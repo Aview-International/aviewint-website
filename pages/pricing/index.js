@@ -6,6 +6,8 @@ import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
 import PricePage from '../../components/sections/pricing/PricePage';
+import GoGlobal from '../../components/sections/home/GoGlobal';
+import FAQ from '../../components/sections/home/FAQ';
 
 const Pricing = () => {
   return (
@@ -19,6 +21,8 @@ const Pricing = () => {
       <Header curPage="Pricing" />
       <PricePage />
       <ScrollToTopButton />
+      <FAQ page="landing" />
+      <GoGlobal />
       <Footer curPage="Pricing" />
       <Blobs />
     </>

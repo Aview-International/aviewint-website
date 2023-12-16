@@ -143,6 +143,13 @@ import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial
 import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
 import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
 import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+import million_teachers from '../public/img/graphics/corporate/1-million-teachers.png';
+import maverick from '../public/img/graphics/corporate/maverick.png';
+import seek_discomfort from '../public/img/graphics/corporate/seek-discomfort.png';
+import underknown from '../public/img/graphics/corporate/underknown.png';
+import valnet from '../public/img/graphics/corporate/valnet.png';
+import wayfound from '../public/img/graphics/corporate/wayfound.png';
+import next from '../public/img/graphics/corporate/next.png';
 
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
@@ -153,6 +160,23 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_6,
   testimonial_7,
   testimonial_8,
+];
+
+export const PRICING_PAGE_TESTIMONIALS_1 = [
+  testimonial_1,
+  testimonial_3,
+  testimonial_5,
+  testimonial_6,
+];
+
+export const PRICING_PAGE_TESTIMONIALS_2 = [
+  next,
+  seek_discomfort,
+  valnet,
+  million_teachers,
+  wayfound,
+  underknown,
+  maverick,
 ];
 
 export const LANDING_PAGE_TYPES = [
