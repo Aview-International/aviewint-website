@@ -228,3 +228,11 @@ export const completeIgConnection = async (code, uid) => {
 
 export const getIgVideos = async (code) =>
   await axiosInstance.post('auth/instagram/get_videos', { code });
+
+export const createCheckoutSesion = async () => {
+  const res = await axiosInstance.post('auth/stripe/create-checkout-session', {
+    plan: 'pro',
+  });
+
+  window.location.href = res.data;
+};

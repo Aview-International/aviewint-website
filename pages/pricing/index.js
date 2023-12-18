@@ -6,6 +6,7 @@ import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
 import PricePage from '../../components/sections/pricing/PricePage';
+import PickYourPlan from '../../components/sections/pricing/PickYourPlan';
 
 const Pricing = () => {
   return (
@@ -17,6 +18,8 @@ const Pricing = () => {
       <ProgressBar />
       <EasterEgg />
       <Header curPage="Pricing" />
+      <PickYourPlan />
+
       <PricePage />
       <ScrollToTopButton />
       <Footer curPage="Pricing" />

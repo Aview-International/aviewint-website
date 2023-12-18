@@ -1,4 +1,4 @@
-const PriceText = () => {
+const PickYourPlan = () => {
   return (
     <section className="px-4 text-white md:px-0">
       <h2 className="mb-4 text-start text-7xl font-bold md:text-center">
@@ -15,4 +15,4 @@ const PriceText = () => {
   );
 };
 
-export default PriceText;
+export default PickYourPlan;
