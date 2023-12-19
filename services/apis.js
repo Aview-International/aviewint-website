@@ -233,3 +233,10 @@ export const getPlans = async () => {
   const response = (await axiosInstance.get('auth/plans')).data;
   return response;
 };
+export const createCheckoutSesion = async () => {
+  const res = await axiosInstance.post('auth/stripe/create-checkout-session', {
+    plan: 'pro',
+  });
+
+  window.location.href = res.data;
+};
