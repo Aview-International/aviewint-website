@@ -6,11 +6,10 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { VOICEPROMPTS } from '../../../constants/constants';
 
-const AudioWave = ({ destroyMic, recordings, setRecordings }) => {
+const AudioWave = ({ destroyMic, recordings, setAudioRecord, prompt }) => {
   const [wavesurfer, setWavesurfer] = useState(null);
   const [recorder, setRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [prompt, setPrompt] = useState(0);
   const containerRef = useRef();
 
   useEffect(() => {
@@ -59,19 +58,15 @@ const AudioWave = ({ destroyMic, recordings, setRecordings }) => {
 
   const stopRecording = () => {
     recorder.on('record-end', (blob) => {
-      let array = [...recordings];
-      array.push(blob);
-      setRecordings(array);
+      setAudioRecord(blob);
     });
-    setPrompt(prompt + 1);
     recorder.stopRecording();
     setIsRecording(false);
   };
 
   return (
     <Fragment>
-      <p className="text-xl">Prompt {prompt + 1}</p>
-      <p className="text-lg font-medium" data-aos="zoom-in-up">
+      <p className="my-2 text-lg font-medium" data-aos="zoom-in-up">
         {VOICEPROMPTS[prompt]}
       </p>
       {!isRecording && (
@@ -88,7 +83,6 @@ const AudioWave = ({ destroyMic, recordings, setRecordings }) => {
           <p className="my-1 w-full text-center text-lg">Click to record</p>
         </Fragment>
       )}
-
       <div className={`w-full ${isRecording ? 'block' : 'hidden'}`}>
         <div ref={containerRef} id="mic"></div>
         <button className="mx-auto block text-lg" onClick={stopRecording}>

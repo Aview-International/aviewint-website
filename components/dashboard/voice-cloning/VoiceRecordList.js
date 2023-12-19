@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
-import VoiceSample from '../../UI/VoiceSample';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
-import DeleteVoiceComponent from './DeleteVoiceComponent';
 import { uploadRecordedVoice } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import AiVoice from './VoiceRecordingFromPrompts';
+import { VOICEPROMPTS } from '../../../constants/constants';
+import Border from '../../UI/Border';
 
-const VoiceRecordList = ({ recordings, setRecordings }) => {
+const VoiceRecordList = ({ recordings }) => {
   const router = useRouter();
-  const [isDeletedOption, setIsDeletedOption] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [option, setOption] = useState(false);
   const user = useSelector((state) => state.user);
@@ -18,17 +17,6 @@ const VoiceRecordList = ({ recordings, setRecordings }) => {
 
   const addVoiceSample = () => {
     setOption(!option);
-  };
-
-  const deleteOptionHandler = () => {
-    setIsDeletedOption(!isDeletedOption);
-  };
-
-  const deleteVoiceRecordings = (blob) => {
-    const updatedArray = recordings.filter(
-      (audioRecord) => audioRecord.id !== blob.id
-    );
-    setRecordings(updatedArray);
   };
 
   const saveAllRecordedVoiceSamplesHandler = async () => {
@@ -53,17 +41,25 @@ const VoiceRecordList = ({ recordings, setRecordings }) => {
       ) : (
         <div className="h-full w-full items-center">
           <p className="text-center text-xl md:text-5xl">
-            Voice Recording complete 🎤🔥
+            Review your voice samples
           </p>
-          <div className="my-10 grid h-full w-full grid-cols-[repeat(auto-fill,259px)] items-center justify-center gap-4 md:gap-3">
-            {recordings.map((blob, i) => (
-              <VoiceSample
-                key={i}
-                id={i + 1}
-                type="record"
-                audioData={blob}
-                deleteAudioSample={deleteVoiceRecordings}
-              />
+          <div className="my-4 flex h-full w-full flex-col items-center justify-center gap-y-s4 px-2 md:gap-y-s8 md:p-0">
+            {recordings.map((blob, index) => (
+              <div
+                key={index}
+                className="flex h-full w-full flex-col items-start justify-center gap-y-5 text-white"
+              >
+                <p className="text-3xl font-normal">Voice sample {index + 1}</p>
+                <Border borderRadius="2xl">
+                  <div className="rounded-2xl bg-black p-s2 text-lg md:p-s4">
+                    {VOICEPROMPTS[index]}
+                  </div>
+                </Border>
+                <audio controls className="w-80 md:w-1/2">
+                  <source src={URL.createObjectURL(blob)} type="audio/webm" />
+                  Your browser does not support the audio tag.
+                </audio>
+              </div>
             ))}
           </div>
           <div className="mx-auto mt-s4 w-3/4 max-w-[250px] gap-5">
@@ -76,9 +72,6 @@ const VoiceRecordList = ({ recordings, setRecordings }) => {
               Save recordings
             </OnboardingButton>
           </div>
-          {isDeletedOption && (
-            <DeleteVoiceComponent deleteOptionhandler={deleteOptionHandler} />
-          )}
         </div>
       )}
     </div>

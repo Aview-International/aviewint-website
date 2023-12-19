@@ -8,6 +8,7 @@ import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoi
 import Arrow from '../../../public/img/icons/arrow-right.svg';
 import Image from 'next/image';
 import Card from '../../../components/UI/Card';
+import Border from '../../../components/UI/Border';
 import OnboardingButton from '../../../components/Onboarding/button';
 
 const AiVoiceSteps = [
@@ -30,7 +31,7 @@ const AIvoice = () => {
     <>
       <PageTitle title="AI Voice Cloning" />
       <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent">
-        <div className="container mx-auto  flex h-full flex-col items-start justify-start py-10 md:py-16 lg:w-[95%]">
+        <div className="container mx-auto flex h-full flex-col items-start justify-start py-4 md:py-16 lg:w-[95%]">
           {option && (
             <button
               className="mb-s4 flex items-center hover:underline"
@@ -68,14 +69,14 @@ const SelectAIOption = ({ setOption }) => {
       data-aos="zoom-in-up"
     >
       {AiVoiceSteps.map((stepItem, idx) => (
-        <div key={idx} className="group w-1/2">
-          <Card borderRadius="2xl">
-            <div className="bg-white-transparent p-s4">
+        <div key={idx} className="group w-full p-2 md:p-0 md:w-1/2">
+          <Border borderRadius="2xl" fullWidth={true}>
+            <div className="bg-black rounded-2xl p-s2 md:p-s4">
               <h3 className="text-4xl">{stepItem.title}</h3>
               <p className="mt-2 text-lg">{stepItem.description}</p>
             </div>
-          </Card>
-          <div className="mt-s4 w-2/5">
+          </Border>
+          <div className="mt-s4 w-full md:w-2/5">
             <OnboardingButton
               onClick={() => setOption(stepItem.title)}
               theme={stepItem.title === 'Record' ? 'light' : 'dark'}
