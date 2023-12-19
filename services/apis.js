@@ -228,3 +228,8 @@ export const completeIgConnection = async (code, uid) => {
 
 export const getIgVideos = async (code) =>
   await axiosInstance.post('auth/instagram/get_videos', { code });
+
+export const getPlans = async () => {
+  const response = (await axiosInstance.get('auth/plans')).data;
+  return response;
+};

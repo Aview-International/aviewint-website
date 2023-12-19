@@ -1,5 +1,4 @@
-
-import React, { Fragment, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Button from '../../UI/Button';
 import checkMark from '../../../public/img/icons/check.svg';
@@ -160,7 +159,7 @@ const plans = [
 const HoverTextInfo = ({ title, infoText }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className="relative col-span-full flex w-full flex-row items-center justify-center px-1 py-1 md:col-span-1 my-1 md:my-0 h-8 md:h-16 md:justify-start md:pt-0">
+    <div className="relative col-span-full my-1 flex h-8 w-full flex-row items-center justify-center px-1 py-1 md:col-span-1 md:my-0 md:h-16 md:justify-start md:pt-0">
       <p className="w-full whitespace-nowrap text-base font-medium md:w-2/3 md:whitespace-pre-wrap ">
         {title}
       </p>
@@ -237,7 +236,7 @@ const PriceComponent = () => {
                       </div>
                     </Border>
                   </div>
-                ) : null }
+                ) : null}
               </div>
             );
           })}
@@ -279,7 +278,7 @@ const PriceComponent = () => {
                           {planOptions.options.map((option, index) => {
                             return (
                               <div
-                                className={`flex items-center justify-center p-1 h-16 ${
+                                className={`flex h-16 items-center justify-center p-1 ${
                                   index === 1
                                     ? 'md:border-gradient bg-gray-1 md:bg-transparent'
                                     : ''
@@ -293,6 +292,7 @@ const PriceComponent = () => {
                                     src={checkMark}
                                     width={20}
                                     height={20}
+                                    alt=""
                                   />
                                 ) : (
                                   <p className="text-center text-white/80 md:text-white">
