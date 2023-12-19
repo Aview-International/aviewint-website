@@ -10,8 +10,24 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { getAllPayments } from '../../api/firebase';
 import { useSelector } from 'react-redux';
+import usePlans from '../../../hooks/usePlans';
 
-const Billing = () => {
+export const getStaticProps = async () => {
+  try {
+    const plans = await getPlans();
+    return {
+      props: {
+        plans: JSON.stringify(plans),
+      },
+      revalidate: 60, // re-generate page every 60 seconds (if necessary)
+    };
+  } catch (error) {
+    return { props: {} };
+  }
+};
+
+const Billing = ({ plans }) => {
+  usePlans(JSON.parse(plans));
   const userInfo = useSelector((state) => state.user);
   const [payments, setPayments] = useState([]);
   const [reloadTrigger, setReloadTrigger] = useState(0);
