@@ -4,7 +4,7 @@ const MenuButtonIcon = ({ styles, handler }) => {
   return (
     <div
       className={`flex cursor-pointer flex-col items-end lg:hidden ${
-        styles && 'styles'
+        styles ?? ''
       }`}
       onClick={handler}
     >

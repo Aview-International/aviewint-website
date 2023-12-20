@@ -9,53 +9,61 @@ import leftChevronIcon from '../../public/img/icons/chevron-down-white.svg';
 
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
+
   return (
-    <div
-      className={`h-screen-trick transition-300 absolute top-0 left-0 z-50 flex w-screen flex-col overflow-y-scroll bg-black px-6 pt-8 pb-10 text-white lg:hidden ${
-        menuOpenCtx.isMenuOpen
-          ? 'translate-x-0 opacity-100'
-          : 'translate-x-full opacity-0'
-      }`}
-    >
-      <div className="mb-6 flex h-12 items-center justify-between rounded-full bg-white-transparent p-2">
-        <div onClick={menuOpenCtx.closeMenuHandler}>
-          <Link href="/">
-            <a className="mt-2 w-20">
-              <Image src={aviewLogo} width="40" height="40" alt="aview logo" />
-            </a>
-          </Link>
-        </div>
-        <div
-          className="h-8 w-8 rounded-full bg-black p-2"
-          onClick={menuOpenCtx.closeMenuHandler}
-        >
-          <Image src={closeIcon} width={32} height={32} alt="close icon" />
-        </div>
-      </div>
-      <nav className="mb-5 flex flex-col">
-        <MainMenu />
-      </nav>
+    <div className="relative w-full overflow-hidden">
       <div
-        className={`flex-grow-0 flex-col gap-4 ${
-          menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
+        className={`h-screen-trick transition-300 fixed top-0 flex w-screen flex-col overflow-x-hidden overflow-y-scroll bg-black px-6 pt-8 pb-10 text-white lg:hidden ${
+          menuOpenCtx.isMenuOpen
+            ? 'left-0 z-50 opacity-100'
+            : 'left-full opacity-0'
         }`}
       >
-        <Button
-          purpose="route"
-          route="/login"
-          type="secondary"
-          fullWidth={true}
+        <div className="mb-6 flex h-12 items-center justify-between rounded-full bg-white-transparent p-2">
+          <div onClick={menuOpenCtx.closeMenuHandler}>
+            <Link href="/">
+              <a className="mt-2 w-20">
+                <Image
+                  src={aviewLogo}
+                  width="40"
+                  height="40"
+                  alt="aview logo"
+                />
+              </a>
+            </Link>
+          </div>
+          <div
+            className="h-8 w-8 rounded-full bg-black p-2"
+            onClick={menuOpenCtx.closeMenuHandler}
+          >
+            <Image src={closeIcon} width={32} height={32} alt="close icon" />
+          </div>
+        </div>
+        <nav className="mb-5 flex flex-col">
+          <MainMenu />
+        </nav>
+        <div
+          className={`flex-grow-0 flex-col gap-4 ${
+            menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
+          }`}
         >
-          Login
-        </Button>
-        {/* <Button
+          <Button
+            purpose="route"
+            route="/login"
+            type="secondary"
+            fullWidth={true}
+          >
+            Login
+          </Button>
+          {/* <Button
           purpose="route"
           route="/waitlist"
           type="secondary"
           fullWidth={true}
-        >
+          >
           Join the Waitlist
         </Button> */}
+        </div>
       </div>
     </div>
   );
