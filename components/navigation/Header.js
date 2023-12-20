@@ -15,6 +15,7 @@ const Header = ({ curPage }) => {
 
   return (
     <>
+      {/* <div className='w-full'> */}
       <header className="navigation relative z-50 mt-10 flex items-center justify-between rounded-full bg-gray-1 p-2 text-white">
         <Link href="/">
           <a className="-mb-1 mt-1 w-32 md:w-60">
@@ -33,6 +34,7 @@ const Header = ({ curPage }) => {
         <MenuButtonIcon handler={menuOpenCtx.openMenuHandler} />
       </header>
       <MobileMenu />
+      {/* </div> */}
     </>
   );
 };
