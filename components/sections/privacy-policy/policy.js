@@ -333,7 +333,12 @@ const PrivacyData = () => {
       <p className="mt-s1 mb-s3">
         If you have any questions, concerns or complaints, you can contact our
         data protection officer, Julia McKay, at:{' '}
-        <a href="mailto:julia@aviewint.com">julia@aviewint.com</a>
+        <a
+          href="mailto:julia@aviewint.com"
+          className="gradient-text gradient-1"
+        >
+          julia@aviewint.com
+        </a>
       </p>
     </div>
   );
