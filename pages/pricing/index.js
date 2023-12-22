@@ -49,7 +49,7 @@ const Pricing = ({ plans }) => {
       <EasterEgg />
       <Header curPage="Pricing" />
       <PickYourPlan isChecked={toggleIsChecked} handleChange={handleChange} />
-      <PricingPlans isChecked={toggleIsChecked} />
+      <PricingPlans isChecked={toggleIsChecked} allPlans={allPlans} />
       <CustomPricing />
       <JoinCreators />
       <PlanBreakdown

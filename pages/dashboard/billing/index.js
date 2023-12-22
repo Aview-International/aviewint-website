@@ -11,18 +11,21 @@ import axios from 'axios';
 import { getAllPayments } from '../../api/firebase';
 import { useSelector } from 'react-redux';
 import usePlans from '../../../hooks/usePlans';
+import { getPlans } from '../../../services/apis';
 
 export const getStaticProps = async () => {
   try {
     const plans = await getPlans();
+    const plansJSON = JSON.stringify(plans);
     return {
       props: {
-        plans: JSON.stringify(plans),
+        plans: plansJSON,
       },
       revalidate: 60, // re-generate page every 60 seconds (if necessary)
     };
   } catch (error) {
-    return { props: {} };
+    console.error('Error fetching plans:', error);
+    return { props: { plans: {} } };
   }
 };
 
@@ -97,7 +100,7 @@ const BillingDetails = ({ userInfo }) => {
           </div>
         </div>
         <div className="flex items-center">
-          <span className="text-2xl">Current Bill : $0</span>
+          <span className="text-2xl">Current Plan : Starter</span>
           <div className="pl-s3">
             <form action="/api/checkout_sessions" method="POST">
               <input type="hidden" value={userInfo.email} name="email" />

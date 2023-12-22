@@ -1816,3 +1816,33 @@ export const PLANS_BREAKDOWN = [
     ],
   },
 ];
+
+export const SUBSCRIPTION_PLANS_DESC = [
+  {
+    description: 'Essential tools for emerging creators.',
+    options: [
+      '50 languages',
+      '5 Minutes of Context-Based Translations',
+      '5 Minutes of Translated AI Dubbing',
+      '1 AI trained multi-language voiceover',
+    ],
+  },
+  {
+    description: 'Elevate your content professionally.',
+    options: [
+      'Content Distribution',
+      '45 Minutes of Context-Based Translations',
+      '45 Minutes of Translated AI Dubbing',
+      '3 AI trained multi-language voiceovers',
+    ],
+  },
+  {
+    description: 'Maximize reach, impact globally.',
+    options: [
+      'Cultural Sensitivity Filter',
+      '300 Minutes of Context-Based Translations',
+      '300 Minutes of Translated AI Dubbing',
+      'Global channel management',
+    ],
+  },
+];
