@@ -24,7 +24,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   }, []);
 
   return (
-    <section className="m-horizontal my-s10">
+    <section className="m-horizontal my-s10 overflow-x-auto">
       <div
         id="all-features"
         className="rounded-xl bg-white-transparent text-white"
@@ -34,7 +34,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
         </h2>
 
         <div
-          className={`sticky top-0 z-10 grid grid-cols-5 rounded-xl p-s4 text-center ${
+          className={`sticky top-0 z-10 grid grid-cols-[repeat(5,minmax(100px,1fr))] rounded-xl p-s4 text-center ${
             topPosition === 0 && 'bg-gray-1'
           }`}
           ref={headerRef}
