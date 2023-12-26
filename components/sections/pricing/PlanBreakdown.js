@@ -24,11 +24,8 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   }, []);
 
   return (
-    <section className="m-horizontal my-s10 overflow-x-auto">
-      <div
-        id="all-features"
-        className="rounded-xl bg-white-transparent text-white"
-      >
+    <section className="m-horizontal my-s10 overflow-x-auto" id="all-features">
+      <div className="rounded-xl bg-white-transparent text-white">
         <h2 className="py-s4 text-center text-5xl font-semibold md:text-6xl">
           Compare Plans
         </h2>

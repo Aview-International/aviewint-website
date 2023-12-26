@@ -1,20 +1,31 @@
-import check from '../../../public/img/icons/check.svg';
-import Image from 'next/image';
-import Button from '../../UI/Button';
-import Border from '../../UI/Border';
-import Card from '../../UI/Card';
-import useAuth from '../../../hooks/useAuth';
+import Border from '../UI/Border';
+import useAuth from '../../hooks/useAuth';
+import Card from '../UI/Card';
+import { createCheckoutSesion } from '../../services/apis';
+import ErrorHandler from '../../utils/errorHandler';
+import OnboardingButton from '../Onboarding/button';
+import { useState } from 'react';
 
-const PriceSection = ({ priceList, isChecked }) => {
+const PriceSection = ({ priceList }) => {
+  const [isChecked, setToggleIsChecked] = useState(false);
+
   const isLoggedIn = useAuth();
 
+  const handlePricing = async () => {
+    try {
+      await createCheckoutSesion(priceList.id);
+    } catch (error) {
+      ErrorHandler(error);
+    }
+  };
+
   return (
-    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
+    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-2 py-4 text-white md:px-6">
       <span className="rounded-md bg-gray-1 p-1 uppercase">
         {priceList.desc}
       </span>
-      <div className="my-s5 flex flex-row items-center justify-start gap-x-4">
-        <p className="text-4xl font-bold md:text-7xl">
+      <div className="my-s2 flex flex-row items-center justify-start gap-x-2">
+        <p className="text-xl font-bold md:text-4xl">
           &#36;
           {!isChecked
             ? priceList.monthlyCost
@@ -29,32 +40,19 @@ const PriceSection = ({ priceList, isChecked }) => {
         )}
       </div>
       <div className="capitalize">
-        <Button
-          type={priceList.id === 'pro' ? 'primary' : 'secondary'}
-          purpose="onClick"
-          fullWidth={true}
+        <OnboardingButton
+          theme={priceList.id === 'pro' ? 'light' : 'dark'}
+          onClick={handlePricing}
         >
           {priceList.id !== 'basic'
             ? 'Go ' + priceList.id
             : isLoggedIn
             ? 'Current Plan'
             : 'Go ' + priceList.id}
-        </Button>
+        </OnboardingButton>
       </div>
 
       <p className="mb-2 mt-s3 font-semibold">{priceList.description}</p>
-      {priceList.options.map((option, index) => (
-        <div className="my-s1.5 flex flex-row items-start gap-2" key={index}>
-          <Image
-            src={check}
-            alt="check-mark"
-            className="mt-2"
-            width={16}
-            height={16}
-          />
-          <p>{option}</p>
-        </div>
-      ))}
 
       {priceList.id === 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
@@ -69,10 +67,10 @@ const PriceSection = ({ priceList, isChecked }) => {
   );
 };
 
-const PricingPlans = ({ isChecked, plans }) => {
+const DashboardPlans = ({ isChecked, plans }) => {
   return (
     <section className="m-horizontal">
-      <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0">
+      <div className="mb-10 flex w-full justify-center gap-8 px-4 md:px-0">
         {plans.map((priceList, index) => (
           <div key={index}>
             {priceList.id === 'pro' ? (
@@ -89,4 +87,4 @@ const PricingPlans = ({ isChecked, plans }) => {
   );
 };
 
-export default PricingPlans;
+export default DashboardPlans;

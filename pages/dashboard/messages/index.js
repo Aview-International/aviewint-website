@@ -5,7 +5,6 @@ import Logo from '../../../public/img/aview/logo.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
-import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSocket } from '../../../socket';
 import { getUserMessages } from '../../../services/apis';
@@ -51,14 +50,13 @@ const SingleMessage = ({ timeStamp, message, sender, user }) => (
 const Messages = () => {
   const socket = useSocket();
   const dispatch = useDispatch();
-  const uid = Cookies.get('uid');
   const user = useSelector((state) => state.user);
   const messages = useSelector((state) => state.messages.messages);
   const [message, setMessage] = useState('');
   const inputRef = useRef(null);
   const fetchUserMessages = async () => {
     try {
-      const res = await getUserMessages(uid);
+      const res = await getUserMessages();
       dispatch(setMessages(res));
     } catch (error) {
       ErrorHandler(error);
