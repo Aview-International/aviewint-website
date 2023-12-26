@@ -91,20 +91,18 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
-export const getUserMessages = async (id) => {
-  const response = await axios.get(baseUrl + 'messages/convo?userId=' + id);
+export const getUserMessages = async () => {
+  const response = await axiosInstance.get('messages/convo');
   return response.data;
 };
 
-export const getUserYoutubeChannel = async (userId) => {
-  const response = await axiosInstance.get(
-    'auth/youtube-channel?userId=' + userId
-  );
+export const getUserYoutubeChannel = async () => {
+  const response = await axiosInstance.get('auth/youtube-channel');
   return response.data;
 };
 
-export const getMessageStatus = async (userId) => {
-  const response = await axiosInstance.get('messages/status?userId=' + userId);
+export const getMessageStatus = async () => {
+  const response = await axiosInstance.get('messages/status');
   return response.data;
 };
 
@@ -230,13 +228,20 @@ export const getIgVideos = async (code) =>
   await axiosInstance.post('auth/instagram/get_videos', { code });
 
 export const getPlans = async () => {
-  const response = (await axiosInstance.get('auth/plans')).data;
+  const response = (await axiosInstance.get('subscription/plans')).data;
   return response;
 };
-export const createCheckoutSesion = async () => {
-  const res = await axiosInstance.post('auth/stripe/create-checkout-session', {
-    plan: 'pro',
-  });
+
+export const createCheckoutSesion = async (planId) => {
+  const res = await axiosInstance.post(
+    'subscription/stripe/create-checkout-session',
+    {
+      plan: planId,
+    }
+  );
 
   window.location.href = res.data;
 };
+
+export const getBillingHistory = async () =>
+  (await axiosInstance.get('subscription/history')).data;

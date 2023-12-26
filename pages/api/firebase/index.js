@@ -124,14 +124,6 @@ export const getUserProfile = async (uid, callback) => {
   });
 };
 
-export const getAllPayments = async (_id) => {
-  const res = await get(ref(database, `payments/${_id}`)).then((snapshot) => {
-    if (snapshot.exists()) return snapshot.val();
-    else return null;
-  });
-  return res;
-};
-
 export const createANewJob = async (jobDetails) => {
   await transcribeSocialLink(jobDetails);
 };

@@ -15,6 +15,7 @@ import PlanBreakdown from '../../components/sections/pricing/PlanBreakdown';
 import { getPlans } from '../../services/apis';
 import { useSelector } from 'react-redux';
 import usePlans from '../../hooks/usePlans';
+import { SUBSCRIPTION_PLANS_DESC } from '../../constants/constants';
 
 export const getStaticProps = async () => {
   try {
@@ -40,6 +41,11 @@ const Pricing = ({ plans }) => {
     setToggleIsChecked(!toggleIsChecked);
   };
 
+  const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
+    ...allPlans[i],
+    ...plan,
+  }));
+
   return (
     <>
       <SEO
@@ -49,7 +55,7 @@ const Pricing = ({ plans }) => {
       <EasterEgg />
       <Header curPage="Pricing" />
       <PickYourPlan isChecked={toggleIsChecked} handleChange={handleChange} />
-      <PricingPlans isChecked={toggleIsChecked} allPlans={allPlans} />
+      <PricingPlans isChecked={toggleIsChecked} plans={newPlans} />
       <CustomPricing />
       <JoinCreators />
       <PlanBreakdown
