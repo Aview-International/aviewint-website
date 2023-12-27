@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html className="m-0 overflow-x-hidden scroll-smooth p-0" lang="en">
+      <Html className="scroll-smooth" lang="en">
         <Head>
           <link rel="canonical" href="https://aviewint.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,7 +27,7 @@ class MyDocument extends Document {
             content="b8jfsyf1a6pj9m8s2nsoo5dr55zmta"
           />
         </Head>
-        <body className="transition-300 relative m-0 min-h-screen overflow-hidden overflow-x-hidden bg-black p-0 font-overpass">
+        <body className="transition-300 relative m-0 min-h-screen overflow-x-hidden bg-black p-0 font-overpass">
           <Main />
           <NextScript />
         </body>

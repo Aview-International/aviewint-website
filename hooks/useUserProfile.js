@@ -26,7 +26,7 @@ const useUserProfile = () => {
 
   const handleGetYoutubeChannel = async () => {
     try {
-      const res = await getUserYoutubeChannel(uid);
+      const res = await getUserYoutubeChannel();
       if (res === 'No youtube channel connected') return;
       const data = {
         id: res.id,
@@ -42,7 +42,7 @@ const useUserProfile = () => {
 
   const handleGetMessageStatus = async () => {
     try {
-      const res = await getMessageStatus(uid);
+      const res = await getMessageStatus();
       dispatch(setMessageStatus(res));
     } catch (error) {
       ErrorHandler(error);
