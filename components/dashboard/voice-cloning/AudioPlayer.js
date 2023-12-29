@@ -1,61 +1,61 @@
-import React, { Fragment, useRef, useEffect } from 'react';
-import Button from '../../UI/Button';
+import { useRef, useEffect, useState, useCallback } from 'react';
+import useWavesurfer from '../../../hooks/useWaveSurfer';
+import PlayIcon from '../../../public/img/icons/play.svg';
+import PauseIcon from '../../../public/img/icons/pause.svg';
+import Image from 'next/image';
 
-const AudioPlayer = ({
-  audioBlob,
-  recordings,
-  setRecordings,
-  setPrompt,
-  setAudioRecord,
-}) => {
-  const audioRef = useRef(null);
+const AudioPlayer = ({ audioRecord }) => {
+  const containerRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const approveHandler = () => {
-    let array = [...recordings];
-    array.push(audioBlob);
-    setRecordings(array);
-    setPrompt((prompt) => prompt + 1);
-    setAudioRecord(null);
-  };
+  const { wavesurfer } = useWavesurfer(containerRef, {
+    waveColor: 'rgb(153, 153, 156)',
+    progressColor: 'rgb(200, 0, 200)',
+    height: 40,
+    url: URL.createObjectURL(audioRecord),
+    barGap: 2,
+    barHeight: 3,
+    barMinHeight: 1,
+    barRadius: 3,
+    barWidth: 4,
+  });
 
-  const retryHandler = () => {
-    setAudioRecord(null);
-  };
+  const onPlayClick = useCallback(() => {
+    wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play();
+  }, [wavesurfer]);
 
+  // initialize wavesurfer when the container mounts
+  // or any of the props change
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.src = URL.createObjectURL(audioBlob);
-    }
+    if (!wavesurfer) return;
+
+    setIsPlaying(false);
+
+    const subscriptions = [
+      wavesurfer.on('play', () => setIsPlaying(true)),
+      wavesurfer.on('pause', () => setIsPlaying(false)),
+    ];
 
     return () => {
-      URL.revokeObjectURL(audioRef.current?.src);
+      subscriptions.forEach((unsub) => unsub());
     };
-  }, [audioBlob]);
+  }, [wavesurfer]);
 
   return (
-    <Fragment>
-      <div className="flex h-full w-full flex-col items-center justify-center gap-y-8">
-        <audio ref={audioRef} className="w-80 md:w-96" controls />
-        <div className="flex w-full flex-row items-center justify-between md:w-5/6 md:justify-around">
-          <Button
-            purpose="onClick"
-            type="secondary"
-            fullWidth={true}
-            onClick={retryHandler}
-          >
-            Retry
-          </Button>
-          <Button
-            purpose="onClick"
-            type="primary"
-            fullWidth={true}
-            onClick={approveHandler}
-          >
-            Approve
-          </Button>
-        </div>
-      </div>
-    </Fragment>
+    <div className="flex w-full items-center justify-center rounded-full bg-white-transparent p-2">
+      <button
+        onClick={onPlayClick}
+        className="mr-s3 flex items-center justify-center"
+      >
+        <Image
+          src={isPlaying ? PauseIcon : PlayIcon}
+          alt=""
+          width={40}
+          height={40}
+        />
+      </button>
+      <div ref={containerRef} className="w-full" />
+    </div>
   );
 };
 

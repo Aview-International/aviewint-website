@@ -1,15 +1,14 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { useState } from 'react';
 import VoiceRecordingFromPrompts from '../../../components/dashboard/voice-cloning/VoiceRecordingFromPrompts';
 import UploadVoiceSamples from '../../../components/dashboard/voice-cloning/UploadVoiceSamples';
 import { useSelector } from 'react-redux';
 import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoiceSample';
 import Arrow from '../../../public/img/icons/arrow-right.svg';
 import Image from 'next/image';
-import Card from '../../../components/UI/Card';
 import Border from '../../../components/UI/Border';
 import OnboardingButton from '../../../components/Onboarding/button';
+import { useRouter } from 'next/router';
 
 const AiVoiceSteps = [
   {
@@ -25,17 +24,17 @@ const AiVoiceSteps = [
 ];
 
 const AIvoice = () => {
-  const [option, setOption] = useState('');
+  const { query, push, back } = useRouter();
 
   return (
     <>
       <PageTitle title="AI Voice Cloning" />
-      <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent">
-        <div className="container mx-auto flex h-full flex-col items-start justify-start py-4 md:py-16 lg:w-[95%]">
-          {option && (
+      <div className="m-horizontal rounded-xl bg-white-transparent">
+        <div className="container mx-auto px-s2 py-4 md:py-16 lg:w-[95%]">
+          {query.tab && (
             <button
               className="mb-s4 flex items-center hover:underline"
-              onClick={() => setOption('')}
+              onClick={back}
             >
               <Image
                 src={Arrow}
@@ -48,9 +47,9 @@ const AIvoice = () => {
             </button>
           )}
           <div className="h-full w-full">
-            {!option && <SelectAIOption setOption={setOption} />}
-            {option === 'Record' && <VoiceRecordingFromPrompts />}
-            {option === 'Upload' && <UploadVoiceSamples />}
+            {!query.tab && <SelectAIOption push={push} />}
+            {query.tab == 'record' && <VoiceRecordingFromPrompts />}
+            {query.tab == 'upload' && <UploadVoiceSamples />}
           </div>
         </div>
       </div>
@@ -58,7 +57,7 @@ const AIvoice = () => {
   );
 };
 
-const SelectAIOption = ({ setOption }) => {
+const SelectAIOption = ({ push }) => {
   const { voiceId, uid } = useSelector((state) => state.user);
 
   return voiceId ? (
@@ -69,16 +68,21 @@ const SelectAIOption = ({ setOption }) => {
       data-aos="zoom-in-up"
     >
       {AiVoiceSteps.map((stepItem, idx) => (
-        <div key={idx} className="group w-full p-2 md:p-0 md:w-1/2">
+        <div key={idx} className="group w-full p-2 md:w-1/2 md:p-0">
           <Border borderRadius="2xl" fullWidth={true}>
-            <div className="bg-black rounded-2xl p-s2 md:p-s4">
+            <div className="rounded-2xl bg-black p-s2 md:p-s4">
               <h3 className="text-4xl">{stepItem.title}</h3>
               <p className="mt-2 text-lg">{stepItem.description}</p>
             </div>
           </Border>
           <div className="mt-s4 w-full md:w-2/5">
             <OnboardingButton
-              onClick={() => setOption(stepItem.title)}
+              onClick={() =>
+                push(
+                  '/dashboard/ai-voice?tab=' +
+                    stepItem.title.toLocaleLowerCase()
+                )
+              }
               theme={stepItem.title === 'Record' ? 'light' : 'dark'}
             >
               Select

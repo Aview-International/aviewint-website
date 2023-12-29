@@ -1,43 +1,17 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import record from '../../../public/img/icons/record.svg';
-import WaveSurfer from 'wavesurfer.js';
-import RecordPlugin from 'wavesurfer.js/dist/plugins/record';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { VOICEPROMPTS } from '../../../constants/constants';
+import useWavesurfer from '../../../hooks/useWaveSurfer';
 
-const AudioWave = ({ destroyMic, recordings, setAudioRecord, prompt }) => {
-  const [wavesurfer, setWavesurfer] = useState(null);
-  const [recorder, setRecorder] = useState(null);
+const AudioWave = ({ recordings, setAudioRecord, prompt }) => {
+  const containerRef = useRef(null);
+  const { recorder } = useWavesurfer(containerRef, {
+    waveColor: 'rgb(200, 0, 200)',
+    progressColor: 'rgb(100, 0, 100)',
+  });
   const [isRecording, setIsRecording] = useState(false);
-  const containerRef = useRef();
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const ws = WaveSurfer.create({
-      container: containerRef.current,
-      waveColor: 'rgb(200, 0, 200)',
-      progressColor: 'rgb(100, 0, 100)',
-    });
-
-    setWavesurfer(ws);
-
-    const record = ws.registerPlugin(RecordPlugin.create());
-    setRecorder(record);
-
-    return () => {
-      record.stopMic();
-      ws.destroy();
-    };
-  }, [containerRef]);
-
-  useEffect(() => {
-    if (destroyMic) {
-      recorder.stopMic();
-      wavesurfer.destroy();
-    }
-  }, [destroyMic]);
 
   const startRecording = async () => {
     try {
@@ -45,7 +19,6 @@ const AudioWave = ({ destroyMic, recordings, setAudioRecord, prompt }) => {
         toast('Maximum voice samples reached');
         return;
       }
-      if (!wavesurfer) return;
       recorder.startMic();
       recorder.startRecording().then(() => {
         setIsRecording(true);
@@ -84,7 +57,7 @@ const AudioWave = ({ destroyMic, recordings, setAudioRecord, prompt }) => {
         </Fragment>
       )}
       <div className={`w-full ${isRecording ? 'block' : 'hidden'}`}>
-        <div ref={containerRef} id="mic"></div>
+        <div ref={containerRef}></div>
         <button className="mx-auto block text-lg" onClick={stopRecording}>
           Stop Recording
         </button>

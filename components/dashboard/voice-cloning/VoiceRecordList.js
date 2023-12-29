@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { uploadRecordedVoice } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
-import AiVoice from './VoiceRecordingFromPrompts';
 import { VOICEPROMPTS } from '../../../constants/constants';
 import Border from '../../UI/Border';
+import AudioPlayer from './AudioPlayer';
 
 const VoiceRecordList = ({ recordings }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [option, setOption] = useState(false);
   const user = useSelector((state) => state.user);
   const userId = user.uid;
-
-  const addVoiceSample = () => {
-    setOption(!option);
-  };
 
   const saveAllRecordedVoiceSamplesHandler = async () => {
     try {
@@ -32,48 +27,36 @@ const VoiceRecordList = ({ recordings }) => {
   };
 
   return (
-    <div className="w-full">
-      {option ? (
-        <AiVoice
-          prompt={5 - (5 - recordings.length)}
-          initialRecordings={recordings}
-        />
-      ) : (
-        <div className="h-full w-full items-center">
-          <p className="text-center text-xl md:text-5xl">
-            Review your voice samples
-          </p>
-          <div className="my-4 flex h-full w-full flex-col items-center justify-center gap-y-s4 px-2 md:gap-y-s8 md:p-0">
-            {recordings.map((blob, index) => (
-              <div
-                key={index}
-                className="flex h-full w-full flex-col items-start justify-center gap-y-5 text-white"
-              >
-                <p className="text-3xl font-normal">Voice sample {index + 1}</p>
-                <Border borderRadius="2xl">
-                  <div className="rounded-2xl bg-black p-s2 text-lg md:p-s4">
-                    {VOICEPROMPTS[index]}
-                  </div>
-                </Border>
-                <audio controls className="w-80 md:w-1/2">
-                  <source src={URL.createObjectURL(blob)} type="audio/webm" />
-                  Your browser does not support the audio tag.
-                </audio>
+    <div>
+      <p className="text-center text-xl md:text-5xl">
+        Review your voice samples
+      </p>
+      <div className="my-4 flex h-full w-full flex-col items-center justify-center gap-y-s4 px-2 md:gap-y-s8 md:p-0">
+        {recordings.map((blob, index) => (
+          <div
+            key={index}
+            className="flex h-full w-full flex-col items-start justify-center gap-y-5 text-white"
+          >
+            <p className="text-3xl font-normal">Voice sample {index + 1}</p>
+            <Border borderRadius="2xl">
+              <div className="rounded-2xl bg-black p-s2 text-lg md:p-s4">
+                {VOICEPROMPTS[index]}
               </div>
-            ))}
+            </Border>
+            <AudioPlayer audioRecord={blob} />
           </div>
-          <div className="mx-auto mt-s4 w-3/4 max-w-[250px] gap-5">
-            <OnboardingButton
-              disabled={recordings.length < 5}
-              onClick={saveAllRecordedVoiceSamplesHandler}
-              isLoading={isLoading}
-              theme="light"
-            >
-              Save recordings
-            </OnboardingButton>
-          </div>
-        </div>
-      )}
+        ))}
+      </div>
+      <div className="mx-auto mt-s4 w-3/4 max-w-[250px] gap-5">
+        <OnboardingButton
+          disabled={recordings.length < 5}
+          onClick={saveAllRecordedVoiceSamplesHandler}
+          isLoading={isLoading}
+          theme="light"
+        >
+          Save recordings
+        </OnboardingButton>
+      </div>
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import AudioWave from './AudioWave';
 import VoiceRecordList from './VoiceRecordList';
 import AudioPlayer from './AudioPlayer';
 import OnboardingButton from '../../Onboarding/button';
 import Border from '../../UI/Border';
+import Button from '../../UI/Button';
 
 const VoiceRecordingFromPrompts = () => {
   const [micState, setMicState] = useState('waiting');
@@ -11,7 +12,6 @@ const VoiceRecordingFromPrompts = () => {
   const [prompt, setPrompt] = useState(0);
   const [audioRecord, setAudioRecord] = useState(null);
   const [recordings, setRecordings] = useState([]);
-  const [destroyMic, setDestroyMic] = useState(false);
 
   const getPermissionInitializeRecorder = async () => {
     try {
@@ -25,16 +25,24 @@ const VoiceRecordingFromPrompts = () => {
   };
 
   const uploadVoiceSamples = () => {
-    setDestroyMic(!destroyMic);
     setOption(!option);
   };
 
   useEffect(() => {
     getPermissionInitializeRecorder();
-    return () => {
-      setDestroyMic(true);
-    };
   }, []);
+
+  const approveHandler = () => {
+    let array = [...recordings];
+    array.push(audioRecord);
+    setRecordings(array);
+    setPrompt((prompt) => prompt + 1);
+    setAudioRecord(null);
+  };
+
+  const retryHandler = () => {
+    setAudioRecord(null);
+  };
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
@@ -44,7 +52,7 @@ const VoiceRecordingFromPrompts = () => {
             <p className=" text-start text-3xl font-semibold">
               Voice Sample {prompt + 1}
             </p>
-            <GradientCircle array={recordings} />
+            <GradientCircle recordings={recordings} prompt={prompt} />
           </div>
           <Border borderRadius="2xl">
             <div className="flex w-full flex-col items-start justify-center gap-3 rounded-2xl bg-black p-s2">
@@ -61,68 +69,92 @@ const VoiceRecordingFromPrompts = () => {
                   allow microphone usage 😪🎙️
                 </p>
               )}
-              {micState === 'allowed' && recordings.length < 25 ? (
+              {micState === 'allowed' && recordings.length < 25 && (
                 <AudioWave
                   recordings={recordings}
-                  destroyMic={destroyMic}
                   setAudioRecord={setAudioRecord}
-                  setPrompt={setPrompt}
                   prompt={prompt}
                 />
-              ) : null}
+              )}
             </div>
           </Border>
-          <div className={`mx-auto my-s2 h-full w-full md:w-1/2`}>
-            {audioRecord ? (
-              <AudioPlayer
-                audioBlob={audioRecord}
-                recordings={recordings}
-                setRecordings={setRecordings}
-                setPrompt={setPrompt}
-                setAudioRecord={setAudioRecord}
-              />
-            ) : null}
-          </div>
-          {recordings.length >= 5 ? (
+          {audioRecord && (
+            <div className={`mx-auto my-s2 md:w-1/2`}>
+              <div className="flex flex-col items-center justify-center gap-y-8">
+                <AudioPlayer audioRecord={audioRecord} />
+                <div className="flex w-full gap-2 flex-row items-center justify-between md:w-5/6 md:justify-around">
+                  <Button
+                    purpose="onClick"
+                    type="secondary"
+                    fullWidth={true}
+                    onClick={retryHandler}
+                  >
+                    Retry
+                  </Button>
+                  <Button
+                    purpose="onClick"
+                    type="primary"
+                    fullWidth={true}
+                    onClick={approveHandler}
+                  >
+                    Approve
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+          {recordings.length >= 5 && (
             <div className={`mx-auto my-s3 w-[250px]`}>
               <OnboardingButton onClick={uploadVoiceSamples}>
                 Preview recordings
               </OnboardingButton>
             </div>
-          ) : null}
+          )}
         </div>
       ) : (
-        <VoiceRecordList
-          recordings={recordings}
-          setRecordings={setRecordings}
-        />
+        <VoiceRecordList recordings={recordings} />
       )}
     </div>
   );
 };
 
-const GradientCircle = ({ array }) => {
-  const [completionPercentage, setCompletionPercentage] = useState(0);
+const GradientCircle = ({ recordings, prompt }) => {
+  const percentage = useMemo(() => {
+    const val = (prompt / (recordings.length < 5 ? 5 : 25)) * 100;
+    return Math.round(val);
+  }, [prompt, recordings]);
 
-  useEffect(() => {
-    const filledItems = array.filter((item) => item !== undefined).length;
-    const percentage = (filledItems / (array.length >= 5 ? 25 : 5)) * 100;
-    setCompletionPercentage(percentage);
-  }, [array]);
+  const circumference = 157;
+
+  const offset = useMemo(() => {
+    const val = circumference - (percentage / 100) * circumference;
+    return Math.round(val);
+  }, [percentage]);
 
   return (
-    <div className="relative">
-      <div className="bg-gray-300 relative h-14 w-14 overflow-hidden rounded-full md:h-20 md:w-20">
-        <div
-          className="absolute top-0 left-0 h-full w-full rounded-full transition-all"
-          style={{
-            background: `conic-gradient(from 0deg at 50% 50%, #ff8a00 0%, #e52e71 ${completionPercentage}%, #f0f0f0 ${completionPercentage}%)`,
-          }}
-        ></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-sm font-semibold text-black md:text-lg">
-          {completionPercentage}%
-        </div>
-      </div>
+    <div className="relative flex h-14 w-14 items-center justify-center">
+      <p className="text-sm">{`${percentage}%`}</p>
+      <svg className="absolute -rotate-90" width="56" height="56">
+        <circle
+          cx="28"
+          cy="28"
+          r="25"
+          fill="none"
+          stroke="#000017"
+          strokeWidth="7"
+        ></circle>
+        <circle
+          cx="28"
+          cy="28"
+          r="25"
+          fill="none"
+          stroke="#00ffff"
+          strokeWidth="7"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }}
+        ></circle>
+      </svg>
     </div>
   );
 };
