@@ -2,7 +2,6 @@ import Image from 'next/image';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import OnboardingButton from '../../../components/Onboarding/button';
 import PageTitle from '../../../components/SEO/PageTitle';
-import Blobs from '../../../components/UI/Blobs';
 import Stripe from '../../../public/img/icons/stripe.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -60,12 +59,11 @@ const Billing = ({ plans }) => {
         <PageTitle title="Billing" />
         {modal && (
           <Modal closeModal={closeModal}>
-            <DashboardPlans plans={newPlans} />
+            <DashboardPlans plans={newPlans} user={user} />
           </Modal>
         )}
         <BillingDetails user={user} openModal={openModal} />
         <Transactions billing={billing} />
-        <Blobs />
       </div>
     </>
   );
@@ -111,18 +109,25 @@ const Transactions = ({ billing }) => {
             <thead>
               <tr className="border-b border-[rgba(255,255,255,0.15)] text-center text-xl">
                 <th className="pb-s2">Date</th>
-                <th className="pb-s2">Time</th>
                 <th className="pb-s2">Service(s)</th>
-                <th className="pb-s2">Amount</th>
+                <th className="pb-s2">Amount(USD)</th>
               </tr>
             </thead>
             <tbody>
               {billing.map((data, index) => (
                 <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
-                  <td className="py-s3">{data.date}</td>
-                  <td className="py-s3">{data.time}</td>
-                  <td className="py-s3">{data.services}</td>
-                  <td className="py-s3">${data.amount}</td>
+                  <td className="py-s3">
+                    {new Date(data.created * 1000).toLocaleString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                      hour12: true,
+                    })}
+                  </td>
+                  <td className="py-s3">{data.plan.amount / 100}</td>
+                  <td className="py-s3">${data.plan.amount / 100}</td>
                 </tr>
               ))}
             </tbody>
