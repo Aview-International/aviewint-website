@@ -15,7 +15,12 @@ const CustomPricing = () => {
               Custom Pricing
             </h4>
             <p className="mb-s3 text-lg">Tailored to your needs</p>
-            <Button type="secondary" purpose="onClick" fullWidth={true}>
+            <Button
+              type="secondary"
+              purpose="route"
+              fullWidth={true}
+              route="mailto:julia@aviewint.com"
+            >
               Contact sales
             </Button>
           </div>

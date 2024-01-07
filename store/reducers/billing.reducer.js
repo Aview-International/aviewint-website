@@ -7,7 +7,7 @@ const billingSlice = createSlice({
   initialState,
   reducers: {
     setBillingHistory(state, action) {
-      state.push(action.payload);
+      state.push(...action.payload);
     },
   },
 });

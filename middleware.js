@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { checkTokenExpiry } from './utils/jwtExpiry';
 
 /**
- * @param token: token generated or created fraudulently
  * @returns redirect to /login if token is valid or expired
  * @author Victor Ogunjobi
  */

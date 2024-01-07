@@ -6,8 +6,6 @@ import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
 import Button from '../../UI/Button';
 
-const Line = () => <span className="mx-auto block h-1 w-6 bg-white"></span>;
-
 const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   const headerRef = useRef(null);
   const [topPosition, setTopPosition] = useState(null);
@@ -24,7 +22,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   }, []);
 
   return (
-    <section className="m-horizontal my-s10 overflow-x-auto" id="all-features">
+    <section className="m-horizontal my-s10 overflow-x-clip" id="all-features">
       <div className="rounded-xl bg-white-transparent text-white">
         <h2 className="py-s4 text-center text-5xl font-semibold md:text-6xl">
           Compare Plans
@@ -32,7 +30,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
 
         <div
           className={`sticky top-0 z-10 grid grid-cols-[repeat(5,minmax(100px,1fr))] rounded-xl p-s4 text-center ${
-            topPosition === 0 && 'bg-gray-1'
+            topPosition <= 0 && 'bg-gray-1'
           }`}
           ref={headerRef}
         >
@@ -45,11 +43,30 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
             </p>
           </div>
 
+          {/* this ection handles routing for subscription, send an email for enterprise customers */}
           {allPlans.map((plan, i) => (
             <div key={i}>
               <div className="text-2xl">{plan.desc}</div>
-              <p className="text-xl font-medium">&#36;{plan.cost}</p>
-              <Button type="secondary">Go {plan.id}</Button>
+              <p className="text-xl font-medium my-2">
+                {plan.id === 'enterprise'
+                  ? 'Contact Sales'
+                  : `$${
+                      isChecked
+                        ? Math.round(plan.yearlyCost / 12)
+                        : plan.monthlyCost
+                    }`}
+              </p>
+              <Button
+                type="secondary"
+                purpose="route"
+                route={
+                  plan.id === 'enterprise'
+                    ? 'mailto:julia@aviewint.com'
+                    : `/register?subscription=true&plan=${plan.id}`
+                }
+              >
+                Go {plan.id}
+              </Button>
             </div>
           ))}
         </div>
@@ -57,7 +74,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
         {PLANS_BREAKDOWN.map((plan, i) => (
           <div className="p-s4" key={i}>
             <div className="border-b border-gray-1 p-5">
-              <p className="mt-s5 text-left text-sm">{plan.section}</p>
+              <p className="mt-s3 text-left text-sm">{plan.section}</p>
             </div>
             {plan.desc.map((breakdown, i) => (
               <div
@@ -68,7 +85,13 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
                   <span className="pr-4">{breakdown.title}</span>
                   {breakdown.hoverText && (
                     <div className="group relative cursor-pointer">
-                      <Image src={Info} alt="" />
+                      <Image
+                        src={Info}
+                        alt=""
+                        width={20}
+                        height={20}
+                        layout="fixed"
+                      />
                       <span className="absolute z-10 hidden w-48 rounded-md bg-gray-1 p-s1 text-xs group-hover:inline">
                         {breakdown.hoverText}
                       </span>
@@ -80,7 +103,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
                     {col === true ? (
                       <Image src={Check} alt="" width={35} height={30} />
                     ) : col === null ? (
-                      <Line />
+                      <span className="mx-auto block h-1 w-6 bg-white"></span>
                     ) : (
                       <p className="text-sm">{col}</p>
                     )}

@@ -13,7 +13,12 @@ const PickYourPlan = ({ isChecked, handleChange }) => {
           Can&#8217;t decide? Talk to our team today to find a plan that best
           fits you.
         </p>
-        <Button type="secondary" fullWidth={true} purpose="onClick">
+        <Button
+          type="secondary"
+          fullWidth={true}
+          purpose="route"
+          route="mailto:julia@aviewint.com"
+        >
           Contact sales
         </Button>
       </div>
