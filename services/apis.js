@@ -131,33 +131,29 @@ export const uploadMultipleVoiceSamples = async (speakers, userId) => {
   );
 };
 
-export const uploadSingleVoiceSamples = async (audios, userId) => {
+export const uploadSingleVoiceSamples = async (audios) => {
   let formData = new FormData();
 
   for (const audio of audios) {
     formData.append('voiceSample', audio);
   }
 
-  await axiosInstance.post(
-    'dubbing/single-voice-cloning?userId=' + userId,
-    formData,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }
-  );
+  await axiosInstance.post('dubbing/single-voice-cloning', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 };
 
-export const uploadRecordedVoice = async (audios, userId) => {
+export const uploadRecordedVoice = async (audios, voices, update = false) => {
   let formData = new FormData();
-
   for (const audio of audios) {
     formData.append('files', audio);
   }
 
+  formData.append('voices', JSON.stringify(voices));
   return await axiosInstance.post(
-    'dubbing/recorded-voice-cloning?userId=' + userId,
+    `dubbing/recorded-voice-cloning?purpose=${update ? 'update' : 'add'}`,
     formData,
     {
       headers: {
@@ -181,11 +177,10 @@ export const testVoiceCloning = async (text, voiceId) => {
   return response;
 };
 
-export const deleteVoiceClone = async (userId, voiceId) => {
-  const res = await axiosInstance.patch(
-    `dubbing/delete-voice-cloning/${userId}`,
-    { voiceId }
-  );
+export const deleteVoiceClone = async (voiceId) => {
+  const res = await axiosInstance.patch(`dubbing/delete-voice-cloning`, {
+    voiceId,
+  });
   return res;
 };
 
@@ -245,3 +240,10 @@ export const createCheckoutSesion = async (planId) => {
 
 export const getBillingHistory = async () =>
   (await axiosInstance.get('subscription/history')).data;
+
+export const getVoiceSamples = async (voices) =>
+  (
+    await axiosInstance.post('dubbing/voice-samples', {
+      voices,
+    })
+  ).data;
