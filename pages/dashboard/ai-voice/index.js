@@ -2,13 +2,16 @@ import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
 import VoiceRecordingFromPrompts from '../../../components/dashboard/voice-cloning/VoiceRecordingFromPrompts';
 import UploadVoiceSamples from '../../../components/dashboard/voice-cloning/UploadVoiceSamples';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoiceSample';
 import Arrow from '../../../public/img/icons/arrow-right.svg';
 import Image from 'next/image';
 import Border from '../../../components/UI/Border';
 import OnboardingButton from '../../../components/Onboarding/button';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { getVoiceSamples } from '../../../services/apis';
+import { setAIVoices } from '../../../store/reducers/voices.reducer';
 
 const AiVoiceSteps = [
   {
@@ -25,6 +28,17 @@ const AiVoiceSteps = [
 
 const AIvoice = () => {
   const { query, push, back } = useRouter();
+  const voiceId = useSelector((state) => state.user.voiceId);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      if (voiceId) {
+        const samples = await getVoiceSamples(voiceId);
+        dispatch(setAIVoices(samples));
+      }
+    })();
+  }, [voiceId]);
 
   return (
     <>
@@ -47,7 +61,7 @@ const AIvoice = () => {
             </button>
           )}
           <div className="h-full w-full">
-            {!query.tab && <SelectAIOption push={push} />}
+            {!query.tab && <SelectAIOption push={push} voiceId={voiceId} />}
             {query.tab == 'record' && <VoiceRecordingFromPrompts />}
             {query.tab == 'upload' && <UploadVoiceSamples />}
           </div>
@@ -57,11 +71,9 @@ const AIvoice = () => {
   );
 };
 
-const SelectAIOption = ({ push }) => {
-  const { voiceId, uid } = useSelector((state) => state.user);
-
+const SelectAIOption = ({ push, voiceId }) => {
   return voiceId ? (
-    <PlayVoiceSample voiceId={voiceId} uid={uid} />
+    <PlayVoiceSample voiceId={voiceId} updateVoices={true} />
   ) : (
     <div
       className="flex h-full w-full flex-col items-center justify-center gap-s2 md:flex-row md:gap-s4"

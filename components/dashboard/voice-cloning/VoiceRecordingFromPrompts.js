@@ -6,10 +6,10 @@ import OnboardingButton from '../../Onboarding/button';
 import Border from '../../UI/Border';
 import Button from '../../UI/Button';
 
-const VoiceRecordingFromPrompts = () => {
+const VoiceRecordingFromPrompts = ({ promptStage = 0, updateVoices }) => {
   const [micState, setMicState] = useState('waiting');
   const [option, setOption] = useState(false);
-  const [prompt, setPrompt] = useState(0);
+  const [prompt, setPrompt] = useState(promptStage);
   const [audioRecord, setAudioRecord] = useState(null);
   const [recordings, setRecordings] = useState([]);
 
@@ -52,7 +52,7 @@ const VoiceRecordingFromPrompts = () => {
             <p className=" text-start text-3xl font-semibold">
               Voice Sample {prompt + 1}
             </p>
-            <GradientCircle recordings={recordings} prompt={prompt} />
+            <GradientCircle prompt={prompt} />
           </div>
           <Border borderRadius="2xl">
             <div className="flex w-full flex-col items-start justify-center gap-3 rounded-2xl bg-black p-s2">
@@ -69,7 +69,7 @@ const VoiceRecordingFromPrompts = () => {
                   allow microphone usage 😪🎙️
                 </p>
               )}
-              {micState === 'allowed' && recordings.length < 25 && (
+              {micState === 'allowed' && prompt < 25 && (
                 <AudioWave
                   recordings={recordings}
                   setAudioRecord={setAudioRecord}
@@ -82,7 +82,7 @@ const VoiceRecordingFromPrompts = () => {
             <div className={`mx-auto my-s2 md:w-1/2`}>
               <div className="flex flex-col items-center justify-center gap-y-8">
                 <AudioPlayer audioRecord={audioRecord} />
-                <div className="flex w-full gap-2 flex-row items-center justify-between md:w-5/6 md:justify-around">
+                <div className="flex w-full flex-row items-center justify-between gap-2 md:w-5/6 md:justify-around">
                   <Button
                     purpose="onClick"
                     type="secondary"
@@ -103,7 +103,7 @@ const VoiceRecordingFromPrompts = () => {
               </div>
             </div>
           )}
-          {recordings.length >= 5 && (
+          {prompt >= 5 && (
             <div className={`mx-auto my-s3 w-[250px]`}>
               <OnboardingButton onClick={uploadVoiceSamples}>
                 Preview recordings
@@ -112,17 +112,17 @@ const VoiceRecordingFromPrompts = () => {
           )}
         </div>
       ) : (
-        <VoiceRecordList recordings={recordings} />
+        <VoiceRecordList recordings={recordings} prompt={prompt} updateVoices={updateVoices} />
       )}
     </div>
   );
 };
 
-const GradientCircle = ({ recordings, prompt }) => {
+const GradientCircle = ({ prompt }) => {
   const percentage = useMemo(() => {
-    const val = (prompt / (recordings.length < 5 ? 5 : 25)) * 100;
+    const val = (prompt / (prompt < 5 ? 5 : 25)) * 100;
     return Math.round(val);
-  }, [prompt, recordings]);
+  }, [prompt]);
 
   const circumference = 157;
 
