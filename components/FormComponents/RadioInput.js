@@ -15,7 +15,7 @@ const RadioInput = ({ chosenValue, onChange, name, value }) => {
       className={`flex cursor-pointer items-center rounded-full text-xl text-white`}
     >
       <span
-        className={`mr-4 flex h-5 w-5 items-center justify-center rounded-full ${
+        className={`flex h-5 w-5 items-center justify-center rounded-full ${
           value === chosenValue ? 'gradient-1' : 'bg-white'
         }`}
       >
@@ -32,7 +32,7 @@ const RadioInput = ({ chosenValue, onChange, name, value }) => {
         value={value}
         className="hidden"
       />
-      {value}
+      
     </label>
   );
 };

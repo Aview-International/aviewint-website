@@ -23,6 +23,7 @@ const initialState = {
   _id: '',
   recordedVoiceSamples: [],
   uploadedVoiceSamples: [],
+  chatAssistantOption: 'Title',
 };
 
 const userSlice = createSlice({

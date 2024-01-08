@@ -68,6 +68,7 @@ import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
 import messages from '../public/img/icons/messages.svg';
 import referral from '../public/img/icons/referral.svg';
+import assistance from '../public/img/icons/assistance.svg';
 
 //onBoarding Icons
 import asia from '../public/img/graphics/asia.svg';
@@ -1497,6 +1498,11 @@ export const DASHBOARD_NAVLINKS = [
     text: 'History',
     image: history,
     route: () => '/dashboard/history',
+  },
+  {
+    text: 'Assistance',
+    image: assistance,
+    route: () => '/dashboard/chat-assist'
   },
   // {
   //   text: 'Referral',

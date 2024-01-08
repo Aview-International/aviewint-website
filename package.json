@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "lottie-react": "^2.4.0",
     "next": "12.2.3",
+    "openai": "^4.24.0",
     "react": "18.2.0",
     "react-canvas-confetti": "^1.4.0",
     "react-dom": "18.2.0",
