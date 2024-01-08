@@ -227,11 +227,16 @@ export const getPlans = async () => {
   return response;
 };
 
-export const createCheckoutSesion = async (planId) => {
+export const createCheckoutSesion = async (planId, redirectDomain) => {
+  const redirectUrl = `${window.location.origin}/${
+    redirectDomain ?? 'billing'
+  }`;
+
   const res = await axiosInstance.post(
     'subscription/stripe/create-checkout-session',
     {
       plan: planId,
+      redirectUrl,
     }
   );
 

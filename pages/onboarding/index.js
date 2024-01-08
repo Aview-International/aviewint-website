@@ -15,6 +15,7 @@ import OnboardingSuccess from '../../components/Onboarding/success';
 import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
+import Confetti from '../../components/UI/Confetti';
 
 const Onboarding = () => {
   const userData = useSelector((state) => state.user);
@@ -41,6 +42,8 @@ const Onboarding = () => {
   return (
     <>
       <PageTitle title="Aview Onboarding" />
+      {router.query?.subscription === 'success' && <Confetti />}
+
       <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
         {Number(router.query.stage) > 1 && (
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
