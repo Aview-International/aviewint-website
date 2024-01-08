@@ -4,9 +4,11 @@ import Button from '../../UI/Button';
 import Border from '../../UI/Border';
 import Card from '../../UI/Card';
 import useAuth from '../../../hooks/useAuth';
+import { useSelector } from 'react-redux';
 
 const PriceSection = ({ priceList, isChecked }) => {
   const isLoggedIn = useAuth();
+  const plan = useSelector((data) => data.user.plan);
 
   return (
     <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
@@ -31,13 +33,14 @@ const PriceSection = ({ priceList, isChecked }) => {
       <div className="capitalize">
         <Button
           type={priceList.id === 'pro' ? 'primary' : 'secondary'}
-          purpose="onClick"
+          purpose="route"
+          route={`/register?subscription=true&plan=${priceList.id}`}
           fullWidth={true}
         >
-          {priceList.id !== 'basic'
-            ? 'Go ' + priceList.id
-            : isLoggedIn
-            ? 'Current Plan'
+          {isLoggedIn
+            ? plan === priceList.id
+              ? 'Current Plan'
+              : 'Go ' + priceList.id
             : 'Go ' + priceList.id}
         </Button>
       </div>
