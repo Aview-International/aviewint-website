@@ -61,7 +61,7 @@ const PriceSection = ({ priceList, isChecked }) => {
 
       {priceList.id === 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
-          <Border borderRadius="3xl" padding="1px">
+          <Border borderRadius="3xl" padding="p-[1px]">
             <div className="block rounded-3xl bg-white px-3 py-1 text-center font-medium text-black">
               Recommended
             </div>
