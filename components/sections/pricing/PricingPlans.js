@@ -33,7 +33,7 @@ const PriceSection = ({ priceList, isChecked }) => {
       <div className="capitalize">
         <Button
           type={priceList.id === 'pro' ? 'primary' : 'secondary'}
-          purpose="route"
+          purpose="onClick"
           route={`/register?subscription=true&plan=${priceList.id}`}
           fullWidth={true}
         >
@@ -61,9 +61,9 @@ const PriceSection = ({ priceList, isChecked }) => {
 
       {priceList.id === 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
-          <Border borderRadius="3xl">
+          <Border borderRadius="3xl" padding="1px">
             <div className="block rounded-3xl bg-white px-3 py-1 text-center font-medium text-black">
-              MOST POPULAR
+              Recommended
             </div>
           </Border>
         </div>
@@ -75,7 +75,7 @@ const PriceSection = ({ priceList, isChecked }) => {
 const PricingPlans = ({ isChecked, plans }) => {
   return (
     <section className="m-horizontal">
-      <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0">
+      <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
         {plans.map((priceList, index) => (
           <div key={index}>
             {priceList.id === 'pro' ? (

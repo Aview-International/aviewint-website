@@ -1713,24 +1713,19 @@ export const PLANS_BREAKDOWN = [
     desc: [
       {
         title: 'Relevant Content Hashtag Generation',
-        columns: ['50 hashtags', '100 hashtags', '200 hashtags', 'Unlimited'],
+        columns: ['50 hashtags', '100 hashtags', '200 hashtags'],
         hoverText:
           "Elevate your content's impact with intuitive, tailored hashtag creation",
       },
       {
         title: 'Title and Description Generator',
-        columns: ['1', '5', '15', 'Unlimited'],
+        columns: ['1', '5', '15'],
         hoverText:
           "Craft viral-worthy titles and descriptions effortlessly, sparking your audience's interest",
       },
       {
         title: 'Video Script Generator',
-        columns: [
-          'Up to 5 minutes',
-          'Up to 45 minutes',
-          'Up to 300 minutes',
-          'Up to 720 minutes',
-        ],
+        columns: ['Up to 5 minutes', 'Up to 45 minutes', 'Up to 300 minutes'],
         hoverText:
           "Craft viral-worthy titles and descriptions effortlessly, sparking your audience's interest",
       },
@@ -1741,29 +1736,29 @@ export const PLANS_BREAKDOWN = [
     desc: [
       {
         title: 'Minutes of Translated Dubbing (AI)',
-        columns: ['5 minutes', '45 minutes', '300 minutes', '300 minutes'],
+        columns: ['5 minutes', '45 minutes', '300 minutes'],
         hoverText:
           'Your voice, in any language. Choose AI-dubbing with your voice or select from our diverse voice roster',
       },
       {
         title: 'Context-Based Translated Subtitles',
-        columns: ['5 minutes', '45 minutes', '300 minutes', '300 minutes'],
+        columns: ['5 minutes', '45 minutes', '300 minutes'],
         hoverText: '',
       },
       {
         title: 'Trained Multi-Language Voiceovers',
-        columns: ['1 voice', '3 voices', '5 voices', '10+ voices'],
+        columns: ['1 voice', '3 voices', '5 voices'],
         hoverText:
           'Give every character a global voice. Multi-language voiceovers for universal appeal',
       },
       {
         title: 'Languages',
-        columns: ['50', '50', '50', '50'],
+        columns: ['50', '50', '50'],
         hoverText: '',
       },
       {
         title: 'International Video Analytics',
-        columns: [null, true, true, true],
+        columns: [null, true, true],
         hoverText: '',
       },
     ],
@@ -1773,24 +1768,25 @@ export const PLANS_BREAKDOWN = [
     desc: [
       {
         title: 'Content Distribution',
-        columns: [null, '5 videos', '30 videos', 'unlimited'],
+        columns: [null, '5 videos', '30 videos'],
         hoverText:
           'Click to connect with the world. Distribute your content globally, effortlessly',
       },
       {
         title: 'Cultural Sensitivity Filter',
-        columns: [null, null, true, true],
+        columns: [null, null, true],
         hoverText:
           'Culturally smart content. Automatically filter sensitive language for global relevance.',
       },
       {
         title: 'Short-Form Content',
-        columns: [null, '1 short', '7 shorts', '16 shorts'],
+        columns: [null, '1 short', '7 shorts'],
         hoverText: '',
       },
       {
         title: 'Human Review',
-        columns: [null, null, true, true],
+        columns: [null, null, true],
+
         hoverText: '',
       },
     ],
@@ -1800,17 +1796,17 @@ export const PLANS_BREAKDOWN = [
     desc: [
       {
         title: 'Global Channel Management',
-        columns: [null, null, true, true],
+        columns: [null, null, true],
         hoverText: '',
       },
       {
         title: 'International Brand Deals',
-        columns: [null, true, true, true],
+        columns: [null, true, true],
         hoverText: '',
       },
       {
         title: 'Profit Sharing',
-        columns: [null, '0.50%', '2%', '5%'],
+        columns: [null, '0.5%', '2%'],
         hoverText: '',
       },
     ],

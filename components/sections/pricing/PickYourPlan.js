@@ -15,7 +15,6 @@ const PickYourPlan = ({ isChecked, handleChange }) => {
         </p>
         <Button
           type="secondary"
-          fullWidth={true}
           purpose="route"
           route="mailto:julia@aviewint.com"
         >

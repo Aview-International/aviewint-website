@@ -1,7 +1,7 @@
-const Border = ({ children, borderRadius, classes }) => {
+const Border = ({ children, borderRadius, classes, padding = '2px' }) => {
   return (
     <div
-      className={`gradient-1 p-[3px] rounded-${borderRadius} inline-block ${classes}`}
+      className={`gradient-1 p-[${padding}] rounded-${borderRadius} inline-block ${classes}`}
     >
       {children}
     </div>

@@ -18,7 +18,6 @@ const CustomPricing = () => {
             <Button
               type="secondary"
               purpose="route"
-              fullWidth={true}
               route="mailto:julia@aviewint.com"
             >
               Contact sales

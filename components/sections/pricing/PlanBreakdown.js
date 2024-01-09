@@ -31,8 +31,8 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
         </h2>
 
         <div
-          className={`sticky top-0 z-10 grid grid-cols-[repeat(5,minmax(100px,1fr))] rounded-xl p-s4 text-center ${
-            topPosition <= 0 && 'bg-gray-1'
+          className={`sticky top-0 z-10 grid grid-cols-[repeat(4,minmax(100px,1fr))] rounded-xl p-s4 text-center ${
+            topPosition <= 0 && 'gradient-dark bg-black'
           }`}
           ref={headerRef}
         >
@@ -74,16 +74,16 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
         </div>
 
         {PLANS_BREAKDOWN.map((plan, i) => (
-          <div className="p-s4" key={i}>
-            <div className="border-b border-gray-1 p-5">
-              <p className="mt-s3 text-left text-sm">{plan.section}</p>
+          <div className="px-s4 py-s3" key={i}>
+            <div className="border-b border-gray-1 px-5 pb-5">
+              <p className="text-left text-sm">{plan.section}</p>
             </div>
             {plan.desc.map((breakdown, i) => (
               <div
                 key={`breakdown-${i}`}
-                className="grid grid-cols-5 items-center justify-center border-b border-gray-1 text-center"
+                className="grid grid-cols-4 items-center justify-center border-b border-gray-1 text-center"
               >
-                <div className="flex items-center p-5 text-left text-lg">
+                <div className="justify-between flex items-center p-5 text-left text-lg">
                   <span className="pr-4">{breakdown.title}</span>
                   {breakdown.hoverText && (
                     <div className="group relative cursor-pointer">
@@ -103,9 +103,9 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
                 {breakdown.columns.map((col, i) => (
                   <div className="p-5" key={i}>
                     {col === true ? (
-                      <Image src={Check} alt="" width={35} height={30} />
+                      <Image src={Check} alt="" width={25} height={20} />
                     ) : col === null ? (
-                      <span className="mx-auto block h-1 w-6 bg-white"></span>
+                      <span className="mx-auto block h-1 w-4 bg-white"></span>
                     ) : (
                       <p className="text-sm">{col}</p>
                     )}

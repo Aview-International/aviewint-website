@@ -61,7 +61,7 @@ const Pricing = ({ plans }) => {
       <PlanBreakdown
         isChecked={toggleIsChecked}
         handleChange={handleChange}
-        allPlans={allPlans}
+        allPlans={newPlans}
       />
       <ScrollToTopButton />
       <FAQ page="landing" />

@@ -40,7 +40,7 @@ const Blobs = () => {
         <Image src={blob4} alt="blob4" />
       </div>
       <div
-        className={`absolute top-[88%] left-[30%] -z-30 w-[80vw] ${
+        className={`absolute top-[78%] left-[30%] -z-30 w-[80vw] ${
           menuOpenCtx.isMenuOpen && 'hidden'
         }`}
       >
