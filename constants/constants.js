@@ -1752,7 +1752,7 @@ export const PLANS_BREAKDOWN = [
       },
       {
         title: 'Trained Multi-Language Voiceovers',
-        columns: ['1 voice', '3 voices', '5 voices', '300 minutes'],
+        columns: ['1 voice', '3 voices', '5 voices', '10+ voices'],
         hoverText:
           'Give every character a global voice. Multi-language voiceovers for universal appeal',
       },
@@ -1773,7 +1773,7 @@ export const PLANS_BREAKDOWN = [
     desc: [
       {
         title: 'Content Distribution',
-        columns: [null, '5 videos', '30 videos', '30 videos'],
+        columns: [null, '5 videos', '30 videos', 'unlimited'],
         hoverText:
           'Click to connect with the world. Distribute your content globally, effortlessly',
       },

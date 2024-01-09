@@ -5,9 +5,11 @@ import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
 import Button from '../../UI/Button';
+import useAuth from '../../../hooks/useAuth';
 
 const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   const headerRef = useRef(null);
+  const isLoggedIn = useAuth();
   const [topPosition, setTopPosition] = useState(null);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
           {allPlans.map((plan, i) => (
             <div key={i}>
               <div className="text-2xl">{plan.desc}</div>
-              <p className="text-xl font-medium my-2">
+              <p className="my-2 text-xl font-medium">
                 {plan.id === 'enterprise'
                   ? 'Contact Sales'
                   : `$${
