@@ -52,9 +52,14 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
               <p className="my-2 text-xl font-medium">
                 {plan.id === 'enterprise'
                   ? 'Contact Sales'
-                  : `$${
+                  : `${
+                      (typeof plan.monthlyCost && typeof plan.yearlyCost) ===
+                      'number'
+                        ? '$'
+                        : ''
+                    }${
                       isChecked
-                        ? Math.round(plan.yearlyCost / 12)
+                        ? Math.round(plan.yearlyCost / 12) || 'Free'
                         : plan.monthlyCost
                     }`}
               </p>
@@ -83,7 +88,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
                 key={`breakdown-${i}`}
                 className="grid grid-cols-4 items-center justify-center border-b border-gray-1 text-center"
               >
-                <div className="justify-between flex items-center p-5 text-left text-lg">
+                <div className="flex items-center justify-between p-5 text-left text-lg">
                   <span className="pr-4">{breakdown.title}</span>
                   {breakdown.hoverText && (
                     <div className="group relative cursor-pointer">

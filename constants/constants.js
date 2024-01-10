@@ -914,47 +914,6 @@ export const VOICEOVER_FAQ = [
   },
 ];
 
-export const CREATORS_SLIDERS = [
-  {
-    label: 'Uploads per month',
-    max: 30,
-    values: false,
-    name: 'uploadsPerMonth',
-  },
-  {
-    label: 'Average View Count per Month',
-    values: [
-      '1K',
-      '2K',
-      '3.5K',
-      '5K',
-      '7.5K',
-      '10K',
-      '20K',
-      '35k',
-      '50K',
-      '75K',
-      '100K',
-      '200K',
-      '350k',
-      '500K',
-      '750k',
-      '1M',
-      '2M',
-      '5M',
-      '5M+',
-    ],
-    max: 18,
-    name: 'averageViewCount',
-  },
-  {
-    label: 'Languages',
-    values: false,
-    max: 10,
-    name: 'languages',
-  },
-];
-
 export const CATEGORIES = [
   'Entertainment',
   'Comedy',
