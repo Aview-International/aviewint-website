@@ -12,25 +12,43 @@ const PriceSection = ({ priceList, isChecked }) => {
 
   return (
     <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
-      <span className="rounded-md bg-gray-1 p-1 uppercase">
+      <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
         {priceList.desc}
       </span>
-      <div className="my-s5 flex flex-row items-center justify-start gap-x-4">
-        <p className="text-4xl font-bold md:text-7xl">
-          &#36;
+      <p className="mb-2 mt-3 font-semibold">{priceList.description}</p>
+
+      <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
+        <p className="text-center text-4xl font-bold md:text-7xl">
+          {(typeof priceList.monthlyCost === 'number' ||
+            typeof priceList.yearlyCost === 'number') &&
+            '$'}
           {!isChecked
             ? priceList.monthlyCost
-            : Math.round(priceList.yearlyCost / 12)}
+            : Math.round(priceList.yearlyCost / 12) || 'Free'}
         </p>
         {priceList.id != 'basic' && (
           <p>
-            Per month, billed &#36;
-            {isChecked ? priceList.yearlyCost : priceList.monthlyCost * 12}{' '}
-            annually
+            Per month{isChecked && ', billed $'}
+            {isChecked && priceList.yearlyCost}
+            {isChecked && ' annually'}
           </p>
         )}
       </div>
-      <div className="capitalize">
+
+      {priceList.options.map((option, index) => (
+        <div className="mt-s1.5 flex flex-row items-start gap-2" key={index}>
+          <Image
+            src={check}
+            alt="check-mark"
+            className="mt-2"
+            width={16}
+            height={16}
+          />
+          <p>{option}</p>
+        </div>
+      ))}
+
+      <div className="mt-s2 capitalize">
         <Button
           type={priceList.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
@@ -44,20 +62,6 @@ const PriceSection = ({ priceList, isChecked }) => {
             : 'Go ' + priceList.id}
         </Button>
       </div>
-
-      <p className="mb-2 mt-s3 font-semibold">{priceList.description}</p>
-      {priceList.options.map((option, index) => (
-        <div className="my-s1.5 flex flex-row items-start gap-2" key={index}>
-          <Image
-            src={check}
-            alt="check-mark"
-            className="mt-2"
-            width={16}
-            height={16}
-          />
-          <p>{option}</p>
-        </div>
-      ))}
 
       {priceList.id === 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
