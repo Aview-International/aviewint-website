@@ -26,7 +26,7 @@ const Slider = ({
     if (value > max / 2) {
       return (value * 100) / max;
     } else {
-      return (value * 100) / max + 2;
+      return (value * 100) / max + 1;
     }
   }, [value, max]);
 
@@ -35,7 +35,7 @@ const Slider = ({
       <label className="mb-s2 inline-block text-lg text-white">{label}</label>
       <div className="relative w-full">
         <span
-          className={`gradient-1 absolute block h-[15px] rounded-[30px] `}
+          className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
           style={{ width: `${Math.trunc(width)}%` }}
         ></span>
         <input

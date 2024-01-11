@@ -1790,6 +1790,8 @@ export const SUBSCRIPTION_PLANS_DESC = [
       '45 Minutes of Translated AI Dubbing',
       '3 AI trained multi-language voiceovers',
     ],
+    sliderValueMax: 1,
+    sliderValueMin: 0,
   },
   {
     description: 'Maximize reach, impact globally.',
@@ -1799,5 +1801,7 @@ export const SUBSCRIPTION_PLANS_DESC = [
       '300 Minutes of Translated AI Dubbing',
       'Global channel management',
     ],
+    sliderValueMax: 7,
+    sliderValueMin: 2,
   },
 ];

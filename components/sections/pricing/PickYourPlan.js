@@ -1,9 +1,12 @@
-import { useState } from 'react';
 import ToggleButton from '../../FormComponents/ToggleButton';
 import Slider from '../../UI/Slider';
 
-const PickYourPlan = ({ isChecked, handleChange }) => {
-  const [value, setValue] = useState(0);
+const PickYourPlan = ({
+  isChecked,
+  handleChange,
+  sliderValue,
+  onSliderChange,
+}) => {
   const values = [15, 30, 50, 75, 100, 150, 200, 275, 350, 400, 500];
 
   return (
@@ -25,9 +28,9 @@ const PickYourPlan = ({ isChecked, handleChange }) => {
       <div className="mx-auto mt-s7 flex w-3/5 items-end justify-center text-center">
         <Slider
           label="How many minutes of content do you upload a month?"
-          value={value}
+          value={sliderValue}
           name="pricing-slider"
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onSliderChange}
           max={10}
           values={values}
           suffix="minutes"
