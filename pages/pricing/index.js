@@ -16,6 +16,7 @@ import { getPlans } from '../../services/apis';
 import { useSelector } from 'react-redux';
 import usePlans from '../../hooks/usePlans';
 import { SUBSCRIPTION_PLANS_DESC } from '../../constants/constants';
+import ContactSales from '../../components/sections/pricing/ContactSales';
 
 export const getStaticProps = async () => {
   try {
@@ -36,10 +37,10 @@ export const getStaticProps = async () => {
 const Pricing = ({ plans }) => {
   usePlans(JSON.parse(plans));
   const allPlans = useSelector((data) => data.aview.allPlans);
+  const [sliderValue, setSliderValue] = useState(0);
   const [toggleIsChecked, setToggleIsChecked] = useState(false);
-  const handleChange = () => {
-    setToggleIsChecked(!toggleIsChecked);
-  };
+  const handleChange = () => setToggleIsChecked(!toggleIsChecked);
+  const onSliderChange = (e) => setSliderValue(e.target.value);
 
   const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
     ...allPlans[i],
@@ -54,8 +55,21 @@ const Pricing = ({ plans }) => {
       />
       <EasterEgg />
       <Header curPage="Pricing" />
-      <PickYourPlan isChecked={toggleIsChecked} handleChange={handleChange} />
-      <PricingPlans isChecked={toggleIsChecked} plans={newPlans} />
+      <PickYourPlan
+        onSliderChange={onSliderChange}
+        isChecked={toggleIsChecked}
+        sliderValue={sliderValue}
+        handleChange={handleChange}
+      />
+      {sliderValue > 7 ? (
+        <ContactSales />
+      ) : (
+        <PricingPlans
+          isChecked={toggleIsChecked}
+          plans={newPlans}
+          sliderValue={sliderValue}
+        />
+      )}
       <CustomPricing />
       <JoinCreators />
       <PlanBreakdown
