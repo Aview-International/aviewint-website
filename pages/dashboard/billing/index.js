@@ -76,15 +76,11 @@ export default Billing;
 const BillingDetails = ({ user, openModal }) => {
   return (
     <div className="text-white">
-      <h2 className="mb-4 text-4xl font-bold">
-        Current Plan : {user.plan ?? 'Studio Starter'}
-      </h2>
       <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
         <div className="flex items-center">
-          <p className="text-2xl font-bold">Payment Partner :</p>
-          <div className="ml-s3">
-            <Image src={Stripe} alt="Stripe" width={60} height={35} />
-          </div>
+          <p className="text-2xl font-bold capitalize">
+            Current Plan : {user.plan ?? 'Studio Starter'}
+          </p>
         </div>
         <div className="flex items-center">
           <span className="text-2xl capitalize"></span>
