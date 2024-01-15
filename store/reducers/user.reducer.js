@@ -21,6 +21,9 @@ const initialState = {
   youtubeChannelId: '',
   youtubeChannelName: '',
   _id: '',
+  recordedVoiceSamples: [],
+  uploadedVoiceSamples: [],
+  chatAssistantOption: 'Title',
 };
 
 const userSlice = createSlice({

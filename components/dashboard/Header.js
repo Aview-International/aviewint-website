@@ -24,7 +24,7 @@ const DashBoardHeader = ({ userInfo }) => {
   const menuOpenCtx = useContext(MenuOpenContext);
 
   return (
-    <header className="relative flex w-full items-center justify-between px-s4 py-s4 text-white md:px-s9">
+    <header className="relative flex w-full items-center justify-between px-s4 py-s3 text-white md:px-s9">
       <MenuButtonIcon
         handler={menuOpenCtx.openMenuHandler}
         styles={'absolute left-6'}

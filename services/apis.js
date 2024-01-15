@@ -252,3 +252,21 @@ export const getVoiceSamples = async (voices) =>
       voices,
     })
   ).data;
+
+export const createThread = async () =>
+  (await axiosInstance.post('messages/new-thread')).data;
+
+export const sendMessage = async (content, threadId, firstName) =>
+  (
+    await axiosInstance.post('messages/new-request', {
+      content,
+      threadId,
+      firstName,
+    })
+  ).data;
+
+export const getAIChatHistory = async (threadId) =>
+  (await axiosInstance.get('messages/get-thread/' + threadId)).data;
+
+export const getThreadHistory = async () =>
+  (await axiosInstance.get('messages/all-threads')).data;

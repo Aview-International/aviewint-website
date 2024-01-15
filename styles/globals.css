@@ -247,6 +247,15 @@
   ::-webkit-scrollbar {
     width: 6px;
   }
+ 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 
   /* Track */
   ::-webkit-scrollbar-track {
