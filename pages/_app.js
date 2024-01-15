@@ -42,6 +42,10 @@ const Layout = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
   const { getProfile } = useUserProfile();
   useEffect(() => {
+    // prevent blobs from overflowing
+    document
+      .getElementById('__next')
+      .classList.add('overflow-x-clip', 'w-full', 'relative');
     // get all languages from the regions array
     dispatch(setAllLanguages());
     // AOS animation
@@ -51,13 +55,12 @@ const Layout = ({ Component, pageProps }) => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
-    setViewportHeight();
     window.onresize = setViewportHeight;
-    // refresh token after 55 mins
+    // check token expiry every 5 mins
     const handle = setInterval(async () => {
       const token = await auth.currentUser.getIdToken(true);
       if (token) Cookies.set('token', token);
-    }, 30 * 60 * 1000);
+    }, 5 * 60 * 1000);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) logoutUser();

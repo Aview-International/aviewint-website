@@ -5,7 +5,6 @@ import { useState } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import { toast } from 'react-toastify';
 import { uploadSingleVoiceSamples } from '../../../services/apis';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ErrorHandler from '../../../utils/errorHandler';
 import Border from '../../UI/Border';
@@ -14,7 +13,6 @@ import DeleteIcon from '../../../public/img/icons/trash.svg';
 const SingleVoiceUpload = () => {
   const [audios, setAudios] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const userId = useSelector((state) => state.user.uid);
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -40,7 +38,7 @@ const SingleVoiceUpload = () => {
     }
     try {
       setIsLoading(true);
-      await uploadSingleVoiceSamples(audios, userId);
+      await uploadSingleVoiceSamples(audios);
       setIsLoading(false);
       toast.success('Voices Samples saved successfully');
       router.push('/dashboard');

@@ -3,6 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   status: {},
   messages: [],
+  aiThreads: [],
+  allAIThreads: [],
+  lastUsedAIThread: '',
 };
 
 const messagesSlice = createSlice({
@@ -30,6 +33,18 @@ const messagesSlice = createSlice({
         state.status.readByUser = payload;
       }
     },
+    setLastUsedAIThread(state, action) {
+      const { payload } = action;
+      state.lastUsedAIThread = payload;
+    },
+    setAiThreads(state, action) {
+      const { payload } = action;
+      state.aiThreads = payload;
+    },
+    setAllAIThreads(state, action) {
+      const { payload } = action;
+      state.allAIThreads = payload;
+    },
   },
 });
 
@@ -39,6 +54,9 @@ export const {
   setIncomingMessages,
   setMessageStatus,
   setNewMessageDot,
+  setLastUsedAIThread,
+  setAiThreads,
+  setAllAIThreads,
 } = messagesSlice.actions;
 
 export default messagesReducer;

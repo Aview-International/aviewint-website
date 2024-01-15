@@ -7,7 +7,7 @@ import {
 const JoinCreators = () => {
   return (
     <section className="m-horizontal text-white">
-      <div className="bg-white-transparent px-s3 py-8">
+      <div className="bg-white-transparent px-s3 py-8 rounded-xl">
         <p className="text-5xl font-bold md:text-center md:text-7xl">
           Join these creators who use Aview
         </p>

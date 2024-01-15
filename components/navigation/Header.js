@@ -9,6 +9,7 @@ import aviewLogo from '../../public/img/aview/logo.png';
 import MenuButtonIcon from './MenuButtonIcon';
 import { checkTokenExpiry } from '../../utils/jwtExpiry';
 import { useSelector } from 'react-redux';
+import useAuth from '../../hooks/useAuth';
 
 const Header = ({ curPage }) => {
   const menuOpenCtx = useContext(MenuOpenContext);
@@ -38,10 +39,7 @@ const Header = ({ curPage }) => {
 };
 
 const HeaderButtons = () => {
-  const token = useSelector((data) => data.user.token);
-  const isLoggedIn = useMemo(() => {
-    return checkTokenExpiry(token);
-  }, [token]);
+  const isLoggedIn = useAuth();
 
   return (
     <div className="hidden gap-5 lg:flex">

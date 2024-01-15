@@ -1,43 +1,36 @@
-import React, { Fragment, useEffect } from 'react';
 import Image from 'next/image';
-import aviewLogo from '../../../public/img/aview/logo.svg';
 import Edit from '../../../public/img/icons/edit.svg';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const ChatSidebar = ({ titleArray, handleNewThread, isNewThread }) => {
-
-  useEffect(() => {
-    console.log("new thread", isNewThread)
-  },[isNewThread])
-
+const ChatSidebar = ({ allAIThreads }) => {
+  const { asPath } = useRouter();
   return (
-    <div className="bg-gray-200 relative flex w-full flex-col overflow-y-auto px-2">
-      <div
-        className="sticky top-0 z-20 mx-auto my-4 flex w-11/12 cursor-pointer flex-row items-center justify-between py-2 px-1 hover:rounded-md hover:bg-white-transparent"
-        onClick={() => handleNewThread()}
-      >
-        <Image
-          src={aviewLogo}
-          alt="aview-logo"
-          width={30}
-          height={30}
-          className="cursor-pointer rounded-full"
-        />
-        <p className="text-xl font-medium">New chat</p>
-        <Image src={Edit} alt="edit-logo" width={20} height={20} />
-      </div>
-      <div className="flex w-full flex-col gap-y-4 mt-10">
-        {titleArray.length > 0 ? (
-          <Fragment>
-            {titleArray.map((title) => {
-              return (
-                <div key={title.id} className="rounded-md bg-white-transparent cursor-pointer">
-                  <p className=" font-medium whitespace-nowrap w-full overflow-hidden text-ellipsis p-3">{title.titleText}</p>
-                </div>
-              );
-            })}
-          </Fragment>
-        ) : null}
-      </div>
+    <div>
+      <Link href="/dashboard/chat-assist">
+        <div
+          className={`flex flex-row items-center justify-between rounded-tl-xl p-4 hover:bg-white-transparent
+          ${
+            asPath === `/dashboard/chat-assist` ? 'bg-white-transparent' : ''
+          } p-3 font-medium hover:bg-white-transparent`}
+        >
+          <p className="text-sm">New chat</p>
+          <Image src={Edit} alt="edit-logo" width={16} height={16} />
+        </div>
+      </Link>
+      {allAIThreads.map((data, i) => (
+        <Link href={`/dashboard/chat-assist/${data.threadId}`} key={i}>
+          <a
+            className={`mt-2 block ${
+              asPath === `/dashboard/chat-assist/${data.threadId}`
+                ? 'bg-white-transparent'
+                : ''
+            } p-3 font-medium hover:bg-white-transparent`}
+          >
+            {data.title}
+          </a>
+        </Link>
+      ))}
     </div>
   );
 };

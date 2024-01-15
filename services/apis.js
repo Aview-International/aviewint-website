@@ -91,20 +91,18 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
-export const getUserMessages = async (id) => {
-  const response = await axios.get(baseUrl + 'messages/convo?userId=' + id);
+export const getUserMessages = async () => {
+  const response = await axiosInstance.get('messages/convo');
   return response.data;
 };
 
-export const getUserYoutubeChannel = async (userId) => {
-  const response = await axiosInstance.get(
-    'auth/youtube-channel?userId=' + userId
-  );
+export const getUserYoutubeChannel = async () => {
+  const response = await axiosInstance.get('auth/youtube-channel');
   return response.data;
 };
 
-export const getMessageStatus = async (userId) => {
-  const response = await axiosInstance.get('messages/status?userId=' + userId);
+export const getMessageStatus = async () => {
+  const response = await axiosInstance.get('messages/status');
   return response.data;
 };
 
@@ -133,33 +131,29 @@ export const uploadMultipleVoiceSamples = async (speakers, userId) => {
   );
 };
 
-export const uploadSingleVoiceSamples = async (audios, userId) => {
+export const uploadSingleVoiceSamples = async (audios) => {
   let formData = new FormData();
 
   for (const audio of audios) {
     formData.append('voiceSample', audio);
   }
 
-  await axiosInstance.post(
-    'dubbing/single-voice-cloning?userId=' + userId,
-    formData,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }
-  );
+  await axiosInstance.post('dubbing/single-voice-cloning', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
 };
 
-export const uploadRecordedVoice = async (audios, userId) => {
+export const uploadRecordedVoice = async (audios, voices, update = false) => {
   let formData = new FormData();
-
   for (const audio of audios) {
     formData.append('files', audio);
   }
 
+  formData.append('voices', JSON.stringify(voices));
   return await axiosInstance.post(
-    'dubbing/recorded-voice-cloning?userId=' + userId,
+    `dubbing/recorded-voice-cloning?purpose=${update ? 'update' : 'add'}`,
     formData,
     {
       headers: {
@@ -183,11 +177,10 @@ export const testVoiceCloning = async (text, voiceId) => {
   return response;
 };
 
-export const deleteVoiceClone = async (userId, voiceId) => {
-  const res = await axiosInstance.patch(
-    `dubbing/delete-voice-cloning/${userId}`,
-    { voiceId }
-  );
+export const deleteVoiceClone = async (voiceId) => {
+  const res = await axiosInstance.patch(`dubbing/delete-voice-cloning`, {
+    voiceId,
+  });
   return res;
 };
 
@@ -230,13 +223,50 @@ export const getIgVideos = async (code) =>
   await axiosInstance.post('auth/instagram/get_videos', { code });
 
 export const getPlans = async () => {
-  const response = (await axiosInstance.get('auth/plans')).data;
+  const response = (await axiosInstance.get('subscription/plans')).data;
   return response;
 };
-export const createCheckoutSesion = async () => {
-  const res = await axiosInstance.post('auth/stripe/create-checkout-session', {
-    plan: 'pro',
-  });
+
+export const createCheckoutSesion = async (planId, redirectDomain) => {
+  const redirectUrl = `${window.location.origin}/${
+    redirectDomain ?? 'billing'
+  }`;
+
+  const res = await axiosInstance.post(
+    'subscription/stripe/create-checkout-session',
+    {
+      plan: planId,
+      redirectUrl,
+    }
+  );
 
   window.location.href = res.data;
 };
+
+export const getBillingHistory = async () =>
+  (await axiosInstance.get('subscription/history')).data;
+
+export const getVoiceSamples = async (voices) =>
+  (
+    await axiosInstance.post('dubbing/voice-samples', {
+      voices,
+    })
+  ).data;
+
+export const createThread = async () =>
+  (await axiosInstance.post('messages/new-thread')).data;
+
+export const sendMessage = async (content, threadId, firstName) =>
+  (
+    await axiosInstance.post('messages/new-request', {
+      content,
+      threadId,
+      firstName,
+    })
+  ).data;
+
+export const getAIChatHistory = async (threadId) =>
+  (await axiosInstance.get('messages/get-thread/' + threadId)).data;
+
+export const getThreadHistory = async () =>
+  (await axiosInstance.get('messages/all-threads')).data;

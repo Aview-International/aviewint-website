@@ -7,8 +7,6 @@ import DashboardMobileMenu from '../navigation/DashboardMobileMenu';
 import MenuButtonIcon from '../navigation/MenuButtonIcon';
 import { customGreeting } from '../../utils/greeting';
 import { useSelector } from 'react-redux';
-import { createCheckoutSesion } from '../../services/apis';
-import ErrorHandler from '../../utils/errorHandler';
 
 const DashBoardHeader = ({ userInfo }) => {
   const [time, setTime] = useState(customGreeting());
@@ -25,16 +23,8 @@ const DashBoardHeader = ({ userInfo }) => {
 
   const menuOpenCtx = useContext(MenuOpenContext);
 
-  const handlePricing = async () => {
-    try {
-      await createCheckoutSesion();
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
-
   return (
-    <header className="relative flex w-full items-center justify-between px-s4 py-s4 text-white md:px-s9">
+    <header className="relative flex w-full items-center justify-between px-s4 py-s3 text-white md:px-s9">
       <MenuButtonIcon
         handler={menuOpenCtx.openMenuHandler}
         styles={'absolute left-6'}
@@ -46,7 +36,6 @@ const DashBoardHeader = ({ userInfo }) => {
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>
-      {/* <button onClick={handlePricing}>Checkout</button> */}
       <div className="hidden md:block">
         <Link href="/dashboard/messages">
           <a className="relative flex items-center rounded-full bg-gray-1 px-s2 py-2.5 text-sm">

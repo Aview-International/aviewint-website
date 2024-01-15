@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 /**
- * Input Slider component
+ * @name - Input Slider component
  * @prop label: String, to display the label of the input
  * @prop name: The name of the input, for events handling
  * @prop max: The maximum value of the slider
@@ -12,28 +12,30 @@ import { useMemo } from 'react';
  * @author Victor Ogunjobi
  */
 
-const Slider = ({ label, name, max, setRanges, value, values }) => {
-  const handleChange = (e) => {
-    setRanges((prevState) => ({
-      ...prevState,
-      [name]: e.target.value,
-    }));
-  };
-
+const Slider = ({
+  label,
+  name,
+  max,
+  value,
+  values,
+  onChange,
+  prefix,
+  suffix,
+}) => {
   const width = useMemo(() => {
     if (value > max / 2) {
       return (value * 100) / max;
     } else {
-      return (value * 100) / max + 2;
+      return (value * 100) / max + 1;
     }
   }, [value, max]);
 
   return (
-    <div className="mt-s2 mb-s3 bg-black p-s2">
-      <label className="mb-s2 inline-block text-xl text-white">{label}</label>
-      <div className="relative w-[80%]">
+    <div className="w-full">
+      <label className="mb-s2 inline-block text-lg text-white">{label}</label>
+      <div className="relative w-full">
         <span
-          className={`gradient-1 absolute block h-[15px] rounded-[30px] `}
+          className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
           style={{ width: `${Math.trunc(width)}%` }}
         ></span>
         <input
@@ -42,13 +44,13 @@ const Slider = ({ label, name, max, setRanges, value, values }) => {
           // min={0}
           value={value}
           max={max}
-          className="track-background remove-highlight slider-thumb absolute h-[15px] w-full appearance-none rounded-[30px] border border-white"
-          onChange={handleChange}
+          className="track-background remove-highlight slider-thumb absolute top-0 left-0 h-[15px] w-full appearance-none rounded-[30px] border border-white"
+          onChange={onChange}
         />
         <span
-          className={`absolute -top-[4px] -right-[65px] text-xl text-white md:-right-[65px]`}
+          className={`absolute -top-[4px] -right-[65px] text-xl text-white md:-right-[22%]`}
         >
-          {values[value] || value}
+          {prefix} {values[value] || value} {suffix}
         </span>
       </div>
     </div>
