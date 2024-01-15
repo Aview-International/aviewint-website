@@ -1,5 +1,5 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PageTitle from '../../../components/SEO/PageTitle';
 import ChatSidebar from '../../../components/dashboard/chatAssistant/chatSidebar';
 import aviewLogo from '../../../public/img/aview/logo.svg';
@@ -21,10 +21,13 @@ import {
   setLastUsedAIThread,
 } from '../../../store/reducers/messages.reducer';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const ChatAssist = () => {
   const dispatch = useDispatch();
+  const { push } = useRouter();
   const formRef = useRef();
+  const [trigger, setTrigger] = useState(false);
   const { aiThreads, lastUsedAIThread, allAIThreads } = useSelector(
     (x) => x.messages
   );
@@ -36,9 +39,7 @@ const ChatAssist = () => {
         try {
           const res = await createThread();
           dispatch(setLastUsedAIThread(res));
-        } catch (error) {
-          ErrorHandler(error);
-        }
+        } catch (error) {}
       })();
   }, [lastUsedAIThread]);
 
@@ -51,11 +52,9 @@ const ChatAssist = () => {
       try {
         const res = await getThreadHistory();
         dispatch(setAllAIThreads(res));
-      } catch (error) {
-        ErrorHandler(error);
-      }
+      } catch (error) {}
     })();
-  }, []);
+  }, [trigger]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +63,8 @@ const ChatAssist = () => {
       e.target[0].value = '';
       const data = await sendMessage(value, lastUsedAIThread, firstName);
       dispatch(setAiThreads(data));
+      setTrigger(!trigger);
+      push(`/dashboard/chat-assist/${lastUsedAIThread}`);
     } catch (error) {
       ErrorHandler(error);
     }
@@ -76,7 +77,7 @@ const ChatAssist = () => {
         <div className="w-48 border-r-2 border-white">
           <ChatSidebar allAIThreads={allAIThreads} />
         </div>
-        <div className="bg-gray-100 pt-s2 flex w-full flex-col justify-between">
+        <div className="bg-gray-100 flex w-full flex-col justify-between pt-s2">
           <div>{/* this div is only here to maintain styling */}</div>
           <div className="mx-auto w-8/12">
             {aiThreads.length > 0 ? (

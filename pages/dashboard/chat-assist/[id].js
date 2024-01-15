@@ -1,5 +1,5 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import PageTitle from '../../../components/SEO/PageTitle';
 import ChatSidebar from '../../../components/dashboard/chatAssistant/chatSidebar';
 import aviewLogo from '../../../public/img/aview/logo.svg';
@@ -26,7 +26,6 @@ const ChatAssist = () => {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const formRef = useRef();
-  const [inputVal, setInputVal] = useState('');
   const { aiThreads, allAIThreads } = useSelector((x) => x.messages);
   const { firstName, picture } = useSelector((x) => x.user);
 
