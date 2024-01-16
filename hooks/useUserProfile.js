@@ -19,9 +19,7 @@ const useUserProfile = () => {
       await getUserProfile(uid, (resp) =>
         dispatch(setUser({ ...resp, uid, token }))
       );
-    } catch (error) {
-      ErrorHandler(error);
-    }
+    } catch (error) {}
   };
 
   const handleGetYoutubeChannel = async () => {
@@ -35,18 +33,14 @@ const useUserProfile = () => {
         thumbnail: res.snippet.thumbnails.default.url,
       };
       dispatch(setYoutubeChannel(data));
-    } catch (error) {
-      ErrorHandler(error);
-    }
+    } catch (error) {}
   };
 
   const handleGetMessageStatus = async () => {
     try {
       const res = await getMessageStatus();
       dispatch(setMessageStatus(res));
-    } catch (error) {
-      ErrorHandler(error);
-    }
+    } catch (error) {}
   };
 
   const getProfile = async () => {

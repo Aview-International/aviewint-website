@@ -28,6 +28,7 @@ const ChatAssist = () => {
   const { push } = useRouter();
   const formRef = useRef();
   const [trigger, setTrigger] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { aiThreads, lastUsedAIThread, allAIThreads } = useSelector(
     (x) => x.messages
   );
@@ -59,6 +60,7 @@ const ChatAssist = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       let value = e.target[0].value;
       e.target[0].value = '';
       const data = await sendMessage(value, lastUsedAIThread, firstName);
@@ -66,6 +68,7 @@ const ChatAssist = () => {
       setTrigger(!trigger);
       push(`/dashboard/chat-assist/${lastUsedAIThread}`);
     } catch (error) {
+      setIsLoading(false);
       ErrorHandler(error);
     }
   };
@@ -103,7 +106,11 @@ const ChatAssist = () => {
           </div>
           <div>
             {aiThreads.length < 1 && <ChatSuggestions />}
-            <ChatForm formRef={formRef} handleSubmit={handleSubmit} />
+            <ChatForm
+              formRef={formRef}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </div>

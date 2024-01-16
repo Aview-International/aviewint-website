@@ -1,5 +1,5 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PageTitle from '../../../components/SEO/PageTitle';
 import ChatSidebar from '../../../components/dashboard/chatAssistant/chatSidebar';
 import aviewLogo from '../../../public/img/aview/logo.svg';
@@ -26,6 +26,7 @@ const ChatAssist = () => {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const formRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
   const { aiThreads, allAIThreads } = useSelector((x) => x.messages);
   const { firstName, picture } = useSelector((x) => x.user);
 
@@ -55,11 +56,14 @@ const ChatAssist = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       let value = e.target[0].value;
       e.target[0].value = '';
       const data = await sendMessage(value, query.id, firstName);
       dispatch(setAiThreads(data));
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       ErrorHandler(error);
     }
   };
@@ -97,7 +101,11 @@ const ChatAssist = () => {
           </div>
           <div>
             {aiThreads.length < 1 && <ChatSuggestions />}
-            <ChatForm formRef={formRef} handleSubmit={handleSubmit} />
+            <ChatForm
+              formRef={formRef}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </div>
