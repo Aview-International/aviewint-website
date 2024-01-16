@@ -58,7 +58,7 @@ const DashboardStructure = ({ children }) => {
 
   return (
     <DashboardContainer>
-      <main className="flex min-h-screen w-full bg-white-transparent">
+      <main className="flex h-screen w-full bg-white-transparent">
         <DashboardSidebar
           userInfo={userInfo}
           setIsOpen={setIsOpen}
@@ -70,7 +70,7 @@ const DashboardStructure = ({ children }) => {
           }`}
         >
           <DashBoardHeader userInfo={userInfo} />
-          <div className="mx-auto h-full w-full self-stretch overflow-y-auto bg-black/60 p-s3 text-white md:p-s4">
+          <div className="mx-auto h-full w-full self-stretch overflow-y-auto bg-black/60 p-s3 text-white md:p-s4 overflow-y-auto">
             {children}
           </div>
         </div>

@@ -1439,6 +1439,11 @@ export const DASHBOARD_NAVLINKS = [
     route: () => '/dashboard/upload',
   },
   {
+    text: 'Assistance',
+    image: assistance,
+    route: () => '/dashboard/chat-assist'
+  },
+  {
     text: 'AI Voice',
     image: ai_voice,
     route: () => '/dashboard/ai-voice',
@@ -1448,20 +1453,15 @@ export const DASHBOARD_NAVLINKS = [
   //   image: messages,
   //   route:() => '/dashboard/messages',
   // },
-  {
-    text: 'Billing',
-    image: billing,
-    route: () => '/dashboard/billing',
-  },
+  // {
+  //   text: 'Billing',
+  //   image: billing,
+  //   route: () => '/dashboard/billing',
+  // },
   {
     text: 'History',
     image: history,
     route: () => '/dashboard/history',
-  },
-  {
-    text: 'Assistance',
-    image: assistance,
-    route: () => '/dashboard/chat-assist'
   },
   // {
   //   text: 'Referral',
