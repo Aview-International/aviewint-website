@@ -19,6 +19,7 @@ import {
   setAiThreads,
   setAllAIThreads,
   setLastUsedAIThread,
+  setLastUserAIMessage,
 } from '../../../store/reducers/messages.reducer';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -63,6 +64,7 @@ const ChatAssist = () => {
       setIsLoading(true);
       let value = e.target[0].value;
       e.target[0].value = '';
+      dispatch(setLastUserAIMessage(value));
       const data = await sendMessage(value, lastUsedAIThread, firstName);
       dispatch(setAiThreads(data));
       setTrigger(!trigger);

@@ -16,6 +16,7 @@ import ErrorHandler from '../../../utils/errorHandler';
 import {
   setAiThreads,
   setAllAIThreads,
+  setLastUserAIMessage,
 } from '../../../store/reducers/messages.reducer';
 import { useRouter } from 'next/router';
 
@@ -56,6 +57,7 @@ const ChatAssist = () => {
       setIsLoading(true);
       let value = e.target[0].value;
       e.target[0].value = '';
+      dispatch(setLastUserAIMessage(value));
       const data = await sendMessage(value, query.id, firstName);
       dispatch(setAiThreads(data));
       setIsLoading(false);
@@ -81,7 +83,7 @@ const ChatAssist = () => {
                 <MessageContent picture={picture} key={i} {...data} />
               ))}
           </div>
-          <div className="mx-auto w-full md:w-10/12 pl-s7">
+          <div className="mx-auto w-full pl-s7 md:w-10/12">
             <ChatForm
               formRef={formRef}
               handleSubmit={handleSubmit}
