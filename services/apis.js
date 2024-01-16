@@ -101,10 +101,8 @@ export const getUserYoutubeChannel = async () => {
   return response.data;
 };
 
-export const getMessageStatus = async () => {
-  const response = await axiosInstance.get('messages/status');
-  return response.data;
-};
+export const getMessageStatus = async () =>
+  (await axiosInstance.get('messages/status')).data;
 
 export const joinWaitlist = async (data) => {
   return axios.post(baseUrl + 'auth/join-waitlist', data);

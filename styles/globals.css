@@ -8,20 +8,20 @@
   }
 
   .rounded-border-gradient:before {
-     content: "";
-     position: absolute;
-     width: 100%;
-     height: 100%;
-     background-image: linear-gradient(54deg, #ff00ff 0%, #00ffff 100%);
-     z-index: -1;
-     top: -1%;
-     border-top-right-radius: 20px; 
-     border-top-left-radius: 20px; 
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(54deg, #ff00ff 0%, #00ffff 100%);
+    z-index: -1;
+    top: -1%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
   }
-  
-  .border-gradient{
+
+  .border-gradient {
     border-style: solid;
-    border-width:0 1px 0 1px;
+    border-width: 0 1px 0 1px;
     border-image: linear-gradient(54deg, #ff00ff 0%, #00ffff 100%) 1;
   }
 
@@ -47,10 +47,6 @@
 
   .gradient-3 {
     background: linear-gradient(180deg, #ae00ff25 19.44%, #01ffff2a 100%);
-  }
-
-  .overlay-dark {
-    background: rgba(255, 255, 255, 0.08);
   }
 
   .gradient-dark {
@@ -178,83 +174,18 @@
       );
   }
 
-  .card {
-    --flow-space: 0.5em;
-    --hsl: var(--hue), var(--saturation), var(--lightness);
-  }
-
-  .card:nth-child(1) {
-    --hue: 165;
-    --saturation: 82.26%;
-    --lightness: 51.37%;
-  }
-
-  .card:nth-child(2) {
-    --hue: 291.34;
-    --saturation: 95.9%;
-    --lightness: 61.76%;
-  }
-
-  .card:nth-child(3) {
-    --hue: 338.69;
-    --saturation: 100%;
-    --lightness: 48.04%;
-  }
-
-  .card:nth-child(4) {
-    --hue: 309;
-    --saturation: 100%;
-    --lightness: 58%;
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    user-select: none;
-    opacity: var(--opacity, 0);
-    -webkit-mask: radial-gradient(
-      18rem 18rem at var(--x) var(--y),
-      #000 1%,
-      transparent 50%
-    );
-    mask: radial-gradient(
-      18rem 18rem at var(--x) var(--y),
-      #000 1%,
-      transparent 50%
-    );
-    transition: 400ms mask ease;
-    will-change: mask;
-  }
-
-  .overlay .card {
-    background-color: hsla(var(--hsl), 0.15);
-    border-color: hsla(var(--hsl), 1);
-    box-shadow: 0 0 0 1px inset hsl(var(--hsl));
-  }
-
-  :not(.overlay) > .card {
-    transition: 400ms background ease;
-    will-change: background;
-  }
-
-  :not(.overlay) > .card:hover > div {
-    --lightness: 95%;
-    background: hsla(0, 0%, 2%, 0.367);
-  }
-
   /* width */
   ::-webkit-scrollbar {
     width: 6px;
   }
- 
+
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
   }
-  
+
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   /* Track */

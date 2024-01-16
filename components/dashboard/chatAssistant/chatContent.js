@@ -5,6 +5,7 @@ import aviewLogo from '../../../public/img/aview/logo.svg';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
 import FormInput from '../../FormComponents/FormInput';
+import GradientLoader from '../../../public/loaders/GradientLoader';
 
 export const chatOptions = [
   {
@@ -127,19 +128,25 @@ export const ChatSuggestions = () => {
   );
 };
 
-export const ChatForm = ({ handleSubmit, formRef }) => {
+export const ChatForm = ({ handleSubmit, formRef, isLoading }) => {
   return (
     <form
-      className="mx-auto my-s2 block flex w-10/12"
-      onSubmit={handleSubmit}
+      className="mx-auto my-s2 block flex w-10/12 items-center"
+      onSubmit={isLoading ? null : handleSubmit}
       ref={formRef}
     >
       <FormInput placeholder="Message Aview" extraClasses="mb-0" />
+
       <button
         type="submit"
         className="mx-s1 flex items-center justify-center p-s1"
+        disabled={isLoading}
       >
-        <Image src={SendIcon} alt="Send" width={24} height={24} />
+        {isLoading ? (
+          <GradientLoader />
+        ) : (
+          <Image src={SendIcon} alt="Send" width={24} height={24} />
+        )}
       </button>
     </form>
   );
