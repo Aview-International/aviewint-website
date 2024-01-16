@@ -88,7 +88,9 @@ export const MessageContent = ({ content, role, picture }) => {
   return (
     <div
       className={`mb-12 flex w-full items-start ${
-        role === 'assistant' ? 'flex-row text-start' : 'flex-row-reverse text-right'
+        role === 'assistant'
+          ? 'flex-row text-start'
+          : 'flex-row-reverse text-right'
       }`}
     >
       <div className={`flex-none`}>
@@ -101,7 +103,7 @@ export const MessageContent = ({ content, role, picture }) => {
         />
       </div>
       <div className="grow pl-5">
-        <p className={`font-semibold mr-s2`}>
+        <p className={`mr-s2 font-semibold`}>
           {role === 'assistant' ? 'Aview' : 'You'}
         </p>
         {content.map(({ text }, i) => (
@@ -116,7 +118,7 @@ export const MessageContent = ({ content, role, picture }) => {
 
 export const ChatSuggestions = () => {
   return (
-    <div className="mx-auto grid w-8/12 grid-cols-2 gap-4">
+    <div className="mx-auto grid w-10/12 grid-cols-2 gap-4 px-s7">
       {chatOptions.map((chatOption, index) => (
         <div
           key={index}
@@ -135,7 +137,7 @@ export const ChatSuggestions = () => {
 export const ChatForm = ({ handleSubmit, formRef, isLoading }) => {
   return (
     <form
-      className="mx-auto my-s2 block flex w-10/12 items-center"
+      className="mx-auto my-s2 block flex w-full items-center"
       onSubmit={isLoading ? null : handleSubmit}
       ref={formRef}
     >

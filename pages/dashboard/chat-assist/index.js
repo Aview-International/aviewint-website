@@ -76,13 +76,13 @@ const ChatAssist = () => {
   return (
     <>
       <PageTitle title="AI Chat Assistant" />
-      <div className="mx-auto flex h-full flex-row rounded-xl bg-white-transparent">
-        <div className="w-48 border-r-2 border-white">
+      <div className="mx-auto flex h-full flex-row overflow-y-auto rounded-xl bg-white-transparent">
+        <div className="w-48 border-r-2 border-white lg:w-4/12">
           <ChatSidebar allAIThreads={allAIThreads} />
         </div>
-        <div className="bg-gray-100 flex w-full flex-col justify-between pt-s2">
+        <div className="bg-gray-100 flex h-full w-full flex-col justify-between overflow-y-auto pt-s2">
           <div>{/* this div is only here to maintain styling */}</div>
-          <div className="mx-auto w-8/12">
+          <div className="mx-auto w-10/12">
             {aiThreads.length > 0 ? (
               [...aiThreads]
                 .sort((a, b) => a.created_at - b.created_at)
@@ -106,11 +106,13 @@ const ChatAssist = () => {
           </div>
           <div>
             {aiThreads.length < 1 && <ChatSuggestions />}
-            <ChatForm
-              formRef={formRef}
-              handleSubmit={handleSubmit}
-              isLoading={isLoading}
-            />
+            <div className="mx-auto w-full pl-s7 md:w-10/12">
+              <ChatForm
+                formRef={formRef}
+                handleSubmit={handleSubmit}
+                isLoading={isLoading}
+              />
+            </div>
           </div>
         </div>
       </div>

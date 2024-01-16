@@ -70,7 +70,7 @@ const DashboardStructure = ({ children }) => {
           }`}
         >
           <DashBoardHeader userInfo={userInfo} />
-          <div className="mx-auto h-full w-full self-stretch overflow-y-auto bg-black/60 p-s3 text-white md:p-s4 overflow-y-auto">
+          <div className="mx-auto h-full w-full self-stretch overflow-y-auto bg-black/60 p-s3 text-white md:p-s4">
             {children}
           </div>
         </div>
