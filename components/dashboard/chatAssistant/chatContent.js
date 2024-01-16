@@ -86,8 +86,12 @@ export const chatOptions = [
 
 export const MessageContent = ({ content, role, picture }) => {
   return (
-    <div className="mb-12 flex w-full flex-row items-start justify-center">
-      <div className="flex-none">
+    <div
+      className={`mb-12 flex w-full items-start ${
+        role === 'assistant' ? 'flex-row text-start' : 'flex-row-reverse text-right'
+      }`}
+    >
+      <div className={`flex-none`}>
         <Image
           src={role === 'assistant' ? aviewLogo : picture}
           alt="picture"
@@ -97,11 +101,11 @@ export const MessageContent = ({ content, role, picture }) => {
         />
       </div>
       <div className="grow pl-5">
-        <p className="font-semibold">
+        <p className={`font-semibold mr-s2`}>
           {role === 'assistant' ? 'Aview' : 'You'}
         </p>
         {content.map(({ text }, i) => (
-          <p key={i} className="mt-1.5 text-start">
+          <p key={i} className={`mt-1.5`}>
             {text.value}
           </p>
         ))}

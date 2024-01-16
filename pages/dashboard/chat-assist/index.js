@@ -99,7 +99,7 @@ const ChatAssist = () => {
                   className="cursor-pointer"
                 />
                 <p className="mt-6 text-2xl font-bold">
-                  How can we help today ?
+                  How can we help today?
                 </p>
               </div>
             )}
