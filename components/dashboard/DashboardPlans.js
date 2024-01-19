@@ -1,57 +1,39 @@
 import Border from '../UI/Border';
 import Card from '../UI/Card';
-import { createCheckoutSesion } from '../../services/apis';
-import ErrorHandler from '../../utils/errorHandler';
 import OnboardingButton from '../Onboarding/button';
 import { useState } from 'react';
 
-const PriceSection = ({ priceList, user }) => {
+const PriceSection = ({ plan, userPlan, handlePricing, buttonId }) => {
   const [isChecked, setToggleIsChecked] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handlePricing = async () => {
-    try {
-      setIsLoading(true);
-      await createCheckoutSesion(priceList.id);
-    } catch (error) {
-      setIsLoading(false);
-      ErrorHandler(error);
-    }
-  };
 
   return (
     <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-2 py-4 text-white md:px-6">
-      <span className="rounded-md bg-gray-1 p-1 uppercase">
-        {priceList.desc}
-      </span>
+      <span className="rounded-md bg-gray-1 p-1 uppercase">{plan.desc}</span>
       <div className="my-s2 flex flex-row items-center justify-start gap-x-2">
         <p className="text-xl font-bold md:text-4xl">
           &#36;
-          {!isChecked
-            ? priceList.monthlyCost
-            : Math.round(priceList.yearlyCost / 12)}
+          {!isChecked ? plan.monthlyCost : Math.round(plan.yearlyCost / 12)}
         </p>
-        {priceList.id != 'basic' && (
+        {plan.id != 'basic' && (
           <p>
             Per month, billed &#36;
-            {isChecked ? priceList.yearlyCost : priceList.monthlyCost * 12}{' '}
-            annually
+            {isChecked ? plan.yearlyCost : plan.monthlyCost * 12} annually
           </p>
         )}
       </div>
       <div className="capitalize">
         <OnboardingButton
-          isLoading={isLoading}
-          theme={priceList.id === 'pro' ? 'light' : 'dark'}
-          onClick={handlePricing}
+          isLoading={buttonId === plan.stripe_monthly_id}
+          theme={plan.id === 'pro' ? 'light' : 'dark'}
+          onClick={() => handlePricing(plan.stripe_monthly_id)}
         >
-          {priceList.id === user.plan ? 'Current Plan' : 'Go ' + priceList.id}
+          {plan.id === userPlan ? 'Current Plan' : 'Go ' + plan.id}
         </OnboardingButton>
       </div>
 
-      <p className="mb-2 mt-s3 font-semibold">{priceList.description}</p>
+      <p className="mb-2 mt-s3 font-semibold">{plan.description}</p>
 
-      {priceList.id === user?.plan && (
+      {plan.id === userPlan && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
           <Border borderRadius="3xl">
             <div className="block rounded-3xl bg-white px-3 py-1 text-center font-medium text-black">
@@ -64,28 +46,38 @@ const PriceSection = ({ priceList, user }) => {
   );
 };
 
-const DashboardPlans = ({ isChecked, plans, user }) => {
+const DashboardPlans = ({
+  plans,
+  buttonId,
+  handlePricing,
+  isChecked,
+  userPlan,
+}) => {
   const [showCancelSub, setShowCancelSub] = useState(false);
 
   return (
     <section>
       {!showCancelSub && (
         <div className="z-20 mb-10 flex justify-center gap-8 px-4 md:px-0">
-          {plans.map((priceList, index) => (
+          {plans.map((plan, index) => (
             <div key={index}>
-              {priceList.id === user.plan ? (
+              {plan.id === userPlan ? (
                 <Card borderRadius="xl" fullWidth={true}>
                   <PriceSection
-                    priceList={priceList}
+                    plan={plan}
                     isChecked={isChecked}
-                    user={user}
+                    userPlan={userPlan}
+                    handlePricing={handlePricing}
+                    buttonId={buttonId}
                   />
                 </Card>
               ) : (
                 <PriceSection
-                  priceList={priceList}
+                  plan={plan}
                   isChecked={isChecked}
-                  user={user}
+                  userPlan={userPlan}
+                  handlePricing={handlePricing}
+                  buttonId={buttonId}
                 />
               )}
             </div>
