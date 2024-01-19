@@ -16,8 +16,27 @@ import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
 import Confetti from '../../components/UI/Confetti';
+import { getPlans } from '../../services/apis';
+import usePlans from '../../hooks/usePlans';
+import OnboardingPayment from '../../components/Onboarding/payment';
 
-const Onboarding = () => {
+export const getStaticProps = async () => {
+  try {
+    const plans = await getPlans();
+    const plansJSON = JSON.stringify(plans);
+    return {
+      props: {
+        plans: plansJSON,
+      },
+      revalidate: 60, // re-generate page every 60 seconds (if necessary)
+    };
+  } catch (error) {
+    return { props: { plans: {} } };
+  }
+};
+
+const Onboarding = ({ plans }) => {
+  usePlans(JSON.parse(plans));
   const userData = useSelector((state) => state.user);
   const allLanguages = useSelector((state) => state.aview.allLanguages);
 
@@ -113,6 +132,11 @@ const Stages = ({ userData, allLanguages }) => {
       {query.stage === '5' && (
         <PageTransition>
           <OnboardingStep5 userData={userData} />
+        </PageTransition>
+      )}
+      {query.stage === 'subscription' && (
+        <PageTransition>
+          <OnboardingPayment />
         </PageTransition>
       )}
       {query.stage === '6' && (

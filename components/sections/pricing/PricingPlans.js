@@ -5,10 +5,16 @@ import Border from '../../UI/Border';
 import Card from '../../UI/Card';
 import useAuth from '../../../hooks/useAuth';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
-const PriceSection = ({ plan, isChecked, sliderValue }) => {
+const PriceSection = ({ plan, isChecked, sliderValue, push }) => {
   const isLoggedIn = useAuth();
   const userPlan = useSelector((data) => data.user.plan);
+
+  const handlePlanSelect = () => {
+    localStorage.setItem('payForPlan', plan.id);
+    push(`/register`);
+  };
 
   return (
     <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
@@ -48,7 +54,7 @@ const PriceSection = ({ plan, isChecked, sliderValue }) => {
         <Button
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
-          route={`/register?subscription=true&plan=${plan.id}`}
+          onClick={handlePlanSelect}
           fullWidth={true}
         >
           {isLoggedIn
@@ -73,6 +79,7 @@ const PriceSection = ({ plan, isChecked, sliderValue }) => {
 };
 
 const PricingPlans = ({ isChecked, plans, sliderValue }) => {
+  const { push } = useRouter();
   return (
     <section className="m-horizontal">
       <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
@@ -85,10 +92,11 @@ const PricingPlans = ({ isChecked, plans, sliderValue }) => {
                   plan={plan}
                   isChecked={isChecked}
                   sliderValue={sliderValue}
+                  push={push}
                 />
               </Card>
             ) : (
-              <PriceSection plan={plan} isChecked={isChecked} />
+              <PriceSection plan={plan} isChecked={isChecked} push={push} />
             )}
           </div>
         ))}
