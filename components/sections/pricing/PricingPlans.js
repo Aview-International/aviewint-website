@@ -7,7 +7,13 @@ import useAuth from '../../../hooks/useAuth';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const PriceSection = ({ plan, isChecked, sliderValue, push }) => {
+const PriceSection = ({
+  plan,
+  isChecked,
+  sliderValue,
+  push,
+  isRecommended,
+}) => {
   const isLoggedIn = useAuth();
   const userPlan = useSelector((data) => data.user.plan);
 
@@ -17,7 +23,13 @@ const PriceSection = ({ plan, isChecked, sliderValue, push }) => {
   };
 
   return (
-    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
+    <div
+      className={`relative h-full w-full cursor-pointer rounded-xl bg-white-transparent  px-4 py-8 text-white md:px-6 ${
+        isRecommended
+          ? 'gradient-dark border-0'
+          : 'border-xl border border-transparent'
+      }`}
+    >
       <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
         {plan.desc}
       </span>
@@ -90,13 +102,19 @@ const PricingPlans = ({ isChecked, plans, sliderValue }) => {
               <Card borderRadius="xl" fullWidth={true}>
                 <PriceSection
                   plan={plan}
+                  isRecommended={
+                    sliderValue <= plan.sliderValueMax &&
+                    sliderValue >= plan.sliderValueMin
+                  }
                   isChecked={isChecked}
                   sliderValue={sliderValue}
                   push={push}
                 />
               </Card>
             ) : (
-              <PriceSection plan={plan} isChecked={isChecked} push={push} />
+              <div className="p-[2px]">
+                <PriceSection plan={plan} isChecked={isChecked} push={push} />
+              </div>
             )}
           </div>
         ))}
