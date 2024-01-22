@@ -1,49 +1,66 @@
 import { useState } from 'react';
 import { SettingsLayout, Settings_Back_Button } from '..';
 import ToggleButton from '../../../../components/FormComponents/ToggleButton';
-
-const MobileToggle = ({ title, info }) => {
-  const [isChecked, setIsChecked] = useState(true);
-  const handleChange = (e) => setIsChecked(e.target.checked);
-
-  return (
-    <div className="flex items-center justify-between border-y border-white-transparent py-s2 px-s3 md:border-none">
-      <div>
-        <h4 className="text-xl">{title}</h4>
-        <p className="text-xs">{info}</p>
-      </div>
-      <ToggleButton isChecked={isChecked} handleChange={handleChange} />
-    </div>
-  );
-};
+import Container from '../../../../components/UI/Container';
 
 const NOTIFICATIONS = [
   {
     title: 'Newsletter emails',
     info: 'Subscribe to our weekly newsletter.',
+    value: true,
   },
   {
     title: 'Product emails',
     info: 'Get tips and resources about Aview&#39;s tools.',
+    value: true,
   },
   {
     title: 'News emails',
     info: 'Learn about new Aview features.',
+    value: true,
   },
   {
     title: 'Support emails',
     info: 'Get help with using Aview&#39;s platform.',
+    value: true,
+  },
+  {
+    title: 'Unsubscribe from all',
+    info: 'I dont want to receive any emails about the product or new offers.',
+    value: false,
   },
 ];
 
+const MobileToggle = ({ title, info, value }) => {
+  const [isChecked, setIsChecked] = useState(value);
+  const handleChange = (e) => setIsChecked(e.target.checked);
+
+  return (
+    <Container
+      left={
+        <>
+          <h4 className="text-xl">{title}</h4>
+          <p className="text-xs">{info}</p>
+        </>
+      }
+      right={<ToggleButton isChecked={isChecked} handleChange={handleChange} />}
+    />
+  );
+};
+
 const EmailNotifications = () => {
   return (
-    <div className="mt-s5 text-white">
-      <div></div>
+    <div>
       <Settings_Back_Button title={'Email Notifications'} />
-      <p className="mb-s5 px-s1 text-center text-lg">
-        Select what and when you want to hear from us.
-      </p>
+      <Container
+        left={
+          <div className="flex flex-col justify-start gap-y-1">
+            <p className="text-xl">Notification Settings</p>
+            <p className="text-sm">Manage your notification and email settings here.</p>
+          </div>
+        }
+        isHeaderSection={true}
+      />
       {NOTIFICATIONS.map((item, index) => (
         <MobileToggle key={`settinng-${index}`} {...item} />
       ))}

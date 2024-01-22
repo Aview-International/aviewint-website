@@ -1,221 +1,174 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { SettingsLayout, Settings_Back_Button } from '..';
-import Correct from '../../../../public/img/icons/green-check-circle.svg';
-import Incorrect from '../../../../public/img/icons/incorrect.svg';
-import OnboardingButton from '../../../../components/Onboarding/button';
-import PhoneNumberInput from '../../../../components/FormComponents/PhoneNumberInput';
+import Container from '../../../../components/UI/Container';
+import Button from '../../../../components/UI/Button';
 import { useSelector } from 'react-redux';
 import FormInput from '../../../../components/FormComponents/FormInput';
-import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
-import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
-import { getIgAuthLink } from '../../../../services/apis';
-import ErrorHandler from '../../../../utils/errorHandler';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
 
 const INPUT_FIELDS = [
   {
-    name: 'firstName',
-    label: 'First Name',
-    _id: 'firstName',
+    name: 'Username',
+    label: 'Username',
+    _id: 'Username',
   },
   {
-    name: 'lastName',
-    label: 'Last Name',
-    _id: 'lastName',
-  },
-  {
-    name: 'email',
-    label: 'Email Address',
+    name: 'Email',
+    label: 'Email',
     _id: 'email',
+  },
+  {
+    name: 'Old Password',
+    label: 'Old Password',
+    _id: 'old_password',
+  },
+  {
+    name: 'New Password',
+    label: 'New Password',
+    _id: 'new_password',
   },
 ];
 
-const Container = ({ left, right }) => (
-  <div className="flex w-full flex-col items-start p-s2 md:mb-s2 md:flex-row md:items-center md:p-0">
-    <div className="w-full text-left md:w-2/5 md:text-right">{left}</div>
-    <div className="ml-0 w-full md:ml-s5 md:w-2/5">{right}</div>
-  </div>
-);
-
-const Accounts = ({ userData }) => {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState({
-    youtube: false,
-    instagram: false,
-    tiktok: false,
-    facebook: false,
-  });
-
-  const linkInstagramAccount = async () => {
-    Cookies.set('instagramRedirect', router.pathname);
-    try {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: true,
-      }));
-      window.location = await getIgAuthLink();
-    } catch (error) {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: false,
-      }));
-      ErrorHandler(error);
-    }
-  };
-
-  const linkYoutubeAccount = async () => {
-    localStorage.setItem('userId', userData._id);
-    setIsLoading((prev) => ({
-      ...prev,
-      youtube: true,
-    }));
-    window.location = await authorizeUser();
-  };
-
-  return (
-    <>
-      <Container
-        left={<p className={`text-xl`}>YouTube</p>}
-        right={
-          <OnBoardingAccounts
-            classes="bg-[#ff0000]"
-            isAccountConnected={userData?.youtube?.youtubeConnected}
-            clickEvent={linkYoutubeAccount}
-            account={
-              <Image
-                src={WhiteYoutube}
-                alt="connect"
-                width={100}
-                height={22.5}
-              />
-            }
-            isLoading={isLoading.youtube}
-          />
-        }
-      />
-      <Container
-        left={<p className={`text-xl`}>Instagram</p>}
-        right={
-          <OnBoardingAccounts
-            isAccountConnected={userData?.instagram?.instagramConnected}
-            classes="instagram"
-            clickEvent={linkInstagramAccount}
-            account="Instagram"
-          />
-        }
-      />
-      <Container
-        left={<p className={`text-xl`}>Facebook</p>}
-        right={
-          <OnBoardingAccounts
-            isAccountConnected={userData?.facebook}
-            classes="bg-[#0054ff]"
-            account="Facebook"
-          />
-        }
-      />
-      <Container
-        left={<p className={`text-xl`}>TikTok</p>}
-        right={
-          <OnBoardingAccounts
-            isAccountConnected={userData?.facebook}
-            classes="bg-[#0054ff]"
-            account="TikTok"
-          />
-        }
-      />
-    </>
-  );
-};
-
 const EditProfile = () => {
   const userInfo = useSelector((state) => state.user);
-
-  useEffect(() => {
-    setPayload({
-      ...payload,
-      firstName: userInfo.firstName,
-      lastName: userInfo.lastName,
-      email: userInfo.email,
-      phone: userInfo.phone,
-      role: userInfo.role,
-    });
-  }, [userInfo]);
+  const [newEmail, setNewEmail] = useState(false);
 
   const [payload, setPayload] = useState({
-    firstName: '',
-    lastName: '',
+    userName: '',
     email: '',
-    phone: '',
-    role: '',
+    old_password: '',
+    new_password: '',
+    new_profile: null,
   });
+
+  const handleEmailChange = (e) => {
+    setPayload({ ...payload, email: e.target.value });
+    // setNewEmail(!newEmail);
+  };
 
   const handleChange = (e) =>
     setPayload({ ...payload, [e.target.name]: e.target.value });
 
-  return (
-    <div>
-      <Settings_Back_Button title="Edit Profile" />
+  useEffect(() => {
+    setPayload({
+      ...payload,
+      userName: `${userInfo.firstName}${` `}${userInfo.lastName}`,
+      email: userInfo.email,
+      old_password: userInfo.password,
+    });
+  }, [userInfo]);
 
+  return (
+    <div className="w-full">
+      <Settings_Back_Button title="Edit Profile" />
       <Container
         left={
-          <div className="jusify-start flex md:justify-end">
-            <Image
-              src={userInfo.picture}
-              alt={userInfo.firstName}
-              width={48}
-              height={48}
-              unoptimized
-              className="rounded-full"
-            />
+          <div className="flex flex-col justify-start gap-y-1">
+            <p className='text-xl'>Profile</p>
+            <p className="text-sm">Update your photo and personal details here.</p>
           </div>
         }
-        right={
-          <>
-            <h3 className="text-xl">
-              {userInfo.firstName} {userInfo?.lastName}
-            </h3>
-            <p className="text-sm">Change profile photo</p>
-          </>
-        }
+        right={<p className="w-full text-end">Current plan: Creator</p>}
+        isHeaderSection={true}
       />
       <InputField
-        value={payload.firstName}
+        value={payload.userName}
         handleChange={handleChange}
         {...INPUT_FIELDS[0]}
       />
-      <InputField
-        value={payload.lastName}
-        handleChange={handleChange}
-        {...INPUT_FIELDS[1]}
-      />
-      <Container left={<h3 className="my-s1 text-2xl">Accounts</h3>} />
-      <Accounts userData={userInfo} />
       <Container
-        left={<h3 className="my-s3 text-2xl">Personal Information</h3>}
-      />
-      <InputField
-        value={payload.email}
-        handleChange={handleChange}
-        {...INPUT_FIELDS[2]}
-      />
-      {/* <Container
-        left={<label className={`text-xl`}>Phone Number</label>}
+        left={
+          <div className="jusify-start flex flex-col gap-y-1">
+            <p className='text-xl'>Profile Photo</p>
+            <p className="text-sm">This will be displayed on your profile.</p>
+          </div>
+        }
         right={
-          <div className="">
-            <PhoneNumberInput
-              value={payload.phone}
-              onChange={(e) => setPayload({ ...payload, phone: e })}
+          <div className="flex w-60 flex-row items-center justify-between">
+            <Image
+              src={
+                payload.new_profile
+                  ? URL.createObjectURL(payload.new_profile)
+                  : userInfo.picture
+              }
+              alt={userInfo.userName}
+              width={70}
+              height={70}
+              unoptimized
+              className="rounded-full"
+            />
+            <label className="block cursor-pointer text-base underline">
+              <input
+                type="file"
+                className="hidden"
+                accept="image/png, image/jpeg, image/gif"
+                onChange={(e) =>
+                  setPayload({ ...payload, new_profile: e.target.files[0] })
+                }
+                name="new_profile"
+              />
+              Update
+            </label>
+          </div>
+        }
+      />
+      <Container
+        left={<p className='text-xl'>Email</p>}
+        right={
+          <Container
+            left={
+              <>
+                {newEmail ? (
+                  <FormInput
+                    placeholder="Enter new Email"
+                    type="email"
+                    extraClasses="mr-12"
+                    onChange={handleEmailChange}
+                    value={payload.email}
+                    name="email"
+                  />
+                ) : (
+                  <p className="text-lg">{payload.email}</p>
+                )}
+              </>
+            }
+            right={
+              <div className="ml-10">
+                <Button
+                  type="secondary"
+                  purpose="onClick"
+                  onClick={() => setNewEmail(!newEmail)}
+                >
+                  Change email address
+                </Button>
+              </div>
+            }
+            isBottomLine={true}
+          />
+        }
+      />
+      <Container
+        left={<p className='text-xl'>Password</p>}
+        right={
+          <div className="flex flex-col items-start justify-start gap-y-1 ">
+            <InputField
+              value={payload.old_password}
+              handleChange={handleChange}
+              isColumn={true}
+              isBottomLine={true}
+              {...INPUT_FIELDS[2]}
+            />
+
+            <InputField
+              value={payload.new_password}
+              handleChange={handleChange}
+              isColumn={true}
+              isBottomLine={true}
+              {...INPUT_FIELDS[3]}
             />
           </div>
         }
-      /> */}
-
-      <div className="mx-auto w-36">
-        {/* <OnboardingButton disabled>Submit</OnboardingButton> */}
-      </div>
+      />
     </div>
   );
 };
@@ -227,6 +180,8 @@ const InputField = ({
   placeholder,
   handleChange,
   value,
+  isColumn,
+  isBottomLine,
   isValid,
   label,
   hasSubmitted,
@@ -234,21 +189,25 @@ const InputField = ({
   return (
     <Container
       left={
-        <label htmlFor={_id} className={`block text-xl`}>
+        <label htmlFor={_id} className={`block text-lg`}>
           {label}
         </label>
       }
       right={
-        <FormInput
-          placeholder={placeholder}
-          type={type || 'text'}
-          extraClasses=""
-          onChange={handleChange}
-          value={value}
-          id={_id}
-          name={name}
-        />
+        <div className="w-full">
+          <FormInput
+            placeholder={placeholder}
+            type={type || 'text'}
+            extraClasses=""
+            onChange={handleChange}
+            value={value}
+            id={_id}
+            name={name}
+          />
+        </div>
       }
+      isColumn={isColumn}
+      isBottomLine={isBottomLine}
     />
   );
 };
