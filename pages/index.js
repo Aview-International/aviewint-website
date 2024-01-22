@@ -13,6 +13,7 @@ import EasterEgg from '../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
+import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <EmpowerGlobal />
       <MetricsAnime />
       <FAQ page="landing" />
+      {/* <InternationalGrowth /> */}
       <StartGenerating formId="t5dW3MSY" />
       <GoGlobal />
       <Footer curPage="Home" />
