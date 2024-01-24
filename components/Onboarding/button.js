@@ -8,7 +8,7 @@ const OnboardingButton = ({
   onClick,
   disabled,
   theme,
-  extraClasses = 'px-s5',
+  extraClasses = 'px-s2',
 }) => {
   return disabled ? (
     <button

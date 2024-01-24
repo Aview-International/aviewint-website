@@ -11,6 +11,8 @@ const OnboardingSuccess = () => {
     if (router.query?.payment_intent) {
       if (router.query?.redirect_status === 'succeeded') {
         // identifier to trigger confetti
+        localStorage.removeItem('payForPlan'); // remove confetti control
+        localStorage.removeItem('isYearlyPlan'); // remove yearly control
         localStorage.setItem('planPaid', 'planPaid');
       }
       router.replace('/onboarding?stage=6');
@@ -21,7 +23,6 @@ const OnboardingSuccess = () => {
   }, []);
 
   const handleNext = () => {
-    localStorage.removeItem('payForPlan'); // remove confetti control
     localStorage.removeItem('planPaid'); // remove confetti control
     router.push('/dashboard');
   };
