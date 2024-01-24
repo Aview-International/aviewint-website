@@ -19,6 +19,9 @@ const PriceSection = ({
 
   const handlePlanSelect = () => {
     localStorage.setItem('payForPlan', plan.id);
+    isChecked
+      ? localStorage.setItem('isYearlyPlan', true)
+      : localStorage.removeItem('isYearlyPlan');
     push(`/register`);
   };
 

@@ -5,6 +5,7 @@ import {
 } from '@stripe/react-stripe-js';
 import OnboardingButton from '../Onboarding/button';
 import { useState } from 'react';
+import ErrorHandler from '../../utils/errorHandler';
 
 const CheckoutForm = ({ redirectUrl }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,18 +26,18 @@ const CheckoutForm = ({ redirectUrl }) => {
         return_url: redirectUrl,
       },
     });
-
+    if (error) setIsLoading(false);
     if (error.type === 'card_error' || error.type === 'validation_error') {
-      console.log(error.message);
+      ErrorHandler(null, error.message);
     } else {
-      console.log('An unexpected error occurred.');
+      ErrorHandler(null, 'An unexpected error occurred.');
     }
   };
 
   return (
     <form onSubmit={isLoading ? null : handleSubmit}>
       <PaymentElement />
-      <div className="my-s4 mx-auto w-3/12">
+      <div className="my-s4 mx-auto w-3/12 text-center">
         <OnboardingButton isLoading={isLoading}>Submit</OnboardingButton>
       </div>
     </form>
