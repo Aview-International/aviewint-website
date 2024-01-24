@@ -5,13 +5,34 @@ import Border from '../../UI/Border';
 import Card from '../../UI/Card';
 import useAuth from '../../../hooks/useAuth';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
-const PriceSection = ({ plan, isChecked, sliderValue }) => {
+const PriceSection = ({
+  plan,
+  isChecked,
+  sliderValue,
+  push,
+  isRecommended,
+}) => {
   const isLoggedIn = useAuth();
   const userPlan = useSelector((data) => data.user.plan);
 
+  const handlePlanSelect = () => {
+    localStorage.setItem('payForPlan', plan.id);
+    isChecked
+      ? localStorage.setItem('isYearlyPlan', true)
+      : localStorage.removeItem('isYearlyPlan');
+    push(`/register`);
+  };
+
   return (
-    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-4  py-8 text-white md:px-6">
+    <div
+      className={`relative h-full w-full cursor-pointer rounded-xl bg-white-transparent  px-4 py-8 text-white md:px-6 ${
+        isRecommended
+          ? 'gradient-dark border-0'
+          : 'border-xl border border-transparent'
+      }`}
+    >
       <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
         {plan.desc}
       </span>
@@ -48,7 +69,7 @@ const PriceSection = ({ plan, isChecked, sliderValue }) => {
         <Button
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
-          route={`/register?subscription=true&plan=${plan.id}`}
+          onClick={handlePlanSelect}
           fullWidth={true}
         >
           {isLoggedIn
@@ -73,6 +94,7 @@ const PriceSection = ({ plan, isChecked, sliderValue }) => {
 };
 
 const PricingPlans = ({ isChecked, plans, sliderValue }) => {
+  const { push } = useRouter();
   return (
     <section className="m-horizontal">
       <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
@@ -83,12 +105,19 @@ const PricingPlans = ({ isChecked, plans, sliderValue }) => {
               <Card borderRadius="xl" fullWidth={true}>
                 <PriceSection
                   plan={plan}
+                  isRecommended={
+                    sliderValue <= plan.sliderValueMax &&
+                    sliderValue >= plan.sliderValueMin
+                  }
                   isChecked={isChecked}
                   sliderValue={sliderValue}
+                  push={push}
                 />
               </Card>
             ) : (
-              <PriceSection plan={plan} isChecked={isChecked} />
+              <div className="p-[2px]">
+                <PriceSection plan={plan} isChecked={isChecked} push={push} />
+              </div>
             )}
           </div>
         ))}

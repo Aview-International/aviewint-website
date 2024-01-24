@@ -1,17 +1,22 @@
-import Image from 'next/image';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import OnboardingButton from '../../../components/Onboarding/button';
 import PageTitle from '../../../components/SEO/PageTitle';
-import Stripe from '../../../public/img/icons/stripe.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePlans from '../../../hooks/usePlans';
-import { getBillingHistory, getPlans } from '../../../services/apis';
+import {
+  createCheckoutSesion,
+  getBillingHistory,
+  getPlans,
+} from '../../../services/apis';
 import { SUBSCRIPTION_PLANS_DESC } from '../../../constants/constants';
 import DashboardPlans from '../../../components/dashboard/DashboardPlans';
 import ErrorHandler from '../../../utils/errorHandler';
 import { setBillingHistory } from '../../../store/reducers/billing.reducer';
 import Modal from '../../../components/UI/Modal';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from '../../../components/FormComponents/PaymentForm';
+import { stripeAppearance, stripePromise } from '../../../utils/stripe';
 
 export const getStaticProps = async () => {
   try {
@@ -30,10 +35,12 @@ export const getStaticProps = async () => {
 
 const Billing = ({ plans }) => {
   usePlans(JSON.parse(plans));
+  const [buttonId, setButtonId] = useState('');
+  const [clientSecret, setClientSecret] = useState('');
   const { user, billing } = useSelector((state) => state);
   const allPlans = useSelector((state) => state.aview.allPlans);
   const dispatch = useDispatch();
-  const [modal, showModal] = useState(false);
+  const [modal, setModal] = useState('');
   useEffect(() => {
     (async () => {
       try {
@@ -50,19 +57,49 @@ const Billing = ({ plans }) => {
     ...plan,
   }));
 
-  const closeModal = () => showModal(false);
-  const openModal = () => showModal(true);
+  const closeModal = () => setModal('');
+
+  const options = {
+    clientSecret,
+    appearance: stripeAppearance,
+  };
+
+  const handlePricing = async (planId) => {
+    try {
+      setButtonId(planId);
+      const secret = await createCheckoutSesion(planId);
+      setClientSecret(secret);
+      setModal('payment');
+      setButtonId('');
+    } catch (error) {
+      setButtonId('');
+      ErrorHandler(error);
+    }
+  };
 
   return (
     <>
-      <div className="mx-auto mt-5">
-        <PageTitle title="Billing" />
-        {modal && (
+      <PageTitle title="Billing" />
+      <div className="m-horizontal mx-auto mt-5">
+        {modal === 'payment' && clientSecret && (
+          <Elements stripe={stripePromise} options={options}>
+            <Modal closeModal={closeModal} preventOutsideClick>
+              <CheckoutForm redirectUrl={window.location.origin+'/dashboard/billing'} />
+            </Modal>
+          </Elements>
+        )}
+        {modal === 'plans' && (
           <Modal closeModal={closeModal}>
-            <DashboardPlans plans={newPlans} user={user} />
+            <DashboardPlans
+              plans={newPlans}
+              buttonId={buttonId}
+              handlePricing={handlePricing}
+              userPlan={user?.plan}
+            />
           </Modal>
         )}
-        <BillingDetails user={user} openModal={openModal} />
+
+        <BillingDetails user={user} openModal={() => setModal('plans')} />
         <Transactions billing={billing} />
       </div>
     </>

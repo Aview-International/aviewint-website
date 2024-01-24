@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react';
-
 import ReactCanvasConfetti from 'react-canvas-confetti';
 
 const Confetti = () => {

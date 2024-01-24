@@ -225,24 +225,18 @@ export const getPlans = async () => {
   return response;
 };
 
-export const createCheckoutSesion = async (planId, redirectDomain) => {
-  const redirectUrl = `${window.location.origin}/${
-    redirectDomain ?? 'billing'
-  }`;
-
-  const res = await axiosInstance.post(
-    'subscription/stripe/create-checkout-session',
-    {
-      plan: planId,
-      redirectUrl,
-    }
-  );
-
-  window.location.href = res.data;
-};
-
 export const getBillingHistory = async () =>
   (await axiosInstance.get('subscription/history')).data;
+
+export const createCheckoutSesion = async (planId) => {
+  const res = (
+    await axiosInstance.post('subscription/stripe/create-checkout-session', {
+      plan: planId,
+    })
+  ).data;
+
+  return res;
+};
 
 export const getVoiceSamples = async (voices) =>
   (

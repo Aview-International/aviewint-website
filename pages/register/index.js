@@ -15,11 +15,7 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import {
-  createCheckoutSesion,
-  registerUser,
-  singleSignOnRegister,
-} from '../../services/apis';
+import { registerUser, singleSignOnRegister } from '../../services/apis';
 import {
   getAuth,
   isSignInWithEmailLink,
@@ -38,7 +34,6 @@ const Register = () => {
     hasSubmitted: false,
   });
 
-  console.log(router.query);
   const updateDatabase = async (_tokenResponse) => {
     dispatch(
       setUser({
@@ -60,15 +55,7 @@ const Register = () => {
       _tokenResponse.photoUrl,
       _tokenResponse?.email
     );
-    if (router.query?.subscription === 'true' && router.query?.plan) {
-      try {
-        await createCheckoutSesion(router.query?.plan, 'onboarding?stage=1');
-      } catch (error) {
-        ErrorHandler(error);
-      }
-    } else {
-      router.push('/onboarding?stage=1');
-    }
+    router.push('/onboarding?stage=1');
   };
 
   useEffect(() => {
