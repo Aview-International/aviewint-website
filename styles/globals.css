@@ -174,6 +174,43 @@
       );
   }
 
+  .slider-text::after {
+    content: "";
+    position: absolute;
+    z-index: -10;
+    height: 36px;
+    background: transparent;
+    width: 36px;
+    left: 42%;
+    top: -15%;
+    border: 2px solid #fff;
+    transform: translateX(-50%) rotate(45deg);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+ 
+  .slider-text.hide{
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.9s ease-in-out;
+   }
+ 
+  .slider-text.show{
+    transform: translateX(-50%) scale(1);
+    transition: transform 0.1s ease-in;
+  }
+ 
+  .slider::-webkit-slider-thumb{
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    z-index: 20;
+    position: relative;
+    border-radius: 50%;
+    background-color: #7017ff;
+    scroll-behavior: smooth;
+  }
+
   /* width */
   ::-webkit-scrollbar {
     width: 6px;
