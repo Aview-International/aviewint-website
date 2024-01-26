@@ -174,17 +174,6 @@
       );
   }
 
-  .slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    z-index: 20;
-    position: relative;
-    border-radius: 50%;
-    background-color: #7017ff;
-    scroll-behavior: smooth;
-  }
-
   /* width */
   ::-webkit-scrollbar {
     width: 6px;
