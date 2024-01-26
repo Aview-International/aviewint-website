@@ -14,7 +14,6 @@ import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
-import RevenuePotential from '../components/sections/home/RevenuePotential';
 
 const Home = () => {
   return (
@@ -33,8 +32,7 @@ const Home = () => {
       <EmpowerGlobal />
       <MetricsAnime />
       <FAQ page="landing" />
-      {/* <InternationalGrowth /> */}
-      <RevenuePotential />
+      <InternationalGrowth />
       <StartGenerating formId="t5dW3MSY" />
       <GoGlobal />
       <Footer curPage="Home" />

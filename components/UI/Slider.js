@@ -31,27 +31,27 @@ const Slider = ({
   }, [value, max]);
 
   return (
-    <div className="w-full">
-      <label className="mb-s2 inline-block text-lg text-white">{label}</label>
-      <div className="relative w-full">
-        <span
-          className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
-          style={{ width: `${Math.trunc(width)}%` }}
-        ></span>
-        <input
-          name={name}
-          type="range"
-          // min={0}
-          value={value}
-          max={max}
-          className="track-background remove-highlight slider-thumb absolute top-0 left-0 h-[15px] w-full appearance-none rounded-[30px] border border-white"
-          onChange={onChange}
-        />
-        <span
-          className={`absolute -top-[4px] -right-[65px] text-xl text-white md:-right-[22%]`}
-        >
+    <div className="w-full text-white">
+      <label className="mb-s2 block text-lg">{label}</label>
+      <div className="flex w-full gap-s2">
+        <div className="relative w-11/12">
+          <span
+            className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
+            style={{ width: `${Math.trunc(width)}%` }}
+          ></span>
+          <input
+            name={name}
+            type="range"
+            // min={0}
+            value={value}
+            max={max}
+            className="track-background remove-highlight slider-thumb h-[15px] w-full appearance-none rounded-[30px] border border-white"
+            onChange={onChange}
+          />
+        </div>
+        <p className={`text-xl w-1/12`}>
           {prefix} {values[value] || value} {suffix}
-        </span>
+        </p>
       </div>
     </div>
   );
