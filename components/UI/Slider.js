@@ -34,10 +34,10 @@ const Slider = ({
     <div className="w-full text-white">
       <label className="mb-s2 block text-lg">{label}</label>
       <div className="flex w-full gap-s2">
-        <div className="relative w-11/12">
+        <div className="relative w-10/12">
           <span
             className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
-            style={{ width: `${Math.trunc(width)}%` }}
+            style={{ width: `${Math.round(width)}%` }}
           ></span>
           <input
             name={name}
@@ -49,7 +49,7 @@ const Slider = ({
             onChange={onChange}
           />
         </div>
-        <p className={`text-xl w-1/12`}>
+        <p className={`text-xl w-2/12 text-center`}>
           {prefix} {values[value] || value} {suffix}
         </p>
       </div>
