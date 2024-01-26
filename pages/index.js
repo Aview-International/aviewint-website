@@ -32,7 +32,7 @@ const Home = () => {
       <EmpowerGlobal />
       <MetricsAnime />
       <FAQ page="landing" />
-      {/* <InternationalGrowth /> */}
+      <InternationalGrowth />
       <StartGenerating formId="t5dW3MSY" />
       <GoGlobal />
       <Footer curPage="Home" />

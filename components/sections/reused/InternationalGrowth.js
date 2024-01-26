@@ -7,7 +7,7 @@ import Slider from '../../UI/Slider';
 
 const InternationalGrowth = () => {
   return (
-    <section className="section m-horizontal" data-aos="fade">
+    <section className="section m-horizontal text-white" data-aos="fade">
       <h2 className="title md:text-center">
         Uncover Your Full{' '}
         <span className="gradient-text gradient-2">Revenue Potential</span>
@@ -64,15 +64,13 @@ const Calculator = () => {
 
   return (
     <Shadow classes="w-full">
-      <Border classes="w-full" borderRadius="[5px]">
-        <div className="flex flex-col items-stretch justify-center rounded-[5px] bg-black px-0 pt-s2.5 pb-[60px] md:flex-row md:p-[60px]">
+      <Border classes="w-full" borderRadius="lg">
+        <div className="flex flex-col items-stretch justify-center rounded-lg bg-black px-s2 md:flex-row md:px-s12">
           <div className="basis-[90%]">
             {CREATORS_SLIDERS.map((item, i) => (
-              <div className="my-s5" key={i}>
+              <div className="my-s6 w-full" key={i}>
                 <Slider
                   onChange={handleChange}
-                  //   prefix,
-                  //   suffix,
                   setRanges={setRanges}
                   value={ranges[item.name]}
                   {...item}
@@ -87,9 +85,7 @@ const Calculator = () => {
                 ${Math.trunc(growth)}
               </span>
             </h3>
-            <p className="text-center text-xl text-white">
-              potential monthly revenue
-            </p>
+            <p className="text-center text-xl">potential monthly revenue</p>
           </div>
         </div>
       </Border>
