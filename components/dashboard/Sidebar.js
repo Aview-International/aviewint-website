@@ -79,7 +79,7 @@ const Navlink = ({ isOpen }) => {
     <div className="w-full text-sm">
       {DASHBOARD_NAVLINKS.map((link, index) => (
         <Link
-          href={link.route('/dashboard/settings/edit-profile')}
+          href={link.route('/dashboard/settings/profile')}
           key={`sidebar-link-${index}`}
         >
           <a

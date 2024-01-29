@@ -101,7 +101,7 @@ const DistriubtionAccounts = () => {
               <div className="grid grid-cols-2 gap-3 p-2">
                 {item.accounts.map(() => (
                   <Account
-                    key={`account-${index}`}
+                    key={`lang-${index}`}
                     picture={Logo}
                     name="Aview International Espan'ol"
                     subscribers="2.28K subscribers"

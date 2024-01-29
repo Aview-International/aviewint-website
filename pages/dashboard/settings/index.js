@@ -10,8 +10,12 @@ import { useSelector } from 'react-redux';
 
 const SETTINGS_LINKS = [
   {
-    link: '/dashboard/settings/edit-profile',
+    link: '/dashboard/settings/profile',
     text: 'Profile',
+  },
+  {
+    link: '/dashboard/settings/billing',
+    text: 'Billing & Plans',
   },
   {
     link: '/dashboard/settings/distribution-accounts',
@@ -24,14 +28,6 @@ const SETTINGS_LINKS = [
   {
     link: '/dashboard/settings/preferences',
     text: 'Preferences',
-  },
-  // {
-  //   link: '/dashboard/settings/privacy',
-  //   text: 'Privacy',
-  // },
-  {
-    link: '/dashboard/settings/billing',
-    text: 'Billing & Plans',
   },
 ];
 

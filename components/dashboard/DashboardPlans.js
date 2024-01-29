@@ -27,7 +27,7 @@ const PriceSection = ({ plan, userPlan, handlePricing, buttonId }) => {
           theme={plan.id === 'pro' ? 'light' : 'dark'}
           onClick={() => handlePricing(plan.stripe_monthly_id)}
         >
-          {plan.id === userPlan ? 'Current Plan' : 'Go ' + plan.id}
+          Go {plan.id}
         </OnboardingButton>
       </div>
 

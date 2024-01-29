@@ -10,10 +10,6 @@ const EditProfile = () => {
     <div className="w-full">
       <Settings_Back_Button title="Edit Profile" />
       <Container
-        left={<p className="text-xl">Profile</p>}
-        isHeaderSection={true}
-      />
-      <Container
         left={<p className="text-xl">Name</p>}
         right={
           <p className="text-xl">
