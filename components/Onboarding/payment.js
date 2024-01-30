@@ -15,17 +15,24 @@ import Info from '../../public/img/icons/info.svg';
 import { PageTransition } from '../animations';
 import { useRouter } from 'next/router';
 
-const PriceSection = ({ plans, setShowPLans }) => {
-  const [toggleIsChecked, setToggleIsChecked] = useState(false);
+const PriceSection = ({
+  plans,
+  setShowPLans,
+  setTrigger,
+  trigger,
+  isYearlyPlan,
+  setIsYearlyPlan,
+}) => {
   const handlePlanSelect = (id) => {
     localStorage.setItem('payForPlan', id);
-    toggleIsChecked
+    isYearlyPlan
       ? localStorage.setItem('isYearlyPlan', true)
       : localStorage.removeItem('isYearlyPlan');
+    setTrigger(!trigger);
     setShowPLans(false);
   };
 
-  const handleToggle = () => setToggleIsChecked(!toggleIsChecked);
+  const handleToggle = () => setIsYearlyPlan(!isYearlyPlan);
 
   return (
     <div className="text-center text-white">
@@ -37,7 +44,7 @@ const PriceSection = ({ plans, setShowPLans }) => {
       </p>
       <div className="my-s2 flex w-full flex-row items-center justify-center gap-x-2 text-lg">
         <p>Monthly </p>
-        <ToggleButton isChecked={toggleIsChecked} handleChange={handleToggle} />
+        <ToggleButton isChecked={isYearlyPlan} handleChange={handleToggle} />
         <p>Annual (save up to 30%)</p>
       </div>
       <div className="flex w-full">
@@ -53,14 +60,14 @@ const PriceSection = ({ plans, setShowPLans }) => {
             <div className="my-s2">
               <p className="text-2xl font-bold md:text-5xl">
                 &#36;
-                {!toggleIsChecked
+                {!isYearlyPlan
                   ? plan.monthlyCost
                   : Math.round(plan.yearlyCost / 12)}
               </p>
               {plan.id != 'basic' && (
                 <p>
                   Per month
-                  {toggleIsChecked && `, billed $${plan.yearlyCost} annually`}
+                  {isYearlyPlan && `, billed $${plan.yearlyCost} annually`}
                 </p>
               )}
             </div>
@@ -98,13 +105,13 @@ const PriceSection = ({ plans, setShowPLans }) => {
   );
 };
 
-const PaymentForm = ({ clientSecret }) => {
+const PaymentForm = ({ clientSecret, isLoading }) => {
   const options = {
     clientSecret,
     appearance: stripeAppearance,
   };
 
-  return clientSecret ? (
+  return !isLoading && clientSecret ? (
     <Elements stripe={stripePromise} options={options}>
       <CheckoutForm
         redirectUrl={window.location.origin + '/onboarding?stage=6'}
@@ -116,10 +123,14 @@ const PaymentForm = ({ clientSecret }) => {
 };
 
 const OnboardingPayment = () => {
-  const [clientSecret, setClientSecret] = useState('');
   const [showPlans, setShowPLans] = useState(false);
-  const allPlans = useSelector((x) => x.aview.allPlans);
   const router = useRouter();
+  const [chosenPlan, setChosenPlan] = useState(null);
+  const [clientSecret, setClientSecret] = useState('');
+  const [trigger, setTrigger] = useState(false);
+  const [isYearlyPlan, setIsYearlyPlan] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const allPlans = useSelector((x) => x.aview.allPlans);
   const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
     ...allPlans[i],
     ...plan,
@@ -127,9 +138,12 @@ const OnboardingPayment = () => {
 
   const handlePricing = async (planId) => {
     try {
+      setIsLoading(true);
       const secret = await createCheckoutSesion(planId);
       setClientSecret(secret);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       ErrorHandler(error);
     }
   };
@@ -142,13 +156,17 @@ const OnboardingPayment = () => {
       router.push('onboarding?stage=6');
       return;
     }
+    if (isYearlyPlan) setIsYearlyPlan(true);
+    else setIsYearlyPlan(false);
     if (allPlans.length > 0) {
       const planId = allPlans.find((x) => x.id === payForPlan);
+      setChosenPlan(planId);
+
       isYearlyPlan
         ? handlePricing(planId.stripe_yearly_id)
         : handlePricing(planId.stripe_monthly_id);
     }
-  }, [allPlans]);
+  }, [allPlans, trigger]);
 
   return (
     <div className="mx-auto w-full md:w-4/5">
@@ -161,18 +179,28 @@ const OnboardingPayment = () => {
       </button>
 
       <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
-        Creator Pro
+        {chosenPlan?.desc}
       </span>
-      <div></div>
-      <h2 className="text-4xl font-bold">$49</h2>
-      <p>billed today</p>
+      <div className="my-s3 mt-s2 flex items-center">
+        <h2 className="pr-s1.5 text-6xl font-bold">
+          ${isYearlyPlan ? chosenPlan?.yearlyCost : chosenPlan?.monthlyCost}
+        </h2>
+        <p>billed {isYearlyPlan ? 'annually' : 'monthly'}</p>
+      </div>
       {showPlans ? (
         <PageTransition>
-          <PriceSection plans={newPlans} setShowPLans={setShowPLans} />
+          <PriceSection
+            plans={newPlans}
+            setShowPLans={setShowPLans}
+            setTrigger={setTrigger}
+            trigger={trigger}
+            setIsYearlyPlan={setIsYearlyPlan}
+            isYearlyPlan={isYearlyPlan}
+          />
         </PageTransition>
       ) : (
         <PageTransition>
-          <PaymentForm allPlans={allPlans} clientSecret={clientSecret} />
+          <PaymentForm clientSecret={clientSecret} isLoading={isLoading} />
         </PageTransition>
       )}
     </div>
