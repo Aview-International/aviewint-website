@@ -98,13 +98,32 @@ const PriceSection = ({ plans, setShowPLans }) => {
   );
 };
 
-const PaymentForm = ({ allPlans }) => {
-  const router = useRouter();
-  const [clientSecret, setClientSecret] = useState('');
+const PaymentForm = ({ clientSecret }) => {
   const options = {
     clientSecret,
     appearance: stripeAppearance,
   };
+
+  return clientSecret ? (
+    <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm
+        redirectUrl={window.location.origin + '/onboarding?stage=6'}
+      />
+    </Elements>
+  ) : (
+    <Loader />
+  );
+};
+
+const OnboardingPayment = () => {
+  const [clientSecret, setClientSecret] = useState('');
+  const [showPlans, setShowPLans] = useState(false);
+  const allPlans = useSelector((x) => x.aview.allPlans);
+  const router = useRouter();
+  const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
+    ...allPlans[i],
+    ...plan,
+  }));
 
   const handlePricing = async (planId) => {
     try {
@@ -131,42 +150,29 @@ const PaymentForm = ({ allPlans }) => {
     }
   }, [allPlans]);
 
-  return clientSecret ? (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm
-        redirectUrl={window.location.origin + '/onboarding?stage=6'}
-      />
-    </Elements>
-  ) : (
-    <Loader />
-  );
-};
-
-const OnboardingPayment = () => {
-  const [showPlans, setShowPLans] = useState(false);
-  const allPlans = useSelector((x) => x.aview.allPlans);
-  const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
-    ...allPlans[i],
-    ...plan,
-  }));
-
   return (
     <div className="mx-auto w-full md:w-4/5">
       <button
         onClick={() => setShowPLans(!showPlans)}
         className="mb-s2 flex items-center gap-x-2"
       >
-        {showPlans ? 'Back to checkout' : 'Check plan info'}
+        {showPlans ? 'Back to checkout' : 'Change plan info'}
         {!showPlans && <Image src={Info} alt="" />}
       </button>
 
+      <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
+        Creator Pro
+      </span>
+      <div></div>
+      <h2 className="text-4xl font-bold">$49</h2>
+      <p>billed today</p>
       {showPlans ? (
         <PageTransition>
           <PriceSection plans={newPlans} setShowPLans={setShowPLans} />
         </PageTransition>
       ) : (
         <PageTransition>
-          <PaymentForm allPlans={allPlans} />
+          <PaymentForm allPlans={allPlans} clientSecret={clientSecret} />
         </PageTransition>
       )}
     </div>
