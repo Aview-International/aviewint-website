@@ -148,11 +148,7 @@ export const ChatForm = ({ handleSubmit, formRef, isLoading }) => {
         className="mx-s1 flex items-center justify-center p-s1"
         disabled={isLoading}
       >
-        {isLoading ? (
-          <GradientLoader />
-        ) : (
-          <Image src={SendIcon} alt="Send" width={24} height={24} />
-        )}
+        <Image src={SendIcon} alt="Send" width={24} height={24} />
       </button>
     </form>
   );

@@ -23,6 +23,7 @@ import {
 } from '../../../store/reducers/messages.reducer';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import GradientLoader from '../../../public/loaders/GradientLoader';
 
 const ChatAssist = () => {
   const dispatch = useDispatch();
@@ -108,7 +109,8 @@ const ChatAssist = () => {
           </div>
           <div>
             {aiThreads.length < 1 && <ChatSuggestions />}
-            <div className="mx-auto w-full pl-s7 md:w-10/12">
+            <div className="mx-auto mt-s2 w-full pl-s7 md:w-10/12">
+              {isLoading && <GradientLoader />}
               <ChatForm
                 formRef={formRef}
                 handleSubmit={handleSubmit}
