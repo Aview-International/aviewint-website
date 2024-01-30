@@ -64,7 +64,8 @@ const Onboarding = ({ plans }) => {
       {router.query?.subscription === 'success' && <Confetti />}
 
       <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
-        {Number(router.query.stage) > 1 && (
+        {(Number(router.query.stage) > 1 ||
+          router.query.stage === 'subscription') && (
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
             <a className="flex place-content-center pr-4">
               <Image src={ArrowBack} alt="Go back" width={10} height={20} />
