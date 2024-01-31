@@ -6,8 +6,8 @@ import usePlans from '../../../../hooks/usePlans';
 import {
   cancelSubscription,
   createCheckoutSesion,
-  getBillingHistory,
   getPlans,
+  subscriptionHistory,
 } from '../../../../services/apis';
 import { SUBSCRIPTION_PLANS_DESC } from '../../../../constants/constants';
 import DashboardPlans from '../../../../components/dashboard/DashboardPlans';
@@ -43,10 +43,23 @@ const Billing = ({ plans }) => {
   const allPlans = useSelector((state) => state.aview.allPlans);
   const dispatch = useDispatch();
   const [modal, setModal] = useState('');
+
+  const findPlanName = (planId) => {
+    for (const plan of allPlans) {
+      if (
+        plan.stripe_monthly_id === planId ||
+        plan.stripe_yearly_id === planId
+      ) {
+        return plan.desc;
+      }
+    }
+    return 'Plan not found';
+  };
+
   useEffect(() => {
     (async () => {
       try {
-        const billing = await getBillingHistory();
+        const billing = await subscriptionHistory();
         dispatch(setBillingHistory(billing));
       } catch (error) {
         ErrorHandler(error);
@@ -118,7 +131,7 @@ const Billing = ({ plans }) => {
         )}
 
         <BillingDetails user={user} openModal={() => setModal('plans')} />
-        <Transactions billing={billing} />
+        <Transactions billing={billing} findPlanName={findPlanName} />
       </div>
     </>
   );
@@ -145,7 +158,10 @@ const BillingDetails = ({ user, openModal }) => {
   );
 };
 
-const Transactions = ({ billing }) => {
+const Transactions = ({ billing, findPlanName }) => {
+  let billingArray = billing
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   return (
     <div className="mt-s4 text-white">
       <h3 className="mb-s2 text-2xl font-bold">Transactions</h3>
@@ -155,15 +171,16 @@ const Transactions = ({ billing }) => {
             <thead>
               <tr className="border-b border-[rgba(255,255,255,0.15)] text-center text-xl">
                 <th className="pb-s2">Date</th>
-                <th className="pb-s2">Service(s)</th>
+                <th className="pb-s2">Plan</th>
+                <th className="pb-s2">Status</th>
                 <th className="pb-s2">Amount(USD)</th>
               </tr>
             </thead>
             <tbody>
-              {billing.map((data, index) => (
+              {billingArray.map(({ createdAt, data }, index) => (
                 <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
                   <td className="py-s3">
-                    {new Date(data.created * 1000).toLocaleString('en-US', {
+                    {new Date(createdAt).toLocaleString('en-US', {
                       hour: '2-digit',
                       minute: '2-digit',
                       month: 'short',
@@ -172,7 +189,8 @@ const Transactions = ({ billing }) => {
                       hour12: true,
                     })}
                   </td>
-                  <td className="py-s3">{data.plan.amount / 100}</td>
+                  <td className="py-s3">{findPlanName(data.plan.id)}</td>
+                  <td className="py-s3 capitalize">{data.status}</td>
                   <td className="py-s3">${data.plan.amount / 100}</td>
                 </tr>
               ))}

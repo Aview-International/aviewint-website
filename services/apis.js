@@ -225,9 +225,6 @@ export const getPlans = async () => {
   return response;
 };
 
-export const getBillingHistory = async () =>
-  (await axiosInstance.get('subscription/history')).data;
-
 export const createCheckoutSesion = async (planId) => {
   const res = (
     await axiosInstance.post('subscription/stripe/create-checkout-session', {
@@ -268,3 +265,6 @@ export const cancelSubscription = async ({ cancelReason, otherReason }) =>
     cancelReason,
     otherReason,
   });
+
+export const subscriptionHistory = async () =>
+  (await axiosInstance.get('subscription/history')).data;
