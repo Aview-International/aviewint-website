@@ -18,6 +18,13 @@ const OnboardingButton = ({
     >
       {children}
     </button>
+  ) : theme === 'error' ? (
+    <button
+      className="rounded-full bg-red p-3"
+      onClick={isLoading ? () => null : onClick}
+    >
+      {children}
+    </button>
   ) : (
     <Shadow classes="w-full">
       <div

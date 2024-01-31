@@ -6,12 +6,12 @@ const Modal = ({ children, closeModal, preventOutsideClick }) => {
   return (
     <div className="fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black/80">
       <OutsideClickHandler
-        onOutsideClick={preventOutsideClick ? null : closeModal}
+        onOutsideClick={preventOutsideClick ? () => null : closeModal}
       >
         <div className="gradient-dark mx-auto h-full w-full rounded-xl bg-black p-s3">
           <div className="mb-s3 text-right">
-            <button onClick={closeModal}>
-              <Image src={Close} alt="" width={25} height={25} />
+            <button onClick={closeModal} className="p-2">
+              <Image src={Close} alt="" width={18} height={18} />
             </button>
           </div>
           {children}
