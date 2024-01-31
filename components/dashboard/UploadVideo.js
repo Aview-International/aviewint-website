@@ -27,7 +27,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
           <video
             width="400"
             controls
-            className="max-h-sm h-full w-full max-w-sm"
+            className="max-h-sm h-full w-full max-w-sm rounded-lg"
           >
             <source src={URL.createObjectURL(video)} type="video/mp4" />
           </video>
