@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePlans from '../../../../hooks/usePlans';
 import {
+  cancelSubscription,
   createCheckoutSesion,
   getBillingHistory,
   getPlans,
@@ -38,6 +39,7 @@ const Billing = ({ plans }) => {
   const [buttonId, setButtonId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const { user, billing } = useSelector((state) => state);
+  const [cancelSubLoader, setCancelSubLoader] = useState(false);
   const allPlans = useSelector((state) => state.aview.allPlans);
   const dispatch = useDispatch();
   const [modal, setModal] = useState('');
@@ -77,6 +79,18 @@ const Billing = ({ plans }) => {
     }
   };
 
+  const handleCancelSub = async (cancelReason, otherReason) => {
+    try {
+      setCancelSubLoader(true);
+      await cancelSubscription({ cancelReason, otherReason });
+      setCancelSubLoader(false);
+      closeModal();
+    } catch (error) {
+      setCancelSubLoader(false);
+      ErrorHandler(error);
+    }
+  };
+
   return (
     <>
       <PageTitle title="Billing" />
@@ -91,12 +105,14 @@ const Billing = ({ plans }) => {
           </Elements>
         )}
         {modal === 'plans' && (
-          <Modal closeModal={closeModal}>
+          <Modal closeModal={closeModal} preventOutsideClick>
             <DashboardPlans
               plans={newPlans}
               buttonId={buttonId}
               handlePricing={handlePricing}
               userPlan={user?.plan}
+              handleCancelSub={handleCancelSub}
+              cancelSubLoader={cancelSubLoader}
             />
           </Modal>
         )}
@@ -114,21 +130,16 @@ export default Billing;
 
 const BillingDetails = ({ user, openModal }) => {
   return (
-    <div className="text-white">
-      <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
-        <div className="flex items-center">
-          <p className="text-2xl font-bold capitalize">
-            Current Plan : {user.plan ?? 'Studio Starter'}
-          </p>
-        </div>
-        <div className="flex items-center">
-          <span className="text-2xl capitalize"></span>
-          <div className="w-60">
-            <OnboardingButton onClick={openModal}>
-              Manage subscription
-            </OnboardingButton>
-          </div>
-        </div>
+    <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
+      <p className="text-2xl font-bold capitalize">
+        Current Plan : {user.plan ?? 'Studio Starter'}
+      </p>
+      <div className="w-52">
+        <OnboardingButton onClick={openModal}>
+          {!user.plan || user.plan === 'free'
+            ? 'Subscribe'
+            : 'Cancel Subscription'}
+        </OnboardingButton>
       </div>
     </div>
   );

@@ -2,6 +2,17 @@ import Border from '../UI/Border';
 import Card from '../UI/Card';
 import OnboardingButton from '../Onboarding/button';
 import { useState } from 'react';
+import RadioInput from '../FormComponents/RadioInput';
+import Textarea from '../FormComponents/Textarea';
+
+const CANCEL_REASON = [
+  "It's too expensive",
+  'I was not happy with quality',
+  'Low monetization on international channels',
+  'I found an alternative company',
+  'I have another account',
+  'No reason',
+];
 
 const PriceSection = ({ plan, userPlan, handlePricing, buttonId }) => {
   const [isChecked, setToggleIsChecked] = useState(false);
@@ -52,12 +63,39 @@ const DashboardPlans = ({
   handlePricing,
   isChecked,
   userPlan,
+  handleCancelSub,
+  cancelSubLoader,
 }) => {
   const [showCancelSub, setShowCancelSub] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
+  const [otherReason, setOtherReason] = useState('');
 
   return (
     <section>
-      {!showCancelSub && (
+      {showCancelSub ? (
+        <div className="w-full text-lg xs:w-96">
+          <p className="mb-s3 text-xl">Cancelling your subscription?</p>
+          <p>Tell us why you&#39;re leaving us</p>
+          <div className="my-s2">
+            {CANCEL_REASON.map((reason, i) => (
+              <div className="my-s1" key={i}>
+                <RadioInput
+                  name="cancel-sub"
+                  label={reason}
+                  value={reason}
+                  chosenValue={cancelReason}
+                  onChange={(e) => setCancelReason(e.target.value)}
+                />
+              </div>
+            ))}
+          </div>
+          <Textarea
+            placeholder="More details..."
+            value={otherReason}
+            onChange={(e) => setOtherReason(e.target.value)}
+          />
+        </div>
+      ) : (
         <div className="z-20 mb-10 flex justify-center gap-8 px-4 md:px-0">
           {plans.map((plan, index) => (
             <div key={index}>
@@ -84,20 +122,22 @@ const DashboardPlans = ({
           ))}
         </div>
       )}
-      {showCancelSub && (
-        <div className="">
-          Cancel your subscription ?
-          <button onClick={() => setShowCancelSub(false)}>No</button>
-          <button>Yes</button>
-        </div>
-      )}
-      <div className="flex w-full justify-end">
-        <div className="max-w-[250px]">
-          <OnboardingButton onClick={() => setShowCancelSub(true)}>
+
+      {userPlan && userPlan !== 'free' && (
+        <div className="flex w-full justify-end">
+          <OnboardingButton
+            isLoading={cancelSubLoader}
+            onClick={
+              showCancelSub
+                ? () => handleCancelSub(cancelReason, otherReason)
+                : () => setShowCancelSub(true)
+            }
+            theme="error"
+          >
             Cancel Subscription
           </OnboardingButton>
         </div>
-      </div>
+      )}
     </section>
   );
 };

@@ -68,7 +68,9 @@ const DistriubtionAccounts = () => {
           left={
             <div className="flex flex-col justify-start gap-y-1">
               <p className="text-lg">Distribution</p>
-              <p className="text-sm">Manage your international Accounts here.</p>
+              <p className="text-sm">
+                Manage your international Accounts here.
+              </p>
             </div>
           }
           right={
@@ -99,9 +101,9 @@ const DistriubtionAccounts = () => {
             }
             right={
               <div className="grid grid-cols-2 gap-3 p-2">
-                {item.accounts.map(() => (
+                {item.accounts.map((el, idx) => (
                   <Account
-                    key={`lang-${index}`}
+                    key={`lang-${idx}`}
                     picture={Logo}
                     name="Aview International Espan'ol"
                     subscribers="2.28K subscribers"
@@ -115,7 +117,7 @@ const DistriubtionAccounts = () => {
       {isNewAccount ? (
         <div className="absolute inset-0 flex items-center justify-center bg-black/90">
           <div className="rounded-md border-2 border-white/60 px-s4 py-s1">
-            <Accounts handleAccounts={handleNewAccount}/>
+            <Accounts handleAccounts={handleNewAccount} />
           </div>
         </div>
       ) : null}

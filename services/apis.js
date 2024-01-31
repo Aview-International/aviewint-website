@@ -263,5 +263,8 @@ export const getAIChatHistory = async (threadId) =>
 export const getThreadHistory = async () =>
   (await axiosInstance.get('messages/all-threads')).data;
 
-export const cancelSubscription = async () =>
-  await axiosInstance.patch('subscription/cancel');
+export const cancelSubscription = async ({ cancelReason, otherReason }) =>
+  await axiosInstance.patch('subscription/cancel', {
+    cancelReason,
+    otherReason,
+  });
