@@ -10,7 +10,9 @@ const CustomPricing = () => {
       <div className="rounded-xl bg-white-transparent px-4 py-8">
         <div className="flex flex-col items-center justify-center md:flex-row">
           <div className="w-full gap-y-5 md:w-1/3 md:text-center">
-            <span className="rounded-md bg-gray-1 p-1">ENTERPRISE</span>
+            <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
+              ENTERPRISE
+            </span>
             <h4 className="my-s3 mb-s2 text-6xl font-semibold">
               Custom Pricing
             </h4>
