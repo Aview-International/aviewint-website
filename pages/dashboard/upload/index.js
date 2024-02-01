@@ -51,9 +51,9 @@ const Upload = () => {
 
   return (
     <>
-      <div className="mx-auto h-full max-w-[1200px] rounded-xl bg-white-transparent ">
+      <div className="mx-auto max-w-[1200px]">
         <PageTitle title="Upload Video" />
-        <div className="flex flex-col p-s5 text-white lg:flex-row">
+        <div className="flex flex-col p-s5 text-white lg:flex-row rounded-xl bg-white-transparent">
           <div className="w-full lg:w-1/2">
             <UploadVideo
               setVideo={setVideo}
@@ -61,7 +61,7 @@ const Upload = () => {
               uploadProgress={uploadProgress}
             />
           </div>
-          <div className="mt-s5 w-full lg:mt-0 lg:w-1/2">
+          <div className="w-full lg:mt-0 lg:w-1/2">
             <TranslateOptions
               handleLanguages={handleLanguages}
               handleSubmit={handleSubmit}
