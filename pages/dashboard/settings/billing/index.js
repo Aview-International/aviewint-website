@@ -1,22 +1,23 @@
-import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import OnboardingButton from '../../../components/Onboarding/button';
-import PageTitle from '../../../components/SEO/PageTitle';
+import OnboardingButton from '../../../../components/Onboarding/button';
+import PageTitle from '../../../../components/SEO/PageTitle';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import usePlans from '../../../hooks/usePlans';
+import usePlans from '../../../../hooks/usePlans';
 import {
+  cancelSubscription,
   createCheckoutSesion,
-  getBillingHistory,
   getPlans,
-} from '../../../services/apis';
-import { SUBSCRIPTION_PLANS_DESC } from '../../../constants/constants';
-import DashboardPlans from '../../../components/dashboard/DashboardPlans';
-import ErrorHandler from '../../../utils/errorHandler';
-import { setBillingHistory } from '../../../store/reducers/billing.reducer';
-import Modal from '../../../components/UI/Modal';
+  subscriptionHistory,
+} from '../../../../services/apis';
+import { SUBSCRIPTION_PLANS_DESC } from '../../../../constants/constants';
+import DashboardPlans from '../../../../components/dashboard/DashboardPlans';
+import ErrorHandler from '../../../../utils/errorHandler';
+import { setBillingHistory } from '../../../../store/reducers/billing.reducer';
+import Modal from '../../../../components/UI/Modal';
 import { Elements } from '@stripe/react-stripe-js';
-import CheckoutForm from '../../../components/FormComponents/PaymentForm';
-import { stripeAppearance, stripePromise } from '../../../utils/stripe';
+import CheckoutForm from '../../../../components/FormComponents/PaymentForm';
+import { stripeAppearance, stripePromise } from '../../../../utils/stripe';
+import { SettingsLayout } from '../../settings';
 
 export const getStaticProps = async () => {
   try {
@@ -38,13 +39,27 @@ const Billing = ({ plans }) => {
   const [buttonId, setButtonId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const { user, billing } = useSelector((state) => state);
+  const [cancelSubLoader, setCancelSubLoader] = useState(false);
   const allPlans = useSelector((state) => state.aview.allPlans);
   const dispatch = useDispatch();
   const [modal, setModal] = useState('');
+
+  const findPlanName = (planId) => {
+    for (const plan of allPlans) {
+      if (
+        plan.stripe_monthly_id === planId ||
+        plan.stripe_yearly_id === planId
+      ) {
+        return plan.desc;
+      }
+    }
+    return 'Plan not found';
+  };
+
   useEffect(() => {
     (async () => {
       try {
-        const billing = await getBillingHistory();
+        const billing = await subscriptionHistory();
         dispatch(setBillingHistory(billing));
       } catch (error) {
         ErrorHandler(error);
@@ -77,6 +92,18 @@ const Billing = ({ plans }) => {
     }
   };
 
+  const handleCancelSub = async (cancelReason, otherReason) => {
+    try {
+      setCancelSubLoader(true);
+      await cancelSubscription({ cancelReason, otherReason });
+      setCancelSubLoader(false);
+      closeModal();
+    } catch (error) {
+      setCancelSubLoader(false);
+      ErrorHandler(error);
+    }
+  };
+
   return (
     <>
       <PageTitle title="Billing" />
@@ -84,55 +111,57 @@ const Billing = ({ plans }) => {
         {modal === 'payment' && clientSecret && (
           <Elements stripe={stripePromise} options={options}>
             <Modal closeModal={closeModal} preventOutsideClick>
-              <CheckoutForm redirectUrl={window.location.origin+'/dashboard/billing'} />
+              <CheckoutForm
+                redirectUrl={window.location.origin + '/dashboard/billing'}
+              />
             </Modal>
           </Elements>
         )}
         {modal === 'plans' && (
-          <Modal closeModal={closeModal}>
+          <Modal closeModal={closeModal} preventOutsideClick>
             <DashboardPlans
               plans={newPlans}
               buttonId={buttonId}
               handlePricing={handlePricing}
               userPlan={user?.plan}
+              handleCancelSub={handleCancelSub}
+              cancelSubLoader={cancelSubLoader}
             />
           </Modal>
         )}
 
         <BillingDetails user={user} openModal={() => setModal('plans')} />
-        <Transactions billing={billing} />
+        <Transactions billing={billing} findPlanName={findPlanName} />
       </div>
     </>
   );
 };
 
-Billing.getLayout = DashboardLayout;
+Billing.getLayout = SettingsLayout;
 
 export default Billing;
 
 const BillingDetails = ({ user, openModal }) => {
   return (
-    <div className="text-white">
-      <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
-        <div className="flex items-center">
-          <p className="text-2xl font-bold capitalize">
-            Current Plan : {user.plan ?? 'Studio Starter'}
-          </p>
-        </div>
-        <div className="flex items-center">
-          <span className="text-2xl capitalize"></span>
-          <div className="w-60">
-            <OnboardingButton onClick={openModal}>
-              Manage subscription
-            </OnboardingButton>
-          </div>
-        </div>
+    <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
+      <p className="text-2xl font-bold capitalize">
+        Current Plan : {user.plan ?? 'Studio Starter'}
+      </p>
+      <div className="w-52">
+        <OnboardingButton onClick={openModal}>
+          {!user.plan || user.plan === 'free'
+            ? 'Subscribe'
+            : 'Cancel Subscription'}
+        </OnboardingButton>
       </div>
     </div>
   );
 };
 
-const Transactions = ({ billing }) => {
+const Transactions = ({ billing, findPlanName }) => {
+  let billingArray = billing
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   return (
     <div className="mt-s4 text-white">
       <h3 className="mb-s2 text-2xl font-bold">Transactions</h3>
@@ -142,15 +171,16 @@ const Transactions = ({ billing }) => {
             <thead>
               <tr className="border-b border-[rgba(255,255,255,0.15)] text-center text-xl">
                 <th className="pb-s2">Date</th>
-                <th className="pb-s2">Service(s)</th>
+                <th className="pb-s2">Plan</th>
+                <th className="pb-s2">Status</th>
                 <th className="pb-s2">Amount(USD)</th>
               </tr>
             </thead>
             <tbody>
-              {billing.map((data, index) => (
+              {billingArray.map(({ createdAt, data }, index) => (
                 <tr className="mt-s2 text-center text-lg" key={`row-${index}`}>
                   <td className="py-s3">
-                    {new Date(data.created * 1000).toLocaleString('en-US', {
+                    {new Date(createdAt).toLocaleString('en-US', {
                       hour: '2-digit',
                       minute: '2-digit',
                       month: 'short',
@@ -159,7 +189,8 @@ const Transactions = ({ billing }) => {
                       hour12: true,
                     })}
                   </td>
-                  <td className="py-s3">{data.plan.amount / 100}</td>
+                  <td className="py-s3">{findPlanName(data.plan.id)}</td>
+                  <td className="py-s3 capitalize">{data.status}</td>
                   <td className="py-s3">${data.plan.amount / 100}</td>
                 </tr>
               ))}

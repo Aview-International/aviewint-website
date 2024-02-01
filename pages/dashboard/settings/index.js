@@ -10,25 +10,25 @@ import { useSelector } from 'react-redux';
 
 const SETTINGS_LINKS = [
   {
-    link: '/dashboard/settings/edit-profile',
-    text: 'Edit Profile',
+    link: '/dashboard/settings/profile',
+    text: 'Profile',
   },
-  // {
-  //   link: '/dashboard/settings/distribution-accounts',
-  //   text: 'Distribution accounts',
-  // },
-  // {
-  //   link: '/dashboard/settings/email-notifications',
-  //   text: 'Email notifications',
-  // },
-  // {
-  //   link: '/dashboard/settings/privacy',
-  //   text: 'Privacy and security',
-  // },
-  // {
-  //   link: '/dashboard/settings/saved-settings',
-  //   text: 'Saved settings',
-  // },
+  {
+    link: '/dashboard/settings/billing',
+    text: 'Billing & Plans',
+  },
+  {
+    link: '/dashboard/settings/distribution-accounts',
+    text: 'Distribution',
+  },
+  {
+    link: '/dashboard/settings/email-notifications',
+    text: 'Notifications',
+  },
+  {
+    link: '/dashboard/settings/preferences',
+    text: 'Preferences',
+  },
 ];
 
 const EXTERNAL_LINKS = [
@@ -50,11 +50,10 @@ const Settings = () => {
   const userInfo = useSelector((state) => state.user);
   return (
     <>
-      <PageTitle title="Settings" />
       <DashboardContainer>
         <div className="mx-auto p-s2 text-white">
           <h2 className="my-3 text-xl">Settings</h2>
-          <div className="mb-2 flex items-center">
+          <div className="items-center] mb-2 flex">
             <Image
               src={userInfo?.picture}
               alt="Profile Picture"
@@ -115,25 +114,26 @@ const SettingsStructure = ({ children }) => {
   const { route } = useRouter();
 
   return (
-    <div className="md:gradient-dark mx-auto flex h-full rounded-2xl bg-black text-white">
-      <aside className="hidden h-full w-56 border-r border-r-white-transparent md:block">
-        <p className="py-s2 px-s3 text-2xl">Settings</p>
-        {SETTINGS_LINKS.map(({ link, text }, index) => (
-          <Link href={link} key={`settings-link-${index}`}>
-            <a
-              className={`block rounded py-s2 px-s3 text-lg ${
-                route === link && 'bg-white-transparent'
-              }`}
-            >
-              {text}
-            </a>
-          </Link>
-        ))}
-      </aside>
-      <section className="w-full p-s1 md:w-[calc(100%-14rem)] md:p-s3">
-        {children}
-      </section>
-    </div>
+    <>
+      <PageTitle title="Settings" />
+      <div className="md:gradient-dark mx-auto flex min-h-full flex-col gap-y-s2 rounded-2xl bg-black px-s3 text-white">
+        <p className="py-s2 text-2xl">Settings</p>
+        <aside className="hidden w-full flex-row items-start justify-start gap-x-4 md:flex">
+          {SETTINGS_LINKS.map(({ link, text }, index) => (
+            <Link href={link} key={`settings-link-${index}`}>
+              <a
+                className={`block rounded-lg py-s1 px-s2 text-lg ${
+                  route === link && 'bg-white-transparent'
+                }`}
+              >
+                {text}
+              </a>
+            </Link>
+          ))}
+        </aside>
+        <section className="h-full w-full py-s1.5">{children}</section>
+      </div>
+    </>
   );
 };
 

@@ -14,6 +14,7 @@ const CustomSelectInput = ({
   isValid,
   hideCheckmark,
   value,
+  hasText,
 }) => {
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -36,11 +37,14 @@ const CustomSelectInput = ({
 
   return (
     <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
-      <div className="relative mb-s4 text-xl text-white" ref={elementRef}>
-        <p className="mb-s1">
+      <div
+        className={`relative text-xl text-white ${hasText ? 'mb-0' : 'mb-s4'}`}
+        ref={elementRef}
+      >
+        <p className={`mb-s1 ${hasText ? 'hidden' : 'block'}`}>
           <span className="after:ml-0.5 after:content-['*']">{text}</span>
         </p>
-        <Border borderRadius="[5px] w-full">
+        <Border borderRadius="[5px] w-full bg-red">
           <div
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
