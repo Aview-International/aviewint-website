@@ -212,7 +212,7 @@
   }
 
   .size {
-    animation: size-animate 0.8s ease-out forwards;
+    animation: size-animate 0.4s ease-out forwards;
     transform-origin: left center;
   }
 
