@@ -211,6 +211,12 @@
     text-transform: uppercase;
   }
 
+  .size {
+    animation: size-animate 0.4s ease-out forwards;
+    transform-origin: left center;
+  }
+
+
   @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -283,6 +289,15 @@
     }
     99% {
       top: -247px;
+    }
+  }
+
+  @keyframes size-animate {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.85);
     }
   }
 }
