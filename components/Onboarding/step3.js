@@ -56,7 +56,7 @@ const OnboardingStep3 = ({ userData }) => {
       <div className="m-auto w-[min(360px,80%)]">
         <OnBoardingAccounts
           classes="bg-[#ff0000]"
-          isAccountConnected={true}
+          isAccountConnected={userData?.youtube?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
           account={
             <Image src={WhiteYoutube} alt="connect" width={100} height={22.5} />
@@ -64,7 +64,7 @@ const OnboardingStep3 = ({ userData }) => {
           isLoading={isLoading.youtube}
         />
         <OnBoardingAccounts
-          isAccountConnected={true}
+          isAccountConnected={userData?.instagram?.instagramConnected}
           classes="instagram"
           clickEvent={linkInstagramAccount}
           account="Instagram"

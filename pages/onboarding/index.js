@@ -36,7 +36,7 @@ export const getStaticProps = async () => {
 };
 
 const Onboarding = ({ plans }) => {
- // usePlans(JSON.parse(plans));
+  usePlans(JSON.parse(plans));
   const userData = useSelector((state) => state.user);
   const allLanguages = useSelector((state) => state.aview.allLanguages);
 
