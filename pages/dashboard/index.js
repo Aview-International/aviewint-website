@@ -48,7 +48,7 @@ const DashboardHome = () => {
       }));
       dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
@@ -62,7 +62,7 @@ const DashboardHome = () => {
         setInstagramVideos({ dataFetched: true, videos: response.data })
       );
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
