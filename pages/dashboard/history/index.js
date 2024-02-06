@@ -54,7 +54,7 @@ const Container = ({ pendingJobs }) => {
           className="grid grid-cols-[25%_20%_25%_20%_10%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData.caption}</div>
+          <div>{job?.uploaded ? 'Uploaded Video' : job.videoData?.caption}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
           <div>
             {job?.languages.map((lang, idx) => (
@@ -65,7 +65,8 @@ const Container = ({ pendingJobs }) => {
           </div>
           <div className="text-[#eab221]">{job.status}</div>
           <div>
-            {job?.downloadLink &&
+            {job.status === 'complete' &&
+              job?.downloadLink &&
               Object.keys(job.downloadLink).map((el, idx) => (
                 <span key={idx}>
                   {el}:{' '}
