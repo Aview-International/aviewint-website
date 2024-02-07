@@ -12,10 +12,18 @@ const aviewSlice = createSlice({
   reducers: {
     setAllLanguages: (state, action) => {
       const langsArray = [];
-      SUPPORTED_REGIONS.map(({ data }) => {
-        data.map((el) => {
-          if (!langsArray.includes(el.languageName)) {
-            langsArray.push(el.languageName);
+      SUPPORTED_REGIONS.forEach(({ data }) => {
+        data.forEach((el) => {
+          // check if langsArray already contains an object with the same language
+          const existingLanguage = langsArray.find(
+            (lang) => lang.language === el.languageName
+          );
+          if (!existingLanguage) {
+            // if language doesn't exist, add it to langsArray
+            langsArray.push({
+              language: el.languageName,
+              dialect: el.localDialect,
+            });
           }
         });
       });

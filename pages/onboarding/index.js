@@ -92,7 +92,10 @@ const Onboarding = ({ plans }) => {
             Step {router.query.stage} of 6
           </small>
         )}
-        <Stages userData={userData} allLanguages={allLanguages} />
+        <Stages
+          userData={userData}
+          allLanguages={allLanguages.map((el) => el.language)}
+        />
       </div>
     </>
   );
@@ -132,7 +135,7 @@ const Stages = ({ userData, allLanguages }) => {
       )}
       {query.stage === '5' && (
         <PageTransition>
-          <OnboardingStep5 userData={userData} />
+          <OnboardingStep5 userData={userData} allLanguages={allLanguages} />
         </PageTransition>
       )}
       {query.stage === 'subscription' && (

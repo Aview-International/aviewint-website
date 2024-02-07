@@ -9,9 +9,8 @@ import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
 
-const OnboardingStep5 = ({ userData }) => {
+const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
-  const allLanguages = useSelector((state) => state.aview.allLanguages);
   const youtubeChannel = useSelector((el) => el.youtube);
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);

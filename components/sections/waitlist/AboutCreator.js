@@ -114,7 +114,7 @@ const AboutCreator = () => {
           <CustomSelectInput
             hideCheckmark
             text="Primary Language?"
-            options={allLanguages}
+            options={allLanguages.map((el) => el.language)}
             hasSubmitted={sideEffects.hasSubmitted}
             onChange={(option) => handleChange('primaryLanguage', option)}
             value={payload.primaryLanguage}

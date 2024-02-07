@@ -63,11 +63,11 @@ import { emailValidator } from '../utils/regex';
 import home from '../public/img/icons/home.svg';
 import ai_voice from '../public/img/icons/ai_voice.svg';
 import upload from '../public/img/icons/upload.svg';
-import billing from '../public/img/icons/billing.svg';
+// import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
-import messages from '../public/img/icons/messages.svg';
-import referral from '../public/img/icons/referral.svg';
+// import messages from '../public/img/icons/messages.svg';
+// import referral from '../public/img/icons/referral.svg';
 import assistance from '../public/img/icons/assistance.svg';
 
 //onBoarding Icons
@@ -1448,26 +1448,11 @@ export const DASHBOARD_NAVLINKS = [
     image: ai_voice,
     route: () => '/dashboard/ai-voice',
   },
-  // {
-  //   text: 'Messages',
-  //   image: messages,
-  //   route:() => '/dashboard/messages',
-  // },
-  // {
-  //   text: 'Billing',
-  //   image: billing,
-  //   route: () => '/dashboard/billing',
-  // },
   {
     text: 'History',
     image: history,
     route: () => '/dashboard/history',
   },
-  // {
-  //   text: 'Referral',
-  //   image: referral,
-  //   route: () => '/dashboard/referral',
-  // },
   {
     text: 'Settings',
     image: settings,

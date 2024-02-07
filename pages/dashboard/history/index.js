@@ -57,11 +57,13 @@ const Container = ({ pendingJobs }) => {
           <div>{job?.uploaded ? 'Uploaded Video' : job.videoData?.caption}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
           <div>
-            {job?.languages.map((lang, idx) => (
-              <p key={idx} className="mb-s1">
-                {lang}
-              </p>
-            ))}
+            {typeof job?.languages === 'string'
+              ? job.languages
+              : job?.languages.map((lang, idx) => (
+                  <p key={idx} className="mb-s1">
+                    {lang}
+                  </p>
+                ))}
           </div>
           <div className="text-[#eab221]">{job.status}</div>
           <div>
