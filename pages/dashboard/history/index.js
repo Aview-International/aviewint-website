@@ -54,7 +54,7 @@ const Container = ({ pendingJobs }) => {
           className="grid grid-cols-[25%_20%_25%_20%_10%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job?.uploaded ? 'Uploaded Video' : job.videoData?.caption}</div>
+          <div>{job.videoData?.caption}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
           <div>
             {typeof job?.languages === 'string'
