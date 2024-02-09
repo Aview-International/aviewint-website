@@ -5,7 +5,7 @@ import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
-import aviewLogo from '../../public/img/aview/logo.png';
+import aviewLogo from '../../public/img/aview/logo-full.svg';
 import MenuButtonIcon from './MenuButtonIcon';
 
 const Header = ({ curPage }) => {

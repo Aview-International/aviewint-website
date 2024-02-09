@@ -35,15 +35,7 @@ const Billing = () => {
         break;
     }
   };
-  const handleSucess = () => {
-    axios.post('/api/checkout_sessions/checkout', {
-      _id: userInfo._id,
-      services: ['Translations, Dubbing'],
-      charge: userInfo.charge,
-      wordCount: 1000,
-      email: userInfo.email,
-    });
-  };
+  const handleSucess = () => {};
 
   useEffect(() => {
     handlePaymentCallback();
@@ -82,19 +74,7 @@ const BillingDetails = ({ userInfo }) => {
         </div>
         <div className="flex items-center">
           <span className="text-2xl">Current Bill : $0</span>
-          <div className="pl-s3">
-            <form action="/api/checkout_sessions" method="POST">
-              <input type="hidden" value={userInfo.email} name="email" />
-              <input type="hidden" value={userInfo._id} name="_id" />
-              <input
-                type="hidden"
-                value={userInfo.charge ?? 12}
-                name="charge"
-              />
-              <input type="hidden" value={1000} name="quantity" />
-              <OnboardingButton disabled>Pay Now</OnboardingButton>
-            </form>
-          </div>
+          <div className="pl-s3"></div>
         </div>
       </div>
     </div>
