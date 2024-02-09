@@ -33,8 +33,15 @@ export const singleSignOnRegister = async (email, origin) =>
 export const registerUser = async (creatorId, email) =>
   await axios.post(baseUrl + 'auth/register', { creatorId, email });
 
-export const updateProfileDetails = async (payload) => {
+export const updateProfileDetails = async (payload, type) => {
   let formdata = new FormData();
+  if (type === 'banner') {
+    formdata.append('picture', payload);
+    return await axiosInstance.patch(
+      `auth/update-profile?type=${type}`,
+      formdata
+    );
+  }
   formdata.append('firstName', payload.firstName);
   formdata.append('creatorId', payload.creatorId);
   formdata.append('lastName', payload.lastName);
