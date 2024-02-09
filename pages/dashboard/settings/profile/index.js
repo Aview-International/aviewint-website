@@ -89,7 +89,7 @@ const EditProfile = () => {
         left={<p className="text-xl">Profile Banner</p>}
         right={
           <div
-            className="group relative h-[5rem] cursor-pointer"
+            className="group relative cursor-pointer"
             onClick={() => setModal(true)}
           >
             {userInfo?.banner ? (
