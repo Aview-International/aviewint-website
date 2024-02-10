@@ -44,6 +44,8 @@ const Billing = ({ plans }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState('');
 
+  console.log(allPlans);
+
   const findPlanName = (planId) => {
     for (const plan of allPlans) {
       if (
@@ -130,7 +132,11 @@ const Billing = ({ plans }) => {
           </Modal>
         )}
 
-        <BillingDetails user={user} openModal={() => setModal('plans')} />
+        <BillingDetails
+          user={user}
+          openModal={() => setModal('plans')}
+          allPlans={allPlans}
+        />
         <Transactions billing={billing} findPlanName={findPlanName} />
       </div>
     </>
@@ -141,11 +147,16 @@ Billing.getLayout = SettingsLayout;
 
 export default Billing;
 
-const BillingDetails = ({ user, openModal }) => {
+const BillingDetails = ({ user, openModal, allPlans }) => {
   return (
     <div className="gradient-dark flex items-center justify-between rounded-2xl p-6">
       <p className="text-2xl font-bold capitalize">
-        Current Plan : {user.plan ?? 'Studio Starter'}
+        Current Plan :{' '}
+        {user.plan
+          ? `${user.plan} - $${
+              allPlans.find((e) => e.id === user.plan)?.monthlyCost
+            }`
+          : 'Studio Starter - Free'}
       </p>
       <div className="w-52">
         <OnboardingButton onClick={openModal}>
@@ -162,6 +173,7 @@ const Transactions = ({ billing, findPlanName }) => {
   let billingArray = billing
     .slice()
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   return (
     <div className="mt-s4 text-white">
       <h3 className="mb-s2 text-2xl font-bold">Transactions</h3>

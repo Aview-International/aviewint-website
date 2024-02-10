@@ -66,7 +66,7 @@ const DashboardStructure = ({ children }) => {
         />
         <div
           className={`ml-auto flex w-full flex-col items-stretch ${
-            isOpen ? 'lg:w-[calc(100%-170px)]' : 'lg:w-[calc(100%-80px)]'
+            isOpen ? 'lg:w-[calc(100%-190px)]' : 'lg:w-[calc(100%-80px)]'
           }`}
         >
           <DashBoardHeader userInfo={userInfo} />

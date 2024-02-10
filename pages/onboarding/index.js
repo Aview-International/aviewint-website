@@ -63,7 +63,7 @@ const Onboarding = ({ plans }) => {
       <PageTitle title="Aview Onboarding" />
       {router.query?.subscription === 'success' && <Confetti />}
 
-      <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
+      <div className="m-horizontal ml-8 flex items-center px-0 py-4 md:ml-24">
         {(Number(router.query.stage) > 1 ||
           router.query.stage === 'subscription') && (
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
@@ -76,8 +76,8 @@ const Onboarding = ({ plans }) => {
         <Image
           src={aviewLogo}
           alt="AVIEW International logo"
-          width={40}
-          height={40}
+          width={60}
+          height={60}
         />
       </div>
       <div className="bg-gray-1">
