@@ -11,8 +11,8 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
     <aside
       className={`${
-        isOpen ? 'w-[170px]' : 'w-[80px]'
-      } relative hidden h-full pt-s4 text-white transition-all lg:block`}
+        isOpen ? 'w-[190px]' : 'w-[80px]'
+      } relative hidden h-full pt-s3 text-white transition-all lg:block`}
     >
       <div className="flex w-full items-center justify-between px-s2">
         {isOpen && (
@@ -21,8 +21,8 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
               <Image
                 src={aviewLogo}
                 alt="AVIEW International logo"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
               />
             </a>
           </Link>
@@ -44,7 +44,7 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
 const Profile = ({ userInfo, isOpen }) => {
   return (
     <div
-      className={`mt-s6 mb-s5 flex flex-col items-center gap-2 p-0 duration-300`}
+      className={`mt-s2 mb-s5 flex flex-col items-center gap-2 p-0 duration-300`}
     >
       {userInfo?.picture && (
         <Image

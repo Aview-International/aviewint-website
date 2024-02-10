@@ -18,11 +18,13 @@ const PriceSection = ({ plan, userPlan, handlePricing, buttonId }) => {
   const [isChecked, setToggleIsChecked] = useState(false);
 
   return (
-    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-2 py-4 text-white md:px-6">
-      <span className="rounded-md bg-gray-1 p-1 uppercase">{plan.desc}</span>
+    <div className="relative h-full w-full cursor-pointer rounded-xl bg-white-transparent px-2 py-4 md:px-6">
+      <span className="rounded-md bg-gray-1 p-2 uppercase">{plan.desc}</span>
       <div className="my-s2 flex flex-row items-center justify-start gap-x-2">
         <p className="text-xl font-bold md:text-4xl">
-          &#36;
+          {(typeof plan.monthlyCost === 'number' ||
+            typeof plan.monthlyCost === 'number') &&
+            '$'}
           {!isChecked ? plan.monthlyCost : Math.round(plan.yearlyCost / 12)}
         </p>
         {plan.id != 'basic' && (

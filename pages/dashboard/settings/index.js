@@ -19,15 +19,11 @@ const SETTINGS_LINKS = [
   },
   {
     link: '/dashboard/settings/distribution-accounts',
-    text: 'Distribution',
+    text: 'Distribution Accounts',
   },
   {
-    link: '/dashboard/settings/email-notifications',
-    text: 'Notifications',
-  },
-  {
-    link: '/dashboard/settings/preferences',
-    text: 'Preferences',
+    link: '/dashboard/settings/languages',
+    text: 'Languages',
   },
 ];
 
@@ -140,29 +136,3 @@ const SettingsStructure = ({ children }) => {
 // handle settings layout on desktop with side links
 export const SettingsLayout = (page) =>
   DashboardLayout(<SettingsStructure>{page}</SettingsStructure>);
-
-export const Settings_Back_Button = ({ children, title }) => {
-  const router = useRouter();
-  const handleBackBtn = () => {
-    if (window.innerWidth < 768) router.push('/dashboard/settings');
-    else router.back();
-  };
-  return (
-    <div className="relative mb-s5 block md:hidden">
-      <button
-        className="absolute left-0 top-1/2 -translate-y-1/2"
-        onClick={handleBackBtn}
-      >
-        <Image
-          src={Arrow}
-          alt=""
-          width={10}
-          height={20}
-          className="brightness-0 invert"
-        />
-      </button>
-      <p className="text-center text-3xl">{title}</p>
-      {children}
-    </div>
-  );
-};

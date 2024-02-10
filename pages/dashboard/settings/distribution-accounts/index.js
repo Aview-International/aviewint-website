@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { SettingsLayout, Settings_Back_Button } from '..';
+import { SettingsLayout } from '..';
 import Container from '../../../../components/UI/Container';
 import Logo from '../../../../public/img/aview/logo.svg';
 import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
@@ -10,7 +10,6 @@ import { getIgAuthLink } from '../../../../services/apis';
 import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-import closeIcon from '../../../../public/img/icons/close.svg';
 
 const DISTRIBUTION_ACCOUNTS = [
   {
@@ -63,7 +62,6 @@ const DistriubtionAccounts = () => {
   return (
     <>
       <div>
-        <Settings_Back_Button title="Distribution accounts" />
         <Container
           left={
             <div className="flex flex-col justify-start gap-y-1">

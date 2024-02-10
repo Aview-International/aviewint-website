@@ -1,41 +1,34 @@
-import { useRouter } from 'next/router';
-import OnboardingButton from './button';
-import Image from 'next/image';
-import Trash from '../../public/img/icons/trash.svg';
-import { SUPPORTED_REGIONS } from '../../constants/constants';
-import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
-import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
-import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { SettingsLayout } from '..';
+import { SUPPORTED_REGIONS } from '../../../../constants/constants';
+import Trash from '../../../../public/img/icons/trash.svg';
+import Image from 'next/image';
+import OnboardingButton from '../../../../components/Onboarding/button';
+import MultipleSelectInput from '../../../../components/FormComponents/MultipleSelectInput';
+import ErrorHandler from '../../../../utils/errorHandler';
+import { useRouter } from 'next/router';
+import { updateRequiredServices } from '../../../api/firebase';
 
-const OnboardingStep5 = ({ userData, allLanguages }) => {
-  const router = useRouter();
-  const youtubeChannel = useSelector((el) => el.youtube);
+const Preference = () => {
+  const router=useRouter()
+  const user = useSelector((el) => el.user);
+  const youtube = useSelector((el) => el.youtube);
   const [languages, setLanguages] = useState([]);
-  const [isError, setIsError] = useState(false);
+  const allLanguagesData = useSelector((state) => state.aview.allLanguages);
   const [selectLanguages, setSelectLanguages] = useState(false);
+  const allLanguages = allLanguagesData.map((el) => el.language);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setLanguages(userData.languages);
-  }, [userData.languages]);
+    setLanguages(user.languages);
+  }, [user.languages]);
 
-  const handleSubmit = async () => {
-    const payForPlan = localStorage.getItem('payForPlan');
-    try {
-      if (languages.length < 2) {
-        setIsError(true);
-        return;
-      }
-      await updateRequiredServices({ languages }, userData.uid);
-      router.push(
-        `/onboarding?stage=${
-          payForPlan ? `subscription&plan=${payForPlan}` : '6'
-        }`
-      );
-    } catch (error) {
-      ErrorHandler(error);
-    }
+  const handleRemoveLanguage = (language) => {
+    let allLanguages = [...languages];
+    allLanguages.splice(allLanguages.indexOf(language), 1);
+    setLanguages(allLanguages);
   };
 
   const findLocalDialect = (language) => {
@@ -46,10 +39,20 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
     return allLanguages.find((el) => el.languageName === language);
   };
 
-  const handleRemoveLanguage = (language) => {
-    let allLanguages = [...languages];
-    allLanguages.splice(allLanguages.indexOf(language), 1);
-    setLanguages(allLanguages);
+  const handleSubmit = async () => {
+    try {
+      if (languages.length < 2) {
+        setIsError(true);
+        return;
+      }
+      setIsLoading(true);
+      await updateRequiredServices({ languages }, user.uid);
+      setIsLoading(false);
+      router.push('/dashboard')
+    } catch (error) {
+      setIsLoading(false);
+      ErrorHandler(error);
+    }
   };
 
   const handleMultipleLanguages = (option) => {
@@ -61,17 +64,10 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
   };
 
   return (
-    <div className="m-auto w-[80%] 2xl:w-[70%]">
-      <h2 className="text-center text-4xl font-bold md:text-6xl">
-        Received recommended languages
-      </h2>
-      <p className="mt-s2 mb-s4 text-center text-lg md:mx-auto md:w-2/5 md:text-xl">
-        We recommend you translate for these languages. Feel free to edit the
-        list as you please!
-      </p>
+    <div>
       <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
         {languages
-          .filter((el) => el !== userData.defaultLanguage)
+          .filter((el) => el !== user.defaultLanguage)
           .map(
             (language, index) =>
               language !== 'Others' && (
@@ -81,7 +77,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
                 >
                   <div className="flex flex-row items-center justify-between">
                     <Image
-                      src={youtubeChannel.channelDetails.thumbnail}
+                      src={youtube.channelDetails.thumbnail}
                       alt="profile-image"
                       height={40}
                       width={40}
@@ -89,7 +85,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
                     />
                     <div className="ml-3 flex flex-col">
                       <h2 className="text-lg">
-                        {userData.youtubeChannelName}{' '}
+                        {user.youtube.youtubeChannelName}{' '}
                         {findLocalDialect(language)?.['localDialect']}
                       </h2>
                       <p className="text-sm">
@@ -97,13 +93,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
                       </p>
                     </div>
                   </div>
-                  <button
-                    onClick={() =>
-                      handleRemoveLanguage(
-                        findLocalDialect(language)['languageName']
-                      )
-                    }
-                  >
+                  <button onClick={() => handleRemoveLanguage(language)}>
                     <Image src={Trash} alt="Delete" width={24} height={24} />
                   </button>
                 </div>
@@ -120,7 +110,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
         <div className="mx-auto mt-4 max-w-[360px]">
           <MultipleSelectInput
             hideCheckmark
-            text="Edit suggested languages"
+            text="Edit saved languages"
             options={allLanguages}
             answer={languages}
             hasSubmitted={true}
@@ -129,9 +119,13 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
         </div>
       )}
 
-      <div className="mx-auto mt-4 w-[min(360px,90%)]">
-        <OnboardingButton onClick={handleSubmit} theme="light">
-          Continue
+      <div className="mx-auto mt-4 w-[360px]">
+        <OnboardingButton
+          onClick={handleSubmit}
+          theme="light"
+          isLoading={isLoading}
+        >
+          Save
         </OnboardingButton>
       </div>
       {!selectLanguages && (
@@ -148,4 +142,5 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
   );
 };
 
-export default OnboardingStep5;
+Preference.getLayout = SettingsLayout;
+export default Preference;
