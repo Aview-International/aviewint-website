@@ -18,6 +18,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../../../../components/FormComponents/PaymentForm';
 import { stripeAppearance, stripePromise } from '../../../../utils/stripe';
 import { SettingsLayout } from '../../settings';
+import { useRouter } from 'next/router';
+import Confetti from '../../../../components/UI/Confetti';
 
 export const getStaticProps = async () => {
   try {
@@ -36,12 +38,14 @@ export const getStaticProps = async () => {
 
 const Billing = ({ plans }) => {
   usePlans(JSON.parse(plans));
+  const router = useRouter();
   const [buttonId, setButtonId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const { user, billing } = useSelector((state) => state);
   const [cancelSubLoader, setCancelSubLoader] = useState(false);
   const allPlans = useSelector((state) => state.aview.allPlans);
   const dispatch = useDispatch();
+  const [showConfetti, setShowConfetti] = useState(false);
   const [modal, setModal] = useState('');
 
   const findPlanName = (planId) => {
@@ -65,6 +69,22 @@ const Billing = ({ plans }) => {
         ErrorHandler(error);
       }
     })();
+  }, []);
+
+  useEffect(() => {
+    if (router.query?.payment_intent) {
+      if (router.query?.redirect_status === 'succeeded') {
+        // identifier to trigger confetti
+        localStorage.setItem('planPaid', 'planPaid');
+      }
+      router.replace('/dashboard/settings/billing');
+    }
+
+    const planPaid = localStorage.getItem('planPaid');
+    if (planPaid) {
+      setShowConfetti(true);
+      localStorage.removeItem('planPaid');
+    }
   }, []);
 
   const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
@@ -107,12 +127,15 @@ const Billing = ({ plans }) => {
   return (
     <>
       <PageTitle title="Billing" />
+      {showConfetti && <Confetti />}
       <div className="m-horizontal mx-auto mt-5">
         {modal === 'payment' && clientSecret && (
           <Elements stripe={stripePromise} options={options}>
             <Modal closeModal={closeModal} preventOutsideClick>
               <CheckoutForm
-                redirectUrl={window.location.origin + '/dashboard/billing'}
+                redirectUrl={
+                  window.location.origin + '/dashboard/settings/billing'
+                }
               />
             </Modal>
           </Elements>
@@ -152,7 +175,7 @@ const BillingDetails = ({ user, openModal, allPlans }) => {
         Current Plan :{' '}
         {user.plan
           ? `${user.plan} - $${
-              allPlans.find((e) => e.id === user.plan)?.monthlyCost
+              allPlans.find((e) => e.id === user.plan)?.monthlyCost ?? '0'
             }`
           : 'Studio Starter - Free'}
       </p>
