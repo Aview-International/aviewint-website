@@ -12,7 +12,6 @@ import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
 import OnboardingSuccess from '../../components/Onboarding/success';
-import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
 import Confetti from '../../components/UI/Confetti';
@@ -39,13 +38,7 @@ const Onboarding = ({ plans }) => {
   usePlans(JSON.parse(plans));
   const userData = useSelector((state) => state.user);
   const allLanguages = useSelector((state) => state.aview.allLanguages);
-
   const router = useRouter();
-  const { getProfile } = useUserProfile();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   useEffect(() => {
     if (window.location.search.split('=')[0].includes('code')) {
