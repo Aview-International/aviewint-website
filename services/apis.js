@@ -275,3 +275,6 @@ export const cancelSubscription = async ({ cancelReason, otherReason }) =>
 
 export const subscriptionHistory = async () =>
   (await axiosInstance.get('subscription/history')).data;
+
+export const deleteThread = async (threadId) =>
+  (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;

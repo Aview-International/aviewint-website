@@ -1,11 +1,7 @@
 import aviewLogo from '../../../public/img/aview/logo.svg';
-// import DropDownIcon from '../../../public/img/icons/dropdown-arrow.svg';
-// import RadioInput from '../../FormComponents/RadioInput';
-// import { setUser } from '../../../store/reducers/user.reducer';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Image from 'next/image';
 import FormInput from '../../FormComponents/FormInput';
-import GradientLoader from '../../../public/loaders/GradientLoader';
 
 export const chatOptions = [
   {

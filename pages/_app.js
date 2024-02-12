@@ -5,10 +5,9 @@ import { MenuOpenContextProvider } from '../store/menu-open-context';
 import '../styles/globals.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
-import { setAllLanguages } from '../store/reducers/aview.reducer';
 import { auth, logoutUser } from './api/firebase';
 import Cookies from 'js-cookie';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -39,15 +38,12 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 const Layout = ({ Component, pageProps }) => {
-  const dispatch = useDispatch();
-  const { getProfile } = useUserProfile();
+  useUserProfile();
   useEffect(() => {
     // prevent blobs from overflowing
     document
       .getElementById('__next')
       .classList.add('overflow-x-clip', 'w-full', 'relative');
-    // get all languages from the regions array
-    dispatch(setAllLanguages());
     // AOS animation
     AOS.init();
     AOS.refresh();
@@ -58,7 +54,7 @@ const Layout = ({ Component, pageProps }) => {
     window.onresize = setViewportHeight;
     // check token expiry every 5 mins
     const handle = setInterval(async () => {
-      const token = await auth.currentUser.getIdToken(true);
+      const token = await auth?.currentUser?.getIdToken(true);
       if (token) Cookies.set('token', token);
     }, 5 * 60 * 1000);
 
@@ -67,7 +63,6 @@ const Layout = ({ Component, pageProps }) => {
       else {
         Cookies.set('uid', user.uid);
         Cookies.set('token', user.accessToken);
-        getProfile();
       }
     });
 

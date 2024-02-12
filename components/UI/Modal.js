@@ -10,7 +10,10 @@ const Modal = ({ children, closeModal, preventOutsideClick }) => {
       >
         <div className="gradient-dark mx-auto h-full w-full rounded-xl bg-black p-s3">
           <div className="mb-s3 text-right">
-            <button onClick={closeModal} className="p-2">
+            <button
+              onClick={closeModal}
+              className="flex items-center ml-auto rounded-full p-2 hover:bg-white-transparent"
+            >
               <Image src={Close} alt="" width={18} height={18} />
             </button>
           </div>
