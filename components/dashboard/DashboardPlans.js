@@ -126,7 +126,7 @@ const DashboardPlans = ({
       )}
 
       {userPlan && userPlan !== 'free' && (
-        <div className="flex w-full justify-end">
+        <div className="flex w-full max-w-[14rem] ml-auto justify-end">
           <OnboardingButton
             isLoading={cancelSubLoader}
             onClick={
