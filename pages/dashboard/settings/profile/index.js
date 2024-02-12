@@ -8,7 +8,23 @@ import Edit from '../../../../public/img/icons/edit.svg';
 import Add from '../../../../public/img/icons/plus.svg';
 import OnboardingButton from '../../../../components/Onboarding/button';
 import ErrorHandler from '../../../../utils/errorHandler';
-import { updateProfileDetails } from '../../../../services/apis';
+import { getPlans, updateProfileDetails } from '../../../../services/apis';
+import usePlans from '../../../../hooks/usePlans';
+
+export const getStaticProps = async () => {
+  try {
+    const plans = await getPlans();
+    const plansJSON = JSON.stringify(plans);
+    return {
+      props: {
+        plans: plansJSON,
+      },
+      revalidate: 60, // re-generate page every 60 seconds (if necessary)
+    };
+  } catch (error) {
+    return { props: { plans: {} } };
+  }
+};
 
 const ModalComponent = ({ closeModal, img, setImg }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,9 +71,10 @@ const ModalComponent = ({ closeModal, img, setImg }) => {
     </Modal>
   );
 };
-const EditProfile = () => {
-  const allPlans = useSelector((state) => state.aview.allPlans);
+const EditProfile = ({ plans }) => {
+  usePlans(JSON.parse(plans));
   const userInfo = useSelector((state) => state.user);
+  const allPlans = useSelector((state) => state.aview.allPlans);
   const [modal, setModal] = useState(false);
   const [img, setImg] = useState(null);
 
@@ -135,10 +152,10 @@ const EditProfile = () => {
           <p className="text-lg capitalize">
             {userInfo.plan
               ? `${userInfo.plan} - $${
-                  allPlans.find((e) => e.id === userInfo.plan)?.monthlyCost
+                  allPlans.find((e) => e.id === userInfo.plan)?.monthlyCost ??
+                  '0'
                 }`
               : 'Studio Starter - Free'}
-            {userInfo?.plan ?? 'Starter Studio'}
           </p>
         }
         isBottomLine={true}

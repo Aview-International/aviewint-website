@@ -27,8 +27,6 @@ const History = () => {
     if (uid) getAll();
   }, [reloadTrigger]);
 
-  console.log(pendingJobs);
-
   return (
     <>
       <PageTitle title="History" />
