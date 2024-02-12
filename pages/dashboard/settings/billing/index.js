@@ -44,8 +44,6 @@ const Billing = ({ plans }) => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState('');
 
-  console.log(allPlans);
-
   const findPlanName = (planId) => {
     for (const plan of allPlans) {
       if (

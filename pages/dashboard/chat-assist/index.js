@@ -9,25 +9,22 @@ import {
   MessageContent,
 } from '../../../components/dashboard/chatAssistant/chatContent';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  createThread,
-  getThreadHistory,
-  sendMessage,
-} from '../../../services/apis';
+import { createThread, sendMessage } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import {
   setAiThreads,
-  setAllAIThreads,
   setLastUsedAIThread,
   setLastUserAIMessage,
 } from '../../../store/reducers/messages.reducer';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import GradientLoader from '../../../public/loaders/GradientLoader';
+import useUserProfile from '../../../hooks/useUserProfile';
 
 const ChatAssist = () => {
   const dispatch = useDispatch();
   const { push } = useRouter();
+  const { sidebarTrigger } = useUserProfile();
   const formRef = useRef();
   const [trigger, setTrigger] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -47,17 +44,13 @@ const ChatAssist = () => {
   }, [lastUsedAIThread]);
 
   useEffect(() => {
+    sidebarTrigger();
     dispatch(setAiThreads([]));
   }, []);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await getThreadHistory();
-        dispatch(setAllAIThreads(res));
-      } catch (error) {}
-    })();
-  }, [trigger]);
+    if (formRef.current) formRef.current[0]?.focus();
+  }, [formRef]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

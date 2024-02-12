@@ -15,11 +15,8 @@ import { useRouter } from 'next/router';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { getProfile, isLoading } = useUserProfile();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
+  // const getProfile = useUserProfile();
+  const { isLoading } = useUserProfile();
 
   return isLoading ? (
     <FullScreenLoader />

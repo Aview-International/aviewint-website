@@ -1,4 +1,4 @@
-import Border from '../UI/Border';
+// import Border from '../UI/Border';
 import Loader from '../../public/loaders/ButtonLoader';
 import Shadow from '../UI/Shadow';
 
@@ -20,10 +20,10 @@ const OnboardingButton = ({
     </button>
   ) : theme === 'error' ? (
     <button
-      className="rounded-full bg-red p-3"
+      className="w-full rounded-full bg-red p-3"
       onClick={isLoading ? () => null : onClick}
     >
-      {children}
+      {isLoading ? <Loader /> : children}
     </button>
   ) : (
     <Shadow classes="w-full">
