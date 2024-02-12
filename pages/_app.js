@@ -54,7 +54,7 @@ const Layout = ({ Component, pageProps }) => {
     window.onresize = setViewportHeight;
     // check token expiry every 5 mins
     const handle = setInterval(async () => {
-      const token = await auth.currentUser.getIdToken(true);
+      const token = await auth?.currentUser?.getIdToken(true);
       if (token) Cookies.set('token', token);
     }, 5 * 60 * 1000);
 
