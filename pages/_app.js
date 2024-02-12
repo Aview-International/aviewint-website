@@ -40,7 +40,6 @@ const MyApp = ({ Component, pageProps }) => {
 const Layout = ({ Component, pageProps }) => {
   useUserProfile();
   useEffect(() => {
-    console.log('triggereddd!');
     // prevent blobs from overflowing
     document
       .getElementById('__next')
