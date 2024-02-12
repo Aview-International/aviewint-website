@@ -56,6 +56,7 @@ const ModalComponent = ({ closeModal, img, setImg }) => {
   );
 };
 const EditProfile = () => {
+  const allPlans = useSelector((state) => state.aview.allPlans);
   const userInfo = useSelector((state) => state.user);
   const [modal, setModal] = useState(false);
   const [img, setImg] = useState(null);
@@ -132,6 +133,11 @@ const EditProfile = () => {
         left={<p className="text-xl">Plan</p>}
         right={
           <p className="text-lg capitalize">
+            {userInfo.plan
+              ? `${userInfo.plan} - $${
+                  allPlans.find((e) => e.id === userInfo.plan)?.monthlyCost
+                }`
+              : 'Studio Starter - Free'}
             {userInfo?.plan ?? 'Starter Studio'}
           </p>
         }
