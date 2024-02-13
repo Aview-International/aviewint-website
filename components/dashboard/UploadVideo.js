@@ -4,7 +4,7 @@ import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
@@ -16,19 +16,18 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const handleDrop = (e) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    try{
-      if (files && files.length == 1) {
+    try {
+      if (files && files.length === 1) {
         const file = files[0];
-        if (file.type.startsWith("video/")) {
+        if (file.type.startsWith('video/')) {
           setVideo(file);
         } else {
-          throw new Error("Please submit a video file.") 
+          throw new Error('Please submit a video file.');
         }
-        
-      }else{
-        throw new Error("Please submit a single video file.")
+      } else {
+        throw new Error('Please submit a single video file.');
       }
-    }catch(error){
+    } catch (error) {
       ErrorHandler(error);
     }
   };
@@ -37,7 +36,6 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
     const handleDragOver = (e) => {
       e.preventDefault(); // Prevent default behavior to allow drop
       setIsFileDragging(true);
-      
     };
 
     const handleDragLeave = (e) => {
@@ -65,7 +63,11 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
 
   return (
     <div className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DottedBorder classes={`relative block md:inline-block w-full ${(isFileDragging&&!video) ? ("border-green") : ("border-white")}`}>
+      <DottedBorder
+        classes={`relative block md:inline-block w-full ${
+          isFileDragging && !video ? 'border-green' : 'border-white'
+        }`}
+      >
         {video && (
           <button
             onClick={() => setVideo(null)}
