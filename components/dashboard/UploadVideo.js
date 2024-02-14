@@ -68,7 +68,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
 
   return (
     <div ref={dropZoneRef} className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DottedBorder classes={`p-s1 relative block md:inline-block w-full ${video ? "min-w-max max-w-[512px]" : ""} ${(isFileDragging&&!video) ? ("border-gradient border-transparent") : ("border-white")}`}>
+      <DottedBorder classes={`p-s1 relative block md:inline-block w-full ${video ? "min-w-max max-w-[492px]" : ""} ${(isFileDragging&&!video) ? ("border-gradient border-transparent") : ("border-white")}`}>
 
         <input
           type="file"
@@ -90,7 +90,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
 
               <button
                 onClick={() => setVideo(null)}
-                className={`gradient-2 h-[25px] z-50  w-[80px] cursor-pointer rounded-full pt-s0 pb-s0 text-center text-sm`}
+                className={`gradient-2 h-[25px] z-50  w-[80px] cursor-pointer rounded-full pt-s0 pb-s0 text-center text-sm ml-s1`}
               >
                 Remove
               </button>
