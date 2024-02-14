@@ -4,10 +4,11 @@ import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState,useEffect } from 'react';
+import { useState,useEffect, useRef } from 'react';
 
 const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
+  const dropZoneRef = useRef(null);
 
   const handleDragOver = (e) => {
     e.preventDefault(); // Prevent default behavior (Prevent file from being opened)
@@ -34,6 +35,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   };
 
   useEffect(() => {
+    const dropZone = dropZoneRef.current;
     const handleDragOver = (e) => {
       e.preventDefault(); // Prevent default behavior to allow drop
       setIsFileDragging(true);
@@ -50,21 +52,22 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
       setIsFileDragging(false);
     };
 
-    // Add event listeners to the window
-    window.addEventListener('dragover', handleDragOver);
-    window.addEventListener('dragleave', handleDragLeave);
-    window.addEventListener('drop', handleDrop);
+    if (dropZone) {
+      dropZone.addEventListener('dragover', handleDragOver);
+      dropZone.addEventListener('dragleave', handleDragLeave);
+      dropZone.addEventListener('drop', handleDrop);
 
-    // Remove event listeners on cleanup
-    return () => {
-      window.removeEventListener('dragover', handleDragOver);
-      window.removeEventListener('dragleave', handleDragLeave);
-      window.removeEventListener('drop', handleDrop);
-    };
+      // Remove event listeners on cleanup
+      return () => {
+        dropZone.removeEventListener('dragover', handleDragOver);
+        dropZone.removeEventListener('dragleave', handleDragLeave);
+        dropZone.removeEventListener('drop', handleDrop);
+      };
+    }
   }, []);
 
   return (
-    <div className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
+    <div ref={dropZoneRef} className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
       <DottedBorder classes={`p-s1 relative block md:inline-block w-full ${video ? "min-w-max max-w-[512px]" : ""} ${(isFileDragging&&!video) ? ("border-gradient border-transparent") : ("border-white")}`}>
 
         <input
