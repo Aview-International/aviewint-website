@@ -65,15 +65,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
 
   return (
     <div className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DottedBorder classes={`relative block md:inline-block w-full ${(isFileDragging&&!video) ? ("border-green") : ("border-white")}`}>
-        {video && (
-          <button
-            onClick={() => setVideo(null)}
-            className={`gradient-2 absolute top-4 right-4 z-50 mx-auto block w-[80px] cursor-pointer rounded-full pt-s0 pb-s0 text-center text-sm`}
-          >
-            Remove
-          </button>
-        )}
+      <DottedBorder classes={`p-s1 relative block md:inline-block w-full ${video ? "min-w-max max-w-[512px]" : ""} ${(isFileDragging&&!video) ? ("border-gradient border-transparent") : ("border-white")}`}>
 
         <input
           type="file"
@@ -83,13 +75,24 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
           id="video_upload"
         />
         {video ? (
-          <video
-            width="400"
-            controls
-            className="max-h-sm h-full w-full max-w-sm rounded-lg"
-          >
-            <source src={URL.createObjectURL(video)} type="video/mp4" />
-          </video>
+        <div>
+          <div className="flex flex-row justify-between">
+              <video
+                controls
+                style={{ width: '384px', height: '216px', objectFit: 'contain', backgroundColor: 'black' }}
+                className="max-h-sm max-w-sm rounded-lg"
+              >
+                <source src={URL.createObjectURL(video)} type="video/mp4" />
+              </video>
+
+              <button
+                onClick={() => setVideo(null)}
+                className={`gradient-2 h-[25px] z-50  w-[80px] cursor-pointer rounded-full pt-s0 pb-s0 text-center text-sm`}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
         ) : (
           <div className="flex flex-col items-center py-s6">
             <div className="flex h-[160px] w-[160px] place-content-center rounded-full bg-gray-1">
@@ -105,9 +108,11 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
                 </span>
               </Border>
             </label>
+            <p className="mt-s2 text-base">Drag and drop files</p>
           </div>
         )}
       </DottedBorder>
+      
 
       {isLoading && <p>Uploading Video</p>}
 
