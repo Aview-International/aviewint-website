@@ -105,7 +105,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
 
               <button
                 onClick={() => setVideo(null)}
-                className={`bg-red absolute top-3 right-3 z-50 rounded-full p-2 text-center text-sm`}
+                className={`absolute top-3 right-3 z-50 rounded-full bg-red p-2 text-center text-sm`}
               >
                 Remove
               </button>
@@ -122,11 +122,11 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
                 <span
                   className={`transition-300 mx-auto block rounded-full bg-black px-s3 pt-s1.5 pb-s1 text-center text-white`}
                 >
-                  Select files
+                  Select video
                 </span>
               </Border>
             </label>
-            <p className="mt-s2 text-base">Drag and drop files</p>
+            <p className="mt-s2 text-base">or drag and drop video here</p>
           </div>
         )}
       </DottedBorder>
