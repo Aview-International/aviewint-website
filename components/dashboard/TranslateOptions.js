@@ -47,7 +47,7 @@ const TranslateOptions = ({
         Which channels do you want these videos posted on? Want to post in an
         additional language? You can create more international channels.
       </p>
-      <div className="h-[368px] overflow-y-auto overflow-x-hidden pr-s1.5">
+      <div className="max-h-[368px] overflow-y-auto overflow-x-hidden pr-s1.5">
         {userData.languages.map((language, index) => (
           <div
             className="min-w-max(100%,360px) gradient-dark mb-s2 flex items-center justify-between rounded-md p-s1.5"

@@ -49,17 +49,17 @@ const Upload = () => {
 
   return (
     <>
+      <PageTitle title="Upload Video" />
       <div className="mx-auto max-w-[1200px]">
-        <PageTitle title="Upload Video" />
         <div className="flex flex-col rounded-xl bg-white-transparent p-s5 text-white lg:flex-row">
-          <div className="w-full lg:w-1/2">
+          <div className={video ? '' : 'lg:w-full'}>
             <UploadVideo
               setVideo={setVideo}
               video={video}
               uploadProgress={uploadProgress}
             />
           </div>
-          <div className="w-full lg:mt-0 lg:w-1/2">
+          <div className={`w-full ${video ? 'lg:ml-s5' : 'lg:mt-0 lg:w-1/2'}`}>
             <TranslateOptions
               handleSubmit={handleSubmit}
               payload={payload}
