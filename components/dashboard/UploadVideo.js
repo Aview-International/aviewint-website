@@ -4,7 +4,7 @@ import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState,useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
@@ -17,19 +17,18 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const handleDrop = (e) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    try{
+    try {
       if (files && files.length == 1) {
         const file = files[0];
-        if (file.type.startsWith("video/")) {
+        if (file.type.startsWith('video/')) {
           setVideo(file);
         } else {
-          throw new Error("Please submit a video file.") 
+          throw new Error('Please submit a video file.');
         }
-        
-      }else{
-        throw new Error("Please submit a single video file.")
+      } else {
+        throw new Error('Please submit a single video file.');
       }
-    }catch(error){
+    } catch (error) {
       ErrorHandler(error);
     }
   };
@@ -39,7 +38,6 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
     const handleDragOver = (e) => {
       e.preventDefault(); // Prevent default behavior to allow drop
       setIsFileDragging(true);
-      
     };
 
     const handleDragLeave = (e) => {
@@ -67,9 +65,19 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   }, []);
 
   return (
-    <div ref={dropZoneRef} className="w-11/12" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <DottedBorder classes={`p-s1 relative block md:inline-block w-full ${video ? "min-w-max max-w-[492px]" : ""} ${(isFileDragging&&!video) ? ("border-gradient border-transparent") : ("border-white")}`}>
-
+    <div
+      ref={dropZoneRef}
+      className="w-11/12"
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      <DottedBorder
+        classes={`p-s1 relative block md:inline-block w-full ${
+          isFileDragging && !video
+            ? 'border-gradient border-transparent'
+            : 'border-white'
+        }`}
+      >
         <input
           type="file"
           className="hidden"
@@ -78,19 +86,26 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
           id="video_upload"
         />
         {video ? (
-        <div>
-          <div className="flex flex-row justify-between">
+          <div>
+            <div className="flex flex-row justify-between">
               <video
                 controls
-                style={{ width: '384px', height: '216px', objectFit: 'contain', backgroundColor: 'black' }}
-                className="max-h-sm max-w-sm rounded-lg"
+                style={{
+                  maxWidth: '384px',
+                  height: '316px',
+                  width: '100%',
+                  objectFit: 'contain',
+                  backgroundColor: 'black',
+                  objectPosition: 'center',
+                }}
+                className="max-h-sm max-w-[24rem] rounded-lg"
               >
                 <source src={URL.createObjectURL(video)} type="video/mp4" />
               </video>
 
               <button
                 onClick={() => setVideo(null)}
-                className={`gradient-2 h-[25px] z-50  w-[80px] cursor-pointer rounded-full pt-s0 pb-s0 text-center text-sm ml-s1`}
+                className={`bg-red absolute top-3 right-3 z-50 rounded-full p-2 text-center text-sm`}
               >
                 Remove
               </button>
@@ -115,7 +130,6 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
           </div>
         )}
       </DottedBorder>
-      
 
       {isLoading && <p>Uploading Video</p>}
 
