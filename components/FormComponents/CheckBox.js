@@ -1,20 +1,20 @@
 import Image from 'next/image';
 import Tooltip from '../../public/img/icons/tooltip.svg';
 import Info from '../../public/img/icons/info.svg';
-import Border from '../UI/Border';
+import Border from '../UI/Border' ;
 import { useState } from 'react';
 
 const CheckBox = ({ label, onChange, tooltip, name, labelClasses }) => {
   const [isChecked, setIschecked] = useState(false);
   return (
-    <label className={`flex cursor-pointer items-center text-xl text-white`}>
+    <label className={`flex cursor-pointer items-start text-xl text-white`}>
       <span
-        className={`mr-4 flex h-5 w-5 items-center justify-center ${
+        className={`mr-3 flex h-5 w-5 items-center justify-center rounded-[4px] ${
           isChecked ? 'gradient-1' : 'bg-white'
         }`}
       >
         <span
-          className={`inline-block h-4 w-4 border-2 border-black ${
+          className={`inline-block h-4 w-4 rounded-[4px] border-2 border-black ${
             isChecked ? 'gradient-1' : 'bg-black'
           }`}
         ></span>

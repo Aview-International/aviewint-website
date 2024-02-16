@@ -1,11 +1,15 @@
 import { useSelector } from 'react-redux';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
+import RadioInput from '../FormComponents/RadioInput';
 import OnboardingButton from '../Onboarding/button';
 import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Textarea from '../FormComponents/Textarea';
+import PlayIcon from '../../public/img/icons/play.svg';
+
+const voiceList = ['Rachel', 'Drew', 'Clyde', 'Paul', 'Domi', 'Dave', 'Fin'];
 
 const TranslateOptions = ({
   handleSubmit,
@@ -14,6 +18,7 @@ const TranslateOptions = ({
   isLoading,
   uploadProgress,
 }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
   const userData = useSelector((state) => state.user);
   const youtubePicture = useSelector(
     (state) => state.youtube?.channelDetails?.thumbnail
@@ -42,7 +47,7 @@ const TranslateOptions = ({
 
   return (
     <>
-      <h3 className="mb-s3 text-2xl font-bold">Distribution</h3>
+      <h3 className="my-s3 text-2xl font-bold">Distribution</h3>
       <p className="mb-s4 text-lg">
         Which channels do you want these videos posted on? Want to post in an
         additional language? You can create more international channels.
@@ -76,6 +81,33 @@ const TranslateOptions = ({
           </div>
         ))}
       </div>
+      <p className="mt-s3  text-xl font-semibold">Select Voice</p>
+      <p className="mb-s3 text-xs">Eleven Lab voices.</p>
+      <div className="flex flex-wrap items-center justify-center gap-x-6">
+        {voiceList.map((voice, index) => {
+          return (
+            <button
+              className={`${
+                activeIndex === index
+                  ? 'bg-white-transparent px-6 py-1 font-semibold'
+                  : ''
+              } rounded-md`}
+              onClick={() => setActiveIndex(index)}
+            >
+              <span className="inline-block text-center">{voice}</span>
+            </button>
+          );
+        })}
+        <audio controls className="mx-auto mt-4 block w-1/2">
+          <source type="audio/webm" />
+          <source type="audio/mp3" />
+          <source type="audio/mpeg" />
+        </audio>
+        <p className="w-full text-center text-sm mt-1">
+          Listen vairous above voice sample options
+        </p>
+      </div>
+
       <p className="mt-s4 text-lg">
         Is there anything else you would like us to know?
       </p>
@@ -90,6 +122,17 @@ const TranslateOptions = ({
           setPayload({ ...payload, saveSettings: e.target.checked })
         }
         label="Save these settings for future translations"
+        labelClasses="text-base"
+      />
+      <p className="my-s3 w-full border-2 border-x-0 border-t-0 border-white py-1 text-lg">
+        Additional Services
+      </p>
+      <CheckBox
+        onChange={(e) =>
+          setPayload({ ...payload, additionalPay: e.target.checked })
+        }
+        label="Would you like to create shorts for these videos? If yes, a $20 fee will be charged."
+        labelClasses="text-base"
       />
       <br />
       {isLoading &&
@@ -111,6 +154,23 @@ const TranslateOptions = ({
         </div>
       )}
     </>
+  );
+};
+
+const VoicePlay = ({ setPayload, payload, voice }) => {
+  return (
+    <div className="flex flex-row gap-x-3">
+      <div className="cursor-pointer">
+        <Image src={PlayIcon} alt="play-option" width={24} height={24} />
+      </div>
+      <CheckBox
+        onChange={(e) =>
+          setPayload({ ...payload, selectVoice: e.target.checked })
+        }
+        label={voice}
+        labelClasses="text-sm text-center mt-[2px]"
+      />
+    </div>
   );
 };
 

@@ -20,6 +20,8 @@ const Upload = () => {
     languages: '',
     saveSettings: false,
     additionalNote: '',
+    selectVoice: '',
+    additionalPay: false,
   });
 
   const handleSubmit = async () => {
@@ -46,6 +48,8 @@ const Upload = () => {
       ErrorHandler(error);
     }
   };
+
+  console.log(payload)
 
   return (
     <>

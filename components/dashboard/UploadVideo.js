@@ -4,7 +4,13 @@ import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import OnboardingButton from '../Onboarding/button';
+import Button from '../UI/Button';
+import dropdown_arrow from '../.././public/img/icons/dropdown-arrow.svg';
+import FormInput from '../FormComponents/FormInput';
+import Cancel from '../../public/img/icons/close.svg';
+import Textarea from '../FormComponents/Textarea';
 
 const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
@@ -122,7 +128,148 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         </span>
         &nbsp;and give us permission to post translated content on your behalf.
       </small>
+      <VideoInformation />
     </div>
+  );
+};
+
+const VideoInformation = () => {
+  const inputRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [videoOptions, setVideoOptions] = useState({
+    tags: [],
+    description: '',
+    title: '',
+  });
+
+  const [tagOptions, setTagOptions] = useState([
+    'influencer',
+    'aview',
+    'international',
+    'aviewint',
+    'translation',
+    'content',
+    'toronto',
+    'canada',
+  ]);
+
+  const handleVideoOptions = (e) => {
+    const { name, value } = e.target;
+    setVideoOptions((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const closeHandler = (tag) => {
+    const newOptionsArray = videoOptions.tags;
+    newOptionsArray.push(tag);
+    setVideoOptions((prevState) => ({
+      ...prevState,
+      tags: newOptionsArray,
+    }));
+
+    setTagOptions((prevTagOptions) =>
+      prevTagOptions.filter((option) => option != tag)
+    );
+  };
+  return (
+    <>
+      <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
+        <Button type="primary" purpose="submit">
+          Download transcript
+        </Button>
+        <Button type="secondary" purpose="submit">
+          Remove
+        </Button>
+      </div>
+      <div className="mb-s4 rounded-md bg-white-transparent p-s2">
+        <div className="">
+          <p className="mb-s1 text-sm font-bold">Uploading...</p>
+          <div className="mb-1 h-2 rounded-xl border-2 border-white-transparent bg-transparent relative">
+            <span
+              className={`gradient-1 absolute block h-[6px] w-1/2 rounded-xl top-0`}
+            ></span>
+          </div>
+          <div className="flex items-center justify-between text-xs">
+            <p>10%</p>
+            <p>10 mins left</p>
+          </div>
+        </div>
+      </div>
+      <div className="flex w-full flex-row justify-between">
+        <h3 className="mb-s3 text-2xl font-bold">
+          Video Information{' '}
+          <span className="text-base font-light">(optional)</span>
+        </h3>
+        <div className="cursor-pointer p-2" onClick={() => setIsOpen(!isOpen)}>
+          <Image
+            src={dropdown_arrow}
+            alt="optional-info"
+            width={15}
+            height={15}
+            className={`${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          />
+        </div>
+      </div>
+      {isOpen && (
+        <>
+          <FormInput
+            label="Title"
+            placeholder="Title"
+            type="text"
+            value={videoOptions.title}
+            hideCheckmark={true}
+            name="title"
+            onChange={handleVideoOptions}
+            extraClasses="mb-s0"
+          />
+          <p className="mt-s2 text-lg">Description</p>
+          <Textarea
+            placeholder="Describe video information"
+            onChange={handleVideoOptions}
+            name="description"
+            value={videoOptions.description}
+            extraClasses={'mb-s2'}
+          />
+          <FormInput
+            label="Tags"
+            placeholder="Type your tag"
+            type="text"
+            ref={inputRef}
+            hideCheckmark={true}
+            name="tags"
+            // onChange={handleInputChange}
+            value={videoOptions.tags.join(', ')}
+            extraClasses="mb-s0"
+          />
+          <div className="my-s1.5 flex w-full flex-row flex-wrap items-center justify-start gap-3 bg-transparent">
+            {tagOptions &&
+              tagOptions.map((tag, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between gap-x-2 rounded-xl bg-white-transparent p-2"
+                  >
+                    <p>{tag}</p>
+                    <div
+                      onClick={() => closeHandler(tag)}
+                      className="cursor-pointer"
+                    >
+                      <Image
+                        src={Cancel}
+                        alt="close-option"
+                        width={10}
+                        height={10}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
