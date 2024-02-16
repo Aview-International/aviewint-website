@@ -11,13 +11,15 @@ import { useRouter } from 'next/router';
 import { updateRequiredServices } from '../../../api/firebase';
 
 const Preference = () => {
-  const router=useRouter()
+  const router = useRouter();
   const user = useSelector((el) => el.user);
   const youtube = useSelector((el) => el.youtube);
   const [languages, setLanguages] = useState([]);
   const allLanguagesData = useSelector((state) => state.aview.allLanguages);
   const [selectLanguages, setSelectLanguages] = useState(false);
-  const allLanguages = allLanguagesData.map((el) => el.language);
+  const allLanguages = allLanguagesData
+    .map((el) => el.language)
+    .filter((el) => el !== user.defaultLanguage);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,7 +50,7 @@ const Preference = () => {
       setIsLoading(true);
       await updateRequiredServices({ languages }, user.uid);
       setIsLoading(false);
-      router.push('/dashboard')
+      router.push('/dashboard');
     } catch (error) {
       setIsLoading(false);
       ErrorHandler(error);
