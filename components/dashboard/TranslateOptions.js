@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
-import RadioInput from '../FormComponents/RadioInput';
 import OnboardingButton from '../Onboarding/button';
 import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
 import { useEffect, useState } from 'react';
 import Textarea from '../FormComponents/Textarea';
+import RadioInput from '../FormComponents/RadioInput';
 import PlayIcon from '../../public/img/icons/play.svg';
 
 const voiceList = ['Rachel', 'Drew', 'Clyde', 'Paul', 'Domi', 'Dave', 'Fin'];
@@ -18,7 +18,7 @@ const TranslateOptions = ({
   isLoading,
   uploadProgress,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [chosenValue, setChosenValue] = useState('');
   const userData = useSelector((state) => state.user);
   const youtubePicture = useSelector(
     (state) => state.youtube?.channelDetails?.thumbnail
@@ -81,35 +81,23 @@ const TranslateOptions = ({
           </div>
         ))}
       </div>
-      <p className="mt-s3  text-xl font-semibold">Select Voice</p>
-      <p className="mb-s3 text-xs">Eleven Lab voices.</p>
-      <div className="flex flex-wrap items-center justify-center gap-x-6">
+      <p className="mt-s3 text-xl font-semibold">Select Voice</p>
+      <p className="mb-s1.5 text-xs">Eleven Lab voices.</p>
+      <div className={`mb-s2 flex flex-col items-start gap-y-2.5`}>
         {voiceList.map((voice, index) => {
           return (
-            <button
+            <VoicePlay
+              setPayload={setPayload}
+              payload={payload}
+              voice={voice}
               key={index}
-              className={`${
-                activeIndex === index
-                  ? 'bg-white-transparent px-6 py-1 font-semibold'
-                  : ''
-              } rounded-md`}
-              onClick={() => setActiveIndex(index)}
-            >
-              <span className="inline-block text-center">{voice}</span>
-            </button>
+              chosenValue={chosenValue}
+              setChosenValue={setChosenValue}
+            />
           );
         })}
-        <audio controls className="mx-auto mt-4 block w-1/2">
-          <source type="audio/webm" />
-          <source type="audio/mp3" />
-          <source type="audio/mpeg" />
-        </audio>
-        <p className="mt-1 w-full text-center text-sm">
-          Listen vairous above voice sample options
-        </p>
       </div>
-
-      <p className="mt-s4 text-lg">
+      {/* <p className="mt-s4 text-lg">
         Is there anything else you would like us to know?
       </p>
       <Textarea
@@ -117,7 +105,7 @@ const TranslateOptions = ({
         onChange={(e) =>
           setPayload({ ...payload, additionalNote: e.target.value })
         }
-      />
+      /> */}
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
@@ -158,18 +146,28 @@ const TranslateOptions = ({
   );
 };
 
-const VoicePlay = ({ setPayload, payload, voice }) => {
+const VoicePlay = ({
+  setPayload,
+  payload,
+  voice,
+  chosenValue,
+  setChosenValue,
+}) => {
+  
   return (
-    <div className="flex flex-row gap-x-3">
-      <div className="cursor-pointer">
-        <Image src={PlayIcon} alt="play-option" width={24} height={24} />
-      </div>
-      <CheckBox
-        onChange={(e) =>
-          setPayload({ ...payload, selectVoice: e.target.checked })
-        }
+    <div className="flex flex-row items-center justify-center gap-x-3">
+    
+        <Image src={PlayIcon} alt="play-option" width={24} height={24} className='cursor-pointer'/>
+      
+      <RadioInput
+        onChange={(e) => {
+          setChosenValue(e.target.value);
+          setPayload({ ...payload, selectVoice: e.target.value });
+        }}
         label={voice}
-        labelClasses="text-sm text-center mt-[2px]"
+        name={voice}
+        value={voice}
+        chosenValue={chosenValue}
       />
     </div>
   );

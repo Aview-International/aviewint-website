@@ -5,14 +5,13 @@ import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
 import { useState, useEffect, useRef } from 'react';
-// import OnboardingButton from '../Onboarding/button';
 import Button from '../UI/Button';
 import dropdown_arrow from '../.././public/img/icons/dropdown-arrow.svg';
 import FormInput from '../FormComponents/FormInput';
 import Cancel from '../../public/img/icons/close.svg';
 import Textarea from '../FormComponents/Textarea';
 
-const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
+const UploadVideo = ({ setVideo, video, uploadProgress, isLoading, setVideoUpdated }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
   const dropZoneRef = useRef(null);
 
@@ -28,6 +27,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         const file = files[0];
         if (file.type.startsWith('video/')) {
           setVideo(file);
+          setVideoUpdated((prevValue) => !prevValue)
         } else {
           throw new Error('Please submit a video file.');
         }
@@ -110,7 +110,10 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
               </video>
 
               <button
-                onClick={() => setVideo(null)}
+                onClick={() =>{ 
+                  setVideo(null)
+                  setVideoUpdated((prevValue) => !prevValue) 
+                }}
                 className={`absolute top-3 right-3 z-50 rounded-full bg-red p-2 text-center text-sm`}
               >
                 Remove
@@ -148,12 +151,12 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         </span>
         &nbsp;and give us permission to post translated content on your behalf.
       </small>
-      <VideoInformation />
+      <VideoInformation progress={uploadProgress}/>
     </div>
   );
 };
 
-const VideoInformation = () => {
+const VideoInformation = ({ progress }) => {
   const inputRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [videoOptions, setVideoOptions] = useState({
@@ -181,35 +184,37 @@ const VideoInformation = () => {
     }));
   };
 
-  const closeHandler = (tag) => {
-    const newOptionsArray = videoOptions.tags;
-    newOptionsArray.push(tag);
-    setVideoOptions((prevState) => ({
-      ...prevState,
-      tags: newOptionsArray,
-    }));
+  // const closeHandler = (tag) => {
+  //   const newOptionsArray = videoOptions.tags;
+  //   newOptionsArray.push(tag);
+  //   setVideoOptions((prevState) => ({
+  //     ...prevState,
+  //     tags: newOptionsArray,
+  //   }));
 
-    setTagOptions((prevTagOptions) =>
-      prevTagOptions.filter((option) => option != tag)
-    );
-  };
+  //   setTagOptions((prevTagOptions) =>
+  //     prevTagOptions.filter((option) => option != tag)
+  //   );
+  // };
+
   return (
     <>
-      <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
+      {/* <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
         <Button type="primary" purpose="submit">
           Download transcript
         </Button>
         <Button type="secondary" purpose="submit">
           Remove
         </Button>
-      </div>
+      </div> */}
       <div className="mb-s4 rounded-md bg-white-transparent p-s2">
         <div className="">
           <p className="mb-s1 text-sm font-bold">Uploading...</p>
           <div className="mb-1 h-2 rounded-xl border-2 border-white-transparent bg-transparent relative">
-            <span
-              className={`gradient-1 absolute block h-[6px] w-1/2 rounded-xl top-0`}
-            ></span>
+            <div
+              className="gradient-1 absolute block h-[6px] w-1/2 rounded-xl top-0 scroll-smooth"
+              style={{ width: progress + '%' }}
+            ></div>
           </div>
           <div className="flex items-center justify-between text-xs">
             <p>10%</p>
@@ -217,21 +222,21 @@ const VideoInformation = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-row justify-between">
+      <button className="flex w-full flex-row justify-between cursor-pointer"  onClick={() => setIsOpen(!isOpen)}>
         <h3 className="mb-s3 text-2xl font-bold">
           Video Information{' '}
           <span className="text-base font-light">(optional)</span>
         </h3>
-        <div className="cursor-pointer p-2" onClick={() => setIsOpen(!isOpen)}>
+        <div className="p-2">
           <Image
             src={dropdown_arrow}
-            alt="optional-info"
+            alt="Dropdown Arrow"
             width={15}
             height={15}
             className={`${isOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </div>
-      </div>
+      </button>
       {isOpen && (
         <>
           <FormInput
@@ -252,7 +257,7 @@ const VideoInformation = () => {
             value={videoOptions.description}
             extraClasses={'mb-s2'}
           />
-          <FormInput
+          {/* <FormInput
             label="Tags"
             placeholder="Type your tag"
             type="text"
@@ -262,8 +267,8 @@ const VideoInformation = () => {
             // onChange={handleInputChange}
             value={videoOptions.tags.join(', ')}
             extraClasses="mb-s0"
-          />
-          <div className="my-s1.5 flex w-full flex-row flex-wrap items-center justify-start gap-3 bg-transparent">
+          /> */}
+          {/* <div className="my-s1.5 flex w-full flex-row flex-wrap items-center justify-start gap-3 bg-transparent">
             {tagOptions &&
               tagOptions.map((tag, index) => {
                 return (
@@ -286,7 +291,7 @@ const VideoInformation = () => {
                   </div>
                 );
               })}
-          </div>
+          </div> */}
         </>
       )}
     </>

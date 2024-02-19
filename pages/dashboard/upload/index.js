@@ -49,8 +49,6 @@ const Upload = () => {
     }
   };
 
-  console.log(payload)
-
   return (
     <>
       <PageTitle title="Upload Video" />
