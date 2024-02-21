@@ -42,8 +42,6 @@ const useUserProfile = () => {
     dispatch(setYoutubeChannel(data));
   };
 
-  const getAllThreads = () => {};
-
   const handleGetMessageStatus = async () => {
     const res = await getMessageStatus();
     dispatch(setMessageStatus(res));
