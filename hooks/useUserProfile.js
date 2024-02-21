@@ -42,6 +42,8 @@ const useUserProfile = () => {
     dispatch(setYoutubeChannel(data));
   };
 
+  const getAllThreads = () => {};
+
   const handleGetMessageStatus = async () => {
     const res = await getMessageStatus();
     dispatch(setMessageStatus(res));
@@ -72,7 +74,7 @@ const useUserProfile = () => {
   useEffect(() => {
     (async () => {
       try {
-        if (token) {
+        if (token && uid) {
           const res = await getThreadHistory();
           dispatch(setAllAIThreads(res));
         }
