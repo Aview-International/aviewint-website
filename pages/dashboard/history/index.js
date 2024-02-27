@@ -9,6 +9,8 @@ const History = () => {
   const [reloadTrigger, setReloadTrigger] = useState(0);
   const uid = Cookies.get('uid');
 
+  console.log(pendingJobs);
+
   const getPendingJobs = async () => {
     const res = await getAllPendingJobs(uid);
     setPendingJobs(
@@ -55,9 +57,11 @@ const Container = ({ pendingJobs }) => {
           <div>{job.videoData?.caption}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
           <div>
-            {typeof job?.languages === 'string'
+            {job?.translatedLanguage
+              ? job.translatedLanguage
+              : typeof job?.languages === 'string'
               ? job.languages
-              : job?.languages.map((lang, idx) => (
+              : job?.languages?.map((lang, idx) => (
                   <p key={idx} className="mb-s1">
                     {lang}
                   </p>
