@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState, useEffect, useRef } from 'react';
-import Button from '../UI/Button';
-import dropdown_arrow from '../.././public/img/icons/dropdown-arrow.svg';
 import FormInput from '../FormComponents/FormInput';
-import Cancel from '../../public/img/icons/close.svg';
 import Textarea from '../FormComponents/Textarea';
+import ButtonText from '../sections/reused/ButtonText';
 
-const UploadVideo = ({ setVideo, video, uploadProgress, isLoading, setVideoUpdated }) => {
+const UploadVideo = ({ video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
   const dropZoneRef = useRef(null);
 
@@ -27,7 +24,6 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading, setVideoUpdat
         const file = files[0];
         if (file.type.startsWith('video/')) {
           setVideo(file);
-          setVideoUpdated((prevValue) => !prevValue)
         } else {
           throw new Error('Please submit a video file.');
         }
@@ -110,9 +106,9 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading, setVideoUpdat
               </video>
 
               <button
-                onClick={() =>{ 
-                  setVideo(null)
-                  setVideoUpdated((prevValue) => !prevValue) 
+                onClick={() => {
+                  setVideo(null);
+                  setVideoUpdated((prevValue) => !prevValue);
                 }}
                 className={`absolute top-3 right-3 z-50 rounded-full bg-red p-2 text-center text-sm`}
               >
@@ -151,30 +147,32 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading, setVideoUpdat
         </span>
         &nbsp;and give us permission to post translated content on your behalf.
       </small>
-      <VideoInformation progress={uploadProgress}/>
+      {video ? (
+        <div className="mb-s4 rounded-md bg-white-transparent p-s2">
+          <p className="mb-s1 text-sm font-bold">Uploading...</p>
+          <div className="relative mb-1 h-2 rounded-xl border-2 border-white-transparent bg-transparent">
+            <div
+              className="gradient-1 absolute top-0 block h-[6px] w-1/2 scroll-smooth rounded-xl"
+              style={{ width: uploadProgress + '%' }}
+            ></div>
+          </div>
+          <div className="flex items-center justify-between text-xs">
+            <p>10%</p>
+            <p>10 mins left</p>
+          </div>
+        </div>
+      ) : null}
+      <VideoInformation />
     </div>
   );
 };
 
-const VideoInformation = ({ progress }) => {
-  const inputRef = useRef(null);
+const VideoInformation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [videoOptions, setVideoOptions] = useState({
-    tags: [],
     description: '',
     title: '',
   });
-
-  const [tagOptions, setTagOptions] = useState([
-    'influencer',
-    'aview',
-    'international',
-    'aviewint',
-    'translation',
-    'content',
-    'toronto',
-    'canada',
-  ]);
 
   const handleVideoOptions = (e) => {
     const { name, value } = e.target;
@@ -184,59 +182,14 @@ const VideoInformation = ({ progress }) => {
     }));
   };
 
-  // const closeHandler = (tag) => {
-  //   const newOptionsArray = videoOptions.tags;
-  //   newOptionsArray.push(tag);
-  //   setVideoOptions((prevState) => ({
-  //     ...prevState,
-  //     tags: newOptionsArray,
-  //   }));
-
-  //   setTagOptions((prevTagOptions) =>
-  //     prevTagOptions.filter((option) => option != tag)
-  //   );
-  // };
-
   return (
     <>
-      {/* <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
-        <Button type="primary" purpose="submit">
-          Download transcript
-        </Button>
-        <Button type="secondary" purpose="submit">
-          Remove
-        </Button>
-      </div> */}
-      <div className="mb-s4 rounded-md bg-white-transparent p-s2">
-        <div className="">
-          <p className="mb-s1 text-sm font-bold">Uploading...</p>
-          <div className="mb-1 h-2 rounded-xl border-2 border-white-transparent bg-transparent relative">
-            <div
-              className="gradient-1 absolute block h-[6px] w-1/2 rounded-xl top-0 scroll-smooth"
-              style={{ width: progress + '%' }}
-            ></div>
-          </div>
-          <div className="flex items-center justify-between text-xs">
-            <p>10%</p>
-            <p>10 mins left</p>
-          </div>
-        </div>
-      </div>
-      <button className="flex w-full flex-row justify-between cursor-pointer"  onClick={() => setIsOpen(!isOpen)}>
-        <h3 className="mb-s3 text-2xl font-bold">
+      <ButtonText isOpen={isOpen} setIsOpen={setIsOpen} labelClasses="mb-s3">
+        <p className={`text-2xl font-bold`}>
           Video Information{' '}
           <span className="text-base font-light">(optional)</span>
-        </h3>
-        <div className="p-2">
-          <Image
-            src={dropdown_arrow}
-            alt="Dropdown Arrow"
-            width={15}
-            height={15}
-            className={`${isOpen ? 'rotate-180' : 'rotate-0'}`}
-          />
-        </div>
-      </button>
+        </p>
+      </ButtonText>
       {isOpen && (
         <>
           <FormInput
@@ -257,41 +210,6 @@ const VideoInformation = ({ progress }) => {
             value={videoOptions.description}
             extraClasses={'mb-s2'}
           />
-          {/* <FormInput
-            label="Tags"
-            placeholder="Type your tag"
-            type="text"
-            ref={inputRef}
-            hideCheckmark={true}
-            name="tags"
-            // onChange={handleInputChange}
-            value={videoOptions.tags.join(', ')}
-            extraClasses="mb-s0"
-          /> */}
-          {/* <div className="my-s1.5 flex w-full flex-row flex-wrap items-center justify-start gap-3 bg-transparent">
-            {tagOptions &&
-              tagOptions.map((tag, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between gap-x-2 rounded-xl bg-white-transparent p-2"
-                  >
-                    <p>{tag}</p>
-                    <div
-                      onClick={() => closeHandler(tag)}
-                      className="cursor-pointer"
-                    >
-                      <Image
-                        src={Cancel}
-                        alt="close-option"
-                        width={10}
-                        height={10}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-          </div> */}
         </>
       )}
     </>

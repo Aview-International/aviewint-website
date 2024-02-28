@@ -1,15 +1,15 @@
+import { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
 import OnboardingButton from '../Onboarding/button';
 import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
-import { useEffect, useState } from 'react';
-import Textarea from '../FormComponents/Textarea';
 import RadioInput from '../FormComponents/RadioInput';
 import PlayIcon from '../../public/img/icons/play.svg';
-
-const voiceList = ['Rachel', 'Drew', 'Clyde', 'Paul', 'Domi', 'Dave', 'Fin'];
+import PauseIcon from '../../public/img/icons/pause.svg';
+import ButtonText from '../sections/reused/ButtonText';
+import { getElevenVoices } from '../../services/apis';
 
 const TranslateOptions = ({
   handleSubmit,
@@ -19,10 +19,16 @@ const TranslateOptions = ({
   uploadProgress,
 }) => {
   const [chosenValue, setChosenValue] = useState('');
+  const [samplesArray, setSamplesArray] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const userData = useSelector((state) => state.user);
+  const [playingIndex, setPlayingIndex] = useState(null);
+  const audioRef = useRef(null);
+
   const youtubePicture = useSelector(
     (state) => state.youtube?.channelDetails?.thumbnail
   );
+
   const findLocalDialect = (language) => {
     let allLanguages = [];
     SUPPORTED_REGIONS.forEach(({ data }) => {
@@ -31,12 +37,6 @@ const TranslateOptions = ({
     return allLanguages.find((el) => el.languageName === language);
   };
 
-  useEffect(() => {
-    if (userData.saveSettings)
-      setPayload({ ...payload, languages: userData.preferences });
-    else setPayload({ ...payload, languages: userData.languages });
-  }, [userData.languages]);
-
   const handleChange = (language) => {
     let allLanguages = [...payload.languages];
     if (allLanguages.includes(language))
@@ -44,6 +44,47 @@ const TranslateOptions = ({
     else allLanguages.push(language);
     setPayload({ ...payload, languages: allLanguages });
   };
+
+  const togglePlay = (id, url) => {
+    if (id === playingIndex) {
+      setPlayingIndex(null);
+    } else {
+      setPlayingIndex(id);
+      let audioPlayer = audioRef.current;
+      audioPlayer.src = url;
+      audioPlayer.load();
+      audioPlayer.play();
+    }
+  };
+
+  const togglePause = (index) => {
+    let audioPlayer = audioRef.current;
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+      setPlayingIndex(null);
+    }
+  };
+
+  const handleEndOfVoice = () => {
+    audioRef.current.pause();
+    setPlayingIndex(null);
+  };
+
+  useEffect(() => {
+    if (userData.saveSettings)
+      setPayload({ ...payload, languages: userData.preferences });
+    else setPayload({ ...payload, languages: userData.languages });
+  }, [userData.languages]);
+
+  useEffect(() => {
+    (async () => {
+      const samplesData = await getElevenVoices();
+
+      setSamplesArray(samplesData.voices.slice(0, 10));
+    })();
+  }, [userData.languages]);
 
   return (
     <>
@@ -81,31 +122,30 @@ const TranslateOptions = ({
           </div>
         ))}
       </div>
-      <p className="mt-s3 text-xl font-semibold">Select Voice</p>
-      <p className="mb-s1.5 text-xs">Eleven Lab voices.</p>
-      <div className={`mb-s2 flex flex-col items-start gap-y-2.5`}>
-        {voiceList.map((voice, index) => {
-          return (
-            <VoicePlay
-              setPayload={setPayload}
-              payload={payload}
-              voice={voice}
-              key={index}
-              chosenValue={chosenValue}
-              setChosenValue={setChosenValue}
-            />
-          );
-        })}
-      </div>
-      {/* <p className="mt-s4 text-lg">
-        Is there anything else you would like us to know?
-      </p>
-      <Textarea
-        placeholder="Additional notes"
-        onChange={(e) =>
-          setPayload({ ...payload, additionalNote: e.target.value })
-        }
-      /> */}
+      {userData.plan === undefined ? (
+        <>
+          <audio hidden={true} ref={audioRef} onEnded={handleEndOfVoice} />
+          <p className="mt-s3 text-xl font-semibold">Select Voice</p>
+          <p className="mb-s1.5 text-xs">Eleven Lab voices.</p>
+          <div className="mb-s4 grid grid-cols-2 items-start justify-start gap-y-2">
+            {samplesArray.map((voice, index) => {
+              return (
+                <VoicePlay
+                  setPayload={setPayload}
+                  payload={payload}
+                  name={voice.name}
+                  key={index}
+                  chosenValue={chosenValue}
+                  setChosenValue={setChosenValue}
+                  onTogglePlay={() => togglePlay(index, voice.preview_url)}
+                  onTogglePause={() => togglePause(index)}
+                  isPlaying={index === playingIndex}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : null}
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
@@ -113,16 +153,22 @@ const TranslateOptions = ({
         label="Save these settings for future translations"
         labelClasses="text-base"
       />
-      <p className="my-s3 w-full border-2 border-x-0 border-t-0 border-white py-1 text-lg">
-        Additional Services
-      </p>
-      <CheckBox
-        onChange={(e) =>
-          setPayload({ ...payload, additionalPay: e.target.checked })
-        }
-        label="Would you like to create shorts for these videos? If yes, a $20 fee will be charged."
-        labelClasses="text-base"
-      />
+      <ButtonText
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        labelClasses={`mt-s3 ${isOpen ? 'mb-s3' : ''}`}
+      >
+        <p className={`text-lg`}>Additional Services</p>
+      </ButtonText>
+      {isOpen ? (
+        <CheckBox
+          onChange={(e) =>
+            setPayload({ ...payload, additionalPay: e.target.checked })
+          }
+          label="Would you like to create shorts for these videos? If yes, a $20 fee will be charged."
+          labelClasses="text-base"
+        />
+      ) : null}
       <br />
       {isLoading &&
         (uploadProgress < 100 ? (
@@ -149,24 +195,44 @@ const TranslateOptions = ({
 const VoicePlay = ({
   setPayload,
   payload,
-  voice,
+  name,
   chosenValue,
   setChosenValue,
+  onTogglePause,
+  onTogglePlay,
+  isPlaying,
 }) => {
-  
   return (
-    <div className="flex flex-row items-center justify-center gap-x-3">
-    
-        <Image src={PlayIcon} alt="play-option" width={24} height={24} className='cursor-pointer'/>
-      
+    <div className="flex flex-row items-center justify-start gap-x-3">
+      {isPlaying ? (
+        <button onClick={onTogglePause} className="flex items-center">
+          <Image
+            src={PauseIcon}
+            alt="play-option"
+            width={24}
+            height={24}
+            className="cursor-pointer"
+          />
+        </button>
+      ) : (
+        <button onClick={onTogglePlay} className="flex items-center">
+          <Image
+            src={PlayIcon}
+            alt="play-option"
+            width={24}
+            height={24}
+            className="cursor-pointer"
+          />
+        </button>
+      )}
       <RadioInput
         onChange={(e) => {
           setChosenValue(e.target.value);
           setPayload({ ...payload, selectVoice: e.target.value });
         }}
-        label={voice}
-        name={voice}
-        value={voice}
+        label={name}
+        name="voices"
+        value={name}
         chosenValue={chosenValue}
       />
     </div>

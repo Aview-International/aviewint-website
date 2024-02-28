@@ -211,6 +211,11 @@ export const uploadCreatorVideo = async (
   return;
 };
 
+export const getElevenVoices = async () => {
+  const res = await axiosInstance.get('dubbing/get-elevenlabs-voices');
+  return res.data;
+};
+
 export const getIgAuthLink = async () => {
   const res = await axiosInstance.get('auth/instagram/get_auth_link');
   return res.data;
