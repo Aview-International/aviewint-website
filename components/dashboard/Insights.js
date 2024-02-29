@@ -25,7 +25,7 @@ const Insights = () => {
       description: 'Coming Soon',
     },
   ];
-
+  
   return (
     <div className="flex flex-col justify-between text-white md:flex-row">
       <div className="grid w-full grid-cols-2 gap-4 text-center md:w-[calc(100%-375px)] xl:grid-cols-4">
@@ -34,6 +34,56 @@ const Insights = () => {
         ))}
       </div>
       <GoalComponent />
+    </div>
+  );
+};
+
+const Counters = ({ value, description }) => (
+  <div className="flex flex-col-reverse items-start justify-center rounded-2xl bg-white-transparent px-s1 py-s3 text-left md:flex-col md:items-center md:py-s6 md:px-s2 md:text-center">
+    <div className="text-xl md:text-8xl">{value}</div>
+    <p className="text-sm">{description}</p>
+  </div>
+);
+
+const GoalComponent = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [step, setStep] = useState(1); //step indicates the which stage it is in the processing the video completion like transcription is 1, translation 2 and goes on by increasing the stage to 5
+
+  const statusSettings = () => {
+    setModalOpen(!isModalOpen);
+  };
+
+  const handleStage = (stage) => {
+    setStep(stage);
+  };
+
+  const calculateWidth = (stage) => {
+    return stage * 20; // Each stage represents 20% of total width
+  };
+
+  return (
+    <div className="gradient-dark relative mt-s2 h-[170px] w-[360px]  rounded-2xl p-s1.5 md:mt-0">
+      <div className="flex h-full w-full flex-col items-start gap-y-2 overflow-y-auto">
+        <div className="w-[95%]">
+          <div className="flex w-full flex-row justify-between">
+            <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
+              Logan Paul and KSI Surprise Facxcsdfsfsffdsfasfa...
+            </h4>
+            <MoreSettings handler={statusSettings} />
+          </div>
+          <div className="relative my-[6px] h-1.5 w-full rounded-2xl">
+            <span
+              className={`gradient-1 absolute z-10 block h-1.5 w-3/4 rounded-2xl`}
+              style={{ width: `${calculateWidth(step)}%` }}
+            ></span>
+          </div>
+          <div className="flex w-full flex-row items-center justify-between">
+            <p>{step * 20} %</p>
+            <p>15 mins left</p>
+          </div>
+        </div>
+      </div>
+      <ModalOnVideoStatus handler={statusSettings} modalStatus={isModalOpen} />
     </div>
   );
 };
@@ -47,15 +97,6 @@ const MoreSettings = ({ handler }) => {
       <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
       <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
       <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
-    </div>
-  );
-};
-
-const EmptyStatus = () => {
-  return (
-    <div className="flex h-full w-full flex-col items-center justify-center px-s1 py-s2">
-      <Image src={Video_Status} height={140} width={110} alt="Video Status" />
-      <p className="text-lg">You have no videos currently uploading.</p>
     </div>
   );
 };
@@ -119,53 +160,13 @@ const ModalOnVideoStatus = ({ handler, modalStatus }) => {
   );
 };
 
-const GoalComponent = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [step, setStep] = useState(1); //step indicates the which stage it is in the processing the video completion like transcription is 1, translation 2 and goes on by increasing the stage to 5
-
-  const statusSettings = () => {
-    setModalOpen(!isModalOpen);
-  };
-
-  const handleStage = (stage) => {
-    setStep(stage);
-  };
-
-  const calculateWidth = (stage) => {
-    return stage * 20; // Each stage represents 20% of total width
-  };
-
+const EmptyStatus = () => {
   return (
-    <div className="gradient-dark relative mt-s2 h-[170px] w-[360px]  rounded-2xl p-s1.5 md:mt-0">
-      <div className="flex h-full w-full flex-col items-start gap-y-2 overflow-y-auto">
-        <div className="w-[95%]">
-          <div className="flex w-full flex-row justify-between">
-            <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
-              Logan Paul and KSI Surprise Facxcsdfsfsffdsfasfa...
-            </h4>
-            <MoreSettings handler={statusSettings} />
-          </div>
-          <div className="relative my-[6px] h-1.5 w-full rounded-2xl">
-            <span
-              className={`gradient-1 absolute z-10 block h-1.5 w-3/4 rounded-2xl`}
-              style={{ width: `${calculateWidth(step)}%` }}
-            ></span>
-          </div>
-          <div className="flex w-full flex-row items-center justify-between">
-            <p>{step * 20} %</p>
-            <p>15 mins left</p>
-          </div>
-        </div>
-      </div>
-      <ModalOnVideoStatus handler={statusSettings} modalStatus={isModalOpen} />
+    <div className="flex h-full w-full flex-col items-center justify-center px-s1 py-s2">
+      <Image src={Video_Status} height={140} width={110} alt="Video Status" />
+      <p className="text-lg">You have no videos currently uploading.</p>
     </div>
   );
 };
 
-const Counters = ({ value, description }) => (
-  <div className="flex flex-col-reverse items-start justify-center rounded-2xl bg-white-transparent px-s1 py-s3 text-left md:flex-col md:items-center md:py-s6 md:px-s2 md:text-center">
-    <div className="text-xl md:text-8xl">{value}</div>
-    <p className="text-sm">{description}</p>
-  </div>
-);
 export default Insights;
