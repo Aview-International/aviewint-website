@@ -139,7 +139,7 @@ const Reusable = ({ VideoArray, isCompletedVideo, count }) => {
 
   const handleArrayOptions = (e) => {
     const newArray = titlesArray;
-
+    //here count is being calculated as per names of the title in the array, it provide wrong count when the array has static data
     if (newArray.includes(e.target.name))
       newArray.splice(newArray.indexOf(e.target.name), 1);
     else newArray.push(e.target.name);
