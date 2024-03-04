@@ -16,23 +16,21 @@ const Insights = () => {
       value: userInfo.completedVideos ?? 0,
       description: 'Videos Completed',
     },
-    {
-      value: 'N/A',
-      description: 'Coming Soon',
-    },
-    {
-      value: 'N/A',
-      description: 'Coming Soon',
-    },
+    // {
+    //   value: 'N/A',
+    //   description: 'Coming Soon',
+    // },
+    // {
+    //   value: 'N/A',
+    //   description: 'Coming Soon',
+    // },
   ];
-  
+
   return (
-    <div className="flex flex-col justify-between text-white md:flex-row">
-      <div className="grid w-full grid-cols-2 gap-4 text-center md:w-[calc(100%-375px)] xl:grid-cols-4">
-        {summary.map((data, index) => (
-          <Counters key={`summary-${index}`} {...data} />
-        ))}
-      </div>
+    <div className="grid w-full grid-cols-[1fr,1fr,2fr] items-center gap-6">
+      {summary.map((data, index) => (
+        <Counters key={`summary-${index}`} {...data} />
+      ))}
       <GoalComponent />
     </div>
   );
@@ -62,27 +60,26 @@ const GoalComponent = () => {
   };
 
   return (
-    <div className="gradient-dark relative mt-s2 h-[170px] w-[360px]  rounded-2xl p-s1.5 md:mt-0">
-      <div className="flex h-full w-full flex-col items-start gap-y-2 overflow-y-auto">
-        <div className="w-[95%]">
-          <div className="flex w-full flex-row justify-between">
-            <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
-              Logan Paul and KSI Surprise Facxcsdfsfsffdsfasfa...
-            </h4>
-            <MoreSettings handler={statusSettings} />
-          </div>
-          <div className="relative my-[6px] h-1.5 w-full rounded-2xl">
-            <span
-              className={`gradient-1 absolute z-10 block h-1.5 w-3/4 rounded-2xl`}
-              style={{ width: `${calculateWidth(step)}%` }}
-            ></span>
-          </div>
-          <div className="flex w-full flex-row items-center justify-between">
-            <p>{step * 20} %</p>
-            <p>15 mins left</p>
-          </div>
+    <div className="gradient-dark relative h-[170px] w-full rounded-2xl">
+      <div className="mb-2 p-s2">
+        <div className="flex justify-between">
+          <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
+            Logan Paul and KSI Surprise Facxcsdfsfsffdsfasfa...
+          </h4>
+          <MoreSettings handler={statusSettings} />
+        </div>
+        <div className="relative my-[6px] h-1.5 w-full rounded-2xl">
+          <span
+            className={`gradient-1 absolute z-10 block h-1.5 rounded-2xl`}
+            style={{ width: `${calculateWidth(step)}%` }}
+          ></span>
+        </div>
+        <div className="flex w-full flex-row items-center justify-between">
+          <p>{step * 20} %</p>
+          <p>status: transcription</p>
         </div>
       </div>
+
       <ModalOnVideoStatus handler={statusSettings} modalStatus={isModalOpen} />
     </div>
   );
@@ -91,7 +88,7 @@ const GoalComponent = () => {
 const MoreSettings = ({ handler }) => {
   return (
     <div
-      className="mb-1 mr-2 flex h-auto w-auto cursor-pointer flex-row items-center justify-start gap-x-[1px] rounded-full bg-gray-1 p-1"
+      className="mb-1 mr-2 flex cursor-pointer flex-row items-center justify-start gap-x-[1px] rounded-full bg-gray-1 p-1"
       onClick={handler}
     >
       <div className="h-[4px] w-[4px] rounded-full bg-white"></div>
@@ -121,8 +118,8 @@ const ModalOnVideoStatus = ({ handler, modalStatus }) => {
         <VideoStatusSection title="video title">
           <h5>Logan Paul and KSI Surprise Fans With Prime Energy</h5>
         </VideoStatusSection>
-        <VideoStatusSection title="upload progress">
-          <h5>15 mins left</h5>
+        <VideoStatusSection title="Video progress">
+          <h5>20%</h5>
         </VideoStatusSection>
         <VideoStatusSection title="languages">
           <div className="mt-1 flex flex-wrap">
@@ -138,21 +135,18 @@ const ModalOnVideoStatus = ({ handler, modalStatus }) => {
         </VideoStatusSection>
         <VideoStatusSection title="posted to" hasHorizontal={false}>
           <div className="flex h-full w-full gap-1">
-            {postedTo.map((language, index) => {
-              return (
-                <div key={index}>
-                  <div
-                    className={`rounded-2xl py-s1 px-3 text-center text-sm ${
-                      language === 'YouTube' && 'bg-youtube'
-                    } ${language === 'Facebook' && 'bg-facebook'} ${
-                      language === 'Instagram' && 'bg-red'
-                    } `}
-                  >
-                    {language}
-                  </div>
-                </div>
-              );
-            })}
+            {postedTo.map((language, idx) => (
+              <div
+                key={idx}
+                className={`rounded-2xl py-s1 px-3 text-center text-sm ${
+                  language === 'YouTube' && 'bg-youtube'
+                } ${language === 'Facebook' && 'bg-facebook'} ${
+                  language === 'Instagram' && 'bg-red'
+                } `}
+              >
+                {language}
+              </div>
+            ))}
           </div>
         </VideoStatusSection>
       </div>
