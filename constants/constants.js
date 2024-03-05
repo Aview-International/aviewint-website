@@ -158,6 +158,13 @@ import multi_language from '../public/img/graphics/multi_language.svg';
 import video_analytics from '../public/img/graphics/video_analytics.svg';
 import voice_dubbing from '../public/img/graphics/voice_dubbing.svg';
 
+// AI-Tools page for the website
+import caption from '../public/img/graphics/caption.png';
+import text_to_speech from '../public/img/graphics/text-to-speech.png';
+import voice_recognition from '../public/img/graphics/voice-recognition.png';
+import voice_to_text from '../public/img/graphics/voice-to-text.png';
+import youtube_ai from '../public/img/graphics/youtube.png';
+
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
   testimonial_2,
@@ -236,6 +243,39 @@ export const LANDING_PAGE_TYPES = [
     imageWidth: 400,
     imageHeight: 400,
     hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
+  },
+];
+
+export const AI_Tools_Page = [
+  {
+    title: 'Context Based Subtitle Generator',
+    description:
+      'Unlock worldwide engagement by effortlessly translating your content and generating subtitles. Make your message accessible and impactful across global audiences with ease.',
+    img: caption,
+  },
+  {
+    title: 'Multilingual Voiceover Generator',
+    description:
+      'Elevate your contents global appeal by seamlessly translating and generating voiceovers in multiple languages. Connect with audiences worldwide and amplify your channel\u0027s reach.',
+    img: voice_recognition,
+  },
+  {
+    title: 'Speech-to-Text Conversion',
+    description:
+      'Streamline your content creation by effortlessly converting speech into text, paving the way for global translation and accessibility. Expand your reach and connect with audiences worldwide.',
+    img: voice_to_text,
+  },
+  {
+    title: 'Text-to-Speech Conversion',
+    description:
+      'Boost your video\u0027s global appeal by translating text into engaging spoken content across a multitude of languages. Elevate accessibility and captivate audiences worldwide.',
+    img: text_to_speech,
+  },
+  {
+    title: 'YouTube Video Downloader',
+    description:
+      'Effortlessly download your video\u0027s for seamless translation and adaptation, enabling your global audience to enjoy your content in their native languages.',
+    img: youtube_ai,
   },
 ];
 
