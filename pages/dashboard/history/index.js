@@ -6,33 +6,38 @@ import { getAllPendingJobs } from '../../api/firebase';
 
 const History = () => {
   const [pendingJobs, setPendingJobs] = useState([]);
-  const [reloadTrigger, setReloadTrigger] = useState(0);
   const uid = Cookies.get('uid');
-
-  console.log(pendingJobs);
 
   const getPendingJobs = async () => {
     const res = await getAllPendingJobs(uid);
-    setPendingJobs(
-      res
-        ? Object.values(res).map((item, i) => ({
-            ...item,
-            jobId: Object.keys(res)[i],
-          }))
-        : []
-    );
+
+    const backlogVideos = res
+      ? Object.entries(res)
+          .sort(([, a], [, b]) => b.timestamp - a.timestamp)
+          .map(([key, value]) => ({ ...value, jobId: key }))
+      : [];
+
+    setPendingJobs(backlogVideos);
   };
 
-  const getAll = async () => await Promise.all([getPendingJobs()]);
-
   useEffect(() => {
-    if (uid) getAll();
-  }, [reloadTrigger]);
+    const fetchData = async () => {
+      if (uid) {
+        await Promise.all([getPendingJobs()]);
+      }
+    };
+
+    fetchData();
+
+    const intervalId = setInterval(fetchData, 5000); // Fetch data every 10 seconds
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
       <PageTitle title="History" />
-      <h2 className="mt-s2 text-4xl">History</h2>
+      <h2 className="my-s2 ml-1 text-4xl">History</h2>
       <Container pendingJobs={pendingJobs} />
     </>
   );
@@ -41,7 +46,7 @@ const History = () => {
 const Container = ({ pendingJobs }) => {
   return (
     <div className="w-full rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] p-s3">
-      <div className="grid grid-cols-[25%_20%_22%_20%_13%]">
+      <div className="grid grid-cols-[30%_20%_17%_20%_13%]">
         <p>Name</p>
         <p>Date</p>
         <p>Languages</p>
@@ -51,12 +56,12 @@ const Container = ({ pendingJobs }) => {
       <hr className="my-s2 border-[rgba(255,255,255,0.6)]" />
       {pendingJobs.map((job, i) => (
         <div
-          className="grid grid-cols-[25%_20%_25%_20%_10%] border-b border-[rgba(252,252,252,0.2)] py-s2"
+          className="grid grid-cols-[30%_20%_17%_20%_13%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData?.caption}</div>
+          <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div>
+          <div className="">
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'
@@ -67,7 +72,7 @@ const Container = ({ pendingJobs }) => {
                   </p>
                 ))}
           </div>
-          <div className="text-[#eab221]">{job.status}</div>
+          <p className="w-full text-start  text-[#eab221]">{job.status}</p>
           <div>
             {job.status === 'complete' &&
               job?.downloadLink &&

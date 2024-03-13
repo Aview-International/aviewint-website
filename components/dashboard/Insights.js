@@ -1,19 +1,19 @@
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Video_Status from '../../public/img/graphics/team-building.png';
 import closeIcon from '../../public/img/icons/close.svg';
 import VideoStatusSection from '../sections/reused/VideoStatusSection';
 
-const Insights = () => {
+const Insights = ({ pendingVideos }) => {
   const userInfo = useSelector((state) => state.user);
   const summary = [
     {
-      value: userInfo.pendingVideos ?? 0,
+      value: userInfo.pendingVideos.length ?? 0,
       description: 'Videos Pending',
     },
     {
-      value: userInfo.completedVideos ?? 0,
+      value: userInfo.completedVideos.length ?? 0,
       description: 'Videos Completed',
     },
     // {
@@ -26,12 +26,18 @@ const Insights = () => {
     // },
   ];
 
+  useEffect(() => {}, [userInfo.pendingVideos, userInfo.completedVideos]);
+
   return (
     <div className="grid w-full grid-cols-[1fr,1fr,2fr] items-center gap-6">
       {summary.map((data, index) => (
         <Counters key={`summary-${index}`} {...data} />
       ))}
-      <GoalComponent />
+      {pendingVideos.length > 0 ? (
+        <GoalComponent videos={pendingVideos} />
+      ) : (
+        <EmptyStatus />
+      )}
     </div>
   );
 };
@@ -39,50 +45,135 @@ const Insights = () => {
 const Counters = ({ value, description }) => (
   <div className="flex flex-col-reverse items-start justify-center rounded-2xl bg-white-transparent px-s1 py-s3 text-left md:flex-col md:items-center md:py-s6 md:px-s2 md:text-center">
     <div className="text-xl md:text-8xl">{value}</div>
-    <p className="text-sm">{description}</p>
+    <p className="font-medium">{description}</p>
   </div>
 );
 
-const GoalComponent = () => {
+const GoalComponent = ({ videos }) => {
+  const twentyFourHours = 24 * 60 * 60 * 1000;
+
+  return (
+    <div className="gradient-dark h-[170px] w-full rounded-2xl">
+      <div className="p-s1.5">
+        {videos
+          .filter((item) => Date.now() - item.timestamp > twentyFourHours)
+          .slice(0, 2)
+          .map((video, index) => {
+            return <ModalOnVideoStatus key={index} video={video} />;
+          })}
+      </div>
+    </div>
+  );
+};
+
+const ModalOnVideoStatus = ({ video }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [step, setStep] = useState(1); //step indicates the which stage it is in the processing the video completion like transcription is 1, translation 2 and goes on by increasing the stage to 5
 
   const statusSettings = () => {
     setModalOpen(!isModalOpen);
   };
 
-  const handleStage = (stage) => {
-    setStep(stage);
-  };
-
-  const calculateWidth = (stage) => {
-    return stage * 20; // Each stage represents 20% of total width
-  };
-
   return (
-    <div className="gradient-dark relative h-[170px] w-full rounded-2xl">
-      <div className="mb-2 p-s2">
-        <div className="flex justify-between">
-          <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
-            Logan Paul and KSI Surprise Facxcsdfsfsffdsfasfa...
-          </h4>
-          <MoreSettings handler={statusSettings} />
-        </div>
-        <div className="relative my-[6px] h-1.5 w-full rounded-2xl">
-          <span
-            className={`gradient-1 absolute z-10 block h-1.5 rounded-2xl`}
-            style={{ width: `${calculateWidth(step)}%` }}
-          ></span>
-        </div>
-        <div className="flex w-full flex-row items-center justify-between">
-          <p>{step * 20} %</p>
-          <p>status: transcription</p>
-        </div>
+    <div className="relative">
+      <div className="flex justify-between my-1">
+        <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
+          {video.videoData.caption.replace(/\.mp4$/i, '')}
+        </h4>
+        <MoreSettings handler={statusSettings} />
       </div>
-
-      <ModalOnVideoStatus handler={statusSettings} modalStatus={isModalOpen} />
+      <div className="relative my-2 h-1.5 w-full rounded-2xl">
+        <span
+          className={`gradient-1 absolute z-10 block h-1.5 rounded-2xl`}
+          style={{ width: `${getWidthPercentage(video.status)}%` }}
+        ></span>
+      </div>
+      <div className="flex w-full flex-row items-center justify-between">
+        <p>{getWidthPercentage(video.status)} %</p>
+        <p>
+          <span className="font-medium">status{` :`}</span>
+          <span className="ml-1 rounded-md bg-white-transparent p-1">
+            {video.status}
+          </span>
+        </p>
+      </div>
+      <VideoStatusModal
+        video={video}
+        handler={statusSettings}
+        modalStatus={isModalOpen}
+      />
     </div>
   );
+};
+
+const VideoStatusModal = ({ handler, modalStatus, video }) => {
+  if (!modalStatus) {
+    return null;
+  }
+
+  return (
+    <div
+      className={`${
+        modalStatus ? 'block' : 'hidden'
+      } transition-300 absolute top-0 -right-1 z-20 h-auto w-[365px] rounded-2xl bg-black p-3 duration-300 ease-out`}
+    >
+      <div className="flex h-8 flex-grow-0 items-center justify-between">
+        <p className="text-lg font-semibold">Details</p>
+        <div className="mr-3 h-4 w-4 cursor-pointer" onClick={handler}>
+          <Image src={closeIcon} width={20} height={20} alt="close icon" />
+        </div>
+      </div>
+      <div>
+        <VideoStatusSection title="video title">
+          <p className="font-medium">
+            {video.videoData.caption.replace(/\.mp4$/i, '')}
+          </p>
+        </VideoStatusSection>
+        <VideoStatusSection title="Video progress">
+          <p className="font-medium">
+            {getWidthPercentage(video.status)}
+            {` %`}
+          </p>
+        </VideoStatusSection>
+        <VideoStatusSection title="Video Status">
+          <p className="font-medium">{video.status}</p>
+        </VideoStatusSection>
+        <VideoStatusSection title="language">
+          <p
+            className={`mr-s1 mt-1 mb-s1 rounded-md bg-white-transparent py-s1 px-s2 text-lg font-medium`}
+          >
+            {video.translatedLanguage}
+          </p>
+        </VideoStatusSection>
+      </div>
+    </div>
+  );
+};
+
+const getWidthPercentage = (currentStage) => {
+  let percentage = 0;
+
+  const options = [
+    'Queued',
+    'transcription',
+    'translation',
+    'dubbing',
+    'audio-separation',
+    'editing',
+    'complete',
+  ];
+
+  const getStageNumber = (status) => {
+    return options.findIndex(
+      (option) => option.toLowerCase() === status.toLowerCase()
+    );
+  };
+
+  const index = getStageNumber(currentStage);
+  if (index > 0) {
+    percentage = Math.floor(((index + 1) / 7) * 100);
+  }
+
+  return percentage;
 };
 
 const MoreSettings = ({ handler }) => {
@@ -98,67 +189,15 @@ const MoreSettings = ({ handler }) => {
   );
 };
 
-const ModalOnVideoStatus = ({ handler, modalStatus }) => {
-  const languages = ['Spanish', 'Portguese', 'Chinese'];
-  const postedTo = ['YouTube', 'Facebook'];
-
-  return (
-    <div
-      className={`${
-        modalStatus ? 'block' : 'hidden'
-      } transition-300 absolute top-0 -left-1 z-20 h-auto w-[365px] rounded-2xl bg-black p-3 duration-300 ease-out`}
-    >
-      <div className="flex h-8 flex-grow-0 items-center justify-between">
-        <h2 className="text-lg font-semibold">Details</h2>
-        <div className="mr-3 h-4 w-4 cursor-pointer" onClick={handler}>
-          <Image src={closeIcon} width={20} height={20} alt="close icon" />
-        </div>
-      </div>
-      <div className="flex h-full w-full flex-col items-start justify-between gap-y-4">
-        <VideoStatusSection title="video title">
-          <h5>Logan Paul and KSI Surprise Fans With Prime Energy</h5>
-        </VideoStatusSection>
-        <VideoStatusSection title="Video progress">
-          <h5>20%</h5>
-        </VideoStatusSection>
-        <VideoStatusSection title="languages">
-          <div className="mt-1 flex flex-wrap">
-            {languages.map((language, index) => (
-              <span
-                className={`mr-s1 mb-s1 cursor-pointer rounded-full bg-white-transparent py-s1 px-s2 text-lg`}
-                key={`language-${index}`}
-              >
-                {language}
-              </span>
-            ))}
-          </div>
-        </VideoStatusSection>
-        <VideoStatusSection title="posted to" hasHorizontal={false}>
-          <div className="flex h-full w-full gap-1">
-            {postedTo.map((language, idx) => (
-              <div
-                key={idx}
-                className={`rounded-2xl py-s1 px-3 text-center text-sm ${
-                  language === 'YouTube' && 'bg-youtube'
-                } ${language === 'Facebook' && 'bg-facebook'} ${
-                  language === 'Instagram' && 'bg-red'
-                } `}
-              >
-                {language}
-              </div>
-            ))}
-          </div>
-        </VideoStatusSection>
-      </div>
-    </div>
-  );
-};
-
 const EmptyStatus = () => {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center px-s1 py-s2">
-      <Image src={Video_Status} height={140} width={110} alt="Video Status" />
-      <p className="text-lg">You have no videos currently uploading.</p>
+    <div className="h-full w-full rounded-2xl bg-white-transparent p-s0">
+      <div className="flex items-center justify-center">
+        <Image src={Video_Status} height={100} width={100} alt="Video Status" />
+      </div>
+      <p className="mt-6 text-center">
+        You have no videos currently uploading.
+      </p>
     </div>
   );
 };

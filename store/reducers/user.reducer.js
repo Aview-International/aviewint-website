@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import  { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   averageVideoDuration: '',
@@ -9,7 +9,8 @@ const initialState = {
   languages: [],
   lastName: '',
   monthlyView: '',
-  pendingVideos: undefined,
+  pendingVideos: [],
+  completedVideos: [],
   picture: '',
   preferences: [],
   region: [],
