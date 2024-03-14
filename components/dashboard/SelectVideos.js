@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import OnboardingButton from '../Onboarding/button';
-import Insights from './Insights';
+import Insights from './insights/Insights';
 import Videos from './Videos';
 import Cookies from 'js-cookie';
 import RecommendVideos from './RecommendVideos';
@@ -18,7 +18,7 @@ const SelectVideos = ({
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
   const [pendingJobs, setPendingJobs] = useState([]);
-  
+
   const handleTranslate = () => {
     if (selectedVideos.length < 1) {
       toast.error('Please select a video');
@@ -65,11 +65,9 @@ const SelectVideos = ({
     return () => clearInterval(intervalId);
   }, []);
 
-  console.log('pending Jobs', pendingJobs);
-
   return (
     <>
-      <Insights pendingVideos={pendingJobs}/>
+      <Insights pendingVideos={pendingJobs} />
       <Videos
         isLoading={isLoading}
         selectedVideos={selectedVideos}
