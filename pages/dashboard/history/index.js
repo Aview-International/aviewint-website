@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
 import { getAllPendingJobs } from '../../api/firebase';
+import { getS3DownloadLink } from '../../../services/apis';
 
 const History = () => {
   const [pendingJobs, setPendingJobs] = useState([]);
@@ -39,6 +40,19 @@ const History = () => {
 };
 
 const Container = ({ pendingJobs }) => {
+
+  const handleDownload = async (job) => {
+    const downloadLink = await getS3DownloadLink(job.s3ObjectUrl);
+    if (downloadLink) {
+      const anchor = document.createElement('a');
+      anchor.href = downloadLink;
+      anchor.download = job.s3ObjectKey || 'download';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    }
+  }
+
   return (
     <div className="w-full rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] p-s3">
       <div className="grid grid-cols-[25%_20%_22%_20%_13%]">
@@ -51,7 +65,7 @@ const Container = ({ pendingJobs }) => {
       <hr className="my-s2 border-[rgba(255,255,255,0.6)]" />
       {pendingJobs.map((job, i) => (
         <div
-          className="grid grid-cols-[25%_20%_25%_20%_10%] border-b border-[rgba(252,252,252,0.2)] py-s2"
+          className="grid grid-cols-[25%_20%_22%_20%_13%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
           <div>{job.videoData?.caption}</div>
@@ -70,20 +84,17 @@ const Container = ({ pendingJobs }) => {
           <div className="text-[#eab221]">{job.status}</div>
           <div>
             {job.status === 'complete' &&
-              job?.downloadLink &&
-              Object.keys(job.downloadLink).map((el, idx) => (
-                <span key={idx}>
-                  {el}:{' '}
+                <span>
                   <a
-                    href={job.downloadLink[el]}
+                    onClick={() => handleDownload(job)}
                     target="_blank"
-                    className="text-blue underline"
+                    className="text-blue underline cursor-pointer"
                     rel="noreferrer"
                   >
                     Download
                   </a>
                 </span>
-              ))}
+            }
           </div>
         </div>
       ))}

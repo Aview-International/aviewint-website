@@ -278,3 +278,9 @@ export const subscriptionHistory = async () =>
 
 export const deleteThread = async (threadId) =>
   (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;
+
+export const getS3DownloadLink = async (s3ObjectUrl) => {
+  const response = await axiosInstance.post('admin/getS3DownloadLink', { s3ObjectUrl });
+
+  return response.data;
+}
