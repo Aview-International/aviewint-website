@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
 import { checkTokenExpiry } from '../utils/jwtExpiry';
 import { useMemo } from 'react';
 
 const useAuth = () => {
-  const token = useSelector((data) => data.user.token);
+  const sessionCookie = Cookies.get('session');
 
   const isLoggedIn = useMemo(() => {
-    return checkTokenExpiry(token);
-  }, [token]);
+    return checkTokenExpiry(sessionCookie);
+  }, [sessionCookie]);
   return isLoggedIn;
 };
 

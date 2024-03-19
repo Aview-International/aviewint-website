@@ -15,10 +15,11 @@ import {
 import { useEffect, useState } from 'react';
 import ErrorHandler from '../utils/errorHandler';
 import { setAllLanguages } from '../store/reducers/aview.reducer';
+import useAuth from './useAuth';
 
 const useUserProfile = () => {
+  const isLoggedIn = useAuth();
   const dispatch = useDispatch();
-  const token = Cookies.get('token');
   const uid = Cookies.get('uid');
   const [isLoading, setIsLoading] = useState(true);
   const [trigger, setTrigger] = useState(0);
@@ -54,7 +55,7 @@ const useUserProfile = () => {
     // get all user related information
     (async () => {
       try {
-        if (token) {
+        if (isLoggedIn) {
           await Promise.all([
             handleGetProfile(),
             handleGetYoutubeChannel(),
@@ -67,12 +68,12 @@ const useUserProfile = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     (async () => {
       try {
-        if (token && uid) {
+        if (isLoggedIn) {
           const res = await getThreadHistory();
           dispatch(setAllAIThreads(res));
         }
@@ -80,7 +81,7 @@ const useUserProfile = () => {
         ErrorHandler(error);
       }
     })();
-  }, [trigger]);
+  }, [trigger, isLoggedIn]);
 
   const sidebarTrigger = () => setTrigger(Math.random());
 
