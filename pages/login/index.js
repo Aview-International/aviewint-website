@@ -20,7 +20,7 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from 'firebase/auth';
-import { singleSignOnLogin } from '../../services/apis';
+import { signInWithGoogleAcc, singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
 
@@ -40,9 +40,10 @@ const Login = () => {
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleRedirect = (_tokenResponse) => {
+  const handleRedirect = async (_tokenResponse) => {
     Cookies.set('token', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
+    await signInWithGoogleAcc(_tokenResponse.idToken);
     dispatch(
       setUser({
         email: _tokenResponse.email,

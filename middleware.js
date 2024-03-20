@@ -6,15 +6,18 @@ import { checkTokenExpiry } from './utils/jwtExpiry';
  * @author Victor Ogunjobi
  */
 export async function middleware(request) {
-  const token = request.cookies.get('token');
-
-  if (!checkTokenExpiry(token)) {
-    const currentUrl = request.url;
-    const response = NextResponse.redirect(
-      new URL('/login?rdr=true', currentUrl)
-    );
+  const sessionCookie = request.cookies.get('session');
+  const currentUrl = request.url;
+  const response = NextResponse.redirect(
+    new URL('/login?rdr=true', currentUrl)
+  );
+  try {
+    if (!checkTokenExpiry(sessionCookie)) {
+      response.cookies.set('redirectUrl', currentUrl);
+      return response;
+    }
+  } catch (error) {
     response.cookies.set('redirectUrl', currentUrl);
-    request.cookies.delete('token');
     return response;
   }
 }
