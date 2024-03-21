@@ -77,7 +77,7 @@ const SelectVideos = ({
       <div className="ml-auto w-full md:w-[155px]">
         <OnboardingButton onClick={handleTranslate}>Next</OnboardingButton>
       </div>
-      <RecommendVideos />
+      {/* <RecommendVideos /> */}
     </>
   );
 };
