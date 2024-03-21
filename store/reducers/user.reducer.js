@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  isLoggedIn: false,
   averageVideoDuration: '',
   categories: [],
   defaultLanguage: '',
@@ -15,7 +16,6 @@ const initialState = {
   region: [],
   role: '',
   saveSettings: false,
-  token: '',
   uid: '',
   usage: '',
   youtubeChannelId: '',
@@ -34,9 +34,13 @@ const userSlice = createSlice({
       const { payload } = action;
       return { ...state, ...payload };
     },
+    setAuthState(state, action) {
+      const { payload } = action;
+      return { ...state, isLoggedIn: payload };
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setAuthState } = userSlice.actions;
 
 export default userSlice.reducer;

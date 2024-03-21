@@ -41,7 +41,6 @@ const Login = () => {
   }, [router.query]);
 
   const handleRedirect = async (_tokenResponse) => {
-    Cookies.set('token', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
     await signInWithGoogleAcc(_tokenResponse.idToken);
     dispatch(
@@ -57,8 +56,10 @@ const Login = () => {
     const prevRoute = Cookies.get('redirectUrl');
     if (prevRoute) {
       Cookies.remove('redirectUrl');
-      router.push(decodeURIComponent(prevRoute));
-    } else router.push('/dashboard');
+      // router.push(decodeURIComponent(prevRoute));
+      window.location.href = decodeURIComponent(prevRoute);
+    } else window.location.href = '/dashboard';
+    // } else router.push('/dashboard');
   };
 
   const handleLoginWithGoogle = async () => {

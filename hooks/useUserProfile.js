@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import { getUserProfile } from '../pages/api/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../store/reducers/user.reducer';
 import {
   getMessageStatus,
@@ -15,19 +15,17 @@ import {
 import { useEffect, useState } from 'react';
 import ErrorHandler from '../utils/errorHandler';
 import { setAllLanguages } from '../store/reducers/aview.reducer';
-import useAuth from './useAuth';
 
 const useUserProfile = () => {
-  const isLoggedIn = useAuth();
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
   const [isLoading, setIsLoading] = useState(true);
   const [trigger, setTrigger] = useState(0);
 
   const handleGetProfile = async () => {
-    const token = Cookies.get('token');
     await getUserProfile(uid, (resp) =>
-      dispatch(setUser({ ...resp, uid, token }))
+      dispatch(setUser({ ...resp, uid }))
     );
   };
 
