@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Button from '../../UI/Button';
 import Border from '../../UI/Border';
 import Card from '../../UI/Card';
-import useAuth from '../../../hooks/useAuth';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
@@ -14,8 +13,7 @@ const PriceSection = ({
   push,
   isRecommended,
 }) => {
-  const isLoggedIn = useAuth();
-  const userPlan = useSelector((data) => data.user.plan);
+  const { plan: userPlan, isLoggedIn } = useSelector((data) => data.user);
 
   const handlePlanSelect = () => {
     localStorage.setItem('payForPlan', plan.id);
