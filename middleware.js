@@ -11,6 +11,7 @@ export async function middleware(request) {
   const response = NextResponse.redirect(
     new URL('/login?rdr=true', currentUrl)
   );
+
   try {
     if (!checkTokenExpiry(sessionCookie)) {
       response.cookies.set('redirectUrl', currentUrl);

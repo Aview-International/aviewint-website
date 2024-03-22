@@ -2,32 +2,25 @@ import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { getAllPendingJobs } from '../../api/firebase';
+import { subscribeToHistory } from '../../api/firebase';
 
 const History = () => {
   const [pendingJobs, setPendingJobs] = useState([]);
-  const [reloadTrigger, setReloadTrigger] = useState(0);
   const uid = Cookies.get('uid');
 
-  console.log(pendingJobs);
-
-  const getPendingJobs = async () => {
-    const res = await getAllPendingJobs(uid);
-    setPendingJobs(
-      res
-        ? Object.values(res).map((item, i) => ({
-            ...item,
-            jobId: Object.keys(res)[i],
-          }))
-        : []
-    );
-  };
-
-  const getAll = async () => await Promise.all([getPendingJobs()]);
-
   useEffect(() => {
-    if (uid) getAll();
-  }, [reloadTrigger]);
+    const unsubscribe = subscribeToHistory(uid, (data) => {
+      setPendingJobs(
+        data
+          ? Object.values(data).sort(
+              (a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)
+            )
+          : []
+      );
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
 
   return (
     <>

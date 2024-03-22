@@ -128,14 +128,13 @@ export const createANewJob = async (jobDetails) => {
   await transcribeSocialLink(jobDetails);
 };
 
-export const getAllPendingJobs = async (uid) => {
-  const res = await get(ref(database, `user-jobs/pending/${uid}`)).then(
-    (snapshot) => {
-      if (snapshot.exists()) return snapshot.val();
-      else return null;
-    }
-  );
-  return res;
+export const subscribeToHistory = (uid, subscriptionCallback) => {
+  const pathRef = ref(database, `user-jobs/pending/${uid}`);
+  const unsubscribe = onValue(pathRef, (snapshot) => {
+    const data = snapshot.val();
+    subscriptionCallback(data);
+  });
+  return unsubscribe; // Return the unsubscribe function
 };
 
 export const getAllCompletedJobs = async (uid) => {
