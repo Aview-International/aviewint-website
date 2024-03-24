@@ -277,3 +277,6 @@ export const subscriptionHistory = async () =>
 
 export const deleteThread = async (threadId) =>
   (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;
+
+export const getJobsHistory = async () =>
+  (await axiosInstance.get('/transcription/history')).data;
