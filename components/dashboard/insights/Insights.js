@@ -1,18 +1,17 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Counters from './Counters';
 import GoalComponent from './GoalComponent';
 import EmptyStatus from './EmptyStatus';
 
-const Insights = ({ pendingVideos }) => {
-  const userInfo = useSelector((state) => state.user);
+const Insights = () => {
+  const { completedJobs, pendingJobs } = useSelector((state) => state.history);
   const summary = [
     {
-      value: pendingVideos.length ?? 0,
+      value: pendingJobs.length ?? 0,
       description: 'Videos Pending',
     },
     {
-      value: userInfo.completedVideos.length ?? 0,
+      value: completedJobs.length ?? 0,
       description: 'Videos Completed',
     },
     // {
@@ -25,15 +24,13 @@ const Insights = ({ pendingVideos }) => {
     // },
   ];
 
-  useEffect(() => {}, [pendingVideos, userInfo.completedVideos]);
-
   return (
-    <div className="grid w-full md:grid-cols-[1fr,1fr,2fr] items-center gap-6">
-      {summary.map((data, index) => (
-        <Counters key={`summary-${index}`} {...data} />
+    <div className="grid w-full items-center gap-6 md:grid-cols-[1fr,1fr,2fr]">
+      {summary.map((data, idx) => (
+        <Counters key={`summary-${idx}`} {...data} />
       ))}
-      {pendingVideos.length > 0 ? (
-        <GoalComponent videos={pendingVideos} />
+      {pendingJobs.length > 0 ? (
+        <GoalComponent videos={[...pendingJobs, ...completedJobs]} />
       ) : (
         <EmptyStatus />
       )}

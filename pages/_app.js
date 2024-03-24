@@ -5,13 +5,13 @@ import { MenuOpenContextProvider } from '../store/menu-open-context';
 import '../styles/globals.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
-import { auth, logoutUser } from './api/firebase';
 import Cookies from 'js-cookie';
-import { onAuthStateChanged } from 'firebase/auth';
 import useUserProfile from '../hooks/useUserProfile';
+import { setAuthState } from '../store/reducers/user.reducer';
+import { checkTokenExpiry } from '../utils/jwtExpiry';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -39,6 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
 
 const Layout = ({ Component, pageProps }) => {
   useUserProfile();
+  const dispatch = useDispatch();
   useEffect(() => {
     // prevent blobs from overflowing
     document
@@ -52,25 +53,9 @@ const Layout = ({ Component, pageProps }) => {
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
     window.onresize = setViewportHeight;
-    // check token expiry every 5 mins
-    const handle = setInterval(async () => {
-      const token = await auth?.currentUser?.getIdToken(true);
-      if (token) Cookies.set('token', token);
-    }, 5 * 60 * 1000);
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) logoutUser();
-      else {
-        Cookies.set('uid', user.uid);
-        Cookies.set('token', user.accessToken);
-      }
-    });
-
-    // clean up setInterval and auth listener
-    return () => {
-      unsubscribe;
-      clearInterval(handle);
-    };
+    const sessionCookie = Cookies.get('session');
+    dispatch(setAuthState(checkTokenExpiry(sessionCookie) ? true : false));
   }, []);
 
   if (Component.getLayout) {

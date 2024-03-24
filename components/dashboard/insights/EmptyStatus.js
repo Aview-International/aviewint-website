@@ -7,9 +7,7 @@ const EmptyStatus = () => {
       <div className="flex items-center justify-center">
         <Image src={Video_Status} height={100} width={100} alt="Video Status" />
       </div>
-      <p className="mt-6 text-center">
-        You have no videos currently uploading.
-      </p>
+      <p className="mt-6 text-center">You have no video history.</p>
     </div>
   );
 };

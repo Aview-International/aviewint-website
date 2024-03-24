@@ -1,15 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import aviewLogo from '../../public/img/aview/logo.png';
 import MenuButtonIcon from './MenuButtonIcon';
-import { checkTokenExpiry } from '../../utils/jwtExpiry';
 import { useSelector } from 'react-redux';
-import useAuth from '../../hooks/useAuth';
 
 const Header = ({ curPage }) => {
   const menuOpenCtx = useContext(MenuOpenContext);
@@ -39,7 +37,7 @@ const Header = ({ curPage }) => {
 };
 
 const HeaderButtons = () => {
-  const isLoggedIn = useAuth();
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
 
   return (
     <div className="hidden gap-5 lg:flex">
@@ -52,13 +50,13 @@ const HeaderButtons = () => {
       {/* <Button purpose="route" route="/waitlist" type="secondary">
         Join Waitlist
       </Button> */}
-      {!isLoggedIn ? (
-        <Button purpose="route" route="/login" type="secondary">
-          Login
-        </Button>
-      ) : (
+      {isLoggedIn ? (
         <Button purpose="route" route="/dashboard" type="secondary">
           Dashboard
+        </Button>
+      ) : (
+        <Button purpose="route" route="/login" type="secondary">
+          Login
         </Button>
       )}
     </div>
