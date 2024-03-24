@@ -5,11 +5,9 @@ import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
 import Button from '../../UI/Button';
-import useAuth from '../../../hooks/useAuth';
 
 const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   const headerRef = useRef(null);
-  const isLoggedIn = useAuth();
   const [topPosition, setTopPosition] = useState(null);
 
   useEffect(() => {
