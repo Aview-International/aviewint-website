@@ -2,6 +2,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
+import { getS3DownloadLink } from '../../../services/apis';
 import { subscribeToHistory } from '../../api/firebase';
 import { getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,6 +51,21 @@ const History = () => {
 };
 
 const Container = ({ pendingJobs, completedJobs }) => {
+  const handleDownload = async (job) => {
+    const downloadLink = await getS3DownloadLink(
+      job.timestamp,
+      job.translatedLanguage
+    );
+    if (downloadLink) {
+      const anchor = document.createElement('a');
+      anchor.href = downloadLink;
+      anchor.download = job.s3ObjectKey || 'download';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    }
+  };
+
   return (
     <div className="w-full rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] p-s3">
       <div className="grid grid-cols-[27%_20%_22%_16%_15%]">
@@ -80,21 +96,14 @@ const Container = ({ pendingJobs, completedJobs }) => {
           </div>
           <div className="text-center text-[#eab221]">{job.status}</div>
           <div>
-            {job.status === 'complete' &&
-              job?.downloadLink &&
-              Object.keys(job.downloadLink).map((el, idx) => (
-                <span key={idx}>
-                  {el}:{' '}
-                  <a
-                    href={job.downloadLink[el]}
-                    target="_blank"
-                    className="text-blue underline"
-                    rel="noreferrer"
-                  >
-                    Download
-                  </a>
-                </span>
-              ))}
+            {job.status === 'complete' && (
+              <button
+                onClick={() => handleDownload(job)}
+                className="cursor-pointer text-blue underline"
+              >
+                Download
+              </button>
+            )}
           </div>
         </div>
       ))}
