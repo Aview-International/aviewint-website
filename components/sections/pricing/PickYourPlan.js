@@ -24,7 +24,6 @@ const PickYourPlan = ({
         <ToggleButton isChecked={isChecked} handleChange={handleChange} />
         <p>Annual (save up to 30%)</p>
       </div>
-
       <div className="mx-auto mt-s7 flex w-4/5 items-end justify-center text-center">
         <Slider
           label="How many minutes of content do you upload a month?"

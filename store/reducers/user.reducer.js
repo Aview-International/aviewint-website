@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import  { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: false,
@@ -10,7 +10,8 @@ const initialState = {
   languages: [],
   lastName: '',
   monthlyView: '',
-  pendingVideos: undefined,
+  pendingVideos: [],
+  completedVideos: [],
   picture: '',
   preferences: [],
   region: [],
@@ -21,8 +22,6 @@ const initialState = {
   youtubeChannelId: '',
   youtubeChannelName: '',
   _id: '',
-  recordedVoiceSamples: [],
-  uploadedVoiceSamples: [],
   chatAssistantOption: 'Title',
 };
 

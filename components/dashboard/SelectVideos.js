@@ -1,8 +1,7 @@
 import { toast } from 'react-toastify';
 import OnboardingButton from '../Onboarding/button';
-import Insights from './Insights';
+import Insights from './insights/Insights';
 import Videos from './Videos';
-import RecommendVideos from './RecommendVideos';
 
 const SelectVideos = ({
   setIsSelected,
@@ -30,7 +29,6 @@ const SelectVideos = ({
       <div className="ml-auto w-full md:w-[155px]">
         <OnboardingButton onClick={handleTranslate}>Next</OnboardingButton>
       </div>
-      {/* <RecommendVideos /> */}
     </>
   );
 };

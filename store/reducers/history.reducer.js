@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const historySlice = createSlice({
-  name: 'billing',
+  name: 'history',
   initialState,
   reducers: {
     setPendingJobs(state, action) {
