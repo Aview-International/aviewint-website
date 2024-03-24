@@ -7,6 +7,7 @@ import messagesReducer from './reducers/messages.reducer';
 import aviewReducer from './reducers/aview.reducer';
 import billingReducer from './reducers/billing.reducer';
 import voicesReducer from './reducers/voices.reducer';
+import historyReducer from './reducers/history.reducer';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     aview: aviewReducer,
     billing: billingReducer,
     voices: voicesReducer,
+    history: historyReducer
   },
   middleware: (getDefaultMiddleware) => {
     const middleware = getDefaultMiddleware({});
