@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import DottedBorder from '../UI/DottedBorder';
 import UploadIcon from '../../public/img/icons/upload-icon1.svg';
 import Border from '../UI/Border';
 import ErrorHandler from '../../utils/errorHandler';
-import { useState, useEffect, useRef } from 'react';
+import FormInput from '../FormComponents/FormInput';
+import Textarea from '../FormComponents/Textarea';
+import ButtonText from '../sections/reused/ButtonText';
 
-const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
+const UploadVideo = ({ video, uploadProgress, isLoading }) => {
   const [isFileDragging, setIsFileDragging] = useState(false);
   const dropZoneRef = useRef(null);
 
@@ -104,7 +106,10 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
               </video>
 
               <button
-                onClick={() => setVideo(null)}
+                onClick={() => {
+                  setVideo(null);
+                  setVideoUpdated((prevValue) => !prevValue);
+                }}
                 className={`absolute top-3 right-3 z-50 rounded-full bg-red p-2 text-center text-sm`}
               >
                 Remove
@@ -142,7 +147,72 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
         </span>
         &nbsp;and give us permission to post translated content on your behalf.
       </small>
+      {video ? (
+        <div className="mb-s4 rounded-md bg-white-transparent p-s2">
+          <p className="mb-s1 text-sm font-bold">Uploading...</p>
+          <div className="relative mb-1 h-2 rounded-xl border-2 border-white-transparent bg-transparent">
+            <div
+              className="gradient-1 absolute top-0 block h-[6px] w-1/2 scroll-smooth rounded-xl"
+              style={{ width: uploadProgress + '%' }}
+            ></div>
+          </div>
+          <div className="flex items-center justify-between text-xs">
+            <p>10%</p>
+            <p>10 mins left</p>
+          </div>
+        </div>
+      ) : null}
+      <VideoInformation />
     </div>
+  );
+};
+
+const VideoInformation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [videoOptions, setVideoOptions] = useState({
+    description: '',
+    title: '',
+  });
+
+  const handleVideoOptions = (e) => {
+    const { name, value } = e.target;
+    setVideoOptions((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <>
+      <ButtonText isOpen={isOpen} setIsOpen={setIsOpen} labelClasses="mb-s3">
+        <p className={`text-2xl font-bold`}>
+          Video Information{' '}
+          <span className="text-base font-light">(optional)</span>
+        </p>
+      </ButtonText>
+      {isOpen && (
+        <>
+          <FormInput
+            label="Title"
+            placeholder="Title"
+            type="text"
+            value={videoOptions.title}
+            hideCheckmark={true}
+            name="title"
+            onChange={handleVideoOptions}
+            extraClasses="mb-s0"
+          />
+          <p className="mt-s2 text-lg">Description</p>
+          <Textarea
+            placeholder="Describe video information"
+            onChange={handleVideoOptions}
+            name="description"
+            value={videoOptions.description}
+            extraClasses={'mb-s2'}
+          />
+        </>
+      )}
+    </>
   );
 };
 
