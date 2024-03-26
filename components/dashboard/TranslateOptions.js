@@ -41,13 +41,12 @@ const TranslateOptions = ({
   };
 
   return (
-    <div>
-      <h3 className="mb-s3 text-2xl">Distribution</h3>
-      <p className="mb-s2 text-xl">
+    <>
+      <h3 className="mb-s3 text-2xl font-bold">Distribution</h3>
+      <p className="mb-s4 text-lg">
         Which channels do you want these videos posted on? Want to post in an
         additional language? You can create more international channels.
       </p>
-
       <div className="max-h-[368px] overflow-y-auto overflow-x-hidden pr-s1.5">
         {userData.languages.map((language, index) => (
           <div
@@ -77,8 +76,7 @@ const TranslateOptions = ({
           </div>
         ))}
       </div>
-
-      <p className="mt-s4 text-xl">
+      <p className="mt-s4 text-lg">
         Is there anything else you would like us to know?
       </p>
       <Textarea
@@ -87,7 +85,6 @@ const TranslateOptions = ({
           setPayload({ ...payload, additionalNote: e.target.value })
         }
       />
-
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
@@ -106,7 +103,6 @@ const TranslateOptions = ({
         ) : (
           <p>Processing video please wait</p>
         ))}
-
       {!isLoading && (
         <div className="w-full md:w-36">
           <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
@@ -114,7 +110,7 @@ const TranslateOptions = ({
           </OnboardingButton>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

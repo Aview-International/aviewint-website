@@ -20,10 +20,9 @@ import {
   isSignInWithEmailLink,
   signInWithEmailLink,
 } from 'firebase/auth';
-import { singleSignOnLogin } from '../../services/apis';
+import { signInWithGoogleAcc, singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
-import { verifyAuthStatus } from '../../utils/authStatus';
 
 const Login = () => {
   const router = useRouter();
@@ -36,21 +35,14 @@ const Login = () => {
   });
 
   useEffect(() => {
-    const token = Cookies.get('token');
-    if (!verifyAuthStatus(token)) {
-      Cookies.remove('token');
-    }
-  }, []);
-
-  useEffect(() => {
     const { query } = router;
     if (query.apiKey && query.oobCode && query.mode === 'signIn')
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleRedirect = (_tokenResponse) => {
-    Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-    Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+  const handleRedirect = async (_tokenResponse) => {
+    Cookies.set('uid', _tokenResponse.localId);
+    await signInWithGoogleAcc(_tokenResponse.idToken);
     dispatch(
       setUser({
         email: _tokenResponse.email,
@@ -64,8 +56,10 @@ const Login = () => {
     const prevRoute = Cookies.get('redirectUrl');
     if (prevRoute) {
       Cookies.remove('redirectUrl');
-      router.push(decodeURIComponent(prevRoute));
-    } else router.push('/dashboard');
+      // router.push(decodeURIComponent(prevRoute));
+      window.location.href = decodeURIComponent(prevRoute);
+    } else window.location.href = '/dashboard';
+    // } else router.push('/dashboard');
   };
 
   const handleLoginWithGoogle = async () => {

@@ -60,7 +60,7 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
         {isLoading ? (
           <CircleLoader />
         ) : (
-          <div className="m-auto grid grid-cols-2 items-center gap-10 text-white md:grid-cols-3 lg:grid-cols-4">
+          <div className="m-auto grid grid-cols-2 items-start gap-10 text-white md:grid-cols-3 lg:grid-cols-4">
             {buttonState === 'all'
               ? allVideos.map((item, index) => (
                   <VideoFrame

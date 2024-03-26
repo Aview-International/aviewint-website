@@ -108,7 +108,7 @@ const ApplyToday = () => {
         <div className="w-full text-white md:w-3/5">
           <MultipleSelectInput
             text="What languages can you translate?"
-            options={allLanguages}
+            options={allLanguages.map((el) => el.language)}
             answer={data.languages}
             hasSubmitted={hasSubmitted}
             onChange={(event) => handleMutlipleCheckbox(event)}

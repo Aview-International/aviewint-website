@@ -10,12 +10,12 @@ import MedicalFields from '../../components/sections/corporate/medical/MedicalFi
 import Workflow from '../../components/sections/reused/Workflow';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import Footer from '../../components/navigation/Footer';
 import medical from '../../public/img/graphics/corporate/medical/medical.png';
 import workflowSm from '../../public/img/graphics/corporate/medical/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/medical/workflow-lg.svg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import Blobs from '../../components/UI/Blobs';
 
 const ITEMS = [
   {
@@ -62,8 +62,8 @@ export default function Medical() {
       />
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="landing" />
-      <FeaturedBlogs />
-      <Footer curPage="Medical Documents"/>
+      <Footer curPage="Medical Documents" />
+      <Blobs />
     </>
   );
 }

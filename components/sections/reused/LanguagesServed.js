@@ -52,7 +52,7 @@ const LanguagesServed = () => {
         <LanguagesGrid>
           {MOST_POPULAR.map((language) => (
             <LanguageCard
-              key={language.id}
+              key={`lg-${language.id}`}
               language={language.language}
               icon={language.icon}
             />
@@ -62,9 +62,9 @@ const LanguagesServed = () => {
           Also Available
         </p>
         <LanguagesGrid>
-          {ALSO_AVAILABLE.map((language) => (
+          {ALSO_AVAILABLE.map((language, i) => (
             <LanguageCard
-              key={language.id}
+              key={`el-${language.id}`}
               language={language.language}
               icon={language.icon}
             />

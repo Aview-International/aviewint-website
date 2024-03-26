@@ -4,15 +4,26 @@ import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
-import { createANewJob, updateRequiredServices } from '../api/firebase';
+import {
+  createANewJob,
+  subscribeToHistory,
+  updateRequiredServices,
+} from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
-import { getChannelVideos, getIgVideos } from '../../services/apis';
+import {
+  getChannelVideos,
+  getIgVideos,
+  getJobsHistory,
+} from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import { setCompletedJobs, setPendingJobs } from '../../store/reducers/history.reducer';
+import Cookies from 'js-cookie';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
+  const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
   const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
     (state) => state.youtube
@@ -45,7 +56,7 @@ const DashboardHome = () => {
       }));
       dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
@@ -59,7 +70,7 @@ const DashboardHome = () => {
         setInstagramVideos({ dataFetched: true, videos: response.data })
       );
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
@@ -68,6 +79,30 @@ const DashboardHome = () => {
       getInstagramVideos();
     if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
   }, [channelDetails, userData]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const completedArray = await getJobsHistory();
+        dispatch(setCompletedJobs(completedArray));
+      } catch (error) {
+        ErrorHandler(error);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = subscribeToHistory(uid, (data) => {
+      const pendingArray = data
+        ? Object.values(data).sort(
+            (a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)
+          )
+        : [];
+      dispatch(setPendingJobs(pendingArray));
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {

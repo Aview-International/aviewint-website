@@ -1,26 +1,28 @@
 import { NextResponse } from 'next/server';
-import { verifyAuthStatus } from './utils/authStatus';
+import { checkTokenExpiry } from './utils/jwtExpiry';
 
-export function middleware(request) {
-  const token = request.cookies.get('token');
+/**
+ * @returns redirect to /login if token is valid or expired
+ * @author Victor Ogunjobi
+ */
+export async function middleware(request) {
+  const sessionCookie = request.cookies.get('session');
+  const currentUrl = request.url;
+  const response = NextResponse.redirect(
+    new URL('/login?rdr=true', currentUrl)
+  );
 
-  if (!verifyAuthStatus(token)) {
-    const currentUrl = request.url;
-    request.cookies.delete('token');
-
-    const response = NextResponse.redirect(
-      new URL('/login?rdr=true', request.url)
-    );
-
+  try {
+    if (!checkTokenExpiry(sessionCookie)) {
+      response.cookies.set('redirectUrl', currentUrl);
+      return response;
+    }
+  } catch (error) {
     response.cookies.set('redirectUrl', currentUrl);
     return response;
   }
 }
 
 export const config = {
-  matcher: [
-    '/dashboard/:path*',
-    '/onboarding',
-    '/onboard/new-voice/creator-unique',
-  ],
+  matcher: ['/dashboard/:path*', '/onboarding'],
 };

@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signOut,
+} from 'firebase/auth';
 import {
   getDatabase,
   set,
@@ -10,6 +15,7 @@ import {
   onValue,
 } from 'firebase/database';
 import { transcribeSocialLink } from '../../../services/apis';
+import Cookies from 'js-cookie';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -30,6 +36,13 @@ const database = getDatabase(firebaseApp);
 
 // Initialize the auth service
 export const auth = getAuth();
+
+export const logoutUser = async () => {
+  await signOut(auth).then(() => {
+    Cookies.remove('uid');
+    Cookies.remove('token');
+  });
+};
 
 export const checkUserEmail = async (uid) => {
   const res = await get(ref(database, `users/${uid}`)).then((snapshot) => {
@@ -111,26 +124,17 @@ export const getUserProfile = async (uid, callback) => {
   });
 };
 
-export const getAllPayments = async (_id) => {
-  const res = await get(ref(database, `payments/${_id}`)).then((snapshot) => {
-    if (snapshot.exists()) return snapshot.val();
-    else return null;
-  });
-  return res;
-};
-
 export const createANewJob = async (jobDetails) => {
   await transcribeSocialLink(jobDetails);
 };
 
-export const getAllPendingJobs = async (uid) => {
-  const res = await get(ref(database, `user-jobs/pending/${uid}`)).then(
-    (snapshot) => {
-      if (snapshot.exists()) return snapshot.val();
-      else return null;
-    }
-  );
-  return res;
+export const subscribeToHistory = (uid, subscriptionCallback) => {
+  const pathRef = ref(database, `user-jobs/pending/${uid}`);
+  const unsubscribe = onValue(pathRef, (snapshot) => {
+    const data = snapshot.val();
+    subscriptionCallback(data);
+  });
+  return unsubscribe; // Return the unsubscribe function
 };
 
 export const getAllCompletedJobs = async (uid) => {

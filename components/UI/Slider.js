@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 /**
- * Input Slider component
+ * @name - Input Slider component
  * @prop label: String, to display the label of the input
  * @prop name: The name of the input, for events handling
  * @prop max: The maximum value of the slider
@@ -12,44 +12,46 @@ import { useMemo } from 'react';
  * @author Victor Ogunjobi
  */
 
-const Slider = ({ label, name, max, setRanges, value, values }) => {
-  const handleChange = (e) => {
-    setRanges((prevState) => ({
-      ...prevState,
-      [name]: e.target.value,
-    }));
-  };
-
+const Slider = ({
+  label,
+  name,
+  max,
+  value,
+  values,
+  onChange,
+  prefix,
+  suffix,
+}) => {
   const width = useMemo(() => {
     if (value > max / 2) {
       return (value * 100) / max;
     } else {
-      return (value * 100) / max + 2;
+      return (value * 100) / max + 1;
     }
-  }, [value]);
+  }, [value, max]);
 
   return (
-    <div className="mt-s2 mb-s3 bg-black p-s2">
-      <label className="mb-s2 inline-block text-xl text-white">{label}</label>
-      <div className="relative w-[80%]">
-        <span
-          className={`gradient-1 absolute block h-[15px] rounded-[30px] `}
-          style={{ width: `${Math.trunc(width)}%` }}
-        ></span>
-        <input
-          name={name}
-          type="range"
-          // min={0}
-          value={value}
-          max={max}
-          className="track-background remove-highlight slider-thumb absolute h-[15px] w-full appearance-none rounded-[30px] border border-white"
-          onChange={handleChange}
-        />
-        <span
-          className={`absolute -top-[4px] -right-[65px] text-xl text-white md:-right-[65px]`}
-        >
-          {values[value] || value}
-        </span>
+    <div className="w-full text-white">
+      <label className="mb-s2 block text-lg">{label}</label>
+      <div className="flex w-full items-center justify-center gap-s2">
+        <div className="relative w-10/12">
+          <span
+            className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
+            style={{ width: `${Math.round(width)}%` }}
+          ></span>
+          <input
+            name={name}
+            type="range"
+            // min={0}
+            value={value}
+            max={max}
+            className="track-background remove-highlight slider-thumb h-[15px] w-full appearance-none rounded-[30px] border border-white"
+            onChange={onChange}
+          />
+        </div>
+        <p className="w-2/12 text-center text-xl">
+          {prefix} {values[value] || value} {suffix}
+        </p>
       </div>
     </div>
   );

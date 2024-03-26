@@ -9,9 +9,8 @@ import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
 
-const OnboardingStep5 = ({ userData }) => {
+const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
-  const allLanguages = useSelector((state) => state.aview.allLanguages);
   const youtubeChannel = useSelector((el) => el.youtube);
   const [languages, setLanguages] = useState([]);
   const [isError, setIsError] = useState(false);
@@ -22,9 +21,18 @@ const OnboardingStep5 = ({ userData }) => {
   }, [userData.languages]);
 
   const handleSubmit = async () => {
+    const payForPlan = localStorage.getItem('payForPlan');
     try {
+      if (languages.length < 2) {
+        setIsError(true);
+        return;
+      }
       await updateRequiredServices({ languages }, userData.uid);
-      router.push('/onboarding?stage=6');
+      router.push(
+        `/onboarding?stage=${
+          payForPlan ? `subscription&plan=${payForPlan}` : '6'
+        }`
+      );
     } catch (error) {
       ErrorHandler(error);
     }
@@ -40,12 +48,8 @@ const OnboardingStep5 = ({ userData }) => {
 
   const handleRemoveLanguage = (language) => {
     let allLanguages = [...languages];
-    if (allLanguages.length > 1) {
-      allLanguages.splice(allLanguages.indexOf(language), 1);
-      setLanguages(allLanguages);
-    } else {
-      setIsError(true);
-    }
+    allLanguages.splice(allLanguages.indexOf(language), 1);
+    setLanguages(allLanguages);
   };
 
   const handleMultipleLanguages = (option) => {
@@ -58,21 +62,21 @@ const OnboardingStep5 = ({ userData }) => {
 
   return (
     <div className="m-auto w-[80%] 2xl:w-[70%]">
-      <h2 className="text-4xl font-bold md:text-center md:text-6xl">
+      <h2 className="text-center text-4xl font-bold md:text-6xl">
         Received recommended languages
       </h2>
-      <p className="mt-s2 mb-s4 text-lg md:mx-auto md:w-2/5 md:text-center md:text-xl">
+      <p className="mt-s2 mb-s4 text-center text-lg md:mx-auto md:w-2/5 md:text-xl">
         We recommend you translate for these languages. Feel free to edit the
         list as you please!
       </p>
-      <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
         {languages
           .filter((el) => el !== userData.defaultLanguage)
           .map(
             (language, index) =>
               language !== 'Others' && (
                 <div
-                  className="gradient-dark flex max-w-[360px] flex-row justify-between rounded-md p-s1.5"
+                  className="gradient-dark mx-auto flex w-full max-w-[360px] flex-row justify-between rounded-md p-s1.5"
                   key={index}
                 >
                   <div className="flex flex-row items-center justify-between">

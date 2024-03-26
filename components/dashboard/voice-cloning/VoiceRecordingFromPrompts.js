@@ -1,13 +1,17 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import AudioWave from './AudioWave';
-import OnboardingButton from '../../Onboarding/button';
 import VoiceRecordList from './VoiceRecordList';
+import AudioPlayer from './AudioPlayer';
+import OnboardingButton from '../../Onboarding/button';
+import Border from '../../UI/Border';
+import Button from '../../UI/Button';
 
-const VoiceRecordingFromPrompts = () => {
+const VoiceRecordingFromPrompts = ({ promptStage = 0, updateVoices }) => {
   const [micState, setMicState] = useState('waiting');
   const [option, setOption] = useState(false);
+  const [prompt, setPrompt] = useState(promptStage);
+  const [audioRecord, setAudioRecord] = useState(null);
   const [recordings, setRecordings] = useState([]);
-  const [destroyMic, setDestroyMic] = useState(false);
 
   const getPermissionInitializeRecorder = async () => {
     try {
@@ -21,83 +25,136 @@ const VoiceRecordingFromPrompts = () => {
   };
 
   const uploadVoiceSamples = () => {
-    setDestroyMic(!destroyMic);
     setOption(!option);
   };
 
   useEffect(() => {
     getPermissionInitializeRecorder();
-    return () => {
-      setDestroyMic(true);
-    };
   }, []);
 
+  const approveHandler = () => {
+    let array = [...recordings];
+    array.push(audioRecord);
+    setRecordings(array);
+    setPrompt((prompt) => prompt + 1);
+    setAudioRecord(null);
+  };
+
+  const retryHandler = () => {
+    setAudioRecord(null);
+  };
+
   return (
-    <div className="flex w-full flex-col items-center justify-center ">
+    <div className="flex w-full flex-col items-center justify-center">
       {!option ? (
-        <div className="w-4/5">
-          <div className="my-5 flex w-full flex-col items-start justify-center gap-3 rounded-2xl border-2 p-s2 ">
-            {micState === 'waiting' && (
-              <p data-aos="zoom-in-up" className="m-s3 text-lg font-medium">
-                Waiting for microphone usage, please allow microphone access to
-                record voice sample 🎙️
-              </p>
-            )}
-            {micState === 'denied' && (
-              <p data-aos="zoom-in-up" className="m-s3 text-lg font-medium">
-                Unfortunately, we are unable to access the microphone to enable
-                voice recording. Please check your privacy settings to allow
-                microphone usage 😪🎙️
-              </p>
-            )}
-            {micState === 'allowed' && recordings.length < 25 ? (
-              <AudioWave
-                recordings={recordings}
-                setRecordings={setRecordings}
-                destroyMic={destroyMic}
-              />
-            ) : null}
+        <div className="w-full">
+          <div className="mb-4 flex w-full flex-row items-center justify-between">
+            <p className=" text-start text-3xl font-semibold">
+              Voice Sample {prompt + 1}
+            </p>
+            <GradientCircle prompt={prompt} />
           </div>
-
-          {micState === 'allowed' && (
-            <Fragment>
-              <div
-                className="gradient-1 my-s1 rounded-2xl p-1 transition-all"
-                style={{
-                  width:
-                    (recordings.length * 100) /
-                      (recordings.length >= 5 ? 25 : 5) +
-                    '%',
-                }}
-              ></div>
-              <div className="flex w-full flex-row justify-between text-xs">
-                <p>
-                  {(recordings.length * 100) /
-                    (recordings.length >= 5 ? 25 : 5)}
-                  %
+          <Border borderRadius="2xl">
+            <div className="flex w-full flex-col items-start justify-center gap-3 rounded-2xl bg-black p-s2">
+              {micState === 'waiting' && (
+                <p data-aos="zoom-in-up" className="m-s3 text-lg font-medium">
+                  Waiting for microphone usage, please allow microphone access
+                  to record voice sample 🎙️
                 </p>
-                <p>
-                  {recordings.length} / {recordings.length >= 5 ? 25 : 5}
+              )}
+              {micState === 'denied' && (
+                <p data-aos="zoom-in-up" className="m-s3 text-lg font-medium">
+                  Unfortunately, we are unable to access the microphone to
+                  enable voice recording. Please check your privacy settings to
+                  allow microphone usage 😪🎙️
                 </p>
+              )}
+              {micState === 'allowed' && prompt < 25 && (
+                <AudioWave
+                  recordings={recordings}
+                  setAudioRecord={setAudioRecord}
+                  prompt={prompt}
+                />
+              )}
+            </div>
+          </Border>
+          {audioRecord && (
+            <div className={`mx-auto my-s2 md:w-1/2`}>
+              <div className="flex flex-col items-center justify-center gap-y-8">
+                <AudioPlayer audioRecord={audioRecord} />
+                <div className="flex w-full flex-row items-center justify-between gap-2 md:w-5/6 md:justify-around">
+                  <Button
+                    purpose="onClick"
+                    type="secondary"
+                    fullWidth={true}
+                    onClick={retryHandler}
+                  >
+                    Retry
+                  </Button>
+                  <Button
+                    purpose="onClick"
+                    type="primary"
+                    fullWidth={true}
+                    onClick={approveHandler}
+                  >
+                    Approve
+                  </Button>
+                </div>
               </div>
-            </Fragment>
+            </div>
           )}
-
-          <div className={`mx-auto my-s3 w-[250px]`}>
-            <OnboardingButton
-              onClick={uploadVoiceSamples}
-              disabled={recordings.length < 5}
-            >
-              Preview recordings
-            </OnboardingButton>
-          </div>
+          {prompt >= 5 && (
+            <div className={`mx-auto my-s3 w-[250px]`}>
+              <OnboardingButton onClick={uploadVoiceSamples}>
+                Preview recordings
+              </OnboardingButton>
+            </div>
+          )}
         </div>
       ) : (
-        <VoiceRecordList
-          recordings={recordings}
-          setRecordings={setRecordings}
-        />
+        <VoiceRecordList recordings={recordings} prompt={prompt} updateVoices={updateVoices} />
       )}
+    </div>
+  );
+};
+
+const GradientCircle = ({ prompt }) => {
+  const percentage = useMemo(() => {
+    const val = (prompt / (prompt < 5 ? 5 : 25)) * 100;
+    return Math.round(val);
+  }, [prompt]);
+
+  const circumference = 157;
+
+  const offset = useMemo(() => {
+    const val = circumference - (percentage / 100) * circumference;
+    return Math.round(val);
+  }, [percentage]);
+
+  return (
+    <div className="relative flex h-14 w-14 items-center justify-center">
+      <p className="text-sm">{`${percentage}%`}</p>
+      <svg className="absolute -rotate-90" width="56" height="56">
+        <circle
+          cx="28"
+          cy="28"
+          r="25"
+          fill="none"
+          stroke="#000017"
+          strokeWidth="7"
+        ></circle>
+        <circle
+          cx="28"
+          cy="28"
+          r="25"
+          fill="none"
+          stroke="#00ffff"
+          strokeWidth="7"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }}
+        ></circle>
+      </svg>
     </div>
   );
 };

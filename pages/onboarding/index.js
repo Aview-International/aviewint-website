@@ -12,20 +12,33 @@ import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
 import OnboardingSuccess from '../../components/Onboarding/success';
-import useUserProfile from '../../hooks/useUserProfile';
 import { useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
+import Confetti from '../../components/UI/Confetti';
+import { getPlans } from '../../services/apis';
+import usePlans from '../../hooks/usePlans';
+import OnboardingPayment from '../../components/Onboarding/payment';
 
-const Onboarding = () => {
+export const getStaticProps = async () => {
+  try {
+    const plans = await getPlans();
+    const plansJSON = JSON.stringify(plans);
+    return {
+      props: {
+        plans: plansJSON,
+      },
+      revalidate: 60, // re-generate page every 60 seconds (if necessary)
+    };
+  } catch (error) {
+    return { props: { plans: {} } };
+  }
+};
+
+const Onboarding = ({ plans }) => {
+  usePlans(JSON.parse(plans));
   const userData = useSelector((state) => state.user);
   const allLanguages = useSelector((state) => state.aview.allLanguages);
-
   const router = useRouter();
-  const { getProfile } = useUserProfile();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   useEffect(() => {
     if (window.location.search.split('=')[0].includes('code')) {
@@ -41,8 +54,11 @@ const Onboarding = () => {
   return (
     <>
       <PageTitle title="Aview Onboarding" />
-      <div className="m-horizontal ml-8 flex items-center px-0 py-6 md:ml-24">
-        {Number(router.query.stage) > 1 && (
+      {router.query?.subscription === 'success' && <Confetti />}
+
+      <div className="m-horizontal ml-8 flex items-center px-0 py-4 md:ml-24">
+        {(Number(router.query.stage) > 1 ||
+          router.query.stage === 'subscription') && (
           <Link href={`/onboarding/?stage=${+router.query.stage - 1}`}>
             <a className="flex place-content-center pr-4">
               <Image src={ArrowBack} alt="Go back" width={10} height={20} />
@@ -53,8 +69,8 @@ const Onboarding = () => {
         <Image
           src={aviewLogo}
           alt="AVIEW International logo"
-          width={40}
-          height={40}
+          width={60}
+          height={60}
         />
       </div>
       <div className="bg-gray-1">
@@ -69,7 +85,10 @@ const Onboarding = () => {
             Step {router.query.stage} of 6
           </small>
         )}
-        <Stages userData={userData} allLanguages={allLanguages} />
+        <Stages
+          userData={userData}
+          allLanguages={allLanguages.map((el) => el.language)}
+        />
       </div>
     </>
   );
@@ -109,7 +128,12 @@ const Stages = ({ userData, allLanguages }) => {
       )}
       {query.stage === '5' && (
         <PageTransition>
-          <OnboardingStep5 userData={userData} />
+          <OnboardingStep5 userData={userData} allLanguages={allLanguages} />
+        </PageTransition>
+      )}
+      {query.stage === 'subscription' && (
+        <PageTransition>
+          <OnboardingPayment />
         </PageTransition>
       )}
       {query.stage === '6' && (

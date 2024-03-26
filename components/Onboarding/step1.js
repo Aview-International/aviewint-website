@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Shadow from '../UI/Shadow';
 import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
+import ErrorHandler from '../../utils/errorHandler';
 
 const OnboardingStep1 = ({ userData }) => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const OnboardingStep1 = ({ userData }) => {
       await updateRequiredServices({ role: payload.role }, Cookies.get('uid'));
       router.push('/onboarding?stage=2');
     } catch (error) {
-      console.error(error);
+      ErrorHandler(error);
     }
   };
 
