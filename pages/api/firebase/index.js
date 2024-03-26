@@ -43,6 +43,7 @@ export const logoutUser = async () => {
     Cookies.remove('uid');
     Cookies.remove('token');
   });
+  window.location.href = '/';
 };
 
 export const checkUserEmail = async (uid) => {

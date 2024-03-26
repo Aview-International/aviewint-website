@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
@@ -7,6 +7,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import { useRouter } from 'next/router';
 import { DASHBOARD_NAVLINKS } from '../../constants/constants';
+import { logoutUser } from '../../pages/api/firebase';
 
 export default function DashboardMobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
@@ -43,12 +44,14 @@ export default function DashboardMobileMenu() {
       </nav>
       <div className={`flex-grow-0 flex-col gap-4`}>
         <Button
-          purpose="route"
-          route="/login"
+          purpose="onClick"
+          onClick={logoutUser}
+          I
+          was
           type="secondary"
           fullWidth={true}
         >
-          Logout
+          Sign Out
         </Button>
       </div>
     </div>
