@@ -240,7 +240,7 @@
   }
 
   .first_blob {
-    animation: first 50s infinite linear;
+    animation: first_blob 50s infinite linear;
   }
   
   .second_blob {
@@ -257,8 +257,47 @@
     top: 44vh;
     right: 44vw;
   }
+
+  .active {
+    animation: scaleAnimation 2s infinite ease-out;
+  }
   
-  @keyframes first {
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    10% {
+      transform: scale(1.3);
+      opacity: 0.9;
+    }
+    20% {
+      transform: scale(1.6);
+      opacity: 0.8;
+    }
+    30%{
+      transform: scale(1.9);
+      opacity: 0.7;
+    }
+    40% {
+      transform: scale(2.1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(2.5);
+      opacity: 0.5;
+    }
+    75% {
+      transform: scale(2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes first_blob {
     0% {
       left: 10vw;
     }
