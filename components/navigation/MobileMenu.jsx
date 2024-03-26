@@ -55,14 +55,6 @@ export default function MobileMenu() {
           >
             Login
           </Button>
-          {/* <Button
-          purpose="route"
-          route="/waitlist"
-          type="secondary"
-          fullWidth={true}
-          >
-          Join the Waitlist
-        </Button> */}
         </div>
       </div>
     </div>

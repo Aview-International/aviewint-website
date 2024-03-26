@@ -5,7 +5,7 @@ import MenuOpenContext from '../../store/menu-open-context';
 import Button from '../UI/Button';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
-import aviewLogo from '../../public/img/aview/logo.png';
+import aviewLogo from '../../public/img/aview/logo-white.png';
 import MenuButtonIcon from './MenuButtonIcon';
 import { useSelector } from 'react-redux';
 
@@ -47,9 +47,6 @@ const HeaderButtons = () => {
         </Button>
       )}
 
-      {/* <Button purpose="route" route="/waitlist" type="secondary">
-        Join Waitlist
-      </Button> */}
       {isLoggedIn ? (
         <Button purpose="route" route="/dashboard" type="secondary">
           Dashboard
