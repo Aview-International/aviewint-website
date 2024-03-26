@@ -239,6 +239,49 @@
     }
   }
 
+  .first_blob {
+    animation: first 50s infinite linear;
+  }
+  
+  .second_blob {
+    animation: second_blob 60s infinite linear;
+    animation-delay: 23s;
+  }
+
+  .top {
+    bottom : 26vh;
+    left: 70vw;
+  }
+ 
+  .bottom {
+    top: 44vh;
+    right: 44vw;
+  }
+  
+  @keyframes first {
+    0% {
+      left: 10vw;
+    }
+    50% {
+      left: 60vw;
+    }
+    100% {
+      left: 5vw;
+    }
+  }
+
+  @keyframes second_blob {
+    0% {
+      left: 3vw;
+    }
+    50% {
+      left: 70vw;
+    }
+    100% {
+      left: 10vw;
+    }
+  }
+
   @keyframes slide-text {
     from {
       transform: translateX(0);

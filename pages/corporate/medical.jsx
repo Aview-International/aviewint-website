@@ -15,6 +15,7 @@ import medical from '../../public/img/graphics/corporate/medical/medical.png';
 import workflowSm from '../../public/img/graphics/corporate/medical/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/medical/workflow-lg.svg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import Blobs from '../../components/UI/Blobs';
 
 const ITEMS = [
   {
@@ -62,6 +63,7 @@ export default function Medical() {
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="landing" />
       <Footer curPage="Medical Documents" />
+      <Blobs />
     </>
   );
 }
