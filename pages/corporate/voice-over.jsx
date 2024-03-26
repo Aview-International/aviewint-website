@@ -14,6 +14,7 @@ import voiceOver from '../../public/img/graphics/corporate/voice-over/voice-over
 import workflowSm from '../../public/img/graphics/corporate/voice-over/workflow-sm.svg';
 import workflowLg from '../../public/img/graphics/corporate/voice-over/workflow-lg.svg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import Blobs from '../../components/UI/Blobs';
 
 const ITEMS = [
   {
@@ -60,6 +61,7 @@ export default function VoiceOver() {
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="voiceover" />
       <Footer curPage="Voice Overs" />
+      <Blobs />
     </>
   );
 }

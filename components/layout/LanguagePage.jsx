@@ -12,6 +12,7 @@ import StartGenerating from '../sections/home/StartGenerating';
 import YouCreateWeTranslation from '../sections/languages/YouCreateWeTranslate';
 import FAQ from '../sections/home/FAQ';
 import Footer from '../navigation/Footer';
+import Blobs from '../UI/Blobs';
 
 export default function LanguagePage({
   title,
@@ -62,6 +63,7 @@ export default function LanguagePage({
       <YouCreateWeTranslation />
       <FAQ page="corporate" />
       <Footer curPage="Languages" />
+      <Blobs />
     </>
   );
 }
