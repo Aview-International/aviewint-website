@@ -6,7 +6,7 @@ import EmpowerGlobal from '../components/sections/home/EmpowerGlobal';
 import MetricsAnime from '../components/sections/home/MetricsAnime';
 import StartGenerating from '../components/sections/home/StartGenerating';
 import FAQ from '../components/sections/home/FAQ';
-import GoGlobal from '../components/sections/home/GoGlobal';
+// import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import EasterEgg from '../components/sections/reused/EasterEgg';
@@ -44,7 +44,7 @@ const Home = ({ data }) => {
       <FAQ page="landing" />
       <InternationalGrowth />
       <StartGenerating formId="t5dW3MSY" />
-      <GoGlobal />
+      {/* <GoGlobal /> */}
       <Footer curPage="Home" />
       <Blobs />
     </>

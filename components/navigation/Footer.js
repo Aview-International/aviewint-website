@@ -70,27 +70,22 @@ const Footer = ({ curPage }) => {
             </div>
           ))}
         </div>
-        <div className="flex h-full w-full flex-col justify-between md:flex-row">
-          <Button type="tertiary" purpose="route" route="/waitlist">
-            Join Waitlist
-          </Button>
-          <div className="mt-5 flex flex-row gap-s1 md:mt-0 md:grid md:grid-cols-6 lg:gap-s3">
-            {SOCIALS.map((social) => (
-              <a
-                href={social.link}
-                target="_blank"
-                rel="noreferrer"
-                key={social.id}
-              >
-                <Image
-                  src={social.icon}
-                  alt={social.altText}
-                  width="24px"
-                  height="24px"
-                />
-              </a>
-            ))}
-          </div>
+        <div className="mt-5 flex flex-row gap-s1 md:mt-0 md:grid md:grid-cols-6 lg:gap-s3">
+          {SOCIALS.map((social) => (
+            <a
+              href={social.link}
+              target="_blank"
+              rel="noreferrer"
+              key={social.id}
+            >
+              <Image
+                src={social.icon}
+                alt={social.altText}
+                width="24px"
+                height="24px"
+              />
+            </a>
+          ))}
         </div>
       </div>
     </div>

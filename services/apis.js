@@ -110,10 +110,6 @@ export const getUserYoutubeChannel = async () => {
 export const getMessageStatus = async () =>
   (await axiosInstance.get('messages/status')).data;
 
-export const joinWaitlist = async (data) => {
-  return axiosInstance.post(baseUrl + 'auth/join-waitlist', data);
-};
-
 export const uploadMultipleVoiceSamples = async (speakers, userId) => {
   let formData = new FormData();
 
