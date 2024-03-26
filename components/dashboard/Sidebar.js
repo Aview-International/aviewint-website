@@ -5,7 +5,7 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import signout from '../../public/img/icons/signout.svg';
 import sidebarArrow from '../../public/img/icons/sidebar-arrow.svg';
 import { useRouter } from 'next/router';
-import { logoutUserAcc } from '../../services/apis';
+import { logoutUser } from '../../pages/api/firebase';
 
 const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
   return (
@@ -133,7 +133,7 @@ const Navlink = ({ isOpen }) => {
 
 const Signout = ({ isOpen }) => {
   const handleLogout = async () => {
-    await logoutUserAcc();
+    await logoutUser();
     window.location.href = '/';
   };
   return (
