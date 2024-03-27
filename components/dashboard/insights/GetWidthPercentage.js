@@ -2,12 +2,13 @@ const getWidthPercentage = (currentStage) => {
   let percentage = 0;
 
   const options = [
-    'Queued',
+    'queued',
     'transcription',
     'translation',
     'dubbing',
     'audio-separation',
     'editing',
+    'under review',
     'complete',
   ];
 
@@ -19,7 +20,7 @@ const getWidthPercentage = (currentStage) => {
 
   const index = getStageNumber(currentStage);
   if (index > 0) {
-    percentage = Math.floor(((index + 1) / 7) * 100);
+    percentage = Math.floor(((index + 1) / options.length) * 100);
   }
 
   return percentage;
