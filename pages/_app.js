@@ -55,7 +55,10 @@ const Layout = ({ Component, pageProps }) => {
     window.onresize = setViewportHeight;
 
     const sessionCookie = Cookies.get('session');
-    dispatch(setAuthState(checkTokenExpiry(sessionCookie) ? true : false));
+    const uid = Cookies.get('uid');
+    dispatch(
+      setAuthState(uid && checkTokenExpiry(sessionCookie) ? true : false)
+    );
   }, []);
 
   if (Component.getLayout) {
