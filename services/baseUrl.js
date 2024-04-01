@@ -3,4 +3,4 @@ export const baseUrl =
     ? 'http://localhost:4000/'
     : 'https://api.aviewint.com/';
 
-// export const baseUrl = 'https://api.aviewint.com/';
+// export const baseUrl = 'https://pre-prod.aviewint.com/';
