@@ -14,7 +14,7 @@ import {
   get,
   onValue,
 } from 'firebase/database';
-import { logoutUserAcc, transcribeSocialLink } from '../../../services/apis';
+import { transcribeSocialLink } from '../../../services/apis';
 import Cookies from 'js-cookie';
 
 const firebaseConfig = {
@@ -38,7 +38,6 @@ const database = getDatabase(firebaseApp);
 export const auth = getAuth();
 
 export const logoutUser = async () => {
-  await logoutUserAcc();
   await signOut(auth).then(() => {
     Cookies.remove('uid');
     Cookies.remove('token');

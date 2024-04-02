@@ -42,12 +42,6 @@ export const updateProfileDetails = async (payload, type) => {
 export const singleSignOnLogin = async (email, origin) =>
   await axiosInstance.post(baseUrl + 'email/login', { email, origin });
 
-export const signInWithGoogleAcc = async (token) =>
-  await axiosInstance.post(baseUrl + 'auth/login', { token });
-
-export const logoutUserAcc = async () =>
-  await axiosInstance.get(baseUrl + 'auth/logout');
-
 export const transcribeSocialLink = async (body) =>
   await axiosInstance.post('transcription/new-task', body);
 
