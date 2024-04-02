@@ -46,7 +46,7 @@ const Register = () => {
       })
     );
 
-    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('session', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
     await createNewUser(
       _tokenResponse.localId,
