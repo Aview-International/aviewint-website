@@ -1,12 +1,23 @@
 import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
+import Cookies from 'js-cookie';
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
   baseURL: baseUrl,
-  withCredentials: true,
 });
+
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    const token = Cookies.get('session');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const welcomeNewUser = async (email) =>
   await axiosInstance.post(baseUrl + 'email/welcome', {
