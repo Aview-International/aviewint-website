@@ -6,8 +6,8 @@ import { customGreeting } from '../../utils/greeting';
 import { useSelector } from 'react-redux';
 
 const DashBoardHeader = ({ userInfo }) => {
+  const circumference = 157;
   const [time, setTime] = useState(customGreeting());
-
   const { videoTimeLeft, plan } = useSelector((state) => state.user);
 
   const getPlan = useMemo(() => {
@@ -22,22 +22,17 @@ const DashBoardHeader = ({ userInfo }) => {
     return planLimit;
   }, [plan]);
 
-  const getPercentage = () => {
-    const percentage = useMemo(() => {
-      const val = (videoTimeLeft / (getPlan * 60)) * 100;
-      return Math.round(val);
-    }, [videoTimeLeft]);
+  const percentage = useMemo(() => {
+    const val = (videoTimeLeft / (getPlan * 60)) * 100;
+    return Math.round(val);
+  }, [videoTimeLeft]);
 
-    const circumference = 157;
-
-    const oppositeOffset = useMemo(() => {
-      const val = circumference - (percentage / 100) * circumference;
-      return Math.round(val);
-    }, [percentage]);
-
-    const offset = circumference - oppositeOffset;
-    return Math.round(offset);
-  };
+  const offset = useMemo(() => {
+    const val =
+      circumference -
+      Math.round(circumference - (percentage / 100) * circumference);
+    return Math.round(val);
+  }, [percentage]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -64,9 +59,8 @@ const DashBoardHeader = ({ userInfo }) => {
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>
-
       <div className="hidden rounded-lg bg-white-transparent py-1 px-4 md:block">
-        <Circle offset={getPercentage()} timeLeft={videoTimeLeft} />
+        <Circle offset={offset} timeLeft={videoTimeLeft} />
         <p className="mt-2 text-center text-xs">Usage Left</p>
       </div>
     </header>
@@ -76,9 +70,9 @@ const DashBoardHeader = ({ userInfo }) => {
 const Circle = ({ offset, timeLeft }) => {
   return (
     <div className="relative mx-5 flex h-14 w-14 items-center justify-center">
-      <p className="text-sm font-semibold mt-2">
+      <p className="mt-2 text-sm font-semibold">
         {timeLeft}
-        <span className="block text-[10px] text-center">secs</span>
+        <span className="block text-center text-[10px]">secs</span>
       </p>
       <svg className="absolute -rotate-90" width="56" height="56">
         <circle
