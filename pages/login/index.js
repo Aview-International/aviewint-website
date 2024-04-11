@@ -9,7 +9,7 @@ import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import { checkUserEmail, signInWithGoogle } from '../api/firebase';
-import ButtonLoader from '../../public/loaders/ButtonLoader';
+import ButtonLoader from '../../components/UI/LoaderAnime';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';

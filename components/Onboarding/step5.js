@@ -39,25 +39,25 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
   };
 
   const findLocalDialect = (language) => {
-    let allLanguages = [];
+    let tempLanguages = [];
     SUPPORTED_REGIONS.forEach(({ data }) => {
-      data.forEach((el) => allLanguages.push(el));
+      data.forEach((el) => tempLanguages.push(el));
     });
-    return allLanguages.find((el) => el.languageName === language);
+    return tempLanguages.find((el) => el.languageName === language);
   };
 
   const handleRemoveLanguage = (language) => {
-    let allLanguages = [...languages];
-    allLanguages.splice(allLanguages.indexOf(language), 1);
-    setLanguages(allLanguages);
+    let tempLanguages = [...languages];
+    tempLanguages.splice(tempLanguages.indexOf(language), 1);
+    setLanguages(tempLanguages);
   };
 
   const handleMultipleLanguages = (option) => {
-    const allLanguages = [...languages];
-    if (allLanguages.includes(option))
-      allLanguages.splice(allLanguages.indexOf(option), 1);
-    else allLanguages.push(option);
-    setLanguages(allLanguages);
+    const tempLanguages = [...languages];
+    if (tempLanguages.includes(option))
+      tempLanguages.splice(tempLanguages.indexOf(option), 1);
+    else tempLanguages.push(option);
+    setLanguages(tempLanguages);
   };
 
   return (
