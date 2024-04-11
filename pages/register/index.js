@@ -22,7 +22,7 @@ import {
   signInWithEmailLink,
 } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import ButtonLoader from '../../public/loaders/ButtonLoader';
+import ButtonLoader from '../../components/UI/LoaderAnime';
 
 const Register = () => {
   const router = useRouter();
@@ -46,7 +46,7 @@ const Register = () => {
       })
     );
 
-    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('session', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
     await createNewUser(
       _tokenResponse.localId,
