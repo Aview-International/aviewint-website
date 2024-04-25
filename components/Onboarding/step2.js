@@ -85,7 +85,10 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
 
   return (
     <div className="m-auto w-[90%]">
-      <h2 className="text-4xl font-bold md:text-center md:text-6xl">
+      <h2
+        data-test="about-section"
+        className="text-4xl font-bold md:text-center md:text-6xl"
+      >
         Tell us about yourself
       </h2>
       <p className="mt-s2 mb-s4 text-lg md:text-center md:text-xl">
@@ -103,6 +106,7 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
                 setPayload({ ...payload, defaultLanguage: option })
               }
               value={payload.defaultLanguage}
+              testIdText="language"
             />
             <CustomSelectInput
               hideCheckmark
@@ -113,6 +117,7 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
                 setPayload({ ...payload, monthlyView: option })
               }
               value={payload.monthlyView}
+              testIdText="views"
             />
             <MultipleSelectInput
               hideCheckmark
@@ -121,6 +126,7 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
               answer={payload.categories}
               hasSubmitted={sideEffects.hasSubmitted}
               onChange={(event) => handleMultipleLanguages(event)}
+              testIdText="category"
             />
             <CustomSelectInput
               hideCheckmark
@@ -131,6 +137,7 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
                 setPayload({ ...payload, averageVideoDuration: option })
               }
               value={payload.averageVideoDuration}
+              testIdText="duration"
             />
           </div>
         </div>
@@ -140,6 +147,7 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
             onClick={handleSubmit}
             isLoading={sideEffects.isLoading}
             theme="light"
+            testId="onboarding-stage-2"
           >
             Continue
           </OnboardingButton>

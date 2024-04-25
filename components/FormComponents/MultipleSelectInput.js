@@ -14,6 +14,7 @@ const MultipleSelectInput = ({
   hasSubmitted,
   onChange,
   hideCheckmark,
+  testIdText,
 }) => {
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -40,10 +41,11 @@ const MultipleSelectInput = ({
       <div className="relative mb-s4 text-xl" ref={elementRef}>
         <Border borderRadius="[5px] w-full">
           <div
+            data-test={testIdText}
             className="flex w-full cursor-pointer items-center justify-between rounded-[5px] bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <p className="text-white/70">
+            <p data-test={testIdText} className="text-white/70">
               {answer.length != 0
                 ? answer.length === 1
                   ? `${answer[0]}`
@@ -73,15 +75,24 @@ const MultipleSelectInput = ({
           onChange={onChange}
           selectedAnswer={answer}
           isBottom={isBottom}
+          testId={testIdText}
         />
       </div>
     </OutsideClickHandler>
   );
 };
 
-const OPTIONS = ({ isOpen, options, onChange, selectedAnswer, isBottom }) => {
+const OPTIONS = ({
+  isOpen,
+  options,
+  onChange,
+  selectedAnswer,
+  isBottom,
+  testId,
+}) => {
   return (
     <Border
+      testId={testId}
       borderRadius="[5px]"
       classes={`w-full absolute left-0 ${
         isBottom ? 'bottom-full' : 'top-full'

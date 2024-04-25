@@ -8,6 +8,7 @@ const OnboardingButton = ({
   onClick,
   disabled,
   theme,
+  testId,
   extraClasses = 'px-s2',
 }) => {
   return disabled ? (
@@ -34,6 +35,7 @@ const OnboardingButton = ({
       >
         <button
           id="opener"
+          data-test={testId}
           className={`transition-300 w-full cursor-pointer rounded-full pt-s1.5 pb-s1 text-lg font-medium ${extraClasses} ${
             theme === 'light' && 'text-black'
           } ${theme === 'dark' && 'bg-black text-white'} ${

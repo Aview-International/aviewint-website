@@ -67,12 +67,14 @@ const OnboardingStep4 = ({ userData }) => {
       <div className="grid items-center justify-center gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {SUPPORTED_REGIONS.map((item, index) => (
           <div
+            data-test="select-region-component"
             key={index}
             className={`group flex flex-col items-center`}
             onClick={() => handleSelect(item.title)}
           >
             <h2 className="mb-4 text-4xl font-semibold">{item.title}</h2>
             <div
+              data-test="select-region"
               className={`relative h-full w-full cursor-pointer rounded-2xl bg-black p-s1 text-center md:h-[332px] md:w-[283px] ${
                 payload.region.includes(item.title)
                   ? 'gradient-1'
@@ -92,6 +94,7 @@ const OnboardingStep4 = ({ userData }) => {
             <div>
               <h2 className="my-6 ml-2 text-2xl font-semibold">Languages</h2>
               <div
+                data-test="select-region-languages"
                 className={`relative h-full w-full cursor-pointer rounded-2xl bg-black p-s1.5 md:h-[247px] md:w-[283px] md:p-s3 ${
                   payload.region.includes(item.title)
                     ? 'gradient-1'
@@ -131,6 +134,7 @@ const OnboardingStep4 = ({ userData }) => {
           onClick={handleSubmit}
           isLoading={isLoading}
           theme="light"
+          testId="onboarding-stage-4"
         >
           Proceed
         </OnboardingButton>

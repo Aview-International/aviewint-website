@@ -85,6 +85,7 @@ const OnboardingStep3 = ({ userData }) => {
           theme="light"
           isLoading={isLoading.continue}
           onClick={() => router.push('/onboarding?stage=4')}
+          testId="onboarding-stage-3"
         >
           Continue
         </OnboardingButton>

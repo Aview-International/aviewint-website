@@ -152,7 +152,7 @@ const Register = () => {
               <Shadow classes="w-full mb-4">
                 <Border borderRadius="full" classes="w-full">
                   <button
-                    className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3 "
+                    className="flex w-full items-center justify-center rounded-full bg-black p-2 text-lg text-white md:p-3"
                     onClick={handleGoogleSignIn}
                   >
                     {isLoading.google ? (

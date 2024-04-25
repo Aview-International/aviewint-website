@@ -126,14 +126,19 @@ const Login = () => {
         </div>
         <div className="fixed top-2/4 left-2/4 w-[min(400px,90%)] -translate-x-2/4 -translate-y-2/4 text-white">
           <div data-aos="zoom-in-up">
-            <h2 className="text-center text-7xl font-bold md:text-8xl">
+            <h2
+              data-test="login-button"
+              className="text-center text-7xl font-bold md:text-8xl"
+            >
               Log In
             </h2>
             <p className="my-s3 text-center text-lg">
               Don&apos;t have an account?
               <br /> Get started{' '}
               <Link href="/register">
-                <a className="underline">here</a>
+                <a data-test="signup-button" className="underline">
+                  here
+                </a>
               </Link>
             </p>
 

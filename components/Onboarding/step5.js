@@ -70,7 +70,10 @@ const OnboardingStep5 = ({ userData }) => {
         We recommend you translate for these languages. Feel free to edit the
         list as you please!
       </p>
-      <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        data-test="recommended-languages"
+        className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
         {languages
           .filter((el) => el !== userData.defaultLanguage)
           .map(
@@ -126,12 +129,17 @@ const OnboardingStep5 = ({ userData }) => {
             answer={languages}
             hasSubmitted={true}
             onChange={(event) => handleMultipleLanguages(event)}
+            testIdText="suggest"
           />
         </div>
       )}
 
       <div className="mx-auto mt-4 w-[min(360px,90%)]">
-        <OnboardingButton onClick={handleSubmit} theme="light">
+        <OnboardingButton
+          onClick={handleSubmit}
+          theme="light"
+          testId="continue"
+        >
           Continue
         </OnboardingButton>
       </div>
@@ -140,6 +148,7 @@ const OnboardingStep5 = ({ userData }) => {
           <OnboardingButton
             onClick={() => setSelectLanguages(true)}
             theme="white"
+            testId="add-language"
           >
             Add another language
           </OnboardingButton>

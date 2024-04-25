@@ -72,6 +72,7 @@ const OnboardingStep1 = ({ userData }) => {
                 <Shadow classes="lg:w-[300px] md:h-[390px] w-full mr-s4 cursor-pointer">
                   <Border borderRadius="2xl" classes="h-full w-full">
                     <div
+                      data-test="myself"
                       className={`transition-300 h-full rounded-2xl bg-black p-s2 text-center ${
                         payload.role === option.data && 'gradient-1'
                       }`}
@@ -107,6 +108,7 @@ const OnboardingStep1 = ({ userData }) => {
           onClick={handleSubmit}
           isLoading={payload.isLoading}
           theme="light"
+          testId="onboarding-stage-1"
         >
           Continue
         </OnboardingButton>

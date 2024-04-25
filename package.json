@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.5",
@@ -37,6 +38,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
+    "cypress": "^13.7.0",
+    "dotenv": "^16.4.5",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.3",
     "file-loader": "^6.2.0",

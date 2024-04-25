@@ -42,6 +42,16 @@ const Layout = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
   const { getProfile } = useUserProfile();
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.Cypress) {
+      // Set window.redux to your Redux store
+      window.appReady = true;
+
+      window.Cypress.store = store;
+      window.tags = {
+        foo: 'bar',
+      };
+    }
+
     // prevent blobs from overflowing
     document
       .getElementById('__next')

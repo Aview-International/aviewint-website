@@ -15,6 +15,7 @@ const CustomSelectInput = ({
   hideCheckmark,
   value,
   hasText,
+  testIdText,
 }) => {
   const elementRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +47,7 @@ const CustomSelectInput = ({
         </p>
         <Border borderRadius="[5px] w-full bg-red">
           <div
+            data-test={testIdText}
             className="flex w-full cursor-pointer items-center justify-between rounded-md bg-black p-s1"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -71,15 +73,24 @@ const CustomSelectInput = ({
           setIsOpen={setIsOpen}
           onChange={onChange}
           isBottom={isBottom}
+          testId={testIdText}
         />
       </div>
     </OutsideClickHandler>
   );
 };
 
-const Options = ({ isOpen, options, setIsOpen, onChange, isBottom }) => {
+const Options = ({
+  isOpen,
+  options,
+  setIsOpen,
+  onChange,
+  isBottom,
+  testId,
+}) => {
   return (
     <Border
+      testId={testId}
       borderRadius="[5px]"
       classes={`w-full absolute left-0 ${
         isBottom ? 'bottom-1/2' : 'top-full'

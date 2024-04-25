@@ -11,14 +11,14 @@ const index = () => {
   return (
     <>
       <SEO
-        title="Waitlist"
+        title="Waitlist - Aview"
         description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
       />
       <ProgressBar />
       <Header />
       <Waitlist />
       <ScrollToTopButton />
-      <Footer curPage="Join Waitlist"/>
+      <Footer curPage="Join Waitlist" />
       <Blobs />
     </>
   );
