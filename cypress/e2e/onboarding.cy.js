@@ -7,10 +7,10 @@ describe('end to end testing for onboarding flow', () => {
 
   beforeEach(() => {
     cy.setCookie(
-      'token',
-      'eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkOWI0ZTY5ZTMyYjc2MTVkNGNkN2NhZmI4ZmM5YjNmODFhNDFhYzAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiY2hhbmRodSBtYW1pZGkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4YkEyVm56N1p1TjFEZG4tS090ajdaenB6YWdjaUFvdTBzS3dNMD1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9hZG1pbi1jb25zb2xlLThlNWMyIiwiYXVkIjoiYWRtaW4tY29uc29sZS04ZTVjMiIsImF1dGhfdGltZSI6MTcxNDAxOTAwMCwidXNlcl9pZCI6ImtVaGJqVmZ0WkpOZGhwZldod25hQ0RhbjdnWjIiLCJzdWIiOiJrVWhialZmdFpKTmRocGZXaHduYUNEYW43Z1oyIiwiaWF0IjoxNzE0MDQ2NjYwLCJleHAiOjE3MTQwNTAyNjAsImVtYWlsIjoiY2hhbmRodWRldjBAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDgxNTc4NzkwODAxMTQ0Mjk3MTYiXSwiZW1haWwiOlsiY2hhbmRodWRldjBAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.AfJtmGJGMt3qH9yxLhau6vwRmtXgydLRsuga3THMczWj-PaXRj-4evAYEKqHMTqSnb6UozErLAQX3QhFTJwrf0n9e_1ey6IymSfBbNkD73RKE3I2-r4jd2P9uY_bajjOUwwGEgOk83Uqfh5e6IxApvc1EPLJiQ6nM4HD0SI8Xl2Mcl7RxkgBMpQv9g2qP8tqo51E6mw8KKtQlkBFAzXebgFMW3nnC6qVp_BI7Hm_tS2ti3ephiuF7Ru61EzM9QRKZDhdYtLKuEDn3mfSXQF_XbcdQD1Eq4STkIUkUsUiOZ6-yKrbmOUW09HAVkcUrcVjvINo4B1tNhAcle4xgYoj-w'
+      'token'
+      //here goes the token
     );
-    cy.setCookie('uid', 'kUhbjVftZJNdhpfWhwnaCDan7gZ2');
+    cy.setCookie('uid'); //here goes the token
   });
 
   const login = (user = 'chandh') => {
