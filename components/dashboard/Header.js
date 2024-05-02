@@ -31,7 +31,7 @@ const DashBoardHeader = ({ userInfo }) => {
       />
       <DashboardMobileMenu />
       <div className="hidden md:block">
-        <h3 className="text-xl">
+        <h3 data-test="greet-text" className="text-xl">
           {time} <span className="font-bold">{userInfo.firstName}!</span>
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>

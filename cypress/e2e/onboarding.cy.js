@@ -10,7 +10,18 @@ describe('end to end testing for onboarding flow', () => {
       'token'
       //here goes the token
     );
-    cy.setCookie('uid'); //here goes the token
+    //here goes the token
+    cy.setCookie('uid');
+    cy.viewport(1250, 1050);
+    //redux to store the user state
+    cy.window()
+      .its('Cypress')
+      .its('store')
+      .invoke('getState')
+      .its('user')
+      .then(($st) => {
+        userData = $st;
+      });
   });
 
   const login = (user = 'chandh') => {
@@ -75,6 +86,16 @@ describe('end to end testing for onboarding flow', () => {
     cy.wait(1000);
 
     cy.get('button').contains('Continue').should('be.enabled');
+    cy.window()
+      .its('Cypress')
+      .its('store')
+      .invoke('dispatch', {
+        type: 'user/setUser',
+        payload: {
+          ...userData,
+          role: 'Content Creator',
+        },
+      });
   });
 
   //for onboardign stage 2
@@ -102,6 +123,15 @@ describe('end to end testing for onboarding flow', () => {
         cy.wrap($language).first().click({ force: true, multiple: true });
       });
     cy.get('[data-test="language"]').first().find('p').should('not.be.empty');
+    cy.get('[data-test="language"]')
+      .first()
+      .find('p')
+      .then(($element) => {
+        userData = {
+          ...userData,
+          defaultLanguage: $element.text(),
+        };
+      });
     cy.get('[data-test="language"]').last().should('not.be.visible');
 
     //for views input
@@ -118,6 +148,16 @@ describe('end to end testing for onboarding flow', () => {
         cy.wrap($views).first().click({ force: true, multiple: true });
       });
     cy.get('[data-test="views"]').first().find('p').should('not.be.empty');
+    cy.get('[data-test="views"]')
+      .first()
+      .find('p')
+      .then(($element) => {
+        userData = {
+          ...userData,
+          monthlyView: $element.text(),
+        };
+      });
+
     cy.get('[data-test="views"]').last().should('not.be.visible');
 
     //for category input
@@ -141,6 +181,17 @@ describe('end to end testing for onboarding flow', () => {
           .click({ force: true, multiple: true });
       });
     cy.get('[data-test="category"]').first().find('p').should('not.be.empty');
+    let categoryData = []
+    cy.get('[data-test="category"]')
+      .first()
+      .find('p')
+      .each(($element) => {
+        categoryData.push($element.text())
+      });
+    userData = {
+      ...userData,
+      categories:categoryData,
+    }
     cy.get('[data-test="category"]').last().should('not.be.visible');
 
     //for duration input
@@ -157,9 +208,24 @@ describe('end to end testing for onboarding flow', () => {
         cy.wrap($duration).first().click({ force: true, multiple: true });
       });
     cy.get('[data-test="duration"]').first().find('p').should('not.be.empty');
+    cy.get('[data-test="duration"]')
+      .first()
+      .find('p')
+      .then(($element) => {
+        userData = {
+          ...userData,
+          averageVideoDuration: $element.text(),
+        };
+      });
+
     cy.get('[data-test="duration"]').last().should('not.be.visible');
 
     cy.get('button').contains('Continue').should('be.enabled');
+    //update redux store
+    cy.window().its('Cypress').its('store').invoke('dispatch', {
+      type: 'user/setUser',
+      payload: userData,
+    });
   });
 
   //for onboardign stage 3
@@ -259,14 +325,7 @@ describe('end to end testing for onboarding flow', () => {
         payload.languages.push(optionText);
       });
     //redux update data
-    cy.window()
-      .its('Cypress')
-      .its('store')
-      .invoke('getState')
-      .its('user')
-      .then(($st) => {
-        userData = $st;
-      });
+
     cy.window()
       .its('Cypress')
       .its('store')
@@ -350,9 +409,20 @@ describe('end to end testing for onboarding flow', () => {
       });
 
     cy.get('[data-test="suggest"]').first().find('p').should('not.be.empty');
-
+    let suggestData = userData.languages
+    cy.get('[data-test="suggest"]')
+      .first()
+      .find('p')
+      .each(($element) => {
+        suggestData.push($element.text())
+      });
+    userData = {
+      ...userData,
+      languages: suggestData,
+    }
     cy.get('[data-test="suggest"]').last().should('not.be.visible');
   });
+
   //onboarding stage 6
   it('onBoarding stage 6:', () => {
     cy.log('we are on onboarding stage 5');

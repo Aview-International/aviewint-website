@@ -39,10 +39,12 @@
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "cypress": "^13.7.0",
+    "cypress-firebase": "^4.0.0",
     "dotenv": "^16.4.5",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.3",
     "file-loader": "^6.2.0",
+    "firebase-admin": "^12.1.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",

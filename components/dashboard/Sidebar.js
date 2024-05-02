@@ -28,6 +28,7 @@ const DashboardSidebar = ({ userInfo, setIsOpen, isOpen }) => {
           </Link>
         )}
         <button
+          data-test="dashboard-open-icon"
           className={!isOpen ? 'rotate-180' : ''}
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -53,6 +54,7 @@ const Profile = ({ userInfo, isOpen }) => {
           width={`${isOpen ? 80 : 40}`}
           height={`${isOpen ? 80 : 40}`}
           className="rounded-full"
+          data-test="profile-picture"
         />
       )}
       {isOpen && (
@@ -64,7 +66,7 @@ const Profile = ({ userInfo, isOpen }) => {
           >
             {userInfo.firstName} {userInfo?.lastName}
           </h3>
-          <p className={`text-sm ${!isOpen && 'invisible opacity-0'}`}>
+          <p data-test="role" className={`text-sm ${!isOpen && 'invisible opacity-0'}`}>
             Content Creator
           </p>
         </>
@@ -115,6 +117,7 @@ const Navlink = ({ isOpen }) => {
               }`}
             >
               <span
+                data-test="sidebar-text"
                 className={`${
                   isOpen
                     ? ''
@@ -161,6 +164,7 @@ const Signout = ({ isOpen }) => {
         }`}
       >
         <span
+          data-test="sidebar-text"
           className={
             isOpen
               ? ''
