@@ -39,7 +39,7 @@ const UnlockGlobalGrowth = () => {
         </p>
         <div className="flex w-full justify-start md:justify-center">
           <Button purpose="route" route="/login" type="tertiary">
-            Login
+            Sign Up
           </Button>
         </div>
         <div className="relative mt-12 h-[85%] cursor-pointer">
