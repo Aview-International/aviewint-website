@@ -33,3 +33,6 @@ env
 # vercel
 .vercel
 
+#cypress
+/cypress/fixtures/
+
