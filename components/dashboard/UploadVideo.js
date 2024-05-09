@@ -37,7 +37,7 @@ const UploadVideo = ({ setVideo, video, uploadProgress, isLoading }) => {
               <Image src={UploadIcon} alt="Upload" width={80} height={80} />
             </div>
 
-            <label className="mt-s5" htmlFor="video_upload">
+            <label data-test="select-files-button" className="mt-s5" htmlFor="video_upload">
               <Border borderRadius="full">
                 <span
                   className={`transition-300 mx-auto block rounded-full bg-black px-s3 pt-s1.5 pb-s1 text-center text-white`}

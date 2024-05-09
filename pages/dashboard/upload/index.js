@@ -23,10 +23,6 @@ const Upload = () => {
   });
 
   const handleLanguages = (value) => {
-    // const newLanguages = [...payload.languages];
-    // if (newLanguages.includes(value))
-    //   newLanguages.splice(newLanguages.indexOf(value), 1);
-    // else newLanguages.push(value);
     setPayload((prevState) => ({ ...prevState, languages: value }));
   };
 
@@ -53,7 +49,7 @@ const Upload = () => {
     <>
       <div className="mx-auto max-w-[1200px]">
         <PageTitle title="Upload Video" />
-        <div className="flex flex-col p-s5 text-white lg:flex-row rounded-xl bg-white-transparent">
+        <div className="flex flex-col rounded-xl bg-white-transparent p-s5 text-white lg:flex-row">
           <div className="w-full lg:w-1/2">
             <UploadVideo
               setVideo={setVideo}

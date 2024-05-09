@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 Cypress.Commands.add('loginByGoogleApi', () => {
   cy.log('Logging in to Google');
 
@@ -33,4 +35,29 @@ Cypress.Commands.add('loginByGoogleApi', () => {
       cy.setCookie('cypressToken', JSON.stringify(userItem));
     });
   });
+});
+
+
+
+
+
+Cypress.Commands.add('uploadCreatorVideo', (payload, userId, token = '') => {
+  cy.wait(2000);
+  let formData = new FormData();
+  formData.append('video', payload.video);
+  formData.append('creatorId', userId);
+  formData.append('additionalNote', payload.additionalNote);
+  for (const lang of payload.languages) formData.append('languages', lang);
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:4000/transcription/upload-creator-video',
+    body: formData,
+    headers: { Authorization: `Bearer ${token}` },
+  }).as('uploadVideo');
+
+  cy.get('@uploadVideo').then((body) => {
+    toast.success('Tasks submitted succesfully 🚀');
+  })
+  cy.wait(4000)
+  
 });
