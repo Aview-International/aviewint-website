@@ -37,10 +37,6 @@ Cypress.Commands.add('loginByGoogleApi', () => {
   });
 });
 
-
-
-
-
 Cypress.Commands.add('uploadCreatorVideo', (payload, userId, token = '') => {
   cy.wait(2000);
   let formData = new FormData();
@@ -57,7 +53,23 @@ Cypress.Commands.add('uploadCreatorVideo', (payload, userId, token = '') => {
 
   cy.get('@uploadVideo').then((body) => {
     toast.success('Tasks submitted succesfully 🚀');
-  })
-  cy.wait(4000)
-  
+  });
+  cy.wait(4000);
+});
+
+Cypress.Commands.add('setRedux', (data) => {
+  cy.window().then((win) => {
+    if (win.Cypress && win.Cypress.store && win.Cypress.store.dispatch) {
+      const userState = win.Cypress.store.getState();
+      const updatedUserData = {
+        ...userState,
+        data,
+      };
+
+      win.Cypress.store.dispatch({
+        type: 'user/setUser',
+        payload: updatedUserData,
+      });
+    }
+  });
 });

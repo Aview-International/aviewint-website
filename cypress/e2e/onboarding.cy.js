@@ -3,30 +3,24 @@ describe('end to end testing for onboarding flow', () => {
     regions: [],
     languages: [],
   };
-  let userData = {};
+
+  let userData = {
+    defaultLanguage: '',
+    monthlyView: '',
+    categories: [],
+    averageVideoDuration: 0,
+  };
 
   beforeEach(() => {
-    cy.setCookie(
-      'token'
-      //here goes the token
-    );
-    //here goes the token
-    cy.setCookie('uid');
+    cy.setCookie('token', '');
+    cy.setCookie('uid', '');
     cy.viewport(1250, 1050);
-    //redux to store the user state
-    cy.window()
-      .its('Cypress')
-      .its('store')
-      .invoke('getState')
-      .its('user')
-      .then(($st) => {
-        userData = $st;
-      });
+    cy.wait(2000);
   });
 
-  const login = (user = 'chandh') => {
+  const login = (user1 = 'chandh') => {
     cy.session(
-      user,
+      user1,
       () => {
         cy.visit('/login');
         cy.url().should('contain', '/login');
@@ -57,19 +51,13 @@ describe('end to end testing for onboarding flow', () => {
     );
   };
 
-  //login test
-  it('login and sign up page', () => {
-    login();
-  });
-
-  //for onboardign stage 1
   it('onBoarding stage 1:', () => {
     cy.log('we are on onboarding stage 1');
 
     cy.visit('/onboarding?stage=1');
 
     cy.url().should('contain', '/onboarding?stage=1');
-    cy.contains('How are you planning to use Aview?');
+    cy.contains('How are you planning to use Aview?').should('exist');
     cy.contains('We’ll streamline your setup experience accordingly.');
 
     cy.get('button').contains('Continue').should('be.disabled');
@@ -86,19 +74,12 @@ describe('end to end testing for onboarding flow', () => {
     cy.wait(1000);
 
     cy.get('button').contains('Continue').should('be.enabled');
-    cy.window()
-      .its('Cypress')
-      .its('store')
-      .invoke('dispatch', {
-        type: 'user/setUser',
-        payload: {
-          ...userData,
-          role: 'Content Creator',
-        },
-      });
+
+    cy.setRedux({
+      role: 'Content Creator',
+    });
   });
 
-  //for onboardign stage 2
   it('onBoarding stage 2:', () => {
     cy.log('we are on onboarding stage 2');
     cy.visit('/onboarding?stage=2');
@@ -127,10 +108,7 @@ describe('end to end testing for onboarding flow', () => {
       .first()
       .find('p')
       .then(($element) => {
-        userData = {
-          ...userData,
-          defaultLanguage: $element.text(),
-        };
+        userData.defaultLanguage = $element.text();
       });
     cy.get('[data-test="language"]').last().should('not.be.visible');
 
@@ -152,12 +130,8 @@ describe('end to end testing for onboarding flow', () => {
       .first()
       .find('p')
       .then(($element) => {
-        userData = {
-          ...userData,
-          monthlyView: $element.text(),
-        };
+        userData.monthlyView = $element.text();
       });
-
     cy.get('[data-test="views"]').last().should('not.be.visible');
 
     //for category input
@@ -181,17 +155,12 @@ describe('end to end testing for onboarding flow', () => {
           .click({ force: true, multiple: true });
       });
     cy.get('[data-test="category"]').first().find('p').should('not.be.empty');
-    let categoryData = []
     cy.get('[data-test="category"]')
       .first()
       .find('p')
       .each(($element) => {
-        categoryData.push($element.text())
+        userData.categories = [$element.text()];
       });
-    userData = {
-      ...userData,
-      categories:categoryData,
-    }
     cy.get('[data-test="category"]').last().should('not.be.visible');
 
     //for duration input
@@ -212,23 +181,14 @@ describe('end to end testing for onboarding flow', () => {
       .first()
       .find('p')
       .then(($element) => {
-        userData = {
-          ...userData,
-          averageVideoDuration: $element.text(),
-        };
+        userData.averageVideoDuration = $element.text();
       });
-
+    console.log(userData);
     cy.get('[data-test="duration"]').last().should('not.be.visible');
-
     cy.get('button').contains('Continue').should('be.enabled');
-    //update redux store
-    cy.window().its('Cypress').its('store').invoke('dispatch', {
-      type: 'user/setUser',
-      payload: userData,
-    });
+    cy.setRedux(userData);
   });
 
-  //for onboardign stage 3
   it('onBoarding stage 3:', () => {
     cy.log('we are on onboarding stage 3');
     cy.visit('/onboarding?stage=3');
@@ -243,7 +203,6 @@ describe('end to end testing for onboarding flow', () => {
       .should('have.text', '(Coming soon)');
   });
 
-  //for onboardign stage 4
   it('onBoarding stage 4:', () => {
     cy.log('we are on onboarding stage 4');
     cy.visit('/onboarding?stage=4');
@@ -284,10 +243,7 @@ describe('end to end testing for onboarding flow', () => {
       .then(($reg) => {
         payload.regions.push($reg.text());
       });
-    // cy.get('@selectRegionLanguages').first().next().should('have.class', 'gradient-1');
-    // cy.get('@selectRegionLanguages').first().next().then(($t) => {
-    //   console.log($t)
-    // })
+
     cy.get('@selectRegionComponent')
       .first()
       .next()
@@ -310,9 +266,9 @@ describe('end to end testing for onboarding flow', () => {
     cy.get('@selectRegion').last().should('not.have.class', 'gradient-1');
     cy.get('@selectRegionComponent').last().click();
     cy.get('@selectRegionComponent')
-      .first()
-      .children()
       .last()
+      .children()
+      .first()
       .then(($reg) => {
         payload.regions.push($reg.text());
       });
@@ -324,24 +280,14 @@ describe('end to end testing for onboarding flow', () => {
         const optionText = $option.text();
         payload.languages.push(optionText);
       });
-    //redux update data
 
-    cy.window()
-      .its('Cypress')
-      .its('store')
-      .invoke('dispatch', {
-        type: 'user/setUser',
-        payload: {
-          ...userData,
-          region: payload.regions,
-          languages: payload.languages,
-        },
-      });
-
+    cy.setRedux({
+      region: payload.regions,
+      languages: payload.languages,
+    });
     cy.get('button').contains('Proceed').should('be.enabled');
   });
 
-  //for onboardign stage 5
   it('onBoarding stage 5:', () => {
     cy.log('we are on onboarding stage 5');
     cy.visit('/onboarding?stage=5');
@@ -350,9 +296,9 @@ describe('end to end testing for onboarding flow', () => {
     cy.contains(
       'We recommend you translate for these languages. Feel free to edit the list as you please!'
     );
-    // payload.languages.forEach((option) => {
-    //   cy.contains(option).should('exist');
-    // });
+    payload.languages.forEach((option) => {
+      cy.contains(option).should('exist');
+    });
     cy.get('[data-test="continue"]')
       .should('have.text', 'Continue')
       .and('be.enabled');
@@ -409,21 +355,20 @@ describe('end to end testing for onboarding flow', () => {
       });
 
     cy.get('[data-test="suggest"]').first().find('p').should('not.be.empty');
-    let suggestData = userData.languages
+    let suggestData = payload.languages;
     cy.get('[data-test="suggest"]')
       .first()
       .find('p')
       .each(($element) => {
-        suggestData.push($element.text())
+        suggestData.push($element.text());
       });
-    userData = {
-      ...userData,
-      languages: suggestData,
-    }
     cy.get('[data-test="suggest"]').last().should('not.be.visible');
+
+    cy.setRedux({
+      languages: { ...payload.languages, suggestData },
+    });
   });
 
-  //onboarding stage 6
   it('onBoarding stage 6:', () => {
     cy.log('we are on onboarding stage 5');
     cy.visit('/onboarding?stage=6');
