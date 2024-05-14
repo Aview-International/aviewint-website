@@ -8,7 +8,7 @@ import {
 
 const FAQ = ({ page }) => {
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-test="faq">
       <h2 className="h2 text-center">Frequently Asked Questions</h2>
       <div className="mt-s2 flex flex-col gap-y-5">
         {page === 'e-learning'
@@ -23,7 +23,7 @@ const FAQ = ({ page }) => {
           : null}
         {page === 'landing'
           ? LANDING_PAGE_FAQ.map((faq, i) => (
-              <Question key={`faq-${i}`} {...faq} />
+               <Question key={`faq-${i}`} {...faq} />
             ))
           : null}
         {page === 'voiceover'
@@ -38,12 +38,13 @@ const FAQ = ({ page }) => {
 
 export default FAQ;
 
-const Question = ({ question, answer }) => {
+const Question = ({ question, answer, id }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <div
+        id={id}
         className="cursor-pointer rounded-2xl bg-white-transparent px-3 py-4 md:px-6 md:py-7"
         onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
       >

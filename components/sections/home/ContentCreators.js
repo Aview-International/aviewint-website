@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const ContentCreators = () => {
   return (
-    <section className="section m-horizontal text-white" data-aos="zoom-in">
+    <section className="section m-horizontal text-white" id="content-creators" data-aos="zoom-in">
       <div className="mx-auto grid w-full grid-cols-1 place-content-center place-items-center gap-s25 p-3">
         {LANDING_PAGE_TYPES.map((itemType, idx) => (
           <div

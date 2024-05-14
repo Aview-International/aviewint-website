@@ -54,6 +54,7 @@ const Footer = ({ curPage }) => {
                           ? 'gradient-text gradient-2'
                           : 'text-white'
                       }`}
+                      id={route.text}
                     >
                       {route.text}
                     </a>

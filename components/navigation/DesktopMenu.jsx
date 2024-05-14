@@ -84,6 +84,7 @@ function Dropdown({ title, dropdown, curPage }) {
 
   return (
     <span
+      data-test='header-span'
       className="relative ml-10 inline"
       onMouseEnter={() => setDropdownOpen(true)}
       onMouseLeave={() => setDropdownOpen(false)}
@@ -114,6 +115,7 @@ function Dropdown({ title, dropdown, curPage }) {
         </div>
       </div>
       <div
+        data-test="header-hidden-text"
         className={`left-0 top-full pt-6 ${
           dropdownOpen ? 'absolute' : 'hidden'
         }`}

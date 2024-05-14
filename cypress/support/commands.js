@@ -73,3 +73,78 @@ Cypress.Commands.add('setRedux', (data) => {
     }
   });
 });
+
+Cypress.Commands.add('checkImage', (alt = '', sub_heading, desc) => {
+  if (alt != null) {
+    cy.get(`img[alt="${alt}"]`).should('exist').and('be.visible');
+  }
+  cy.contains(`${sub_heading}`).should('be.visible');
+  cy.contains(`${desc}`).should('be.visible');
+});
+
+Cypress.Commands.add('checkHeadings', (heading) => {
+  cy.contains(`${heading}`).should('exist').and('be.visible');
+});
+
+Cypress.Commands.add('checkFaq', (altkey, text) => {
+  cy.contains(text).should('not.exist');
+  cy.get(`#question${altkey}`).click({ force: true, mutliple: true });
+  cy.contains(text).should('exist').and('be.visible');
+  cy.get(`question${altkey}`).click({ force: true, mutliple: true });
+});
+
+Cypress.Commands.add('checkRange', (val1, val2, val3) => {
+  cy.get('input[type=range]')
+    .first()
+    .as('range1')
+    .invoke('val', val1)
+    .trigger('change');
+  cy.get('@range').siblings('p').should('have.text', `${val1}`);
+  cy.get('input[type=range]')
+    .first()
+    .next()
+    .as('range2')
+    .invoke('val', val2)
+    .trigger('change');
+  cy.get('@range2').siblings('p').should('have.text', `${val2}k`);
+  cy.get('input[type=range]')
+    .last()
+    .as('range3')
+    .invoke('val', val3)
+    .trigger('change');
+  cy.get('@range3').siblings('p').should('have.text', `${val3}`);
+});
+
+Cypress.Commands.add('scrollView', (element) => {
+  cy.get(`#${element}`).scrollIntoView({ easing: 'linear' });
+});
+
+Cypress.Commands.add('checkAncher', (id, link) => {
+  cy.get(`#${id}`).should('have.attr', 'href').then((href) => {
+    expect(href).to.not.be.empty;
+    expect(href).to.eq(link);
+  });
+});
+
+Cypress.Commands.add('goWaitlist', () => {
+  cy.get('a')
+    .should('have.attr', 'href')
+    .then((href) => {
+      expect(href).to.not.be.empty;
+      expect(href).to.eq('/waitlist');
+    });
+});
+
+Cypress.Commands.add('languageContainer', (alt = '', desc) => {
+  cy.get(`img[alt="${alt}"]`).should('exist').and('be.visible');
+  cy.contains(`${desc}`).should('be.visible');
+});
+
+
+//cy.get('button').trigger('mouseover') // yields 'button'
+// Main button pressed (usually the left button)
+// cy.get('.target').trigger('mousedown', { button: 0 })
+// Auxiliary button pressed (usually the middle button)
+// cy.get('.target').trigger('mousedown', { button: 1 })
+//Secondary button pressed (usually the right button)
+// cy.get('.target').trigger('mousedown', { button: 2 })

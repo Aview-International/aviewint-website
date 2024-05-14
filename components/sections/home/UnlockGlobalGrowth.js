@@ -14,7 +14,7 @@ const UnlockGlobalGrowth = () => {
     'Globalize',
   ];
   return (
-    <section className="section m-horizontal mt-12 lg:mt-28">
+    <section className="section m-horizontal mt-12 lg:mt-28" data-test="unlock-growth">
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
         <div className="mt-10 mb-20 box-content flex">
           <h2 className="title">

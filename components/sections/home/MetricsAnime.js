@@ -5,7 +5,7 @@ import { LANDING_PAGE_METRICS } from '../../../constants/constants';
 
 const MetricsAnime = () => {
   return (
-    <section className="section m-horizontal flex flex-col gap-y-5 text-white">
+    <section className="section m-horizontal flex flex-col gap-y-5 text-white" id="metrics-anime">
       <h2 className="heading md:mb-s5">Our Impact, By the Numbers</h2>
       <div className="grid grid-cols-1 items-center gap-7 md:grid-cols-3">
         {LANDING_PAGE_METRICS.map((metricItem, i) =>
@@ -51,7 +51,7 @@ const MetricBigContainer = ({ metric }) => {
         </p>
         <p className="mb-4 text-center text-4xl font-bold">{metric.text}</p>
       </div>
-      <div className="flex w-full flex-wrap gap-4">
+      <div data-test="language-container" className="flex w-full flex-wrap gap-4">
         {metric.id === 2 ? (
           <>
             {metric.nestedContainer.map((country, i) => (

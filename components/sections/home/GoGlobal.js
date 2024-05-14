@@ -4,7 +4,7 @@ import Go_Global from '../../../public/img/graphics/new-landing-images/go_global
 
 const GoGlobal = () => {
   return (
-    <section className="section mx-auto  max-w-[1200px] text-center text-white">
+    <section className="section mx-auto  max-w-[1200px] text-center text-white" id="go-global">
       <div className="grid h-full  grid-cols-1 place-items-center p-s3 md:grid-cols-2 md:p-0 lg:w-[90%]">
         <Image 
           src={Go_Global} 

@@ -6,7 +6,7 @@ import mobileAnime from '../../../public/documents/mobile.json';
 
 const EmpowerGlobal = () => {
   return (
-    <section className="section m-horizontal text-white" data-aos="zoom-out">
+    <section className="section m-horizontal text-white" id="empower-global" data-aos="zoom-out">
       <h2 className="heading mb-s5">Empower Your Global Vision with Aview</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
         <div className="col-span-1 grid h-full grid-cols-1 overflow-y-hidden rounded-2xl bg-white-transparent p-4 md:col-span-2 md:h-[640px] md:grid-cols-2 md:p-8">
