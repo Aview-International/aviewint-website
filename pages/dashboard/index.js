@@ -18,7 +18,10 @@ import {
   getJobsHistory,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
-import { setCompletedJobs, setPendingJobs } from '../../store/reducers/history.reducer';
+import {
+  setCompletedJobs,
+  setPendingJobs,
+} from '../../store/reducers/history.reducer';
 import Cookies from 'js-cookie';
 
 const DashboardHome = () => {
@@ -75,10 +78,20 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    if (!instagramDataFetched && userData.instagram?.instagramConnected)
-      getInstagramVideos();
-    if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
-  }, [channelDetails, userData]);
+    (async () => {
+      try {
+        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
+          await getInstagramVideos();
+        }
+
+        if (!youtubeDataFetched && channelDetails.id) {
+          await getYoutubeVideos();
+        }
+      } catch (error) {
+        ErrorHandler(error);
+      }
+    })();
+  }, [channelDetails.id, userData.instagram?.instagramConnected]);
 
   useEffect(() => {
     (async () => {
