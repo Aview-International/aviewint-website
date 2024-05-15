@@ -1634,7 +1634,7 @@ export const CUSTOM_PRICING_FEATURES = [
   },
 ];
 
-export const PLANS_BREAKDOWN = [
+export const  PLANS_BREAKDOWN = [
   {
     section: 'Basic video services',
     desc: [

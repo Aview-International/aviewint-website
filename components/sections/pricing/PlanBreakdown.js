@@ -5,6 +5,7 @@ import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
 import Button from '../../UI/Button';
+import MobilePlanView from './MobilePlanView';
 
 const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   const headerRef = useRef(null);
@@ -12,7 +13,9 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setTopPosition(headerRef.current.getBoundingClientRect().top);
+      if (headerRef.current) {
+        setTopPosition(headerRef.current.getBoundingClientRect().top);
+      }
     };
     window.addEventListener('scroll', handleScroll);
 
@@ -24,42 +27,41 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
   return (
     <section className="m-horizontal my-s10 overflow-x-clip" id="all-features">
       <div className="rounded-xl bg-white-transparent text-white">
-        <h2 className="py-s4 text-center text-5xl font-semibold md:text-6xl">
+        <h2 className="py-s4 text-center text-3xl md:text-5xl font-semibold">
           Compare Plans
         </h2>
 
+        {/* Desktop and tablet view here */}
+        <div className="hidden md:block">
+
         <div
-          className={`sticky top-0 z-10 grid grid-cols-[repeat(4,minmax(100px,1fr))] rounded-xl p-s4 text-center ${
-            topPosition <= 0 && 'gradient-dark bg-black'
+          className={`sticky top-0 z-10 grid grid-cols-1 md:grid-cols-[repeat(4,minmax(100px,1fr))] rounded-xl p-s4 text-center 
+          ${
+            topPosition <= 0 ? 'gradient-dark bg-black' : ''
           }`}
           ref={headerRef}
         >
-          <div>
+          <div className="mb-4 md:mb-0">
             <ToggleButton isChecked={isChecked} handleChange={handleChange} />
-            <p>
-              Annual
-              <br />
-              (save up to 28%)
+            <p className="text-sm md:text-base">
+              Annual<br />(save up to 28%)
             </p>
           </div>
 
-          {/* this ection handles routing for subscription, send an email for enterprise customers */}
           {allPlans.map((plan, i) => (
-            <div key={i}>
-              <div className="text-2xl">{plan.desc}</div>
-              <p className="my-2 text-xl font-medium">
+            <div key={i} className="mb-4 md:mb-0">
+              <div className="text-xl md:text-2xl">{plan.desc}</div>
+              <p className="my-2 text-lg md:text-xl font-medium">
                 {plan.id === 'enterprise'
                   ? 'Contact Sales'
                   : `${
-                      (typeof plan.monthlyCost && typeof plan.yearlyCost) ===
-                      'number'
+                      (typeof plan.monthlyCost && typeof plan.yearlyCost) === 'number'
                         ? '$'
                         : ''
-                    }${
-                      isChecked
+                    }${isChecked
                         ? Math.round(plan.yearlyCost / 12) || 'Free'
-                        : plan.monthlyCost
-                    }`}
+                        : plan.monthlyCost}`
+                }
               </p>
               <Button
                 type="secondary"
@@ -76,17 +78,19 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
           ))}
         </div>
 
+        
+
         {PLANS_BREAKDOWN.map((plan, i) => (
           <div className="px-s4 py-s3" key={i}>
             <div className="border-b border-gray-1 px-5 pb-5">
-              <p className="text-left text-sm">{plan.section}</p>
+              <p className="text-left text-sm md:text-base">{plan.section}</p>
             </div>
             {plan.desc.map((breakdown, i) => (
               <div
                 key={`breakdown-${i}`}
-                className="grid grid-cols-4 items-center justify-center border-b border-gray-1 text-center"
+                className="grid grid-cols-1 md:grid-cols-4 items-center justify-center border-b border-gray-1 text-center"
               >
-                <div className="flex items-center justify-between p-5 text-left text-lg">
+                <div className="flex items-center justify-between p-5 text-left text-base md:text-lg">
                   <span className="pr-4">{breakdown.title}</span>
                   {breakdown.hoverText && (
                     <div className="group relative cursor-pointer">
@@ -110,7 +114,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
                     ) : col === null ? (
                       <span className="mx-auto block h-1 w-4 bg-white"></span>
                     ) : (
-                      <p className="text-sm">{col}</p>
+                      <p className="text-sm md:text-base">{col}</p>
                     )}
                   </div>
                 ))}
@@ -119,6 +123,17 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans }) => {
           </div>
         ))}
       </div>
+
+
+       {/* Mobile view - shown only on screens <=  md */}
+       <div className="md:hidden">
+          <MobilePlanView plans={PLANS_BREAKDOWN} />
+        </div>
+
+      </div>
+
+     
+    
     </section>
   );
 };
