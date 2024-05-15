@@ -53,7 +53,7 @@ const HeaderButtons = () => {
         </Button>
       ) : (
         <Button purpose="route" route="/login" type="secondary">
-          Login
+          Sign Up
         </Button>
       )}
     </div>
