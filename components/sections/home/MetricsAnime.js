@@ -5,7 +5,10 @@ import { LANDING_PAGE_METRICS } from '../../../constants/constants';
 
 const MetricsAnime = () => {
   return (
-    <section className="section m-horizontal flex flex-col gap-y-5 text-white" id="metrics-anime">
+    <section
+      className="section m-horizontal flex flex-col gap-y-5 text-white"
+      id="metrics-anime"
+    >
       <h2 className="heading md:mb-s5">Our Impact, By the Numbers</h2>
       <div className="grid grid-cols-1 items-center gap-7 md:grid-cols-3">
         {LANDING_PAGE_METRICS.map((metricItem, i) =>
@@ -43,15 +46,24 @@ const MetricBigContainer = ({ metric }) => {
     >
       <div className="flex flex-col items-center justify-center gap-1 md:gap-4">
         <p
+          data-test={`${number}`}
           className="gradient-text gradient-2 text-5xl md:text-8xl"
           ref={elementRef}
         >
           {metric.prefix && metric.prefix} {number}
           {metric.suffix}
         </p>
-        <p className="mb-4 text-center text-4xl font-bold">{metric.text}</p>
+        <p
+          data-test={`${metric.text}`}
+          className="mb-4 text-center text-4xl font-bold"
+        >
+          {metric.text}
+        </p>
       </div>
-      <div data-test="language-container" className="flex w-full flex-wrap gap-4">
+      <div
+        data-test="language-container"
+        className="flex w-full flex-wrap gap-4"
+      >
         {metric.id === 2 ? (
           <>
             {metric.nestedContainer.map((country, i) => (
@@ -103,13 +115,19 @@ const MetricSmallContainer = ({ metric }) => {
   return (
     <div className="flex h-full cursor-pointer flex-col items-center justify-center gap-1 rounded-3xl bg-white-transparent p-s3 md:gap-4">
       <p
+        data-test={`${number}`}
         className="gradient-text gradient-2 text-5xl md:text-8xl"
         ref={elementRef}
       >
         {metric.prefix && metric.prefix} {number}
         {metric.suffix}
       </p>
-      <p className="text-center text-4xl font-bold">{metric.text}</p>
+      <p
+        data-test={`${metric.text}`}
+        className="text-center text-4xl font-bold"
+      >
+        {metric.text}
+      </p>
     </div>
   );
 };

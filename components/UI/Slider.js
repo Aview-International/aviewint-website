@@ -36,6 +36,7 @@ const Slider = ({
       <div className="flex w-full gap-s2">
         <div className="relative w-10/12">
           <span
+            data-test="slider-width"
             className={`gradient-1 absolute block h-[15px] rounded-[30px]`}
             style={{ width: `${Math.round(width)}%` }}
           ></span>
@@ -49,7 +50,7 @@ const Slider = ({
             onChange={onChange}
           />
         </div>
-        <p className={`text-xl w-2/12 text-center`}>
+        <p data-test="slider-text" className={`w-2/12 text-center text-xl`}>
           {prefix} {values[value] || value} {suffix}
         </p>
       </div>

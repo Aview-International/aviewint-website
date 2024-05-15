@@ -75,11 +75,12 @@ Cypress.Commands.add('setRedux', (data) => {
 });
 
 Cypress.Commands.add('checkImage', (alt = '', sub_heading, desc) => {
-  if (alt != null) {
-    cy.get(`img[alt="${alt}"]`).should('exist').and('be.visible');
+  if (alt) {
+    cy.get(`img[alt="${alt}"]`).should('exist');
+    cy.get(`img[alt="${alt}"]`).should('be.visible');
   }
-  cy.contains(`${sub_heading}`).should('be.visible');
-  cy.contains(`${desc}`).should('be.visible');
+  cy.get(`[data-test="${sub_heading}"]`).should('exist').and('be.visible');
+  cy.get(`[data-test="${desc}"]`).should('exist').and('be.visible');
 });
 
 Cypress.Commands.add('checkHeadings', (heading) => {
@@ -87,10 +88,11 @@ Cypress.Commands.add('checkHeadings', (heading) => {
 });
 
 Cypress.Commands.add('checkFaq', (altkey, text) => {
-  cy.contains(text).should('not.exist');
+  cy.contains(text).should('not.visible');
   cy.get(`#question${altkey}`).click({ force: true, mutliple: true });
-  cy.contains(text).should('exist').and('be.visible');
-  cy.get(`question${altkey}`).click({ force: true, mutliple: true });
+  cy.contains(text).should('be.visible');
+  cy.get(`#question${altkey}`).click({ force: true, mutliple: true });
+  cy.contains(text).should('not.visible');
 });
 
 Cypress.Commands.add('checkRange', (val1, val2, val3) => {
@@ -99,20 +101,36 @@ Cypress.Commands.add('checkRange', (val1, val2, val3) => {
     .as('range1')
     .invoke('val', val1)
     .trigger('change');
-  cy.get('@range').siblings('p').should('have.text', `${val1}`);
+  cy.get('[data-test="slider-text"]')
+    .first()
+    .should(($p) => {
+      const actualText = $p.text().trim();
+      expect(actualText).to.equal(`${val1}`);
+    });
   cy.get('input[type=range]')
     .first()
     .next()
     .as('range2')
     .invoke('val', val2)
     .trigger('change');
-  cy.get('@range2').siblings('p').should('have.text', `${val2}k`);
+  cy.get('[data-test="slider-text"]')
+    .first()
+    .next()
+    .should(($p) => {
+      const actualText = $p.text().trim();
+      expect(actualText).to.equal(`${val2}`);
+    });
   cy.get('input[type=range]')
     .last()
     .as('range3')
     .invoke('val', val3)
     .trigger('change');
-  cy.get('@range3').siblings('p').should('have.text', `${val3}`);
+  cy.get('[data-test="slider-text"]')
+    .last()
+    .should(($p) => {
+      const actualText = $p.text().trim();
+      expect(actualText).to.equal(`${val3}`);
+    });
 });
 
 Cypress.Commands.add('scrollView', (element) => {
@@ -120,14 +138,17 @@ Cypress.Commands.add('scrollView', (element) => {
 });
 
 Cypress.Commands.add('checkAncher', (id, link) => {
-  cy.get(`#${id}`).should('have.attr', 'href').then((href) => {
-    expect(href).to.not.be.empty;
-    expect(href).to.eq(link);
-  });
+  cy.get(`[data-test="${id}"]`).should('be.visible');
+  cy.get(`[data-test="${id}"]`)
+    .should('have.attr', 'href')
+    .then((href) => {
+      expect(href).to.not.be.empty;
+      expect(href).to.eq(link);
+    });
 });
 
 Cypress.Commands.add('goWaitlist', () => {
-  cy.get('a')
+  cy.get('[data-test="waitlist"]')
     .should('have.attr', 'href')
     .then((href) => {
       expect(href).to.not.be.empty;
@@ -139,7 +160,6 @@ Cypress.Commands.add('languageContainer', (alt = '', desc) => {
   cy.get(`img[alt="${alt}"]`).should('exist').and('be.visible');
   cy.contains(`${desc}`).should('be.visible');
 });
-
 
 //cy.get('button').trigger('mouseover') // yields 'button'
 // Main button pressed (usually the left button)

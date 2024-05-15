@@ -12,6 +12,7 @@ const Footer = ({ curPage }) => {
   return (
     <div
       className="m-horizontal mb-s5 rounded-2xl bg-white-transparent text-white"
+      id="footer"
       data-aos="zoom-in-down"
     >
       <div className="flex h-full flex-col items-center justify-between gap-y-s5 p-s2 md:items-start md:p-s4">
@@ -54,7 +55,7 @@ const Footer = ({ curPage }) => {
                           ? 'gradient-text gradient-2'
                           : 'text-white'
                       }`}
-                      id={route.text}
+                      data-test={route.text}
                     >
                       {route.text}
                     </a>
@@ -65,13 +66,19 @@ const Footer = ({ curPage }) => {
           })}
         </div>
         <div className="flex h-full w-full flex-col justify-between md:flex-row">
-          <Button type="tertiary" purpose="route" route="/waitlist">
+          <Button
+            type="tertiary"
+            purpose="route"
+            route="/waitlist"
+            test="waitlist"
+          >
             Join Waitlist
           </Button>
           <div className="mt-5 flex flex-row gap-s1 md:mt-0 md:grid md:grid-cols-6 lg:gap-s3">
             {SOCIALS.map((social) => {
               return React.Children.toArray(
                 <a
+                  data-test={social.id}
                   href={social.link}
                   target="_blank"
                   rel="noreferrer"

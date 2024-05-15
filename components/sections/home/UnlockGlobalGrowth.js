@@ -14,7 +14,10 @@ const UnlockGlobalGrowth = () => {
     'Globalize',
   ];
   return (
-    <section className="section m-horizontal mt-12 lg:mt-28" data-test="unlock-growth">
+    <section
+      className="section m-horizontal mt-12 lg:mt-28"
+      data-test="unlock-growth"
+    >
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
         <div className="mt-10 mb-20 box-content flex">
           <h2 className="title">
@@ -32,13 +35,23 @@ const UnlockGlobalGrowth = () => {
             </span>
           </h2>
         </div>
-        <h1 className="title">Unlock Global Growth, One Click at a Time</h1>
-        <p className="body mt-2 mb-8 max-w-full md:mt-0 md:text-center">
+        <h1 data-test="unlock" className="title">
+          Unlock Global Growth, One Click at a Time
+        </h1>
+        <p
+          data-test="monetize"
+          className="body mt-2 mb-8 max-w-full md:mt-0 md:text-center"
+        >
           Monetize, translate, and distribute your content to millions worldwide
           with Aview.
         </p>
         <div className="flex w-full justify-start md:justify-center">
-          <Button purpose="route" route="/waitlist" type="tertiary">
+          <Button
+            purpose="route"
+            route="/waitlist"
+            type="tertiary"
+            test="waitlist"
+          >
             Join Waitlist
           </Button>
         </div>

@@ -11,6 +11,7 @@ const Button = ({
   onClick,
   externalLink,
   fullWidth,
+  test,
 }) => {
   let button = (
     <div
@@ -39,7 +40,7 @@ const Button = ({
   if (purpose === 'route') {
     button = (
       <Link href={route}>
-        <a>{button}</a>
+        <a data-test={test}>{button}</a>
       </Link>
     );
   } else if (purpose === 'submit') {
