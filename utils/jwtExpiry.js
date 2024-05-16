@@ -5,9 +5,9 @@ export const checkTokenExpiry = (token) => {
   else {
     const data = decodeJwt(token);
     if (!data) return false;
-    const newDate = new Date(data.exp) * 1000;
-    if (newDate < new Date().getTime()) return false;
+    // if (newDate < new Date().getTime()) return false;
     else {
+      const newDate = new Date(data.exp) * 1000;
       const newTime = newDate - new Date().getTime();
       return {
         newTime,

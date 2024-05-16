@@ -4,10 +4,10 @@ import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();

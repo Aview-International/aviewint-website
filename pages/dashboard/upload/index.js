@@ -8,7 +8,7 @@ import ErrorHandler from '../../../utils/errorHandler';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import { updateRequiredServices } from '../../api/firebase';
+import { updateRequiredServices } from '../../../services/firebase';
 
 const Upload = () => {
   const router = useRouter();

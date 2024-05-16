@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
 import { getS3DownloadLink } from '../../../services/apis';
-import { subscribeToHistory } from '../../api/firebase';
 import { getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -11,6 +10,7 @@ import {
   setPendingJobs,
 } from '../../../store/reducers/history.reducer';
 import ErrorHandler from '../../../utils/errorHandler';
+import { subscribeToHistory } from '../../../services/firebase';
 
 const History = () => {
   const dispatch = useDispatch();
