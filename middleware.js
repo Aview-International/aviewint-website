@@ -14,12 +14,10 @@ export async function middleware(request) {
 
   try {
     if (!checkTokenExpiry(sessionCookie)) {
-      console.log(!checkTokenExpiry(sessionCookie))
       response.cookies.set('redirectUrl', currentUrl);
       return response;
     }
   } catch (error) {
-    console.log(error)
     response.cookies.set('redirectUrl', currentUrl);
     return response;
   }
