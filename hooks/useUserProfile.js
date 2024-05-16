@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import { getUserProfile } from '../pages/api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../store/reducers/user.reducer';
 import {
@@ -8,6 +7,7 @@ import {
   getUserYoutubeChannel,
 } from '../services/apis';
 import { setYoutubeChannel } from '../store/reducers/youtube.reducer';
+import { getUserProfile } from '../services/firebase';
 import {
   setAllAIThreads,
   setMessageStatus,

@@ -11,7 +11,8 @@ import { SocketProvider } from '../socket';
 import Cookies from 'js-cookie';
 import useUserProfile from '../hooks/useUserProfile';
 import { setAuthState } from '../store/reducers/user.reducer';
-import { checkTokenExpiry } from '../utils/jwtExpiry';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../services/firebase';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -53,12 +54,21 @@ const Layout = ({ Component, pageProps }) => {
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
     window.onresize = setViewportHeight;
+  }, []);
 
-    const sessionCookie = Cookies.get('session');
-    const uid = Cookies.get('uid');
-    dispatch(
-      setAuthState(uid && checkTokenExpiry(sessionCookie) ? true : false)
-    );
+  useEffect(() => {
+    // handle auth
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setAuthState(true));
+      } else {
+        Cookies.remove('session');
+        Cookies.remove('uid');
+        dispatch(setAuthState(false));
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   if (Component.getLayout) {

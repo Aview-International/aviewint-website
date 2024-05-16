@@ -4,11 +4,6 @@ import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
-import {
-  createANewJob,
-  subscribeToHistory,
-  updateRequiredServices,
-} from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
@@ -18,8 +13,16 @@ import {
   getJobsHistory,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
-import { setCompletedJobs, setPendingJobs } from '../../store/reducers/history.reducer';
+import {
+  setCompletedJobs,
+  setPendingJobs,
+} from '../../store/reducers/history.reducer';
 import Cookies from 'js-cookie';
+import {
+  updateRequiredServices,
+  createANewJob,
+  subscribeToHistory,
+} from '../../services/firebase';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
@@ -144,8 +147,8 @@ const DashboardHome = () => {
 
   return (
     <>
+      <PageTitle title="Dashboard" />
       <div className="mx-auto max-w-[1200px]">
-        <PageTitle title="Dashboard" />
         {isSelected ? (
           <SubmitVideos
             setIsSelected={setIsSelected}

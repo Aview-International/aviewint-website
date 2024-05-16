@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ComingSoon from '../UI/ComingSoon';
 import Border from '../UI/Border';
@@ -9,6 +8,7 @@ import Shadow from '../UI/Shadow';
 import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep1 = ({ userData }) => {
   const router = useRouter();

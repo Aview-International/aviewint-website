@@ -3,10 +3,10 @@ const getWidthPercentage = (currentStage) => {
 
   const options = [
     'queued',
+    'audio-separation',
     'transcription',
     'translation',
     'dubbing',
-    'audio-separation',
     'editing',
     'under review',
     'complete',

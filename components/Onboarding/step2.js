@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
@@ -11,6 +10,7 @@ import {
   CATEGORIES,
 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
+import { updateRequiredServices } from '../../services/firebase';
 
 export const OnboardingStep2 = ({ userData, allLanguages }) => {
   const router = useRouter();

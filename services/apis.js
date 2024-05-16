@@ -2,15 +2,37 @@ import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 import Cookies from 'js-cookie';
+import { decodeJwt } from 'jose';
+import { auth } from './firebase';
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
   baseURL: baseUrl,
 });
 
+const isTokenExpired = (token) => {
+  if (!token) return false;
+  else {
+    const data = decodeJwt(token);
+    if (!data) return false;
+    const newDate = new Date(data.exp) * 1000;
+    if (newDate < new Date().getTime()) return true;
+    else {
+      return data;
+    }
+  }
+};
+
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const token = Cookies.get('session');
+    let token = Cookies.get('session');
+    isTokenExpired(token);
+    if (isTokenExpired(token) === true) {
+      const newToken = await auth.currentUser.getIdToken(true); // force token refresh
+      Cookies.set('session', newToken);
+      token = newToken;
+    }
+
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },

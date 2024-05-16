@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import OnboardingButton from './button';
 import Image from 'next/image';
-import { updateRequiredServices } from '../../pages/api/firebase';
 import Cookies from 'js-cookie';
 import ErrorHandler from '../../utils/errorHandler';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep4 = ({ userData }) => {
   const router = useRouter();
