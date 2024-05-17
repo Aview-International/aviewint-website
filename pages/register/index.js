@@ -22,7 +22,7 @@ import {
   signInWithEmailLink,
 } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import ButtonLoader from '../../components/UI/LoaderAnime';
+import ButtonLoader from '../../components/UI/loader';
 
 const Register = () => {
   const router = useRouter();
