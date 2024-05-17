@@ -1,5 +1,5 @@
 // import Border from '../UI/Border';
-import Loader from '../../public/loaders/ButtonLoader';
+import LoaderAnime from '../UI/loader';
 import Shadow from '../UI/Shadow';
 
 const OnboardingButton = ({
@@ -23,7 +23,7 @@ const OnboardingButton = ({
       className="w-full rounded-full bg-red p-3"
       onClick={isLoading ? () => null : onClick}
     >
-      {isLoading ? <Loader /> : children}
+      {isLoading ? <LoaderAnime /> : children}
     </button>
   ) : (
     <Shadow classes="w-full">
@@ -42,7 +42,7 @@ const OnboardingButton = ({
           }`}
           onClick={isLoading ? () => null : onClick}
         >
-          {isLoading ? <Loader /> : children}
+          {isLoading ? <LoaderAnime /> : children}
         </button>
       </div>
     </Shadow>
