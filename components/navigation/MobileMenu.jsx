@@ -49,11 +49,11 @@ export default function MobileMenu() {
         >
           <Button
             purpose="route"
-            route="/login"
+            route="/register"
             type="secondary"
             fullWidth={true}
           >
-            Login
+            Sign Up
           </Button>
         </div>
       </div>
