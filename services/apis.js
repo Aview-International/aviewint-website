@@ -28,7 +28,7 @@ axiosInstance.interceptors.request.use(
     let token = Cookies.get('session');
     isTokenExpired(token);
     if (isTokenExpired(token) === true) {
-      const newToken = await auth.currentUser.getIdToken(true); // force token refresh
+      const newToken = await auth.currentUser?.getIdToken(true); // force token refresh
       Cookies.set('session', newToken);
       token = newToken;
     }
@@ -77,32 +77,6 @@ export const singleSignOnLogin = async (email, origin) =>
 
 export const transcribeSocialLink = async (body) =>
   await axiosInstance.post('transcription/new-task', body);
-
-export const getInstagramShortAccess = async (ig_access_code) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=short_lived_access',
-    {
-      code: ig_access_code,
-    }
-  );
-
-export const getInstagramLongLivedAccess = async (access_token) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=long_lived_access',
-    {
-      code: access_token,
-    }
-  );
-
-export const getInstagramProfile = async (access_token) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=user_account_info',
-    { code: access_token }
-  );
-
-export const oauth2callback = async (code) => {
-  await axiosInstance.post(baseUrl + 'auth/oauth2callback', { code });
-};
 
 export const authorizeUser = async () => {
   const response = await axiosInstance.get(
