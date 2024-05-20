@@ -107,6 +107,7 @@ const JoinTheTeam = () => {
           isValid={data.position}
           onChange={(option) => setData({ ...data, position: option })}
           value={data.position}
+          testIdText="position"
         />
         <input type="hidden" name="position" value={data.position} />
         <UploadFile
@@ -116,7 +117,7 @@ const JoinTheTeam = () => {
           isValid={data.resume}
         />
         <div className="mt-s5 flex justify-center ">
-          <Button purpose="submit" type="primary">
+          <Button purpose="submit" type="primary" test="send-message">
             Send Message
           </Button>
         </div>

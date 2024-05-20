@@ -4,16 +4,16 @@ import Button from '../../UI/Button';
 
 const OurMission = () => {
   return (
-    <section className="section m-horizontal mt-s6 lg:mt-s8" data-aos="fade-up">
+    <section className="section m-horizontal mt-s6 lg:mt-s8" data-aos="fade-up" id="our-mission">
       <div className="grid items-center lg:grid-cols-11">
         <div className="col-span-7">
-          <p className="body mb-s2">Our Mission</p>
-          <h1 className="title mb-s4">
+          <p data-test="mission" className="body mb-s2">Our Mission</p>
+          <h1 data-test="about-main-text" className="title mb-s4">
             To help build content creator brands globally through translated
             subtitles and voiceovers; a client, a language, and{' '}
             <span className="gradient-text gradient-2">Aview </span> at a time.
           </h1>
-          <Button type="primary" purpose="route" route="#join-the-team">
+          <Button type="primary" purpose="route" route="#join-the-team" test="contact-us">
             Contact Us
           </Button>
         </div>

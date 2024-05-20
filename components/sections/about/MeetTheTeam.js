@@ -8,13 +8,14 @@ const MeetTheTeam = () => {
     <section
       className="section m-horizontal text-center"
       data-aos="fade-up-right"
+      id="meet-the-team"
     >
       <h2 className="title mb-s4 md:mb-s10">
         <span className="gradient-text gradient-2">Meet The Team</span>
       </h2>
       {TEAM.map((group) => (
         <div className="mb-s5 md:mb-s10" key={group.id}>
-          <h3 className="mb-s2 text-3xl font-bold text-white md:mb-s4 md:text-6xl">
+          <h3 data-test={group.role} className="mb-s2 text-3xl font-bold text-white md:mb-s4 md:text-6xl">
             {group.role}
           </h3>
           <Row4>
@@ -26,6 +27,7 @@ const MeetTheTeam = () => {
                     href={member.linkedin}
                     target="_blank"
                     key={member.id}
+                    id={member.id}
                     rel="noreferrer"
                   >
                     <Profile

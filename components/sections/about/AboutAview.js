@@ -9,10 +9,10 @@ const AboutAview = () => {
     >
       <div className="grid items-center lg:grid-cols-6">
         <div className="col-span-3">
-          <h1 className="title mb-s4">
+          <h1 data-test="about-aview" className="title mb-s4">
             About <span className="gradient-text gradient-2">Aview</span>
           </h1>
-          <p className="body mb-s2">
+          <p data-test="about-aview-body" className="body mb-s2">
             Aview is a multimedia translation company designed to help content
             creators and entertainers expand their fan base through social media
             platforms. Aview focuses on content creators who have developed a

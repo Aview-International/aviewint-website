@@ -15,6 +15,7 @@ const Button = ({
 }) => {
   let button = (
     <div
+      data-test={test}
       className={`
           ${type === 'primary' && `gradient-1 text-black `}
           ${type === 'secondary' && `bg-black text-white hover:text-black `}
@@ -44,12 +45,12 @@ const Button = ({
       </Link>
     );
   } else if (purpose === 'submit') {
-    button = <button type="submit">{button}</button>;
+    button = <button data-test={test} type="submit">{button}</button>;
   } else if (purpose === 'onClick') {
-    button = <div onClick={onClick}>{button}</div>;
+    button = <div data-test={test} onClick={onClick}>{button}</div>;
   } else if (purpose === 'externalLink') {
     button = (
-      <a href={externalLink} target="_blank" rel="noreferrer">
+      <a data-test={test} href={externalLink} target="_blank" rel="noreferrer">
         {button}
       </a>
     );

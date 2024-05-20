@@ -6,7 +6,7 @@ import { useOnScreen } from '../../../hooks/useOnScreen';
 
 const OurMilestones = () => {
   return (
-    <section className="section m-horizontal" data-aos="fade-up-left">
+    <section className="section m-horizontal" data-aos="fade-up-left" id="milestones">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
         Our <span className="gradient-text gradient-2">Milestones</span>
       </h2>
@@ -41,13 +41,14 @@ const Milestone = ({ milestone }) => {
     <Card borderRadius="2xl">
       <div className="py-s5 text-center md:py-s9">
         <p
+          data-test={number}
           className="gradient-2 gradient-text inline-block text-7xl font-bold md:text-8xl"
           ref={elementRef}
         >
           {number}
           {milestone.suffix}
         </p>
-        <p className="mx-auto max-w-[168px] text-lg font-bold text-white md:max-w-[219px] md:text-2xl">
+        <p data-test={milestone.text} className="mx-auto max-w-[168px] text-lg font-bold text-white md:max-w-[219px] md:text-2xl">
           {milestone.text}
         </p>
       </div>

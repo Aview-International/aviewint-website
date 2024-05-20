@@ -8,12 +8,12 @@ import pathRightToLeftLarge from '../../../public/img/graphics/path-right-to-lef
 
 const AviewsGrowth = () => {
   return (
-    <section className="section m-horizontal" data-aos="zoom-out-right">
+    <section className="section m-horizontal" data-aos="zoom-out-right" id="aview-growth">
       <h2 className="title mb-s4 md:mb-s10 md:text-center">
         <span className="gradient-text gradient-2">Aview&apos;s</span> Growth
       </h2>
       <div className="flex flex-col">
-        {AVIEW_GROWTH.map((item, i) => (
+         {AVIEW_GROWTH.map((item, i) => (
           <>
             <div
               className={`max-w-[332px] md:max-w-[623px] ${
@@ -33,12 +33,12 @@ const AviewsGrowth = () => {
                       />
                     </div>
                     <h3 className="mb-s2 max-w-[290px] text-5xl font-bold md:-mb-1 md:text-6xl">
-                      <span className="gradient-text gradient-2">
+                      <span data-test={item.id} className="gradient-text gradient-2">
                         {item.title}
                       </span>
                     </h3>
                   </div>
-                  <p className="text-white md:text-xl">{item.description}</p>
+                  <p data-test={`${item.id}-desc`} className="text-white md:text-xl">{item.description}</p>
                 </div>
               </Card>
             </div>

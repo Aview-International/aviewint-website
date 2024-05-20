@@ -9,11 +9,12 @@ const OurCoreValues = () => {
     <section
       className="section m-horizontal md:text-center"
       data-aos="zoom-out-left"
+      id="core-values"
     >
-      <h2 className="title mb-s2">
+      <h2 data-test="core-values-heading" className="title mb-s2">
         Our <span className="gradient-text gradient-2">Core Values</span>
       </h2>
-      <p className="body pb-s4 md:pb-s10">
+      <p data-test="core-values-body" className="body pb-s4 md:pb-s10">
         Aview focuses on three main items when it comes to our service. We know
         every creator is different and tailor our approach.
       </p>
@@ -24,6 +25,7 @@ const OurCoreValues = () => {
             title={value.title}
             description={value.description}
             graphic={value.graphic}
+            id={value.id}
           />
         ))}
       </Row3>
@@ -31,20 +33,20 @@ const OurCoreValues = () => {
   );
 };
 
-const CoreValue = ({ title, description, graphic }) => {
+const CoreValue = ({ title, description, graphic, id }) => {
   return (
     <Card borderRadius="2xl">
       <HoverGradientFill borderRadius="2xl" />
       <div className="relative p-s3">
         <p className="text-left">
-          <span className="gradient-text gradient-2 text-8xl font-bold group-hover:text-white">
+          <span data-test={id} className="gradient-text gradient-2 text-8xl font-bold group-hover:text-white">
             {title}
           </span>
         </p>
         <div className="mx-auto max-w-[225px] pb-s2">
           <Image src={graphic} alt={title} />
         </div>
-        <p className="body text-left">{description}</p>
+        <p data-test={`${id}-desc`} className="body text-left">{description}</p>
       </div>
     </Card>
   );
