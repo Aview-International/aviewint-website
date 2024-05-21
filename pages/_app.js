@@ -11,7 +11,8 @@ import { SocketProvider } from '../socket';
 import useUserProfile from '../hooks/useUserProfile';
 import { setAuthState } from '../store/reducers/user.reducer';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth, logoutUser } from '../services/firebase';
+import { auth } from '../services/firebase';
+import Cookies from 'js-cookie';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -59,7 +60,10 @@ const Layout = ({ Component, pageProps }) => {
     // handle auth
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) dispatch(setAuthState(true));
-      else logoutUser();
+      else {
+        Cookies.remove('uid');
+        Cookies.remove('session');
+      }
     });
 
     return () => unsubscribe();
