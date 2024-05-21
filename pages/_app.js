@@ -8,11 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
-import Cookies from 'js-cookie';
 import useUserProfile from '../hooks/useUserProfile';
 import { setAuthState } from '../store/reducers/user.reducer';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../services/firebase';
+import { auth, logoutUser } from '../services/firebase';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -59,13 +58,8 @@ const Layout = ({ Component, pageProps }) => {
   useEffect(() => {
     // handle auth
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        dispatch(setAuthState(true));
-      } else {
-        Cookies.remove('session');
-        Cookies.remove('uid');
-        dispatch(setAuthState(false));
-      }
+      if (user) dispatch(setAuthState(true));
+      else logoutUser();
     });
 
     return () => unsubscribe();
