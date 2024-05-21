@@ -21,12 +21,9 @@ const useUserProfile = () => {
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
   const [isLoading, setIsLoading] = useState(true);
-  const [trigger, setTrigger] = useState(0);
 
   const handleGetProfile = async () => {
-    await getUserProfile(uid, (resp) =>
-      dispatch(setUser({ ...resp, uid }))
-    );
+    await getUserProfile(uid, (resp) => dispatch(setUser({ ...resp, uid })));
   };
 
   const handleGetYoutubeChannel = async () => {
@@ -58,6 +55,7 @@ const useUserProfile = () => {
             handleGetProfile(),
             handleGetYoutubeChannel(),
             handleGetMessageStatus(),
+            getThread(),
           ]);
         }
         setIsLoading(false);
@@ -68,20 +66,12 @@ const useUserProfile = () => {
     })();
   }, [isLoggedIn]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        if (isLoggedIn) {
-          const res = await getThreadHistory();
-          dispatch(setAllAIThreads(res));
-        }
-      } catch (error) {
-        ErrorHandler(error);
-      }
-    })();
-  }, [trigger, isLoggedIn]);
+  const getThread = async () => {
+    const res = await getThreadHistory();
+    dispatch(setAllAIThreads(res));
+  };
 
-  const sidebarTrigger = () => setTrigger(Math.random());
+  const sidebarTrigger = () => getThread();
 
   return { sidebarTrigger, isLoading };
 };

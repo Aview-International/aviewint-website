@@ -40,7 +40,7 @@ export const auth = getAuth();
 export const logoutUser = async () => {
   await signOut(auth).then(() => {
     Cookies.remove('uid');
-    Cookies.remove('token');
+    Cookies.remove('session');
   });
   window.location.href = '/';
 };

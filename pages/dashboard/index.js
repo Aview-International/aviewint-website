@@ -26,6 +26,7 @@ import {
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
   const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
@@ -85,14 +86,16 @@ const DashboardHome = () => {
 
   useEffect(() => {
     (async () => {
-      try {
-        const completedArray = await getJobsHistory();
-        dispatch(setCompletedJobs(completedArray));
-      } catch (error) {
-        ErrorHandler(error);
+      if (isLoggedIn) {
+        try {
+          const completedArray = await getJobsHistory();
+          dispatch(setCompletedJobs(completedArray));
+        } catch (error) {
+          ErrorHandler(error);
+        }
       }
     })();
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const unsubscribe = subscribeToHistory(uid, (data) => {
