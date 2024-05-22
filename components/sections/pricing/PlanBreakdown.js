@@ -33,11 +33,9 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
   return (
     <section className="m-horizontal my-s10 overflow-x-clip" id="all-features">
       <div className="rounded-xl bg-white-transparent text-white">
-        <h2 className="py-s4 text-center text-3xl md:text-5xl font-semibold">
+        <h2 className="py-s4 text-center text-5xl font-semibold">
           Compare Plans
         </h2>
-
-        {/* Desktop and tablet view here */}
         <div className="hidden md:block">
           <div
             className={`sticky top-0 z-10 grid grid-cols-1 md:grid-cols-[repeat(4,minmax(100px,1fr))] rounded-xl p-s4 text-center 
@@ -83,7 +81,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
 
           {PLANS_BREAKDOWN.map((plan, sectionIndex) => (
             <div className="px-s4 py-s3" key={sectionIndex}>
-              <div className="border-b border-gray-1 px-5 pb-5">
+              <div className="border-b border-gray-1 px-5">
                 <p className="text-left text-sm md:text-base">{plan.section}</p>
               </div>
               {plan.desc.map((breakdown, featureIndex) => (
@@ -111,7 +109,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                   {breakdown.columns.map((col, colIndex) => (
                     <div 
                       key={colIndex}
-                      className={`p-5 ${colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'}`}  // Correct the background order
+                      className={`p-12 ${colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'}`}  
                     >
                       {col === true ? (
                         <Image src={Check} alt="" width={25} height={20} />
@@ -125,13 +123,13 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                 </div>
               ))}
             </div>
-          ))}
-        </div>
+           ))}
+           </div>
 
         {/* Mobile view - shown only on screens <= md */}
         <div className="md:hidden">
-          <MobilePlanView plans={PLANS_BREAKDOWN} 
-          sliderValue={sliderValue}/>
+          <MobilePlanView plans={PLANS_BREAKDOWN}
+          sliderValue={sliderValue} />
   
         </div>
       </div>
