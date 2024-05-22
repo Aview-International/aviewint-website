@@ -11,8 +11,11 @@ const MobilePlanView = ({ plans, sliderValue }) => {
   //const sliderValue = useSelector((state) => state.slider.sliderValue); 
 
   const planTypes = ["Starter Studio", "Creator Pro", "Global Influencer"];
-  const recommendedPlanIndex = sliderValue >= 50 ? 2 : 1;
+  const recommendedPlanIndex = sliderValue >= 2 ? 2 : 1;
 
+  useEffect(() => {
+    console.log('Slider Value in MobilePlanView:', sliderValue); // Debug log for sliderValue
+  }, [sliderValue]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +44,7 @@ const MobilePlanView = ({ plans, sliderValue }) => {
           ref={headerRef}>
 
         {planTypes.map((header, index) => (
-          <div key={index} className={`rounded-lg p-5 text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'}`}>
+          <div key={index} className={`rounded-lg p-5 text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray'}`}> 
             {header}
           </div>
         ))}
@@ -85,7 +88,7 @@ const MobilePlanView = ({ plans, sliderValue }) => {
               <div className="grid grid-cols-3 gap-2 text-sm border-b border-gray-100">
                 {feature.columns.map((col, colIndex) => {
                   // Determine the background color based on the plan and slider value
-                  const bgColor = colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'; // Correct the background order
+                  const bgColor = colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'; //bg-white-transparent is the highlight
 
                   return (
                     <div key={colIndex} className={`p-12 text-center ${bgColor}`}>

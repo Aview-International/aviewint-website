@@ -12,8 +12,7 @@ import MobilePlanView from './MobilePlanView';
 const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
   const headerRef = useRef(null);
   const [topPosition, setTopPosition] = useState(null);
-  //const [sliderValue, setSliderValue] = useState(0);
-  //const onSliderChange = (e) => setSliderValue(e.target.value);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +27,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
     };
   }, []);
 
-  const recommendedPlanIndex = sliderValue >= 50 ? 2 : 1;
+  const recommendedPlanIndex = sliderValue >= 2 ? 2 : 1;
 
   return (
     <section className="m-horizontal my-s10 overflow-x-clip" id="all-features">
@@ -128,8 +127,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
 
         {/* Mobile view - shown only on screens <= md */}
         <div className="md:hidden">
-          <MobilePlanView plans={PLANS_BREAKDOWN}
-          sliderValue={sliderValue} />
+          <MobilePlanView plans={PLANS_BREAKDOWN} sliderValue={sliderValue} />
   
         </div>
       </div>
