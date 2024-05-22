@@ -4,11 +4,6 @@ import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
-import {
-  createANewJob,
-  subscribeToHistory,
-  updateRequiredServices,
-} from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
@@ -18,11 +13,20 @@ import {
   getJobsHistory,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
-import { setCompletedJobs, setPendingJobs } from '../../store/reducers/history.reducer';
+import {
+  setCompletedJobs,
+  setPendingJobs,
+} from '../../store/reducers/history.reducer';
 import Cookies from 'js-cookie';
+import {
+  updateRequiredServices,
+  createANewJob,
+  subscribeToHistory,
+} from '../../services/firebase';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
   const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
@@ -75,21 +79,33 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    if (!instagramDataFetched && userData.instagram?.instagramConnected)
-      getInstagramVideos();
-    if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
-  }, [channelDetails, userData]);
-
-  useEffect(() => {
     (async () => {
       try {
-        const completedArray = await getJobsHistory();
-        dispatch(setCompletedJobs(completedArray));
+        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
+          await getInstagramVideos();
+        }
+
+        if (!youtubeDataFetched && channelDetails.id) {
+          await getYoutubeVideos();
+        }
       } catch (error) {
         ErrorHandler(error);
       }
     })();
-  }, []);
+  }, [channelDetails.id, userData.instagram?.instagramConnected]);
+
+  useEffect(() => {
+    (async () => {
+      if (isLoggedIn) {
+        try {
+          const completedArray = await getJobsHistory();
+          dispatch(setCompletedJobs(completedArray));
+        } catch (error) {
+          ErrorHandler(error);
+        }
+      }
+    })();
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const unsubscribe = subscribeToHistory(uid, (data) => {
@@ -144,8 +160,8 @@ const DashboardHome = () => {
 
   return (
     <>
+      <PageTitle title="Dashboard" />
       <div className="mx-auto max-w-[1200px]">
-        <PageTitle title="Dashboard" />
         {isSelected ? (
           <SubmitVideos
             setIsSelected={setIsSelected}

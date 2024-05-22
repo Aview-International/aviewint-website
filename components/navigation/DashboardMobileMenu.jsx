@@ -7,7 +7,8 @@ import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import { useRouter } from 'next/router';
 import { DASHBOARD_NAVLINKS } from '../../constants/constants';
-import { logoutUser } from '../../pages/api/firebase';
+import { logoutUser } from '../../services/firebase';
+
 
 export default function DashboardMobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);

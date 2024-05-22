@@ -2,7 +2,6 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { subscribeToHistory } from '../../api/firebase';
 import { getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -11,15 +10,12 @@ import {
 } from '../../../store/reducers/history.reducer';
 import ErrorHandler from '../../../utils/errorHandler';
 import DownloadLink from '../../../components/dashboard/insights/DownloadLink';
+import { subscribeToHistory } from '../../../services/firebase';
 
 const History = () => {
-
-  console.log("history rendered")
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
   const uid = Cookies.get('uid');
-
-  console.log(uid)
 
   useEffect(() => {
     (async () => {
@@ -41,7 +37,6 @@ const History = () => {
         : [];
       dispatch(setPendingJobs(pendingArray));
     });
-    
 
     return () => unsubscribe(); // cleanup
   }, []);
@@ -88,7 +83,7 @@ const Container = ({ pendingJobs, completedJobs }) => {
           {job.status === 'complete' ? (
             <DownloadLink job={job} />
           ) : (
-            <p>yet to Download</p>
+            <p>Pending</p>
           )}
         </div>
       ))}

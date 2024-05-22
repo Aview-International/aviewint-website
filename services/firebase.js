@@ -14,7 +14,7 @@ import {
   get,
   onValue,
 } from 'firebase/database';
-import { transcribeSocialLink } from '../../../services/apis';
+import { transcribeSocialLink } from './apis';
 import Cookies from 'js-cookie';
 
 const firebaseConfig = {
@@ -40,7 +40,7 @@ export const auth = getAuth();
 export const logoutUser = async () => {
   await signOut(auth).then(() => {
     Cookies.remove('uid');
-    Cookies.remove('token');
+    Cookies.remove('session');
   });
   window.location.href = '/';
 };
