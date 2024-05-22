@@ -2,19 +2,17 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
-//Needs these from pricing plan:?
-import Border from '../../UI/Border';
-import Card from '../../UI/Card';
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+//import { useSelector } from 'react-redux';
 
-
-const MobilePlanView = ({ plans }) => {
+const MobilePlanView = ({ plans, sliderValue }) => {
   const [visibleHoverText, setVisibleHoverText] = useState(null);
   const headerRef = useRef(null);
   const [topPosition, setTopPosition] = useState(null);
+  //const sliderValue = useSelector((state) => state.slider.sliderValue); 
 
   const planTypes = ["Starter Studio", "Creator Pro", "Global Influencer"];
+  const recommendedPlanIndex = sliderValue >= 50 ? 2 : 1;
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +26,6 @@ const MobilePlanView = ({ plans }) => {
     };
   }, []);
 
-
   const handleMouseEnter = (index) => {
     setVisibleHoverText(index);
   };
@@ -38,17 +35,13 @@ const MobilePlanView = ({ plans }) => {
   };
 
   return (
-    <div className="block md:hidden bg-gray-800 text-white p-8">
-      <div className={`sticky top-0 z-10 text-center mb-10 grid grid-cols-3 rounded-lg p-s3
-                        gap-3 border-b border-gray-200 
-          ${
-            topPosition <= 0 ? 'gradient-dark bg-black' : ''
-          }`}
-          ref={headerRef}
-          >
+    <div className="block md:hidden bg-white-transparent text-white p-8">
+      <div className={`sticky top-0 z-10 text-center mb-10 grid grid-cols-3 rounded-lg p-s3 gap-3 border-b border-gray-200 
+          ${topPosition <= 0 ? 'gradient-dark bg-black' : ''}`}
+          ref={headerRef}>
 
         {planTypes.map((header, index) => (
-          <div key={index} className={`text-md ${index === 1 ? 'text-gray-200' : 'text-white'}`}>
+          <div key={index} className={`text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'}`}>
             {header}
           </div>
         ))}
@@ -79,18 +72,22 @@ const MobilePlanView = ({ plans }) => {
               </div>
 
               <div className="grid grid-cols-3 gap-2 text-sm border-b border-gray-100 pb-8">
-                {feature.columns.map((col, colIndex) => (
+                {feature.columns.map((col, colIndex) => {
+                  // Determine the background color based on the plan and slider value
+                  const bgColor = colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'; // Correct the background order
 
-                  <div key={colIndex} className={`p-2 text-center ${colIndex === 1 ? 'bg-gray-700' : 'bg-gray-800'}`}>
-                    {col === true ? (
-                      <Image src={Check} alt="" width={25} height={20} />
-                    ) : col === null ? (
-                      <span className="mx-auto block h-1 w-4 bg-white"></span>
-                    ) : (
-                      <p className="text-sm md:text-base">{col}</p>
-                    )}
-                  </div>
-                ))}
+                  return (
+                    <div key={colIndex} className={`p-2 text-center ${bgColor}`}>
+                      {col === true ? (
+                        <Image src={Check} alt="" width={25} height={20} />
+                      ) : col === null ? (
+                        <span className="mx-auto block h-1 w-4 bg-white"></span>
+                      ) : (
+                        <p className="text-sm md:text-base">{col}</p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
             </div>
