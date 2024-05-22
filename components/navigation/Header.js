@@ -44,7 +44,7 @@ const HeaderButtons = () => {
   return (
     <div className="hidden gap-5 lg:flex">
       {!isLoggedIn && (
-        <Button purpose="route" route="/#generate-aview" type="primary">
+        <Button purpose="route" route="/#generate-aview" type="primary" test="contact-us">
           Contact Us
         </Button>
       )}
@@ -53,11 +53,11 @@ const HeaderButtons = () => {
         Join Waitlist
       </Button> */}
       {!isLoggedIn ? (
-        <Button purpose="route" route="/login" type="secondary">
+        <Button purpose="route" route="/login" type="secondary" test="login">
           Login
         </Button>
       ) : (
-        <Button purpose="route" route="/dashboard" type="secondary">
+        <Button purpose="route" route="/dashboard" type="secondary" test="dashboard">
           Dashboard
         </Button>
       )}

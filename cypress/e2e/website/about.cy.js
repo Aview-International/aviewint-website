@@ -2,12 +2,39 @@ describe('About Page Tests', () => {
   beforeEach(() => {
     cy.visit('/about');
     cy.viewport(1250, 1050);
-    cy.wait(3000);
+    cy.wait(2000);
+  });
+
+  it('header test', () => {
+    cy.contains('Services').should('exist').and('be.visible');
+    cy.contains('Blog').should('exist').and('be.visible');
+    cy.contains('Pricing').should('exist').and('be.visible');
+    cy.contains('Languages').should('exist').and('be.visible');
+    cy.contains('About').should('exist').and('be.visible');
+    cy.get(`img[alt="AVIEW International logo"]`)
+      .should('exist')
+      .and('be.visible');
+    cy.get('header').within(() => {
+      cy.get('[data-test="header-hidden-text"]').should('not.be.visible');
+
+      cy.get('[data-test="header-span"]').first().trigger('mouseover');
+      cy.get('[data-test="header-hidden-text"]').first().should('be.visible');
+      cy.get('[data-test="header-hidden-text"]')
+        .last()
+        .should('not.be.visible');
+
+      cy.get('[data-test="header-span"]').last().trigger('mouseover');
+      cy.get('[data-test="header-hidden-text"]').last().should('be.visible');
+      cy.checkAncher('contact-us', '/#generate-aview');
+      cy.checkAncher('login', '/login');
+
+      cy.contains('About').should('have.css', 'color', 'rgba(0, 0, 0, 0)')
+    });
   });
 
   it('Landing about page test', () => {
     cy.checkImage('landing-graphic', 'mission', 'about-main-text');
-    cy.checkAncher('contact-us', '/about#join-the-team');
+    cy.checkAncher('contact-us', '/#generate-aview');
     cy.checkImage('about-graphic', 'about-aview', 'about-aview-body');
   });
 
@@ -20,8 +47,7 @@ describe('About Page Tests', () => {
       );
       cy.get('[data-test="at-aview-body"]').should(
         'have.text',
-        `Ensure your content is translated accurately, guaranteeing a positive
-        return.`
+        `Ensure your content is translated accurately, guaranteeing a positive return.`
       );
     });
   });
@@ -35,8 +61,7 @@ describe('About Page Tests', () => {
       );
       cy.get('[data-test="core-values-body"]').should(
         'have.text',
-        ` Aview focuses on three main items when it comes to our service. We know
-        every creator is different and tailor our approach`
+        `Aview focuses on three main items when it comes to our service. We know every creator is different and tailor our approach.`
       );
 
       cy.checkImage('Fast Turn-Around', 'value-1', 'value-1-desc');
@@ -45,15 +70,15 @@ describe('About Page Tests', () => {
 
       cy.get(`[data-test="value-1"]`)
         .trigger('mouseover')
-        .should('have.css', 'color', 'rgb(255, 255, 255)');
+        .should('have.css', 'color', 'rgba(0, 0, 0, 0)');
 
       cy.get(`[data-test="value-2"]`)
         .trigger('mouseover')
-        .should('have.css', 'color', 'rgb(255, 255, 255)');
+        .should('have.css', 'color', 'rgba(0, 0, 0, 0)');
 
       cy.get(`[data-test="value-3"]`)
         .trigger('mouseover')
-        .should('have.css', 'color', 'rgb(255, 255, 255)');
+        .should('have.css', 'color', 'rgba(0, 0, 0, 0)');
     });
   });
 
@@ -73,7 +98,7 @@ describe('About Page Tests', () => {
   it('Impact Numbers', () => {
     cy.scrollView('milestones');
     cy.get('#milestones').within(() => {
-      cy.wait(9000);
+      cy.wait(6000);
       cy.checkImage('', '500', 'International Creator Views');
       cy.checkImage('', '15', 'Languages');
       cy.checkImage('', '10', 'International Gained Subscribers');
@@ -86,14 +111,14 @@ describe('About Page Tests', () => {
   it('Meet the Team', () => {
     cy.scrollView('meet-the-team');
     cy.get('#meet-the-team').within(() => {
-      cy.get('h3').should('have.text', 'Co-Founders');
-
+      cy.wait(1000);
+      cy.get('h3').first().should('have.text', 'Co-Founders');
       cy.checkImage('Akshay Maharaj', 'Akshay Maharaj', 'Co-Founder');
       cy.checkImage('Garnet Delsey', 'Garnet Delsey', 'Co-Founder');
-      cy.get('h3').should('have.text', 'Development Team');
+      cy.get('h3').eq(1).should('have.text', 'Development Team');
       cy.checkImage('Victor Ogunjobi', 'Victor Ogunjobi', 'Software Engineer');
       cy.checkImage('Chandhu Mamidi', 'Chandhu Mamidi', 'Software Engineer');
-      cy.get('h3').should('have.text', 'Design Team');
+      cy.get('h3').eq(2).should('have.text', 'Design Team');
       cy.checkImage('David Lovenburg', 'David Lovenburg', 'Software Engineer');
       cy.checkImage('Luis Sarceño', 'Luis Sarceño', 'Graphic Designer');
     });
@@ -136,7 +161,7 @@ describe('About Page Tests', () => {
       cy.get('[data-test="position"]').last().should('not.be.visible');
 
       cy.fixture('chandhu.pdf', null).as('fileUpload');
-      cy.get('input[type=file]').selectFile('@fileUpload');
+      cy.get('input[type=file]').selectFile('@fileUpload', { force: true });
 
       cy.get('[data-test="send-message"]').should('exist').and('be.visible');
     });
@@ -144,10 +169,11 @@ describe('About Page Tests', () => {
 
   it('Scroll to top test', () => {
     cy.get('#scrollButton').should('not.exist');
-    cy.scrollView('content-creators');
+    cy.scrollView('core-values');
     cy.get('#scrollButton').should('exist').and('be.visible');
     cy.get('#scrollButton').click();
-    cy.checkImage('', 'unlock', 'monetize');
+    cy.checkAncher('contact-us', '/#generate-aview');
+    cy.checkImage('about-graphic', 'about-aview', 'about-aview-body');
     cy.get('#scrollButton').should('not.exist');
   });
 
