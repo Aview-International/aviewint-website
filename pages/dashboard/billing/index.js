@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { getAllPayments } from '../../api/firebase';
+// import { getAllPayments } from '../../api/firebase';
 import { useSelector } from 'react-redux';
 
 const Billing = () => {
@@ -16,10 +16,10 @@ const Billing = () => {
   const [payments, setPayments] = useState([]);
   const [reloadTrigger, setReloadTrigger] = useState(0);
 
-  const getAdminAccount = async (id) => {
-    const res = await getAllPayments(id);
-    setPayments(res ? Object.values(res) : []);
-  };
+  // const getAdminAccount = async (id) => {
+  //   const res = await getAllPayments(id);
+  //   setPayments(res ? Object.values(res) : []);
+  // };
 
   const router = useRouter();
   const handlePaymentCallback = () => {
@@ -42,7 +42,7 @@ const Billing = () => {
   }, []);
 
   useEffect(() => {
-    if (userInfo._id) getAdminAccount(userInfo._id);
+    // if (userInfo._id) getAdminAccount(userInfo._id);
   }, [userInfo._id, reloadTrigger]);
 
   return (
