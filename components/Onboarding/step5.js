@@ -4,10 +4,14 @@ import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
-import { updateRequiredServices } from '../../pages/api/firebase';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../services/firebase';
+import Cookies from 'js-cookie';
 
 const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
@@ -26,6 +30,16 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
       if (languages.length < 2) {
         setIsError(true);
         return;
+      }
+      const testUser = Cookies.get('testUser');
+      if (testUser) {
+        await authCustomUser(
+          Cookies.get('session'),
+          { languages },
+          Cookies.get('uid')
+        );
+        Cookies.remove('testUser');
+        return router.push('/onboarding?stage=6');
       }
       await updateRequiredServices({ languages }, userData.uid);
       router.push(

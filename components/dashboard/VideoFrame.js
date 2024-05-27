@@ -54,8 +54,8 @@ const VideoFrame = ({
       <div className="flex">
         <div>
           <p className="mb-s1 text-lg">
-            {caption.substring(0, 51)}
-            {caption.length > 51 && '...'}
+            {caption?.substring(0, 51)}
+            {caption?.length > 51 && '...'}
           </p>
           <p className="text-sm">
             <span>

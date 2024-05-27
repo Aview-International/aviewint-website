@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   getAuth,
   signOut,
+  signInWithCustomToken,
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -14,7 +15,7 @@ import {
   get,
   onValue,
 } from 'firebase/database';
-import { transcribeSocialLink } from '../../../services/apis';
+import { transcribeSocialLink } from './apis';
 import Cookies from 'js-cookie';
 
 const firebaseConfig = {
@@ -40,7 +41,7 @@ export const auth = getAuth();
 export const logoutUser = async () => {
   await signOut(auth).then(() => {
     Cookies.remove('uid');
-    Cookies.remove('token');
+    Cookies.remove('session');
   });
   window.location.href = '/';
 };
@@ -146,4 +147,14 @@ export const getAllCompletedJobs = async (uid) => {
     }
   );
   return res;
+};
+
+export const authCustomUser = async (token, payload, uid) => {
+  return await signInWithCustomToken(auth, token)
+    .then(async () => {
+      return await updateRequiredServices(payload, uid);
+    })
+    .catch((error) => {
+      console.error('Error authenticating with custom token:', error);
+    });
 };

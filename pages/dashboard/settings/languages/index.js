@@ -8,7 +8,7 @@ import OnboardingButton from '../../../../components/Onboarding/button';
 import MultipleSelectInput from '../../../../components/FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../../../utils/errorHandler';
 import { useRouter } from 'next/router';
-import { updateRequiredServices } from '../../../api/firebase';
+import { updateRequiredServices } from '../../../../services/firebase';
 
 const Preference = () => {
   const router = useRouter();

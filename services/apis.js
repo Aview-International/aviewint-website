@@ -2,16 +2,44 @@ import axios from 'axios';
 import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 import Cookies from 'js-cookie';
+import { decodeJwt } from 'jose';
+import { auth } from './firebase';
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
   baseURL: baseUrl,
 });
 
+const isTokenExpired = (token) => {
+  try {
+    if (!token) return false;
+    else {
+      const data = decodeJwt(token);
+      if (!data) return false;
+      const newDate = new Date(data.exp) * 1000;
+      if (newDate < new Date().getTime()) return true;
+      else {
+        return data;
+      }
+    }
+  } catch (error) {
+    return false;
+  }
+};
+
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const token = Cookies.get('session');
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    const user = auth.currentUser;
+    if (!user) return config;
+    let token = user.stsTokenManager.accessToken;
+
+    if (isTokenExpired(token) === true || !isTokenExpired(token)) {
+      const newToken = await auth.currentUser.getIdToken(true); // force token refresh
+      Cookies.set('session', newToken);
+      token = newToken;
+    }
+
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => {
@@ -20,15 +48,15 @@ axiosInstance.interceptors.request.use(
 );
 
 export const welcomeNewUser = async (email) =>
-  await axiosInstance.post(baseUrl + 'email/welcome', {
+  await axios.post(baseUrl + 'email/welcome', {
     recipient: email,
   });
 
 export const singleSignOnRegister = async (email, origin) =>
-  await axiosInstance.post(baseUrl + 'email/register', { email, origin });
+  await axios.post(baseUrl + 'email/register', { email, origin });
 
 export const registerUser = async (creatorId, email) =>
-  await axiosInstance.post(baseUrl + 'auth/register', { creatorId, email });
+  await axios.post(baseUrl + 'auth/register', { creatorId, email });
 
 export const updateProfileDetails = async (payload, type) => {
   let formdata = new FormData();
@@ -55,32 +83,6 @@ export const singleSignOnLogin = async (email, origin) =>
 
 export const transcribeSocialLink = async (body) =>
   await axiosInstance.post('transcription/new-task', body);
-
-export const getInstagramShortAccess = async (ig_access_code) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=short_lived_access',
-    {
-      code: ig_access_code,
-    }
-  );
-
-export const getInstagramLongLivedAccess = async (access_token) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=long_lived_access',
-    {
-      code: access_token,
-    }
-  );
-
-export const getInstagramProfile = async (access_token) =>
-  await axiosInstance.post(
-    '/api/onboarding/link-instagram?get=user_account_info',
-    { code: access_token }
-  );
-
-export const oauth2callback = async (code) => {
-  await axiosInstance.post(baseUrl + 'auth/oauth2callback', { code });
-};
 
 export const authorizeUser = async () => {
   const response = await axiosInstance.get(
@@ -283,4 +285,9 @@ export const getS3DownloadLink = async (timestamp, lang) =>
   (await axiosInstance.get(`admin/download/${timestamp}/${lang}`)).data;
 
 export const getJobsHistory = async () =>
-  (await axiosInstance.get('/transcription/history')).data;
+  (await axiosInstance.get('transcription/history')).data;
+
+export const igAccountTest = async () => {
+  const res = await axios.post(baseUrl + 'auth/ig-test');
+  return res;
+};

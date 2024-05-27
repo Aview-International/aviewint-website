@@ -8,21 +8,21 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
-import { checkUserEmail, signInWithGoogle } from '../api/firebase';
 import ButtonLoader from '../../components/UI/loader';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';
 import { emailValidator } from '../../utils/regex';
 import OnboardingButton from '../../components/Onboarding/button';
-import {
-  getAuth,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
-} from 'firebase/auth';
+import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
+import {
+  signInWithGoogle,
+  checkUserEmail,
+  auth,
+} from '../../services/firebase';
 
 const Login = () => {
   const router = useRouter();
@@ -75,7 +75,6 @@ const Login = () => {
 
   const handleSSOWithCode = () => {
     try {
-      const auth = getAuth();
       if (isSignInWithEmailLink(auth, window.location.href)) {
         let email = window.localStorage.getItem('emailForSignIn');
         if (!email)
