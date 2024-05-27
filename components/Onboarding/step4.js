@@ -48,11 +48,15 @@ const OnboardingStep4 = ({ userData }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
+      if (testUser) {
+        await authCustomUser(token, payload, Cookies.get('uid'));
+        return router.push('/onboarding?stage=5');
+      }
       await updateRequiredServices(payload, Cookies.get('uid'));
+      router.push('/onboarding?stage=5');
     } catch (error) {
       ErrorHandler(error);
     }
-    router.push('/onboarding?stage=5');
   };
 
   return (

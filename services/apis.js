@@ -48,15 +48,15 @@ axiosInstance.interceptors.request.use(
 );
 
 export const welcomeNewUser = async (email) =>
-  await axiosInstance.post(baseUrl + 'email/welcome', {
+  await axios.post(baseUrl + 'email/welcome', {
     recipient: email,
   });
 
 export const singleSignOnRegister = async (email, origin) =>
-  await axiosInstance.post(baseUrl + 'email/register', { email, origin });
+  await axios.post(baseUrl + 'email/register', { email, origin });
 
 export const registerUser = async (creatorId, email) =>
-  await axiosInstance.post(baseUrl + 'auth/register', { creatorId, email });
+  await axios.post(baseUrl + 'auth/register', { creatorId, email });
 
 export const updateProfileDetails = async (payload, type) => {
   let formdata = new FormData();
@@ -285,4 +285,9 @@ export const getS3DownloadLink = async (timestamp, lang) =>
   (await axiosInstance.get(`admin/download/${timestamp}/${lang}`)).data;
 
 export const getJobsHistory = async () =>
-  (await axiosInstance.get('/transcription/history')).data;
+  (await axiosInstance.get('transcription/history')).data;
+
+export const igAccountTest = async () => {
+  const res = await axios.post(baseUrl + 'auth/ig-test');
+  return res;
+};

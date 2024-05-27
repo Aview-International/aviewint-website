@@ -8,7 +8,10 @@ import Shadow from '../UI/Shadow';
 import OnboardingButton from './button';
 import { ONBOARDING_STAGE_1 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
-import { updateRequiredServices } from '../../services/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../services/firebase';
 
 const OnboardingStep1 = ({ userData }) => {
   const router = useRouter();
@@ -27,9 +30,19 @@ const OnboardingStep1 = ({ userData }) => {
     if (!payload.role) return;
     setPayload({ ...payload, isLoading: true });
     try {
+      const testUser = Cookies.get('testUser');
+      if (testUser) {
+        await authCustomUser(
+          Cookies.get('session'),
+          { role: payload.role },
+          Cookies.get('uid')
+        );
+        return router.push('/onboarding?stage=2');
+      }
       await updateRequiredServices({ role: payload.role }, Cookies.get('uid'));
       router.push('/onboarding?stage=2');
     } catch (error) {
+      setPayload({ ...payload, isLoading: false });
       ErrorHandler(error);
     }
   };
