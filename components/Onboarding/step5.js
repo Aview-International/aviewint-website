@@ -11,6 +11,7 @@ import {
   authCustomUser,
   updateRequiredServices,
 } from '../../services/firebase';
+import Cookies from 'js-cookie';
 
 const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
