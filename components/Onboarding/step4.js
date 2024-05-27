@@ -53,7 +53,11 @@ const OnboardingStep4 = ({ userData }) => {
     try {
       const testUser = Cookies.get('testUser');
       if (testUser) {
-        await authCustomUser(token, payload, Cookies.get('uid'));
+        await authCustomUser(
+          Cookies.get('session'),
+          payload,
+          Cookies.get('uid')
+        );
         return router.push('/onboarding?stage=5');
       }
       await updateRequiredServices(payload, Cookies.get('uid'));

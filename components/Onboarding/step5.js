@@ -32,7 +32,11 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
       }
       const testUser = Cookies.get('testUser');
       if (testUser) {
-        await authCustomUser(token, { languages }, Cookies.get('uid'));
+        await authCustomUser(
+          Cookies.get('session'),
+          { languages },
+          Cookies.get('uid')
+        );
         return router.push('/onboarding?stage=6');
       }
       await updateRequiredServices({ languages }, userData.uid);
