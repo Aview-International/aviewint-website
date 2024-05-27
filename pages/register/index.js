@@ -14,7 +14,11 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import { registerUser, singleSignOnRegister } from '../../services/apis';
+import {
+  igAccountTest,
+  registerUser,
+  singleSignOnRegister,
+} from '../../services/apis';
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import ButtonLoader from '../../components/UI/LoaderAnime';
@@ -98,10 +102,25 @@ const Register = () => {
     }
   };
 
+  const handleIgTestLogin = async () => {
+    try {
+      const res = await igAccountTest();
+      Cookies.set('session', res.data.idToken, { expires: 3 });
+      Cookies.set('uid', res.data.uid, { expires: 3 });
+      Cookies.set('testUser', true, { expires: 3 });
+      router.push('/onboarding?stage=1');
+    } catch (error) {
+      ErrorHandler(error);
+    }
+  };
+
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
     try {
+      if (email.trim() === 'instagramverification@aviewint.com') {
+        return handleIgTestLogin();
+      }
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnRegister(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });

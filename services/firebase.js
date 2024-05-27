@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   getAuth,
   signOut,
+  signInWithCustomToken,
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -146,4 +147,14 @@ export const getAllCompletedJobs = async (uid) => {
     }
   );
   return res;
+};
+
+export const authCustomUser = async (token, payload, uid) => {
+  return await signInWithCustomToken(auth, token)
+    .then(async () => {
+      return await updateRequiredServices(payload, uid);
+    })
+    .catch((error) => {
+      console.error('Error authenticating with custom token:', error);
+    });
 };
