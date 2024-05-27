@@ -8,7 +8,7 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
-import ButtonLoader from '../../components/UI/LoaderAnime';
+import ButtonLoader from '../../components/UI/loader';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';

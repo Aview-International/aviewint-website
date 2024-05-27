@@ -38,6 +38,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
           { languages },
           Cookies.get('uid')
         );
+        Cookies.remove('testUser');
         return router.push('/onboarding?stage=6');
       }
       await updateRequiredServices({ languages }, userData.uid);

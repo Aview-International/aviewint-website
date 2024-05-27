@@ -52,8 +52,8 @@ const HeaderButtons = () => {
           Dashboard
         </Button>
       ) : (
-        <Button purpose="route" route="/login" type="secondary">
-          Login
+        <Button purpose="route" route="/register" type="secondary">
+          Sign Up
         </Button>
       )}
     </div>

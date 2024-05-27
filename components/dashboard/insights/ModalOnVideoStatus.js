@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import MoreSettings from './MoreSettings';
 import VideoStatusModal from './VideoStatusModal';
 import getWidthPercentage from './GetWidthPercentage';
@@ -33,11 +34,16 @@ const ModalOnVideoStatus = ({ video }) => {
           </span>
         </p>
       </div>
-      <VideoStatusModal
-        video={video}
-        handler={statusSettings}
-        modalStatus={isModalOpen}
-      />
+      {isModalOpen && (
+        
+        <OutsideClickHandler onOutsideClick={statusSettings}>
+          <VideoStatusModal
+            video={video}
+            handler={statusSettings}
+            modalStatus={isModalOpen}
+          />
+        </OutsideClickHandler>
+      )}
     </div>
   );
 };

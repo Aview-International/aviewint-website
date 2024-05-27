@@ -87,7 +87,7 @@ const Preference = () => {
                     />
                     <div className="ml-3 flex flex-col">
                       <h2 className="text-lg">
-                        {user.youtube.youtubeChannelName}{' '}
+                        {user?.youtube?.youtubeChannelName}{' '}
                         {findLocalDialect(language)?.['localDialect']}
                       </h2>
                       <p className="text-sm">
