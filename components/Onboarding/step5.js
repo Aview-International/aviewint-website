@@ -27,6 +27,7 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
         setIsError(true);
         return;
       }
+      const testUser = Cookies.get('testUser');
       if (testUser) {
         await authCustomUser(token, { languages }, Cookies.get('uid'));
         return router.push('/onboarding?stage=6');
