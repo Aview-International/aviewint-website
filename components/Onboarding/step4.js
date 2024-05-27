@@ -5,7 +5,10 @@ import OnboardingButton from './button';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import ErrorHandler from '../../utils/errorHandler';
-import { updateRequiredServices } from '../../services/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../services/firebase';
 
 const OnboardingStep4 = ({ userData }) => {
   const router = useRouter();

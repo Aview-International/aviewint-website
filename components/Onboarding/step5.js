@@ -7,7 +7,10 @@ import { useEffect, useState } from 'react';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
-import { updateRequiredServices } from '../../services/firebase';
+import {
+  authCustomUser,
+  updateRequiredServices,
+} from '../../services/firebase';
 
 const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
