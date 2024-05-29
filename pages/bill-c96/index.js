@@ -13,7 +13,7 @@ const BillC96 = () => {
     <>
       <SEO
         title="Bill C-96 - AVIEW"
-        description="Bill C-96 reinforces the obligation of businesses offering goods and services. Aview is up to date with ongoing legislation Visit Today to save time!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <Header curPage="Bill C-96" />
       <PreparingForBillC96 />

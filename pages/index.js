@@ -20,7 +20,7 @@ const Home = () => {
     <>
       <SEO
         title="Video Translation & Subtitling - AVIEW"
-        description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <ProgressBar />
       <EasterEgg />
