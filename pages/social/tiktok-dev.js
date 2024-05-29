@@ -1,23 +1,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { completeTikTokAuth } from '../../services/apis';
-import ErrorHandler from '../../utils/errorHandler';
 
 const TikTokConnection = () => {
   const router = useRouter();
   const { code } = router.query;
 
   useEffect(() => {
-    if (code) {
-      (async () => {
-        try {
-          await completeTikTokAuth(code);
-          router.push('/onboarding?stage=3');
-        } catch (error) {
-          ErrorHandler(error);
-        }
-      })();
-    }
+    if (code) router.replace(`/social/instagram?code=${code}`);
   }, [code]);
 
   return (

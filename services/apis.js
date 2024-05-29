@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 import Cookies from 'js-cookie';
 import { decodeJwt } from 'jose';
 import { auth } from './firebase';
+
+let baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
@@ -291,3 +292,9 @@ export const igAccountTest = async () => {
   const res = await axios.post(baseUrl + 'auth/ig-test');
   return res;
 };
+
+export const getTikTokAuthUrl = async () =>
+  (await axiosInstance.get('/auth/tiktok/auth_link')).data;
+
+export const completeTikTokAuth = async (code) =>
+  await axiosInstance.post('auth/tiktok/get-user-token', { code });

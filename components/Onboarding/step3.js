@@ -2,7 +2,11 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
 import OnboardingButton from './button';
-import { authorizeUser, getIgAuthLink } from '../../services/apis';
+import {
+  authorizeUser,
+  getIgAuthLink,
+  getTikTokAuthUrl,
+} from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import Image from 'next/image';
 import WhiteYoutube from '../../public/img/icons/white-youtube.png';
@@ -45,6 +49,15 @@ const OnboardingStep3 = ({ userData }) => {
     }
   };
 
+  const linkTikTokAccount = async () => {
+    try {
+      const url = await getTikTokAuthUrl();
+      window.location.href = url;
+    } catch (error) {
+      ErrorHandler(error);
+    }
+  };
+
   return (
     <div className="m-auto w-[90%]">
       <h2 className="text-center text-3xl font-bold md:text-6xl">
@@ -70,7 +83,8 @@ const OnboardingStep3 = ({ userData }) => {
           account="Instagram"
         />
         <OnBoardingAccounts
-          isAccountConnected={userData?.facebook}
+          isAccountConnected={userData?.tiktok?.tiktokConnected}
+          clickEvent={linkTikTokAccount}
           classes="bg-[#0054ff]"
           account="TikTok"
         />
