@@ -18,7 +18,7 @@ const Careers = () => {
     <>
       <SEO
         title="Careers - AVIEW"
-        description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <ProgressBar />
       <EasterEgg />
