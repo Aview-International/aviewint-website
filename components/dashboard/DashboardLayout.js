@@ -15,11 +15,8 @@ import { useRouter } from 'next/router';
 
 // this component fetches user profile
 export const DashboardContainer = ({ children }) => {
-  const { getProfile, isLoading } = useUserProfile();
-
-  useEffect(() => {
-    getProfile();
-  }, []);
+  // const getProfile = useUserProfile();
+  const { isLoading } = useUserProfile();
 
   return isLoading ? (
     <FullScreenLoader />
@@ -58,7 +55,7 @@ const DashboardStructure = ({ children }) => {
 
   return (
     <DashboardContainer>
-      <main className="flex min-h-screen w-full bg-white-transparent">
+      <main className="flex h-screen w-full bg-white-transparent">
         <DashboardSidebar
           userInfo={userInfo}
           setIsOpen={setIsOpen}
@@ -66,7 +63,7 @@ const DashboardStructure = ({ children }) => {
         />
         <div
           className={`ml-auto flex w-full flex-col items-stretch ${
-            isOpen ? 'lg:w-[calc(100%-170px)]' : 'lg:w-[calc(100%-80px)]'
+            isOpen ? 'lg:w-[calc(100%-190px)]' : 'lg:w-[calc(100%-80px)]'
           }`}
         >
           <DashBoardHeader userInfo={userInfo} />

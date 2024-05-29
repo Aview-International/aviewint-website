@@ -8,7 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
 import { SocketProvider } from '../socket';
-import { setAllLanguages } from '../store/reducers/aview.reducer';
+import useUserProfile from '../hooks/useUserProfile';
+import { setAuthState } from '../store/reducers/user.reducer';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../services/firebase';
+import Cookies from 'js-cookie';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -35,10 +39,13 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 const Layout = ({ Component, pageProps }) => {
+  useUserProfile();
   const dispatch = useDispatch();
   useEffect(() => {
-    // get all languages from the regions array
-    dispatch(setAllLanguages());
+    // prevent blobs from overflowing
+    document
+      .getElementById('__next')
+      .classList.add('overflow-x-clip', 'w-full', 'relative');
     // AOS animation
     AOS.init();
     AOS.refresh();
@@ -46,8 +53,20 @@ const Layout = ({ Component, pageProps }) => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
-    setViewportHeight();
     window.onresize = setViewportHeight;
+  }, []);
+
+  useEffect(() => {
+    // handle auth
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) dispatch(setAuthState(true));
+      else {
+        Cookies.remove('uid');
+        Cookies.remove('session');
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   if (Component.getLayout) {

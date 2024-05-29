@@ -1,5 +1,5 @@
-import Border from '../UI/Border';
-import Loader from '../../public/loaders/ButtonLoader';
+// import Border from '../UI/Border';
+import LoaderAnime from '../UI/loader';
 import Shadow from '../UI/Shadow';
 
 const OnboardingButton = ({
@@ -8,7 +8,7 @@ const OnboardingButton = ({
   onClick,
   disabled,
   theme,
-  extraClasses = 'px-s5',
+  extraClasses = 'px-s2',
 }) => {
   return disabled ? (
     <button
@@ -17,6 +17,13 @@ const OnboardingButton = ({
       disabled
     >
       {children}
+    </button>
+  ) : theme === 'error' ? (
+    <button
+      className="w-full rounded-full bg-red p-3"
+      onClick={isLoading ? () => null : onClick}
+    >
+      {isLoading ? <LoaderAnime /> : children}
     </button>
   ) : (
     <Shadow classes="w-full">
@@ -35,7 +42,7 @@ const OnboardingButton = ({
           }`}
           onClick={isLoading ? () => null : onClick}
         >
-          {isLoading ? <Loader /> : children}
+          {isLoading ? <LoaderAnime /> : children}
         </button>
       </div>
     </Shadow>

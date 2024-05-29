@@ -15,7 +15,7 @@ const Process = () => {
         className={`mx-auto grid max-w-[1050px] grid-cols-1 gap-s6 xl:grid-cols-2`}
       >
         {CAREER_PROCESS.map((process, i) => (
-          <Card key={`card-${i}`} {...process} />
+          <Card key={i} {...process} />
         ))}
       </div>
     </section>

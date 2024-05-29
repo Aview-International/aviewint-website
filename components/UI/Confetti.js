@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react';
-
 import ReactCanvasConfetti from 'react-canvas-confetti';
 
 const Confetti = () => {
@@ -17,8 +16,6 @@ const Confetti = () => {
         particleCount: Math.floor(200 * particleRatio),
       });
   }, []);
-
-  useEffect(() => fire(), []);
 
   const fire = useCallback(() => {
     makeShot(0.25, {
@@ -48,6 +45,8 @@ const Confetti = () => {
       startVelocity: 45,
     });
   }, [makeShot]);
+
+  useEffect(() => fire(), [fire]);
 
   return (
     <ReactCanvasConfetti

@@ -6,35 +6,24 @@ import downChevronGradient from '../../public/img/icons/chevron-down-gradient.sv
 import Card from '../UI/Card';
 
 const MENU = [
-  { 
-    type: 'dropdown', 
-    title: 'Services', 
+  {
+    type: 'dropdown',
+    title: 'Services',
     dropdown: [
-      // {
-      //   name: 'Creators',
-      //   subtext: 'All-in-one content platform',
-      //   dropdownItems: [
-      //     { title: 'Translation', link: '/corporate/scientific' },
-      //     { title: 'Dubbing', link: '/corporate/scientific' },
-      //     { title: 'AI Voice', link: '/corporate/scientific' },
-      //     { title: 'Distribution', link: '/corporate/scientific' },
-      //     { title: 'Brands', link: '/corporate/scientific' },
-      //   ]
-      // },
       {
         name: 'Corporate',
         subtext: 'Services for corporate material',
         dropdownItems: [
           { title: 'Scientific', link: '/corporate/scientific' },
-        { title: 'Financial', link: '/corporate/financial' },
-       { title: 'Business', link: '/corporate/business' },
-       { title: 'Legal', link: '/corporate/legal' },
-       { title: 'Medical', link: '/corporate/medical' },
-        ]
-      } 
-    ], 
+          { title: 'Financial', link: '/corporate/financial' },
+          { title: 'Business', link: '/corporate/business' },
+          { title: 'Legal', link: '/corporate/legal' },
+          { title: 'Medical', link: '/corporate/medical' },
+        ],
+      },
+    ],
   },
-  // { type: 'route', title: 'Pricing', link: '/pricing' },
+  { type: 'route', title: 'Pricing', link: '/pricing' },
   { type: 'route', title: 'Blog', link: '/blog' },
   {
     type: 'dropdown',
@@ -64,48 +53,42 @@ const MENU = [
 export default function DesktopMenu({ curPage }) {
   return (
     <div className="hidden lg:block">
-      {MENU.map((menuItem) => {
-        if (menuItem.type === 'route') {
-          return (
-            <Link href={menuItem.link} key={menuItem.title}>
-              <a
-                className={`text-md hover:gradient-text hover:gradient-1 ml-10 xl:text-lg cursor-pointer ${
-                  curPage === menuItem.title
-                    ? `gradient-text gradient-1`
-                    : `text-white`
-                }`}
-              >
-                {menuItem.title}
-              </a>
-            </Link>
-          );
-        } else if (menuItem.type === 'dropdown') {
-          return (
-            <Dropdown
-              title={menuItem.title}
-              dropdown={menuItem.dropdown}
-              curPage={curPage}
-              key={menuItem.title}
-            />
-          );
-        } else {
-          return null;
-        }
-      })}
+      {MENU.map((menuItem) =>
+        menuItem.type === 'route' ? (
+          <Link href={menuItem.link} key={menuItem.title}>
+            <a
+              className={`text-md hover:gradient-text hover:gradient-1 ml-10 cursor-pointer xl:text-lg ${
+                curPage === menuItem.title
+                  ? `gradient-text gradient-1`
+                  : `text-white`
+              }`}
+            >
+              {menuItem.title}
+            </a>
+          </Link>
+        ) : menuItem.type === 'dropdown' ? (
+          <Dropdown
+            title={menuItem.title}
+            dropdown={menuItem.dropdown}
+            curPage={curPage}
+            key={menuItem.title}
+          />
+        ) : null
+      )}
     </div>
   );
 }
 
 function Dropdown({ title, dropdown, curPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+
   return (
     <span
       className="relative ml-10 inline"
       onMouseEnter={() => setDropdownOpen(true)}
       onMouseLeave={() => setDropdownOpen(false)}
     >
-      <div className="inline-flex items-center gap-1 cursor-pointer">
+      <div className="inline-flex cursor-pointer items-center gap-1">
         <p
           className={`text-md md:text-lg ${
             dropdownOpen || curPage === title
@@ -115,7 +98,9 @@ function Dropdown({ title, dropdown, curPage }) {
         >
           {title}
         </p>
-        <div className={`h-6 w-6 duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}>
+        <div
+          className={`h-6 w-6 duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+        >
           <Image
             src={
               dropdownOpen || curPage === title
@@ -133,44 +118,43 @@ function Dropdown({ title, dropdown, curPage }) {
           dropdownOpen ? 'absolute' : 'hidden'
         }`}
       >
-      { dropdown.length <=1 ? 
-        <Card borderRadius="xl" fullWidth={true}>
-         <div className='w-max grid grid-cols-1 p-4 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black'>
-          { dropdown.map((dropItem, index) => {
-            return (
-              <div className='flex flex-col gap-2' key={index}>
-                <div>
-                 <p className='text-xl'>{dropItem.name}</p>
-                 <p className='text-sm'>{dropItem.subtext}</p>
-                </div>
-                {
-                  dropItem.dropdownItems.map((item) => {
-                    return (
-                      <Link href={item.link} key={item.title}>
-                        <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
-                        {item.title}
-                        </a>
-                      </Link>
-                    )
-                  })
-                }
-              </div>
-            )})
-          }
-         </div> 
-        </Card> : 
-        <Card borderRadius="xl" fullWidth={true}>
-         <div className="grid grid-cols-2 w-max gap-2 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
-           { dropdown.map((item) => (
-            <Link href={item.link} key={item.title}>
-              <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
-                {item.title}
-              </a>
-            </Link>
-           ))}
-         </div>
-        </Card>
-      }
+        {dropdown.length <= 1 ? (
+          <Card borderRadius="xl" fullWidth={true}>
+            <div className="grid w-max grid-cols-1 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
+              {dropdown.map((dropItem, index) => {
+                return (
+                  <div className="flex flex-col gap-2" key={index}>
+                    <div>
+                      <p className="text-xl">{dropItem.name}</p>
+                      <p className="text-sm">{dropItem.subtext}</p>
+                    </div>
+                    {dropItem.dropdownItems.map((item) => {
+                      return (
+                        <Link href={item.link} key={item.title}>
+                          <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
+                            {item.title}
+                          </a>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          </Card>
+        ) : (
+          <Card borderRadius="xl" fullWidth={true}>
+            <div className="grid w-max grid-cols-2 gap-2 rounded-xl bg-opacity-10 bg-gradient-to-b from-[#27273A] to-black p-4">
+              {dropdown.map((item) => (
+                <Link href={item.link} key={item.title}>
+                  <a className="hover:gradient-text hover:gradient-2 text-lg text-white">
+                    {item.title}
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </Card>
+        )}
       </div>
     </span>
   );

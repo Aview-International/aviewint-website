@@ -13,8 +13,8 @@ const OnBoardingAccounts = ({
   return (
     <div className="relative my-s2">
       <button
-        className={`block flex w-full items-center justify-center rounded-full border-2 p-s1.5 text-center ${
-          isAccountConnected ? classes : ''
+        className={`flex w-full items-center justify-center rounded-full border-2 p-s1.5 text-center ${
+          isAccountConnected ? `${classes} size` : ''
         } ${account === 'Facebook' && 'cursor-not-allowed'}`}
         onClick={clickEvent}
       >
@@ -22,7 +22,7 @@ const OnBoardingAccounts = ({
         {account === 'Facebook' && <span> (Coming soon)</span>}
       </button>
       {isAccountConnected && (
-        <span className="absolute -right-12 top-1/2 -translate-y-1/2">
+        <span className="absolute right-0 top-1/2 flex -translate-y-1/2 items-center justify-center">
           <Image src={GreenCheckmark} alt="connect" />
         </span>
       )}

@@ -6,7 +6,6 @@ import BenefitsOfScientificTranslation from '../../components/sections/corporate
 import WhyUseAview from '../../components/sections/reused/WhyUseAview';
 import ScientificBranchesWeWorkWith from '../../components/sections/corporate/scientific/ScientificBranchesWeWorkWith';
 import LanguagesServed from '../../components/sections/reused/LanguagesServed';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import StartGenerating from '../../components/sections/home/StartGenerating';
 import FAQ from '../../components/sections/home/FAQ';
 import Footer from '../../components/navigation/Footer';
@@ -57,7 +56,6 @@ export default function Scientific() {
       <ScientificBranchesWeWorkWith />
       <StartGenerating formId="JhSA3lfn" />
       <FAQ page="landing" />
-      <FeaturedBlogs />
       <Footer curPage="Scientific Documents" />
       <Blobs />
     </>

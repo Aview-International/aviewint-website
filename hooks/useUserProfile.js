@@ -1,63 +1,79 @@
 import Cookies from 'js-cookie';
-import { getUserProfile } from '../pages/api/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../store/reducers/user.reducer';
-import { getMessageStatus, getUserYoutubeChannel } from '../services/apis';
+import {
+  getMessageStatus,
+  getThreadHistory,
+  getUserYoutubeChannel,
+} from '../services/apis';
 import { setYoutubeChannel } from '../store/reducers/youtube.reducer';
-import { setMessageStatus } from '../store/reducers/messages.reducer';
-import { useState } from 'react';
+import { getUserProfile } from '../services/firebase';
+import {
+  setAllAIThreads,
+  setMessageStatus,
+} from '../store/reducers/messages.reducer';
+import { useEffect, useState } from 'react';
 import ErrorHandler from '../utils/errorHandler';
+import { setAllLanguages } from '../store/reducers/aview.reducer';
 
 const useUserProfile = () => {
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const dispatch = useDispatch();
   const uid = Cookies.get('uid');
   const [isLoading, setIsLoading] = useState(true);
 
   const handleGetProfile = async () => {
-    try {
-      const token = Cookies.get('token');
-      await getUserProfile(uid, (resp) =>
-        dispatch(setUser({ ...resp, uid, token }))
-      );
-    } catch (error) {
-      ErrorHandler(error);
-    }
+    await getUserProfile(uid, (resp) => dispatch(setUser({ ...resp, uid })));
   };
 
   const handleGetYoutubeChannel = async () => {
-    try {
-      const res = await getUserYoutubeChannel(uid);
-      const data = {
-        id: res.id,
-        description: res.snippet.description,
-        title: res.snippet.title,
-        thumbnail: res.snippet.thumbnails.default.url,
-      };
-      dispatch(setYoutubeChannel(data));
-    } catch (error) {
-      console.log(error);
-    }
+    const res = await getUserYoutubeChannel();
+    if (res === 'No youtube channel connected') return;
+    const data = {
+      id: res.id,
+      description: res.snippet.description,
+      title: res.snippet.title,
+      thumbnail: res.snippet.thumbnails.default.url,
+    };
+    dispatch(setYoutubeChannel(data));
   };
 
   const handleGetMessageStatus = async () => {
-    try {
-      const res = await getMessageStatus(uid);
-      dispatch(setMessageStatus(res));
-    } catch (error) {
-      console.log(error);
-    }
+    const res = await getMessageStatus();
+    dispatch(setMessageStatus(res));
   };
 
-  const getProfile = async () => {
-    await Promise.all([
-      handleGetProfile(),
-      handleGetYoutubeChannel(),
-      handleGetMessageStatus(),
-    ]);
-    setIsLoading(false);
+  useEffect(() => {
+    // get all languages from the regions array
+    dispatch(setAllLanguages());
+
+    // get all user related information
+    (async () => {
+      try {
+        if (isLoggedIn) {
+          await Promise.all([
+            handleGetProfile(),
+            handleGetYoutubeChannel(),
+            handleGetMessageStatus(),
+            getThread(),
+          ]);
+        }
+        setIsLoading(false);
+      } catch (error) {
+        ErrorHandler(error);
+        setIsLoading(false);
+      }
+    })();
+  }, [isLoggedIn]);
+
+  const getThread = async () => {
+    const res = await getThreadHistory();
+    dispatch(setAllAIThreads(res));
   };
 
-  return { getProfile, isLoading };
+  const sidebarTrigger = () => getThread();
+
+  return { sidebarTrigger, isLoading };
 };
 
 export default useUserProfile;

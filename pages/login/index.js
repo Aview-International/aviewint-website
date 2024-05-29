@@ -8,22 +8,21 @@ import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
-import { checkUserEmail, signInWithGoogle } from '../api/firebase';
-import ButtonLoader from '../../public/loaders/ButtonLoader';
+import ButtonLoader from '../../components/UI/loader';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';
 import { emailValidator } from '../../utils/regex';
 import OnboardingButton from '../../components/Onboarding/button';
-import {
-  getAuth,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
-} from 'firebase/auth';
+import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
-import { verifyAuthStatus } from '../../utils/authStatus';
+import {
+  signInWithGoogle,
+  checkUserEmail,
+  auth,
+} from '../../services/firebase';
 
 const Login = () => {
   const router = useRouter();
@@ -36,21 +35,14 @@ const Login = () => {
   });
 
   useEffect(() => {
-    const token = Cookies.get('token');
-    if (!verifyAuthStatus(token)) {
-      Cookies.remove('token');
-    }
-  }, []);
-
-  useEffect(() => {
     const { query } = router;
     if (query.apiKey && query.oobCode && query.mode === 'signIn')
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleRedirect = (_tokenResponse) => {
-    Cookies.set('token', _tokenResponse.idToken, { expires: 3 });
-    Cookies.set('uid', _tokenResponse.localId, { expires: 3 });
+  const handleRedirect = async (_tokenResponse) => {
+    Cookies.set('uid', _tokenResponse.localId);
+    Cookies.set('session', _tokenResponse.idToken);
     dispatch(
       setUser({
         email: _tokenResponse.email,
@@ -64,8 +56,8 @@ const Login = () => {
     const prevRoute = Cookies.get('redirectUrl');
     if (prevRoute) {
       Cookies.remove('redirectUrl');
-      router.push(decodeURIComponent(prevRoute));
-    } else router.push('/dashboard');
+      window.location.href = decodeURIComponent(prevRoute);
+    } else window.location.href = '/dashboard';
   };
 
   const handleLoginWithGoogle = async () => {
@@ -83,7 +75,6 @@ const Login = () => {
 
   const handleSSOWithCode = () => {
     try {
-      const auth = getAuth();
       if (isSignInWithEmailLink(auth, window.location.href)) {
         let email = window.localStorage.getItem('emailForSignIn');
         if (!email)

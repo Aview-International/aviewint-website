@@ -47,7 +47,7 @@ import tailoredForCreators from '../public/img/graphics/tailored-for-creators.pn
 
 // Our Team
 import akshay from '../public/img/team/akshay.png';
-import andrew from '../public/img/team/andrew.png';
+import chandhu from '../public/img/team/chandhu.png';
 import david from '../public/img/team/david.png';
 import garnet from '../public/img/team/garnet.png';
 import victor from '../public/img/team/victor.png';
@@ -63,19 +63,18 @@ import { emailValidator } from '../utils/regex';
 import home from '../public/img/icons/home.svg';
 import ai_voice from '../public/img/icons/ai_voice.svg';
 import upload from '../public/img/icons/upload.svg';
-import billing from '../public/img/icons/billing.svg';
+// import billing from '../public/img/icons/billing.svg';
 import history from '../public/img/icons/history.svg';
 import settings from '../public/img/icons/settings.svg';
-import messages from '../public/img/icons/messages.svg';
-import referral from '../public/img/icons/referral.svg';
+// import messages from '../public/img/icons/messages.svg';
+// import referral from '../public/img/icons/referral.svg';
+import assistance from '../public/img/icons/assistance.svg';
 
 //onBoarding Icons
 import asia from '../public/img/graphics/asia.svg';
 import europe from '../public/img/graphics/europe.svg';
 import north_america from '../public/img/graphics/north_america.svg';
 import south_america from '../public/img/graphics/south_america.svg';
-import air_delivery from '../public/img/graphics/air-delivery.png';
-import global_location from '../public/img/graphics/global-location.png';
 import Personal from '../public/img/graphics/user.webp';
 import Team from '../public/img/graphics/team.webp';
 import Brand from '../public/img/graphics/brand_desing_1.webp';
@@ -100,16 +99,6 @@ import Korean from '../public/img/icons/korean.svg';
 import Canada from '../public/img/icons/canada.svg';
 import Portugal from '../public/img/icons/portugal.svg';
 import Uk from '../public/img/icons/uk.svg';
-
-//Waitlist Page Images
-import group from '../public/img/waitlist/group.svg';
-import clock from '../public/img/waitlist/clock.svg';
-import handshake from '../public/img/waitlist/handshake.svg';
-import Step1 from '../public/img/waitlist/Step1.svg';
-import Step2 from '../public/img/waitlist/Step2.svg';
-import Step3 from '../public/img/waitlist/Step3.svg';
-import Step4 from '../public/img/waitlist/Step4.svg';
-import Step5 from '../public/img/waitlist/Step5.svg';
 
 //new landing-page main-section images
 import brand_collab from '../public/img/graphics/new-landing-images/brand_collab.webp';
@@ -143,6 +132,28 @@ import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial
 import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
 import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
 import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+import million_teachers from '../public/img/graphics/corporate/1-million-teachers.png';
+import maverick from '../public/img/graphics/corporate/maverick.png';
+import seek_discomfort from '../public/img/graphics/corporate/seek-discomfort.png';
+import underknown from '../public/img/graphics/corporate/underknown.png';
+import valnet from '../public/img/graphics/corporate/valnet.png';
+import wayfound from '../public/img/graphics/corporate/wayfound.png';
+import next from '../public/img/graphics/corporate/next.png';
+
+// custom pricing images
+import brand_deals from '../public/img/graphics/brand_deals.svg';
+import content_distribution from '../public/img/graphics/content_distribution.svg';
+import growth_channels from '../public/img/graphics/global_channel.svg';
+import multi_language from '../public/img/graphics/multi_language.svg';
+import video_analytics from '../public/img/graphics/video_analytics.svg';
+import voice_dubbing from '../public/img/graphics/voice_dubbing.svg';
+
+// AI-Tools page for the website
+import caption from '../public/img/graphics/caption.png';
+import text_to_speech from '../public/img/graphics/text-to-speech.png';
+import voice_recognition from '../public/img/graphics/voice-recognition.png';
+import voice_to_text from '../public/img/graphics/voice-to-text.png';
+import youtube_ai from '../public/img/graphics/youtube.png';
 
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
@@ -153,6 +164,23 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_6,
   testimonial_7,
   testimonial_8,
+];
+
+export const PRICING_PAGE_TESTIMONIALS_1 = [
+  testimonial_1,
+  testimonial_3,
+  testimonial_5,
+  testimonial_6,
+];
+
+export const PRICING_PAGE_TESTIMONIALS_2 = [
+  next,
+  seek_discomfort,
+  valnet,
+  million_teachers,
+  wayfound,
+  underknown,
+  maverick,
 ];
 
 export const LANDING_PAGE_TYPES = [
@@ -205,6 +233,39 @@ export const LANDING_PAGE_TYPES = [
     imageWidth: 400,
     imageHeight: 400,
     hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
+  },
+];
+
+export const AI_Tools_Page = [
+  {
+    title: 'Context Based Subtitle Generator',
+    description:
+      'Unlock worldwide engagement by effortlessly translating your content and generating subtitles. Make your message accessible and impactful across global audiences with ease.',
+    img: caption,
+  },
+  {
+    title: 'Multilingual Voiceover Generator',
+    description:
+      'Elevate your contents global appeal by seamlessly translating and generating voiceovers in multiple languages. Connect with audiences worldwide and amplify your channel\u0027s reach.',
+    img: voice_recognition,
+  },
+  {
+    title: 'Speech-to-Text Conversion',
+    description:
+      'Streamline your content creation by effortlessly converting speech into text, paving the way for global translation and accessibility. Expand your reach and connect with audiences worldwide.',
+    img: voice_to_text,
+  },
+  {
+    title: 'Text-to-Speech Conversion',
+    description:
+      'Boost your video\u0027s global appeal by translating text into engaging spoken content across a multitude of languages. Elevate accessibility and captivate audiences worldwide.',
+    img: text_to_speech,
+  },
+  {
+    title: 'YouTube Video Downloader',
+    description:
+      'Effortlessly download your video\u0027s for seamless translation and adaptation, enabling your global audience to enjoy your content in their native languages.',
+    img: youtube_ai,
   },
 ];
 
@@ -367,10 +428,10 @@ export const ROUTES = [
     id: 'route-3',
     title: 'Resources',
     routes: [
-      // {
-      //   text: 'Pricing',
-      //   route: '/pricing',
-      // },
+      {
+        text: 'Pricing',
+        route: '/pricing',
+      },
       {
         text: 'Blog',
         route: '/blog',
@@ -386,10 +447,6 @@ export const ROUTES = [
       {
         text: 'Contact',
         route: '/contact',
-      },
-      {
-        text: 'Join Waitlist',
-        route: '/waitlist',
       },
     ],
   },
@@ -667,10 +724,10 @@ export const TEAM = [
       },
       {
         id: 'member-1',
-        name: 'Andrew Qiao',
+        name: 'Chandhu Mamidi',
         description: 'Software Engineer',
-        picture: andrew,
-        linkedin: 'https://www.linkedin.com/in/andrewqiao/',
+        picture: chandhu,
+        linkedin: 'https://www.linkedin.com/in/chandhudev/',
       },
     ],
   },
@@ -881,47 +938,6 @@ export const VOICEOVER_FAQ = [
     Receive translated short-form content that can be uploaded to YouTube, Instagram, TikTok, and Facebook. The file will be sent within 48 hours and dubbed or translated with subtitles. Market in several languages!
     4. Document Translation: Get your business or technical documents translated by our certified professionals. We provide scientific, business, legal, and financial document translations.`,
     _id: 'q3',
-  },
-];
-
-export const CREATORS_SLIDERS = [
-  {
-    label: 'Uploads per month',
-    max: 30,
-    values: false,
-    name: 'uploadsPerMonth',
-  },
-  {
-    label: 'Average View Count per Month',
-    values: [
-      '1K',
-      '2K',
-      '3.5K',
-      '5K',
-      '7.5K',
-      '10K',
-      '20K',
-      '35k',
-      '50K',
-      '75K',
-      '100K',
-      '200K',
-      '350k',
-      '500K',
-      '750k',
-      '1M',
-      '2M',
-      '5M',
-      '5M+',
-    ],
-    max: 18,
-    name: 'averageViewCount',
-  },
-  {
-    label: 'Languages',
-    values: false,
-    max: 10,
-    name: 'languages',
   },
 ];
 
@@ -1245,55 +1261,6 @@ export const COUNTRIES = [
   'Åland Islands',
 ];
 
-export const WAITLIST_HOVER_ITEMS = [
-  {
-    title: 'Discover Global Fans',
-    image: group,
-    description:
-      'Unlock new international audiences with our seamless translation and localization services. Aview\u0027s one-click solution ensures your content resonates worldwide, expanding your fan base like never before.',
-  },
-  {
-    title: 'Effortless Expansion, Cost-Effective Growth',
-    image: clock,
-    description:
-      'Why struggle with expensive and time-consuming alternatives? Aview manages your international channel, providing professional translations and voiceover dubbing without breaking the bank. Focus on creating; we\u0027ll handle the rest.',
-  },
-  {
-    title: 'Brand Partnerships & Sponsorships Made Easy',
-    image: handshake,
-    description:
-      'Align your content with the perfect brand deals and sponsorship opportunities. Aview\u0027s global distribution network connects you with the right partners, maximizing your monetization potential across borders.',
-  },
-];
-
-export const WAITLIST_STAGGERED_ITEMS = [
-  {
-    title: 'Step 1',
-    image: Step1,
-    description: 'We integrate your social media channels to one place',
-  },
-  {
-    title: 'Step 2',
-    image: Step2,
-    description: 'Choose what audiences you want to reach',
-  },
-  {
-    title: 'Step 3',
-    image: Step3,
-    description: 'Select what content you want monetized',
-  },
-  {
-    title: 'Step 4',
-    image: Step4,
-    description: 'We distribute your content so you don’t have to',
-  },
-  {
-    title: 'Step 5',
-    image: Step5,
-    description: 'Connect with international brands',
-  },
-];
-
 export const OUR_TRANSLATION_SERVICES = [
   {
     id: 'service-1',
@@ -1405,21 +1372,6 @@ export const ONBOARDING_STAGE_1 = [
   },
 ];
 
-export const ONBOARDING_STAGE_3 = [
-  {
-    image: air_delivery,
-    title: 'International Channels',
-    content:
-      'Monetize your content internationally through translations, dubbing and redistribution.',
-  },
-  {
-    image: global_location,
-    title: 'Native Language',
-    content:
-      'Monetize your content through short form videos, subtitling and transcriptions.',
-  },
-];
-
 export const AVERAGE_MONTHLY_VIEWS = [
   '0 - 1,000',
   '1,000 - 5,000',
@@ -1464,30 +1416,20 @@ export const DASHBOARD_NAVLINKS = [
     route: () => '/dashboard/upload',
   },
   {
+    text: 'Assistance',
+    image: assistance,
+    route: () => '/dashboard/chat-assist',
+  },
+  {
     text: 'AI Voice',
     image: ai_voice,
     route: () => '/dashboard/ai-voice',
-  },
-  // {
-  //   text: 'Messages',
-  //   image: messages,
-  //   route:() => '/dashboard/messages',
-  // },
-  {
-    text: 'Billing',
-    image: billing,
-    route: () => '/dashboard/billing',
   },
   {
     text: 'History',
     image: history,
     route: () => '/dashboard/history',
   },
-  // {
-  //   text: 'Referral',
-  //   image: referral,
-  //   route: () => '/dashboard/referral',
-  // },
   {
     text: 'Settings',
     image: settings,
@@ -1663,4 +1605,212 @@ export const VOICEPROMPTS = [
   "Entrepreneurship is the courage to dream and the will to create. It's about turning ideas into reality, about innovation and resilience. Entrepreneurs are the trailblazers of our time, shaping the future with vision and determination.",
   "Gardening is a labor of love, a connection with nature. From planting seeds to nurturing growth, it's a celebration of life and renewal. Gardening teaches us patience and care, reminding us of the simple pleasures of tending to the earth.",
   'Cultural festivals are a kaleidoscope of traditions and colors. They are a display of heritage and joy, a celebration of diversity and unity. Festivals bring us together, sharing the richness of our cultures and the bond of human connection.',
+];
+
+export const CUSTOM_PRICING_FEATURES = [
+  {
+    image: growth_channels,
+    text: 'Global Channel Management',
+  },
+  {
+    image: video_analytics,
+    text: 'Video Analytics',
+  },
+  {
+    image: brand_deals,
+    text: 'International Brand Deals',
+  },
+  {
+    image: content_distribution,
+    text: 'Content Distribution',
+  },
+  {
+    image: multi_language,
+    text: '10 multi-language AI voiceovers',
+  },
+  {
+    image: voice_dubbing,
+    text: 'AI Voice Dubbing',
+  },
+];
+
+export const PLANS_BREAKDOWN = [
+  {
+    section: 'Basic video services',
+    desc: [
+      {
+        title: 'Relevant Content Hashtag Generation',
+        columns: ['50 hashtags', '100 hashtags', '200 hashtags'],
+        hoverText:
+          "Elevate your content's impact with intuitive, tailored hashtag creation",
+      },
+      {
+        title: 'Title and Description Generator',
+        columns: ['1', '5', '15'],
+        hoverText:
+          "Craft viral-worthy titles and descriptions effortlessly, sparking your audience's interest",
+      },
+      {
+        title: 'Video Script Generator',
+        columns: ['Up to 5 minutes', 'Up to 45 minutes', 'Up to 300 minutes'],
+        hoverText:
+          "Craft viral-worthy titles and descriptions effortlessly, sparking your audience's interest",
+      },
+    ],
+  },
+  {
+    section: 'Dubbing Services',
+    desc: [
+      {
+        title: 'Minutes of Translated Dubbing (AI)',
+        columns: ['5 minutes', '45 minutes', '300 minutes'],
+        hoverText:
+          'Your voice, in any language. Choose AI-dubbing with your voice or select from our diverse voice roster',
+      },
+      {
+        title: 'Context-Based Translated Subtitles',
+        columns: ['5 minutes', '45 minutes', '300 minutes'],
+        hoverText: '',
+      },
+      {
+        title: 'Trained Multi-Language Voiceovers',
+        columns: ['1 voice', '3 voices', '5 voices'],
+        hoverText:
+          'Give every character a global voice. Multi-language voiceovers for universal appeal',
+      },
+      {
+        title: 'Languages',
+        columns: ['50', '50', '50'],
+        hoverText: '',
+      },
+      {
+        title: 'International Video Analytics',
+        columns: [null, true, true],
+        hoverText: '',
+      },
+    ],
+  },
+  {
+    section: 'Short Form Services',
+    desc: [
+      {
+        title: 'Content Distribution',
+        columns: [null, '5 videos', '30 videos'],
+        hoverText:
+          'Click to connect with the world. Distribute your content globally, effortlessly',
+      },
+      {
+        title: 'Cultural Sensitivity Filter',
+        columns: [null, null, true],
+        hoverText:
+          'Culturally smart content. Automatically filter sensitive language for global relevance.',
+      },
+      {
+        title: 'Short-Form Content',
+        columns: [null, '1 short', '7 shorts'],
+        hoverText: '',
+      },
+      {
+        title: 'Human Review',
+        columns: [null, null, true],
+
+        hoverText: '',
+      },
+    ],
+  },
+  {
+    section: 'Global Management Services',
+    desc: [
+      {
+        title: 'Global Channel Management',
+        columns: [null, null, true],
+        hoverText: '',
+      },
+      {
+        title: 'International Brand Deals',
+        columns: [null, true, true],
+        hoverText: '',
+      },
+      {
+        title: 'Profit Sharing',
+        columns: [null, '0.5%', '2%'],
+        hoverText: '',
+      },
+    ],
+  },
+];
+
+export const SUBSCRIPTION_PLANS_DESC = [
+  {
+    description: 'Essential tools for emerging creators.',
+    options: [
+      '50 languages',
+      '5 Minutes of Context-Based Translations',
+      '5 Minutes of Translated AI Dubbing',
+      '1 AI trained multi-language voiceover',
+    ],
+  },
+  {
+    description: 'Elevate your content professionally.',
+    options: [
+      'Content Distribution',
+      '45 Minutes of Context-Based Translations',
+      '45 Minutes of Translated AI Dubbing',
+      '3 AI trained multi-language voiceovers',
+    ],
+    sliderValueMax: 1,
+    sliderValueMin: 0,
+  },
+  {
+    description: 'Maximize reach, impact globally.',
+    options: [
+      'Cultural Sensitivity Filter',
+      '300 Minutes of Context-Based Translations',
+      '300 Minutes of Translated AI Dubbing',
+      'Global channel management',
+    ],
+    sliderValueMax: 7,
+    sliderValueMin: 2,
+  },
+];
+
+export const CREATORS_SLIDERS = [
+  {
+    label: 'Uploads per month',
+    max: 30,
+    values: false,
+    name: 'uploadsPerMonth',
+  },
+  {
+    label: 'Average View Count per Month',
+    values: [
+      '1K',
+      '2K',
+      '3.5K',
+      '5K',
+      '7.5K',
+      '10K',
+      '20K',
+      '35k',
+      '50K',
+      '75K',
+      '100K',
+      '200K',
+      '350k',
+      '500K',
+      '750k',
+      '1M',
+      '2M',
+      '5M',
+      '5M+',
+    ],
+    max: 18,
+    name: 'averageViewCount',
+  },
+  {
+    label: 'Languages',
+    values: false,
+    max: 10,
+    name: 'languages',
+  },
 ];

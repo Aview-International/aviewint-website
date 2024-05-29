@@ -4,7 +4,6 @@ import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import FAQ from '../../components/sections/home/FAQ';
 import GenerateAviewForCompany from '../../components/sections/corporate/GenerateAviewForCompany';
-import FeaturedBlogs from '../../components/sections/reused/FeaturedBlogs';
 import OurCorporateServices from '../../components/sections/corporate/OurCorporateServices';
 import CompaniesWeWorkedWith from '../../components/sections/corporate/CompaniesWeWorkedWith';
 import CorporateTranslations from '../../components/sections/corporate/CorporateTranslations';
@@ -36,7 +35,6 @@ const Corporate = () => {
       <HowItWorks />
       <GenerateAviewForCompany />
       <FAQ page="corporate" />
-      <FeaturedBlogs />
       <Footer curPage="Corporate" />
       <Blobs />
     </>

@@ -4,15 +4,30 @@ import SubmitVideos from '../../components/dashboard/SubmitVideos';
 import PageTitle from '../../components/SEO/PageTitle';
 import { toast } from 'react-toastify';
 import SelectVideos from '../../components/dashboard/SelectVideos';
-import { createANewJob, updateRequiredServices } from '../api/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import { setInstagramVideos } from '../../store/reducers/instagram.reducer';
-import { getChannelVideos, getIgVideos } from '../../services/apis';
+import {
+  getChannelVideos,
+  getIgVideos,
+  getJobsHistory,
+} from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
+import {
+  setCompletedJobs,
+  setPendingJobs,
+} from '../../store/reducers/history.reducer';
+import Cookies from 'js-cookie';
+import {
+  updateRequiredServices,
+  createANewJob,
+  subscribeToHistory,
+} from '../../services/firebase';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
+  const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
   const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
     (state) => state.youtube
@@ -45,7 +60,7 @@ const DashboardHome = () => {
       }));
       dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
@@ -59,15 +74,51 @@ const DashboardHome = () => {
         setInstagramVideos({ dataFetched: true, videos: response.data })
       );
     } catch (error) {
-      ErrorHandler(error);
+      // ErrorHandler(error);
     }
   };
 
   useEffect(() => {
-    if (!instagramDataFetched && userData.instagram?.instagramConnected)
-      getInstagramVideos();
-    if (!youtubeDataFetched && channelDetails.id) getYoutubeVideos();
-  }, [channelDetails, userData]);
+    (async () => {
+      try {
+        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
+          await getInstagramVideos();
+        }
+
+        if (!youtubeDataFetched && channelDetails.id) {
+          await getYoutubeVideos();
+        }
+      } catch (error) {
+        ErrorHandler(error);
+      }
+    })();
+  }, [channelDetails.id, userData.instagram?.instagramConnected]);
+
+  useEffect(() => {
+    (async () => {
+      if (isLoggedIn) {
+        try {
+          const completedArray = await getJobsHistory();
+          dispatch(setCompletedJobs(completedArray));
+        } catch (error) {
+          ErrorHandler(error);
+        }
+      }
+    })();
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    const unsubscribe = subscribeToHistory(uid, (data) => {
+      const pendingArray = data
+        ? Object.values(data).sort(
+            (a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)
+          )
+        : [];
+      dispatch(setPendingJobs(pendingArray));
+    });
+
+    return () => unsubscribe(); // cleanup
+  }, []);
 
   const handleSubmit = async () => {
     if (payload.languages.length < 1) {
@@ -109,8 +160,8 @@ const DashboardHome = () => {
 
   return (
     <>
+      <PageTitle title="Dashboard" />
       <div className="mx-auto max-w-[1200px]">
-        <PageTitle title="Dashboard" />
         {isSelected ? (
           <SubmitVideos
             setIsSelected={setIsSelected}

@@ -13,11 +13,14 @@ const VideoFrame = ({
   type,
   selected,
   isReel,
+  videoUrl,
 }) => {
   return (
     <div
       className="cursor-pointer justify-self-center"
-      onClick={() => handleVideos({ id, caption, thumbnail, timestamp, type })}
+      onClick={() =>
+        handleVideos({ id, caption, videoUrl, thumbnail, timestamp, type })
+      }
     >
       <div className="mb-s1 flex text-lg">
         {type === 'youtube' && (
@@ -51,8 +54,8 @@ const VideoFrame = ({
       <div className="flex">
         <div>
           <p className="mb-s1 text-lg">
-            {caption.substring(0, 51)}
-            {caption.length > 51 && '...'}
+            {caption?.substring(0, 51)}
+            {caption?.length > 51 && '...'}
           </p>
           <p className="text-sm">
             <span>

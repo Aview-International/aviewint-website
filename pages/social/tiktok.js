@@ -10,6 +10,7 @@ const TikTokConnection = () => {
   const uid = Cookies.get('uid');
 
   useEffect(() => {
+    console.log(first)
     if (code) {
       (async () => {
         // get short lived acces token

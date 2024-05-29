@@ -72,12 +72,12 @@ const OnboardingStep3 = ({ userData }) => {
         <OnBoardingAccounts
           isAccountConnected={userData?.facebook}
           classes="bg-[#0054ff]"
-          account="Facebook"
+          account="TikTok"
         />
         <OnBoardingAccounts
           isAccountConnected={userData?.facebook}
           classes="bg-[#0054ff]"
-          account="TikTok"
+          account="Facebook"
         />
       </div>
       <div className="mx-auto mt-s4 w-[min(360px,90%)]">

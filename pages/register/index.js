@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
-import { createNewUser, signInWithGoogle } from '../api/firebase';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import PageTitle from '../../components/SEO/PageTitle';
@@ -15,14 +14,15 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import { registerUser, singleSignOnRegister } from '../../services/apis';
 import {
-  getAuth,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
-} from 'firebase/auth';
+  igAccountTest,
+  registerUser,
+  singleSignOnRegister,
+} from '../../services/apis';
+import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import ButtonLoader from '../../public/loaders/ButtonLoader';
+import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
+import ButtonLoader from '../../components/UI/loader';
 
 const Register = () => {
   const router = useRouter();
@@ -46,7 +46,7 @@ const Register = () => {
       })
     );
 
-    Cookies.set('token', _tokenResponse.idToken);
+    Cookies.set('session', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
     await createNewUser(
       _tokenResponse.localId,
@@ -76,7 +76,6 @@ const Register = () => {
   };
 
   const handleSSOWithCode = () => {
-    const auth = getAuth();
     if (isSignInWithEmailLink(auth, window.location.href)) {
       let email = window.localStorage.getItem('emailForSignIn');
       if (!email)
@@ -103,10 +102,25 @@ const Register = () => {
     }
   };
 
+  const handleIgTestLogin = async () => {
+    try {
+      const res = await igAccountTest();
+      Cookies.set('session', res.data.idToken, { expires: 3 });
+      Cookies.set('uid', res.data.uid, { expires: 3 });
+      Cookies.set('testUser', true, { expires: 3 });
+      router.push('/onboarding?stage=1');
+    } catch (error) {
+      ErrorHandler(error);
+    }
+  };
+
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
     try {
+      if (email.trim() === 'instagramverification@aviewint.com') {
+        return handleIgTestLogin();
+      }
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnRegister(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });

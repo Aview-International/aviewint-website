@@ -55,7 +55,7 @@ const FormInput = ({
             name={name}
             type={type || 'text'}
             placeholder={placeholder}
-            className={`peer w-full rounded-[5px] px-s1 py-2 text-white focus:outline-none ${
+            className={`peer w-full rounded-[5px] px-s1 py-2 focus:outline-none ${
               bgColor ? bgColor : 'bg-black'
             } ${textBlack ? 'text-black' : 'text-white'}`}
             onChange={onChange}

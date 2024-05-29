@@ -9,13 +9,13 @@
  * @author Victor Ogunjobi
  */
 
-const RadioInput = ({ chosenValue, onChange, name, value }) => {
+const RadioInput = ({ chosenValue, onChange, name, value, label }) => {
   return (
     <label
-      className={`flex cursor-pointer items-center rounded-full text-xl text-white`}
+      className={`flex cursor-pointer items-center rounded-full text-white`}
     >
       <span
-        className={`mr-4 flex h-5 w-5 items-center justify-center rounded-full ${
+        className={`flex h-5 w-5 items-center justify-center rounded-full ${
           value === chosenValue ? 'gradient-1' : 'bg-white'
         }`}
       >
@@ -32,7 +32,7 @@ const RadioInput = ({ chosenValue, onChange, name, value }) => {
         value={value}
         className="hidden"
       />
-      {value}
+      <span className="pl-2">{label}</span>
     </label>
   );
 };
