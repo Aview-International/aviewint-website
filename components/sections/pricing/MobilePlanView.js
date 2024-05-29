@@ -44,14 +44,14 @@ const MobilePlanView = ({ plans, sliderValue }) => {
           ref={headerRef}>
 
         {planTypes.map((header, index) => (
-          <div key={index} className={`rounded-lg p-5 text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray'}`}> 
+          <div key={index} className={`rounded-lg py-5 px-1  text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray'}`}> 
             {header}
           </div>
         ))}
       </div>
       <div className="bg-white/65 mx-4 mb-10 border-x-0 border-y border-t-0"></div>
       {plans.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="mb-14 p-4">
+        <div key={sectionIndex} className="mb-14">
           <div className="mb-8 text-xl font-bold">{section.section}</div>
           {section.desc.map((feature, featureIndex) => (
             <div key={featureIndex} className="mb-8">
@@ -77,21 +77,21 @@ const MobilePlanView = ({ plans, sliderValue }) => {
                       layout="fixed"
                     />
                     {visibleHoverText === sectionIndex + '-' + featureIndex && (
-                      <div className="absolute right-full top-0 z-10 mr-2 w-48 rounded-md bg-gray-1 p-s1 text-xs text-white group-hover:inline">
+                      <div className="absolute right-full top-0 z-10 mr-2 w-48 rounded-md bg-gray-1 p-s1 text-xs text-white group-hover:inline"> 
                         {feature.hoverText}
-                      </div>
+                      </div> //extra info section
                     )}
                   </div>
                 )}
               </div>
 
-              <div className="grid grid-cols-3 gap-2 text-sm border-b border-gray-100">
+              <div className="grid grid-cols-3 text-center text-sm border-b border-gray-100">
                 {feature.columns.map((col, colIndex) => {
                   // Determine the background color based on the plan and slider value
                   const bgColor = colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'; //bg-white-transparent is the highlight
 
                   return (
-                    <div key={colIndex} className={`p-12 text-center ${bgColor}`}>
+                    <div key={colIndex} className={`py-10 px-2 text-center ${bgColor}`}>
                       {col === true ? (
                         <Image src={Check} alt="" width={25} height={20} />
                       ) : col === null ? (
