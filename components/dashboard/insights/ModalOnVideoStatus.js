@@ -14,7 +14,7 @@ const ModalOnVideoStatus = ({ video }) => {
   return (
     <div className="relative mb-s2">
       <div className="my-1 flex justify-between">
-        <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold">
+        <h4 className="w-[85%] overflow-hidden text-ellipsis whitespace-nowrap text-lg font-semibold ">
           {video.videoData.caption.replace(/\.mp4$/i, '')}
         </h4>
         <MoreSettings handler={statusSettings} />
@@ -29,7 +29,7 @@ const ModalOnVideoStatus = ({ video }) => {
         <p>{getWidthPercentage(video.status)} %</p>
         <p>
           <span className="font-medium">status{` :`}</span>
-          <span className="ml-1 rounded-md bg-white-transparent">
+          <span className="ml-1 rounded-md bg-white-transparent p-1">
             {video.status}
           </span>
         </p>
