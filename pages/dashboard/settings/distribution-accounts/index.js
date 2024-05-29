@@ -84,7 +84,7 @@ const DistriubtionAccounts = () => {
           }
           isHeaderSection={true}
         />
-        {DISTRIBUTION_ACCOUNTS.map((item, index) => (
+        {/* {DISTRIBUTION_ACCOUNTS.map((item, index) => (
           <Container
             key={`accounts-${index}`}
             left={
@@ -110,7 +110,7 @@ const DistriubtionAccounts = () => {
               </div>
             }
           />
-        ))}
+        ))} */}
       </div>
       {isNewAccount ? (
         <div className="absolute inset-0 flex items-center justify-center bg-black/90">
