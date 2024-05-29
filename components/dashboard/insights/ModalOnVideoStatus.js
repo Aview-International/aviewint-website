@@ -29,7 +29,7 @@ const ModalOnVideoStatus = ({ video }) => {
         <p>{getWidthPercentage(video.status)} %</p>
         <p>
           <span className="font-medium">status{` :`}</span>
-          <span className="ml-1 rounded-md bg-white-transparent p-1">
+          <span className="ml-1 rounded-md bg-white-transparent">
             {video.status}
           </span>
         </p>

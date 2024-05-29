@@ -14,14 +14,6 @@ const Insights = () => {
       value: completedJobs.length ?? 0,
       description: 'Videos Completed',
     },
-    // {
-    //   value: 'N/A',
-    //   description: 'Coming Soon',
-    // },
-    // {
-    //   value: 'N/A',
-    //   description: 'Coming Soon',
-    // },
   ];
 
   return (
