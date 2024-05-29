@@ -76,6 +76,7 @@ const Pricing = ({ plans }) => {
         isChecked={toggleIsChecked}
         handleChange={handleChange}
         allPlans={newPlans}
+        sliderValue={sliderValue}
       />
       <ScrollToTopButton />
       <FAQ page="landing" />
