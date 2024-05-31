@@ -2,8 +2,13 @@ import Image from 'next/image';
 import CheckMark from '../../public/img/icons/white-check-circle.svg';
 import YouTube from '../../public/img/icons/youtube-red.svg';
 import Instagram from '../../public/img/icons/instagram-2.svg';
-import { Fragment } from 'react';
+import TikTok from '../../public/img/icons/tiktok.svg';
 
+const icons = {
+  youtube: { title: 'Youtube Video', img: YouTube },
+  instagram: { title: 'Instagram Reel', img: Instagram },
+  tiktok: { title: 'TikTok Video', img: TikTok },
+};
 const VideoFrame = ({
   caption,
   thumbnail,
@@ -12,39 +17,39 @@ const VideoFrame = ({
   handleVideos,
   type,
   selected,
-  isReel,
   videoUrl,
+  permalink,
 }) => {
   return (
     <div
       className="cursor-pointer justify-self-center"
       onClick={() =>
-        handleVideos({ id, caption, videoUrl, thumbnail, timestamp, type })
+        handleVideos({
+          id,
+          caption,
+          videoUrl,
+          thumbnail,
+          timestamp,
+          type,
+          permalink,
+        })
       }
     >
       <div className="mb-s1 flex text-lg">
-        {type === 'youtube' && (
-          <Fragment>
-            <Image src={YouTube} alt="Youtube" with={24} height={24} />
-            <p className="pl-s1">YouTube Video</p>
-          </Fragment>
-        )}
-        {type === 'instagram' && (
-          <Fragment>
-            <Image src={Instagram} alt="instagram" with={24} height={24} />
-            <p className="pl-s1">Instagram {isReel ? 'Reel' : 'Video'}</p>
-          </Fragment>
-        )}
+        <Image src={icons[type].img} alt="Youtube" with={24} height={24} />
+        <p className="pl-s1">{icons[type].title}</p>
       </div>
       <div className="relative">
-        <Image
-          loader={() => thumbnail}
-          src={thumbnail}
-          alt={type}
-          width={250}
-          height={150}
-          unoptimized
-        />
+        <div className="relative h-[150px] w-full">
+          <Image
+            loader={() => thumbnail}
+            src={thumbnail}
+            alt={type}
+            layout="fill"
+            objectFit="contain"
+            unoptimized
+          />
+        </div>
         {selected && (
           <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.6)]">
             <Image src={CheckMark} alt="Checkmark" width={24} height={24} />

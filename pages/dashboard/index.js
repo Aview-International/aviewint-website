@@ -11,6 +11,7 @@ import {
   getChannelVideos,
   getIgVideos,
   getJobsHistory,
+  getTikTokVideos,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import {
@@ -23,6 +24,7 @@ import {
   createANewJob,
   subscribeToHistory,
 } from '../../services/firebase';
+import { setTikTokVideos } from '../../store/reducers/tiktok.reducer';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ const DashboardHome = () => {
   const instagramDataFetched = useSelector(
     (state) => state.instagram.dataFetched
   );
+  const tiktokDataFetched = useSelector((state) => state.tiktok.dataFetched);
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
@@ -66,33 +69,48 @@ const DashboardHome = () => {
 
   const getInstagramVideos = async () => {
     try {
-      const response = await getIgVideos(
-        userData.instagram.instagram_access_token
-      );
+      const response = await getIgVideos();
+      dispatch(setInstagramVideos({ dataFetched: true, videos: response }));
+    } catch (error) {
+      // ErrorHandler(error);
+    }
+  };
 
-      dispatch(
-        setInstagramVideos({ dataFetched: true, videos: response.data })
-      );
+  const getTikTokVids = async () => {
+    try {
+      const data = await getTikTokVideos();
+      const tiktokVideos = data.videos.map((vid) => ({
+        type: 'tiktok',
+        id: vid.id,
+        caption: vid.title,
+        thumbnail: vid.cover_image_url,
+        timestamp: vid.create_time * 1000,
+        permalink: vid.share_url,
+        videoUrl: vid.embed_link,
+      }));
+      dispatch(setTikTokVideos({ dataFetched: true, videos: tiktokVideos }));
     } catch (error) {
       // ErrorHandler(error);
     }
   };
 
   useEffect(() => {
+    console.log(tiktokDataFetched);
     (async () => {
       try {
-        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
-          await getInstagramVideos();
-        }
-
+        if (!tiktokDataFetched && userData.tiktok?.tiktokConnected)
+          await getTikTokVids();
         if (!youtubeDataFetched && channelDetails.id) {
           await getYoutubeVideos();
+        }
+        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
+          await getInstagramVideos();
         }
       } catch (error) {
         ErrorHandler(error);
       }
     })();
-  }, [channelDetails.id, userData.instagram?.instagramConnected]);
+  }, [channelDetails.id, userData]);
 
   useEffect(() => {
     (async () => {

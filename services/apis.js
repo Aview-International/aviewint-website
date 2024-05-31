@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 import Cookies from 'js-cookie';
 import { decodeJwt } from 'jose';
 import { auth } from './firebase';
+
+let baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
@@ -226,8 +227,8 @@ export const completeIgConnection = async (code, uid) => {
   return res.data;
 };
 
-export const getIgVideos = async (code) =>
-  await axiosInstance.post('auth/instagram/get_videos', { code });
+export const getIgVideos = async () =>
+  (await axiosInstance.get('auth/instagram/get_videos')).data;
 
 export const getPlans = async () => {
   const response = (await axiosInstance.get('subscription/plans')).data;
@@ -291,3 +292,12 @@ export const igAccountTest = async () => {
   const res = await axios.post(baseUrl + 'auth/ig-test');
   return res;
 };
+
+export const getTikTokAuthUrl = async () =>
+  (await axiosInstance.get('/auth/tiktok/auth_link')).data;
+
+export const completeTikTokAuth = async ({ code, state }) =>
+  await axiosInstance.post('auth/tiktok/get-user-token', { code, state });
+
+export const getTikTokVideos = async () =>
+  (await axiosInstance.get('auth/tiktok/get_videos')).data;
