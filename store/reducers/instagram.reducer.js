@@ -10,7 +10,7 @@ const instagramSlice = createSlice({
   initialState,
   reducers: {
     setInstagramVideos(state, action) {
-      state.videos.push(...action.payload.videos);
+      state.videos = action.payload.videos;
       state.dataFetched = action.payload.dataFetched;
     },
   },
