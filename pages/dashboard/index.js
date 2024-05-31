@@ -31,13 +31,7 @@ const DashboardHome = () => {
   const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
-  const { dataFetched: youtubeDataFetched, channelDetails } = useSelector(
-    (state) => state.youtube
-  );
-  const instagramDataFetched = useSelector(
-    (state) => state.instagram.dataFetched
-  );
-  const tiktokDataFetched = useSelector((state) => state.tiktok.dataFetched);
+  const channelDetails = useSelector((state) => state.youtube.channelDetails);
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
@@ -95,17 +89,11 @@ const DashboardHome = () => {
   };
 
   useEffect(() => {
-    console.log(tiktokDataFetched);
     (async () => {
       try {
-        if (!tiktokDataFetched && userData.tiktok?.tiktokConnected)
-          await getTikTokVids();
-        if (!youtubeDataFetched && channelDetails.id) {
-          await getYoutubeVideos();
-        }
-        if (!instagramDataFetched && userData.instagram?.instagramConnected) {
-          await getInstagramVideos();
-        }
+        if (userData.tiktok?.tiktokConnected) await getTikTokVids();
+        if (channelDetails.id) await getYoutubeVideos();
+        if (userData.instagram?.instagramConnected) await getInstagramVideos();
       } catch (error) {
         ErrorHandler(error);
       }
