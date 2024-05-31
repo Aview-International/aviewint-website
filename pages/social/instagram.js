@@ -21,6 +21,7 @@ const InstagramConnection = () => {
           else router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);
+          router.push('/onboarding?stage=3');
         }
       })();
     }

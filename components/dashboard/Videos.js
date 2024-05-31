@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const instagramVideos = useSelector((state) => state.instagram.videos);
   const youtubeVideos = useSelector((state) => state.youtube.videos);
+  const tiktokVideos = useSelector((state) => state.tiktok.videos);
 
-  const allVideos = [...instagramVideos, ...youtubeVideos];
+  const allVideos = [...tiktokVideos, ...instagramVideos, ...youtubeVideos];
   const [buttonState, setButtonState] = useState('all');
   const BUTTONS = [
     {
@@ -21,6 +22,10 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
     {
       title: 'Instagram',
       param: 'instagram',
+    },
+    {
+      title: 'TikTok',
+      param: 'tiktok',
     },
   ];
 

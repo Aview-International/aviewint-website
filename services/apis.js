@@ -227,8 +227,8 @@ export const completeIgConnection = async (code, uid) => {
   return res.data;
 };
 
-export const getIgVideos = async (code) =>
-  await axiosInstance.post('auth/instagram/get_videos', { code });
+export const getIgVideos = async () =>
+  (await axiosInstance.get('auth/instagram/get_videos')).data;
 
 export const getPlans = async () => {
   const response = (await axiosInstance.get('subscription/plans')).data;
@@ -296,5 +296,8 @@ export const igAccountTest = async () => {
 export const getTikTokAuthUrl = async () =>
   (await axiosInstance.get('/auth/tiktok/auth_link')).data;
 
-export const completeTikTokAuth = async (code) =>
-  await axiosInstance.post('auth/tiktok/get-user-token', { code });
+export const completeTikTokAuth = async ({ code, state }) =>
+  await axiosInstance.post('auth/tiktok/get-user-token', { code, state });
+
+export const getTikTokVideos = async () =>
+  (await axiosInstance.get('auth/tiktok/get_videos')).data;

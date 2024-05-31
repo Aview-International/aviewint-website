@@ -5,16 +5,17 @@ import ErrorHandler from '../../utils/errorHandler';
 
 const TikTokConnection = () => {
   const router = useRouter();
-  const { code } = router.query;
+  const { code, state } = router.query;
 
   useEffect(() => {
     if (code) {
       (async () => {
         try {
-          await completeTikTokAuth(code);
+          await completeTikTokAuth({ code, state });
           router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);
+          router.push('/onboarding?stage=3');
         }
       })();
     }

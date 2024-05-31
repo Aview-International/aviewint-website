@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 
 const TikTokConnection = () => {
   const router = useRouter();
-  const { code } = router.query;
+  const { code, state } = router.query;
 
   useEffect(() => {
-    if (code) router.replace(`/social/instagram?code=${code}`);
+    if (code) router.replace(`/social/tiktok?code=${code}&state=${state}`);
   }, [code]);
 
   return (
