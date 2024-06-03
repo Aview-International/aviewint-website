@@ -10,51 +10,55 @@ import { getIgAuthLink } from '../../../../services/apis';
 import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import Shadow from '../../../../components/UI/Shadow.js';
+import { authorizeUser } from '../../../../services/apis.js';
+import OutsideClickHandler from 'react-outside-click-handler'; //outside click
+import OnboardingButton from '../../../../components/Onboarding/button';
 
-const DISTRIBUTION_ACCOUNTS = [
-  {
-    account_type: 'YouTube',
-    accounts: [
-      {
-        title: "Aview International Espan'ol",
-        subscribers: '2.28K subscribers',
-      },
-      {
-        title: 'Aview International Portuguese',
-        subscribers: '2.28K subscribers',
-      },
-    ],
-  },
-  {
-    account_type: 'Instagram',
-    accounts: [
-      {
-        title: "Aview International Espan'ol",
-        subscribers: '99 followers',
-      },
-    ],
-  },
-  {
-    account_type: 'Facebook',
-    accounts: [
-      {
-        title: "Aview International Espan'ol",
-        subscribers: '46 followers',
-      },
-    ],
-  },
-  {
-    account_type: 'TikTok',
-    accounts: [
-      {
-        title: "Aview International Espan'ol",
-        subscribers: '5 followers',
-      },
-    ],
-  },
-];
+// const DISTRIBUTION_ACCOUNTS = [
+//   {
+//     account_type: 'YouTube',
+//     accounts: [
+//       {
+//         title: "Aview International Espan'ol",
+//         subscribers: '2.28K subscribers',
+//       },
+//       {
+//         title: 'Aview International Portuguese',
+//         subscribers: '2.28K subscribers',
+//       },
+//     ],
+//   },
+//   {
+//     account_type: 'Instagram',
+//     accounts: [
+//       {
+//         title: "Aview International Espan'ol",
+//         subscribers: '99 followers',
+//       },
+//     ],
+//   },
+//   {
+//     account_type: 'Facebook',
+//     accounts: [
+//       {
+//         title: "Aview International Espan'ol",
+//         subscribers: '46 followers',
+//       },
+//     ],
+//   },
+//   {
+//     account_type: 'TikTok',
+//     accounts: [
+//       {
+//         title: "Aview International Espan'ol",
+//         subscribers: '5 followers',
+//       },
+//     ],
+//   },
+// ];
 
-const DistriubtionAccounts = () => {
+const DistriubtionAccounts = () => { //why is DISTRIBUTION spelt wrong here 
   const [isNewAccount, setIsNewAccount] = useState(false);
 
   const handleNewAccount = () => setIsNewAccount(!isNewAccount);
@@ -78,8 +82,8 @@ const DistriubtionAccounts = () => {
                 purpose="onClick"
                 onClick={handleNewAccount}
               >
-                Add a social account
-              </Button>
+                Add a social account          
+              </Button>                      
             </div>
           }
           isHeaderSection={true}
@@ -113,11 +117,21 @@ const DistriubtionAccounts = () => {
         ))} */}
       </div>
       {isNewAccount ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/90">
-          <div className="rounded-md border-2 border-white/60 px-s4 py-s1">
+        
+      
+        <div className="absolute inset-0 flex items-center justify-center bg-black">  
+          <div className="rounded-2xl border-4 border-white/60 px-s4 py-s1">
+            {/*  Outside Click to close popup  */}
+          
+          <OutsideClickHandler onOutsideClick={handleNewAccount}> 
             <Accounts handleAccounts={handleNewAccount} />
+            </OutsideClickHandler>
+          
           </div>
         </div>
+     
+
+       
       ) : null}
     </>
   );
@@ -159,8 +173,22 @@ const Accounts = ({ userData, handleAccounts }) => {
     }
   };
 
+  // const linkYoutubeAccount = async () => {
+  //   localStorage.setItem('userId', userData._id);
+  //   setIsLoading((prev) => ({
+  //     ...prev,
+  //     youtube: true,
+  //   }));
+  //   window.location = await authorizeUser();
+  // };
+
   const linkYoutubeAccount = async () => {
-    localStorage.setItem('userId', userData._id);
+    const userId = Cookies.get('uid');
+    if (userId) {
+      localStorage.setItem('userId', userId);
+    } else {
+      console.error("userId is undefined");
+    }
     setIsLoading((prev) => ({
       ...prev,
       youtube: true,
@@ -170,34 +198,46 @@ const Accounts = ({ userData, handleAccounts }) => {
 
   return (
     <>
+    
       <Container
+      
         left={<p className="mr-6 text-2xl">YouTube</p>}
+       
         right={
+          
           <OnBoardingAccounts
             classes="bg-[#ff0000]"
             isAccountConnected={userData?.youtube?.youtubeConnected}
             clickEvent={linkYoutubeAccount}
             account={
+              <Shadow classes="">
+              <OnboardingButton>
               <Image
                 src={WhiteYoutube}
                 alt="connect"
                 width={100}
                 height={22.5}
               />
+              </OnboardingButton>
+              </Shadow>
             }
             isLoading={isLoading.youtube}
           />
+        
+
         }
       />
-      <Container
+      <Container                                                    //Outdated, should create dynamic mapping like in Modals
         left={<p className="mr-6 text-2xl">Instagram</p>}
         right={
+          <OnboardingButton theme="dark">
           <OnBoardingAccounts
             isAccountConnected={userData?.instagram?.instagramConnected}
             classes="instagram"
             clickEvent={linkInstagramAccount}
             account="Instagram"
           />
+          </OnboardingButton>
         }
       />
       <Container
