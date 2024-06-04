@@ -11,6 +11,7 @@ import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import Shadow from '../../../../components/UI/Shadow.js';
+import Border from '../../../../components/UI/Border.js';
 import { authorizeUser } from '../../../../services/apis.js';
 import OutsideClickHandler from 'react-outside-click-handler'; //outside click
 import OnboardingButton from '../../../../components/Onboarding/button';
@@ -120,6 +121,7 @@ const DistriubtionAccounts = () => { //why is DISTRIBUTION spelt wrong here
         
       
         <div className="absolute inset-0 flex items-center justify-center bg-black">  
+         <Shadow>
           <div className="rounded-2xl border-4 border-white/60 px-s4 py-s1">
             {/*  Outside Click to close popup  */}
           
@@ -128,6 +130,7 @@ const DistriubtionAccounts = () => { //why is DISTRIBUTION spelt wrong here
             </OutsideClickHandler>
           
           </div>
+          </Shadow>
         </div>
      
 
@@ -210,16 +213,18 @@ const Accounts = ({ userData, handleAccounts }) => {
             isAccountConnected={userData?.youtube?.youtubeConnected}
             clickEvent={linkYoutubeAccount}
             account={
-              <Shadow classes="">
-              <OnboardingButton>
+              
+              <OnboardingButton theme='dark'>
+                <Shadow classes="">
               <Image
                 src={WhiteYoutube}
                 alt="connect"
                 width={100}
                 height={22.5}
               />
-              </OnboardingButton>
               </Shadow>
+              </OnboardingButton>
+              
             }
             isLoading={isLoading.youtube}
           />
