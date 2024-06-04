@@ -10,6 +10,7 @@ const nextConfig = {
       'yt3.ggpht.com',
       'aview-public.s3.amazonaws.com',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
+      'p16-sign-va.tiktokcdn.com',
     ],
   },
   webpack: (config) => {

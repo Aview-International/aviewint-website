@@ -5,17 +5,17 @@ const initialState = {
   videos: [],
 };
 
-const instagramSlice = createSlice({
-  name: 'instagram',
+const tiktokSlice = createSlice({
+  name: 'tiktok',
   initialState,
   reducers: {
-    setInstagramVideos(state, action) {
+    setTikTokVideos(state, action) {
       state.videos = action.payload.videos;
       state.dataFetched = action.payload.dataFetched;
     },
   },
 });
 
-export const { setInstagramVideos } = instagramSlice.actions;
+export const { setTikTokVideos } = tiktokSlice.actions;
 
-export default instagramSlice.reducer;
+export default tiktokSlice.reducer;

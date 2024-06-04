@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { baseUrl } from './baseUrl';
 import FormData from 'form-data';
 import Cookies from 'js-cookie';
 import { decodeJwt } from 'jose';
 import { auth } from './firebase';
+
+let baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Create an Axios instance with default config
 const axiosInstance = axios.create({
@@ -29,10 +30,7 @@ const isTokenExpired = (token) => {
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const user = auth.currentUser;
-    if (!user) return config;
-    let token = user.stsTokenManager.accessToken;
-
+    let token = Cookies.get('session');
     if (isTokenExpired(token) === true || !isTokenExpired(token)) {
       const newToken = await auth.currentUser.getIdToken(true); // force token refresh
       Cookies.set('session', newToken);
@@ -104,17 +102,17 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
-export const getUserMessages = async () => {
-  const response = await axiosInstance.get('messages/convo');
-  return response.data;
-};
+// export const getUserMessages = async () => {
+//   const response = await axiosInstance.get('messages/convo');
+//   return response.data;
+// };
 
 export const getUserYoutubeChannel = async () => {
   const response = await axiosInstance.get('auth/youtube-channel');
   return response.data;
 };
 
-export const getMessageStatus = async () =>
+export const getMessages = async () =>
   (await axiosInstance.get('messages/status')).data;
 
 export const uploadMultipleVoiceSamples = async (speakers, userId) => {
@@ -226,13 +224,11 @@ export const completeIgConnection = async (code, uid) => {
   return res.data;
 };
 
-export const getIgVideos = async (code) =>
-  await axiosInstance.post('auth/instagram/get_videos', { code });
+export const getIgVideos = async () =>
+  (await axiosInstance.get('auth/instagram/get_videos')).data;
 
-export const getPlans = async () => {
-  const response = (await axiosInstance.get('subscription/plans')).data;
-  return response;
-};
+export const getPlans = async () =>
+  (await axios.get(baseUrl + 'subscription/plans')).data;
 
 export const createCheckoutSesion = async (planId) => {
   const res = (
@@ -291,3 +287,15 @@ export const igAccountTest = async () => {
   const res = await axios.post(baseUrl + 'auth/ig-test');
   return res;
 };
+
+export const getTikTokAuthUrl = async () =>
+  (await axiosInstance.get('/auth/tiktok/auth_link')).data;
+
+export const completeTikTokAuth = async ({ code, state }) =>
+  await axiosInstance.post('auth/tiktok/get-user-token', { code, state });
+
+export const getTikTokVideos = async () =>
+  (await axiosInstance.get('auth/tiktok/get_videos')).data;
+
+export const sendEnquiryMessage = async (message, id) =>
+  axiosInstance.post(`messages/support/${id}`, { message });
