@@ -105,17 +105,17 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
-export const getUserMessages = async () => {
-  const response = await axiosInstance.get('messages/convo');
-  return response.data;
-};
+// export const getUserMessages = async () => {
+//   const response = await axiosInstance.get('messages/convo');
+//   return response.data;
+// };
 
 export const getUserYoutubeChannel = async () => {
   const response = await axiosInstance.get('auth/youtube-channel');
   return response.data;
 };
 
-export const getMessageStatus = async () =>
+export const getMessages = async () =>
   (await axiosInstance.get('messages/status')).data;
 
 export const uploadMultipleVoiceSamples = async (speakers, userId) => {
@@ -301,3 +301,6 @@ export const completeTikTokAuth = async ({ code, state }) =>
 
 export const getTikTokVideos = async () =>
   (await axiosInstance.get('auth/tiktok/get_videos')).data;
+
+export const sendEnquiryMessage = async (message, id) =>
+  axiosInstance.post(`messages/support/${id}`, { message });
