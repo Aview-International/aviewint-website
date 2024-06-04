@@ -30,10 +30,7 @@ const isTokenExpired = (token) => {
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const user = auth.currentUser;
-    if (!user) return config;
-    let token = user.stsTokenManager.accessToken;
-
+    let token = Cookies.get('session');
     if (isTokenExpired(token) === true || !isTokenExpired(token)) {
       const newToken = await auth.currentUser.getIdToken(true); // force token refresh
       Cookies.set('session', newToken);
@@ -230,10 +227,8 @@ export const completeIgConnection = async (code, uid) => {
 export const getIgVideos = async () =>
   (await axiosInstance.get('auth/instagram/get_videos')).data;
 
-export const getPlans = async () => {
-  const response = (await axiosInstance.get('subscription/plans')).data;
-  return response;
-};
+export const getPlans = async () =>
+  (await axios.get(baseUrl + 'subscription/plans')).data;
 
 export const createCheckoutSesion = async (planId) => {
   const res = (

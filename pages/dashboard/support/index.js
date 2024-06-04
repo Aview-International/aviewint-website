@@ -16,6 +16,7 @@ import ErrorHandler from '../../../utils/errorHandler';
 const Messages = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [showForm, setShowForm] = useState(false);
   const messages = useSelector((state) => state.messages.messages);
   const unresolvedQueries = messages.filter(
     (message) => message.resolved !== true
@@ -59,8 +60,8 @@ const Messages = () => {
     <>
       <PageTitle title="Messages" />
       <div
-        className={`relative flex h-full w-full max-w-[1200px] flex-col ${
-          messages.length > 'justify-between'
+        className={`relative flex h-full w-full max-w-[1200px] flex-col justify-between ${
+          unresolvedQueries.length < 1 && 'justify-between'
         } rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] p-s2`}
       >
         <div className="flex justify-between">
@@ -75,11 +76,15 @@ const Messages = () => {
             <p className="ml-s1 text-2xl font-bold">Aview Support</p>
           </div>
           <div>
-            <OnboardingButton>New Enquiry</OnboardingButton>
+            {unresolvedQueries.length > 0 && (
+              <OnboardingButton onClick={() => setShowForm(true)}>
+                New Enquiry
+              </OnboardingButton>
+            )}
           </div>
         </div>
 
-        {unresolvedQueries.length > 1 ? (
+        {unresolvedQueries.length > 0 &&
           unresolvedQueries.map((item, i) => (
             <div
               key={i}
@@ -93,8 +98,8 @@ const Messages = () => {
                 </small>
               </span>
             </div>
-          ))
-        ) : (
+          ))}
+        {(unresolvedQueries.length < 1 || showForm) && (
           <form
             className="relative flex w-full"
             onSubmit={handleSubmit}

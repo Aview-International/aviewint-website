@@ -119,8 +119,8 @@ const CreatorEnquiry = ({ data }) => {
   return (
     <>
       <PageTitle title="Messages" />
-      <div className="mx-auto flex h-full w-full max-w-[1200px] rounded-2xl bg-gradient-to-b from-[#ffffff26] to-[#ffffff0D] text-white">
-        <div className="relative h-full w-full p-s2">
+      <div className="mx-auto h-full w-full max-w-[1200px] rounded-2xl bg-white-transparent">
+        <div className="relative flex h-full w-full flex-col justify-between p-s2">
           <div className="flex items-center gap-2">
             <button onClick={() => router.replace('/dashboard/support')}>
               <Image src={Arrow} alt="" width={32} height={32} />
@@ -148,7 +148,7 @@ const CreatorEnquiry = ({ data }) => {
                 ))}
             </div>
 
-            {data.resolved ? (
+            {data?.resolved ? (
               <p>This issue has now been resolved and closed, thank you</p>
             ) : (
               <form
