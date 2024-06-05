@@ -12,6 +12,14 @@ import {
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
 
+
+// Import createContext and useContext
+import { createContext, useContext, useState } from 'react';
+
+// Create a context for translatedLanguage
+const TranslatedLanguageContext = createContext();
+
+export const useTranslatedLanguage = () => useContext(TranslatedLanguageContext);
 const History = () => {
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
@@ -83,7 +91,7 @@ const Container = ({ pendingJobs, completedJobs }) => {
         >
           <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div className="">
+          <div className="">              //
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'
