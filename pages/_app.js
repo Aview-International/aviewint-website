@@ -7,7 +7,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider, useDispatch } from 'react-redux';
 import store from '../store';
-import { SocketProvider } from '../socket';
 import useUserProfile from '../hooks/useUserProfile';
 import { setAuthState } from '../store/reducers/user.reducer';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -17,23 +16,21 @@ import Cookies from 'js-cookie';
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
-      <SocketProvider>
-        <MenuOpenContextProvider>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
-          <Layout Component={Component} pageProps={pageProps} />
-        </MenuOpenContextProvider>
-      </SocketProvider>
+      <MenuOpenContextProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <Layout Component={Component} pageProps={pageProps} />
+      </MenuOpenContextProvider>
     </Provider>
   );
 };
