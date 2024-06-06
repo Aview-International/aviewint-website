@@ -48,7 +48,7 @@ const DashBoardHeader = ({ userInfo }) => {
 
   const menuOpenCtx = useContext(MenuOpenContext);
   return (
-    <header className="relative flex w-full items-center justify-between px-s4 pt-s2 pb-s1.5 text-white md:px-s9">
+    <header className="relative flex w-full items-center justify-between px-s4 pt-s2 pb-s1 text-white md:px-s9">
       <MenuButtonIcon
         handler={menuOpenCtx.openMenuHandler}
         styles={'absolute left-6'}
@@ -60,12 +60,11 @@ const DashBoardHeader = ({ userInfo }) => {
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>
-      <div className="flex gap-x-4 bg-gray-1 rounded-xl py-1">
-        <div className="hidden md:block">
-          <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
-          <p className="mt-2 text-center text-xs">Translations</p>
-        </div>
-        <div className="hidden md:block">
+      <div className="hidden md:block bg-white-transparent rounded-2xl p-2">
+        <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
+        <p className="mt-2 text-center text-sm">Usage Left</p>
+      </div>
+      {/* <div className="hidden md:block">
           <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
           <p className="mt-2 text-center text-xs">Dubbing</p>
         </div>
@@ -73,22 +72,26 @@ const DashBoardHeader = ({ userInfo }) => {
           <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
           <p className="mt-2 text-center text-xs">Transcriptions</p>
         </div>
-        {/* <div className="hidden md:block">
+        <div className="hidden md:block">
           <Circle videoTimeLeft={videoTimeLeft} offset={offset} />
           <p className="mt-2 text-center text-xs">AI Voiceovers</p>
         </div> */}
-      </div>
     </header>
   );
 };
 
 const Circle = ({ offset, videoTimeLeft }) => {
- console.log(offset)
+  
   return (
     <div className="relative mx-5 flex h-14 w-14 items-center justify-center">
-      <p className="mt-2 text-sm font-semibold text-center">
+      <p className="mt-2 text-center text-sm font-semibold">
         {Math.round(videoTimeLeft)}
-        <span className="block text-center text-[10px]" style={{ lineHeight: '0.75rem'}}>min</span>
+        <span
+          className="block text-center text-[10px]"
+          style={{ lineHeight: '0.75rem' }}
+        >
+          min
+        </span>
       </p>
       <svg className="absolute -rotate-90" width="56" height="56">
         <circle
