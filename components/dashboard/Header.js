@@ -60,10 +60,13 @@ const DashBoardHeader = ({ userInfo }) => {
         </h3>
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>
-      <div className="hidden md:block bg-white-transparent rounded-2xl p-2">
-        <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
-        <p className="mt-2 text-center text-sm">Usage Left</p>
-      </div>
+      {videoTimeLeft && (
+        <div className="hidden rounded-2xl bg-white-transparent p-2 md:block">
+          <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
+          <p className="mt-2 text-center text-sm">Usage Left</p>
+        </div>
+      )}
+
       {/* <div className="hidden md:block">
           <Circle videoTimeLeft={videoTimeLeftInMinutes} offset={offset} />
           <p className="mt-2 text-center text-xs">Dubbing</p>
@@ -81,7 +84,6 @@ const DashBoardHeader = ({ userInfo }) => {
 };
 
 const Circle = ({ offset, videoTimeLeft }) => {
-  
   return (
     <div className="relative mx-5 flex h-14 w-14 items-center justify-center">
       <p className="mt-2 text-center text-sm font-semibold">
