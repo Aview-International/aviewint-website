@@ -1,24 +1,18 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
-import { completeIgConnection } from '../../services/apis';
+import { completeTikTokAuth } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 
-const InstagramConnection = () => {
+const TikTokConnection = () => {
   const router = useRouter();
-  const { code } = router.query;
-  const uid = Cookies.get('uid');
-  const igRdr = Cookies.get('instagramRedirect');
+  const { code, state } = router.query;
 
   useEffect(() => {
     if (code) {
       (async () => {
-        // get short lived acces token
         try {
-          await completeIgConnection(code, uid);
-          Cookies.remove('instagramRedirect');
-          if (igRdr) router.push(igRdr);
-          else router.push('/onboarding?stage=3');
+          await completeTikTokAuth({ code, state });
+          router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);
           router.push('/onboarding?stage=3');
@@ -34,4 +28,4 @@ const InstagramConnection = () => {
   );
 };
 
-export default InstagramConnection;
+export default TikTokConnection;

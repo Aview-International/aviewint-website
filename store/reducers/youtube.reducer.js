@@ -17,7 +17,7 @@ const youtubeSlice = createSlice({
   reducers: {
     setYoutubeVideos(state, action) {
       state.dataFetched = action.payload.dataFetched;
-      state.videos.push(...action.payload.videos);
+      state.videos = action.payload.videos;
     },
 
     setYoutubeChannel(state, action) {

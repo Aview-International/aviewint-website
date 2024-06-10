@@ -37,12 +37,12 @@ const DashBoardHeader = ({ userInfo }) => {
         <p className="text-lg text-gray-2">Welcome to your Aview Dashboard</p>
       </div>
       <div className="hidden md:block">
-        <Link href="/dashboard/messages">
+        <Link href="/dashboard/support">
           <a className="relative flex items-center rounded-full bg-gray-1 px-s2 py-2.5 text-sm">
             <span className="mr-s1.5 grid place-content-center brightness-0 invert">
               <Image src={messages} alt="Messages" />
             </span>
-            <span className="mt-0.5">Messages</span>
+            <span className="mt-0.5">Support</span>
             {messageStatus.readByUser === false && (
               <span className="absolute -bottom-0.5 -right-0.5 inline-block h-4 w-4 rounded-full bg-red" />
             )}

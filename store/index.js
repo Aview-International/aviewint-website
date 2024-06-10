@@ -8,17 +8,19 @@ import aviewReducer from './reducers/aview.reducer';
 import billingReducer from './reducers/billing.reducer';
 import voicesReducer from './reducers/voices.reducer';
 import historyReducer from './reducers/history.reducer';
+import tiktokReducer from './reducers/tiktok.reducer';
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     instagram: instagramReducer,
     youtube: youtubeReducer,
+    tiktok: tiktokReducer,
     messages: messagesReducer,
     aview: aviewReducer,
     billing: billingReducer,
     voices: voicesReducer,
-    history: historyReducer
+    history: historyReducer,
   },
   middleware: (getDefaultMiddleware) => {
     const middleware = getDefaultMiddleware({});
