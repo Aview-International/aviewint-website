@@ -35,7 +35,7 @@ const ModalOnVideoStatus = ({ video }) => {
         </p>
       </div>
       {isModalOpen && (
-        
+
         <OutsideClickHandler onOutsideClick={statusSettings}>
           <VideoStatusModal
             video={video}

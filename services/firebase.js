@@ -139,16 +139,6 @@ export const subscribeToHistory = (uid, subscriptionCallback) => {
   return unsubscribe; // Return the unsubscribe function
 };
 
-export const getAllCompletedJobs = async (uid) => {
-  const res = await get(ref(database, `user-jobs/completed/${uid}`)).then(
-    (snapshot) => {
-      if (snapshot.exists()) return snapshot.val();
-      else return null;
-    }
-  );
-  return res;
-};
-
 export const authCustomUser = async (token, payload, uid) => {
   return await signInWithCustomToken(auth, token)
     .then(async () => {
