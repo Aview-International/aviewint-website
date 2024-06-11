@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../store/reducers/user.reducer';
 import {
-  getMessageStatus,
+  getMessages,
   getThreadHistory,
   getUserYoutubeChannel,
 } from '../services/apis';
@@ -10,7 +10,8 @@ import { setYoutubeChannel } from '../store/reducers/youtube.reducer';
 import { getUserProfile } from '../services/firebase';
 import {
   setAllAIThreads,
-  setMessageStatus,
+  // setMessageStatus,
+  setMessages,
 } from '../store/reducers/messages.reducer';
 import { useEffect, useState } from 'react';
 import ErrorHandler from '../utils/errorHandler';
@@ -38,9 +39,9 @@ const useUserProfile = () => {
     dispatch(setYoutubeChannel(data));
   };
 
-  const handleGetMessageStatus = async () => {
-    const res = await getMessageStatus();
-    dispatch(setMessageStatus(res));
+  const handleGetMessages = async () => {
+    const res = await getMessages();
+    dispatch(setMessages(res));
   };
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const useUserProfile = () => {
           await Promise.all([
             handleGetProfile(),
             handleGetYoutubeChannel(),
-            handleGetMessageStatus(),
+            handleGetMessages(),
             getThread(),
           ]);
         }
