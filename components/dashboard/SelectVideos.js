@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import OnboardingButton from '../Onboarding/button';
 import Insights from './insights/Insights';
 import Videos from './Videos';
+import { TranslatedLanguageContext } from '../../pages/dashboard/history'; // Adjust path if necessary
 
 const SelectVideos = ({
   setIsSelected,
@@ -9,6 +11,8 @@ const SelectVideos = ({
   setSelectedVideos,
   selectedVideos,
 }) => {
+  const [translatedLanguage, setTranslatedLanguage] = useState('');
+
   const handleTranslate = () => {
     if (selectedVideos.length < 1) {
       toast.error('Please select a video');
@@ -18,7 +22,7 @@ const SelectVideos = ({
   };
 
   return (
-    <>
+    <TranslatedLanguageContext.Provider value={{ translatedLanguage, setTranslatedLanguage }}>
       <Insights />
       <Videos
         isLoading={isLoading}
@@ -29,7 +33,7 @@ const SelectVideos = ({
       <div className="ml-auto w-full md:w-[155px]">
         <OnboardingButton onClick={handleTranslate}>Next</OnboardingButton>
       </div>
-    </>
+    </TranslatedLanguageContext.Provider>
   );
 };
 

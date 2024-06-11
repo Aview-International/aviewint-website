@@ -9,6 +9,7 @@ const icons = {
   instagram: { title: 'Instagram Reel', img: Instagram },
   tiktok: { title: 'TikTok Video', img: TikTok },
 };
+
 const VideoFrame = ({
   caption,
   thumbnail,
@@ -19,6 +20,7 @@ const VideoFrame = ({
   selected,
   videoUrl,
   permalink,
+  translatedLanguage, // New prop
 }) => {
   return (
     <div
@@ -36,7 +38,7 @@ const VideoFrame = ({
       }
     >
       <div className="mb-s1 flex text-lg">
-        <Image src={icons[type].img} alt="Youtube" with={24} height={24} />
+        <Image src={icons[type].img} alt={icons[type].title} width={24} height={24} />
         <p className="pl-s1">{icons[type].title}</p>
       </div>
       <div className="relative">
@@ -71,6 +73,11 @@ const VideoFrame = ({
               })}
             </span>
           </p>
+          {translatedLanguage && (
+            <p className="text-sm text-gray-500">
+              Translated Language: {translatedLanguage}
+            </p>
+          )}
         </div>
       </div>
     </div>

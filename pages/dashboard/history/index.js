@@ -1,21 +1,23 @@
 import Cookies from 'js-cookie';
-import { useEffect } from 'react';
+import { useEffect, createContext, useContext, useState } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { getS3DownloadLink } from '../../../services/apis';
-import { getJobsHistory } from '../../../services/apis';
+import { getS3DownloadLink, getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setCompletedJobs,
-  setPendingJobs,
-} from '../../../store/reducers/history.reducer';
+import { setCompletedJobs, setPendingJobs } from '../../../store/reducers/history.reducer';
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
+
+// Create a context for translatedLanguage
+export const TranslatedLanguageContext = createContext();
+
+export const useTranslatedLanguage = () => useContext(TranslatedLanguageContext);
 
 const History = () => {
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
   const uid = Cookies.get('uid');
+  const [translatedLanguage, setTranslatedLanguage] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -26,7 +28,7 @@ const History = () => {
         ErrorHandler(error);
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const unsubscribe = subscribeToHistory(uid, (data) => {
@@ -39,23 +41,20 @@ const History = () => {
     });
 
     return () => unsubscribe(); // cleanup
-  }, []);
+  }, [uid, dispatch]);
 
   return (
-    <>
+    <TranslatedLanguageContext.Provider value={{ translatedLanguage, setTranslatedLanguage }}>
       <PageTitle title="History" />
       <h2 className="mt-s2 text-4xl">History</h2>
-      <Container pendingJobs={pendingJobs} completedJobs={completedJobs} />
-    </>
+      <Container pendingJobs={pendingJobs} completedJobs={completedJobs} setTranslatedLanguage={setTranslatedLanguage} />
+    </TranslatedLanguageContext.Provider>
   );
 };
 
-const Container = ({ pendingJobs, completedJobs }) => {
+const Container = ({ pendingJobs, completedJobs, setTranslatedLanguage }) => {
   const handleDownload = async (job) => {
-    const downloadLink = await getS3DownloadLink(
-      job.timestamp,
-      job.translatedLanguage
-    );
+    const downloadLink = await getS3DownloadLink(job.timestamp, job.translatedLanguage);
     if (downloadLink) {
       const anchor = document.createElement('a');
       anchor.href = downloadLink;
@@ -81,9 +80,9 @@ const Container = ({ pendingJobs, completedJobs }) => {
           className="grid grid-cols-[27%_20%_22%_16%_15%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData?.caption?.replace(/\.mp4$/i, '')}</div>
+          <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div className="">
+          <div>
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'
@@ -105,6 +104,7 @@ const Container = ({ pendingJobs, completedJobs }) => {
               </button>
             )}
           </div>
+          {job.translatedLanguage && setTranslatedLanguage(job.translatedLanguage)}
         </div>
       ))}
     </div>
