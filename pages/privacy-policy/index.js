@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     <>
       <SEO
         title="Privacy Policy - Aview International"
-        description="Translate your Social Media Content. AVIEW is a leading multi-media translation service. We help you expand your international viewership. Start Now!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <Header curPage="Home" />
       <PrivacyData />

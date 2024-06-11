@@ -1,21 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
-//import { useSelector } from 'react-redux';
 
 const MobilePlanView = ({ plans, sliderValue }) => {
   const [visibleHoverText, setVisibleHoverText] = useState(null);
   const headerRef = useRef(null);
   const [topPosition, setTopPosition] = useState(null);
-  //const sliderValue = useSelector((state) => state.slider.sliderValue); 
 
-  const planTypes = ["Starter Studio", "Creator Pro", "Global Influencer"];
+  const planTypes = ['Starter Studio', 'Creator Pro', 'Global Influencer'];
   const recommendedPlanIndex = sliderValue >= 2 ? 2 : 1;
-
-  useEffect(() => {
-    console.log('Slider Value in MobilePlanView:', sliderValue); // Debug log for sliderValue
-  }, [sliderValue]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,13 +32,21 @@ const MobilePlanView = ({ plans, sliderValue }) => {
   };
 
   return (
-    <div className="block md:hidden bg-black-transparent text-white p-8">
-      <div className={`sticky top-0 z-10 text-center grid grid-cols-3 rounded-lg gap-3 border-b border-gray-200 
+    <div className="bg-black-transparent block p-8 text-white md:hidden">
+      <div
+        className={`border-gray-200 sticky top-0 z-10 grid grid-cols-3 gap-3 rounded-lg border-b text-center 
           ${topPosition <= 0 ? 'gradient-dark bg-black' : ''}`}
-          ref={headerRef}>
-
+        ref={headerRef}
+      >
         {planTypes.map((header, index) => (
-          <div key={index} className={`rounded-lg py-5 px-1  text-md ${index === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray'}`}> 
+          <div
+            key={index}
+            className={`text-md rounded-lg py-5  px-1 ${
+              index === recommendedPlanIndex
+                ? 'bg-white-transparent'
+                : 'bg-gray'
+            }`}
+          >
             {header}
           </div>
         ))}
@@ -77,7 +79,7 @@ const MobilePlanView = ({ plans, sliderValue }) => {
                       layout="fixed"
                     />
                     {visibleHoverText === sectionIndex + '-' + featureIndex && (
-                      <div className="absolute right-full top-0 z-10 mr-2 w-48 rounded-md bg-gray-1 p-s1 text-xs text-white group-hover:inline"> 
+                      <div className="absolute right-full top-0 z-10 mr-2 w-48 rounded-md bg-gray-1 p-s1 text-xs text-white group-hover:inline">
                         {feature.hoverText}
                       </div> //extra info section
                     )}
@@ -85,13 +87,19 @@ const MobilePlanView = ({ plans, sliderValue }) => {
                 )}
               </div>
 
-              <div className="grid grid-cols-3 text-center text-sm border-b border-gray-100">
+              <div className="border-gray-100 grid grid-cols-3 border-b text-center text-sm">
                 {feature.columns.map((col, colIndex) => {
                   // Determine the background color based on the plan and slider value
-                  const bgColor = colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'; //bg-white-transparent is the highlight
+                  const bgColor =
+                    colIndex === recommendedPlanIndex
+                      ? 'bg-white-transparent'
+                      : 'bg-gray-700'; //bg-white-transparent is the highlight
 
                   return (
-                    <div key={colIndex} className={`py-10 px-2 text-center ${bgColor}`}>
+                    <div
+                      key={colIndex}
+                      className={`py-10 px-2 text-center ${bgColor}`}
+                    >
                       {col === true ? (
                         <Image src={Check} alt="" width={25} height={20} />
                       ) : col === null ? (

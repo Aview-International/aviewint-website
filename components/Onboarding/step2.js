@@ -10,10 +10,7 @@ import {
   CATEGORIES,
 } from '../../constants/constants';
 import ErrorHandler from '../../utils/errorHandler';
-import {
-  authCustomUser,
-  updateRequiredServices,
-} from '../../services/firebase';
+import { updateRequiredServices } from '../../services/firebase';
 
 export const OnboardingStep2 = ({ userData, allLanguages }) => {
   const router = useRouter();
@@ -68,14 +65,6 @@ export const OnboardingStep2 = ({ userData, allLanguages }) => {
     if (!isFormValid()) return;
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
-      if (Cookies.get('testUser')) {
-        await authCustomUser(
-          Cookies.get('session'),
-          payload,
-          Cookies.get('uid')
-        );
-        return router.push('/onboarding?stage=3');
-      }
       await updateRequiredServices(payload, Cookies.get('uid'));
       router.push('/onboarding?stage=3');
     } catch (error) {
