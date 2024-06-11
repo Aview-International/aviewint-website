@@ -44,7 +44,6 @@ const PriceSection = ({ plan }) => {
         {plan.desc}
       </span>
       <p className="mb-2 mt-3 font-semibold">{plan.description}</p>
-
       <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
         <p className="text-center text-4xl font-bold md:text-7xl">
           {typeof (plan.monthlyCost || plan.yearlyCost) === 'number' && '$'}
@@ -53,7 +52,6 @@ const PriceSection = ({ plan }) => {
             : 'Free'}
         </p>
       </div>
-
       {plan.options.map((option, index) => (
         <div className="mt-s1.5 flex flex-row items-start gap-2" key={index}>
           <Image
@@ -66,7 +64,6 @@ const PriceSection = ({ plan }) => {
           <p>{option}</p>
         </div>
       ))}
-
       <div className="mt-s2 capitalize">
         <Button
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
@@ -77,7 +74,6 @@ const PriceSection = ({ plan }) => {
           {'Go ' + plan.id}
         </Button>
       </div>
-
       {plan.id == 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
           <Border borderRadius="3xl" padding="p-[1px]">

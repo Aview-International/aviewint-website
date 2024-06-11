@@ -1,6 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { stripeAppearance, stripePromise } from '../../utils/stripe';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CheckoutForm from '../FormComponents/PaymentForm';
 import ErrorHandler from '../../utils/errorHandler';
 import { createCheckoutSesion } from '../../services/apis';
@@ -106,9 +106,8 @@ const OnboardingStep5 = ({ plans }) => {
       try {
         if (planId === 'basic') return router.push('/onboarding?stage=6');
         const selectedPlan = allPlans.find((x) => x.id === planId);
-
         setIsLoading(true);
-        setModal(true)
+        setModal(true);
         const secret = await createCheckoutSesion(
           isYearlyPlan
             ? selectedPlan.stripe_yearly_id
