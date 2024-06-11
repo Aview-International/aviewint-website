@@ -7,11 +7,7 @@ import { useEffect, useState } from 'react';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
-import {
-  authCustomUser,
-  updateRequiredServices,
-} from '../../services/firebase';
-import Cookies from 'js-cookie';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep5 = ({ userData, allLanguages }) => {
   const router = useRouter();
@@ -30,16 +26,6 @@ const OnboardingStep5 = ({ userData, allLanguages }) => {
       if (languages.length < 2) {
         setIsError(true);
         return;
-      }
-      const testUser = Cookies.get('testUser');
-      if (testUser) {
-        await authCustomUser(
-          Cookies.get('session'),
-          { languages },
-          Cookies.get('uid')
-        );
-        Cookies.remove('testUser');
-        return router.push('/onboarding?stage=6');
       }
       await updateRequiredServices({ languages }, userData.uid);
       router.push(
