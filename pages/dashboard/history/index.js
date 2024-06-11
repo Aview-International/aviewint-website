@@ -89,7 +89,7 @@ const Container = ({ pendingJobs, completedJobs }) => {
           className="grid grid-cols-[27%_20%_22%_16%_15%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
+          <div>{job.videoData?.caption?.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
           <div className="">              //
             {job?.translatedLanguage

@@ -18,8 +18,8 @@ const Modal = ({ children, closeModal, preventOutsideClick }) => {
       <OutsideClickHandler
         onOutsideClick={preventOutsideClick ? () => null : closeModal}
       >
-        <div className="gradient-dark mx-auto h-full w-full rounded-xl bg-black p-s3">
-          <div className="mb-s3 text-right">
+        <div className="gradient-dark mx-auto h-full w-full rounded-xl bg-black px-s3 py-s2">
+          <div className="mb-s2 text-right">
             <button
               onClick={closeModal}
               className="ml-auto flex items-center rounded-full p-2 hover:bg-white-transparent"

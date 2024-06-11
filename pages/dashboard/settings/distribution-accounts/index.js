@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { SettingsLayout } from '..';
 import Container from '../../../../components/UI/Container';
-import Logo from '../../../../public/img/aview/logo.svg';
 import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
 import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
 import Button from '../../../../components/UI/Button';
@@ -11,55 +10,11 @@ import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import Shadow from '../../../../components/UI/Shadow.js';
-import Border from '../../../../components/UI/Border.js';
 import { authorizeUser } from '../../../../services/apis.js';
-import OutsideClickHandler from 'react-outside-click-handler'; //outside click
 import OnboardingButton from '../../../../components/Onboarding/button';
+import Modal from '../../../../components/UI/Modal';
 
-// const DISTRIBUTION_ACCOUNTS = [
-//   {
-//     account_type: 'YouTube',
-//     accounts: [
-//       {
-//         title: "Aview International Espan'ol",
-//         subscribers: '2.28K subscribers',
-//       },
-//       {
-//         title: 'Aview International Portuguese',
-//         subscribers: '2.28K subscribers',
-//       },
-//     ],
-//   },
-//   {
-//     account_type: 'Instagram',
-//     accounts: [
-//       {
-//         title: "Aview International Espan'ol",
-//         subscribers: '99 followers',
-//       },
-//     ],
-//   },
-//   {
-//     account_type: 'Facebook',
-//     accounts: [
-//       {
-//         title: "Aview International Espan'ol",
-//         subscribers: '46 followers',
-//       },
-//     ],
-//   },
-//   {
-//     account_type: 'TikTok',
-//     accounts: [
-//       {
-//         title: "Aview International Espan'ol",
-//         subscribers: '5 followers',
-//       },
-//     ],
-//   },
-// ];
-
-const DistriubtionAccounts = () => { //why is DISTRIBUTION spelt wrong here 
+const DistributionAccounts = () => {
   const [isNewAccount, setIsNewAccount] = useState(false);
 
   const handleNewAccount = () => setIsNewAccount(!isNewAccount);
@@ -83,58 +38,19 @@ const DistriubtionAccounts = () => { //why is DISTRIBUTION spelt wrong here
                 purpose="onClick"
                 onClick={handleNewAccount}
               >
-                Add a social account          
-              </Button>                      
+                Add a social account
+              </Button>
             </div>
           }
           isHeaderSection={true}
         />
-        {/* {DISTRIBUTION_ACCOUNTS.map((item, index) => (
-          <Container
-            key={`accounts-${index}`}
-            left={
-              <h3 className="text-lg">
-                {item.account_type}{' '}
-                <span className="inline md:hidden">
-                  {'('}
-                  {item.accounts.length}
-                  {')'}
-                </span>
-              </h3>
-            }
-            right={
-              <div className="grid grid-cols-2 gap-3 p-2">
-                {item.accounts.map((el, idx) => (
-                  <Account
-                    key={`lang-${idx}`}
-                    picture={Logo}
-                    name="Aview International Espan'ol"
-                    subscribers="2.28K subscribers"
-                  />
-                ))}
-              </div>
-            }
-          />
-        ))} */}
       </div>
       {isNewAccount ? (
-        
-      
-        <div className="absolute inset-0 flex items-center justify-center bg-black">  
-         <Shadow>
-          <div className="rounded-2xl border-4 border-white/60 px-s4 py-s1">
-            {/*  Outside Click to close popup  */}
-          
-          <OutsideClickHandler onOutsideClick={handleNewAccount}> 
+        <Modal closeModal={handleNewAccount}>
+          <div className="min-w-[400px]">
             <Accounts handleAccounts={handleNewAccount} />
-            </OutsideClickHandler>
-          
           </div>
-          </Shadow>
-        </div>
-     
-
-       
+        </Modal>
       ) : null}
     </>
   );
@@ -150,7 +66,7 @@ const Account = ({ picture, name, subscribers }) => (
   </div>
 );
 
-const Accounts = ({ userData, handleAccounts }) => {
+const Accounts = ({ userData }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState({
     youtube: false,
@@ -176,21 +92,12 @@ const Accounts = ({ userData, handleAccounts }) => {
     }
   };
 
-  // const linkYoutubeAccount = async () => {
-  //   localStorage.setItem('userId', userData._id);
-  //   setIsLoading((prev) => ({
-  //     ...prev,
-  //     youtube: true,
-  //   }));
-  //   window.location = await authorizeUser();
-  // };
-
   const linkYoutubeAccount = async () => {
     const userId = Cookies.get('uid');
     if (userId) {
       localStorage.setItem('userId', userId);
     } else {
-      console.error("userId is undefined");
+      console.error('userId is undefined');
     }
     setIsLoading((prev) => ({
       ...prev,
@@ -201,47 +108,39 @@ const Accounts = ({ userData, handleAccounts }) => {
 
   return (
     <>
-    
       <Container
-      
         left={<p className="mr-6 text-2xl">YouTube</p>}
-       
         right={
-          
           <OnBoardingAccounts
             classes="bg-[#ff0000]"
             isAccountConnected={userData?.youtube?.youtubeConnected}
             clickEvent={linkYoutubeAccount}
             account={
-              
-              <OnboardingButton theme='dark'>
+              <OnboardingButton theme="dark">
                 <Shadow classes="">
-              <Image
-                src={WhiteYoutube}
-                alt="connect"
-                width={100}
-                height={22.5}
-              />
-              </Shadow>
+                  <Image
+                    src={WhiteYoutube}
+                    alt="connect"
+                    width={100}
+                    height={22.5}
+                  />
+                </Shadow>
               </OnboardingButton>
-              
             }
             isLoading={isLoading.youtube}
           />
-        
-
         }
       />
-      <Container                                                    //Outdated, should create dynamic mapping like in Modals
+      <Container //Outdated, should create dynamic mapping like in Modals
         left={<p className="mr-6 text-2xl">Instagram</p>}
         right={
           <OnboardingButton theme="dark">
-          <OnBoardingAccounts
-            isAccountConnected={userData?.instagram?.instagramConnected}
-            classes="instagram"
-            clickEvent={linkInstagramAccount}
-            account="Instagram"
-          />
+            <OnBoardingAccounts
+              isAccountConnected={userData?.instagram?.instagramConnected}
+              classes="instagram"
+              clickEvent={linkInstagramAccount}
+              account="Instagram"
+            />
           </OnboardingButton>
         }
       />
@@ -269,5 +168,5 @@ const Accounts = ({ userData, handleAccounts }) => {
   );
 };
 
-DistriubtionAccounts.getLayout = SettingsLayout;
-export default DistriubtionAccounts;
+DistributionAccounts.getLayout = SettingsLayout;
+export default DistributionAccounts;
