@@ -5,7 +5,6 @@ import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
-import PageTitle from '../../components/SEO/PageTitle';
 import Cookies from 'js-cookie';
 import { setUser } from '../../store/reducers/user.reducer';
 import { useDispatch } from 'react-redux';
@@ -19,6 +18,7 @@ import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
 import ButtonLoader from '../../components/UI/loader';
+import SEO from '../../components/SEO/SEO';
 
 const Register = () => {
   const router = useRouter();
@@ -114,7 +114,10 @@ const Register = () => {
 
   return (
     <>
-      <PageTitle title="Register - Aview International" />
+      <SEO
+        title="Video Translation & Subtitling - AVIEW"
+        description="Create an account now and start global distribution"
+      />
       <div>
         <div className="flex items-center py-6 pl-s14">
           <Image
