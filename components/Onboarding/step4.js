@@ -7,11 +7,7 @@ import { useEffect, useState } from 'react';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../utils/errorHandler';
 import { useSelector } from 'react-redux';
-import {
-  authCustomUser,
-  updateRequiredServices,
-} from '../../services/firebase';
-import Cookies from 'js-cookie';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep4 = ({ userData, allLanguages }) => {
   const router = useRouter();
@@ -25,28 +21,13 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
   }, [userData.languages]);
 
   const handleSubmit = async () => {
-    const payForPlan = localStorage.getItem('payForPlan');
     try {
       if (languages.length < 2) {
         setIsError(true);
         return;
       }
-      const testUser = Cookies.get('testUser');
-      if (testUser) {
-        await authCustomUser(
-          Cookies.get('session'),
-          { languages },
-          Cookies.get('uid')
-        );
-        Cookies.remove('testUser');
-        return router.push('/onboarding?stage=5');
-      }
       await updateRequiredServices({ languages }, userData.uid);
-      router.push(
-        `/onboarding?stage=${
-          payForPlan ? `subscription&plan=${payForPlan}` : '5'
-        }`
-      );
+      router.push('/onboarding?stage=5');
     } catch (error) {
       ErrorHandler(error);
     }

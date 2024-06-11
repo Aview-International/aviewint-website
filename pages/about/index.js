@@ -21,7 +21,7 @@ const About = () => {
     <>
       <SEO
         title="About - AVIEW"
-        description="Our mission is to expand your international fanbase. We are a professional online translation company. Visit today to gain AVIEW!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <ProgressBar />
       <EasterEgg />

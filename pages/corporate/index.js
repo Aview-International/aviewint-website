@@ -20,7 +20,7 @@ const Corporate = () => {
     <>
       <SEO
         title="Corporate - AVIEW"
-        description="Organizations worldwide trust us to ensure they deliver their content in a language and format that meets their audience's needs. Contact Us Today!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <ProgressBar />
       <EasterEgg />

@@ -14,11 +14,7 @@ import FormInput from '../../components/FormComponents/FormInput';
 import OnboardingButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import {
-  igAccountTest,
-  registerUser,
-  singleSignOnRegister,
-} from '../../services/apis';
+import { registerUser, singleSignOnRegister } from '../../services/apis';
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
@@ -84,13 +80,12 @@ const Register = () => {
       signInWithEmailLink(auth, email, window.location.href)
         .then(async (result) => {
           window.localStorage.removeItem('emailForSignIn');
-
-          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
-          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
           await registerUser(
             result._tokenResponse.localId,
             result._tokenResponse.email
           );
+          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
+          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
           router.push('/onboarding?stage=profile');
         })
         .catch((error) => {
@@ -102,25 +97,10 @@ const Register = () => {
     }
   };
 
-  const handleIgTestLogin = async () => {
-    try {
-      const res = await igAccountTest();
-      Cookies.set('session', res.data.idToken, { expires: 3 });
-      Cookies.set('uid', res.data.uid, { expires: 3 });
-      Cookies.set('testUser', true, { expires: 3 });
-      router.push('/onboarding?stage=1');
-    } catch (error) {
-      ErrorHandler(error);
-    }
-  };
-
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
     try {
-      if (email.trim() === 'instagramverification@aviewint.com') {
-        return handleIgTestLogin();
-      }
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnRegister(email, window.location.origin);
       setIsLoading({ ...isLoading, hasSubmitted: true });

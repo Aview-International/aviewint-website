@@ -4,7 +4,6 @@ import {
   signInWithPopup,
   getAuth,
   signOut,
-  signInWithCustomToken,
 } from 'firebase/auth';
 import {
   getDatabase,
@@ -65,7 +64,7 @@ export const signInWithGoogle = async () => {
 export const createNewUser = async (
   _id,
   firstName,
-  lastName,
+  lastName = '',
   picture,
   email
 ) => {
@@ -139,12 +138,12 @@ export const subscribeToHistory = (uid, subscriptionCallback) => {
   return unsubscribe; // Return the unsubscribe function
 };
 
-export const authCustomUser = async (token, payload, uid) => {
-  return await signInWithCustomToken(auth, token)
-    .then(async () => {
-      return await updateRequiredServices(payload, uid);
-    })
-    .catch((error) => {
-      console.error('Error authenticating with custom token:', error);
-    });
+export const getAllCompletedJobs = async (uid) => {
+  const res = await get(ref(database, `user-jobs/completed/${uid}`)).then(
+    (snapshot) => {
+      if (snapshot.exists()) return snapshot.val();
+      else return null;
+    }
+  );
+  return res;
 };

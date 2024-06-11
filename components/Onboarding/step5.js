@@ -4,7 +4,6 @@ import Border from '../UI/Border';
 import Image from 'next/image';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
-import OnboardingButton from './button';
 
 const OnboardingStep5 = ({ userData, plans }) => {
   const router = useRouter();
