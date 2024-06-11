@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import Border from '../../components/UI/Border';
 import Shadow from '../../components/UI/Shadow';
 import Google from '../../public/img/icons/google.svg';
-import PageTitle from '../../components/SEO/PageTitle';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import ButtonLoader from '../../components/UI/loader';
 import { useDispatch } from 'react-redux';
@@ -23,6 +22,7 @@ import {
   checkUserEmail,
   auth,
 } from '../../services/firebase';
+import SEO from '../../components/SEO/SEO';
 
 const Login = () => {
   const router = useRouter();
@@ -113,7 +113,10 @@ const Login = () => {
 
   return (
     <>
-      <PageTitle title="Login" />
+      <SEO
+        title="Video Translation & Subtitling - AVIEW"
+        description="Login to resume global distribution"
+      />
       <div className="">
         <div className="flex items-center py-6 pl-s14">
           <Image
