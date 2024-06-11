@@ -1,103 +1,25 @@
-import { Elements } from '@stripe/react-stripe-js';
-import { stripeAppearance, stripePromise } from '../../utils/stripe';
-import { useEffect, useState } from 'react';
-import CheckoutForm from '../FormComponents/PaymentForm';
-import ErrorHandler from '../../utils/errorHandler';
-import { createCheckoutSesion } from '../../services/apis';
-import { useSelector } from 'react-redux';
-import Loader from '../UI/loader';
-import { SUBSCRIPTION_PLANS_DESC } from '../../constants/constants';
-import Button from '../UI/Button';
-import Image from 'next/image';
-import check from '../../public/img/icons/check.svg';
-import ToggleButton from '../FormComponents/ToggleButton';
-import Info from '../../public/img/icons/info.svg';
-import { PageTransition } from '../animations';
 import { useRouter } from 'next/router';
+import check from '../../public/img/icons/check.svg';
+import Border from '../UI/Border';
+import Image from 'next/image';
+import Card from '../UI/Card';
+import Button from '../UI/Button';
 
-const PriceSection = ({
-  plans,
-  setShowPLans,
-  setTrigger,
-  trigger,
-  isYearlyPlan,
-  setIsYearlyPlan,
-}) => {
-  const handlePlanSelect = (id) => {
-    localStorage.setItem('payForPlan', id);
-    isYearlyPlan
-      ? localStorage.setItem('isYearlyPlan', true)
-      : localStorage.removeItem('isYearlyPlan');
-    setTrigger(!trigger);
-    setShowPLans(false);
-  };
-
-  const handleToggle = () => setIsYearlyPlan(!isYearlyPlan);
+const OnboardingStep5 = ({ userData, plans }) => {
+  const router = useRouter();
 
   return (
-    <div className="text-center text-white">
-      <h2 className="text-2xl font-bold md:text-5xl">
-        Find the plan that works for you
-      </h2>
-      <p className="mt-s1 text-lg">
+    <div className="m-horizontal">
+      <h2 className="text-3xl md:text-center md:text-4xl">Select your plan</h2>
+      <p className="mt-4 mb-8 text-lg text-white/90 md:text-center md:text-[19px]">
         Fees are waved upon channel becoming monetized.
       </p>
-      <div className="my-s2 flex w-full flex-row items-center justify-center gap-x-2 text-lg">
-        <p>Monthly </p>
-        <ToggleButton isChecked={isYearlyPlan} handleChange={handleToggle} />
-        <p>Annual (save up to 30%)</p>
-      </div>
-      <div className="flex w-full">
-        {plans.slice(1).map((plan, i) => (
-          <div
-            key={i}
-            className={`mx-s2 w-full rounded-xl bg-white-transparent px-4 py-8 text-left md:px-6`}
-          >
-            <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
-              {plan.desc}
-            </span>
-
-            <div className="my-s2">
-              <p className="text-2xl font-bold md:text-5xl">
-                &#36;
-                {!isYearlyPlan
-                  ? plan.monthlyCost
-                  : Math.round(plan.yearlyCost / 12)}
-              </p>
-              {plan.id != 'basic' && (
-                <p>
-                  Per month
-                  {isYearlyPlan && `, billed $${plan.yearlyCost} annually`}
-                </p>
-              )}
-            </div>
-
-            {plan.options.map((option, index) => (
-              <div
-                className="mt-s1 flex flex-row items-start gap-2 text-sm"
-                key={index}
-              >
-                <Image
-                  src={check}
-                  alt="check-mark"
-                  className="mt-2"
-                  width={16}
-                  height={16}
-                />
-                <p>{option}</p>
-              </div>
-            ))}
-
-            <div className="mt-s2 capitalize">
-              <Button
-                type={plan.id === 'pro' ? 'primary' : 'secondary'}
-                purpose="onClick"
-                onClick={() => handlePlanSelect(plan.id)}
-                fullWidth={true}
-              >
-                Go {plan.id}
-              </Button>
-            </div>
+      <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
+        {plans.map((plan, i) => (
+          <div key={i}>
+            <Card borderRadius="xl" fullWidth={true}>
+              <PriceSection plan={plan} />
+            </Card>
           </div>
         ))}
       </div>
@@ -105,106 +27,68 @@ const PriceSection = ({
   );
 };
 
-const PaymentForm = ({ clientSecret, isLoading }) => {
-  const options = {
-    clientSecret,
-    appearance: stripeAppearance,
+const PriceSection = ({ plan }) => {
+  const handlePlanSelect = () => {
+    localStorage.setItem('payForPlan', plan.id);
   };
-
-  return !isLoading && clientSecret ? (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm
-        redirectUrl={window.location.origin + '/onboarding?stage=6'}
-      />
-    </Elements>
-  ) : (
-    <Loader />
-  );
-};
-
-const OnboardingPayment = () => {
-  const [showPlans, setShowPLans] = useState(false);
-  const router = useRouter();
-  const [chosenPlan, setChosenPlan] = useState(null);
-  const [clientSecret, setClientSecret] = useState('');
-  const [trigger, setTrigger] = useState(false);
-  const [isYearlyPlan, setIsYearlyPlan] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const allPlans = useSelector((x) => x.aview.allPlans);
-  const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
-    ...allPlans[i],
-    ...plan,
-  }));
-
-  const handlePricing = async (planId) => {
-    try {
-      setIsLoading(true);
-      const secret = await createCheckoutSesion(planId);
-      setClientSecret(secret);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      ErrorHandler(error);
-    }
-  };
-
-  useEffect(() => {
-    const payForPlan = localStorage.getItem('payForPlan');
-    const isYearlyPlan = localStorage.getItem('isYearlyPlan');
-
-    if (!payForPlan) {
-      router.push('onboarding?stage=6');
-      return;
-    }
-    if (isYearlyPlan) setIsYearlyPlan(true);
-    else setIsYearlyPlan(false);
-    if (allPlans.length > 0) {
-      const planId = allPlans.find((x) => x.id === payForPlan);
-      setChosenPlan(planId);
-
-      isYearlyPlan
-        ? handlePricing(planId.stripe_yearly_id)
-        : handlePricing(planId.stripe_monthly_id);
-    }
-  }, [allPlans, trigger]);
 
   return (
-    <div className="mx-auto w-full md:w-4/5">
-      <button
-        onClick={() => setShowPLans(!showPlans)}
-        className="mb-s2 flex items-center gap-x-2"
-      >
-        {showPlans ? 'Back to checkout' : 'Change plan info'}
-        {!showPlans && <Image src={Info} alt="" />}
-      </button>
-
+    <div
+      className={`relative h-full w-full cursor-pointer rounded-xl bg-white-transparent  px-4 py-8 text-white md:px-6 ${
+        plan.id === 'Pro'
+          ? 'gradient-dark border-0'
+          : 'border-xl border border-transparent'
+      }`}
+    >
       <span className="rounded-md bg-gray-1 p-s1 pt-2.5 uppercase">
-        {chosenPlan?.desc}
+        {plan.desc}
       </span>
-      <div className="my-s3 mt-s2 flex items-center">
-        <h2 className="pr-s1.5 text-6xl font-bold">
-          ${isYearlyPlan ? chosenPlan?.yearlyCost : chosenPlan?.monthlyCost}
-        </h2>
-        <p>billed {isYearlyPlan ? 'annually' : 'monthly'}</p>
+      <p className="mb-2 mt-3 font-semibold">{plan.description}</p>
+
+      <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
+        <p className="text-center text-4xl font-bold md:text-7xl">
+          {typeof (plan.monthlyCost || plan.yearlyCost) === 'number' && '$'}
+          {plan.monthlyCost != 'Free'
+            ? Math.round(plan.yearlyCost / 12)
+            : 'Free'}
+        </p>
       </div>
-      {showPlans ? (
-        <PageTransition>
-          <PriceSection
-            plans={newPlans}
-            setShowPLans={setShowPLans}
-            setTrigger={setTrigger}
-            trigger={trigger}
-            setIsYearlyPlan={setIsYearlyPlan}
-            isYearlyPlan={isYearlyPlan}
+
+      {plan.options.map((option, index) => (
+        <div className="mt-s1.5 flex flex-row items-start gap-2" key={index}>
+          <Image
+            src={check}
+            alt="check-mark"
+            className="mt-2"
+            width={16}
+            height={16}
           />
-        </PageTransition>
-      ) : (
-        <PageTransition>
-          <PaymentForm clientSecret={clientSecret} isLoading={isLoading} />
-        </PageTransition>
+          <p>{option}</p>
+        </div>
+      ))}
+
+      <div className="mt-s2 capitalize">
+        <Button
+          type={plan.id === 'pro' ? 'primary' : 'secondary'}
+          purpose="onClick"
+          onClick={handlePlanSelect}
+          fullWidth={true}
+        >
+          {'Go ' + plan.id}
+        </Button>
+      </div>
+
+      {plan.id == 'pro' && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">
+          <Border borderRadius="3xl" padding="p-[1px]">
+            <div className="block rounded-3xl bg-white px-3 py-1 text-center font-medium text-black">
+              Recommended
+            </div>
+          </Border>
+        </div>
       )}
     </div>
   );
 };
 
-export default OnboardingPayment;
+export default OnboardingStep5;

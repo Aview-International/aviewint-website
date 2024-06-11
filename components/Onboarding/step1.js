@@ -65,7 +65,7 @@ export const OnboardingStep1 = ({ userData, allLanguages }) => {
     if (!isFormValid()) return;
     setSideEffects({ ...sideEffects, isLoading: true });
     try {
-      await updateRequiredServices({ role: payload.role }, Cookies.get('uid'));
+      await updateRequiredServices(payload , Cookies.get('uid'));
       router.push('/onboarding?stage=2');
     } catch (error) {
       ErrorHandler(error);

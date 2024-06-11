@@ -1,50 +1,26 @@
-import { useRouter } from 'next/router';
-import check from '../../public/img/icons/check.svg';
-import Border from '../UI/Border';
-import Image from 'next/image';
-import Card from '../UI/Card';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripeAppearance, stripePromise } from '../../utils/stripe';
+import { useEffect, useState } from 'react';
+import CheckoutForm from '../FormComponents/PaymentForm';
+import ErrorHandler from '../../utils/errorHandler';
+import { createCheckoutSesion } from '../../services/apis';
+import { useSelector } from 'react-redux';
+import Loader from '../UI/loader';
+import ToggleButton from '../FormComponents/ToggleButton';
 import Button from '../UI/Button';
-import OnboardingButton from './button';
+import Image from 'next/image';
+import check from '../../public/img/icons/check.svg';
+import Modal from '../UI/Modal';
+import { PageTransition } from '../animations';
+import { useRouter } from 'next/router';
+import Card from '../UI/Card';
+import Border from '../UI/Border';
 
-const OnboardingStep5 = ({ userData, plans }) => {
-  const router = useRouter();
-
-  return (
-    <div className="m-horizontal">
-      <h2 className="text-3xl md:text-center md:text-4xl">Select your plan</h2>
-      <p className="mt-4 mb-8 text-lg text-white/90 md:text-center md:text-[19px]">
-        Fees are waved upon channel becoming monetized.
-      </p>
-      <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
-        {plans.map((plan, i) => (
-          <div key={i}>
-            <Card borderRadius="xl" fullWidth={true}>
-              <PriceSection plan={plan} />
-            </Card>
-          </div>
-        ))}
-      </div>
-      <div className="m-auto mt-12 w-[min(360px,90%)]">
-        <OnboardingButton
-          onClick={() => router.push('/onboarding?stage=6')}
-          theme="light"
-        >
-          Continue
-        </OnboardingButton>
-      </div>
-    </div>
-  );
-};
-
-const PriceSection = ({ plan }) => {
-  const handlePlanSelect = () => {
-    localStorage.setItem('payForPlan', plan.id);
-  };
-
+const PriceSection = ({ plan, isChecked, handlePlanSelect }) => {
   return (
     <div
       className={`relative h-full w-full cursor-pointer rounded-xl bg-white-transparent  px-4 py-8 text-white md:px-6 ${
-        plan.id === 'Pro'
+        plan.id === 'pro'
           ? 'gradient-dark border-0'
           : 'border-xl border border-transparent'
       }`}
@@ -57,12 +33,11 @@ const PriceSection = ({ plan }) => {
       <div className="my-s4 flex flex-row items-center justify-start gap-x-4">
         <p className="text-center text-4xl font-bold md:text-7xl">
           {typeof (plan.monthlyCost || plan.yearlyCost) === 'number' && '$'}
-          {plan.monthlyCost != 'Free'
-            ? Math.round(plan.yearlyCost / 12)
-            : 'Free'}
+          {isChecked
+            ? Math.round(plan.yearlyCost / 12) || 'Free'
+            : plan.monthlyCost}
         </p>
       </div>
-
       {plan.options.map((option, index) => (
         <div className="mt-s1.5 flex flex-row items-start gap-2" key={index}>
           <Image
@@ -80,7 +55,7 @@ const PriceSection = ({ plan }) => {
         <Button
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
-          onClick={handlePlanSelect}
+          onClick={() => handlePlanSelect(plan.id)}
           fullWidth={true}
         >
           {'Go ' + plan.id}
@@ -97,6 +72,97 @@ const PriceSection = ({ plan }) => {
         </div>
       )}
     </div>
+  );
+};
+
+const PaymentForm = ({ clientSecret, isLoading }) => {
+  const options = {
+    clientSecret,
+    appearance: stripeAppearance,
+  };
+
+  return !isLoading && clientSecret ? (
+    <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm
+        redirectUrl={window.location.origin + '/onboarding?stage=6'}
+      />
+    </Elements>
+  ) : (
+    <Loader />
+  );
+};
+
+const OnboardingStep5 = ({ plans }) => {
+  const router = useRouter();
+  const [clientSecret, setClientSecret] = useState('');
+  const [isYearlyPlan, setIsYearlyPlan] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [modal, setModal] = useState(false);
+  const allPlans = useSelector((x) => x.aview.allPlans);
+  const handleIsChecked = () => setIsYearlyPlan(!isYearlyPlan);
+
+  const handlePlanSelect = async (planId) => {
+    if (allPlans.length > 0) {
+      try {
+        if (planId === 'basic') return router.push('/onboarding?stage=6');
+        const selectedPlan = allPlans.find((x) => x.id === planId);
+
+        setIsLoading(true);
+        setModal(true)
+        const secret = await createCheckoutSesion(
+          isYearlyPlan
+            ? selectedPlan.stripe_yearly_id
+            : selectedPlan.stripe_monthly_id
+        );
+        setClientSecret(secret);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        ErrorHandler(error);
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="m-horizontal">
+        <h2 className="text-3xl md:text-center md:text-4xl">
+          Select your plan
+        </h2>
+        <p className="mt-4 mb-8 text-lg text-white/90 md:text-center md:text-[19px]">
+          Fees are waved upon channel becoming monetized.
+        </p>
+        <div className="mb-s7 flex items-center justify-center">
+          <ToggleButton
+            isChecked={isYearlyPlan}
+            handleChange={handleIsChecked}
+          />
+          <p className="pl-1 text-sm md:text-base">Annual (save up to 28%)</p>
+        </div>
+        <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
+          {plans.map((plan, i) => (
+            <div key={i}>
+              <Card borderRadius="xl" fullWidth={true}>
+                <PriceSection
+                  plan={plan}
+                  isChecked={isYearlyPlan}
+                  handlePlanSelect={handlePlanSelect}
+                />
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+      {modal && (
+        <Modal closeModal={() => setModal(false)} preventOutsideClick={true}>
+          <div className="mx-auto w-full md:w-4/5 md:min-w-[350px]">
+            <PageTransition>
+              <PaymentForm clientSecret={clientSecret} isLoading={isLoading} />
+            </PageTransition>
+          </div>
+        </Modal>
+      )}
+    </>
   );
 };
 
