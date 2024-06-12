@@ -37,7 +37,7 @@ const CheckoutForm = ({ redirectUrl }) => {
   return (
     <form onSubmit={isLoading ? null : handleSubmit}>
       <PaymentElement />
-      <div className="my-s4 mx-auto w-3/12 text-center">
+      <div className="my-s4 mx-auto w-[150px] text-center">
         <OnboardingButton isLoading={isLoading}>Submit</OnboardingButton>
       </div>
     </form>
