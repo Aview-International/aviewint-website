@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import OnboardingButton from './button';
 import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
+import DefaultImage from '../../public/img/graphics/user.webp';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import { useEffect, useState } from 'react';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
@@ -76,7 +77,10 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
                 >
                   <div className="flex flex-row items-center justify-between">
                     <Image
-                      src={youtubeChannel.channelDetails.thumbnail}
+                      src={
+                        youtubeChannel?.channelDetails?.thumbnail ??
+                        DefaultImage
+                      }
                       alt="profile-image"
                       height={40}
                       width={40}
