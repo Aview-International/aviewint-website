@@ -91,7 +91,7 @@ const Container = ({ pendingJobs, completedJobs }) => {
         >
           <div>{job.videoData?.caption?.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div className="">              //
+          <div className="">              
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'
