@@ -78,7 +78,7 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
                   <div className="flex flex-row items-center justify-between">
                     <Image
                       src={
-                        youtubeChannel?.channelDetails?.thumbnail ??
+                        youtubeChannel?.channelDetails?.thumbnail ||
                         DefaultImage
                       }
                       alt="profile-image"

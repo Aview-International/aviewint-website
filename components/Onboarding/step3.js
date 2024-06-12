@@ -3,12 +3,8 @@ import { useEffect, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import OnboardingButton from './button';
 import Image from 'next/image';
-import Cookies from 'js-cookie';
 import ErrorHandler from '../../utils/errorHandler';
-import {
-  authCustomUser,
-  updateRequiredServices,
-} from '../../services/firebase';
+import { updateRequiredServices } from '../../services/firebase';
 
 const OnboardingStep3 = ({ userData }) => {
   const router = useRouter();

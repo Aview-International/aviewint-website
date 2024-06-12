@@ -61,7 +61,7 @@ const Onboarding = ({ plans }) => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = subscribeToProfile(userData.uid, (data) => {
+    const unsubscribe = subscribeToProfile((data) => {
       dispatch(setUser(data));
     });
 

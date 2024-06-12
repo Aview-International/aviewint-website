@@ -138,7 +138,8 @@ export const subscribeToHistory = (uid, subscriptionCallback) => {
   return unsubscribe; // Return the unsubscribe function
 };
 
-export const subscribeToProfile = (uid, callback) => {
+export const subscribeToProfile = (callback) => {
+  const uid = Cookies.get('uid');
   const pathRef = ref(database, `users/${uid}`);
   const unsubscribe = onValue(pathRef, (snapshot) => {
     const data = snapshot.val();
