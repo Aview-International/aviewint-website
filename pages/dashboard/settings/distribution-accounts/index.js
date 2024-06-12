@@ -5,12 +5,16 @@ import Container from '../../../../components/UI/Container';
 import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
 import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
 import Button from '../../../../components/UI/Button';
-import { getIgAuthLink } from '../../../../services/apis';
+
 import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import Shadow from '../../../../components/UI/Shadow.js';
-import { authorizeUser } from '../../../../services/apis.js';
+import {
+  authorizeUser,
+  getIgAuthLink,
+  getTikTokAuthUrl,
+} from '../../../../services/apis';
 import OnboardingButton from '../../../../components/Onboarding/button';
 import Modal from '../../../../components/UI/Modal';
 
@@ -106,66 +110,58 @@ const Accounts = ({ userData }) => {
     window.location = await authorizeUser();
   };
 
+  const linkTikTokAccount = async () => {
+    try {
+      const url = await getTikTokAuthUrl();
+      window.location.href = url;
+    } catch (error) {
+      ErrorHandler(error);
+    }
+  };
+
   return (
-    <>
-      <Container
-        left={<p className="mr-6 text-2xl">YouTube</p>}
-        right={
-          <OnBoardingAccounts
-            classes="bg-[#ff0000]"
-            isAccountConnected={userData?.youtube?.youtubeConnected}
-            clickEvent={linkYoutubeAccount}
-            account={
-              <OnboardingButton theme="dark">
-                <Shadow classes="">
-                  <Image
-                    src={WhiteYoutube}
-                    alt="connect"
-                    width={100}
-                    height={22.5}
-                  />
-                </Shadow>
-              </OnboardingButton>
-            }
-            isLoading={isLoading.youtube}
-          />
-        }
-      />
-      <Container //Outdated, should create dynamic mapping like in Modals
-        left={<p className="mr-6 text-2xl">Instagram</p>}
-        right={
-          <OnboardingButton theme="dark">
-            <OnBoardingAccounts
-              isAccountConnected={userData?.instagram?.instagramConnected}
-              classes="instagram"
-              clickEvent={linkInstagramAccount}
-              account="Instagram"
-            />
-          </OnboardingButton>
-        }
-      />
-      <Container
-        left={<p className="mr-6 text-2xl">Facebook</p>}
-        right={
-          <OnBoardingAccounts
-            isAccountConnected={userData?.facebook}
-            classes="bg-[#0054ff]"
-            account="Facebook"
-          />
-        }
-      />
-      <Container
-        left={<p className="mr-6 text-2xl">TikTok</p>}
-        right={
-          <OnBoardingAccounts
-            isAccountConnected={userData?.facebook}
-            classes="bg-[#0054ff]"
-            account="TikTok"
-          />
-        }
-      />
-    </>
+    <div className="m-auto w-[90%]">
+      <h2 className="text-center text-3xl font-bold md:text-6xl">
+        Connect your accounts
+      </h2>
+      <p className="mx-auto mt-s2 mb-s4 w-[min(610px,100%)] text-center text-lg md:text-xl">
+        Connect your socials to get started!
+      </p>
+      <div className="m-auto w-[min(360px,80%)]">
+     
+        <OnBoardingAccounts
+          classes="bg-[#ff0000]"
+          isAccountConnected={userData?.youtube?.youtubeConnected}
+          clickEvent={linkYoutubeAccount}
+          account={
+            <Image src={WhiteYoutube} alt="connect" width={100} height={22.5} />
+          }
+          isLoading={isLoading.youtube}
+        />
+   
+        <OnBoardingAccounts
+          isAccountConnected={userData?.instagram?.instagramConnected}
+          classes="instagram"
+          clickEvent={linkInstagramAccount}
+          account="Instagram"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.tiktok?.tiktokConnected}
+          clickEvent={linkTikTokAccount}
+          classes="bg-[#0054ff]"
+          account="TikTok"
+        />
+        <OnBoardingAccounts
+          isAccountConnected={userData?.facebook}
+          classes="bg-[#0054ff]"
+          account="Facebook"
+        />
+      </div>
+      
+    </div>
   );
+  
+  
 };
 
 DistributionAccounts.getLayout = SettingsLayout;
