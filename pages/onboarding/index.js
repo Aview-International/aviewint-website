@@ -12,13 +12,15 @@ import OnboardingStep3 from '../../components/Onboarding/step3';
 import OnboardingStep4 from '../../components/Onboarding/step4';
 import OnboardingStep5 from '../../components/Onboarding/step5';
 import OnboardingSuccess from '../../components/Onboarding/success';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UserProfileOnboarding from '../../components/Onboarding/profile';
 import Confetti from '../../components/UI/Confetti';
 import { getPlans } from '../../services/apis';
 import usePlans from '../../hooks/usePlans';
 import OnboardingPayment from '../../components/Onboarding/payment';
 import { SUBSCRIPTION_PLANS_DESC } from '../../constants/constants';
+import { subscribeToProfile } from '../../services/firebase';
+import { setUser } from '../../store/reducers/user.reducer';
 
 export const getStaticProps = async () => {
   try {
@@ -37,6 +39,7 @@ export const getStaticProps = async () => {
 
 const Onboarding = ({ plans }) => {
   usePlans(JSON.parse(plans));
+  const dispatch = useDispatch();
   const allPlans = useSelector((data) => data.aview.allPlans);
   const newPlans = SUBSCRIPTION_PLANS_DESC.map((plan, i) => ({
     ...allPlans[i],
@@ -55,6 +58,14 @@ const Onboarding = ({ plans }) => {
       );
     }
     if (!window.location.search) router.push('/onboarding?stage=1');
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = subscribeToProfile(userData.uid, (data) => {
+      dispatch(setUser(data));
+    });
+
+    return () => unsubscribe(); // cleanup
   }, []);
 
   return (
