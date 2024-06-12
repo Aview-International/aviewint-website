@@ -138,6 +138,15 @@ export const subscribeToHistory = (uid, subscriptionCallback) => {
   return unsubscribe; // Return the unsubscribe function
 };
 
+export const subscribeToProfile = (uid, callback) => {
+  const pathRef = ref(database, `users/${uid}`);
+  const unsubscribe = onValue(pathRef, (snapshot) => {
+    const data = snapshot.val();
+    callback(data);
+  });
+  return unsubscribe; // Return the unsubscribe function
+};
+
 export const getAllCompletedJobs = async (uid) => {
   const res = await get(ref(database, `user-jobs/completed/${uid}`)).then(
     (snapshot) => {
