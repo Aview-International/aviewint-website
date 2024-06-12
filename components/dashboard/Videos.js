@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CircleLoader from '../../public/loaders/CircleLoader';
 import VideoFrame from './VideoFrame';
 import { useSelector } from 'react-redux';
-import { useTranslatedLanguage } from '../../pages/dashboard/history'; // Adjust path if necessary
+import { useTranslatedLanguage } from '../../pages/dashboard/history'; //added
 
 const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const instagramVideos = useSelector((state) => state.instagram.videos);

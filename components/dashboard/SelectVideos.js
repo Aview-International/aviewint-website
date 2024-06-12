@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import OnboardingButton from '../Onboarding/button';
 import Insights from './insights/Insights';
 import Videos from './Videos';
-import { TranslatedLanguageContext } from '../../pages/dashboard/history'; // Adjust path if necessary
+import { TranslatedLanguageContext } from '../../pages/dashboard/history'; 
 
 const SelectVideos = ({
   setIsSelected,
