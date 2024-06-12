@@ -27,7 +27,7 @@ const CollisionPage24 = () => {
               3. Tag <a href="https://twitter.com/aviewbot" className="text-blue-500">@aviewbot</a> 🤖
             </li>
           </ul>
-          <Link href="/login">
+          <Link href="/">
             <a className="mt-4 text-blue-500 underline">Click here for more information</a>
           </Link>
         </div>
