@@ -33,7 +33,6 @@
     "react-toastify": "^9.1.1",
     "react-typed": "^1.2.0",
     "redux-logger": "^3.0.6",
-    "socket.io-client": "^4.7.2",
     "wavesurfer.js": "^7.2.0"
   },
   "devDependencies": {

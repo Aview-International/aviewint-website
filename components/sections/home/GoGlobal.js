@@ -21,7 +21,7 @@ const GoGlobal = () => {
           </p>
 
           <Button purpose="route" route="/login" type="tertiary">
-            Login
+            Sign Up
           </Button>
         </div>
       </div>

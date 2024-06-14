@@ -41,7 +41,7 @@ const FAQ_SCHEMA = {
   ],
 };
 
-const SEO = ({ title, description, image = '/images/og-image.png' }) => {
+const SEO = ({ title, description, image = '/img/aview/og-image.png' }) => {
   const router = useRouter();
   const path = router.pathname;
 
@@ -50,7 +50,10 @@ const SEO = ({ title, description, image = '/images/og-image.png' }) => {
       <Head>
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
-        <meta name="keywords" content="Video Translation & Subtitling" />
+        <meta
+          name="keywords"
+          content="Video Translation & Subtitling, Captioning, Dubbing, Subtitle, Creator, Content Creator"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -59,6 +62,7 @@ const SEO = ({ title, description, image = '/images/og-image.png' }) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`www.aviewint.com${path}`} />
         <meta property="og:image" content={image} />
+        <meta property="og:site_name" content="Aview International"></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={image} />
         <meta name="twitter:description" content={description} />

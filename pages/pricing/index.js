@@ -51,7 +51,7 @@ const Pricing = ({ plans }) => {
     <>
       <SEO
         title="Pricing - AVIEW"
-        description="Translate Your Favorite Influencer Videos! Apply to gain experience and become a translator, dubber, or editor. Apply Now!"
+        description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
       <EasterEgg />
       <Header curPage="Pricing" />
@@ -76,6 +76,7 @@ const Pricing = ({ plans }) => {
         isChecked={toggleIsChecked}
         handleChange={handleChange}
         allPlans={newPlans}
+        sliderValue={sliderValue}
       />
       <ScrollToTopButton />
       <FAQ page="landing" />
