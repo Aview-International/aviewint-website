@@ -1,19 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Aviewlogo from '../../public/img/aview/Aviewlogo.png';
-import CollisionImg from '../../public/img/aview/collisionimg.png';
+import LogoAview from '../../public/img/aview/Aviewlogo.png';
+import CollisionDesign from '../../public/img/aview/collisionimg.png';
 
 const CollisionPage24 = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
       <header className="absolute top-8 left-8">
-        <Image src={Aviewlogo} alt="Aview Logo" width={150} height={45} />
+        <Image src={LogoAview} alt="Aview Logo" width={150} height={45} />
       </header>
       <main className="flex w-full flex-col items-center justify-center px-11 md:flex-row">
         <div className="flex justify-center md:w-1/2">
           <Image
-            src={CollisionImg}
+            src={CollisionDesign}
             alt="Aview Dashboard"
             width={600}
             height={400}
@@ -28,17 +28,23 @@ const CollisionPage24 = () => {
             <li>2. Find a video you love 🎤</li>
             <li>
               3. Tag{' '}
-              <a href="https://twitter.com/aviewbot" className="text-blue-500">
-                @aviewbot
+              <a
+                href="https://twitter.com/@aview_bot"
+                className="text-blue-500"
+              >
+                @aview_bot
               </a>{' '}
               🤖
             </li>
           </ul>
-          <Link href="/">
-            <a className="text-blue-500 mt-4 underline">
-              Click here for more information
-            </a>
-          </Link>
+          <a
+            href="/"
+            className="text-blue-500 mt-4 underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Click here for more information
+          </a>
         </div>
       </main>
     </div>
