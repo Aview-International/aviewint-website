@@ -2,13 +2,11 @@ import { useState } from 'react';
 import CircleLoader from '../../public/loaders/CircleLoader';
 import VideoFrame from './VideoFrame';
 import { useSelector } from 'react-redux';
-import { useTranslatedLanguage } from '../../pages/dashboard/history'; //added
 
 const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const instagramVideos = useSelector((state) => state.instagram.videos);
   const youtubeVideos = useSelector((state) => state.youtube.videos);
   const tiktokVideos = useSelector((state) => state.tiktok.videos);
-  const { translatedLanguage } = useTranslatedLanguage();
 
   const allVideos = [...tiktokVideos, ...instagramVideos, ...youtubeVideos];
   const [buttonState, setButtonState] = useState('all');
@@ -26,7 +24,9 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
       newArray.push(value);
       setSelectedVideos(newArray);
     } else {
-      const existingVideoIndex = newArray.findIndex((v) => findVideo.id === v.id);
+      const existingVideoIndex = newArray.findIndex(
+        (v) => findVideo.id === v.id
+      );
       newArray.splice(existingVideoIndex, 1);
       setSelectedVideos(newArray);
     }
@@ -39,7 +39,9 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
           <button
             key={`button-${index}`}
             className={`min-w-fit rounded-full bg-white py-s1 px-s2 text-xl ${
-              button.param === buttonState ? 'text-black' : 'bg-opacity-10 text-white'
+              button.param === buttonState
+                ? 'text-black'
+                : 'bg-opacity-10 text-white'
             }`}
             onClick={() => setButtonState(button.param)}
           >
@@ -58,7 +60,6 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
                     handleVideos={handleVideos}
                     selected={selectedVideos.find((v) => v.id === item.id)}
                     key={`video-${index}`}
-                    translatedLanguage={translatedLanguage}
                     {...item}
                   />
                 ))
@@ -69,7 +70,6 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
                       handleVideos={handleVideos}
                       selected={selectedVideos.find((v) => v.id === item.id)}
                       key={`video-${index}`}
-                      translatedLanguage={translatedLanguage}
                       {...item}
                     />
                   ))}
