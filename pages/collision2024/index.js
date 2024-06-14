@@ -1,23 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import LogoAview from '../../public/img/aview/Aviewlogo.png';
-import CollisionDesign from '../../public/img/aview/collisionimg.png';
+// import LogoAview from '../../public/img/aview/Aviewlogo.png';
+// import CollisionDesign from '../../public/img/aview/collisionimg.png';
 
 const CollisionPage24 = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
       <header className="absolute top-8 left-8">
-        <Image src={LogoAview} alt="Aview Logo" width={150} height={45} />
+        {/* <Image src={LogoAview} alt="Aview Logo" width={150} height={45} /> */}
       </header>
       <main className="flex w-full flex-col items-center justify-center px-11 md:flex-row">
         <div className="flex justify-center md:w-1/2">
-          <Image
+          {/* <Image
             src={CollisionDesign}
             alt="Aview Dashboard"
             width={600}
             height={400}
-          />
+          /> */}
         </div>
         <div className="mt-8 flex flex-col items-start text-left md:mt-0 md:w-1/2 md:items-start md:pl-8 md:text-left">
           <h1 className="text-7xl font-bold md:text-7xl">
