@@ -38,7 +38,7 @@ const History = () => {
     });
 
     return () => unsubscribe(); // cleanup
-  }, [uid]);
+  }, []);
 
   return (
     <>
@@ -49,7 +49,7 @@ const History = () => {
   );
 };
 
-const Container = ({ pendingJobs, completedJob }) => {
+const Container = ({ pendingJobs, completedJobs }) => {
   const handleDownload = async (job) => {
     const downloadLink = await getS3DownloadLink(
       job.timestamp,
