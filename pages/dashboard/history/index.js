@@ -2,8 +2,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { getS3DownloadLink } from '../../../services/apis';
-import { getJobsHistory } from '../../../services/apis';
+import { getS3DownloadLink, getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setCompletedJobs,
@@ -81,9 +80,9 @@ const Container = ({ pendingJobs, completedJobs }) => {
           className="grid grid-cols-[27%_20%_22%_16%_15%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData?.caption?.replace(/\.mp4$/i, '')}</div>
+          <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div className="">
+          <div>
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'
