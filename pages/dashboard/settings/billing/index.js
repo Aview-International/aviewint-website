@@ -141,7 +141,7 @@ const Billing = ({ plans }) => {
           </Elements>
         )}
         {modal === 'plans' && (
-          <Modal closeModal={closeModal} preventOutsideClick>
+          <Modal closeModal={closeModal}>
             <DashboardPlans
               plans={newPlans}
               buttonId={buttonId}

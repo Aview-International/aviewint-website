@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { getS3DownloadLink, getJobsHistory } from '../../../services/apis';
+import { downloadVideoFromS3, getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setCompletedJobs,
@@ -11,6 +11,14 @@ import {
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
 
+// Import createContext and useContext
+import { createContext, useContext, useState } from 'react';
+
+// Create a context for translatedLanguage
+const TranslatedLanguageContext = createContext();
+
+export const useTranslatedLanguage = () =>
+  useContext(TranslatedLanguageContext);
 const History = () => {
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
@@ -51,8 +59,9 @@ const History = () => {
 
 const Container = ({ pendingJobs, completedJobs }) => {
   const handleDownload = async (job) => {
-    const downloadLink = await getS3DownloadLink(
+    const downloadLink = await downloadVideoFromS3(
       job.timestamp,
+      job.videoData.caption,
       job.translatedLanguage
     );
     if (downloadLink) {
