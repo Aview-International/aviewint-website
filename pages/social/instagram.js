@@ -17,12 +17,11 @@ const InstagramConnection = () => {
         try {
           await completeIgConnection(code, uid);
           Cookies.remove('instagramRedirect');
-          if (igRdr) router.push(igRdr);
-          else router.push('/onboarding?stage=3');
+          if (igRdr) return router.push(igRdr);
         } catch (error) {
           ErrorHandler(error);
-          router.push('/onboarding?stage=3');
         }
+        router.push('/onboarding?stage=2');
       })();
     }
   }, [code]);
