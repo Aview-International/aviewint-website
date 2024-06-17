@@ -11,22 +11,10 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const allVideos = [...tiktokVideos, ...instagramVideos, ...youtubeVideos];
   const [buttonState, setButtonState] = useState('all');
   const BUTTONS = [
-    {
-      title: 'All Videos',
-      param: 'all',
-    },
-    {
-      title: 'YouTube',
-      param: 'youtube',
-    },
-    {
-      title: 'Instagram',
-      param: 'instagram',
-    },
-    {
-      title: 'TikTok',
-      param: 'tiktok',
-    },
+    { title: 'All Videos', param: 'all' },
+    { title: 'YouTube', param: 'youtube' },
+    { title: 'Instagram', param: 'instagram' },
+    { title: 'TikTok', param: 'tiktok' },
   ];
 
   const handleVideos = (value) => {

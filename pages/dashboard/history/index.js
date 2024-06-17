@@ -2,8 +2,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { downloadVideoFromS3 } from '../../../services/apis';
-import { getJobsHistory } from '../../../services/apis';
+import { downloadVideoFromS3, getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setCompletedJobs,
@@ -12,14 +11,14 @@ import {
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
 
-
 // Import createContext and useContext
 import { createContext, useContext, useState } from 'react';
 
 // Create a context for translatedLanguage
 const TranslatedLanguageContext = createContext();
 
-export const useTranslatedLanguage = () => useContext(TranslatedLanguageContext);
+export const useTranslatedLanguage = () =>
+  useContext(TranslatedLanguageContext);
 const History = () => {
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
@@ -90,9 +89,9 @@ const Container = ({ pendingJobs, completedJobs }) => {
           className="grid grid-cols-[27%_20%_22%_16%_15%] border-b border-[rgba(252,252,252,0.2)] py-s2"
           key={i}
         >
-          <div>{job.videoData?.caption?.replace(/\.mp4$/i, '')}</div>
+          <div>{job.videoData?.caption.replace(/\.mp4$/i, '')}</div>
           <p>{new Date(+job.timestamp).toDateString()}</p>
-          <div className="">              
+          <div>
             {job?.translatedLanguage
               ? job.translatedLanguage
               : typeof job?.languages === 'string'

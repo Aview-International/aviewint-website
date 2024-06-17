@@ -41,7 +41,7 @@ const FAQ_SCHEMA = {
   ],
 };
 
-const SEO = ({ title, description, image = '/images/og-image.png' }) => {
+const SEO = ({ title, description, image = '/img/aview/og-image.png' }) => {
   const router = useRouter();
   const path = router.pathname;
 
