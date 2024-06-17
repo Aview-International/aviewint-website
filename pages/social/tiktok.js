@@ -12,11 +12,10 @@ const TikTokConnection = () => {
       (async () => {
         try {
           await completeTikTokAuth({ code, state });
-          router.push('/onboarding?stage=3');
         } catch (error) {
           ErrorHandler(error);
-          router.push('/onboarding?stage=3');
         }
+        router.push('/onboarding?stage=2');
       })();
     }
   }, [code]);
