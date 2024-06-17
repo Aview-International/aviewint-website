@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { getS3DownloadLink } from '../../../services/apis';
+import { downloadVideoFromS3 } from '../../../services/apis';
 import { getJobsHistory } from '../../../services/apis';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -52,8 +52,9 @@ const History = () => {
 
 const Container = ({ pendingJobs, completedJobs }) => {
   const handleDownload = async (job) => {
-    const downloadLink = await getS3DownloadLink(
+    const downloadLink = await downloadVideoFromS3(
       job.timestamp,
+      job.videoData.caption,
       job.translatedLanguage
     );
     if (downloadLink) {
