@@ -14,8 +14,9 @@ import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
+import CookieConsent from '../components/sections/home/CookieConsent';
 
-const Home = () => {
+const Home = () => {  
   return (
     <>
       <SEO
@@ -37,6 +38,7 @@ const Home = () => {
       {/* <GoGlobal /> */}
       <Footer curPage="Home" />
       <Blobs />
+      <CookieConsent />
     </>
   );
 };
