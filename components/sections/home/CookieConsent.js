@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import OnboardingButton from '../../Onboarding/button';
 
 const CookieConsent = () => {
   const [show, setShow] = useState(false);
@@ -14,18 +15,27 @@ const CookieConsent = () => {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-0 w-full bg-gray-800 text-white text-center p-8 flex justify-center items-center z-50">
-      <p className="mr-4">
-        By using this website, you agree to our{' '}
-        <a href="/terms-of-service" className="underline text-blue-300">use of cookies</a>. We use cookies to give you a great browsing experience.
-      </p>
-      <button
-        onClick={handleClose}
-        className="bg-gradient-to-r text-white py-2 px-4 rounded-lg"
-      >
-        Continue
-      </button>
-    </div>
+    <button>
+      <div className="bg-black fixed bottom-5 w-8/12 left-1/2 -translate-x-1/2 flex justify-center rounded-3xl items-center z-50">
+        <div className="text-white bg-white-transparent text-center py-4 rounded-3xl flex justify-center items-center w-full">
+          <p className="mr-2">
+            By using this website, you agree to our{' '}
+            <a href="/terms-of-service" className="underline text-blue/80">use of cookies</a>. We use cookies to give you a great browsing experience.
+          </p>
+          <div className="">
+            <OnboardingButton
+              pb="pb-s0"
+              pt="pt-s0"
+              theme='light'
+              onClick={handleClose}
+              className="text-black px-2 rounded-lg"
+            >
+              Continue
+            </OnboardingButton>
+          </div>
+        </div>
+      </div>
+    </button>
   );
 };
 

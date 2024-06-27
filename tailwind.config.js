@@ -8,14 +8,17 @@ module.exports = {
   ],
   theme: {
     colors: {
-      black: '#000017',
+      black: {
+        DEFAULT: '#000017',
+        transparent: 'rbga(0, 0, 0, 0.2)',
+      },
       purple: '#FC00FF',
       blue: '#00FFFF',
       'gray-1': '#494B5B',
       'gray-2': '#99999C',
       white: {
         DEFAULT: '#FCFCFC',
-        transparent: 'rgba(252, 252, 252, 0.10)',
+        transparent: 'rgba(252, 252, 252, 0.1)',
       },
       green: '#00C874',
       red: '#FF3939',
