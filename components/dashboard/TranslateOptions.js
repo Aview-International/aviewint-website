@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
 import CheckBox from '../FormComponents/CheckBox';
-import OnboardingButton from '../Onboarding/button';
+import GlobalButton from '../Onboarding/button';
 import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
 import { useEffect } from 'react';
@@ -105,9 +105,9 @@ const TranslateOptions = ({
         ))}
       {!isLoading && (
         <div className="w-full md:w-36">
-          <OnboardingButton isLoading={isLoading} onClick={handleSubmit}>
+          <GlobalButton isLoading={isLoading} onClick={handleSubmit}>
             Submit
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       )}
     </>

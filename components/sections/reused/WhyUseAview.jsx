@@ -1,4 +1,4 @@
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 
 export default function WhyUseAview({ items }) {
   return (
@@ -16,9 +16,9 @@ export default function WhyUseAview({ items }) {
         ))}
       </div>
       <div className="text-center md:text-left">
-        <Button type="secondary" purpose="route" route="#generate-aview">
+        <GlobalButton type="secondary" purpose="route" route="#generate-aview">
           Book a Meeting Today
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

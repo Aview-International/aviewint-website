@@ -3,7 +3,7 @@ import Image from 'next/image';
 import aviewLogo from '../../public/img/aview/logo-full.svg';
 import { ROUTES, SOCIALS } from '../../constants/constants';
 import Link from 'next/link';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 import { useRouter } from 'next/router';
 
 const Footer = ({ curPage }) => {

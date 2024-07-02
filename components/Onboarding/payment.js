@@ -3,7 +3,7 @@ import check from '../../public/img/icons/check.svg';
 import Border from '../UI/Border';
 import Image from 'next/image';
 import Card from '../UI/Card';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 
 const OnboardingStep5 = ({ userData, plans }) => {
   const router = useRouter();
@@ -65,14 +65,14 @@ const PriceSection = ({ plan }) => {
         </div>
       ))}
       <div className="mt-s2 capitalize">
-        <Button
+        <GlobalButton
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
           onClick={handlePlanSelect}
           fullWidth={true}
         >
           {'Go ' + plan.id}
-        </Button>
+        </GlobalButton>
       </div>
       {plan.id == 'pro' && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform">

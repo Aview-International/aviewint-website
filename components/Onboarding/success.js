@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import Confetti from '../UI/Confetti';
 import { useEffect, useState } from 'react';
 
@@ -37,9 +37,9 @@ const OnboardingSuccess = () => {
           look at your dashboard.
         </p>
         <div className="mx-auto mt-s4 w-[min(360px,90%)]">
-          <OnboardingButton onClick={handleNext} theme="light">
+          <GlobalButton onClick={handleNext} theme="light">
             Proceed to dashboard
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       </div>
     </>

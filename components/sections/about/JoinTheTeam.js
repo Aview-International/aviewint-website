@@ -6,7 +6,7 @@ import {
 } from '../../../constants/constants';
 import FormInput from '../../FormComponents/FormInput';
 import CustomSelectInput from '../../FormComponents/CustomSelectInput';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Border from '../../UI/Border';
 import Form from '../../FormComponents/Form';
 import { submitFile } from '../../../utils/submit-form';
@@ -116,9 +116,9 @@ const JoinTheTeam = () => {
           isValid={data.resume}
         />
         <div className="mt-s5 flex justify-center ">
-          <Button purpose="submit" type="primary">
+          <GlobalButton purpose="submit" type="primary">
             Send Message
-          </Button>
+          </GlobalButton>
         </div>
       </Form>
     </section>

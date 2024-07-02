@@ -1,4 +1,4 @@
-import OnboardingButton from '../../../../components/Onboarding/button';
+import GlobalButton from '../../../../components/Onboarding/button';
 import PageTitle from '../../../../components/SEO/PageTitle';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -180,11 +180,11 @@ const BillingDetails = ({ user, openModal, allPlans }) => {
           : 'Studio Starter - Free'}
       </p>
       <div className="w-52">
-        <OnboardingButton onClick={openModal}>
+        <GlobalButton onClick={openModal}>
           {!user.plan || user.plan === 'free'
             ? 'Subscribe'
             : 'Cancel Subscription'}
-        </OnboardingButton>
+        </GlobalButton>
       </div>
     </div>
   );

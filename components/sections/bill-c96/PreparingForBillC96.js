@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import landingGraphic from '../../../public/img/graphics/bill-c96.png';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import background from '../../../public/img/graphics/bill-c96-background.svg';
 
 const PreparingForBillC96 = () => {
@@ -23,9 +23,9 @@ const PreparingForBillC96 = () => {
             Aview will ensure you are ready and prepared for the roll out of
             Bill C-96.
           </p>
-          <Button type="primary" purpose="route" route="#contact">
+          <GlobalButton type="primary" purpose="route" route="#contact">
             Contact Us
-          </Button>
+          </GlobalButton>
         </div>
         <div className="mx-auto max-w-[500px] lg:max-w-none">
           <Image src={landingGraphic} alt="Preparing for Bill C-96" />

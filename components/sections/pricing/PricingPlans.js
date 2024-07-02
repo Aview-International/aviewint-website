@@ -1,6 +1,6 @@
 import check from '../../../public/img/icons/check.svg';
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Border from '../../UI/Border';
 import Card from '../../UI/Card';
 import { useSelector } from 'react-redux';
@@ -64,7 +64,7 @@ const PriceSection = ({
       ))}
 
       <div className="mt-s2 capitalize">
-        <Button
+        <GlobalButton
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
           onClick={handlePlanSelect}
@@ -75,7 +75,7 @@ const PriceSection = ({
               ? 'Current Plan'
               : 'Go ' + plan.id
             : 'Go ' + plan.id}
-        </Button>
+        </GlobalButton>
       </div>
 
       {sliderValue <= plan.sliderValueMax && (
