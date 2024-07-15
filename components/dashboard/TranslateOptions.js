@@ -6,6 +6,7 @@ import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
 import { useEffect } from 'react';
 import Textarea from '../FormComponents/Textarea';
+import defaultPfp from 'public/img/graphics/user.webp';
 
 const TranslateOptions = ({
   handleSubmit,
@@ -16,7 +17,7 @@ const TranslateOptions = ({
 }) => {
   const userData = useSelector((state) => state.user);
   const youtubePicture = useSelector(
-    (state) => state.youtube?.channelDetails?.thumbnail
+    (state) => state.youtube?.channelDetails?.thumbnail // pfp is here
   );
   const findLocalDialect = (language) => {
     let allLanguages = [];
@@ -55,7 +56,7 @@ const TranslateOptions = ({
           >
             <div className="flex items-center justify-between">
               <Image
-                src={youtubePicture}
+                src={youtubePicture || defaultPfp} //Conditional default pfp
                 alt="profile-image"
                 height={40}
                 width={40}
