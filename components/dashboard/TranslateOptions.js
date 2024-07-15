@@ -6,7 +6,7 @@ import Image from 'next/image';
 import ToggleButton from '../FormComponents/ToggleButton';
 import { useEffect } from 'react';
 import Textarea from '../FormComponents/Textarea';
-import defaultPfp from 'public/img/graphics/user.webp';
+import defaultPfp from '../../public/img/graphics/user.webp';
 
 const TranslateOptions = ({
   handleSubmit,
