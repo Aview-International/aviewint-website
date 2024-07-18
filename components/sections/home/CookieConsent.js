@@ -16,7 +16,7 @@ const CookieConsent = () => {
 
   const handleContinue = () => {
     // Set the consent cookie when the user presses continue
-    Cookies.set('cookieConsent', 'true', { expires: 365 }); // Expires in 365 days
+    Cookies.set('cookieConsent', 'true', { expires: 7 }); // Expires in a week
     setShow(false);
   };
 
