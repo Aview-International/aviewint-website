@@ -9,6 +9,7 @@ import MultipleSelectInput from '../../../../components/FormComponents/MultipleS
 import ErrorHandler from '../../../../utils/errorHandler';
 import { useRouter } from 'next/router';
 import { updateRequiredServices } from '../../../../services/firebase';
+import defaultPfp from '../../../../public/img/graphics/user.webp';
 
 const Preference = () => {
   const router = useRouter();
@@ -79,7 +80,7 @@ const Preference = () => {
                 >
                   <div className="flex flex-row items-center justify-between">
                     <Image
-                      src={youtube.channelDetails.thumbnail}
+                      src={youtube.channelDetails.thumbnail || defaultPfp}
                       alt="profile-image"
                       height={40}
                       width={40}
