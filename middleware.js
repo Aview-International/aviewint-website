@@ -6,23 +6,26 @@ import { checkTokenExpiry } from './utils/jwtExpiry';
  * @author Victor Ogunjobi
  */
 export async function middleware(request) {
+  let response;
   const sessionCookie = request.cookies.get('session');
   const currentUrl = request.url;
-  const response = NextResponse.redirect(
-    new URL('/login?rdr=true', currentUrl)
-  );
+  const urlSplit = currentUrl.split('/'); // extract subscription url
+  if (urlSplit[3] === 'subscription') {
+    //do not redirect to subscription after login
+    response = NextResponse.redirect(new URL('/login', currentUrl));
+  } else {
+    // redirect to other pages after login
+    response = NextResponse.redirect(new URL('/login?rdr=true', currentUrl));
+    response.cookies.set('redirectUrl', currentUrl);
+  }
 
   try {
-    if (!checkTokenExpiry(sessionCookie)) {
-      response.cookies.set('redirectUrl', currentUrl);
-      return response;
-    }
+    if (!checkTokenExpiry(sessionCookie)) return response;
   } catch (error) {
-    response.cookies.set('redirectUrl', currentUrl);
     return response;
   }
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/onboarding'],
+  matcher: ['/dashboard/:path*', '/onboarding', '/subscription'],
 };
