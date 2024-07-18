@@ -17,7 +17,6 @@ import UserProfileOnboarding from '../../components/Onboarding/profile';
 import Confetti from '../../components/UI/Confetti';
 import { getPlans } from '../../services/apis';
 import usePlans from '../../hooks/usePlans';
-import OnboardingPayment from '../../components/Onboarding/payment';
 import { SUBSCRIPTION_PLANS_DESC } from '../../constants/constants';
 import { subscribeToProfile } from '../../services/firebase';
 import { setUser } from '../../store/reducers/user.reducer';
@@ -147,11 +146,6 @@ const Stages = ({ userData, plans, allLanguages }) => {
       {query.stage === '5' && (
         <PageTransition>
           <OnboardingStep5 userData={userData} plans={plans} />
-        </PageTransition>
-      )}
-      {query.stage === 'subscription' && (
-        <PageTransition>
-          <OnboardingPayment />
         </PageTransition>
       )}
       {query.stage === '6' && (
