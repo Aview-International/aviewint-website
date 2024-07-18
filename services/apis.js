@@ -70,7 +70,7 @@ export const updateProfileDetails = async (payload, type) => {
   formdata.append('lastName', payload.lastName);
   formdata.append('picture', payload.picture);
 
-  return await axiosInstance.post(
+  return await axiosInstance.patch(
     baseUrl + 'auth/update-profile',
     payload.picture ? formdata : payload
   );
