@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import OnboardingButton from '../../Onboarding/button';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
 
 const CookieConsent = () => {
   const [show, setShow] = useState(false);
@@ -15,7 +16,7 @@ const CookieConsent = () => {
 
   const handleContinue = () => {
     // Set the consent cookie when the user presses continue
-    Cookies.set('cookieConsent', 'true', { expires: 7 }); // Expires in 7 days
+    Cookies.set('cookieConsent', 'true', { expires: 365 }); // Expires in 365 days
     setShow(false);
   };
 
@@ -26,7 +27,10 @@ const CookieConsent = () => {
       <div className="text-white bg-white-transparent text-center py-2 rounded-3xl flex justify-center items-center w-full">
         <p className="mr-2">
           By using this website, you agree to our{' '}
-          <a href="/terms-of-service" className="underline text-blue/80">use of cookies</a>. We use cookies to give you a great browsing experience.
+          <Link href="/terms-of-service">
+            <a className="underline text-blue/80">use of cookies</a>
+          </Link>
+          . We use cookies to give you a great browsing experience.
         </p>
         <div className="">
           <OnboardingButton
