@@ -84,7 +84,7 @@ const PaymentForm = ({ clientSecret, isLoading }) => {
   return !isLoading && clientSecret ? (
     <Elements stripe={stripePromise} options={options}>
       <CheckoutForm
-        redirectUrl={window.location.origin + '/subscription?rdr=6'}
+        redirectUrl={window.location.origin + '/subscription'}
       />
     </Elements>
   ) : (
