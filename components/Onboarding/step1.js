@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import CustomSelectInput from '../FormComponents/CustomSelectInput';
 import MultipleSelectInput from '../FormComponents/MultipleSelectInput';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import {
   AVERAGE_MONTHLY_VIEWS,
   AVERAGE_VIDEO_DURATION,
@@ -133,14 +133,14 @@ export const OnboardingStep1 = ({ userData, allLanguages }) => {
           />
         </div>
         <div className="m-auto mt-s2.5 w-[min(360px,90%)]">
-          <OnboardingButton
+          <GlobalButton
             disabled={!isFormValid()}
             onClick={handleSubmit}
             isLoading={sideEffects.isLoading}
             theme="light"
           >
             Continue
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       </div>
     </div>

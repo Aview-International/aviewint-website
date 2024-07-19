@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import OnboardingButton from '../../../components/Onboarding/button';
+import GlobalButton from '../../../components/Onboarding/button';
 import PageTitle from '../../../components/SEO/PageTitle';
 import Blobs from '../../../components/UI/Blobs';
 import Stripe from '../../../public/img/icons/stripe.svg';

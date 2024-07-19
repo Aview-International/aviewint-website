@@ -10,7 +10,7 @@ import { setUser } from '../../store/reducers/user.reducer';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import FormInput from '../../components/FormComponents/FormInput';
-import OnboardingButton from '../../components/Onboarding/button';
+import GlobalButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
 import { registerUser, singleSignOnRegister } from '../../services/apis';
@@ -187,9 +187,9 @@ const Register = () => {
                     name="email"
                   />
                   {emailValidator(email) && (
-                    <OnboardingButton theme="light" isLoading={isLoading.email}>
+                    <GlobalButton theme="light" isLoading={isLoading.email}>
                       Continue
-                    </OnboardingButton>
+                    </GlobalButton>
                   )}
                 </form>
               ) : (

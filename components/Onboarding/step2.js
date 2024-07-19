@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import OnBoardingAccounts from '../sections/reused/OnBoardingAccounts';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import {
   authorizeUser,
   getIgAuthLink,
@@ -95,13 +95,13 @@ const OnboardingStep2 = ({ userData }) => {
         />
       </div>
       <div className="mx-auto mt-s4 w-[min(360px,90%)]">
-        <OnboardingButton
+        <GlobalButton
           theme="light"
           isLoading={isLoading.continue}
           onClick={() => router.push('/onboarding?stage=3')}
         >
           Continue
-        </OnboardingButton>
+        </GlobalButton>
       </div>
     </div>
   );

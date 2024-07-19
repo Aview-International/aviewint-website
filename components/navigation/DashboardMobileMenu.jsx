@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import closeIcon from '../../public/img/icons/close.svg';
 import { useRouter } from 'next/router';
@@ -44,7 +44,7 @@ export default function DashboardMobileMenu() {
         <MainMenu />
       </nav>
       <div className={`flex-grow-0 flex-col gap-4`}>
-        <Button
+        <GlobalButton
           purpose="onClick"
           onClick={logoutUser}
           I
@@ -53,7 +53,7 @@ export default function DashboardMobileMenu() {
           fullWidth={true}
         >
           Sign Out
-        </Button>
+        </GlobalButton>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import referralFilled from '../../../public/img/icons/referral-filled.svg';
 import info from '../../../public/img/icons/info.svg';
 import FormInput from '../../../components/FormComponents/FormInput';
-import OnboardingButton from '../../../components/Onboarding/button';
+import GlobalButton from '../../../components/Onboarding/button';
 import Border from '../../../components/UI/Border';
 import { useRef, useState } from 'react';
 import { emailValidator } from '../../../utils/regex';
@@ -117,7 +117,7 @@ const HowItWorks = () => {
           </Border>
         </div>
         <div className="">
-          <OnboardingButton onClick={handleClick}>Copy Link</OnboardingButton>
+          <GlobalButton onClick={handleClick}>Copy Link</GlobalButton>
         </div>
       </div>
     </div>
@@ -144,13 +144,13 @@ const Invite = () => {
           placeholder="Email Address"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <OnboardingButton
+        <GlobalButton
           disabled={!emailValidator(email)}
           extraClasses="w-[100px] text-center"
           onClick={handleClick}
         >
           Invite
-        </OnboardingButton>
+        </GlobalButton>
       </form>
     </div>
   );

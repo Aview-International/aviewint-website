@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import landingGraphic from '../../../public/img/graphics/about-landing.png';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 
 const OurMission = () => {
   return (
@@ -13,9 +13,9 @@ const OurMission = () => {
             subtitles and voiceovers; a client, a language, and{' '}
             <span className="gradient-text gradient-2">Aview </span> at a time.
           </h1>
-          <Button type="primary" purpose="route" route="#join-the-team">
+          <GlobalButton type="primary" purpose="route" route="#join-the-team">
             Contact Us
-          </Button>
+          </GlobalButton>
         </div>
         <div className="col-span-7 mt-s4 lg:col-span-4 lg:my-auto lg:min-w-[600px]">
           <Image src={landingGraphic} alt="landing-graphic" />

@@ -19,7 +19,7 @@ import Textarea from '../../../components/FormComponents/Textarea';
 import SendIcon from '../../../public/img/icons/send-message.svg';
 import Modal from '../../../components/UI/Modal';
 import { toast } from 'react-toastify';
-import OnboardingButton from '../../../components/Onboarding/button';
+import GlobalButton from '../../../components/Onboarding/button';
 import { setMessages } from '../../../store/reducers/messages.reducer';
 
 const Messages = () => {

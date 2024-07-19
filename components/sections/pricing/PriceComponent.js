@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import checkMark from '../../../public/img/icons/check.svg';
 import infoMark from '../../../public/img/icons/info.svg';
 import ToggleButton from '../../FormComponents/ToggleButton';
@@ -220,13 +220,13 @@ const PriceComponent = () => {
                     : planName.yearlyPrice}
                 </p>
                 <div className="hidden md:inline-block">
-                  <Button
+                  <GlobalButton
                     type={planName.title === 'Basic' ? 'primary' : 'secondary'}
                     purpose="onClick"
                     fullWidth={true}
                   >
                     {planName.description}
-                  </Button>
+                  </GlobalButton>
                 </div>
                 {planName.title === 'Basic' ? (
                   <div className="invisible absolute top-4 left-1/2 -translate-x-1/2 -translate-y-full transform md:visible">

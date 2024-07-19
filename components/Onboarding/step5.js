@@ -7,7 +7,7 @@ import { createCheckoutSesion } from '../../services/apis';
 import { useSelector } from 'react-redux';
 import Loader from '../UI/loader';
 import ToggleButton from '../FormComponents/ToggleButton';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 import Image from 'next/image';
 import check from '../../public/img/icons/check.svg';
 import Modal from '../UI/Modal';
@@ -52,14 +52,14 @@ const PriceSection = ({ plan, isChecked, handlePlanSelect }) => {
       ))}
 
       <div className="mt-s2 capitalize">
-        <Button
+        <GlobalButton
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
           purpose="onClick"
           onClick={() => handlePlanSelect(plan.id)}
           fullWidth={true}
         >
           {'Go ' + plan.id}
-        </Button>
+        </GlobalButton>
       </div>
 
       {plan.id == 'pro' && (

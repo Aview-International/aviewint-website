@@ -2,7 +2,7 @@ import DottedBorder from '../../UI/DottedBorder';
 import UploadIcon from '../../../public/img/icons/upload-icon1.svg';
 import Image from 'next/image';
 import { useState } from 'react';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../Onboarding/button';
 import { toast } from 'react-toastify';
 import { uploadSingleVoiceSamples } from '../../../services/apis';
 import { useRouter } from 'next/router';
@@ -107,13 +107,13 @@ const SingleVoiceUpload = () => {
       </div>
       {audios.length > 0 && (
         <div className="mx-auto max-w-[350px]">
-          <OnboardingButton
+          <GlobalButton
             disabled={audios.length < 5}
             onClick={handleSubmit}
             isLoading={isLoading}
           >
             Upload voice samples
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       )}
     </div>

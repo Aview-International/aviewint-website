@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import graphic from '../../../public/img/graphics/creators/our-creators.png';
 
 export default function OurCreatorsServices() {
@@ -15,9 +15,9 @@ export default function OurCreatorsServices() {
           providing you the highest quality translated content to increase your
           conversions and audience growth.
         </p>
-        <Button type="primary" purpose="route" route="#generate-aview">
+        <GlobalButton type="primary" purpose="route" route="#generate-aview">
           Get a Quote
-        </Button>
+        </GlobalButton>
       </div>
       <div className="order-1 md:order-2">
         <Image src={graphic} alt="Our Creators" />

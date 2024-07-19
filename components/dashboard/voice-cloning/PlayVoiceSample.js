@@ -1,6 +1,6 @@
 import Graphics from '../../../public/img/graphics/translator-landing.png';
 import Image from 'next/image';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../Onboarding/button';
 import { VOICEPROMPTS } from '../../../constants/constants';
 import { deleteVoiceClone, testVoiceCloning } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
@@ -82,16 +82,16 @@ const PlayVoiceSample = ({ voiceId, updateVoices }) => {
                 </p>
 
                 <div className="flex w-full flex-col items-center gap-s2 xs:flex-row">
-                  <OnboardingButton
+                  <GlobalButton
                     isLoading={deleteLoading}
                     theme="light"
                     onClick={handleDeleteVoice}
                   >
                     Yes, Delete
-                  </OnboardingButton>
-                  <OnboardingButton theme="white" onClick={handleCancelDelete}>
+                  </GlobalButton>
+                  <GlobalButton theme="white" onClick={handleCancelDelete}>
                     No, Cancel
-                  </OnboardingButton>
+                  </GlobalButton>
                 </div>
               </div>
             </Modal>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 
 export default function Description({ title, description, buttons, image }) {
   return (
@@ -12,14 +12,14 @@ export default function Description({ title, description, buttons, image }) {
         />
         <div className="flex flex-wrap gap-s2">
           {buttons.map((button, i) => (
-            <Button
+            <GlobalButton
               purpose="externalLink"
               externalLink={button.link}
               type={i === 0 ? 'primary' : 'secondary'}
               key={button.text}
             >
               {button.text}
-            </Button>
+            </GlobalButton>
           ))}
         </div>
       </div>

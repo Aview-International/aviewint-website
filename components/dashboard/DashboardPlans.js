@@ -1,6 +1,6 @@
 import Border from '../UI/Border';
 import Card from '../UI/Card';
-import OnboardingButton from '../Onboarding/button';
+import GlobalButton from '../Onboarding/button';
 import { useState } from 'react';
 import RadioInput from '../FormComponents/RadioInput';
 import Textarea from '../FormComponents/Textarea';
@@ -35,13 +35,13 @@ const PriceSection = ({ plan, userPlan, handlePricing, buttonId }) => {
         )}
       </div>
       <div className="capitalize">
-        <OnboardingButton
+        <GlobalButton
           isLoading={buttonId === plan.stripe_monthly_id}
           theme={plan.id === 'pro' ? 'light' : 'dark'}
           onClick={() => handlePricing(plan.stripe_monthly_id)}
         >
           Go {plan.id}
-        </OnboardingButton>
+        </GlobalButton>
       </div>
 
       <p className="mb-2 mt-s3 font-semibold">{plan.description}</p>
@@ -127,7 +127,7 @@ const DashboardPlans = ({
 
       {userPlan && userPlan !== 'free' && (
         <div className="flex w-full max-w-[14rem] ml-auto justify-end">
-          <OnboardingButton
+          <GlobalButton
             isLoading={cancelSubLoader}
             onClick={
               showCancelSub
@@ -137,7 +137,7 @@ const DashboardPlans = ({
             theme="error"
           >
             Cancel Subscription
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       )}
     </section>

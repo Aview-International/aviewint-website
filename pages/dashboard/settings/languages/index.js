@@ -4,11 +4,12 @@ import { SettingsLayout } from '..';
 import { SUPPORTED_REGIONS } from '../../../../constants/constants';
 import Trash from '../../../../public/img/icons/trash.svg';
 import Image from 'next/image';
-import OnboardingButton from '../../../../components/Onboarding/button';
+import GlobalButton from '../../../../components/Onboarding/button';
 import MultipleSelectInput from '../../../../components/FormComponents/MultipleSelectInput';
 import ErrorHandler from '../../../../utils/errorHandler';
 import { useRouter } from 'next/router';
 import { updateRequiredServices } from '../../../../services/firebase';
+import defaultPfp from '../../../../public/img/graphics/user.webp';
 
 const Preference = () => {
   const router = useRouter();
@@ -79,7 +80,7 @@ const Preference = () => {
                 >
                   <div className="flex flex-row items-center justify-between">
                     <Image
-                      src={youtube.channelDetails.thumbnail}
+                      src={youtube.channelDetails.thumbnail || defaultPfp}
                       alt="profile-image"
                       height={40}
                       width={40}
@@ -122,22 +123,22 @@ const Preference = () => {
       )}
 
       <div className="mx-auto mt-4 w-[360px]">
-        <OnboardingButton
+        <GlobalButton
           onClick={handleSubmit}
           theme="light"
           isLoading={isLoading}
         >
           Save
-        </OnboardingButton>
+        </GlobalButton>
       </div>
       {!selectLanguages && (
         <div className="mx-auto mt-4 w-[min(360px,90%)]">
-          <OnboardingButton
+          <GlobalButton
             onClick={() => setSelectLanguages(true)}
             theme="white"
           >
             Add another language
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       )}
     </div>
