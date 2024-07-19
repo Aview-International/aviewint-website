@@ -112,9 +112,7 @@ const Billing = ({ plans }) => {
           <Elements stripe={stripePromise} options={options}>
             <Modal closeModal={closeModal} preventOutsideClick>
               <CheckoutForm
-                redirectUrl={
-                  window.location.origin + '/dashboard/settings/billing'
-                }
+                redirectUrl={window.location.origin + '/subscription'}
               />
             </Modal>
           </Elements>
