@@ -6,7 +6,7 @@ import Modal from '../../../../components/UI/Modal';
 import { Fragment, useState } from 'react';
 import Edit from '../../../../public/img/icons/edit.svg';
 import Add from '../../../../public/img/icons/plus.svg';
-import OnboardingButton from '../../../../components/Onboarding/button';
+import GlobalButton from '../../../../components/Onboarding/button';
 import ErrorHandler from '../../../../utils/errorHandler';
 import { getPlans, updateProfileDetails } from '../../../../services/apis';
 import usePlans from '../../../../hooks/usePlans';
@@ -63,9 +63,9 @@ const ModalComponent = ({ closeModal, img, setImg }) => {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <div className="mx-auto my-s2 w-full max-w-[10rem]">
-          <OnboardingButton onClick={handleUpload} isLoading={isLoading}>
+          <GlobalButton onClick={handleUpload} isLoading={isLoading}>
             Upload
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       </div>
     </Modal>

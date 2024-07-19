@@ -7,7 +7,7 @@ import PlayVoiceSample from '../../../components/dashboard/voice-cloning/PlayVoi
 import Arrow from '../../../public/img/icons/arrow-right.svg';
 import Image from 'next/image';
 import Border from '../../../components/UI/Border';
-import OnboardingButton from '../../../components/Onboarding/button';
+import GlobalButton from '../../../components/Onboarding/button';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { getVoiceSamples } from '../../../services/apis';
@@ -88,7 +88,7 @@ const SelectAIOption = ({ push, voiceId }) => {
             </div>
           </Border>
           <div className="mt-s4 w-full md:w-2/5">
-            <OnboardingButton
+            <GlobalButton
               onClick={() =>
                 push(
                   '/dashboard/ai-voice?tab=' +
@@ -98,7 +98,7 @@ const SelectAIOption = ({ push, voiceId }) => {
               theme={stepItem.title === 'Record' ? 'light' : 'dark'}
             >
               Select
-            </OnboardingButton>
+            </GlobalButton>
           </div>
         </div>
       ))}

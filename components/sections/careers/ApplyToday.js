@@ -5,7 +5,7 @@ import {
 } from '../../../constants/constants';
 import FormInput from '../../FormComponents/FormInput';
 import CustomSelectInput from '../../FormComponents/CustomSelectInput';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Form from '../../FormComponents/Form';
 import { submitFile } from '../../../utils/submit-form';
 import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
@@ -159,9 +159,9 @@ const ApplyToday = () => {
           </p>
         )}
         <div className="mt-s5 flex justify-center ">
-          <Button purpose="submit" type="primary">
+          <GlobalButton purpose="submit" type="primary">
             Send Message
-          </Button>
+          </GlobalButton>
         </div>
       </Form>
     </section>

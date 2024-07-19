@@ -4,7 +4,7 @@ import eLearningModules from '../../../../public/img/graphics/corporate/business
 import internalDocuments from '../../../../public/img/graphics/corporate/business/internal-documents.png';
 import Card from '../../../UI/Card';
 import Image from 'next/image';
-import Button from '../../../UI/Button';
+import GlobalButton from '../../../UI/GlobalButton';
 
 const ITEMS = [
   {
@@ -58,9 +58,9 @@ export default function BusinessTranslationOverview() {
         ))}
       </Row3>
       <div className="mt-10 text-center">
-        <Button type="primary" purpose="route" route="#generate-aview">
+        <GlobalButton type="primary" purpose="route" route="#generate-aview">
           Get Started
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

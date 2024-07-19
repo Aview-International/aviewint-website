@@ -4,7 +4,7 @@ import ToggleButton from '../../FormComponents/ToggleButton';
 import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import MobilePlanView from './MobilePlanView';
 
 const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
@@ -63,7 +63,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                           : plan.monthlyCost
                       }`}
                 </p>
-                <Button
+                <GlobalButton
                   type="secondary"
                   purpose="route"
                   route={
@@ -73,7 +73,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                   }
                 >
                   Go {plan.id}
-                </Button>
+                </GlobalButton>
               </div>
             ))}
           </div>

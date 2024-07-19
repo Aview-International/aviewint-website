@@ -1,6 +1,6 @@
 import { LEAD_IN_TRANSLATIONS } from '../../../constants/constants';
 import Row3 from '../../layout/Row3';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import GraphicCard from '../../UI/GraphicCard';
 
 const LeadInTranslations = () => {
@@ -23,9 +23,9 @@ const LeadInTranslations = () => {
         </Row3>
       </div>
       <div className="hidden text-center md:block">
-        <Button type="primary" purpose="route" route="#generate-aview">
+        <GlobalButton type="primary" purpose="route" route="#generate-aview">
           Get Started
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 
 export default function Hero({
   title,
@@ -17,9 +17,9 @@ export default function Hero({
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <p className="body mb-s4 max-w-[600px]">{description}</p>
-        <Button type="primary" purpose="route" route={buttonLink}>
+        <GlobalButton type="primary" purpose="route" route={buttonLink}>
           {buttonText}
-        </Button>
+        </GlobalButton>
       </div>
       <div className="order-1 mx-auto max-w-[380px] md:order-2 md:max-w-[610px]">
         <Image src={image} alt={imageAlt} />

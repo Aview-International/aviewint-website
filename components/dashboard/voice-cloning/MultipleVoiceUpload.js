@@ -3,7 +3,7 @@ import EditIcon from '../../../public/img/icons/edit.svg';
 import Avatar from '../../../public/img/graphics/user.webp';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../Onboarding/button';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { uploadMultipleVoiceSamples } from '../../../services/apis';
@@ -73,9 +73,9 @@ const MultipleVoiceUpload = ({ optionHandler }) => {
       </div>
 
       <div className="mx-auto  mt-s5 max-w-[310px]">
-        <OnboardingButton onClick={uploadVoiceSamples} isLoading={isLoading}>
+        <GlobalButton onClick={uploadVoiceSamples} isLoading={isLoading}>
           Upload voice samples
-        </OnboardingButton>
+        </GlobalButton>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Image from 'next/image';
 import dropDownArrow from '../../../public/img/icons/dropdown-arrow.svg';
 import { CUSTOM_PRICING_FEATURES } from '../../../constants/constants';
@@ -17,13 +17,13 @@ const CustomPricing = () => {
               Custom Pricing
             </h4>
             <p className="mb-s3 text-lg">Tailored to your needs</p>
-            <Button
+            <GlobalButton
               type="secondary"
               purpose="route"
               route="mailto:julia@aviewint.com"
             >
               Contact sales
-            </Button>
+            </GlobalButton>
           </div>
 
           <div className="mt-s4 grid w-full grid-cols-2 justify-center gap-6 md:my-0 md:w-2/3 md:grid-cols-[repeat(auto-fill,200px)]">

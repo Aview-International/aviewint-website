@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../constants/constants';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import Image from 'next/image';
 import ErrorHandler from '../../utils/errorHandler';
 import { updateRequiredServices } from '../../services/firebase';
@@ -125,14 +125,14 @@ const OnboardingStep3 = ({ userData }) => {
       </div>
 
       <div className="m-auto mt-12 w-[min(360px,90%)]">
-        <OnboardingButton
+        <GlobalButton
           disabled={payload.region.length < 1}
           onClick={handleSubmit}
           isLoading={isLoading}
           theme="light"
         >
           Proceed
-        </OnboardingButton>
+        </GlobalButton>
       </div>
     </div>
   );

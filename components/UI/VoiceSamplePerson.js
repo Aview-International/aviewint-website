@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Avatar from '../../public/img/graphics/user.webp';
 import DottedBorder from './DottedBorder';
-import Button from './Button';
+import GlobalButton from './GlobalButton';
 import check from '../../public/img/icons/check.svg';
 
 const VoiceSamplePerson = ({ onClick }) => {
@@ -23,9 +23,9 @@ const VoiceSamplePerson = ({ onClick }) => {
            </div>
            <Image src={check} alt="voice-sample-check-mark" width={30} height={30}/> 
          </div>
-         <Button type="secondary" purpose="onClick" fullWidth={true} onClick={onClick}>
+         <GlobalButton type="secondary" purpose="onClick" fullWidth={true} onClick={onClick}>
             Upload files
-         </Button> 
+         </GlobalButton> 
        </div>
      </DottedBorder> 
     </>

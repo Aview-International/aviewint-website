@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMessages, sendEnquiryMessage } from '../../../services/apis';
 import Textarea from '../../../components/FormComponents/Textarea';
 import { toast } from 'react-toastify';
-import OnboardingButton from '../../../components/Onboarding/button';
+import GlobalButton from '../../../components/Onboarding/button';
 import { useRouter } from 'next/router';
 import { setMessages } from '../../../store/reducers/messages.reducer';
 import ErrorHandler from '../../../utils/errorHandler';
@@ -77,9 +77,9 @@ const Messages = () => {
           </div>
           <div>
             {unresolvedQueries.length > 0 && (
-              <OnboardingButton onClick={() => setShowForm(true)}>
+              <GlobalButton onClick={() => setShowForm(true)}>
                 New Enquiry
-              </OnboardingButton>
+              </GlobalButton>
             )}
           </div>
         </div>

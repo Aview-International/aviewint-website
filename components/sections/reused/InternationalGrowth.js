@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { CREATORS_SLIDERS } from '../../../constants/constants';
 import Border from '../../UI/Border';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Shadow from '../../UI/Shadow';
 import Slider from '../../UI/Slider';
 
@@ -18,9 +18,9 @@ const InternationalGrowth = () => {
       </p>
       <Calculator />
       <div className="mt-s4 flex justify-center">
-        <Button purpose="route" route="#generate-aview" type="secondary">
+        <GlobalButton purpose="route" route="#generate-aview" type="secondary">
           Contact Us
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

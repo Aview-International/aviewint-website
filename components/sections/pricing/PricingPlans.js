@@ -1,27 +1,12 @@
 import check from '../../../public/img/icons/check.svg';
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Border from '../../UI/Border';
 import Card from '../../UI/Card';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 
-const PriceSection = ({
-  plan,
-  isChecked,
-  sliderValue,
-  push,
-  isRecommended,
-}) => {
+const PriceSection = ({ plan, isChecked, sliderValue, isRecommended }) => {
   const { plan: userPlan, isLoggedIn } = useSelector((data) => data.user);
-
-  const handlePlanSelect = () => {
-    localStorage.setItem('payForPlan', plan.id);
-    isChecked
-      ? localStorage.setItem('isYearlyPlan', true)
-      : localStorage.removeItem('isYearlyPlan');
-    push(`/register`);
-  };
 
   return (
     <div
@@ -64,10 +49,10 @@ const PriceSection = ({
       ))}
 
       <div className="mt-s2 capitalize">
-        <Button
+        <GlobalButton
           type={plan.id === 'pro' ? 'primary' : 'secondary'}
-          purpose="onClick"
-          onClick={handlePlanSelect}
+          purpose="route"
+          route={`/register?planid=${plan.id}`}
           fullWidth={true}
         >
           {isLoggedIn
@@ -75,7 +60,7 @@ const PriceSection = ({
               ? 'Current Plan'
               : 'Go ' + plan.id
             : 'Go ' + plan.id}
-        </Button>
+        </GlobalButton>
       </div>
 
       {sliderValue <= plan.sliderValueMax && (
@@ -92,7 +77,6 @@ const PriceSection = ({
 };
 
 const PricingPlans = ({ isChecked, plans, sliderValue }) => {
-  const { push } = useRouter();
   return (
     <section className="m-horizontal">
       <div className="mb-10 flex w-full flex-wrap justify-center gap-8 px-4 md:px-0 xl:grid xl:grid-cols-3 xl:justify-between">
@@ -109,12 +93,11 @@ const PricingPlans = ({ isChecked, plans, sliderValue }) => {
                   }
                   isChecked={isChecked}
                   sliderValue={sliderValue}
-                  push={push}
                 />
               </Card>
             ) : (
               <div className="p-[2px]">
-                <PriceSection plan={plan} isChecked={isChecked} push={push} />
+                <PriceSection plan={plan} isChecked={isChecked} />
               </div>
             )}
           </div>

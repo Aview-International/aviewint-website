@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../../components/UI/Button';
+import GlobalButton from '../../components/UI/GlobalButton';
 import ThankYou from '../../public/img/graphics/thank-you.png';
 import Confetti from '../../components/UI/Confetti';
 import PageTitle from '../../components/SEO/PageTitle';
@@ -20,9 +20,9 @@ const Success = () => {
           <p className={`my-s3 max-w-[320px] text-xl text-white`}>
             We have received your message. We&apos;ll get back to you shortly!
           </p>
-          <Button type="primary" purpose="route" route="/">
+          <GlobalButton type="primary" purpose="route" route="/">
             Go Home
-          </Button>
+          </GlobalButton>
         </div>
       </div>
     </>

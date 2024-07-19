@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import Image from 'next/image';
 import Trash from '../../public/img/icons/trash.svg';
 import DefaultImage from '../../public/img/graphics/user.webp';
@@ -129,18 +129,18 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
       )}
 
       <div className="mx-auto mt-4 w-[min(360px,90%)]">
-        <OnboardingButton onClick={handleSubmit} theme="light">
+        <GlobalButton onClick={handleSubmit} theme="light">
           Continue
-        </OnboardingButton>
+        </GlobalButton>
       </div>
       {!selectLanguages && (
         <div className="mx-auto mt-4 w-[min(360px,90%)]">
-          <OnboardingButton
+          <GlobalButton
             onClick={() => setSelectLanguages(true)}
             theme="white"
           >
             Add another language
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       )}
     </div>

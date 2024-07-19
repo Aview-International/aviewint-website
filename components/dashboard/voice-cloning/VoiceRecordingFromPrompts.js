@@ -2,9 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import AudioWave from './AudioWave';
 import VoiceRecordList from './VoiceRecordList';
 import AudioPlayer from './AudioPlayer';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../UI/GlobalButton';
 import Border from '../../UI/Border';
-import Button from '../../UI/Button';
 
 const VoiceRecordingFromPrompts = ({ promptStage = 0, updateVoices }) => {
   const [micState, setMicState] = useState('waiting');
@@ -49,7 +48,7 @@ const VoiceRecordingFromPrompts = ({ promptStage = 0, updateVoices }) => {
       {!option ? (
         <div className="w-full">
           <div className="mb-4 flex w-full flex-row items-center justify-between">
-            <p className=" text-start text-3xl font-semibold">
+            <p className="text-start text-3xl font-semibold">
               Voice Sample {prompt + 1}
             </p>
             <GradientCircle prompt={prompt} />
@@ -83,31 +82,36 @@ const VoiceRecordingFromPrompts = ({ promptStage = 0, updateVoices }) => {
               <div className="flex flex-col items-center justify-center gap-y-8">
                 <AudioPlayer audioRecord={audioRecord} />
                 <div className="flex w-full flex-row items-center justify-between gap-2 md:w-5/6 md:justify-around">
-                  <Button
+                  <GlobalButton
                     purpose="onClick"
                     type="secondary"
                     fullWidth={true}
                     onClick={retryHandler}
                   >
                     Retry
-                  </Button>
-                  <Button
+                  </GlobalButton>
+                  <GlobalButton
                     purpose="onClick"
                     type="primary"
                     fullWidth={true}
                     onClick={approveHandler}
                   >
                     Approve
-                  </Button>
+                  </GlobalButton>
                 </div>
               </div>
             </div>
           )}
           {prompt >= 5 && (
             <div className={`mx-auto my-s3 w-[250px]`}>
-              <OnboardingButton onClick={uploadVoiceSamples}>
+              <GlobalButton
+                purpose="onClick"
+                type="primary"
+                fullWidth={true}
+                onClick={uploadVoiceSamples}
+              >
                 Preview recordings
-              </OnboardingButton>
+              </GlobalButton>
             </div>
           )}
         </div>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Card from '../../UI/Card';
 import english from '../../../public/img/graphics/corporate/english.png';
 import french from '../../../public/img/graphics/corporate/french.png';
@@ -71,9 +71,9 @@ const LanguagesServed = () => {
           ))}
         </LanguagesGrid>
       </div>
-      <Button type="primary" purpose="route" route="#generate-aview">
+      <GlobalButton type="primary" purpose="route" route="#generate-aview">
         Get a Quote
-      </Button>
+      </GlobalButton>
     </section>
   );
 };

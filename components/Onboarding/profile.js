@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FormInput from '../FormComponents/FormInput';
-import OnboardingButton from './button';
+import GlobalButton from './button';
 import Avatar from '../../public/img/graphics/personal-use.webp';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
@@ -124,13 +124,13 @@ const UserProfileOnboarding = ({ userData }) => {
           />
         </form>
         <div className="m-auto mt-4 w-[min(360px,90%)]">
-          <OnboardingButton
+          <GlobalButton
             onClick={handleSubmit}
             isLoading={effects.isLoading}
             theme="light"
           >
             Continue
-          </OnboardingButton>
+          </GlobalButton>
         </div>
       </div>
     </div>

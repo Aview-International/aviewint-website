@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import graphic from '../../../public/img/graphics/corporate/our-corporate-services.png';
 
 export default function OurCorporateServices() {
@@ -14,9 +14,9 @@ export default function OurCorporateServices() {
           Aview is a multimedia translation company working with brands and
           organization to expand their content internationally.
         </p>
-        <Button type="primary" purpose="route" route="#generate-aview">
+        <GlobalButton type="primary" purpose="route" route="#generate-aview">
           Get a Quote
-        </Button>
+        </GlobalButton>
       </div>
       <div className="order-1 md:order-2">
         <Image src={graphic} alt="Our Corporate Services" />
