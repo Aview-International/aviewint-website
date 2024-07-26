@@ -3,8 +3,9 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import MoreSettings from './MoreSettings';
 import VideoStatusModal from './VideoStatusModal';
 import getWidthPercentage from './GetWidthPercentage';
+import Link from 'next/link'; 
 
-const ModalOnVideoStatus = ({ video }) => {
+const ModalOnVideoStatus = ({ video, totalVideos }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const statusSettings = () => {
@@ -34,8 +35,8 @@ const ModalOnVideoStatus = ({ video }) => {
           </span>
         </p>
       </div>
-      {isModalOpen && (
 
+      {isModalOpen && (
         <OutsideClickHandler onOutsideClick={statusSettings}>
           <VideoStatusModal
             video={video}
@@ -43,6 +44,15 @@ const ModalOnVideoStatus = ({ video }) => {
             modalStatus={isModalOpen}
           />
         </OutsideClickHandler>
+      )}
+
+      {/* More than 2 videos, then display */}
+      {totalVideos > 2 && (
+        <div className="mt-2 text-right">
+          <Link href="/dashboard/history">
+            <a className="text-blue-500 underline">See all videos</a>
+          </Link>
+        </div>
       )}
     </div>
   );
