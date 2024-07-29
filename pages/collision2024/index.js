@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import LogoAview from '../../public/img/aview/AviewLogo.png';
-import CollisionDesign from '../../public/img/aview/collisionimg.png';
+import CollisionDesign from '../../public/img/aview/Collisionimg.png';
 
 const CollisionPage24 = () => {
   return (
