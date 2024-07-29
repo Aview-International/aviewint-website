@@ -10,7 +10,6 @@ import {
 } from '../../../store/reducers/history.reducer';
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
-import ModalOnVideoStatus from '../../../components/dashboard/insights/ModalOnVideoStatus';
 
 const History = () => {
   const dispatch = useDispatch();
@@ -51,9 +50,6 @@ const History = () => {
 };
 
 const Container = ({ pendingJobs, completedJobs }) => {
-
-  const totalVideos = pendingJobs.length + completedJobs.length; //attempt to retrieve total
-
   const handleDownload = async (job) => {
     const downloadLink = await getS3DownloadLink(
       job.timestamp,
@@ -110,8 +106,6 @@ const Container = ({ pendingJobs, completedJobs }) => {
           </div>
         </div>
       ))}
-      {/* Pass the totalVideos to ModalOnVideoStatus */}
-      <ModalOnVideoStatus totalVideos={totalVideos} />
     </div>
   );
 };
