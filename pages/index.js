@@ -14,14 +14,16 @@ import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
+import CookieConsent from '../components/sections/home/CookieConsent';
 
-const Home = () => {
+const Home = () => {  
   return (
     <>
       <SEO
         title="Video Translation & Subtitling - AVIEW"
         description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
+      <CookieConsent />
       <ProgressBar />
       <EasterEgg />
       <Header curPage="Home" />
@@ -37,6 +39,7 @@ const Home = () => {
       {/* <GoGlobal /> */}
       <Footer curPage="Home" />
       <Blobs />
+      
     </>
   );
 };
