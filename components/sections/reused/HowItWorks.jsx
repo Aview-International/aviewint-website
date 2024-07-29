@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useState } from 'react';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import howSubtitlesWorksCreatorsL from '../../../public/img/graphics/corporate/how-subtitles-works-lg.svg';
 import howSubtitlesWorksCreatorsS from '../../../public/img/graphics/corporate/how-subtitles-works-sm.svg';
 import howDubbingWorksCreatorsL from '../../../public/img/graphics/corporate/how-dubbing-works-lg.svg';
@@ -56,20 +56,20 @@ export default function HowItWorks() {
         />
       </div>
       <div className="flex flex-row justify-center gap-s2">
-        <Button
+        <GlobalButton
           type={process === 'subtitles' ? 'primary' : 'secondary'}
           purpose="onClick"
           onClick={setProcess.bind(null, 'subtitles')}
         >
           Subtitles
-        </Button>
-        <Button
+        </GlobalButton>
+        <GlobalButton
           type={process === 'dubbing' ? 'primary' : 'secondary'}
           purpose="onClick"
           onClick={setProcess.bind(null, 'dubbing')}
         >
           Dubbing
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

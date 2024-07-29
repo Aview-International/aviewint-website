@@ -32,7 +32,7 @@ axiosInstance.interceptors.request.use(
   async (config) => {
     let token = Cookies.get('session');
     if (isTokenExpired(token) === true || !isTokenExpired(token)) {
-      const newToken = await auth.currentUser.getIdToken(true); // force token refresh
+      const newToken = await auth.currentUser?.getIdToken(true); // force token refresh
       Cookies.set('session', newToken);
       token = newToken;
     }
@@ -70,7 +70,7 @@ export const updateProfileDetails = async (payload, type) => {
   formdata.append('lastName', payload.lastName);
   formdata.append('picture', payload.picture);
 
-  return await axiosInstance.post(
+  return await axiosInstance.patch(
     baseUrl + 'auth/update-profile',
     payload.picture ? formdata : payload
   );
@@ -277,8 +277,14 @@ export const subscriptionHistory = async () =>
 export const deleteThread = async (threadId) =>
   (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;
 
-export const getS3DownloadLink = async (timestamp, lang) =>
-  (await axiosInstance.get(`admin/download/${timestamp}/${lang}`)).data;
+export const downloadVideoFromS3 = async (timestamp, title, lang) =>
+  (
+    await axiosInstance.post(`admin/download`, {
+      timestamp,
+      title,
+      language: lang,
+    })
+  ).data;
 
 export const getJobsHistory = async () =>
   (await axiosInstance.get('transcription/history')).data;

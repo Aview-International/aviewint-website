@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Button from '../components/UI/Button';
+import GlobalButton from '../components/UI/GlobalButton';
 import aviewLogo from '../public/img/aview/logo.svg';
 
 const Page404 = () => {
@@ -27,9 +27,9 @@ const Page404 = () => {
         Sorry, we were unable to find that page!
       </p>
       <div>
-        <Button type="primary" purpose="route" route="/">
+        <GlobalButton type="primary" purpose="route" route="/">
           Home
-        </Button>
+        </GlobalButton>
       </div>
     </div>
   );

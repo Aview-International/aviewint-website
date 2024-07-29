@@ -56,8 +56,10 @@ const Layout = ({ Component, pageProps }) => {
   useEffect(() => {
     // handle auth
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) dispatch(setAuthState(true));
-      else {
+      if (user) {
+        Cookies.set('uid', user.uid);
+        dispatch(setAuthState(true));
+      } else {
         Cookies.remove('uid');
         Cookies.remove('session');
       }

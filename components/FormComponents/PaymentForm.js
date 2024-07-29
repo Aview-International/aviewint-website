@@ -3,7 +3,7 @@ import {
   useElements,
   useStripe,
 } from '@stripe/react-stripe-js';
-import OnboardingButton from '../Onboarding/button';
+import GlobalButton from '../Onboarding/button';
 import { useState } from 'react';
 import ErrorHandler from '../../utils/errorHandler';
 
@@ -37,8 +37,8 @@ const CheckoutForm = ({ redirectUrl }) => {
   return (
     <form onSubmit={isLoading ? null : handleSubmit}>
       <PaymentElement />
-      <div className="my-s4 mx-auto w-3/12 text-center">
-        <OnboardingButton isLoading={isLoading}>Submit</OnboardingButton>
+      <div className="my-s4 mx-auto w-[150px] text-center">
+        <GlobalButton isLoading={isLoading}>Submit</GlobalButton>
       </div>
     </form>
   );

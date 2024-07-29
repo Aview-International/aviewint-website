@@ -4,7 +4,7 @@ import Trash from '../../../public/img/icons/trash.svg';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Modal from '../../UI/Modal';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../Onboarding/button';
 import { useState } from 'react';
 import ErrorHandler from '../../../utils/errorHandler';
 import { deleteThread } from '../../../services/apis';
@@ -53,16 +53,16 @@ const ChatSidebar = ({ allAIThreads }) => {
             </p>
 
             <div className="mt-s4 flex justify-center gap-s3">
-              <OnboardingButton theme="dark" onClick={closeModal}>
+              <GlobalButton theme="dark" onClick={closeModal}>
                 Cancel
-              </OnboardingButton>
-              <OnboardingButton
+              </GlobalButton>
+              <GlobalButton
                 theme="error"
                 onClick={handleDeleteThread}
                 isLoading={isLoading}
               >
                 Delete
-              </OnboardingButton>
+              </GlobalButton>
             </div>
           </div>
         </Modal>

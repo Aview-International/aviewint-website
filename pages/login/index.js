@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';
 import { emailValidator } from '../../utils/regex';
-import OnboardingButton from '../../components/Onboarding/button';
+import GlobalButton from '../../components/Onboarding/button';
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { singleSignOnLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
@@ -180,9 +180,9 @@ const Login = () => {
                   name="email"
                 />
                 {emailValidator(email) && (
-                  <OnboardingButton theme="light" isLoading={isLoading.email}>
+                  <GlobalButton theme="light" isLoading={isLoading.email}>
                     Continue
-                  </OnboardingButton>
+                  </GlobalButton>
                 )}
               </form>
             ) : (

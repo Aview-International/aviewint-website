@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-
 import { PLANS_BREAKDOWN } from '../../../constants/constants';
 import ToggleButton from '../../FormComponents/ToggleButton';
 import Check from '../../../public/img/icons/check.svg';
 import Info from '../../../public/img/icons/info.svg';
 import Image from 'next/image';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import MobilePlanView from './MobilePlanView';
-
 
 const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
   const headerRef = useRef(null);
   const [topPosition, setTopPosition] = useState(null);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,33 +34,36 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
         </h2>
         <div className="hidden md:block">
           <div
-            className={`sticky top-0 z-10 grid grid-cols-1 md:grid-cols-[repeat(4,minmax(100px,1fr))] rounded-xl p-s4 text-center 
+            className={`sticky top-0 z-10 grid grid-cols-1 rounded-xl p-s4 text-center md:grid-cols-[repeat(4,minmax(100px,1fr))] 
             ${topPosition <= 0 ? 'gradient-dark bg-black' : ''}`}
             ref={headerRef}
           >
             <div className="mb-4 md:mb-0">
               <ToggleButton isChecked={isChecked} handleChange={handleChange} />
               <p className="text-sm md:text-base">
-                Annual<br />(save up to 28%)
+                Annual
+                <br />
+                (save up to 28%)
               </p>
             </div>
-
             {allPlans.map((plan, i) => (
               <div key={i} className="mb-4 md:mb-0">
                 <div className="text-xl md:text-2xl">{plan.desc}</div>
-                <p className="my-2 text-lg md:text-xl font-medium">
+                <p className="my-2 text-lg font-medium md:text-xl">
                   {plan.id === 'enterprise'
                     ? 'Contact Sales'
                     : `${
-                        (typeof plan.monthlyCost && typeof plan.yearlyCost) === 'number'
+                        (typeof plan.monthlyCost && typeof plan.yearlyCost) ===
+                        'number'
                           ? '$'
                           : ''
-                      }${isChecked
+                      }${
+                        isChecked
                           ? Math.round(plan.yearlyCost / 12) || 'Free'
-                          : plan.monthlyCost}`
-                  }
+                          : plan.monthlyCost
+                      }`}
                 </p>
-                <Button
+                <GlobalButton
                   type="secondary"
                   purpose="route"
                   route={
@@ -73,7 +73,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                   }
                 >
                   Go {plan.id}
-                </Button>
+                </GlobalButton>
               </div>
             ))}
           </div>
@@ -86,7 +86,7 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
               {plan.desc.map((breakdown, featureIndex) => (
                 <div
                   key={`breakdown-${featureIndex}`}
-                  className="grid grid-cols-1 md:grid-cols-4 items-center justify-center border-b border-gray-1 text-center"
+                  className="grid grid-cols-1 items-center justify-center border-b border-gray-1 text-center md:grid-cols-4"
                 >
                   <div className="flex items-center justify-between p-5 text-left text-base md:text-lg">
                     <span className="pr-4">{breakdown.title}</span>
@@ -106,9 +106,13 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                     )}
                   </div>
                   {breakdown.columns.map((col, colIndex) => (
-                    <div 
+                    <div
                       key={colIndex}
-                      className={`p-12 ${colIndex === recommendedPlanIndex ? 'bg-white-transparent' : 'bg-gray-700'}`}  
+                      className={`p-12 ${
+                        colIndex === recommendedPlanIndex
+                          ? 'bg-white-transparent'
+                          : 'bg-gray-700'
+                      }`}
                     >
                       {col === true ? (
                         <Image src={Check} alt="" width={25} height={20} />
@@ -122,13 +126,12 @@ const PlanBreakdown = ({ isChecked, handleChange, allPlans, sliderValue }) => {
                 </div>
               ))}
             </div>
-           ))}
-           </div>
+          ))}
+        </div>
 
         {/* Mobile view - shown only on screens <= md */}
         <div className="md:hidden">
           <MobilePlanView plans={PLANS_BREAKDOWN} sliderValue={sliderValue} />
-  
         </div>
       </div>
     </section>

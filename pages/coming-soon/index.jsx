@@ -4,7 +4,7 @@ import Form from '../../components/FormComponents/Form';
 import FormInput from '../../components/FormComponents/FormInput';
 import Header from '../../components/navigation/Header';
 import SEO from '../../components/SEO/SEO';
-import Button from '../../components/UI/Button';
+import GlobalButton from '../../components/UI/GlobalButton';
 import comingSoon from '../../public/img/graphics/coming-soon.png';
 import { emailValidator } from '../../utils/regex';
 import { submitForm } from '../../utils/submit-form';
@@ -65,9 +65,9 @@ export default function ComingSoon() {
               bottomMargin="mb-0"
             />
             <div className="mt-s1">
-              <Button type="primary" purpose="submit">
+              <GlobalButton type="primary" purpose="submit">
                 Sign Up
-              </Button>
+              </GlobalButton>
             </div>
           </Form>
         )}

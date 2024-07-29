@@ -1,4 +1,4 @@
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 
 export default function UpToDate({ title, description, buttons }) {
   return (
@@ -10,14 +10,14 @@ export default function UpToDate({ title, description, buttons }) {
       />
       <div className="flex flex-wrap gap-s2 md:justify-center">
         {buttons.map((button, i) => (
-          <Button
+          <GlobalButton
             type={i === 0 ? 'primary' : 'secondary'}
             purpose="externalLink"
             externalLink={button.link}
             key={button.text}
           >
             {button.text}
-          </Button>
+          </GlobalButton>
         ))}
       </div>
     </div>

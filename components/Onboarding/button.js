@@ -1,3 +1,4 @@
+//import Border from '../UI/Border';
 import LoaderAnime from '../UI/loader';
 import Shadow from '../UI/Shadow';
 

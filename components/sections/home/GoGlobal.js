@@ -1,4 +1,4 @@
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import Image from 'next/image';
 import Go_Global from '../../../public/img/graphics/new-landing-images/go_global.webp';
 
@@ -20,9 +20,9 @@ const GoGlobal = () => {
             limitless opportunities.
           </p>
 
-          <Button purpose="route" route="/login" type="tertiary">
+          <GlobalButton purpose="route" route="/login" type="tertiary">
             Sign Up
-          </Button>
+          </GlobalButton>
         </div>
       </div>
     </section>

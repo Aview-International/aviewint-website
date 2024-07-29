@@ -3,7 +3,7 @@ import GraphicCard from '../../../UI/GraphicCard';
 import internationalGrowth from '../../../../public/img/graphics/corporate/legal/international-growth.png';
 import legalCompliance from '../../../../public/img/graphics/corporate/legal/legal-compliance.png';
 import travelAndImmigration from '../../../../public/img/graphics/corporate/legal/travel-and-immigration.png';
-import Button from '../../../UI/Button';
+import GlobalButton from '../../../UI/GlobalButton';
 
 const ITEMS = [
   {
@@ -45,9 +45,9 @@ export default function BenefitsOfLegalTranslation() {
         ))}
       </Row3>
       <div className="mt-10 text-center">
-        <Button type="primary" purpose="route" route="#generate-aview">
+        <GlobalButton type="primary" purpose="route" route="#generate-aview">
           Get Started
-        </Button>
+        </GlobalButton>
       </div>
     </section>
   );

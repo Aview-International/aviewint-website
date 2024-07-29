@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
 import MenuOpenContext from '../../store/menu-open-context';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import aviewLogo from '../../public/img/aview/logo-white.png';
@@ -42,19 +42,19 @@ const HeaderButtons = () => {
   return (
     <div className="hidden gap-5 lg:flex">
       {!isLoggedIn && (
-        <Button purpose="route" route="/#generate-aview" type="primary">
+        <GlobalButton purpose="route" route="/#generate-aview" type="primary">
           Contact Us
-        </Button>
+        </GlobalButton>
       )}
 
       {isLoggedIn ? (
-        <Button purpose="route" route="/dashboard" type="secondary">
+        <GlobalButton purpose="route" route="/dashboard" type="secondary">
           Dashboard
-        </Button>
+        </GlobalButton>
       ) : (
-        <Button purpose="route" route="/register" type="secondary">
+        <GlobalButton purpose="route" route="/register" type="secondary">
           Sign Up
-        </Button>
+        </GlobalButton>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
-import Button from '../UI/Button';
+import GlobalButton from '../UI/GlobalButton';
 import aviewLogo from '../../public/img/aview/logo_short.png';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-down-white.svg';
@@ -47,14 +47,14 @@ export default function MobileMenu() {
             menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
           }`}
         >
-          <Button
+          <GlobalButton
             purpose="route"
             route="/register"
             type="secondary"
             fullWidth={true}
           >
             Sign Up
-          </Button>
+          </GlobalButton>
         </div>
       </div>
     </div>

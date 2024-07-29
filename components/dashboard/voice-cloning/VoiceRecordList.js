@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import OnboardingButton from '../../Onboarding/button';
+import GlobalButton from '../../Onboarding/button';
 import { useRouter } from 'next/router';
 import { uploadRecordedVoice } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
@@ -50,14 +50,14 @@ const VoiceRecordList = ({ recordings, prompt, updateVoices = false }) => {
         ))}
       </div>
       <div className="mx-auto mt-s4 w-3/4 max-w-[250px] gap-5">
-        <OnboardingButton
+        <GlobalButton
           disabled={prompt < 5}
           onClick={saveAllRecordedVoiceSamples}
           isLoading={isLoading}
           theme="light"
         >
           Save recordings
-        </OnboardingButton>
+        </GlobalButton>
       </div>
     </div>
   );

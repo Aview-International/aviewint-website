@@ -1,4 +1,4 @@
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 import videoAsset from '../../../public/img/aview/landing_page_video.mp4';
 import ReactTyped from 'react-typed';
 
@@ -38,9 +38,9 @@ const UnlockGlobalGrowth = () => {
           with Aview.
         </p>
         <div className="flex w-full justify-start md:justify-center">
-          <Button purpose="route" route="/login" type="tertiary">
+          <GlobalButton purpose="route" route="/login" type="tertiary">
             Sign Up
-          </Button>
+          </GlobalButton>
         </div>
         <div className="relative mt-12 h-[85%] cursor-pointer">
           <video className="rounded-md md:rounded-2xl" autoPlay loop muted>

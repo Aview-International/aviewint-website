@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import landingGraphic from '../../../public/img/graphics/translator-landing.png';
-import Button from '../../UI/Button';
+import GlobalButton from '../../UI/GlobalButton';
 
 const FavoriteInfluencer = () => {
   return (
@@ -18,9 +18,9 @@ const FavoriteInfluencer = () => {
           <p className="body mb-s4 lg:max-w-[400px]">
             Apply now to join our team of translators, dubbers and editors.
           </p>
-          <Button type="primary" purpose="route" route="#apply-today">
+          <GlobalButton type="primary" purpose="route" route="#apply-today">
             Contact Us
-          </Button>
+          </GlobalButton>
         </div>
         <div className="mt-s4 min-w-[300px] lg:col-span-4 lg:my-auto lg:min-w-[700px]">
           <Image src={landingGraphic} alt="landing-graphic" />
