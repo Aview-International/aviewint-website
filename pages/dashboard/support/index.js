@@ -88,14 +88,12 @@ const Messages = () => {
           unresolvedQueries.map((item, i) => (
             <div
               key={i}
-              className="group my-s1.5 cursor-pointer p-s2"
+              className="my-s1.5 cursor-pointer p-s2"
               onClick={() => router.push(`/dashboard/support/${item._id}`)}
             >
               <p className="text-lg">{item.messages[0].message}</p>
               <span className="block h-5">
-                <small className="hidden group-hover:inline">
-                  Click on ticket to continue
-                </small>
+                <small>Click on ticket to continue</small>
               </span>
             </div>
           ))}
