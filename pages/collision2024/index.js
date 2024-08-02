@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import LogoAview from '../../public/img/aview/aview-logo-full.svg';
+import LogoAview from '../../public/img/aview/AviewLogo.png';
 import CollisionDesign from '../../public/img/aview/collision.png';
 
 const CollisionPage24 = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
       <header className="absolute top-8 left-8">
-        <Image src={LogoAview} alt="Aview Logo" width={150} height={45} />
+        {<Image src={LogoAview} alt="Aview Logo" width={150} height={45} />}
       </header>
       <main className="flex w-full flex-col items-center justify-center px-11 md:flex-row">
         <div className="flex justify-center md:w-1/2">
