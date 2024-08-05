@@ -69,45 +69,47 @@ const ChatSidebar = ({ allAIThreads }) => {
       )}
       <div>
         <Link href="/dashboard/chat-assist">
-          <div
+          <a
             className={`flex flex-row items-center justify-between rounded-tl-xl p-4 hover:bg-white-transparent
           ${
             asPath === `/dashboard/chat-assist` ? 'bg-white-transparent' : ''
           } p-3 font-medium hover:bg-white-transparent`}
           >
-            <p className="text-sm">New chat</p>
+            <span className="text-sm">New chat</span>
             <Image src={Edit} alt="edit-logo" width={16} height={16} />
-          </div>
+          </a>
         </Link>
-        {allAIThreads.map((data, i) => (
-          <div className="group relative hover:bg-white-transparent" key={i}>
-            <Link
-              href={`/dashboard/chat-assist/${data.threadId}`}
-              className="w-full"
-            >
-              <a
-                className={`mt-2 block w-full ${
-                  asPath === `/dashboard/chat-assist/${data.threadId}`
-                    ? 'bg-white-transparent'
-                    : ''
-                } p-3 font-medium`}
+        {[...allAIThreads]
+          .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+          .map((data, i) => (
+            <div className="group relative hover:bg-white-transparent" key={i}>
+              <Link
+                href={`/dashboard/chat-assist/${data.threadId}`}
+                className="w-full"
               >
-                {data.title}
-              </a>
-            </Link>
-            <button
-              className="absolute top-1/2 right-0 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full p-2 hover:bg-white-transparent group-hover:flex"
-              onClick={() =>
-                setThread({
-                  threadId: data.threadId,
-                  title: data.title,
-                })
-              }
-            >
-              <Image src={Trash} width={15} height={15} alt="" />
-            </button>
-          </div>
-        ))}
+                <a
+                  className={`mt-2 block w-full ${
+                    asPath === `/dashboard/chat-assist/${data.threadId}`
+                      ? 'bg-white-transparent'
+                      : ''
+                  } p-3 font-medium`}
+                >
+                  {data.title}
+                </a>
+              </Link>
+              <button
+                className="absolute top-1/2 right-0 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full p-2 hover:bg-white-transparent group-hover:flex"
+                onClick={() =>
+                  setThread({
+                    threadId: data.threadId,
+                    title: data.title,
+                  })
+                }
+              >
+                <Image src={Trash} width={15} height={15} alt="" />
+              </button>
+            </div>
+          ))}
       </div>
     </>
   );

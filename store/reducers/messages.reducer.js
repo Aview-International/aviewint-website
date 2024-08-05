@@ -66,6 +66,12 @@ const messagesSlice = createSlice({
       const { payload } = action;
       state.allAIThreads = payload;
     },
+
+    updateAIThreadSidebar(state, action) {
+      const id = action.payload;
+      const now = new Date().toISOString();
+      state.allAIThreads.find((el) => el.threadId === id).updatedAt = now;
+    },
   },
 });
 
@@ -79,6 +85,7 @@ export const {
   setAiThreads,
   setAllAIThreads,
   setLastUserAIMessage,
+  updateAIThreadSidebar,
 } = messagesSlice.actions;
 
 export default messagesReducer;

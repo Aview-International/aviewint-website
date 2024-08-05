@@ -1,5 +1,5 @@
 import DashboardLayout from '../../../components/dashboard/DashboardLayout';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PageTitle from '../../../components/SEO/PageTitle';
 import ChatSidebar from '../../../components/dashboard/chatAssistant/chatSidebar';
 import aviewLogo from '../../../public/img/aview/logo.svg';
@@ -25,41 +25,40 @@ const ChatAssist = () => {
   const dispatch = useDispatch();
   const { push } = useRouter();
   const { sidebarTrigger } = useUserProfile();
-  const formRef = useRef();
   const [trigger, setTrigger] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { aiThreads, lastUsedAIThread, allAIThreads } = useSelector(
     (x) => x.messages
   );
   const { firstName, picture } = useSelector((x) => x.user);
+  const [content, setContent] = useState('');
 
   useEffect(() => {
-    !lastUsedAIThread &&
-      (async () => {
-        try {
-          const res = await createThread();
-          dispatch(setLastUsedAIThread(res));
-        } catch (error) {}
-      })();
-  }, [lastUsedAIThread]);
+    (async () => {
+      try {
+        const res = await createThread();
+        dispatch(setLastUsedAIThread(res));
+      } catch (error) {}
+    })();
+  }, []);
 
   useEffect(() => {
     sidebarTrigger();
     dispatch(setAiThreads([]));
   }, []);
 
-  useEffect(() => {
-    if (formRef.current) formRef.current[0]?.focus();
-  }, [formRef]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e, input) => {
+    // e || input is used to send fixed or flexible queries
+    e && e.preventDefault();
     try {
       setIsLoading(true);
-      let value = e.target[0].value;
-      e.target[0].value = '';
-      dispatch(setLastUserAIMessage(value));
-      const data = await sendMessage(value, lastUsedAIThread, firstName);
+      setContent('');
+      dispatch(setLastUserAIMessage(content || input)); // do not modify unless UI changes!
+      const data = await sendMessage(
+        content || input,
+        lastUsedAIThread,
+        firstName
+      );
       dispatch(setAiThreads(data));
       setTrigger(!trigger);
       push(`/dashboard/chat-assist/${lastUsedAIThread}`);
@@ -101,13 +100,16 @@ const ChatAssist = () => {
             )}
           </div>
           <div>
-            {aiThreads.length < 1 && <ChatSuggestions />}
+            {aiThreads.length < 1 && (
+              <ChatSuggestions handleSubmit={handleSubmit} />
+            )}
             <div className="mx-auto mt-s2 w-full pl-s7 md:w-10/12">
               {isLoading && <GradientLoader />}
               <ChatForm
-                formRef={formRef}
                 handleSubmit={handleSubmit}
                 isLoading={isLoading}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
               />
             </div>
           </div>
