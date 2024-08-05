@@ -7,78 +7,24 @@ export const chatOptions = [
   {
     optionTitle: 'Title',
     sectionText: 'for a video about dogs',
+    query: 'Generate a title for a video about dogs',
   },
   {
     optionTitle: 'Hashtag',
     sectionText: 'for a vlog about a day in life',
+    query: 'Generate a hashtag for a vlog about a day in life',
   },
   {
     optionTitle: 'Video Script',
     sectionText: 'for a video about tech new in japanese',
+    query: 'Generate a video script for a video about tech new in japanese',
   },
   {
     optionTitle: 'Video Script',
     sectionText: 'for a video about tech new in japanese',
-    sectionText: 'for a video about how to get...',
+    query: 'Generate a video script for a video about tech new in japanese',
   },
 ];
-
-// const handleOption = () => {
-//   setIsOptionActive(!isOptionActive);
-// };
-
-// const optionButtonHandler = (e) => {
-//   dispatch(setUser({ chatAssistantOption: e.target.value }));
-// };
-
-// {
-/* <div className="w-[18%]">
-        <div className="h-full w-full">
-        <div
-        className={`flex cursor-pointer items-center justify-center rounded-md bg-white-transparent p-2`}
-        onClick={handleOption}
-        >
-        <p className="mr-4 font-medium">{option} Generator</p>
-        <div>
-        <Image
-        src={DropDownIcon}
-        alt="chat-navigator"
-        width={15}
-        height={15}
-        />
-        </div>
-        </div>
-        <div
-        className={`absolute z-20 mt-3 rounded-md bg-black p-2 ${
-          !isOptionActive ? 'hidden' : 'block'
-        }`}
-        onMouseLeave={() => setIsOptionActive(!isOptionActive)}
-        >
-        {optionSelector.map((optionObject, index) => (
-          <div
-          key={index}
-          className="my-2 flex w-full flex-row items-start justify-between"
-          >
-          <Image
-          src={optionObject.image}
-          alt={optionObject.optionTitle}
-          width={20}
-          height={20}
-          />
-          <p className="mx-3 w-full whitespace-nowrap text-base font-medium">
-          {optionObject.optionTitle} Generator
-          </p>
-          <RadioInput
-          chosenValue={option}
-          onChange={optionButtonHandler}
-          name={optionObject.optionTitle}
-          value={optionObject.optionTitle}
-          />
-          </div>
-          ))}
-          </div>
-          </div>
-          </div> */
 
 export const MessageContent = ({ content, role, picture }) => {
   return (
@@ -112,32 +58,37 @@ export const MessageContent = ({ content, role, picture }) => {
   );
 };
 
-export const ChatSuggestions = () => {
+export const ChatSuggestions = ({ handleSubmit }) => {
   return (
     <div className="mx-auto grid w-10/12 grid-cols-2 gap-4 px-s7">
       {chatOptions.map((chatOption, index) => (
-        <div
+        <button
           key={index}
-          className={`cursor-pointer rounded-lg border border-white/40 p-2 text-start hover:bg-white-transparent`}
+          onClick={() => handleSubmit(null, chatOption.query)}
+          className={`rounded-lg border border-white/40 p-2 text-start hover:bg-white-transparent`}
         >
           <p className="font-semibold text-white/90">
             Generate a {chatOption.optionTitle}
           </p>
           <p className="text-sm text-white/50">{chatOption.sectionText}</p>
-        </div>
+        </button>
       ))}
     </div>
   );
 };
 
-export const ChatForm = ({ handleSubmit, formRef, isLoading }) => {
+export const ChatForm = ({ handleSubmit, isLoading, value, onChange }) => {
   return (
     <form
-      className="mx-auto my-s2 block flex w-full items-center"
+      className="mx-auto my-s2 flex w-full items-center"
       onSubmit={isLoading ? null : handleSubmit}
-      ref={formRef}
     >
-      <FormInput placeholder="Message Aview" extraClasses="mb-0" />
+      <FormInput
+        placeholder="Message Aview"
+        extraClasses="mb-0"
+        value={value}
+        onChange={onChange}
+      />
 
       <button
         type="submit"
