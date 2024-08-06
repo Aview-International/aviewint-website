@@ -37,7 +37,6 @@ const OnboardingStep2 = ({ userData }) => {
   };
 
   const linkYoutubeAccount = async () => {
-    localStorage.setItem('userId', userData._id);
     setIsLoading((prev) => ({
       ...prev,
       youtube: true,

@@ -13,7 +13,6 @@ import {
 import { useSelector } from 'react-redux';
 
 const DistributionAccounts = () => {
-  const [isNewAccount, setIsNewAccount] = useState(false);
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -22,15 +21,8 @@ const DistributionAccounts = () => {
   });
   const userData = useSelector((data) => data.user);
 
-  const handleNewAccount = () => setIsNewAccount(!isNewAccount);
-
   const linkYoutubeAccount = async () => {
-    const userId = Cookies.get('uid');
-    if (userId) {
-      localStorage.setItem('userId', userId);
-    } else {
-      console.error('userId is undefined');
-    }
+    Cookies.set('youtubeRdr', window.location.pathname);
     setIsLoading((prev) => ({
       ...prev,
       youtube: true,
@@ -40,6 +32,7 @@ const DistributionAccounts = () => {
 
   const linkTikTokAccount = async () => {
     try {
+      Cookies.set('tiktokRdr', window.location.pathname);
       const url = await getTikTokAuthUrl();
       window.location.href = url;
     } catch (error) {
@@ -81,6 +74,10 @@ const DistributionAccounts = () => {
           }
           isLoading={isLoading.youtube}
         />
+        <span>
+          {userData.youtube.youtubeChannelTitle &&
+            userData.youtube.youtubeChannelTitle}
+        </span>
 
         <OnBoardingAccounts
           isAccountConnected={userData?.instagram?.instagramConnected}
@@ -88,6 +85,10 @@ const DistributionAccounts = () => {
           clickEvent={linkInstagramAccount}
           account="Instagram"
         />
+        <span>
+          {userData.youtube.youtubeChannelTitle &&
+            userData.youtube.youtubeChannelTitle}
+        </span>
         <OnBoardingAccounts
           isAccountConnected={userData?.tiktok?.tiktokConnected}
           clickEvent={linkTikTokAccount}
