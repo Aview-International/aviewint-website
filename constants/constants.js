@@ -1634,7 +1634,7 @@ export const CUSTOM_PRICING_FEATURES = [
   },
 ];
 
-export const  PLANS_BREAKDOWN = [
+export const PLANS_BREAKDOWN = [
   {
     section: 'Basic video services',
     desc: [
@@ -1814,3 +1814,9 @@ export const CREATORS_SLIDERS = [
     name: 'languages',
   },
 ];
+
+export const APP_ENVIRONMENT = {
+  beta: 'https://beta.aviewint.com',
+  dev: 'http://localhost:3000',
+  prod: 'https://aviewint.com',
+};

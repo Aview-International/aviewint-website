@@ -12,6 +12,12 @@ const YoutubeConnection = () => {
   const finalizeYoutube = async () => {
     try {
       await finalizeYoutubeAuth(tempid, uid);
+      const rdr = Cookies.get('youtubeRdr');
+      if (rdr) {
+        Cookies.remove('youtubeRdr');
+        router.push(rdr);
+        return;
+      }
     } catch (error) {
       ErrorHandler(error);
     }
