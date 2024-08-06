@@ -49,7 +49,6 @@ const Login = () => {
         firstName: _tokenResponse.firstName,
         lastName: _tokenResponse.lastName,
         picture: _tokenResponse.photoUrl,
-        token: _tokenResponse.idToken,
         uid: _tokenResponse.localId,
       })
     );

@@ -6,8 +6,6 @@ import Shadow from '../../components/UI/Shadow';
 import aviewLogo from '../../public/img/aview/logo.svg';
 import Google from '../../public/img/icons/google.svg';
 import Cookies from 'js-cookie';
-import { setUser } from '../../store/reducers/user.reducer';
-import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import FormInput from '../../components/FormComponents/FormInput';
 import GlobalButton from '../../components/Onboarding/button';
@@ -22,37 +20,12 @@ import SEO from '../../components/SEO/SEO';
 
 const Register = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState({
     google: false,
     email: false,
     hasSubmitted: false,
   });
-
-  const updateDatabase = async (_tokenResponse) => {
-    dispatch(
-      setUser({
-        email: _tokenResponse.email,
-        firstName: _tokenResponse.firstName,
-        lastName: _tokenResponse.lastName,
-        picture: _tokenResponse.photoUrl,
-        token: _tokenResponse.idToken,
-        uid: _tokenResponse.localId,
-      })
-    );
-
-    Cookies.set('session', _tokenResponse.idToken);
-    Cookies.set('uid', _tokenResponse.localId);
-    await createNewUser(
-      _tokenResponse.localId,
-      _tokenResponse.firstName,
-      _tokenResponse.lastName,
-      _tokenResponse.photoUrl,
-      _tokenResponse?.email
-    );
-    router.push('/onboarding?stage=1');
-  };
 
   useEffect(() => {
     const { query } = router;
@@ -64,36 +37,54 @@ const Register = () => {
     try {
       setIsLoading({ ...isLoading, google: true });
       const { _tokenResponse } = await signInWithGoogle();
-      updateDatabase(_tokenResponse);
+      handleRedirect(_tokenResponse);
     } catch (error) {
       setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
     }
   };
 
-  const handleSSOWithCode = () => {
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email)
-        email = window.prompt('Please provide your email for confirmation');
+  const handleRedirect = async (_tokenResponse, emailForSignIn) => {
+    Cookies.set('session', _tokenResponse.idToken);
+    Cookies.set('uid', _tokenResponse.localId);
+    if (_tokenResponse.isNewUser) {
+      await createNewUser(
+        _tokenResponse.localId,
+        _tokenResponse?.firstName,
+        _tokenResponse?.lastName,
+        _tokenResponse?.photoUrl,
+        _tokenResponse?.email
+      );
+      emailForSignIn
+        ? router.push('/onboarding?stage=profile')
+        : router.push('/onboarding?stage=1');
+    } else {
+      router.push('/dashboard'); // login if user already exists
+    }
+  };
 
-      signInWithEmailLink(auth, email, window.location.href)
-        .then(async (result) => {
-          window.localStorage.removeItem('emailForSignIn');
-          await registerUser(
-            result._tokenResponse.localId,
-            result._tokenResponse.email
-          );
-          Cookies.set('token', result._tokenResponse.idToken, { expires: 3 });
-          Cookies.set('uid', result._tokenResponse.localId, { expires: 3 });
-          router.push('/onboarding?stage=profile');
-        })
-        .catch((error) => {
-          toast.error(
-            'Register link has expired or invalid email, please try again'
-          );
-          return;
-        });
+  const handleSSOWithCode = () => {
+    try {
+      setIsLoading({ ...isLoading, email: true });
+      if (isSignInWithEmailLink(auth, window.location.href)) {
+        let email = window.localStorage.getItem('emailForSignIn');
+        if (!email)
+          email = window.prompt('Please provide your email for confirmation');
+
+        signInWithEmailLink(auth, email, window.location.href)
+          .then(async (result) => {
+            window.localStorage.removeItem('emailForSignIn');
+            handleRedirect(result._tokenResponse, true);
+          })
+          .catch((error) => {
+            toast.error(
+              'Register link has expired or invalid email, please try again'
+            );
+            return;
+          });
+      }
+    } catch (error) {
+      setIsLoading({ ...isLoading, email: false });
     }
   };
 

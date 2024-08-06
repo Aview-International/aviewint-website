@@ -2,6 +2,7 @@ import { useState } from 'react';
 import CircleLoader from '../../public/loaders/CircleLoader';
 import VideoFrame from './VideoFrame';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const instagramVideos = useSelector((state) => state.instagram.videos);
@@ -48,6 +49,13 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
             {button.title}
           </button>
         ))}
+        <Link href="/dashboard/settings/distribution-accounts">
+          <a
+            className={`min-w-fit rounded-full bg-white bg-opacity-10 py-s1 px-s2 text-xl text-white`}
+          >
+            add account
+          </a>
+        </Link>
       </div>
       <div className="max-h-[45vh] overflow-y-auto">
         {isLoading ? (
