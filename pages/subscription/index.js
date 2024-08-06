@@ -8,7 +8,6 @@ const SubscriptionPage = () => {
   const { query, replace } = useRouter();
 
   useEffect(() => {
-    console.log(query);
     if (
       query?.payment_intent &&
       query?.payment_intent_client_secret &&

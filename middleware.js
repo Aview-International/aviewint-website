@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { checkTokenExpiry } from './utils/jwtExpiry';
 
 /**
- * @returns redirect to /login if token is valid or expired
+ * @returns redirect to /login if session is valid or expired
  * @author Victor Ogunjobi
  */
 export async function middleware(request) {
