@@ -17,16 +17,20 @@ import {
   setAiThreads,
   setAllAIThreads,
   setLastUserAIMessage,
+  updateAIThreadSidebar,
 } from '../../../store/reducers/messages.reducer';
 import { useRouter } from 'next/router';
+import GradientLoader from '../../../public/loaders/GradientLoader';
+import useUserProfile from '../../../hooks/useUserProfile';
 
 const ChatAssist = () => {
   const { query } = useRouter();
   const dispatch = useDispatch();
-  const formRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const { aiThreads, allAIThreads } = useSelector((x) => x.messages);
   const { firstName, picture } = useSelector((x) => x.user);
+  const [content, setContent] = useState('');
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     query.id &&
@@ -55,17 +59,21 @@ const ChatAssist = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      let value = e.target[0].value;
-      e.target[0].value = '';
-      dispatch(setLastUserAIMessage(value));
-      const data = await sendMessage(value, query.id, firstName);
+      setContent('');
+      dispatch(setLastUserAIMessage(content));
+      const data = await sendMessage(content, query.id, firstName);
       dispatch(setAiThreads(data));
+      dispatch(updateAIThreadSidebar(query.id));
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       ErrorHandler(error);
     }
   };
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [aiThreads]);
 
   return (
     <>
@@ -74,20 +82,24 @@ const ChatAssist = () => {
         <div className="w-48 border-r-2 border-white lg:w-4/12">
           <ChatSidebar allAIThreads={allAIThreads} />
         </div>
-        <div className="bg-gray-100 flex h-full w-full flex-col justify-between overflow-y-auto pt-s2">
-          <div>{/* this div is only here to maintain styling */}</div>
-          <div className="mx-auto w-10/12">
+        <div className="bg-gray-100 relative h-full w-full pt-s2 pb-s7">
+          <div className="mx-auto h-full overflow-auto px-s5">
             {[...aiThreads]
               .sort((a, b) => a.created_at - b.created_at)
               .map((data, i) => (
                 <MessageContent picture={picture} key={i} {...data} />
               ))}
+            <div ref={messagesEndRef} />
+            {/* do not delete the above component!!! we use it to scroll to view*/}
           </div>
-          <div className="mx-auto w-full pl-s7 md:w-10/12">
+
+          <div className="absolute bottom-0 left-0 mx-auto w-full pl-s7">
+            {isLoading && <GradientLoader />}
             <ChatForm
-              formRef={formRef}
               handleSubmit={handleSubmit}
               isLoading={isLoading}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
           </div>
         </div>

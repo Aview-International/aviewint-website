@@ -68,8 +68,7 @@ const DistributionAccounts = () => {
     <>
       <div>
         <div className="flex flex-col justify-start gap-y-1">
-          <h2 className="my-s2  text-2xl">Distribution</h2>
-          <p className="text-base">Manage your international Accounts here.</p>
+          <p className="text-xl">Manage your social media accounts here.</p>
         </div>
       </div>
       <div className="m-auto w-[min(360px,80%)]">

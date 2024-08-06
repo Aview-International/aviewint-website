@@ -63,38 +63,19 @@ export const signInWithGoogle = async () => {
 // create new user account in the database after signup
 export const createNewUser = async (
   _id,
-  firstName,
+  firstName = '',
   lastName = '',
-  picture,
+  picture = '',
   email
 ) => {
-  get(child(ref(database), `users/${_id}`)).then(async (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const postData = {
-        ...data,
-        _id,
-        email,
-        firstName,
-        lastName,
-        picture,
-        updatedAt: Date.now(),
-      };
-      const updates = {
-        [`users/${_id}`]: postData,
-      };
-      await update(ref(database), updates);
-    } else {
-      await set(ref(database, `users/${_id}`), {
-        _id,
-        email,
-        firstName,
-        lastName,
-        picture,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-      });
-    }
+  await set(ref(database, `users/${_id}`), {
+    _id,
+    email,
+    firstName,
+    lastName,
+    picture,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
   });
 };
 

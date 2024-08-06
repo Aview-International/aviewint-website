@@ -13,7 +13,7 @@ const InstagramConnection = () => {
   useEffect(() => {
     if (code) {
       (async () => {
-        // get short lived acces token
+        // get short lived access token
         try {
           await completeIgConnection(code, uid);
           Cookies.remove('instagramRedirect');
