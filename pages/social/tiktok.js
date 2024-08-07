@@ -18,6 +18,7 @@ const TikTokConnection = () => {
 
           let origin = window.location.origin;
           if (origin !== APP_ENVIRONMENT[env]) {
+            // redirect to the right environment to complete the request
             window.location.href = APP_ENVIRONMENT[env] + page;
             return;
           }
