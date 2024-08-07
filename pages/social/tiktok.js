@@ -7,12 +7,12 @@ import { APP_ENVIRONMENT } from '../../constants/constants';
 const TikTokConnection = () => {
   const router = useRouter();
   const { code, state } = router.query;
-  const page = '/social/tiktok';
 
   useEffect(() => {
     if (code) {
       (async () => {
         try {
+          const page = `/social/tiktok?code=${code}&state=${state}`;
           const env = state.split(',')[0];
 
           let origin = window.location.origin;
