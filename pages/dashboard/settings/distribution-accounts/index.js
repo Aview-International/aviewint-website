@@ -74,10 +74,10 @@ const DistributionAccounts = () => {
           }
           isLoading={isLoading.youtube}
         />
-        <span>
+        {/* <span>
           {userData.youtube.youtubeChannelTitle &&
             userData.youtube.youtubeChannelTitle}
-        </span>
+        </span> */}
 
         <OnBoardingAccounts
           isAccountConnected={userData?.instagram?.instagramConnected}
@@ -85,10 +85,10 @@ const DistributionAccounts = () => {
           clickEvent={linkInstagramAccount}
           account="Instagram"
         />
-        <span>
+        {/* <span>
           {userData.youtube.youtubeChannelTitle &&
             userData.youtube.youtubeChannelTitle}
-        </span>
+        </span> */}
         <OnBoardingAccounts
           isAccountConnected={userData?.tiktok?.tiktokConnected}
           clickEvent={linkTikTokAccount}
