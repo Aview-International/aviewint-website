@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { APP_ENVIRONMENT } from '../../constants/constants';
 
 const InstagramConnection = () => {
   const router = useRouter();
   const { code } = router.query;
 
   useEffect(() => {
-    if (code) router.replace(`/social/instagram?code=${code}`);
+    if (code)
+      window.location.href = `${APP_ENVIRONMENT.dev}/social/instagram?code=${code}`;
   }, [code]);
 
   return (
