@@ -11,8 +11,10 @@ import {
   getTikTokAuthUrl,
 } from '../../../../services/apis';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const DistributionAccounts = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState({
     youtube: false,
     instagram: false,
@@ -70,7 +72,7 @@ const DistributionAccounts = () => {
           isAccountConnected={userData?.youtube?.youtubeConnected}
           clickEvent={linkYoutubeAccount}
           account={
-            <Image src={WhiteYoutube} alt="connect" width={100} height={22.5} />
+            <Image src={WhiteYoutube} alt="connect" width={95} height={20} />
           }
           isLoading={isLoading.youtube}
         />
