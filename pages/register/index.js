@@ -113,6 +113,7 @@ const Register = () => {
       Cookies.set('session', user.user.accessToken);
       router.push('/onboarding?stage=1');
     } catch (error) {
+      setIsLoading({ ...isLoading, email: false });
       ErrorHandler(error.message);
     }
   };
