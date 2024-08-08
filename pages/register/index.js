@@ -11,7 +11,7 @@ import FormInput from '../../components/FormComponents/FormInput';
 import GlobalButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
-import { registerUser, singleSignOnRegister } from '../../services/apis';
+import { singleSignOnRegister, testAccountLogin } from '../../services/apis';
 import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
@@ -19,6 +19,7 @@ import ButtonLoader from '../../components/UI/loader';
 import SEO from '../../components/SEO/SEO';
 
 const Register = () => {
+  const testMail = process.env.NEXT_PUBLIC_INSTAGRAM_ACCOUNT;
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState({
@@ -91,6 +92,7 @@ const Register = () => {
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
+    if (email.trim() === testMail) return testSignIn();
     try {
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnRegister(email, window.location.origin);
@@ -102,6 +104,18 @@ const Register = () => {
   };
 
   const { account } = router.query;
+
+  const testSignIn = async () => {
+    try {
+      const data = await testAccountLogin();
+      const user = await signInWithCustomToken(auth, data.idToken);
+      Cookies.set('uid', data.uid);
+      Cookies.set('session', user.user.accessToken);
+      router.push('/onboarding?stage=1');
+    } catch (error) {
+      ErrorHandler(error.message);
+    }
+  };
 
   return (
     <>

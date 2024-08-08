@@ -53,8 +53,8 @@ export const welcomeNewUser = async (email) =>
 export const singleSignOnRegister = async (email, origin) =>
   await axios.post(baseUrl + 'email/register', { email, origin });
 
-export const registerUser = async (creatorId, email) =>
-  await axios.post(baseUrl + 'auth/register', { creatorId, email });
+export const testAccountLogin = async () =>
+  (await axios.get(baseUrl + 'auth/register/test')).data;
 
 export const updateProfileDetails = async (payload, type) => {
   let formdata = new FormData();
