@@ -12,7 +12,11 @@ import GlobalButton from '../../components/Onboarding/button';
 import { emailValidator } from '../../utils/regex';
 import ErrorHandler from '../../utils/errorHandler';
 import { singleSignOnRegister, testAccountLogin } from '../../services/apis';
-import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
+import {
+  isSignInWithEmailLink,
+  signInWithCustomToken,
+  signInWithEmailLink,
+} from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
 import ButtonLoader from '../../components/UI/loader';
@@ -114,7 +118,7 @@ const Register = () => {
       router.push('/onboarding?stage=1');
     } catch (error) {
       setIsLoading({ ...isLoading, email: false });
-      ErrorHandler(error.message);
+      ErrorHandler('Oops, something went wrong');
     }
   };
 
