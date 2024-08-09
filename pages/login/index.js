@@ -125,7 +125,7 @@ const Login = () => {
       router.push('/onboarding?stage=1');
     } catch (error) {
       setIsLoading({ ...isLoading, email: false });
-      ErrorHandler(error.message);
+      ErrorHandler('Oops, something went wrong');
     }
   };
 
