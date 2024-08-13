@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { SettingsLayout } from '..';
-import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
-import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
 import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import {
@@ -11,6 +9,7 @@ import {
   getTikTokAuthUrl,
 } from '../../../../services/apis';
 import { useSelector } from 'react-redux';
+import Button from '../../../../components/UI/Button';
 
 const DistributionAccounts = () => {
   const [isLoading, setIsLoading] = useState({
@@ -21,87 +20,74 @@ const DistributionAccounts = () => {
   });
   const userData = useSelector((data) => data.user);
 
-  const linkYoutubeAccount = async () => {
-    Cookies.set('youtubeRdr', window.location.pathname);
-    setIsLoading((prev) => ({
-      ...prev,
-      youtube: true,
-    }));
-    window.location = await authorizeUser();
-  };
+  useEffect(() => {
+    console.log('userData:', userData);
+  }, [userData]);
 
-  const linkTikTokAccount = async () => {
+  const linkAccount = async (platform) => {
+    Cookies.set(`${platform}Rdr`, window.location.pathname);
+    setIsLoading((prev) => ({ ...prev, [platform]: true }));
     try {
-      Cookies.set('tiktokRdr', window.location.pathname);
-      const url = await getTikTokAuthUrl();
+      let url;
+      switch (platform) {
+        case 'Youtube':
+          url = await authorizeUser();
+          break;
+        case 'Instagram':
+          url = await getIgAuthLink();
+          break;
+        case 'Tiktok':
+          url = await getTikTokAuthUrl();
+          break;
+        // Add Facebook case when available
+      }
       window.location.href = url;
     } catch (error) {
+      setIsLoading((prev) => ({ ...prev, [platform]: false }));
       ErrorHandler(error);
     }
   };
 
-  const linkInstagramAccount = async () => {
-    Cookies.set('instagramRedirect', router.pathname);
-    try {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: true,
-      }));
-      window.location = await getIgAuthLink();
-    } catch (error) {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: false,
-      }));
-      ErrorHandler(error);
-    }
-  };
+  const renderAccountCard = (platform, name, status, icon) => (
+    <div className="flex justify-evenly mb-4 mr-20">
+      <h3 className="text-lg text-white font-semibold mr-20 mt-5">{platform}</h3>
+      <div
+        onClick={() => linkAccount(platform)}
+        className="flex w-[30%] h-20 items-center justify-between p-4 mt-2 mb-2 rounded-lg bg-white-transparent cursor-pointer"
+        style={{ opacity: isLoading[platform] ? 0.6 : 1 }}
+      >
+        <div className="flex items-center">
+          <Image src={icon} alt={name} width={40} height={40} />
+          <div className="ml-4">
+            <h3 className="text-white font-semibold">{userData[platform]?.name || 'Account Name'}</h3>
+            <p className="text-gray-400">Status: {status ? 'Connected' : 'Not Connected'}</p>
+          </div>
+        </div>
+        <Image src="/public/img/icons/youtube-red.svg" alt="Link" width={24} height={24} />
+      </div>
+    </div>
+  );
 
   return (
-    <>
-      <div>
-        <div className="flex flex-col justify-start gap-y-1">
-          <p className="text-xl">Manage your social media accounts here.</p>
-        </div>
+    <div className="p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Distribution</h2>
+        
+        <Button
+          className="px-6 py-2 text-white bg-purple-600 rounded"
+          onClick={() => {/* Trigger adding social account */}}
+          type="tertiary"
+        >
+          Add a social account
+        </Button>
       </div>
-      <div className="m-auto w-[min(360px,80%)]">
-        <OnBoardingAccounts
-          classes="bg-[#ff0000]"
-          isAccountConnected={userData?.youtube?.youtubeConnected}
-          clickEvent={linkYoutubeAccount}
-          account={
-            <Image src={WhiteYoutube} alt="connect" width={100} height={22.5} />
-          }
-          isLoading={isLoading.youtube}
-        />
-        <span>
-          {userData.youtube.youtubeChannelTitle &&
-            userData.youtube.youtubeChannelTitle}
-        </span>
+      <h3 className="text-md mb-11 ">Manage your international accounts here</h3>
 
-        <OnBoardingAccounts
-          isAccountConnected={userData?.instagram?.instagramConnected}
-          classes="instagram"
-          clickEvent={linkInstagramAccount}
-          account="Instagram"
-        />
-        <span>
-          {userData.youtube.youtubeChannelTitle &&
-            userData.youtube.youtubeChannelTitle}
-        </span>
-        <OnBoardingAccounts
-          isAccountConnected={userData?.tiktok?.tiktokConnected}
-          clickEvent={linkTikTokAccount}
-          classes="bg-[#0054ff]"
-          account="TikTok"
-        />
-        <OnBoardingAccounts
-          isAccountConnected={userData?.facebook}
-          classes="bg-[#0054ff]"
-          account="Facebook"
-        />
-      </div>
-    </>
+      {renderAccountCard('Youtube', 'YouTube', userData?.youtube?.youtubeConnected, '/img/icons/youtube-red.svg')}
+      {renderAccountCard('Instagram', 'Instagram', userData?.instagram?.instagramConnected, '/img/icons/instagram-2.svg')}
+      {renderAccountCard('Facebook', 'Facebook', userData?.facebook, '/img/icons/facebook-logo-onboarding.svg')}
+      {renderAccountCard('Tiktok', 'TikTok', userData?.tiktok?.tiktokConnected, '/img/icons/tiktok.svg')}
+    </div>
   );
 };
 
