@@ -105,9 +105,9 @@ const DistributionAccounts = () => {
     } else {
       // If the account is not connected, render a simple button using Button.js
       return (
-        <div className="flex justify-evenly mb-4 mr-15 w-full">
+        <div className="flex justify-evenly mb-4 mr-20 w-full">
           <h3 className="text-lg text-white font-semibold mt-5">{platform}</h3>
-          <div className="w-[30%] mr-12 mt-5"> {/* Set the container width to 30% of the screen */}
+          <div className="w-[30%] mr-12 mt-5"> 
             <Button
               type="tertiary"
               purpose="onClick"
@@ -131,13 +131,16 @@ const DistributionAccounts = () => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Distribution</h2>
         
+        {/* 
         <Button
           className="px-6 py-2 text-white bg-purple-600 rounded"
-          onClick={() => {/* Trigger adding social account */}}
+          onClick={() => {}}
           type="tertiary"
         >
           Add a social account
         </Button>
+      */}
+
       </div>
       <h3 className="text-md mb-11 ">Manage your international accounts here</h3>
 
