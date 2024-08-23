@@ -19,7 +19,7 @@ const DistributionAccounts = () => {
   const dispatch = useDispatch();
 
   const linkAccount = async (platform) => {
-    Cookies.set(`${platform}Rdr`, window.location.pathname);
+    Cookies.set(`${platform.toLocaleLowerCase()}Rdr`, window.location.pathname);
     setIsLoading((prev) => ({ ...prev, [platform]: true }));
     try {
       const getUrl = {
@@ -34,12 +34,7 @@ const DistributionAccounts = () => {
     }
   };
 
-  const disconnectAccount = (platform) => {
-    dispatch({
-      type: 'DISCONNECT_ACCOUNT',
-      payload: { platform: platform.toLowerCase() },
-    });
-  };
+  // const disconnectAccount = () => {};
 
   const renderAccountCard = (platform, name, status, icon, key) => {
     const commonProps = {
@@ -68,16 +63,16 @@ const DistributionAccounts = () => {
                 <p className="text-gray-2">Status: Connected</p>
               </div>
             </div>
-            <Image
+            {/* <Image
               src={Trash}
               alt="Disconnect"
               width={20}
               height={20}
-              onClick={(e) => {
-                e.stopPropagation();
-                disconnectAccount(platform);
-              }}
-            />
+              // onClick={(e) => {
+              //   e.stopPropagation();
+              //   disconnectAccount(platform);
+              // }}
+            /> */}
           </div>
         ) : (
           <div className="mr-12 mt-5 w-[30%]">
