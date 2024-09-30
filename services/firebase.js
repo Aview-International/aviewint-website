@@ -106,10 +106,6 @@ export const getUserProfile = async (uid, callback) => {
   });
 };
 
-export const createANewJob = async (jobDetails) => {
-  await transcribeSocialLink(jobDetails);
-};
-
 export const subscribeToHistory = (uid, subscriptionCallback) => {
   const pathRef = ref(database, `user-jobs/pending/${uid}`);
   const unsubscribe = onValue(pathRef, (snapshot) => {

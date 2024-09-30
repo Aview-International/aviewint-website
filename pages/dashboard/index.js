@@ -12,6 +12,7 @@ import {
   getIgVideos,
   getJobsHistory,
   getTikTokVideos,
+  transcribeSocialLink,
 } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import {
@@ -21,7 +22,6 @@ import {
 import Cookies from 'js-cookie';
 import {
   updateRequiredServices,
-  createANewJob,
   subscribeToHistory,
 } from '../../services/firebase';
 import { setTikTokVideos } from '../../store/reducers/tiktok.reducer';
@@ -139,7 +139,7 @@ const DashboardHome = () => {
     try {
       if (payload.saveSettings)
         updateRequiredServices(preferences, userData.uid);
-      await createANewJob({
+      await transcribeSocialLink({
         creatorId: userData.uid,
         videoData: selectedVideos,
         languages: payload.languages,
