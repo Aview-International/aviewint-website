@@ -8,12 +8,14 @@ import languages from '../../public/img/graphics/languages/languages.png';
 import YouCreateWeTranslation from '../../components/sections/languages/YouCreateWeTranslate';
 import Footer from '../../components/navigation/Footer';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
+import CookieConsent from '../../components/sections/home/CookieConsent';
 
 export default function Languages() {
   return (
     <>
       <EasterEgg />
       <SEO title="Languages - AVIEW" />
+      <CookieConsent />
       <Header curPage="Languages" />
       <Hero
         title="Fast and Accurate Manual Tranlsations in 15+ <span class='gradient-text gradient-2'>Languages</span>"
