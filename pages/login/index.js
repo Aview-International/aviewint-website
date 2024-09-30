@@ -13,8 +13,12 @@ import { setUser } from '../../store/reducers/user.reducer';
 import FormInput from '../../components/FormComponents/FormInput';
 import { emailValidator } from '../../utils/regex';
 import GlobalButton from '../../components/Onboarding/button';
-import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
-import { singleSignOnLogin } from '../../services/apis';
+import {
+  isSignInWithEmailLink,
+  signInWithCustomToken,
+  signInWithEmailLink,
+} from 'firebase/auth';
+import { singleSignOnLogin, testAccountLogin } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { toast } from 'react-toastify';
 import {
@@ -25,6 +29,7 @@ import {
 import SEO from '../../components/SEO/SEO';
 
 const Login = () => {
+  const testMail = process.env.NEXT_PUBLIC_INSTAGRAM_ACCOUNT;
   const router = useRouter();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -100,6 +105,7 @@ const Login = () => {
   const handleSSO = async (e) => {
     e.preventDefault();
     setIsLoading({ ...isLoading, email: true });
+    if (email.trim() === testMail) return testSignIn();
     try {
       localStorage.setItem('emailForSignIn', email);
       await singleSignOnLogin(email, window.location.origin);
@@ -107,6 +113,19 @@ const Login = () => {
     } catch (error) {
       setIsLoading({ ...isLoading, hasSubmitted: false });
       ErrorHandler(error);
+    }
+  };
+
+  const testSignIn = async () => {
+    try {
+      const data = await testAccountLogin();
+      const user = await signInWithCustomToken(auth, data.idToken);
+      Cookies.set('uid', data.uid);
+      Cookies.set('session', user.user.accessToken);
+      router.push('/onboarding?stage=1');
+    } catch (error) {
+      setIsLoading({ ...isLoading, email: false });
+      ErrorHandler('Oops, something went wrong');
     }
   };
 

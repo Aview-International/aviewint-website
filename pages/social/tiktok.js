@@ -3,29 +3,25 @@ import { useRouter } from 'next/router';
 import { completeTikTokAuth } from '../../services/apis';
 import ErrorHandler from '../../utils/errorHandler';
 import { APP_ENVIRONMENT } from '../../constants/constants';
+import Cookies from 'js-cookie';
 
 const TikTokConnection = () => {
   const router = useRouter();
   const { code, state } = router.query;
-  const page = '/social/tiktok';
 
   useEffect(() => {
     if (code) {
       (async () => {
         try {
+          const page = `/social/tiktok?code=${code}&state=${state}`;
           const env = state.split(',')[0];
 
           let origin = window.location.origin;
           if (origin !== APP_ENVIRONMENT[env]) {
+            // redirect to the right environment to complete the request
             window.location.href = APP_ENVIRONMENT[env] + page;
             return;
           }
-          // if (env === 'dev' && origin !== APP_ENVIRONMENT.dev)
-          //   return (window.location.href = APP_ENVIRONMENT.dev + page);
-          // else if (env === 'beta' && origin !== APP_ENVIRONMENT.beta)
-          //   return (window.location.href = APP_ENVIRONMENT.beta + page);
-          // else if (env === 'prod' && origin !== APP_ENVIRONMENT.prod)
-          //   return (window.location.href = APP_ENVIRONMENT.prod + page);
           await completeTikTokAuth({ code, state });
           const rdr = Cookies.get('tiktokRdr');
           if (rdr) {
