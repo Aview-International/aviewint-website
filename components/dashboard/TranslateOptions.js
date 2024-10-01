@@ -90,6 +90,7 @@ const TranslateOptions = ({
         onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
         }
+        isChecked={payload.saveSettings}
         label="Save these settings for future translations"
       />
       <br />

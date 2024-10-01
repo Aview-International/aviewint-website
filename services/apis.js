@@ -305,3 +305,27 @@ export const getTikTokVideos = async () =>
 
 export const sendEnquiryMessage = async (message, id) =>
   axiosInstance.post(`messages/support/${id}`, { message });
+
+export const createTranslator = async (
+  name,
+  email,
+  nativeLanguage,
+  country,
+  paymentMethod,
+  paymentDetails
+) => {
+  return axiosInstance.post(baseUrl + 'admin/create-translator', {
+    name,
+    email,
+    nativeLanguage,
+    country,
+    paymentMethod,
+    paymentDetails,
+  });
+};
+
+export const getSupportedLanguages = async () =>
+  (await axiosInstance.get(baseUrl + 'admin/supported-languages')).data;
+
+export const getCountriesAndCodes = async () =>
+  (await axiosInstance.get(baseUrl + 'admin/countries-and-codes')).data;

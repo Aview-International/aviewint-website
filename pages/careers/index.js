@@ -12,8 +12,39 @@ import Process from '../../components/sections/careers/Process';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
+import {
+  getCountriesAndCodes,
+  getSupportedLanguages,
+} from '../../services/apis';
+import useReviewHooks from '../../hooks/useReviewHooks';
 
-const Careers = () => {
+export const getStaticProps = async () => {
+  try {
+    const [languages, countries] = await Promise.all([
+      getSupportedLanguages(),
+      getCountriesAndCodes(),
+    ]);
+
+    return {
+      props: {
+        languages: languages,
+        countries: countries,
+      },
+      revalidate: 60, // re-generate page every 60 seconds (if necessary)
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        languages: '[]',
+        countries: '[]',
+      },
+    };
+  }
+};
+
+const Careers = ({ languages, countries }) => {
+  useReviewHooks(languages, countries);
   return (
     <>
       <SEO
