@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { SettingsLayout } from '..';
-import WhiteYoutube from '../../../../public/img/icons/white-youtube.png';
-import OnBoardingAccounts from '../../../../components/sections/reused/OnBoardingAccounts';
 import ErrorHandler from '../../../../utils/errorHandler';
 import Cookies from 'js-cookie';
 import {
@@ -10,100 +8,128 @@ import {
   getIgAuthLink,
   getTikTokAuthUrl,
 } from '../../../../services/apis';
-import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
+import Button from '../../../../components/UI/Button';
+import Default from '../../../../public/img/graphics/user.webp';
+import Trash from '../../../../public/img/icons/trash.svg';
 
 const DistributionAccounts = () => {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState({
-    youtube: false,
-    instagram: false,
-    tiktok: false,
-    facebook: false,
-  });
+  const [isLoading, setIsLoading] = useState({});
   const userData = useSelector((data) => data.user);
+  const dispatch = useDispatch();
 
-  const linkYoutubeAccount = async () => {
-    Cookies.set('youtubeRdr', window.location.pathname);
-    setIsLoading((prev) => ({
-      ...prev,
-      youtube: true,
-    }));
-    window.location = await authorizeUser();
-  };
-
-  const linkTikTokAccount = async () => {
+  const linkAccount = async (platform) => {
+    Cookies.set(`${platform.toLocaleLowerCase()}Rdr`, window.location.pathname);
+    setIsLoading((prev) => ({ ...prev, [platform]: true }));
     try {
-      Cookies.set('tiktokRdr', window.location.pathname);
-      const url = await getTikTokAuthUrl();
-      window.location.href = url;
+      const getUrl = {
+        Youtube: authorizeUser,
+        Instagram: getIgAuthLink,
+        Tiktok: getTikTokAuthUrl,
+      };
+      window.location.href = await getUrl[platform]();
     } catch (error) {
+      setIsLoading((prev) => ({ ...prev, [platform]: false }));
       ErrorHandler(error);
     }
   };
 
-  const linkInstagramAccount = async () => {
-    Cookies.set('instagramRedirect', router.pathname);
-    try {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: true,
-      }));
-      window.location = await getIgAuthLink();
-    } catch (error) {
-      setIsLoading((prev) => ({
-        ...prev,
-        instagram: false,
-      }));
-      ErrorHandler(error);
-    }
+  // const disconnectAccount = () => {};
+
+  const renderAccountCard = (platform, name, status, icon, key) => {
+    const commonProps = {
+      onClick: () => linkAccount(platform),
+      style: { opacity: isLoading[platform] ? 0.6 : 1 },
+    };
+
+    return (
+      <div className="mb-4 flex items-center justify-between" key={key}>
+        <h3 className="mr-3 text-lg font-semibold text-white">{platform}</h3>
+        {status ? (
+          <div
+            {...commonProps}
+            className="my-2 flex h-20 w-full max-w-sm cursor-pointer items-center justify-between rounded-lg bg-white-transparent p-3 md:w-8/12"
+          >
+            <div className="flex items-center">
+              <Image
+                src={icon || Default}
+                alt={platform}
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div className="ml-4">
+                <h3 className="font-semibold text-white">{name}</h3>
+                <p className="text-gray-2">Status: Connected</p>
+              </div>
+            </div>
+            {/* <Image
+              src={Trash}
+              alt="Disconnect"
+              width={20}
+              height={20}
+              // onClick={(e) => {
+              //   e.stopPropagation();
+              //   disconnectAccount(platform);
+              // }}
+            /> */}
+          </div>
+        ) : (
+          <div className="mr-12 mt-5 w-[30%]">
+            <Button
+              type="tertiary"
+              purpose="onClick"
+              {...commonProps}
+              fullWidth={true}
+            >
+              <div className="m-2 flex items-center justify-center">
+                <span>{platform}</span>
+              </div>
+            </Button>
+          </div>
+        )}
+      </div>
+    );
   };
+
+  const socialAccounts = [
+    {
+      account: 'Youtube',
+      accountName: userData?.youtube?.youtubeChannelTitle,
+      isConnected: userData?.youtube?.youtubeConnected,
+      image: '/img/icons/youtube-red.svg',
+    },
+    {
+      account: 'Instagram',
+      accountName: userData?.instagram?.instagram_username,
+      isConnected: userData?.instagram?.instagramConnected,
+      image: '/img/icons/instagram-2.svg',
+    },
+    {
+      account: 'Facebook',
+      accountName: 'Facebook',
+      isConnected: userData?.facebook,
+      image: '/img/icons/facebook-logo-onboarding.svg',
+    },
+    {
+      account: 'Tiktok',
+      accountName: 'Tiktok',
+      isConnected: userData?.tiktok?.tiktokConnected,
+      image: '/img/icons/tiktok.svg',
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <div className="flex flex-col justify-start gap-y-1">
-          <p className="text-xl">Manage your social media accounts here.</p>
-        </div>
+    <div className="md:p-4">
+      <h2 className="mb-6 text-2xl font-bold">Distribution</h2>
+      <h3 className="text-md mb-11">Manage your international accounts here</h3>
+      <div className="mr-auto max-w-xl">
+        {socialAccounts.map(
+          ({ account, accountName, isConnected, image }, idx) =>
+            renderAccountCard(account, accountName, isConnected, image, idx)
+        )}
       </div>
-      <div className="m-auto w-[min(360px,80%)]">
-        <OnBoardingAccounts
-          classes="bg-[#ff0000]"
-          isAccountConnected={userData?.youtube?.youtubeConnected}
-          clickEvent={linkYoutubeAccount}
-          account={
-            <Image src={WhiteYoutube} alt="connect" width={95} height={20} />
-          }
-          isLoading={isLoading.youtube}
-        />
-        {/* <span>
-          {userData.youtube.youtubeChannelTitle &&
-            userData.youtube.youtubeChannelTitle}
-        </span> */}
-
-        <OnBoardingAccounts
-          isAccountConnected={userData?.instagram?.instagramConnected}
-          classes="instagram"
-          clickEvent={linkInstagramAccount}
-          account="Instagram"
-        />
-        {/* <span>
-          {userData.youtube.youtubeChannelTitle &&
-            userData.youtube.youtubeChannelTitle}
-        </span> */}
-        <OnBoardingAccounts
-          isAccountConnected={userData?.tiktok?.tiktokConnected}
-          clickEvent={linkTikTokAccount}
-          classes="bg-[#0054ff]"
-          account="TikTok"
-        />
-        <OnBoardingAccounts
-          isAccountConnected={userData?.facebook}
-          classes="bg-[#0054ff]"
-          account="Facebook"
-        />
-      </div>
-    </>
+    </div>
   );
 };
 

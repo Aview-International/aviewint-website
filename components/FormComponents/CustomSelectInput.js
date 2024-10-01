@@ -42,7 +42,7 @@ const CustomSelectInput = ({
         ref={elementRef}
       >
         <p className={`mb-s1 ${hasText ? 'hidden' : 'block'}`}>
-          <span className="after:ml-0.5 after:content-['*']">{text}</span>
+          <span>{text}</span>
         </p>
         <Border borderRadius="[5px] w-full bg-red">
           <div

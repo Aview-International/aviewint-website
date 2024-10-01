@@ -2,10 +2,15 @@ import Image from 'next/image';
 import Tooltip from '../../public/img/icons/tooltip.svg';
 import Info from '../../public/img/icons/info.svg';
 import Border from '../UI/Border';
-import { useState } from 'react';
 
-const CheckBox = ({ label, onChange, tooltip, name, labelClasses }) => {
-  const [isChecked, setIschecked] = useState(false);
+const CheckBox = ({
+  label,
+  onChange,
+  tooltip,
+  name,
+  labelClasses,
+  isChecked,
+}) => {
   return (
     <label className={`flex cursor-pointer items-center text-xl text-white`}>
       <span
@@ -22,10 +27,7 @@ const CheckBox = ({ label, onChange, tooltip, name, labelClasses }) => {
       <input
         type="checkbox"
         checked={isChecked}
-        onChange={(e) => {
-          setIschecked(!isChecked);
-          onChange(e);
-        }}
+        onChange={onChange}
         name={name}
         className="hidden"
       />

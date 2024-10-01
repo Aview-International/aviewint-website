@@ -15,6 +15,7 @@ import FAQ from '../../components/sections/home/FAQ';
 import EasterEgg from '../../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
+import CookieConsent from '../../components/sections/home/CookieConsent';
 
 const About = () => {
   return (
@@ -23,6 +24,7 @@ const About = () => {
         title="About - AVIEW"
         description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
+      <CookieConsent />
       <ProgressBar />
       <EasterEgg />
       <Header curPage="About" />

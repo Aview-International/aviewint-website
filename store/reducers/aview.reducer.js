@@ -4,6 +4,8 @@ import { SUPPORTED_REGIONS } from '../../constants/constants';
 const initialState = {
   allLanguages: [],
   allPlans: [],
+  countriesAndCodes: [],
+  supportedLanguages: [],
 };
 
 const aviewSlice = createSlice({
@@ -33,9 +35,22 @@ const aviewSlice = createSlice({
       const { payload } = action;
       state.allPlans = payload;
     },
+    setCountriesAndCodes(state, action) {
+      const { payload } = action;
+      return { ...state, countriesAndCodes: payload };
+    },
+    setSupportedLanguages(state, action) {
+      const { payload } = action;
+      return { ...state, supportedLanguages: payload };
+    },
   },
 });
 
-export const { setAllLanguages, setAllPlans } = aviewSlice.actions;
+export const {
+  setAllLanguages,
+  setAllPlans,
+  setCountriesAndCodes,
+  setSupportedLanguages,
+} = aviewSlice.actions;
 
 export default aviewSlice.reducer;
