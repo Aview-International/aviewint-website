@@ -314,7 +314,7 @@ export const createTranslator = async (
   paymentMethod,
   paymentDetails
 ) => {
-  return axiosInstance.post(baseUrl + 'admin/create-translator', {
+  return axios.post(baseUrl + 'admin/create-translator', {
     name,
     email,
     nativeLanguage,
@@ -325,7 +325,7 @@ export const createTranslator = async (
 };
 
 export const getSupportedLanguages = async () =>
-  (await axiosInstance.get(baseUrl + 'admin/supported-languages')).data;
+  (await axios.get(baseUrl + 'admin/supported-languages')).data;
 
 export const getCountriesAndCodes = async () =>
-  (await axiosInstance.get(baseUrl + 'admin/countries-and-codes')).data;
+  (await axios.get(baseUrl + 'admin/countries-and-codes')).data;
