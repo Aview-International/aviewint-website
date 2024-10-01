@@ -1,171 +1,174 @@
 import { useState } from 'react';
-import {
-  CAREER_APPLY_TODAY,
-  TEAM_OPEN_POSITIONS,
-} from '../../../constants/constants';
-import FormInput from '../../FormComponents/FormInput';
-import CustomSelectInput from '../../FormComponents/CustomSelectInput';
-import GlobalButton from '../../UI/GlobalButton';
-import Form from '../../FormComponents/Form';
-import { submitFile } from '../../../utils/submit-form';
-import MultipleSelectInput from '../../FormComponents/MultipleSelectInput';
-import { useRouter } from 'next/router';
-import UploadFile from '../../FormComponents/UploadFile';
+import { useSelector } from 'react-redux';
+import { createTranslator } from '../../../services/apis';
 import { emailValidator } from '../../../utils/regex';
 import ErrorHandler from '../../../utils/errorHandler';
-import { useSelector } from 'react-redux';
+import FormInput from '../../../components/FormComponents/FormInput';
+import CustomSelectInput from '../../../components/FormComponents/CustomSelectInput';
+import CheckBox from '../../../components/FormComponents/CheckBox';
+import MultipleSelectInput from '../../../components/FormComponents/MultipleSelectInput';
+import GlobalButton from '../../UI/GlobalButton';
 
-const ApplyToday = () => {
-  const allLanguages = useSelector((el) => el.aview.allLanguages);
-  const router = useRouter();
-
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-
-  const [data, setData] = useState({
+const Onboarding = () => {
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    languages: [],
-    'Voice acting/Dubbing': '',
-    position: '',
-    resume: null,
-    isEmpty: false,
+    nativeLanguage: [],
+    country: 'Select',
+    checkedState: '',
+    paymentDetails: '',
   });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const supportedLanguages = useSelector((el) =>
+    el.aview.supportedLanguages.map((item) => item.languageName).sort()
+  );
+  const countriesAndCodes = useSelector((el) =>
+    el.aview.countriesAndCodes.map((item) => item.name).sort()
+  );
+  const paymentOptions = ['Remitly', 'Paypal', 'Xoom'];
 
+  const handleInputChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
     try {
-      setHasSubmitted(true);
+      const {
+        name,
+        email,
+        nativeLanguage,
+        country,
+        checkedState,
+        paymentDetails,
+      } = formData;
       if (
-        !data.name ||
-        !data.email ||
-        data.languages.length < 1 ||
-        !data['Voice acting/Dubbing'] ||
-        !data.position ||
-        !data.resume
+        !name.trim() ||
+        !email.trim() ||
+        !emailValidator(email.trim()) ||
+        nativeLanguage.length === 0 ||
+        country === 'Select' ||
+        !checkedState ||
+        !paymentDetails.trim()
       ) {
-        setData({ ...data, isEmpty: true });
-        return;
+        throw new Error('Please fill all fields correctly');
       }
 
-      submitFile('translator-applications', {
-        name: data.name,
-        email: data.email,
-        languages: data.languages.toString(),
-        'Voice acting/Dubbing': data['Voice acting/Dubbing'],
-        position: data.position,
-        resume: data.resume,
-      });
+      localStorage.setItem('emailForSignIn', email);
 
-      router.push('/success');
+      await createTranslator(
+        name.trim(),
+        email.trim(),
+        nativeLanguage,
+        country,
+        checkedState,
+        paymentDetails.trim()
+      );
+      setSubmitted(true);
     } catch (error) {
       ErrorHandler(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const handleMutlipleCheckbox = (option) => {
-    if (data.languages.includes(option)) {
-      let newArray = [...data.languages];
-      newArray.splice(newArray.indexOf(option), 1);
-      setData({ ...data, languages: newArray });
-    } else {
-      let languagesArray = [...data.languages];
-      languagesArray.push(option);
-      setData({ ...data, languages: languagesArray });
-    }
+  const handleMultipleLanguages = (option) => {
+    const updatedLanguages = formData.nativeLanguage.includes(option)
+      ? formData.nativeLanguage.filter((lang) => lang !== option)
+      : [...formData.nativeLanguage, option];
+    handleInputChange('nativeLanguage', updatedLanguages);
   };
 
   return (
-    <section
-      className="section m-horizontal"
-      id="apply-today"
-      data-aos="zoom-out-up"
-    >
-      <h2 className="title mb-s4 text-center">
-        <span className="gradient-text gradient-2">Apply Today!</span>
-      </h2>
-      <Form
-        className="m-auto w-full md:w-9/12"
-        submitHandler={handleSubmit}
-        name="translator-applications"
-      >
-        <FormInput
-          onChange={handleChange}
-          hasSubmitted={hasSubmitted}
-          isValid={data.name.length > 2}
-          {...CAREER_APPLY_TODAY[0]}
-        />
-        <FormInput
-          onChange={handleChange}
-          hasSubmitted={hasSubmitted}
-          isValid={emailValidator(data.email)}
-          {...CAREER_APPLY_TODAY[1]}
-        />
-        <div className="w-full text-white md:w-3/5">
+    <section className="section m-horizontal">
+      <div className="mx-auto max-w-4xl px-4 text-white">
+        <h2 className="title text-center">
+          <span className="gradient-text gradient-2">Work with us</span>
+        </h2>
+
+        <p className="mt-s2 mb-s5 text-center text-xl">
+          Sign up today to become a translator and manage content.
+        </p>
+
+        <div className="rounded-2xl bg-white-transparent px-s4 pt-s4 pb-s14">
+          <p className="mb-s2 text-3xl font-bold">Personal Information</p>
+          <FormInput
+            label="Name"
+            placeholder="First and Last Name"
+            value={formData.name}
+            onChange={(e) => handleInputChange('name', e.target.value)}
+            name="name"
+          />
+
+          <FormInput
+            label="Email"
+            value={formData.email}
+            placeholder="Your email"
+            onChange={(e) => handleInputChange('email', e.target.value)}
+            name="email"
+          />
+
           <MultipleSelectInput
-            text="What languages can you translate?"
-            options={allLanguages.map((el) => el.language)}
-            answer={data.languages}
-            hasSubmitted={hasSubmitted}
-            onChange={(event) => handleMutlipleCheckbox(event)}
+            text="Native Languages"
+            answer={formData.nativeLanguage}
+            options={supportedLanguages}
+            onChange={handleMultipleLanguages}
+            hideCheckmark={true}
           />
-          <input
-            type="hidden"
-            name="languages"
-            value={data.languages.toString()}
-          />
-        </div>
-        <div className="w-full md:w-3/5">
+
           <CustomSelectInput
-            text="Can you do voice acting/dubbing?"
-            hasSubmitted={hasSubmitted}
-            options={['No', 'Yes']}
-            isValid={data['Voice acting/Dubbing']}
-            onChange={(option) =>
-              setData({ ...data, ['Voice acting/Dubbing']: option })
+            text="Country"
+            value={formData.country}
+            options={countriesAndCodes}
+            onChange={(selectedOption) =>
+              handleInputChange('country', selectedOption)
             }
-            value={data['Voice acting/Dubbing']}
           />
-          <input
-            type="hidden"
-            name="Voice acting/Dubbing"
-            value={data['Voice acting/Dubbing']}
-          />
+
+          <div className="mt-s3 text-3xl font-bold">Payment method</div>
+
+          {paymentOptions.map((el, idx) => (
+            <div key={idx}>
+              <div className="my-s1">
+                <CheckBox
+                  label={el}
+                  onChange={() => handleInputChange('checkedState', el)}
+                  name="checkbox"
+                  isChecked={formData.checkedState === el}
+                />
+              </div>
+
+              {formData.checkedState === el && (
+                <FormInput
+                  value={formData.paymentDetails}
+                  placeholder="Name, username, email"
+                  onChange={(e) =>
+                    handleInputChange('paymentDetails', e.target.value)
+                  }
+                />
+              )}
+            </div>
+          ))}
+          <div className="float-right mt-s4 text-xl">
+            {submitted ? (
+              <p>Submission successful</p>
+            ) : (
+              <GlobalButton
+                theme="light"
+                onClick={handleSubmit}
+                isLoading={loading}
+                purpose={'onClick'}
+              >
+                Submit
+              </GlobalButton>
+            )}
+          </div>
         </div>
-        <div className="w-full md:w-3/5">
-          <CustomSelectInput
-            text="What position are you applying to?"
-            hasSubmitted={hasSubmitted}
-            isValid={data.position}
-            options={TEAM_OPEN_POSITIONS}
-            onChange={(option) => setData({ ...data, position: option })}
-            value={data.position}
-          />
-          <input type="hidden" name="position" value={data.position} />
-        </div>
-        <UploadFile
-          data={data}
-          setData={setData}
-          hasSubmitted={hasSubmitted}
-          isValid={data.resume}
-        />
-        {data.isEmpty && (
-          <p className="my-s3 text-center text-xl text-white">
-            Please select from the options above to continue
-          </p>
-        )}
-        <div className="mt-s5 flex justify-center ">
-          <GlobalButton purpose="submit" type="primary">
-            Send Message
-          </GlobalButton>
-        </div>
-      </Form>
+      </div>
     </section>
   );
 };
 
-export default ApplyToday;
+export default Onboarding;
