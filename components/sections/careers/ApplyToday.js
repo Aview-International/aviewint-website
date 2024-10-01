@@ -82,7 +82,7 @@ const Onboarding = () => {
   };
 
   return (
-    <section className="section m-horizontal">
+    <section className="section m-horizontal" data-aos="zoom-in-down">
       <div className="mx-auto max-w-4xl px-4 text-white">
         <h2 className="title text-center">
           <span className="gradient-text gradient-2">Work with us</span>
