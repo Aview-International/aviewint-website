@@ -12,16 +12,13 @@ const YoutubeConnection = () => {
   const finalizeYoutube = async () => {
     try {
       await finalizeYoutubeAuth(tempid, uid);
-      const rdr = Cookies.get('youtubeRdr');
-      if (rdr) {
-        Cookies.remove('youtubeRdr');
-        router.push(rdr);
-        return;
-      }
     } catch (error) {
       ErrorHandler(error);
+    } finally {
+      const rdr = Cookies.get('youtubeRdr');
+      rdr && Cookies.remove('youtubeRdr');
+      return router.push(rdr || '/onboarding?stage=2');
     }
-    router.push('/onboarding?stage=2');
   };
 
   useEffect(() => {
