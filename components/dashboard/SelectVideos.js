@@ -9,14 +9,6 @@ const SelectVideos = ({
   setSelectedVideos,
   selectedVideos,
 }) => {
-  const handleTranslate = () => {
-    if (selectedVideos.length < 1) {
-      toast.error('Please select a video');
-    } else {
-      setIsSelected(true);
-    }
-  };
-
   return (
     <>
       <Insights />
@@ -26,9 +18,7 @@ const SelectVideos = ({
         setSelectedVideos={setSelectedVideos}
       />
       <br />
-      <div className="ml-auto w-full md:w-[155px]">
-        <GlobalButton onClick={handleTranslate}>Next</GlobalButton>
-      </div>
+     
     </>
   );
 };

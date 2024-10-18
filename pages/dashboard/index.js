@@ -25,13 +25,18 @@ import {
   subscribeToHistory,
 } from '../../services/firebase';
 import { setTikTokVideos } from '../../store/reducers/tiktok.reducer';
+import usePagination from '../../hooks/usePagination';
+import downloadYoutubeVideos from '../../utils/getYoutube';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
+  const { goToPage } = usePagination();
   const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
-  const channelDetails = useSelector((state) => state.youtube.channelDetails);
+  const { channelDetails, nextPageToken } = useSelector(
+    (state) => state.youtube
+  );
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
@@ -42,23 +47,26 @@ const DashboardHome = () => {
   });
 
   const getYoutubeVideos = async () => {
-    try {
-      const getVideos = await getChannelVideos(channelDetails.id);
-      const youtubeVideos = getVideos.items.map((vid) => ({
-        type: 'youtube',
-        id: vid.snippet.resourceId.videoId,
-        caption: vid.snippet.title,
-        timestamp: vid.snippet.publishedAt,
-        thumbnail: vid.snippet.thumbnails.maxres
-          ? vid.snippet.thumbnails.maxres.url
-          : vid.snippet.thumbnails.default.url,
-        permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
-        videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
-      }));
-      dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
-    } catch (error) {
-      // ErrorHandler(error);
-    }
+    //   try {
+    //     const getVideos = await getChannelVideos(channelDetails.id,1);
+    //     console.log("youtubevideos",getVideos)
+    //     const youtubeVideos = getVideos.items.map((vid) => ({
+    //       type: 'youtube',
+    //       id: vid.snippet.resourceId.videoId,
+    //       caption: vid.snippet.title,
+    //       timestamp: vid.snippet.publishedAt,
+    //       thumbnail: vid.snippet.thumbnails.maxres
+    //         ? vid.snippet.thumbnails.maxres.url
+    //         : vid.snippet.thumbnails.default.url,
+    //       permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
+    //       videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
+    //     }));
+    //      dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos, totalResults: getVideos.pageInfo.totalResults}));
+    //   } catch (error) {
+    //     // ErrorHandler(error);
+    //   }
+    // console.count("we are in the get youtube videos")
+    goToPage(1);
   };
 
   const getInstagramVideos = async () => {
