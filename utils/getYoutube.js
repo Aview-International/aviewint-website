@@ -1,11 +1,11 @@
 import { getChannelVideos } from '../services/apis';
 
-const downloadYoutubeVideos = async (channelId, pageToken = null) => {
-  //  console.count("in the youtube api ",channelId, pageToken === '' && channelId)
+const downloadYoutubeVideos = async (channelId, isFirstRequest ) => {
+    console.log("in the youtube api ",channelId,  isFirstRequest)
 
   try {
-    if (channelId || pageToken) {
-      const getVideos = await getChannelVideos(channelId, pageToken);
+    if (channelId || isFirstRequest) {
+      const getVideos = await getChannelVideos(channelId, isFirstRequest);
       const youtubeVideos = getVideos.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
@@ -21,7 +21,7 @@ const downloadYoutubeVideos = async (channelId, pageToken = null) => {
       return {
         videos: youtubeVideos,
         totalResults: getVideos.pageInfo.totalResults,
-        nextPageToken: getVideos.nextPageToken || null,
+        // nextPageToken: getVideos.nextPageToken || null,
       };
     }
   } catch (error) {

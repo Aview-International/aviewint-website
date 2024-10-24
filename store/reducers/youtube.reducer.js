@@ -11,7 +11,7 @@ const initialState = {
   videos: {},
   page: 0,
   totalResults: 0,
-  nextPageToken: '',
+  isFirstRequest: true,
   visitingPage: 1,
 };
 

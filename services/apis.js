@@ -95,12 +95,19 @@ export const finalizeYoutubeAuth = async (tempId, userId) => {
   );
 };
 
-export const getChannelVideos = async (channelId, pageToken) => {
-  console.log(channelId, pageToken);
-  const response = await axiosInstance.get(
-    `auth/youtube-videos?channelId=${channelId}&pageToken=${pageToken}`
-  );
-  console.log(response.data);
+// export const getChannelVideos = async (channelId, pageToken) => {
+//   console.log("in the youtube api ",channelId, pageToken == '' ? channelId: pageToken)
+//   const response = await axiosInstance.get(
+//     `auth/youtube-videos?channelId=${channelId}&pageToken=${pageToken}`
+//   );
+//   console.count(response.data);
+//   return response.data;
+// };
+
+export const getChannelVideos = async (channelId,isFirstRequest) => {
+  console.log("in the youtube api ",channelId,  isFirstRequest)
+   const response = await axiosInstance.get(`auth/youtube-videos?channelId=${channelId}&isFirstRequest=${isFirstRequest}`  );
+     console.log(response.data)
   return response.data;
 };
 

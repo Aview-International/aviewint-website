@@ -43,8 +43,6 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   const allVideos = [...tiktokVideos, ...instagramVideos, ...youtubeVideos];
   const [buttonState, setButtonState] = useState('youtube');
 
-  // console.log(videos, totalResults, storePage, nextPageToken, currentPage);
-
   const handleVideos = (value) => {
     const newArray = [...selectedVideos];
     const findVideo = newArray.find((v) => v.id === value.id);
@@ -78,8 +76,8 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
   };
 
   return (
-    <div className="my-1 rounded-2xl py-s2">
-      <div className="mb-s3 flex w-full justify-between overflow-x-auto text-white">
+    <div className="rounded-2xl py-s2 text-white">
+      <div className="mb-s3 flex w-full justify-between overflow-x-auto">
         <FilterHeader
           filterData={STATUS_BUTTONS}
           buttonState={buttonState}
@@ -98,40 +96,41 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
           </Link>
         </div>
       </div>
-      <div className="relative max-h-[50vh] overflow-y-auto">
-        {isLoading ? (
-          <CircleLoader />
-        ) : (
-          <div className="m-auto grid grid-cols-2 items-start gap-10 rounded-lg bg-white-transparent pt-2 text-white md:grid-cols-3">
-            {buttonState === 'all' ? (
-              <RenderVideo
-                handleVideos={handleVideos}
-                selectedVideos={selectedVideos}
-                videoData={allVideos}
-              />
-            ) : buttonState === 'youtube' ? (
-              <RenderVideo
-                handleVideos={handleVideos}
-                selectedVideos={selectedVideos}
-                videoData={getPageData(videos, currentPage)}
-              />
-            ) : (
-              allVideos
-                .filter((vid) => vid.type === buttonState)
-                .map((item, index) => (
-                  <VideoFrame
-                    handleVideos={handleVideos}
-                    selected={selectedVideos.find((v) => v?.id === item?.id)}
-                    key={`video-${index}`}
-                    {...item}
-                  />
-                ))
-            )}
-          </div>
-        )}
-
+      <div className="relative">
+        <div className="max-h-[60vh] overflow-y-auto">
+          {isLoading ? (
+            <CircleLoader />
+          ) : (
+            <div className="m-auto grid h-full w-full grid-cols-2 items-start gap-4 rounded-lg rounded-b-none bg-white-transparent px-4 py-2 text-white md:grid-cols-3">
+              {buttonState === 'all' ? (
+                <RenderVideo
+                  handleVideos={handleVideos}
+                  selectedVideos={selectedVideos}
+                  videoData={allVideos}
+                />
+              ) : buttonState === 'youtube' ? (
+                <RenderVideo
+                  handleVideos={handleVideos}
+                  selectedVideos={selectedVideos}
+                  videoData={getPageData(videos, currentPage)}
+                />
+              ) : (
+                allVideos
+                  .filter((vid) => vid.type === buttonState)
+                  .map((item, index) => (
+                    <VideoFrame
+                      handleVideos={handleVideos}
+                      selected={selectedVideos.find((v) => v?.id === item?.id)}
+                      key={`video-${index}`}
+                      {...item}
+                    />
+                  ))
+              )}
+            </div>
+          )}
+        </div>
         {Object.keys(videos).length > 0 && (
-          <div className="sticky bottom-0 flex h-[12%] w-full items-center justify-between bg-white-transparent  px-s2 py-2 text-white backdrop-blur-lg backdrop-filter">
+          <div className=" bottom-0 flex h-[12%] w-full items-center justify-between rounded-lg rounded-t-none bg-white-transparent  px-s2 py-2 backdrop-blur-lg">
             {selectedVideos && (
               <p> ({selectedVideos.length}) videos selected</p>
             )}
@@ -177,7 +176,7 @@ const Pagination = ({ totalResults, page, pageHandler, videos }) => {
   const handleNextPage = (page) => {
     pageHandler(page);
     if (!videos[page + 1]) {
-      // console.count('calling the preload next page function');
+      console.count('calling the preload next page function');
       dispatch(setVisitingPage(page + 1));
     }
   };

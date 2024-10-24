@@ -47,26 +47,26 @@ const DashboardHome = () => {
   });
 
   const getYoutubeVideos = async () => {
-    //   try {
-    //     const getVideos = await getChannelVideos(channelDetails.id,1);
-    //     console.log("youtubevideos",getVideos)
-    //     const youtubeVideos = getVideos.items.map((vid) => ({
-    //       type: 'youtube',
-    //       id: vid.snippet.resourceId.videoId,
-    //       caption: vid.snippet.title,
-    //       timestamp: vid.snippet.publishedAt,
-    //       thumbnail: vid.snippet.thumbnails.maxres
-    //         ? vid.snippet.thumbnails.maxres.url
-    //         : vid.snippet.thumbnails.default.url,
-    //       permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
-    //       videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
-    //     }));
-    //      dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos, totalResults: getVideos.pageInfo.totalResults}));
-    //   } catch (error) {
-    //     // ErrorHandler(error);
-    //   }
-    // console.count("we are in the get youtube videos")
-    goToPage(1);
+      // try {
+      //   const getVideos = await getChannelVideos(channelDetails.id,1);
+      //   console.log("youtubevideos",getVideos)
+      //   const youtubeVideos = getVideos.items.map((vid) => ({
+      //     type: 'youtube',
+      //     id: vid.snippet.resourceId.videoId,
+      //     caption: vid.snippet.title,
+      //     timestamp: vid.snippet.publishedAt,
+      //     thumbnail: vid.snippet.thumbnails.maxres
+      //       ? vid.snippet.thumbnails.maxres.url
+      //       : vid.snippet.thumbnails.default.url,
+      //     permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
+      //     videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
+      //   }));
+      //    dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos, totalResults: getVideos.pageInfo.totalResults}));
+      // } catch (error) {
+      //   // ErrorHandler(error);
+      // }
+    console.count("we are in the get youtube videos")
+     goToPage(1);
   };
 
   const getInstagramVideos = async () => {

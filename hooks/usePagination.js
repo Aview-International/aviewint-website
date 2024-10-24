@@ -11,72 +11,76 @@ import downloadYoutubeVideos from '../utils/getYoutube';
 
 const usePagination = () => {
   const dispatch = useDispatch();
-  
-  const { videos, channelDetails, nextPageToken: pageToken, page: currentPage, visitingPage } = useSelector((state) => state.youtube);
-  
+
+  const {
+    videos,
+    channelDetails,
+    isFirstRequest: pageToken,
+    page: currentPage,
+    visitingPage,
+    totalResults,
+  } = useSelector((state) => state.youtube);
+  console.log(videos, totalResults, pageToken, currentPage);
+
   const getYoutubeVideos = useCallback(async () => {
-    
-      const channelId = channelDetails.id
-    //   console.log("before sending the request", channelId, pageToken === '' && channelId)
-      try{
-       const {videos,totalResults,nextPageToken : newPageToken} = await downloadYoutubeVideos(channelId, pageToken)
-       dispatch(setIncrementPage())
-       dispatch(setYoutubeVideos({ dataFetched: true, videos: videos}));
-        if (pageToken !== newPageToken) {
-            dispatch(setNextPageToken(newPageToken)); 
-            dispatch(setTotalResults(totalResults));
-        }
-        if(newPageToken==null) {
-            dispatch(setNextPageToken(null));
-        }
+    const channelId = channelDetails.id;
+    console.log('before sending the request', channelId, pageToken);
+    try {
+      //  const {videos,totalResults,nextPageToken : newPageToken} = await downloadYoutubeVideos(channelId, pageToken)
+      const { videos, totalResults } = await downloadYoutubeVideos(
+        channelId,
+        pageToken
+      );
+      dispatch(setIncrementPage());
+      dispatch(setYoutubeVideos({ dataFetched: true, videos: videos }));
+      dispatch(setNextPageToken(false));
+      dispatch(setTotalResults(totalResults));
+      // if (pageToken !== newPageToken) {
+      // }
+      // if(newPageToken==null) {
+      //     dispatch(setNextPageToken(null));
+      // }
+    } catch (e) {
+      console.log(e.message);
     }
-    catch(e){
-        console.log(e.message)
-    }
-  }, [channelDetails.id]);
-
-
-
+  }, [channelDetails, pageToken, dispatch]);
 
   const loadPage = useCallback(
     async (page) => {
       if (!videos[page]) {
-        // console.count("we are rendering load page")
-        await getYoutubeVideos()
+        await getYoutubeVideos();
+        console.count('we are rendering load page');
       }
-      
     },
-    [videos, getYoutubeVideos, dispatch]
+    [videos, getYoutubeVideos, pageToken]
   );
-
- 
 
   const preloadNextPage = useCallback(async () => {
     const nextPage = currentPage + 1;
     if (!videos[nextPage]) {
-        // console.count("rendering the preloadNextPage");
       await getYoutubeVideos();
+      console.count('rendering the preloadNextPage');
     }
-  }, [currentPage, videos]);
-
-  
+  }, [currentPage, videos, getYoutubeVideos, pageToken]);
 
   useEffect(() => {
-    preloadNextPage();
-    // console.count("we are rendering the useEffect page")
-  }, [visitingPage]);
+    if (visitingPage > 1) {
+      preloadNextPage();
+      console.count('we are rendering the useEffect page');
+    }
+  }, [visitingPage, preloadNextPage]);
 
-
-
-  const goToPage = async (page) => {
-    // console.count("we are in got to page")
-    await loadPage(page);
-    // console.count("we are in about to go next page loading")
-    preloadNextPage()
-  };
+  const goToPage = useCallback(
+    async (page) => {
+      console.count('we are in go to page');
+      await loadPage(page);
+      console.count('we are about to go next page loading');
+      await preloadNextPage();
+    },
+    [loadPage, preloadNextPage]
+  );
 
   return {
-    
     goToPage,
     // hasNextPage: !!videos[currentPage + 1],
   };
