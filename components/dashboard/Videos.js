@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import CircleLoader from '../../public/loaders/CircleLoader';
 import VideoFrame from './VideoFrame';
-import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
-const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
-  const instagramVideos = useSelector((state) => state.instagram.videos);
-  const youtubeVideos = useSelector((state) => state.youtube.videos);
-  const tiktokVideos = useSelector((state) => state.tiktok.videos);
-
-  const allVideos = [...tiktokVideos, ...instagramVideos, ...youtubeVideos];
+const Videos = ({
+  setSelectedVideos,
+  selectedVideos,
+  isLoading,
+  allVideos,
+}) => {
   const [buttonState, setButtonState] = useState('all');
   const BUTTONS = [
     { title: 'All Videos', param: 'all' },
@@ -57,6 +56,11 @@ const Videos = ({ setSelectedVideos, selectedVideos, isLoading }) => {
           </a>
         </Link>
       </div>
+
+      <div className="my-s5">
+        <CircleLoader />
+      </div>
+
       <div className="max-h-[45vh] overflow-y-auto">
         {isLoading ? (
           <CircleLoader />
