@@ -8,11 +8,9 @@ const initialState = {
     title: '',
     thumbnail: '',
   },
-  videos: {},
-  page: 0,
-  totalResults: 0,
-  isFirstRequest: true,
-  visitingPage: 1,
+  videos: [[]],
+  totalYoutubeVideos: 0,
+  youtubeNextPageToken: '',
 };
 
 const youtubeSlice = createSlice({
@@ -21,10 +19,9 @@ const youtubeSlice = createSlice({
   reducers: {
     setYoutubeVideos(state, action) {
       state.dataFetched = action.payload.dataFetched;
-
-      state.videos[state.page] = action.payload.videos;
+      state.videos = action.payload.videos;
+      state.youtubeNextPageToken = action.payload.nextPageToken;
     },
-
     setYoutubeChannel(state, action) {
       const { payload } = action;
       state.channelDetails = payload;
