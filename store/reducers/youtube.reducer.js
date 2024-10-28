@@ -27,9 +27,35 @@ const youtubeSlice = createSlice({
       const { payload } = action;
       state.channelDetails = payload;
     },
+
+    setNextPageToken: (state, action) => {
+      const { payload } = action;
+      state.nextPageToken = payload;
+    },
+
+    setTotalResults: (state, action) => {
+      const { payload } = action;
+      state.totalResults = payload;
+    },
+
+    setVisitingPage: (state, action) => {
+      const { payload } = action;
+      state.visitingPage = payload;
+    },
+
+    setIncrementPage: (state, action) => {
+      state.page += 1;
+    },
   },
 });
 
-export const { setYoutubeVideos, setYoutubeChannel } = youtubeSlice.actions;
+export const {
+  setYoutubeVideos,
+  setYoutubeChannel,
+  setTotalResults,
+  setNextPageToken,
+  setVisitingPage,
+  setIncrementPage,
+} = youtubeSlice.actions;
 
 export default youtubeSlice.reducer;

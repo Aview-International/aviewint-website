@@ -1,5 +1,4 @@
 import { toast } from 'react-toastify';
-import GlobalButton from '../Onboarding/button';
 import Insights from './insights/Insights';
 import Videos from './Videos';
 import { useDispatch, useSelector } from 'react-redux';
@@ -68,11 +67,13 @@ const SelectVideos = ({
   };
 
   const updatePageQuery = (type) => {
+    console.log(type);
     let videosFectched = 5;
     const totalPages = Math.ceil(totalYoutubeVideos / videosFectched);
     if (type === 'next' && page >= totalPages) return;
     if (type === 'prev' && page <= 1) return;
     setPage(page + 1);
+
     getAllPaginatedYoutubeVideos();
   };
 
@@ -84,15 +85,9 @@ const SelectVideos = ({
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}
         allVideos={[...tiktokVideos, ...instagramVideos, ...youtubeVideos]}
+        updatePageQuery={updatePageQuery}
+        handleTranslate={handleTranslate}
       />
-      <br />
-      <div className="flex gap-5 text-red">
-        <button onClick={() => updatePageQuery('next')}>Next</button>
-        <button onClick={() => updatePageQuery('prev')}>Prev</button>
-      </div>
-      <div className="ml-auto w-full md:w-[155px]">
-        <GlobalButton onClick={handleTranslate}>Next</GlobalButton>
-      </div>
     </>
   );
 };
