@@ -15,8 +15,11 @@ import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
 import CookieConsent from '../components/sections/home/CookieConsent';
+import Features from '../components/sections/home/Features';
+import HowItWorks from '../components/sections/home/HowItWorks';
+import AiTools from '../components/sections/home/AiTools';
 
-const Home = () => {  
+const Home = () => {
   return (
     <>
       <SEO
@@ -28,18 +31,20 @@ const Home = () => {
       <EasterEgg />
       <Header curPage="Home" />
       <UnlockGlobalGrowth />
-      <ScrollToTopButton />
-      <ContentCreators />
-      <ScrollVerticalAnime />
+      <HowItWorks />
       <EmpowerGlobal />
-      <MetricsAnime />
+      <AiTools />
+      <ScrollToTopButton />
+      {/* <ContentCreators /> */}
+      <ScrollVerticalAnime />
+      <Features />
+      {/* <MetricsAnime /> */}
       <FAQ page="landing" />
-      <InternationalGrowth />
+      {/* <InternationalGrowth /> */}
       <StartGenerating formId="t5dW3MSY" />
       {/* <GoGlobal /> */}
       <Footer curPage="Home" />
       <Blobs />
-      
     </>
   );
 };

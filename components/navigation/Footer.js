@@ -47,7 +47,7 @@ const Footer = ({ curPage }) => {
                     : ''
                 }`}
               >
-                Terms of Service
+                Terms and Conditions
               </a>
             </Link>
           </div>

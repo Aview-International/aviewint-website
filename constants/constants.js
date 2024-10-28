@@ -5,6 +5,8 @@ import youtube from '../public/img/icons/youtube.svg';
 import tiktok from '../public/img/icons/tiktok.svg';
 import instagram from '../public/img/icons/instagram.svg';
 import twitter from '../public/img/icons/twitter.svg';
+import vimeo from '../public/img/icons/Vimeo.png';
+import aview_ai from '../public/img/icons/aview-ai.svg';
 
 // Content Creators
 import logan1 from '../public/img/creators/logan-1.png';
@@ -155,6 +157,15 @@ import voice_recognition from '../public/img/graphics/voice-recognition.png';
 import voice_to_text from '../public/img/graphics/voice-to-text.png';
 import youtube_ai from '../public/img/graphics/youtube.png';
 
+import channel_management from '../public/img/graphics/channel_management.png';
+import global_reach from '../public/img/graphics/global_reach.png';
+import global_ai from '../public/img/graphics/globe-ai.svg';
+import ai_mask from '../public/img/graphics/ai-mask.svg';
+import mic from '../public/img/graphics/mic.svg';
+import upload_ai from '../public/img/graphics/upload-ai.svg';
+import video from '../public/img/graphics/video.svg';
+import volume from '../public/img/graphics/volume.svg';
+
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
   testimonial_2,
@@ -233,6 +244,194 @@ export const LANDING_PAGE_TYPES = [
     imageWidth: 400,
     imageHeight: 400,
     hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
+  },
+];
+
+export const AI_Tools = [
+  {
+    title: 'Generate subtitles with one click',
+    desc: 'Generate high quality and accurate subtitles for any language, any type of content, and for any of your needs',
+    button_text: 'Try our subtitle generator',
+    image: empower,
+    index: 1,
+  },
+  {
+    title: 'Find a voice to fit any of your audiences',
+    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project.',
+    button_text: 'Try our voiceover generator',
+    image: empower,
+    index: 2,
+  },
+  {
+    title: 'Immaculate speech to text conversion',
+    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project.',
+    button_text: 'Try speech to text conversion',
+    image: empower,
+    index: 3,
+  },
+  {
+    title: 'Intuitive text to speech conversion',
+    desc: 'Easily turn your text into accurate and authentic voiceovers to save you time and energy for your next creative project.',
+    button_text: 'Try text to speech conversion',
+    image: empower,
+    index: 4,
+  },
+  {
+    title: 'Intuitive text to speech conversion',
+    desc: 'Easily turn your text into accurate and authentic voiceovers to save you time and energy for your next creative project.',
+    button_text: 'Try text to speech conversion',
+    image: empower,
+    index: 5,
+  },
+];
+
+export const Work_Process = [
+  {
+    title: 'Create a Free aview account ',
+    desc: 'Fill out an application telling us a little bit about your needs as a creator and what type of content you have.',
+  },
+  {
+    title: 'Connect your social accounts',
+    desc: 'Connect your existing social accounts easily with our platform so we can easily assist in the uploading process.',
+  },
+  {
+    title: 'Generate translated content',
+    desc: 'Utilize our creative suite and have access to several AI tools that will help you create international content.',
+  },
+  {
+    title: 'post your content and monetize',
+    desc: 'Once your content is online, monetize it to create income from several channels at once.',
+  },
+];
+
+export const Creator_Suite = [
+  {
+    image: empower,
+    index: 1,
+  },
+  {
+    tittle: 'Unified Content Management And Distribution',
+    desc: 'Seamlessly integrate all your social media channels into Aview, streamlining your global content strategy.',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See pricing',
+    button_route: '',
+    index: 2,
+  },
+
+  {
+    tittle: 'Analytics for International Impact',
+    desc: 'Effortlessly capture, edit, and share audio & video content with Aview’s comprehensive AI tools',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See pricing',
+    button_route: '',
+    index: 3,
+  },
+  {
+    image: empower,
+    index: 4,
+  },
+  {
+    image: empower,
+    index: 5,
+  },
+  {
+    tittle: 'Tools for Global Dominance',
+    desc: 'Harness a suite of powerful tools designed to propel your content onto the international stage.',
+    button_route: '',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See our AI tools',
+    index: 6,
+  },
+];
+
+export const Creator_Suite_Mobile = [
+  {
+    image: empower,
+    index: 1,
+  },
+  {
+    tittle: 'Unified Content Management And Distribution',
+    desc: 'Seamlessly integrate all your social media channels into Aview, streamlining your global content strategy.',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See pricing',
+    button_route: '',
+    index: 2,
+  },
+  {
+    image: empower,
+    index: 3,
+  },
+  {
+    tittle: 'Analytics for International Impact',
+    desc: 'Effortlessly capture, edit, and share audio & video content with Aview’s comprehensive AI tools',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See pricing',
+    button_route: '',
+    index: 4,
+  },
+  
+  {
+    image: empower,
+    index: 5,
+  },
+  {
+    tittle: 'Tools for Global Dominance',
+    desc: 'Harness a suite of powerful tools designed to propel your content onto the international stage.',
+    button_route: '',
+    options: [
+      'Social media integration',
+      'Video analytics',
+      'Video database organization',
+    ],
+    button_text: 'See our AI tools',
+    index: 6,
+  },
+];
+
+export const More_Features = [
+  {
+    title: 'Flexible to any platform',
+    desc: 'Customize your workflow to integrate with your social media accounts to reach all of your audiences.',
+    options: [aview_ai, facebook, instagram, tiktok, youtube, vimeo],
+    index: 1,
+  },
+  {
+    title: 'Global reach',
+    desc: 'Gain analytics to see exactly where to target your international content to optimize for maximum results.',
+    options: global_reach,
+    index: 2,
+  },
+  {
+    title: 'Channel management',
+    desc: 'Operate and manage all of your international channels easily within our platform.',
+    options: channel_management,
+    index: 3,
+  },
+  {
+    title: 'All in one suite of tools',
+    desc: 'Run your international channels all within our creator suite, with all the tools you need to create great content.',
+    options: [global_ai, ai_mask, mic, upload_ai, video, volume],
+    index: 4,
   },
 ];
 

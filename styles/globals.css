@@ -7,6 +7,47 @@
     @apply text-blue underline;
   }
 
+  .containerRef {
+     position: fixed;
+     min-height: 100vh;
+     width: 100%;
+  }
+
+  .not-act-second{
+    transform: translateY(-550px);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .act-second {
+    /* visibility: hidden; */
+    /* visibility: visible; */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+    transition: transform 1s, opacity 1s;
+    transition-delay: 200ms;
+  }
+
+  .not-act-first {
+    transform: translateY(550px);
+    opacity: 0;
+    visibility: hidden;
+   /* transition: transform 1s;  */ 
+  }
+  
+  .act-first {
+    /* visibility: hidden; */
+    /* visibility: visible; */
+    /* opacity: 0; */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+    transition: transform 1s, opacity 1s;
+    transition-delay: 200ms;
+
+  }
+
   .rounded-border-gradient:before {
     content: '';
     position: absolute;
@@ -116,9 +157,9 @@
     animation: slide-testimonial 18s linear infinite;
   }
 
-  .animate-images-reverse {
+  /* .animate-images-reverse {
     animation: slide-testimonial-reverse 18s linear infinite;
-  }
+  } */
 
   /* For Chrome browsers */
   .slider-thumb::-webkit-slider-thumb {
@@ -332,21 +373,21 @@
 
   @keyframes slide-testimonial {
     from {
-      transform: translateY(0);
+      transform: translatex(0);
     }
     to {
-      transform: translateY(-100%);
+      transform: translatex(-100%);
     }
   }
 
-  @keyframes slide-testimonial-reverse {
+  /* @keyframes slide-testimonial-reverse {
     from {
       transform: translateY(-100%);
     }
     to {
       transform: translateY(0);
     }
-  }
+  } */
 
   @keyframes roll-animate {
     0%,
