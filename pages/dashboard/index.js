@@ -58,8 +58,9 @@ const DashboardHome = () => {
       dispatch(
         setYoutubeVideos({
           dataFetched: true,
-          videos: [youtubeVideos],
-          youtubeNextPageToken: getVideos.pageInfo.totalResults,
+          videos: youtubeVideos,
+          totalYoutubeVideos: getVideos.pageInfo.totalResults,
+          youtubeNextPageToken: getVideos.nextPageToken,
         })
       );
     } catch (error) {

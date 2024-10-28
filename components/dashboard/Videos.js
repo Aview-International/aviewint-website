@@ -57,10 +57,6 @@ const Videos = ({
         </Link>
       </div>
 
-      <div className="my-s5">
-        <CircleLoader />
-      </div>
-
       <div className="max-h-[45vh] overflow-y-auto">
         {isLoading ? (
           <CircleLoader />

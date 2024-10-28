@@ -8,7 +8,7 @@ const initialState = {
     title: '',
     thumbnail: '',
   },
-  videos: [[]],
+  videos: [],
   totalYoutubeVideos: 0,
   youtubeNextPageToken: '',
 };
@@ -20,6 +20,7 @@ const youtubeSlice = createSlice({
     setYoutubeVideos(state, action) {
       state.dataFetched = action.payload.dataFetched;
       state.videos = action.payload.videos;
+      state.totalYoutubeVideos = action.payload.totalYoutubeVideos;
       state.youtubeNextPageToken = action.payload.nextPageToken;
     },
     setYoutubeChannel(state, action) {

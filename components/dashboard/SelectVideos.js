@@ -2,10 +2,11 @@ import { toast } from 'react-toastify';
 import GlobalButton from '../Onboarding/button';
 import Insights from './insights/Insights';
 import Videos from './Videos';
-import { useRouter } from 'next/router';
-import { useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
+import ErrorHandler from '../../utils/errorHandler';
+import { getChannelVideos } from '../../services/apis';
+import { useState } from 'react';
 
 const SelectVideos = ({
   setIsSelected,
@@ -15,7 +16,7 @@ const SelectVideos = ({
   setIsLoading,
 }) => {
   const [page, setPage] = useState(1);
-  const router = useRouter();
+  const dispatch = useDispatch();
   const instagramVideos = useSelector((state) => state.instagram.videos);
   const tiktokVideos = useSelector((state) => state.tiktok.videos);
   const {
@@ -25,10 +26,13 @@ const SelectVideos = ({
     youtubeNextPageToken,
   } = useSelector((state) => state.youtube);
 
-  const getAllPaginatedYoutubeVideos = async (nextPageToken) => {
+  const getAllPaginatedYoutubeVideos = async () => {
     try {
       setIsLoading(true);
-      const ytVideos = await getChannelVideos(channelDetails.id, nextPageToken);
+      const ytVideos = await getChannelVideos(
+        channelDetails.id,
+        youtubeNextPageToken
+      );
       const vids = ytVideos.items.map((vid) => ({
         type: 'youtube',
         id: vid.snippet.resourceId.videoId,
@@ -43,30 +47,18 @@ const SelectVideos = ({
       dispatch(
         setYoutubeVideos({
           dataFetched: true,
-          videos: [...vids],
-          youtubeNextPageToken: ytVideos.pageInfo.totalResults,
+          videos: [...youtubeVideos, ...vids],
+          totalYoutubeVideos: ytVideos.pageInfo.totalResults,
+          youtubeNextPageToken: ytVideos.nextPageToken,
         })
       );
     } catch (error) {
-      console.log(error);
+      ErrorHandler(error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  useMemo(() => {
-    // getAllPaginatedYoutubeVideos();
-    console.log(typeof +router.query.page === 'number');
-    setPage(typeof +router.query.page === 'number' ? +router.query.page : 0);
-  }, [router.query]);
-
-  console.log(page);
-  // const allVideos = [
-  //   ...tiktokVideos,
-  //   ...instagramVideos,
-  //   ...youtubeVideos[page - 1], // if page is 1, pick items at index 0
-  // ];
-  const shortYtVids = youtubeVideos[0];
   const handleTranslate = () => {
     if (selectedVideos.length < 1) {
       toast.error('Please select a video');
@@ -78,18 +70,10 @@ const SelectVideos = ({
   const updatePageQuery = (type) => {
     let videosFectched = 5;
     const totalPages = Math.ceil(totalYoutubeVideos / videosFectched);
-    if (type === 'next' && page.page >= totalPages) return;
-    if (type === 'prev' && page.page <= 1) return;
-    page = type === 'next' ? page.page + 1 : page.page - 1;
-
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { ...router.query, page },
-      },
-      undefined,
-      { shallow: true } // This is the key option to prevent data refetch
-    );
+    if (type === 'next' && page >= totalPages) return;
+    if (type === 'prev' && page <= 1) return;
+    setPage(page + 1);
+    getAllPaginatedYoutubeVideos();
   };
 
   return (
@@ -99,7 +83,7 @@ const SelectVideos = ({
         isLoading={isLoading}
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}
-        allVideos={[...tiktokVideos, ...instagramVideos, ...shortYtVids]}
+        allVideos={[...tiktokVideos, ...instagramVideos, ...youtubeVideos]}
       />
       <br />
       <div className="flex gap-5 text-red">
