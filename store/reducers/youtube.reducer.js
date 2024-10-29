@@ -21,7 +21,7 @@ const youtubeSlice = createSlice({
       state.dataFetched = action.payload.dataFetched;
       state.videos = action.payload.videos;
       state.totalYoutubeVideos = action.payload.totalYoutubeVideos;
-      state.youtubeNextPageToken = action.payload.nextPageToken;
+      state.youtubeNextPageToken = action.payload.youtubeNextPageToken;
     },
     setYoutubeChannel(state, action) {
       const { payload } = action;

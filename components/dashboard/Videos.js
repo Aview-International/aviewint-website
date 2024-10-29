@@ -25,14 +25,10 @@ const Videos = ({
   allVideos,
   updatePageQuery,
   handleTranslate,
+  ytPages,
 }) => {
+  console.log(ytPages);
   const [buttonState, setButtonState] = useState('all');
-  const BUTTONS = [
-    { title: 'All Videos', param: 'all' },
-    { title: 'YouTube', param: 'youtube' },
-    { title: 'Instagram', param: 'instagram' },
-    { title: 'TikTok', param: 'tiktok' },
-  ];
 
   const handleVideos = (value) => {
     const newArray = [...selectedVideos];
@@ -109,7 +105,9 @@ const Videos = ({
             >
               <span className="mr-1">&lt;</span>
             </button>
-
+            {Array.from({ length: ytPages }).map((_, i) => (
+              <p key={i}>{i + 1}</p>
+            ))}
             <button
               onClick={() => updatePageQuery('next')}
               className="bg-blue-500 flex items-center rounded-lg bg-white-transparent p-2 disabled:opacity-50"

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setYoutubeVideos } from '../../store/reducers/youtube.reducer';
 import ErrorHandler from '../../utils/errorHandler';
 import { getChannelVideos } from '../../services/apis';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const SelectVideos = ({
   setIsSelected,
@@ -24,6 +24,9 @@ const SelectVideos = ({
     videos: youtubeVideos,
     youtubeNextPageToken,
   } = useSelector((state) => state.youtube);
+
+  let videosFectched = 5;
+  const totalPages = Math.ceil(totalYoutubeVideos / videosFectched);
 
   const getAllPaginatedYoutubeVideos = async () => {
     try {
@@ -67,15 +70,18 @@ const SelectVideos = ({
   };
 
   const updatePageQuery = (type) => {
-    console.log(type);
-    let videosFectched = 5;
-    const totalPages = Math.ceil(totalYoutubeVideos / videosFectched);
     if (type === 'next' && page >= totalPages) return;
     if (type === 'prev' && page <= 1) return;
     setPage(page + 1);
-
     getAllPaginatedYoutubeVideos();
   };
+
+  const ytVids = useMemo(() => {
+    const vidsPerPage = 5;
+    const startIdx = (page - 1) * vidsPerPage;
+    const endIdx = startIdx + vidsPerPage;
+    return youtubeVideos.slice(startIdx, endIdx);
+  }, [page, youtubeVideos]);
 
   return (
     <>
@@ -84,9 +90,10 @@ const SelectVideos = ({
         isLoading={isLoading}
         selectedVideos={selectedVideos}
         setSelectedVideos={setSelectedVideos}
-        allVideos={[...tiktokVideos, ...instagramVideos, ...youtubeVideos]}
+        allVideos={[...tiktokVideos, ...instagramVideos, ...ytVids]}
         updatePageQuery={updatePageQuery}
         handleTranslate={handleTranslate}
+        ytPages={totalPages}
       />
     </>
   );
