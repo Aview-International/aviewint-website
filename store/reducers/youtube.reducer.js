@@ -9,6 +9,8 @@ const initialState = {
     thumbnail: '',
   },
   videos: [],
+  totalYoutubeVideos: 0,
+  youtubeNextPageToken: '',
 };
 
 const youtubeSlice = createSlice({
@@ -18,15 +20,42 @@ const youtubeSlice = createSlice({
     setYoutubeVideos(state, action) {
       state.dataFetched = action.payload.dataFetched;
       state.videos = action.payload.videos;
+      state.totalYoutubeVideos = action.payload.totalYoutubeVideos;
+      state.youtubeNextPageToken = action.payload.youtubeNextPageToken;
     },
-
     setYoutubeChannel(state, action) {
       const { payload } = action;
       state.channelDetails = payload;
     },
+
+    setNextPageToken: (state, action) => {
+      const { payload } = action;
+      state.nextPageToken = payload;
+    },
+
+    setTotalResults: (state, action) => {
+      const { payload } = action;
+      state.totalResults = payload;
+    },
+
+    setVisitingPage: (state, action) => {
+      const { payload } = action;
+      state.visitingPage = payload;
+    },
+
+    setIncrementPage: (state, action) => {
+      state.page += 1;
+    },
   },
 });
 
-export const { setYoutubeVideos, setYoutubeChannel } = youtubeSlice.actions;
+export const {
+  setYoutubeVideos,
+  setYoutubeChannel,
+  setTotalResults,
+  setNextPageToken,
+  setVisitingPage,
+  setIncrementPage,
+} = youtubeSlice.actions;
 
 export default youtubeSlice.reducer;

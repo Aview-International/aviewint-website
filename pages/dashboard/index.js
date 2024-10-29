@@ -26,12 +26,15 @@ import {
 } from '../../services/firebase';
 import { setTikTokVideos } from '../../store/reducers/tiktok.reducer';
 
+import downloadYoutubeVideos from '../../utils/getYoutube';
+
 const DashboardHome = () => {
   const dispatch = useDispatch();
+ 
   const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
   const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
-  const channelDetails = useSelector((state) => state.youtube.channelDetails);
+  const { channelDetails } = useSelector((state) => state.youtube);
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
@@ -55,7 +58,14 @@ const DashboardHome = () => {
         permalink: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
         videoUrl: `https://www.youtube.com/watch?v=${vid.snippet.resourceId.videoId}`,
       }));
-      dispatch(setYoutubeVideos({ dataFetched: true, videos: youtubeVideos }));
+      dispatch(
+        setYoutubeVideos({
+          dataFetched: true,
+          videos: youtubeVideos,
+          totalYoutubeVideos: getVideos.pageInfo.totalResults,
+          youtubeNextPageToken: getVideos.nextPageToken,
+        })
+      );
     } catch (error) {
       // ErrorHandler(error);
     }
@@ -180,6 +190,7 @@ const DashboardHome = () => {
         ) : (
           <SelectVideos
             isLoading={isLoading}
+            setIsLoading={setIsLoading}
             setIsSelected={setIsSelected}
             selectedVideos={selectedVideos}
             setSelectedVideos={setSelectedVideos}

@@ -95,9 +95,11 @@ export const finalizeYoutubeAuth = async (tempId, userId) => {
   );
 };
 
-export const getChannelVideos = async (channelId) => {
+export const getChannelVideos = async (channelId, nextPageToken) => {
   const response = await axiosInstance.get(
-    `auth/youtube-videos?channelId=${channelId}`
+    `auth/youtube-videos?channelId=${channelId}&nextPageToken=${
+      nextPageToken || ''
+    }`
   );
   return response.data;
 };

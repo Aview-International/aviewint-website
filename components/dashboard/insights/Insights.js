@@ -17,7 +17,7 @@ const Insights = () => {
   ];
 
   return (
-    <div className="grid w-full items-center gap-6 md:grid-cols-[1fr,1fr,2fr]">
+    <div className="grid w-full items-center gap-6 md:grid-cols-[1fr,1fr,2fr] h-full">
       {summary.map((data, idx) => (
         <Counters key={`summary-${idx}`} {...data} />
       ))}
