@@ -62,6 +62,7 @@ const SelectVideos = ({
   };
 
   const handleTranslate = () => {
+    console.log("error")
     if (selectedVideos.length < 1) {
       toast.error('Please select a video');
     } else {
