@@ -35,7 +35,7 @@ const UnlockGlobalGrowth = () => {
             className="mx-auto mb-s6 mt-s2 w-11/12 text-start font-extralight lg:w-1/2 lg:text-center"
           </h2>
         </div> */}
-        <h1 className="title w-full lg:w-4/5 mx-auto text-center leading-none">Unlock Your Content's Global Potential with One Click of Aview</h1>
+        <h1 className="title w-full lg:w-4/5 mx-auto text-center leading-none">Unlock Your Content&apos;s Global Potential with One Click of Aview</h1>
         <p className="body my-s6 mx-auto lg:w-1/2 text-center">
         An all-in-one content creation tool for creators to scale up content globally without a huge team or budget. Get a free sample to see for yourself
         </p>
@@ -49,7 +49,7 @@ const UnlockGlobalGrowth = () => {
             <source src={videoAsset} type="video/mp4" />
           </video>
           <div
-            className={`gradient-2 transition-300 absolute left-1/2 top-[50%] -z-10 h-[102%] w-[102%] -translate-x-1/2 -translate-y-1/2 opacity-70 blur-xl md:opacity-95 md:blur-3xl`}
+            className="gradient-2 transition-300 absolute left-1/2 top-[50%] -z-10 h-[102%] w-[102%] -translate-x-1/2 -translate-y-1/2 opacity-70 blur-xl md:opacity-95 md:blur-3xl"
           ></div>
         </div>
       </div>
