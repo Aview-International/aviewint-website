@@ -6,9 +6,10 @@ import downChevronGradient from '../../public/img/icons/chevron-down-gradient.sv
 import Card from '../UI/Card';
 
 const MENU = [
+  { type: 'route', title: 'Pricing', link: '/pricing' },
   {
     type: 'dropdown',
-    title: 'Services',
+    title: 'Industries',
     dropdown: [
       {
         name: 'Corporate',
@@ -23,8 +24,6 @@ const MENU = [
       },
     ],
   },
-  { type: 'route', title: 'Pricing', link: '/pricing' },
-  { type: 'route', title: 'Blog', link: '/blog' },
   {
     type: 'dropdown',
     title: 'Languages',
@@ -47,6 +46,7 @@ const MENU = [
       { title: 'Tagalog', link: '/languages/tagalog' },
     ],
   },
+  { type: 'route', title: 'Blog', link: '/blog' },
   { type: 'route', title: 'About', link: '/about' },
 ];
 

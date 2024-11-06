@@ -1,4 +1,5 @@
 import { Work_Process } from '../../../constants/constants';
+
 const HowItWorks = () => {
   return (
     <section className="section m-horizontal text-white">
@@ -15,7 +16,7 @@ const HowItWorks = () => {
               <p className="mt-2 text-xl font-semibold leading-none md:mt-3 lg:mt-4 lg:text-2xl">
                 {item.title}
               </p>
-              <p className="mt-2 w-5/6 text-justify text-sm font-extralight lg:mt-4">
+              <p className="mt-2 w-5/6 text-start text-sm font-extralight lg:mt-4">
                 {item.desc}
               </p>
             </div>

@@ -15,22 +15,22 @@ const Features = () => {
         {More_Features.map((featureItem, index) => {
           return (
             <div key={featureItem.index} className="">
-              <div className="my-4 rounded-xl bg-white-transparent px-6 py-12">
+              <div className="my-4 rounded-xl bg-white-transparent">
                 {featureItem.index === 1 || featureItem.index === 4 ? (
                   <div
                     className={`grid grid-cols-${
                       featureItem.index === 1 ? 3 : 4
-                    } gap-6 p-1`}
+                    } gap-6  px-6 py-12`}
                   >
                     <GridImage imageData={featureItem.options} />
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center  px-3 py-8">
                     <Image
                       src={featureItem.options}
                       alt={featureItem.title}
-                      width={200}
-                      height={100}
+                      width={250}
+                      height={125}
                     />
                   </div>
                 )}
@@ -51,7 +51,9 @@ const GridImage = ({ imageData }) => {
   return (
     <>
       {imageData.map((image, index) => {
-        return <Image src={image} alt={index} width={35} height={35} key={index}/>;
+        return (
+          <Image src={image} alt={index} width={35} height={35} key={index} />
+        );
       })}
     </>
   );

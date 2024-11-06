@@ -7,47 +7,6 @@
     @apply text-blue underline;
   }
 
-  .containerRef {
-     position: fixed;
-     min-height: 100vh;
-     width: 100%;
-  }
-
-  .not-act-second{
-    transform: translateY(-550px);
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .act-second {
-    /* visibility: hidden; */
-    /* visibility: visible; */
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0px);
-    transition: transform 1s, opacity 1s;
-    transition-delay: 200ms;
-  }
-
-  .not-act-first {
-    transform: translateY(550px);
-    opacity: 0;
-    visibility: hidden;
-   /* transition: transform 1s;  */ 
-  }
-  
-  .act-first {
-    /* visibility: hidden; */
-    /* visibility: visible; */
-    /* opacity: 0; */
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0px);
-    transition: transform 1s, opacity 1s;
-    transition-delay: 200ms;
-
-  }
-
   .rounded-border-gradient:before {
     content: '';
     position: absolute;
@@ -115,7 +74,7 @@
   }
 
   .title {
-    @apply text-7xl font-bold text-white md:text-8xl;
+    @apply text-7xl font-bold text-white md:text-9xl;
   }
 
   .h2 {
@@ -127,7 +86,7 @@
   }
 
   .body {
-    @apply text-lg text-white md:text-xl;
+    @apply text-white md:text-lg font-light;
   }
   .phone-number input {
     @apply w-full bg-transparent pl-s2;
@@ -154,11 +113,13 @@
   }
 
   .animate-images {
-    animation: slide-testimonial 18s linear infinite;
+    animation: slide-testimonial 8s linear infinite;
+    
+    will-change: transform;
   }
 
   /* .animate-images-reverse {
-    animation: slide-testimonial-reverse 18s linear infinite;
+    animation: slide-testimonial-reverse 8s linear infinite;
   } */
 
   /* For Chrome browsers */
@@ -372,22 +333,26 @@
   }
 
   @keyframes slide-testimonial {
-    from {
-      transform: translatex(0);
+    0% {
+      transform: translateX(0);
     }
-    to {
-      transform: translatex(-100%);
+    100% {
+      transform: translateX(-33.3%);
     }
   }
 
-  /* @keyframes slide-testimonial-reverse {
+  .animate-images:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slide-testimonial-reverse {
     from {
-      transform: translateY(-100%);
+      transform: translateX(-100%);
     }
     to {
-      transform: translateY(0);
+      transform: translateX(0);
     }
-  } */
+  }
 
   @keyframes roll-animate {
     0%,

@@ -1,11 +1,15 @@
 // Social Icons
 import linkedin from '../public/img/icons/linkedin.svg';
 import facebook from '../public/img/icons/facebook.svg';
+import facebook_color from '../public/img/icons/facebook-color.svg';
 import youtube from '../public/img/icons/youtube.svg';
+import youtube_red from '../public/img/icons/youtube-red.svg';
 import tiktok from '../public/img/icons/tiktok.svg';
+import tiktok_color from '../public/img/icons/tiktok-color.svg';
 import instagram from '../public/img/icons/instagram.svg';
+import instagram_red from '../public/img/icons/instagram-2.svg';
 import twitter from '../public/img/icons/twitter.svg';
-import vimeo from '../public/img/icons/Vimeo.png';
+import vimeo from '../public/img/icons/Vimeo.svg';
 import aview_ai from '../public/img/icons/aview-ai.svg';
 
 // Content Creators
@@ -106,8 +110,20 @@ import Uk from '../public/img/icons/uk.svg';
 import brand_collab from '../public/img/graphics/new-landing-images/brand_collab.webp';
 import language_translator from '../public/img/graphics/new-landing-images/lanuage_translate.webp';
 import monetize from '../public/img/graphics/new-landing-images/monetize.webp';
+import workspace from '../public/img/graphics/new-landing-images/monetize.webp';
 import table_globe from '../public/img/graphics/new-landing-images/table_globe.webp';
-import workspace from '../public/img/graphics/new-landing-images/Workspace.webp';
+import content_distribute from '../public/img/graphics/new-landing-images/content-distribution.webp';
+import cultural_modifications from '../public/img/graphics/new-landing-images/cultural-modifications.webp';
+import multilingual_voiceovers from '../public/img/graphics/new-landing-images/multilingual-voiceovers.webp';
+import multi_track_audio from '../public/img/graphics/new-landing-images/multi-track-audio.webp';
+import translated_subtitles from '../public/img/graphics/new-landing-images/translated-subtitles.webp';
+import content_distribute_svg from '../public/img/graphics/new-landing-images/content-distribution.svg';
+import cultural_modifications_svg from '../public/img/graphics/new-landing-images/cultural-modifications.svg';
+import multilingual_voiceovers_svg from '../public/img/graphics/new-landing-images/multilingual-voiceovers.svg';
+import multi_track_audio_svg from '../public/img/graphics/new-landing-images/multi-track-audio.svg';
+import translated_subtitles_svg from '../public/img/graphics/new-landing-images/translated-subtitles.svg';
+
+
 
 //new landing-page empower section
 import target from '../public/img/graphics/new-landing-images/target.webp';
@@ -161,10 +177,14 @@ import channel_management from '../public/img/graphics/channel_management.png';
 import global_reach from '../public/img/graphics/global_reach.png';
 import global_ai from '../public/img/graphics/globe-ai.svg';
 import ai_mask from '../public/img/graphics/ai-mask.svg';
+import clock from '../public/img/icons/clock.svg';
+import file_text from '../public/img/icons/file-text.svg';
 import mic from '../public/img/graphics/mic.svg';
 import upload_ai from '../public/img/graphics/upload-ai.svg';
 import video from '../public/img/graphics/video.svg';
 import volume from '../public/img/graphics/volume.svg';
+
+import aviewLogo from '../public/img/aview/AviewLogo.png'; 
 
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
@@ -249,41 +269,132 @@ export const LANDING_PAGE_TYPES = [
 
 export const AI_Tools = [
   {
-    title: 'Generate subtitles with one click',
-    desc: 'Generate high quality and accurate subtitles for any language, any type of content, and for any of your needs',
+    title: 'Multilingual Voiceovers',
+    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project',
     button_text: 'Try our subtitle generator',
-    image: empower,
+    image: multilingual_voiceovers,
     index: 1,
   },
   {
-    title: 'Find a voice to fit any of your audiences',
-    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project.',
+    title: 'Cultural Modifications',
+    desc: 'Our cultural sensitivity filters ensure that your translations and dubbing are contextually accurate to your audience and language of choice',
     button_text: 'Try our voiceover generator',
-    image: empower,
+    image: cultural_modifications,
     index: 2,
   },
   {
-    title: 'Immaculate speech to text conversion',
-    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project.',
+    title: 'Translated Subtitles',
+    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project',
     button_text: 'Try speech to text conversion',
-    image: empower,
+    image: translated_subtitles,
     index: 3,
   },
   {
-    title: 'Intuitive text to speech conversion',
-    desc: 'Easily turn your text into accurate and authentic voiceovers to save you time and energy for your next creative project.',
+    title: 'Content Distribution',
+    desc: 'We run your international channels and optimize them to get seen by your most likely audiences around the world',
     button_text: 'Try text to speech conversion',
-    image: empower,
+    image: content_distribute,
     index: 4,
   },
   {
-    title: 'Intuitive text to speech conversion',
-    desc: 'Easily turn your text into accurate and authentic voiceovers to save you time and energy for your next creative project.',
+    title: 'Multi-Track Audio',
+    desc: 'We edit your videos and include audio tracks to your video file so you don\u0027t have new youtube channels.',
     button_text: 'Try text to speech conversion',
-    image: empower,
+    image: multi_track_audio,
     index: 5,
   },
 ];
+
+export const ComparisionTools = [
+  {
+   title: 'Other Leading AI Alternatives',
+   index: 1,
+   options1 : [
+    {
+      text: 'Translations',
+      boolean : true,
+    },
+    {
+      text: 'Cultural Filters',
+      boolean : false,
+    },
+    {
+      text: 'Voiceover Dubbing',
+      boolean : true,
+    },
+    {
+      text: 'Video Editing',
+      boolean : true,
+    },
+    {
+      text: 'Content Management',
+      boolean : false,
+    },
+    {
+      text: 'Channel Monetization',
+      boolean : false,
+    },
+   ],
+   options2: [
+    {
+     text: 'Easy, all in one platform for international expansion',
+     boolean: false,
+    },
+    {
+      text: 'Multi-channel distribution capabilities',
+     boolean: false,
+    },
+    {
+      text: 'Multi-speaker dubbing',
+     boolean: false,
+    },
+   ],
+  },
+  {
+   image: aviewLogo,
+   index:2,
+   options1 : [
+    {
+      text: 'Translations',
+      boolean : true,
+    },
+    {
+      text: 'Cultural Filters',
+      boolean : true,
+    },
+    {
+      text: 'Voiceover Dubbing',
+      boolean : true,
+    },
+    {
+      text: 'Video Editing',
+      boolean : true,
+    },
+    {
+      text: 'Content Management',
+      boolean : true,
+    },
+    {
+      text: 'Channel Monetization',
+      boolean : true,
+    },
+   ],
+   options2: [
+    {
+     text: 'Easy, all in one platform for international expansion',
+     boolean: true,
+    },
+    {
+      text: 'Multi-channel distribution capabilities',
+     boolean: true,
+    },
+    {
+      text: 'Multi-speaker dubbing',
+     boolean: true,
+    },
+   ],
+  },
+]
 
 export const Work_Process = [
   {
@@ -411,26 +522,26 @@ export const Creator_Suite_Mobile = [
 export const More_Features = [
   {
     title: 'Flexible to any platform',
-    desc: 'Customize your workflow to integrate with your social media accounts to reach all of your audiences.',
-    options: [aview_ai, facebook, instagram, tiktok, youtube, vimeo],
+    desc: 'Customize your workflow to integrate with your social media accounts to reach all of your audiences',
+    options: [aview_ai, facebook_color, instagram_red, tiktok_color, youtube_red, vimeo],
     index: 1,
   },
   {
     title: 'Global reach',
-    desc: 'Gain analytics to see exactly where to target your international content to optimize for maximum results.',
+    desc: 'Gain analytics to see exactly where to target your international content to optimize for maximum results',
     options: global_reach,
     index: 2,
   },
   {
     title: 'Channel management',
-    desc: 'Operate and manage all of your international channels easily within our platform.',
+    desc: 'Operate and manage all of your international channels easily within our platform',
     options: channel_management,
     index: 3,
   },
   {
     title: 'All in one suite of tools',
-    desc: 'Run your international channels all within our creator suite, with all the tools you need to create great content.',
-    options: [global_ai, ai_mask, mic, upload_ai, video, volume],
+    desc: 'Run your international channels all within our creator suite, with all the tools you need to create great content',
+    options: [volume, clock, file_text, global_ai, upload_ai, video, ai_mask, mic],
     index: 4,
   },
 ];
@@ -586,9 +697,39 @@ export const LANDING_PAGE_METRICS = [
 
 export const ROUTES = [
   {
-    id: 'route-2',
-    title: 'Corporate',
+    id: 'route-1',
+    title: 'Languages',
     routes: [
+      {
+        text: 'English',
+        route: '/languages/english',
+      },
+      {
+        text: 'Spanish',
+        route: '/languages/spanish',
+      },
+      {
+        text: 'French',
+        route: '/languages/french',
+      },
+      {
+        text: 'German',
+        route: '/languages/german',
+      },
+      {
+        text: 'Japanese',
+        route: '/languages/japanese',
+      },
+    ],
+  },
+  {
+    id: 'route-2',
+    title: 'Industries',
+    routes: [
+      {
+        text: 'Business Documents',
+        route: '/corporate/business',
+      },
       {
         text: 'Scientific Documents',
         route: '/corporate/scientific',
@@ -598,50 +739,34 @@ export const ROUTES = [
         route: '/corporate/financial',
       },
       {
-        text: 'Business Documents',
-        route: '/corporate/business',
-      },
-      {
         text: 'Legal Documents',
         route: '/corporate/legal',
-      },
-      {
-        text: 'Marketing Documents',
-        route: '/corporate/marketing',
-      },
-      {
-        text: 'eLearning Documents',
-        route: '/corporate/e-learning',
       },
       {
         text: 'Medical Documents',
         route: '/corporate/medical',
       },
-      {
-        text: 'Voice Overs',
-        route: '/corporate/voice-over',
-      },
     ],
   },
-  {
+{
     id: 'route-3',
-    title: 'Resources',
+    title: 'Company',
     routes: [
-      {
-        text: 'Pricing',
-        route: '/pricing',
-      },
       {
         text: 'Blog',
         route: '/blog',
       },
       {
-        text: 'About',
-        route: '/about',
+        text: 'Pricing',
+        route: '/pricing',
       },
       {
         text: 'Careers',
         route: '/careers',
+      },
+      {
+        text: 'About Us',
+        route: '/about',
       },
       {
         text: 'Contact',

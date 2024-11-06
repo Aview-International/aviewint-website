@@ -1,7 +1,6 @@
+import React from 'react';
 import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
-import OnboardingButton from '../../Onboarding/button';
-import Button from '../../UI/Button';
 
 const AiTools = () => {
   return (
@@ -44,34 +43,30 @@ const AiTools = () => {
   );
 };
 
-const ToolsContainer = ({ title, desc, button, image }) => {
+const ToolsContainer = ({ title, desc, image }) => {
   return (
     <div
       className={`flex flex-col justify-start gap-y-3 rounded-2xl bg-white-transparent p-s3 md:gap-y-4 md:p-s6`}
     >
-      <Image src={image} alt={title} width={300} height={240} />
-      <h4 className="text-xl leading-none md:text-7xl">{title}</h4>
-      <p className="font-extralight">{desc}</p>
-      <Button type="secondary" purpose="onClick">
-        {button}
-      </Button>
+      <Image src={image} alt={title} width={300} height={260} />
+      <h4 className="mt-2 text-xl font-semibold leading-none md:text-5xl">
+        {title}
+      </h4>
+      <p className="font-light">{desc}</p>
     </div>
   );
 };
 
-const FirstContainer = ({ title, desc, button, image }) => {
+const FirstContainer = ({ title, desc, image }) => {
   return (
-    <div className="flex grid-cols-2 flex-col-reverse rounded-2xl bg-white-transparent p-s3 md:grid md:p-s12">
+    <div className="flex grid-cols-[2.5fr,2fr] flex-col-reverse rounded-2xl bg-white-transparent p-s3 md:grid md:p-s6">
       <div className="flex w-5/6 flex-col items-start justify-center gap-y-3 md:w-2/3 md:gap-y-4">
-        <h4 className="text-xl leading-none md:text-7xl">{title}</h4>
-        <p className="font-extralight">{desc}</p>
-        <Button type="secondary" purpose="onClick">
-          {button}
-        </Button>
+        <h4 className="text-xl font-semibold leading-none md:text-5xl">
+          {title}
+        </h4>
+        <p className="font-light">{desc}</p>
       </div>
-      <div className="">
-        <Image src={image} alt={title} width={540} height={300} />
-      </div>
+      <Image src={image} alt={title} width={540} height={360} />
     </div>
   );
 };

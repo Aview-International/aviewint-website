@@ -3,7 +3,7 @@ import Image from 'next/image';
 import check from '../../../public/img/icons/check.svg';
 import Lottie from 'lottie-react';
 import { LANDNG_PAGE_EMPOWER_SECTION } from '../../../constants/constants';
-import mobileAnime from '../../../public/documents/mobile.json';
+ import mobileAnime from '../../../public/documents/mobile.json';
 import OnboardingButton from '../../Onboarding/button';
 import {
   Creator_Suite,
@@ -21,66 +21,66 @@ const EmpowerGlobal = () => {
     
   
 
-    const observer3 = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if(entry.isIntersecting ){
-            entry.target.classList.add('containerRef')
+    // const observer3 = new IntersectionObserver(
+    //   (entries) => {
+    //     entries.forEach((entry) => {
+    //       if(entry.isIntersecting ){
+    //         entry.target.classList.add('containerRef')
 
-          }
-        })
-      },{
-        threshold: 0.2,
-      }
-    )
+    //       }
+    //     })
+    //   },{
+    //     threshold: 0.2,
+    //   }
+    // )
 
-     observer3.observe(containerRef.current)
+    //  observer3.observe(containerRef.current)
 
-    cardRef.current.forEach((item) => {
-      const observer1 = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.target.classList.contains('not-act-first')) {
-                entry.target.classList.add('act-first')
+    // cardRef.current.forEach((item) => {
+    //   const observer1 = new IntersectionObserver(
+    //     (entries) => {
+    //       entries.forEach((entry) => {
+    //         if (entry.isIntersecting && entry.target.classList.contains('not-act-first')) {
+    //             entry.target.classList.add('act-first')
                
               
-             observer1.unobserve(entry.target)
-            }
-          });
-        },
-        {
-          threshold: 0.5,
-        }
-      );
+    //          observer1.unobserve(entry.target)
+    //         }
+    //       });
+    //     },
+    //     {
+    //       threshold: 0.5,
+    //     }
+    //   );
 
 
-      const observer2 = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.target.classList.contains('not-act-second')) {
-               entry.target.classList.add('act-second') 
+    //   const observer2 = new IntersectionObserver(
+    //     (entries) => {
+    //       entries.forEach((entry) => {
+    //         if (entry.isIntersecting && entry.target.classList.contains('not-act-second')) {
+    //            entry.target.classList.add('act-second') 
                
               
-             observer2.unobserve(entry.target)
-            }
-          });
-        },
-        {
-          threshold: 0.5,
-        }
-      );
+    //          observer2.unobserve(entry.target)
+    //         }
+    //       });
+    //     },
+    //     {
+    //       threshold: 0.5,
+    //     }
+    //   );
 
       
 
-      observer1.observe(item);
-      observer2.observe(item);
-      observerArray.push(observer1, observer2);
-    });
+    //   observer1.observe(item);
+    //   observer2.observe(item);
+    //   observerArray.push(observer1, observer2);
+    // });
 
-    return () => {
-      observerArray.forEach((observer) => observer.disconnect());
-      observer3.disconnect()
-    };
+    // return () => {
+    //   observerArray.forEach((observer) => observer.disconnect());
+    //   observer3.disconnect()
+    // };
   }, []);
 
   return (

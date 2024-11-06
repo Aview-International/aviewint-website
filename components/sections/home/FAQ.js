@@ -10,14 +10,24 @@ const FAQ = ({ page }) => {
   return (
     <section className="section m-horizontal flex flex-col text-white lg:flex-row">
       <div className="w-full lg:w-2/5">
-        <h2 className="text-start text-5xl font-bold lg:text-[60px]">
+        <h2 className="text-start text-5xl leading-none lg:text-[60px]">
           Frequently Asked Questions
         </h2>
-        <p className="text-sm font-extralight">
-          Want to know more? Email us at julia@aviewint.com
+        <p className="ml-2 text-sm font-extralight">
+          Want to know more? Email us at{' '}
+          <a
+            href="mailto:julia@aviewint.com"
+            className="hover:text-blue-400 transition-colors hover:underline"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = 'mailto:julia@aviewint.com';
+            }}
+          >
+            julia@aviewint.com
+          </a>
         </p>
       </div>
-      <div className="mt-s2 flex flex-col gap-y-5 lg:w-3/5">
+      <div className="mt-6 flex flex-col gap-y-5 lg:mt-0 lg:w-3/5">
         {page === 'e-learning'
           ? E_LEARNING_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
