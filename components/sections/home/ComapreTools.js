@@ -7,7 +7,7 @@ import uncheck from '../../../public/img/icons/incorrect.svg';
 const CompareTools = () => {
   return (
     <section className="m-horizontal section text-white">
-      <h2 className="mx-auto text-center text-5xl leading-none lg:text-[60px]">
+      <h2 className="mx-auto text-center text-5xl font-bold leading-none lg:text-[48px]">
         Aview Goes Beyond Translations
       </h2>
       <div className="mt-s8 grid h-full w-full grid-cols-1 gap-8 md:grid-cols-2">

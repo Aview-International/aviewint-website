@@ -99,7 +99,7 @@ function Dropdown({ title, dropdown, curPage }) {
           {title}
         </p>
         <div
-          className={`h-6 w-6 duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+          className={`h-6 w-6 duration-200 mb-px ${dropdownOpen ? 'rotate-180' : ''}`}
         >
           <Image
             src={

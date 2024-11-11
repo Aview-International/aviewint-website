@@ -9,11 +9,11 @@ import {
 const FAQ = ({ page }) => {
   return (
     <section className="section m-horizontal flex flex-col text-white lg:flex-row">
-      <div className="w-full lg:w-2/5">
-        <h2 className="text-start text-5xl leading-none lg:text-[60px]">
+      <div className="w-full lg:w-2/4">
+        <h2 className="text-start text-5xl font-bold leading-none lg:text-[48px]">
           Frequently Asked Questions
         </h2>
-        <p className="ml-2 text-sm font-extralight">
+        <p className="ml-1 text-sm md:text-base font-light">
           Want to know more? Email us at{' '}
           <a
             href="mailto:julia@aviewint.com"

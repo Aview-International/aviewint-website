@@ -196,6 +196,16 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_7,
   testimonial_8,
 ];
+export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
+  testimonial_8,
+  testimonial_7,
+  testimonial_6,
+  testimonial_5,
+  testimonial_4,
+  testimonial_3,
+  testimonial_2,
+  testimonial_1,
+];
 
 export const PRICING_PAGE_TESTIMONIALS_1 = [
   testimonial_1,
@@ -399,19 +409,19 @@ export const ComparisionTools = [
 export const Work_Process = [
   {
     title: 'Create a Free aview account ',
-    desc: 'Fill out an application telling us a little bit about your needs as a creator and what type of content you have.',
+    desc: 'Fill out an application telling us a little bit about your needs as a creator and what type of content you have',
   },
   {
     title: 'Connect your social accounts',
-    desc: 'Connect your existing social accounts easily with our platform so we can easily assist in the uploading process.',
+    desc: 'Connect your existing social accounts easily with our platform so we can easily assist in the uploading process',
   },
   {
     title: 'Generate translated content',
-    desc: 'Utilize our creative suite and have access to several AI tools that will help you create international content.',
+    desc: 'Utilize our creative suite and have access to several AI tools that will help you create international content',
   },
   {
-    title: 'post your content and monetize',
-    desc: 'Once your content is online, monetize it to create income from several channels at once.',
+    title: 'Post your content and monetize',
+    desc: 'Once your content is online, monetize it to create income from several channels at once',
   },
 ];
 
@@ -521,20 +531,20 @@ export const Creator_Suite_Mobile = [
 
 export const More_Features = [
   {
-    title: 'Flexible to any platform',
-    desc: 'Customize your workflow to integrate with your social media accounts to reach all of your audiences',
+    title: 'Integrate with Popular Social Media Platforms',
+    desc: ' Connect easily with platforms like YouTube, Instagram, and TikTok to distribute content in multiple languages worldwide',
     options: [aview_ai, facebook_color, instagram_red, tiktok_color, youtube_red, vimeo],
     index: 1,
   },
   {
-    title: 'Global reach',
-    desc: 'Gain analytics to see exactly where to target your international content to optimize for maximum results',
+    title: 'Simplified Channel Management',
+    desc: 'Manage all your channels effortlessly with one-click updates and scheduling across platforms',
     options: global_reach,
     index: 2,
   },
   {
-    title: 'Channel management',
-    desc: 'Operate and manage all of your international channels easily within our platform',
+    title: 'Maximize Reach with Global Analytics',
+    desc: `Use Aview's analytics to track performance and optimize your content's global impact`,
     options: channel_management,
     index: 3,
   },
@@ -727,23 +737,23 @@ export const ROUTES = [
     title: 'Industries',
     routes: [
       {
-        text: 'Business Documents',
+        text: 'Business',
         route: '/corporate/business',
       },
       {
-        text: 'Scientific Documents',
+        text: 'Scientific',
         route: '/corporate/scientific',
       },
       {
-        text: 'Financial Documents',
+        text: 'Financial',
         route: '/corporate/financial',
       },
       {
-        text: 'Legal Documents',
+        text: 'Legal',
         route: '/corporate/legal',
       },
       {
-        text: 'Medical Documents',
+        text: 'Medical',
         route: '/corporate/medical',
       },
     ],

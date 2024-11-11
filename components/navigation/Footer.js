@@ -16,7 +16,7 @@ const Footer = ({ curPage }) => {
     >
       <div className="flex h-full w-full flex-col items-center justify-between gap-y-s5 p-s2 md:items-start md:p-s5">
         <div className="relative flex h-full w-full flex-col items-start justify-between md:flex-row">
-          <div className="flex w-full flex-col items-start justify-between pb-s8 md:flex-row">
+          <div className="flex w-full flex-col items-start justify-between pb-s8 lg:flex-row">
             <div className="flex flex-col justify-start gap-y-1.5 md:gap-y-3">
               <Link href="/#">
                 <a className="block">
@@ -29,20 +29,16 @@ const Footer = ({ curPage }) => {
                 </a>
               </Link>
               <p>Unlock global growth, one click at a time</p>
-              <div className="mt-4 flex w-full flex-col items-start justify-center gap-y-4 md:flex-row md:items-center md:gap-y-0 md:gap-x-12">
-                <GlobalButton purpose="route" route="/login" type="primary">
+              <div className="mt-4 flex w-full flex-col items-start justify-center gap-y-4 md:flex-row md:items-center md:gap-y-0 md:gap-x-6">
+                <GlobalButton purpose="route" route="/login" type="secondary">
                   Login
                 </GlobalButton>
-                <GlobalButton
-                  purpose="route"
-                  route="/register"
-                  type="secondary"
-                >
+                <GlobalButton purpose="route" route="/register" type="primary">
                   Get Started
                 </GlobalButton>
               </div>
             </div>
-            <div className="mt-8 flex flex-col gap-y-12 md:mt-0 md:flex-row md:gap-x-20">
+            <div className="mt-8 flex flex-col gap-y-12 md:mt-s4 lg:mt-0 md:flex-row md:gap-x-20">
               {ROUTES.map((routeArray, index) => (
                 <div className="flex flex-col gap-y-1" key={index}>
                   <h5 className="mb-2 text-xl font-semibold">
@@ -54,7 +50,7 @@ const Footer = ({ curPage }) => {
                         className={`text-md hover:gradient-text hover:gradient-2 my-0.5 font-light ${
                           curPage === route.text
                             ? 'gradient-text gradient-2'
-                            : 'text-white'
+                            : 'text-white/80'
                         }`}
                       >
                         {route.text}
@@ -68,7 +64,7 @@ const Footer = ({ curPage }) => {
           <div className="gradient-1 absolute bottom-0 left-0 h-[2px] w-full rounded-xl"></div>
         </div>
         <div className="grid w-full grid-cols-1 gap-s1 md:grid-cols-2 md:gap-s3">
-          <div className="flex w-full flex-row items-start justify-between md:justify-start md:gap-x-3">
+          <div className="flex w-full flex-row items-start justify-between md:justify-start md:gap-x-6">
             <Link href="/terms-of-service">
               <a
                 className={`hover:gradient-text hover:gradient-2 block ${
