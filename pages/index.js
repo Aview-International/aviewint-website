@@ -1,22 +1,21 @@
 import SEO from '../components/SEO/SEO';
 import Header from '../components/navigation/Header';
 import UnlockGlobalGrowth from '../components/sections/home/UnlockGlobalGrowth';
-import ContentCreators from '../components/sections/home/ContentCreators';
-import EmpowerGlobal from '../components/sections/home/EmpowerGlobal';
-import MetricsAnime from '../components/sections/home/MetricsAnime';
 import StartGenerating from '../components/sections/home/StartGenerating';
 import FAQ from '../components/sections/home/FAQ';
 // import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
-import EasterEgg from '../components/sections/reused/EasterEgg';
 import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
-import InternationalGrowth from '../components/sections/reused/InternationalGrowth';
 import CookieConsent from '../components/sections/home/CookieConsent';
+import Features from '../components/sections/home/Features';
+import HowItWorks from '../components/sections/home/HowItWorks';
+import AiTools from '../components/sections/home/AiTools';
+import CompareTools from '../components/sections/home/ComapreTools';
 
-const Home = () => {  
+const Home = () => {
   return (
     <>
       <SEO
@@ -25,21 +24,18 @@ const Home = () => {
       />
       <CookieConsent />
       <ProgressBar />
-      <EasterEgg />
       <Header curPage="Home" />
       <UnlockGlobalGrowth />
+      <AiTools />
+      <HowItWorks />
       <ScrollToTopButton />
-      <ContentCreators />
       <ScrollVerticalAnime />
-      <EmpowerGlobal />
-      <MetricsAnime />
-      <FAQ page="landing" />
-      <InternationalGrowth />
+      <Features />
+      <CompareTools />
       <StartGenerating formId="t5dW3MSY" />
-      {/* <GoGlobal /> */}
+      <FAQ page="landing" />
       <Footer curPage="Home" />
       <Blobs />
-      
     </>
   );
 };
