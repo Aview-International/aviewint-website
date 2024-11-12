@@ -408,20 +408,20 @@ export const ComparisionTools = [
 
 export const Work_Process = [
   {
-    title: 'Create a Free aview account ',
-    desc: 'Fill out an application telling us a little bit about your needs as a creator and what type of content you have',
+    title: 'Sign Up for Free',
+    desc: 'Quickly create your free AView account to unlock global distribution',
   },
   {
-    title: 'Connect your social accounts',
-    desc: 'Connect your existing social accounts easily with our platform so we can easily assist in the uploading process',
+    title: 'Connect Your Socials',
+    desc: 'Link your social profiles to sync content and optimize reach',
   },
   {
-    title: 'Generate translated content',
-    desc: 'Utilize our creative suite and have access to several AI tools that will help you create international content',
+    title: 'Upload & Use AI Tools',
+    desc: 'Upload videos and leverage AI to enhance, caption, and translate for international audience',
   },
   {
-    title: 'Post your content and monetize',
-    desc: 'Once your content is online, monetize it to create income from several channels at once',
+    title: 'Distribute with One Click',
+    desc: 'Export and publish across multiple platforms and regions effortlessly',
   },
 ];
 

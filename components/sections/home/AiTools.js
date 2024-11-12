@@ -45,8 +45,8 @@ const AiTools = () => {
 
 const ToolsContainer = ({ title, desc, image }) => {
   return (
-    <div className="flex flex-col justify-start gap-y-3 rounded-2xl bg-white-transparent p-s3 md:gap-y-4 md:p-s6">
-      <div className="flex h-full w-full items-center justify-start">
+    <div className="flex flex-col justify-start gap-y-2 rounded-2xl bg-white-transparent py-s3">
+      <div className="flex h-full w-full items-center justify-center">
         <div className="max-h-[260px] max-w-[440px]">
           <Image
             src={image}
@@ -58,24 +58,24 @@ const ToolsContainer = ({ title, desc, image }) => {
           />
         </div>
       </div>
-      <h4 className="mt-2 text-xl font-semibold leading-none md:text-5xl">
+      <h4 className="text-xl font-semibold leading-none md:text-5xl px-s3">
         {title}
       </h4>
-      <p className="font-light">{desc}</p>
+      <p className="font-light px-s3">{desc}</p>
     </div>
   );
 };
 
 const FirstContainer = ({ title, desc, image }) => {
   return (
-    <div className="flex grid-cols-[2.5fr,2fr] flex-col-reverse rounded-2xl bg-white-transparent p-s3 md:grid md:p-s6">
-      <div className="flex w-5/6 flex-col items-start justify-center gap-y-3 md:w-2/3 md:gap-y-4">
-        <h4 className="mt-4 text-xl font-semibold leading-none md:text-5xl lg:mt-0">
+    <div className="flex grid-cols-[2.5fr,2fr] flex-col-reverse rounded-2xl bg-white-transparent md:grid">
+      <div className="flex w-11/12 flex-col items-start justify-center gap-y-3 px-s4">
+        <h4 className="md:mt-4 text-xl font-semibold leading-none md:text-5xl lg:mt-0">
           {title}
         </h4>
-        <p className="font-light">{desc}</p>
+        <p className="font-light pb-s3">{desc}</p>
       </div>
-      <div className="max-h-[400px] max-w-[540px]">
+      <div className="max-h-[400px] max-w-[540px] p-s3">
         <Image
           src={image}
           alt={title}

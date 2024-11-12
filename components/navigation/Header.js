@@ -14,7 +14,7 @@ const Header = ({ curPage }) => {
 
   return (
     <header className="border-b-[0.25px] border-white/20 bg-transparent p-6 text-white">
-      <section className="navigation flex items-center justify-between">
+      <section className="navigation flex items-center">
         <Link href="/">
           <a className="-mb-1 mt-1 w-32 md:w-60">
             <Image
@@ -25,7 +25,7 @@ const Header = ({ curPage }) => {
             />
           </a>
         </Link>
-        <div className="flex items-center md:gap-x-10">
+        <div className="flex items-center md:gap-x-10 w-full justify-between">
           <DesktopMenu curPage={curPage} />
           <HeaderButtons />
         </div>
@@ -40,7 +40,7 @@ const HeaderButtons = () => {
   const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
 
   return (
-    <div className="hidden gap-5 lg:flex">
+    <div className="hidden gap-5 lg:flex lg:mr-s2">
       {!isLoggedIn && (
         <GlobalButton purpose="route" route="/#generate-aview" type="primary">
           Contact Us

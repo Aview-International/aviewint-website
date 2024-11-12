@@ -20,10 +20,10 @@ const HowItWorks = () => {
               <p className="gradient-text gradient-1 text-2xl font-semibold lg:text-3xl">
                 0{index + 1}
               </p>
-              <p className="mt-2 text-xl font-semibold leading-none md:mt-3 lg:mt-4 lg:text-2xl min-h-[40px]">
+              <p className="mt-2 text-xl font-semibold leading-none md:mt-3 lg:mt-4 lg:text-2xl">
                 {item.title}
               </p>
-              <p className="mt-2 text-sm font-extralight lg:mt-4">
+              <p className="mt-2 text-sm font-extralight">
                 {item.desc}
               </p>
             </div>

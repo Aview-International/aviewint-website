@@ -6,7 +6,7 @@ import {
 
 const ScrollVerticalAnime = () => {
   return (
-    <section className="section m-horizontal text-white" data-aos="zoom-in">
+    <section className="section text-white" data-aos="zoom-in">
       <h2 className="mx-auto w-full text-center text-5xl font-bold leading-none lg:w-[85%] lg:text-[48px]">
         Chosen by the World&apos;s Leading{' '}
         <span className="inline lg:block lg:text-center">
