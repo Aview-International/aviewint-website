@@ -3,7 +3,6 @@ import Header from '../../components/navigation/Header';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
-import EasterEgg from '../../components/sections/reused/EasterEgg';
 import { getBlogPreviews } from '../../lib/notion';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
@@ -13,12 +12,11 @@ const Blogs = ({ blogs }) => {
     <>
       <SEO title="Blog - AVIEW" />
       <ProgressBar />
-      <EasterEgg />
       <Header curPage="Blog" />
       <ScrollToTopButton />
       <section className="section m-horizontal">
         <h1 className="title mb-s4 mt-s6 text-center md:mb-s8 md:mt-s18">
-          Enjoy our <span className="gradient-text gradient-2">Blogs.</span>
+          Enjoy our <span className="gradient-text gradient-2">Blogs</span>
         </h1>
         <BlogRow blogs={blogs} />
       </section>

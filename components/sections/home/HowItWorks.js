@@ -6,15 +6,13 @@ const HowItWorks = () => {
       <h2 className="mx-auto mb-s6 w-5/6 text-center text-5xl font-bold leading-none lg:w-3/4 lg:text-[48px]">
         How does Aview work?
       </h2>
-      <div className="mt-s2 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-8">
+      <div className="mt-s2 grid grid-cols-1 md:grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-8">
         {Work_Process.map((item, index) => {
           const isSecondColumn = index % 2 === 1;
 
           return (
             <div
-              className={`flex flex-col ${
-                isSecondColumn ? 'md:ml-auto md:w-5/6 lg:ml-0 lg:w-full' : ''
-              }`}
+              className={`flex flex-col`}
               key={index}
             >
               <p className="gradient-text gradient-1 text-2xl font-semibold lg:text-3xl">

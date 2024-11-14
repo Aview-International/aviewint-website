@@ -14,6 +14,7 @@ import Features from '../components/sections/home/Features';
 import HowItWorks from '../components/sections/home/HowItWorks';
 import AiTools from '../components/sections/home/AiTools';
 import CompareTools from '../components/sections/home/ComapreTools';
+import BlogSection from './blogSection';
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
       <CompareTools />
       <StartGenerating formId="t5dW3MSY" />
       <FAQ page="landing" />
+      {/* <BlogSection /> */}
       <Footer curPage="Home" />
       <Blobs />
     </>
