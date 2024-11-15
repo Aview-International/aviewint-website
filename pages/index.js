@@ -13,7 +13,7 @@ import Features from '../components/sections/home/Features';
 import HowItWorks from '../components/sections/home/HowItWorks';
 import AiTools from '../components/sections/home/AiTools';
 import CompareTools from '../components/sections/home/ComapreTools';
-import BlogSection from '../components/sections/home/blogSection';
+import BlogSection from '../components/sections/home/BlogSection';
 import { getBlogPreviews } from '../lib/notion';
 
 export async function getStaticProps() {
