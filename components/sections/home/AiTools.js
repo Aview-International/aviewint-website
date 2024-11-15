@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
-import LoganImage from '../../../public/img/graphics/new-landing-images/testimonial-1.webp';
+import Logo from '../../../public/img/aview/logo.svg';
 
 export const LANGUAGES_MENU = [
   'English',
@@ -59,7 +59,7 @@ const ToolsContainer = ({ title, desc, image }) => {
         {image ? (
           <Image src={image} alt={title} className="block h-full w-full" />
         ) : (
-          <div className="border-white-transparent flex h-full w-full overflow-hidden rounded-xl border border-1">
+          <div className="border-1 flex h-full w-full overflow-hidden rounded-xl border border-white-transparent">
             <div className="flex h-full flex-col justify-between">
               {[...Array(3)].map((_, idx) => (
                 <div
@@ -92,7 +92,7 @@ const AnimeImage = ({ language }) => {
   return (
     <div className="hover:gradient-1 flex shrink-0 items-center rounded-lg bg-white-transparent px-3 py-2">
       <Image
-        src={LoganImage}
+        src={Logo}
         alt="aview"
         width={50}
         height={50}
@@ -101,7 +101,9 @@ const AnimeImage = ({ language }) => {
 
       <div className="ml-s2">
         <p className="w-full text-sm">Aview International {language}</p>
-        <p className="text-xs">235k subscribers</p>
+        <p className="text-xs">
+          {Math.floor(Math.random() * 141) + 180}k subscribers
+        </p>
       </div>
     </div>
   );
