@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
 import Logo from '../../../public/img/aview/logo.svg';
+import { useEffect, useMemo, useState } from 'react';
 
 export const LANGUAGES_MENU = [
   'English',
@@ -89,6 +90,11 @@ const ToolsContainer = ({ title, desc, image }) => {
 };
 
 const AnimeImage = ({ language }) => {
+  const [subscribers, setSubscribers] = useState(null);
+  useEffect(() => {
+    setSubscribers(Math.floor(Math.random() * 141) + 180);
+  }, []);
+
   return (
     <div className="hover:gradient-1 flex shrink-0 items-center rounded-lg bg-white-transparent px-3 py-2">
       <Image
@@ -101,9 +107,7 @@ const AnimeImage = ({ language }) => {
 
       <div className="ml-s2">
         <p className="w-full text-sm">Aview International {language}</p>
-        <p className="text-xs">
-          {Math.floor(Math.random() * 141) + 180}k subscribers
-        </p>
+        <p className="text-xs">{subscribers}k subscribers</p>
       </div>
     </div>
   );
