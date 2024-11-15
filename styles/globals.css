@@ -116,6 +116,21 @@
     animation: slide-testimonial 15s linear infinite;
     will-change: transform;
   }
+
+  .animate-images-anime {
+    animation: slide-testimonial 30s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-images-anime-first {
+    animation: slide-testimonial-first 30s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-images-anime-second {
+    animation: slide-testimonial-second 30s linear infinite;
+    will-change: transform;
+  }
  
   /* .animate-images-reverse {
     animation: slide-testimonial-reverse 8s linear infinite;
@@ -340,12 +355,21 @@
     }
   }
 
-  @keyframes slide-testimonial-reverse {
+  @keyframes slide-testimonial-first {
     from {
-      transform: translateX(-100%);
+      transform: translateX(-22.2%);
     }
     to {
       transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-testimonial-second {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-44.4%);
     }
   }
 

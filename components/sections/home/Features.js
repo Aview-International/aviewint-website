@@ -3,7 +3,7 @@ import { More_Features } from '../../../constants/constants';
 
 const Features = () => {
   return (
-    <section className="m-horizontal section text-white">
+    <section className="m-horizontal section text-white" data-aos="fade-in">
       <h2 className="mx-auto text-center text-5xl font-bold leading-none md:w-3/5 lg:text-[48px]">
         For creators, Enterprises, And everyone in between
       </h2>
@@ -73,7 +73,6 @@ const GridImage = ({ imageData }) => {
           <Image
             src={image}
             alt={`icon-${index}`}
-            fill
             className="object-contain"
             sizes="35px"
           />

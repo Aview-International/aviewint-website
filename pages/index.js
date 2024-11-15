@@ -3,7 +3,6 @@ import Header from '../components/navigation/Header';
 import UnlockGlobalGrowth from '../components/sections/home/UnlockGlobalGrowth';
 import StartGenerating from '../components/sections/home/StartGenerating';
 import FAQ from '../components/sections/home/FAQ';
-// import GoGlobal from '../components/sections/home/GoGlobal';
 import Footer from '../components/navigation/Footer';
 import Blobs from '../components/UI/Blobs';
 import ScrollToTopButton from '../components/UI/ScrollToTopButton';
@@ -14,8 +13,25 @@ import Features from '../components/sections/home/Features';
 import HowItWorks from '../components/sections/home/HowItWorks';
 import AiTools from '../components/sections/home/AiTools';
 import CompareTools from '../components/sections/home/ComapreTools';
+import BlogSection from '../components/sections/home/blogSection';
+import { getBlogPreviews } from '../lib/notion';
 
-const Home = () => {
+export async function getStaticProps() {
+  const blogs = await getBlogPreviews();
+
+  let validData = blogs
+    .filter((item) => !isNaN(new Date(item.date)))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return {
+    props: {
+      blogs: JSON.parse(JSON.stringify(validData.slice(0, 3))),
+    },
+    revalidate: 1,
+  };
+}
+
+const Home = ({ blogs }) => {
   return (
     <>
       <SEO
@@ -34,6 +50,7 @@ const Home = () => {
       <CompareTools />
       <StartGenerating formId="t5dW3MSY" />
       <FAQ page="landing" />
+      <BlogSection blogs={blogs} />
       <Footer curPage="Home" />
       <Blobs />
     </>

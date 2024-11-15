@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import { ComparisionTools } from '../../../constants/constants';
 import check from '../../../public/img/icons/green-check-circle.svg';
@@ -6,7 +5,7 @@ import uncheck from '../../../public/img/icons/incorrect.svg';
 
 const CompareTools = () => {
   return (
-    <section className="m-horizontal section text-white">
+    <section className="m-horizontal section text-white" data-aos="fade-in">
       <h2 className="mx-auto text-center text-5xl font-bold leading-none lg:text-[48px]">
         Aview Goes Beyond Translations
       </h2>

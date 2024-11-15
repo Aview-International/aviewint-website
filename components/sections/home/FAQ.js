@@ -8,12 +8,15 @@ import {
 
 const FAQ = ({ page }) => {
   return (
-    <section className="section m-horizontal flex flex-col text-white lg:flex-row">
+    <section
+      className="section m-horizontal flex flex-col text-white lg:flex-row"
+      data-aos="zoom-in"
+    >
       <div className="w-full lg:w-2/4">
         <h2 className="text-start text-5xl font-bold leading-none lg:text-[48px]">
           Frequently Asked Questions
         </h2>
-        <p className="ml-1 text-sm md:text-base font-light">
+        <p className="ml-1 text-sm font-light md:text-base">
           Want to know more? Email us at{' '}
           <a
             href="mailto:julia@aviewint.com"

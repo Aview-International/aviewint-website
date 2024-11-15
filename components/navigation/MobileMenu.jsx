@@ -3,12 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MenuOpenContext from '../../store/menu-open-context';
 import GlobalButton from '../UI/GlobalButton';
-import aviewLogo from '../../public/img/aview/logo_short.png';
+import aviewLogo from '../../public/img/aview/logo-white.png';
 import closeIcon from '../../public/img/icons/close.svg';
 import leftChevronIcon from '../../public/img/icons/chevron-down-white.svg';
+import { useSelector } from 'react-redux';
 
 export default function MobileMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -20,15 +22,21 @@ export default function MobileMenu() {
         }`}
       >
         <div className="mb-6 flex h-12 items-center justify-between rounded-full bg-white-transparent p-2">
-          <div onClick={menuOpenCtx.closeMenuHandler}>
+          <div
+            onClick={menuOpenCtx.closeMenuHandler}
+            className="flex h-full items-center"
+          >
             <Link href="/">
-              <a className="mt-2 w-20">
-                <Image
-                  src={aviewLogo}
-                  width="40"
-                  height="40"
-                  alt="aview logo"
-                />
+              <a className="flex w-28 items-center md:w-60">
+                <div className="relative flex items-center justify-center">
+                  <Image
+                    src={aviewLogo}
+                    alt="AVIEW International logo"
+                    width="150"
+                    height="40"
+                    className="object-contain"
+                  />
+                </div>
               </a>
             </Link>
           </div>
@@ -42,19 +50,16 @@ export default function MobileMenu() {
         <nav className="mb-5 flex flex-col">
           <MainMenu />
         </nav>
-        <div
-          className={`flex-grow-0 flex-col gap-4 ${
-            menuOpenCtx.curMenu === 'main' ? 'flex' : 'hidden'
-          }`}
-        >
-          <GlobalButton
-            purpose="route"
-            route="/register"
-            type="secondary"
-            fullWidth={true}
-          >
-            Sign Up
-          </GlobalButton>
+        <div>
+          {isLoggedIn ? (
+            <GlobalButton purpose="route" route="/dashboard" type="secondary">
+              Dashboard
+            </GlobalButton>
+          ) : (
+            <GlobalButton purpose="route" route="/register" type="secondary">
+              Sign Up
+            </GlobalButton>
+          )}
         </div>
       </div>
     </div>
@@ -63,7 +68,7 @@ export default function MobileMenu() {
 
 const MAIN_MENU = [
   { type: 'route', title: 'Pricing', link: '/pricing' },
-  { type: 'dropdown', title: 'Industries', dropdown: '' },
+  { type: 'dropdown', title: 'Industries', dropdown: 'industries' },
   { type: 'dropdown', title: 'Languages', dropdown: 'languages' },
   { type: 'route', title: 'Blog', link: '/blog' },
   { type: 'route', title: 'About', link: '/about' },
@@ -75,7 +80,7 @@ export function MainMenu() {
   const menuOpenCtx = useContext(MenuOpenContext);
 
   const handleDropDown = (item) => {
-    if (item === 'services') {
+    if (item === 'industries') {
       setDropDownService((prevValue) => !prevValue);
     } else {
       setDropDownLanguage((prevValue) => !prevValue);
@@ -99,7 +104,7 @@ export function MainMenu() {
             </Link>
           );
         } else if (menuItem.type === 'dropdown') {
-          if (menuItem.dropdown === 'services') {
+          if (menuItem.dropdown === 'industries') {
             return (
               <React.Fragment key={idx}>
                 <DropDownHandle
@@ -211,7 +216,7 @@ export function ServicesMenu() {
   );
 }
 
-const LANGUAGES_MENU = [
+export const LANGUAGES_MENU = [
   'English',
   'French',
   'Hindi',
