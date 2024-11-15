@@ -38,7 +38,6 @@ const BlogSection = ({ blogs }) => {
           </Link>
         ))}
       </div>
-      {/* </div> */}
     </section>
   );
 };

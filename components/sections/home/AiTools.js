@@ -59,7 +59,7 @@ const ToolsContainer = ({ title, desc, image }) => {
         {image ? (
           <Image src={image} alt={title} className="block h-full w-full" />
         ) : (
-          <div className="border-gray-800 flex h-full w-full overflow-hidden rounded-xl border">
+          <div className="border-white-transparent flex h-full w-full overflow-hidden rounded-xl border border-1">
             <div className="flex h-full flex-col justify-between">
               {[...Array(3)].map((_, idx) => (
                 <div
