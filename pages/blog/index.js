@@ -31,19 +31,13 @@ export default Blogs;
 export async function getStaticProps() {
   const blogs = await getBlogPreviews();
 
-  blogs.sort((blog1, blog2) => {
-    if (blog1.date > blog2.date) {
-      return -1;
-    } else if (blog1.date < blog2.date) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
+  let validData = blogs
+    .filter((item) => !isNaN(new Date(item.date)))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return {
     props: {
-      blogs: JSON.parse(JSON.stringify(blogs)),
+      blogs: JSON.parse(JSON.stringify(validData)),
     },
     revalidate: 1,
   };

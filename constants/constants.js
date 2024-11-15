@@ -112,22 +112,10 @@ import language_translator from '../public/img/graphics/new-landing-images/lanua
 import monetize from '../public/img/graphics/new-landing-images/monetize.webp';
 import workspace from '../public/img/graphics/new-landing-images/monetize.webp';
 import table_globe from '../public/img/graphics/new-landing-images/table_globe.webp';
-import content_distribute from '../public/img/graphics/new-landing-images/content-distribution.webp';
 import cultural_modifications from '../public/img/graphics/new-landing-images/cultural-modifications.webp';
 import multilingual_voiceovers from '../public/img/graphics/new-landing-images/multilingual-voiceovers.webp';
 import multi_track_audio from '../public/img/graphics/new-landing-images/multi-track-audio.webp';
 import translated_subtitles from '../public/img/graphics/new-landing-images/translated-subtitles.webp';
-import content_distribute_svg from '../public/img/graphics/new-landing-images/content-distribution.svg';
-import cultural_modifications_svg from '../public/img/graphics/new-landing-images/cultural-modifications.svg';
-import multilingual_voiceovers_svg from '../public/img/graphics/new-landing-images/multilingual-voiceovers.svg';
-import multi_track_audio_svg from '../public/img/graphics/new-landing-images/multi-track-audio.svg';
-import translated_subtitles_svg from '../public/img/graphics/new-landing-images/translated-subtitles.svg';
-
-
-
-//new landing-page empower section
-import target from '../public/img/graphics/new-landing-images/target.webp';
-import empower from '../public/img/graphics/new-landing-images/empower.webp';
 
 //new landing-page corporate language icons
 import english from '../public/img/graphics/corporate/english.png';
@@ -184,7 +172,7 @@ import upload_ai from '../public/img/graphics/upload-ai.svg';
 import video from '../public/img/graphics/video.svg';
 import volume from '../public/img/graphics/volume.svg';
 
-import aviewLogo from '../public/img/aview/AviewLogo.png'; 
+import aviewLogo from '../public/img/aview/AviewLogo.png';
 
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
@@ -196,6 +184,7 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_7,
   testimonial_8,
 ];
+
 export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
   testimonial_8,
   testimonial_7,
@@ -303,7 +292,7 @@ export const AI_Tools = [
     title: 'Content Distribution',
     desc: 'We run your international channels and optimize them to get seen by your most likely audiences around the world',
     button_text: 'Try text to speech conversion',
-    image: content_distribute,
+    image: null,
     index: 4,
   },
   {
@@ -317,94 +306,94 @@ export const AI_Tools = [
 
 export const ComparisionTools = [
   {
-   title: 'Other Leading AI Alternatives',
-   index: 1,
-   options1 : [
-    {
-      text: 'Translations',
-      boolean : true,
-    },
-    {
-      text: 'Cultural Filters',
-      boolean : false,
-    },
-    {
-      text: 'Voiceover Dubbing',
-      boolean : true,
-    },
-    {
-      text: 'Video Editing',
-      boolean : true,
-    },
-    {
-      text: 'Content Management',
-      boolean : false,
-    },
-    {
-      text: 'Channel Monetization',
-      boolean : false,
-    },
-   ],
-   options2: [
-    {
-     text: 'Easy, all in one platform for international expansion',
-     boolean: false,
-    },
-    {
-      text: 'Multi-channel distribution capabilities',
-     boolean: false,
-    },
-    {
-      text: 'Multi-speaker dubbing',
-     boolean: false,
-    },
-   ],
+    title: 'Other Leading AI Alternatives',
+    index: 1,
+    options1: [
+      {
+        text: 'Translations',
+        boolean: true,
+      },
+      {
+        text: 'Cultural Filters',
+        boolean: false,
+      },
+      {
+        text: 'Voiceover Dubbing',
+        boolean: true,
+      },
+      {
+        text: 'Video Editing',
+        boolean: true,
+      },
+      {
+        text: 'Content Management',
+        boolean: false,
+      },
+      {
+        text: 'Channel Monetization',
+        boolean: false,
+      },
+    ],
+    options2: [
+      {
+        text: 'Easy, all in one platform for international expansion',
+        boolean: false,
+      },
+      {
+        text: 'Multi-channel distribution capabilities',
+        boolean: false,
+      },
+      {
+        text: 'Multi-speaker dubbing',
+        boolean: false,
+      },
+    ],
   },
   {
-   image: aviewLogo,
-   index:2,
-   options1 : [
-    {
-      text: 'Translations',
-      boolean : true,
-    },
-    {
-      text: 'Cultural Filters',
-      boolean : true,
-    },
-    {
-      text: 'Voiceover Dubbing',
-      boolean : true,
-    },
-    {
-      text: 'Video Editing',
-      boolean : true,
-    },
-    {
-      text: 'Content Management',
-      boolean : true,
-    },
-    {
-      text: 'Channel Monetization',
-      boolean : true,
-    },
-   ],
-   options2: [
-    {
-     text: 'Easy, all in one platform for international expansion',
-     boolean: true,
-    },
-    {
-      text: 'Multi-channel distribution capabilities',
-     boolean: true,
-    },
-    {
-      text: 'Multi-speaker dubbing',
-     boolean: true,
-    },
-   ],
+    image: aviewLogo,
+    index: 2,
+    options1: [
+      {
+        text: 'Translations',
+        boolean: true,
+      },
+      {
+        text: 'Cultural Filters',
+        boolean: true,
+      },
+      {
+        text: 'Voiceover Dubbing',
+        boolean: true,
+      },
+      {
+        text: 'Video Editing',
+        boolean: true,
+      },
+      {
+        text: 'Content Management',
+        boolean: true,
+      },
+      {
+        text: 'Channel Monetization',
+        boolean: true,
+      },
+    ],
+    options2: [
+      {
+        text: 'Easy, all in one platform for international expansion',
+        boolean: true,
+      },
+      {
+        text: 'Multi-channel distribution capabilities',
+        boolean: true,
+      },
+      {
+        text: 'Multi-speaker dubbing',
+        boolean: true,
+      },
+    ],
   },
-]
+];
 
 export const Work_Process = [
   {
@@ -425,115 +414,18 @@ export const Work_Process = [
   },
 ];
 
-export const Creator_Suite = [
-  {
-    image: empower,
-    index: 1,
-  },
-  {
-    tittle: 'Unified Content Management And Distribution',
-    desc: 'Seamlessly integrate all your social media channels into Aview, streamlining your global content strategy.',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See pricing',
-    button_route: '',
-    index: 2,
-  },
-
-  {
-    tittle: 'Analytics for International Impact',
-    desc: 'Effortlessly capture, edit, and share audio & video content with Aview’s comprehensive AI tools',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See pricing',
-    button_route: '',
-    index: 3,
-  },
-  {
-    image: empower,
-    index: 4,
-  },
-  {
-    image: empower,
-    index: 5,
-  },
-  {
-    tittle: 'Tools for Global Dominance',
-    desc: 'Harness a suite of powerful tools designed to propel your content onto the international stage.',
-    button_route: '',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See our AI tools',
-    index: 6,
-  },
-];
-
-export const Creator_Suite_Mobile = [
-  {
-    image: empower,
-    index: 1,
-  },
-  {
-    tittle: 'Unified Content Management And Distribution',
-    desc: 'Seamlessly integrate all your social media channels into Aview, streamlining your global content strategy.',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See pricing',
-    button_route: '',
-    index: 2,
-  },
-  {
-    image: empower,
-    index: 3,
-  },
-  {
-    tittle: 'Analytics for International Impact',
-    desc: 'Effortlessly capture, edit, and share audio & video content with Aview’s comprehensive AI tools',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See pricing',
-    button_route: '',
-    index: 4,
-  },
-  
-  {
-    image: empower,
-    index: 5,
-  },
-  {
-    tittle: 'Tools for Global Dominance',
-    desc: 'Harness a suite of powerful tools designed to propel your content onto the international stage.',
-    button_route: '',
-    options: [
-      'Social media integration',
-      'Video analytics',
-      'Video database organization',
-    ],
-    button_text: 'See our AI tools',
-    index: 6,
-  },
-];
-
 export const More_Features = [
   {
     title: 'Integrate with Popular Social Media Platforms',
     desc: ' Connect easily with platforms like YouTube, Instagram, and TikTok to distribute content in multiple languages worldwide',
-    options: [aview_ai, facebook_color, instagram_red, tiktok_color, youtube_red, vimeo],
+    options: [
+      aview_ai,
+      facebook_color,
+      instagram_red,
+      tiktok_color,
+      youtube_red,
+      vimeo,
+    ],
     index: 1,
   },
   {
@@ -551,7 +443,16 @@ export const More_Features = [
   {
     title: 'All in one suite of tools',
     desc: 'Run your international channels all within our creator suite, with all the tools you need to create great content',
-    options: [volume, clock, file_text, global_ai, upload_ai, video, ai_mask, mic],
+    options: [
+      volume,
+      clock,
+      file_text,
+      global_ai,
+      upload_ai,
+      video,
+      ai_mask,
+      mic,
+    ],
     index: 4,
   },
 ];
@@ -586,23 +487,6 @@ export const AI_Tools_Page = [
     description:
       'Effortlessly download your video\u0027s for seamless translation and adaptation, enabling your global audience to enjoy your content in their native languages.',
     img: youtube_ai,
-  },
-];
-
-export const LANDNG_PAGE_EMPOWER_SECTION = [
-  {
-    image: empower,
-    imageWidth: 508,
-    sectionTitle: 'Tools for Global Dominance',
-    sectionText:
-      'Harness a suite of powerful tools designed to propel your content onto the international stage.',
-  },
-  {
-    image: target,
-    imageWidth: 326,
-    sectionTitle: 'Insights for International Impact',
-    sectionText:
-      'Dive deep into analytics, understand your global reach, and monetize effectively in every language.',
   },
 ];
 
@@ -758,7 +642,7 @@ export const ROUTES = [
       },
     ],
   },
-{
+  {
     id: 'route-3',
     title: 'Company',
     routes: [
