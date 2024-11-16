@@ -66,8 +66,9 @@ const ToolsContainer = ({ title, desc, image }) => {
                 <div
                   className={`${
                     idx === 1
-                      ? 'animate-images-anime-first'
-                      : 'animate-images-anime'
+                      ? 'animate-images-anime-first':
+                      idx === 2 ? 'animate-images-anime' 
+                      : 'animate-images-anime-second'
                   } relative my-2 flex h-[100px] w-full gap-x-4`}
                   key={idx}
                 >
