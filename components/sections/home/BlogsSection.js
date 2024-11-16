@@ -9,9 +9,9 @@ const BlogSection = ({ blogs }) => {
       <h2 className="mb-s4 text-center text-5xl font-bold lg:text-7xl">
         More From Aview
       </h2>
-      <p className="text-center">
+      <p className="mx-auto mb-s6 mt-s1 w-11/12 text-center font-extralight leading-none md:mt-s2 lg:w-1/2">
         Read more about our research into digital marketing , AI voice
-        translation and dubbing. and best practices into being a digital content
+        translation and dubbing. And best practices into being a digital content
         creator
       </p>
       <div className="mx-auto mb-s10 mt-s4 w-full text-center">
@@ -30,10 +30,10 @@ const BlogSection = ({ blogs }) => {
                 height={266}
                 className="rounded-2xl"
               />
-              <p className="mb-s1 text-base font-light">
+              <p className="my-s1 text-base font-light">
                 {convertDate(b.date)}
               </p>
-              <h2 className="mt-s3 text-xl text-white">{b.title}</h2>
+              <h2 className="mt-s1 text-xl text-white">{b.title}</h2>
             </a>
           </Link>
         ))}
