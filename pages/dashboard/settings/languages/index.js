@@ -10,6 +10,7 @@ import ErrorHandler from '../../../../utils/errorHandler';
 import { useRouter } from 'next/router';
 import { updateRequiredServices } from '../../../../services/firebase';
 import defaultPfp from '../../../../public/img/graphics/user.webp';
+import CustomSelectInput from '../../../../components/FormComponents/CustomSelectInput';
 
 const Preference = () => {
   const router = useRouter();
@@ -18,9 +19,7 @@ const Preference = () => {
   const [languages, setLanguages] = useState([]);
   const allLanguagesData = useSelector((state) => state.aview.allLanguages);
   const [selectLanguages, setSelectLanguages] = useState(false);
-  const allLanguages = allLanguagesData
-    .map((el) => el.language)
-    .filter((el) => el !== user.defaultLanguage);
+  const allLanguages = allLanguagesData.map((el) => el.language);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -66,42 +65,57 @@ const Preference = () => {
     setLanguages(allLanguages);
   };
 
+  const handleDefaultLanguageChange = async (value) => {
+    await updateRequiredServices({ defaultLanguage: value }, user.uid);
+  };
+
   return (
     <div>
+      <div className="mb-s7 flex items-center justify-between">
+        <p className="text-2xl">Default Account Language</p>
+        <div className="w-1/2">
+          <CustomSelectInput
+            onChange={handleDefaultLanguageChange}
+            hasText={true}
+            options={languages}
+            value={user.defaultLanguage}
+          ></CustomSelectInput>
+        </div>
+      </div>
+
+      <p className="mb-s3 text-2xl">Preferred Languages</p>
       <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {languages
-          .filter((el) => el !== user.defaultLanguage)
-          .map(
-            (language, index) =>
-              language !== 'Others' && (
-                <div
-                  className="gradient-dark mx-auto flex w-full max-w-[360px] flex-row justify-between rounded-md p-s1.5"
-                  key={index}
-                >
-                  <div className="flex flex-row items-center justify-between">
-                    <Image
-                      src={youtube.channelDetails.thumbnail || defaultPfp}
-                      alt="profile-image"
-                      height={40}
-                      width={40}
-                      className="block rounded-full"
-                    />
-                    <div className="ml-3 flex flex-col">
-                      <h2 className="text-lg">
-                        {user?.youtube?.youtubeChannelName}{' '}
-                        {findLocalDialect(language)?.['localDialect']}
-                      </h2>
-                      <p className="text-sm">
-                        {findLocalDialect(language)?.['languageName']}
-                      </p>
-                    </div>
+        {languages.map(
+          (language, index) =>
+            language !== 'Others' && (
+              <div
+                className="gradient-dark mx-auto flex w-full max-w-[360px] flex-row justify-between rounded-md p-s1.5"
+                key={index}
+              >
+                <div className="flex flex-row items-center justify-between">
+                  <Image
+                    src={youtube.channelDetails.thumbnail || defaultPfp}
+                    alt="profile-image"
+                    height={40}
+                    width={40}
+                    className="block rounded-full"
+                  />
+                  <div className="ml-3 flex flex-col">
+                    <h2 className="text-lg">
+                      {user?.youtube?.youtubeChannelName}{' '}
+                      {findLocalDialect(language)?.['localDialect']}
+                    </h2>
+                    <p className="text-sm">
+                      {findLocalDialect(language)?.['languageName']}
+                    </p>
                   </div>
-                  <button onClick={() => handleRemoveLanguage(language)}>
-                    <Image src={Trash} alt="Delete" width={24} height={24} />
-                  </button>
                 </div>
-              )
-          )}
+                <button onClick={() => handleRemoveLanguage(language)}>
+                  <Image src={Trash} alt="Delete" width={24} height={24} />
+                </button>
+              </div>
+            )
+        )}
       </div>
       {isError && (
         <p className="my-s3 text-center text-xl text-red">
@@ -133,10 +147,7 @@ const Preference = () => {
       </div>
       {!selectLanguages && (
         <div className="mx-auto mt-4 w-[min(360px,90%)]">
-          <GlobalButton
-            onClick={() => setSelectLanguages(true)}
-            theme="white"
-          >
+          <GlobalButton onClick={() => setSelectLanguages(true)} theme="white">
             Add another language
           </GlobalButton>
         </div>

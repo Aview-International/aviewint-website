@@ -14,6 +14,7 @@ const TranslateOptions = ({
   setPayload,
   isLoading,
   uploadProgress,
+  handleCancelVideoUpload,
 }) => {
   const userData = useSelector((state) => state.user);
   const youtubePicture = useSelector(
@@ -56,7 +57,7 @@ const TranslateOptions = ({
           >
             <div className="flex items-center justify-between">
               <Image
-                src={youtubePicture || defaultPfp} //Conditional default pfp
+                src={youtubePicture || defaultPfp}
                 alt="profile-image"
                 height={40}
                 width={40}
@@ -67,7 +68,7 @@ const TranslateOptions = ({
                   {userData.youtubeChannelName}
                   {findLocalDialect(language)?.['localDialect']}
                 </h2>
-                <p className="text-sm">YouTube</p>
+                <p className="text-sm">{language}</p>
               </div>
             </div>
             <ToggleButton
@@ -105,6 +106,14 @@ const TranslateOptions = ({
         ) : (
           <p>Processing video please wait</p>
         ))}
+
+      {uploadProgress > 0 && (
+        <div className="mt-s3 w-full md:w-36">
+          <GlobalButton onClick={handleCancelVideoUpload} theme="error">
+            Cancel Upload
+          </GlobalButton>
+        </div>
+      )}
       {!isLoading && (
         <div className="w-full md:w-36">
           <GlobalButton isLoading={isLoading} onClick={handleSubmit}>
