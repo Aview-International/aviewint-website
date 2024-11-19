@@ -25,6 +25,7 @@ import {
   signInWithGoogle,
   checkUserEmail,
   auth,
+  createNewUser,
 } from '../../services/firebase';
 import SEO from '../../components/SEO/SEO';
 
@@ -45,32 +46,44 @@ const Login = () => {
       handleSSOWithCode();
   }, [router.query]);
 
-  const handleRedirect = async (_tokenResponse) => {
+  const handleRedirect = async (_tokenResponse, emailForSignIn) => {
     Cookies.set('uid', _tokenResponse.localId);
     Cookies.set('session', _tokenResponse.idToken);
-    dispatch(
-      setUser({
-        email: _tokenResponse.email,
-        firstName: _tokenResponse.firstName,
-        lastName: _tokenResponse.lastName,
-        picture: _tokenResponse.photoUrl,
-        uid: _tokenResponse.localId,
-      })
-    );
-    const prevRoute = Cookies.get('redirectUrl');
-    if (prevRoute) {
-      Cookies.remove('redirectUrl');
-      window.location.href = decodeURIComponent(prevRoute);
-    } else window.location.href = '/dashboard';
+    const res = await checkUserEmail(_tokenResponse.localId);
+    if (!res) {
+      await createNewUser(
+        _tokenResponse.localId,
+        _tokenResponse?.firstName,
+        _tokenResponse?.lastName,
+        _tokenResponse?.photoUrl,
+        _tokenResponse?.email
+      );
+      emailForSignIn
+        ? router.push('/onboarding?stage=profile')
+        : router.push('/onboarding?stage=1');
+    } else {
+      dispatch(
+        setUser({
+          email: _tokenResponse.email,
+          firstName: _tokenResponse.firstName,
+          lastName: _tokenResponse.lastName,
+          picture: _tokenResponse.photoUrl,
+          uid: _tokenResponse.localId,
+        })
+      );
+      const prevRoute = Cookies.get('redirectUrl');
+      if (prevRoute) {
+        Cookies.remove('redirectUrl');
+        return router.push(decodeURIComponent(prevRoute));
+      } else return router.push('/dashboard');
+    }
   };
 
   const handleLoginWithGoogle = async () => {
     try {
       setIsLoading({ ...isLoading, google: true });
       const { _tokenResponse } = await signInWithGoogle();
-      const res = await checkUserEmail(_tokenResponse.localId);
-      if (!res) router.push('/register?account=false');
-      else handleRedirect(_tokenResponse);
+      handleRedirect(_tokenResponse, false);
     } catch (error) {
       setIsLoading({ ...isLoading, google: false });
       ErrorHandler(null, 'Something went wrong, please try again');
@@ -87,7 +100,7 @@ const Login = () => {
         signInWithEmailLink(auth, email, window.location.href)
           .then((result) => {
             window.localStorage.removeItem('emailForSignIn');
-            handleRedirect(result._tokenResponse);
+            handleRedirect(result._tokenResponse, true);
           })
           .catch((error) => {
             toast.error(

@@ -277,14 +277,14 @@ export const subscriptionHistory = async () =>
 export const deleteThread = async (threadId) =>
   (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;
 
-export const downloadVideoFromS3 = async (timestamp, title, lang) =>
-  (
-    await axiosInstance.post(`admin/download`, {
-      timestamp,
-      title,
-      language: lang,
-    })
-  ).data;
+export const downloadVideoFromS3 = async (timestamp, title, lang) => {
+  const res = await axiosInstance.post(`admin/download`, {
+    timestamp,
+    title,
+    language: lang,
+  });
+  return res.data;
+};
 
 export const getJobsHistory = async () =>
   (await axiosInstance.get('transcription/history')).data;
