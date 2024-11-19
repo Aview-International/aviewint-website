@@ -127,6 +127,7 @@ const SettingsStructure = ({ children }) => {
             </Link>
           ))}
         </aside>
+        <hr/>
         <section className="h-full w-full py-s1.5">{children}</section>
       </div>
     </>

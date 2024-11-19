@@ -3,7 +3,7 @@ import DashboardLayout from '../../../components/dashboard/DashboardLayout';
 import TranslateOptions from '../../../components/dashboard/TranslateOptions';
 import UploadVideo from '../../../components/dashboard/UploadVideo';
 import PageTitle from '../../../components/SEO/PageTitle';
-import { uploadCreatorVideo } from '../../../services/apis';
+import { cancelVideoUpload, uploadCreatorVideo } from '../../../services/apis';
 import ErrorHandler from '../../../utils/errorHandler';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -30,20 +30,33 @@ const Upload = () => {
 
     try {
       setIsLoading(true);
+      if (!video) return ErrorHandler(null, 'Please upload a video');
+      if (payload.languages.length < 1)
+        return ErrorHandler(null, 'Please select a language');
       if (payload.saveSettings) updateRequiredServices(preferences, userId);
       await uploadCreatorVideo(
         video,
-        userId,
         payload.languages,
         payload.additionalNote,
         setUploadProgress
       );
       toast.success('Tasks submitted succesfully 🚀');
-      setIsLoading(false);
       router.push('/dashboard');
     } catch (error) {
-      setIsLoading(false);
       ErrorHandler(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCancelVideoUpload = () => {
+    try {
+      cancelVideoUpload();
+    } catch (error) {
+      ErrorHandler(error);
+    } finally {
+      setIsLoading(false);
+      setUploadProgress(0);
     }
   };
 
@@ -66,6 +79,7 @@ const Upload = () => {
               setPayload={setPayload}
               isLoading={isLoading}
               uploadProgress={uploadProgress}
+              handleCancelVideoUpload={handleCancelVideoUpload}
             />
           </div>
         </div>

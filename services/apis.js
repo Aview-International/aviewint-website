@@ -189,26 +189,36 @@ export const deleteVoiceClone = async (voiceId) => {
   return res;
 };
 
+let cancelTokenSource = null;
+
 export const uploadCreatorVideo = async (
   video,
-  creatorId,
   languages,
   additionalNote,
   setUploadProgress
 ) => {
+  cancelTokenSource = axios.CancelToken.source();
+
   let formData = new FormData();
   formData.append('video', video);
-  formData.append('creatorId', creatorId);
   formData.append('additionalNote', additionalNote);
   for (const lang of languages) formData.append('languages', lang);
 
   await axiosInstance.post('transcription/upload-creator-video', formData, {
+    cancelToken: cancelTokenSource.token,
     onUploadProgress: (progressEvent) =>
       setUploadProgress(
         Math.round((progressEvent.loaded * 100) / progressEvent.total)
       ),
   });
   return;
+};
+
+export const cancelVideoUpload = () => {
+  if (cancelTokenSource) {
+    cancelTokenSource.cancel('Upload canceled');
+    cancelTokenSource = null;
+  }
 };
 
 export const getIgAuthLink = async () => {

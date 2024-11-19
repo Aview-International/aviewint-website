@@ -14,7 +14,6 @@ import {
   get,
   onValue,
 } from 'firebase/database';
-import { transcribeSocialLink } from './apis';
 import Cookies from 'js-cookie';
 
 const firebaseConfig = {

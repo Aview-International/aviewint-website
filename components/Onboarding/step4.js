@@ -66,48 +66,45 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
         list as you please!
       </p>
       <div className="mx-auto grid grid-cols-1 justify-center gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {languages
-          .filter((el) => el !== userData.defaultLanguage)
-          .map(
-            (language, index) =>
-              language !== 'Others' && (
-                <div
-                  className="gradient-dark mx-auto flex w-full max-w-[360px] flex-row justify-between rounded-md p-s1.5"
-                  key={index}
-                >
-                  <div className="flex flex-row items-center justify-between">
-                    <Image
-                      src={
-                        youtubeChannel?.channelDetails?.thumbnail ||
-                        DefaultImage
-                      }
-                      alt="profile-image"
-                      height={40}
-                      width={40}
-                      className="block rounded-full"
-                    />
-                    <div className="ml-3 flex flex-col">
-                      <h2 className="text-lg">
-                        {userData.youtubeChannelName}{' '}
-                        {findLocalDialect(language)?.['localDialect']}
-                      </h2>
-                      <p className="text-sm">
-                        {findLocalDialect(language)?.['languageName']}
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() =>
-                      handleRemoveLanguage(
-                        findLocalDialect(language)['languageName']
-                      )
+        {languages.map(
+          (language, index) =>
+            language !== 'Others' && (
+              <div
+                className="gradient-dark mx-auto flex w-full max-w-[360px] flex-row justify-between rounded-md p-s1.5"
+                key={index}
+              >
+                <div className="flex flex-row items-center justify-between">
+                  <Image
+                    src={
+                      youtubeChannel?.channelDetails?.thumbnail || DefaultImage
                     }
-                  >
-                    <Image src={Trash} alt="Delete" width={24} height={24} />
-                  </button>
+                    alt="profile-image"
+                    height={40}
+                    width={40}
+                    className="block rounded-full"
+                  />
+                  <div className="ml-3 flex flex-col">
+                    <h2 className="text-lg">
+                      {userData.youtubeChannelName}{' '}
+                      {findLocalDialect(language)?.['localDialect']}
+                    </h2>
+                    <p className="text-sm">
+                      {findLocalDialect(language)?.['languageName']}
+                    </p>
+                  </div>
                 </div>
-              )
-          )}
+                <button
+                  onClick={() =>
+                    handleRemoveLanguage(
+                      findLocalDialect(language)['languageName']
+                    )
+                  }
+                >
+                  <Image src={Trash} alt="Delete" width={24} height={24} />
+                </button>
+              </div>
+            )
+        )}
       </div>
       {isError && (
         <p className="my-s3 text-center text-xl text-red">
@@ -135,10 +132,7 @@ const OnboardingStep4 = ({ userData, allLanguages }) => {
       </div>
       {!selectLanguages && (
         <div className="mx-auto mt-4 w-[min(360px,90%)]">
-          <GlobalButton
-            onClick={() => setSelectLanguages(true)}
-            theme="white"
-          >
+          <GlobalButton onClick={() => setSelectLanguages(true)} theme="white">
             Add another language
           </GlobalButton>
         </div>
