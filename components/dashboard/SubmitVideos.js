@@ -12,6 +12,7 @@ const SubmitVideos = ({
   setPayload,
   payload,
   handleSubmit,
+  videoStats,
 }) => {
   const router = useRouter();
 
@@ -30,6 +31,7 @@ const SubmitVideos = ({
           payload={payload}
           setPayload={setPayload}
           isLoading={isLoading}
+          videoStats={videoStats}
         />
       </div>
     </div>

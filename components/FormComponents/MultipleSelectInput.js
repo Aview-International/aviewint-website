@@ -3,7 +3,6 @@ import Arrow from '../../public/img/icons/dropdown-arrow.svg';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import HorizontalLine from '../UI/HorizontalLine';
 import Correct from '../../public/img/icons/green-check-circle.svg';
 import Incorrect from '../../public/img/icons/incorrect.svg';
 
@@ -123,7 +122,7 @@ const CHECKBOX = ({ selectedAnswer, option, onChange }) => {
         </span>
         {option}
       </div>
-      <HorizontalLine />
+      <div className="gradient h-1 w-full"></div>
     </>
   );
 };

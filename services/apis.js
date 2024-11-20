@@ -102,6 +102,9 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
+export const getYoutubeVideosStats = async (videos) =>
+  (await axiosInstance.post('auth/youtube/video-analytics', { videos })).data;
+
 // export const getUserMessages = async () => {
 //   const response = await axiosInstance.get('messages/convo');
 //   return response.data;
