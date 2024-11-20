@@ -7,7 +7,7 @@ import {
 const ScrollVerticalAnime = () => {
   return (
     <section className="section text-white" data-aos="zoom-in">
-      <h2 className="mx-auto w-full text-center text-5xl font-bold leading-none lg:w-[85%] lg:text-[48px]">
+      <h2 className="mx-auto w-full text-center text-5xl font-bold lg:w-[85%] lg:text-8xl">
         Chosen by the World&apos;s Leading{' '}
         <span className="inline lg:block lg:text-center">
           Creators and Innovative Enterprises
@@ -15,43 +15,35 @@ const ScrollVerticalAnime = () => {
       </h2>
       <div className="relative mt-s8 overflow-hidden">
         <div className="animate-images flex w-fit gap-x-6">
-          {[...Array(3)].map((_, setIndex) => (
+          {[...Array(4)].map((_, setIndex) => (
             <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
               {LANDNG_PAGE_TESTIMONIALS.map((img, i) => (
-                <div
-                  className="h-44 w-44 shrink-0"
-                  key={`image-${setIndex}-${i}`}
-                >
-                  <Image
-                    src={img}
-                    alt={`aview-internatinal-testimonial-${i}`}
-                    width="220"
-                    height="220"
-                    className="rounded-lg"
-                  />
-                </div>
+                <Image
+                  key={i}
+                  src={img}
+                  alt=""
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
               ))}
             </div>
           ))}
         </div>
       </div>
-      <div className="relative mt-s8 overflow-hidden">
+      <div className="relative mt-s8 -ml-s12 overflow-hidden">
         <div className="animate-images flex w-fit gap-x-6">
-          {[...Array(3)].map((_, setIndex) => (
+          {[...Array(4)].map((_, setIndex) => (
             <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
               {LANDNG_PAGE_TESTIMONIALS_REVERSE.map((img, i) => (
-                <div
-                  className="h-44 w-44 shrink-0"
-                  key={`image-${setIndex}-${i}`}
-                >
-                  <Image
-                    src={img}
-                    alt={`aview-internatinal-testimonial-${i}`}
-                    width="220"
-                    height="220"
-                    className="rounded-lg"
-                  />
-                </div>
+                <Image
+                  src={img}
+                  key={i}
+                  alt=""
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
               ))}
             </div>
           ))}

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
 import Logo from '../../../public/img/aview/logo.svg';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const LANGUAGES_MENU = [
   'English',
@@ -25,7 +25,7 @@ export const LANGUAGES_MENU = [
 const AiTools = () => {
   return (
     <section className="m-horizontal section text-white">
-      <h2 className="mx-auto text-center text-5xl font-bold leading-none lg:text-7xl">
+      <h2 className="mx-auto text-center text-5xl font-bold lg:text-7xl">
         AI Tools To Help You Succeed
       </h2>
       <p className="mb-s6 mt-s2 text-center font-extralight">
@@ -66,8 +66,9 @@ const ToolsContainer = ({ title, desc, image }) => {
                 <div
                   className={`${
                     idx === 1
-                      ? 'animate-images-anime-first':
-                      idx === 2 ? 'animate-images-anime' 
+                      ? 'animate-images-anime-first'
+                      : idx === 2
+                      ? 'animate-images-anime'
                       : 'animate-images-anime-second'
                   } relative my-2 flex h-[100px] w-full gap-x-4`}
                   key={idx}
@@ -82,7 +83,7 @@ const ToolsContainer = ({ title, desc, image }) => {
         )}
       </div>
 
-      <h4 className="mt-s4 mb-s2 px-s3 text-xl font-semibold leading-none md:text-5xl">
+      <h4 className="mt-s4 mb-s2 px-s3 text-xl font-semibold md:text-5xl">
         {title}
       </h4>
       <p className="px-s3 font-light">{desc}</p>
@@ -116,21 +117,14 @@ const AnimeImage = ({ language }) => {
 
 const FirstContainer = ({ title, desc, image }) => {
   return (
-    <div className="flex grid-cols-[2.5fr,2fr] flex-col-reverse rounded-2xl bg-white-transparent md:grid">
-      <div className="flex w-11/12 flex-col items-start justify-center gap-y-3 px-s4">
-        <h4 className="text-xl font-semibold leading-none md:mt-4 md:text-5xl lg:mt-0">
-          {title}
-        </h4>
-        <p className="pb-s3 font-light">{desc}</p>
+    <div className="flex flex-col-reverse gap-s4 rounded-2xl bg-white-transparent p-s3 md:flex-row md:gap-s9">
+      <div className="flex flex-1 flex-col items-start justify-center">
+        <h4 className="mb-s2 text-xl font-semibold md:text-5xl">{title}</h4>
+        <p className="font-light">{desc}</p>
       </div>
-      <div className="max-h-[400px] max-w-[540px] p-s3">
-        <Image
-          src={image}
-          alt={title}
-          width={540}
-          height={360}
-          className="object-contain"
-        />
+
+      <div className="flex-1">
+        <Image src={image} alt={title} className="object-contain" />
       </div>
     </div>
   );

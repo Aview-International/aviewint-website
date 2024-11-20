@@ -139,7 +139,6 @@ const DashboardHome = () => {
       if (payload.saveSettings)
         updateRequiredServices(preferences, userData.uid);
       await transcribeSocialLink({
-        creatorId: userData.uid,
         videoData: selectedVideos,
         languages: payload.languages,
         additionalNote: payload.additionalNote,

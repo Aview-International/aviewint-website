@@ -13,19 +13,12 @@ const FAQ = ({ page }) => {
       data-aos="zoom-in"
     >
       <div className="w-full lg:w-2/4">
-        <h2 className="text-start text-5xl font-bold leading-none lg:text-[48px]">
+        <h2 className="text-5xl font-bold lg:text-8xl">
           Frequently Asked Questions
         </h2>
-        <p className="ml-1 text-sm font-light md:text-base">
+        <p className="ml-1 pt-s2 text-sm font-light md:text-base">
           Want to know more? Email us at{' '}
-          <a
-            href="mailto:julia@aviewint.com"
-            className="hover:text-blue-400 transition-colors hover:underline"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = 'mailto:julia@aviewint.com';
-            }}
-          >
+          <a href="mailto:julia@aviewint.com" className="hover:underline">
             julia@aviewint.com
           </a>
         </p>
