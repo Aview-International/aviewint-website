@@ -213,59 +213,6 @@ export const PRICING_PAGE_TESTIMONIALS_2 = [
   maverick,
 ];
 
-export const LANDING_PAGE_TYPES = [
-  {
-    image: workspace,
-    title: 'Global Content Control Made Easy',
-    description:
-      'Seamlessly integrate, manage, and distribute your content on a global scale with Aview',
-    button_text: 'Explore content management',
-    imageWidth: 483,
-    imageHeight: 300,
-    hash: 'VDIhjfQ,1G*0-oOcxVx[9~vxFqtQm.VZ%ft-IorC-ApJ',
-  },
-  {
-    image: language_translator,
-    title: 'Speak Every Language, Reach Every Audience',
-    description:
-      'Unlock international markets with precise translations and voice over dubbing tailored for your content',
-    button_text: 'Explore translations',
-    imageWidth: 320,
-    imageHeight: 320,
-    hash: 'VGH_$JD262+sGI:dF,xlr_wO@sMxJSXT#oyYbLxGS}OT',
-  },
-  {
-    image: brand_collab,
-    title: 'Brand Collaborations That Resonate',
-    description:
-      'Discover and partner with global brands that align perfectly with your content\u0027s essence',
-    button_text: 'Explore AI voice',
-    imageWidth: 420,
-    imageHeight: 340,
-    hash: 'eIH2g4R$2$$+xbTOobxUWF$^-bt7N6NHt7x,RljLkAVzTwjbZ*WTxo',
-  },
-  {
-    image: table_globe,
-    title: 'Discover Your Global Fanbase',
-    description:
-      'Optimize and tailor your content to resonate with diverse audiences, expanding your reach and influence',
-    button_text: 'Explore',
-    imageWidth: 320,
-    imageHeight: 320,
-    hash: 'LYFFO6%jDzD~-?OZniw]9XRPNKs8',
-  },
-  {
-    image: monetize,
-    title: 'Monetization Beyond Borders',
-    description:
-      'Transform your content into a global revenue stream, tapping into untapped markets and audiences',
-    button_text: 'Explore distribution',
-    imageWidth: 400,
-    imageHeight: 400,
-    hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
-  },
-];
-
 export const AI_Tools = [
   {
     title: 'Multilingual Voiceovers',
@@ -1665,17 +1612,21 @@ export const SUPPORTED_REGIONS = [
         languageName: 'English (US)',
         localDialect: 'English (US)',
         id: 'English',
+        costPerCPM: 10,
       },
       {
         image: Spanish2,
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
+        id: 'Spanish (LATAM)',
+        costPerCPM: 8,
       },
       {
         image: Canada,
         languageName: 'French (QB)',
         localDialect: 'Français (QB)',
         id: 'Français',
+        costPerCPM: 7,
       },
     ],
   },
@@ -1688,12 +1639,14 @@ export const SUPPORTED_REGIONS = [
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
         id: 'Español',
+        costPerCPM: 8,
       },
       {
         image: Portuguese,
         languageName: 'Portuguese (BR)',
         localDialect: 'Português (BR)',
         id: 'Português',
+        costPerCPM: 5,
       },
     ],
   },
@@ -1705,46 +1658,55 @@ export const SUPPORTED_REGIONS = [
         image: Chinese,
         languageName: 'Chinese (Mandarin)',
         localDialect: '中文 (Zhōngwén)',
+        costPerCPM: 5,
       },
       {
         image: Hindi,
         languageName: 'Hindi',
         localDialect: 'हिन्दी (Hindī)',
+        costPerCPM: 5,
       },
       {
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Русский (Russkiy)',
+        costPerCPM: 5,
       },
       {
         image: Arabic,
         languageName: 'Arabic',
         localDialect: 'العربية (Al - ʿarabiyyah)',
+        costPerCPM: 5,
       },
       {
         image: Korean,
         languageName: 'Korean',
         localDialect: '한국어 (Hangugeo)',
+        costPerCPM: 5,
       },
       {
         image: Japanese,
         languageName: 'Japanese',
         localDialect: '日本語 (Nihongo)',
+        costPerCPM: 5,
       },
       {
         image: Indonesian,
         languageName: 'Indonesian',
         localDialect: 'Bahasa Indonesia',
+        costPerCPM: 5,
       },
       {
         image: Hindi,
         languageName: 'Bengali',
         localDialect: 'বাংলা (Bangla)',
+        costPerCPM: 5,
       },
       {
         image: Filipino,
         languageName: 'Filipino',
         localDialect: 'Wikang Filipino',
+        costPerCPM: 5,
       },
     ],
   },
@@ -1756,42 +1718,50 @@ export const SUPPORTED_REGIONS = [
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Russian',
+        costPerCPM: 5,
       },
       {
         image: German,
         languageName: 'German',
         localDialect: 'Deutsch',
+        costPerCPM: 5,
       },
       {
         image: Uk,
         languageName: 'English (UK)',
         localDialect: 'English (UK)',
         id: 'English ',
+        costPerCPM: 10,
       },
       {
         image: French,
         languageName: 'French',
         localDialect: 'Français',
+        costPerCPM: 7,
       },
       {
         image: Italian,
         languageName: 'Italian',
         localDialect: 'Italiano',
+        costPerCPM: 5,
       },
       {
         image: Turkish,
         languageName: 'Turkish',
         localDialect: 'Türkçe',
+        costPerCPM: 5,
       },
       {
         image: Spanish,
         languageName: 'Spanish',
         localDialect: 'Español',
+        costPerCPM: 5,
       },
       {
         image: Portugal,
         languageName: 'Portuguese',
         localDialect: 'Portugués',
+        costPerCPM: 5,
       },
     ],
   },
