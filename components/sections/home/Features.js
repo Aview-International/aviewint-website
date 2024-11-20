@@ -4,10 +4,10 @@ import { More_Features } from '../../../constants/constants';
 const Features = () => {
   return (
     <section className="m-horizontal section text-white" data-aos="fade-in">
-      <h2 className="mx-auto text-center text-5xl font-bold leading-none md:w-3/5 lg:text-[48px]">
+      <h2 className="mx-auto text-center text-5xl font-bold md:w-3/5 lg:text-[48px]">
         For creators, Enterprises, And everyone in between
       </h2>
-      <p className="mx-auto mb-s6 mt-s1 w-11/12 text-center font-extralight leading-none md:mt-s2 lg:w-1/2">
+      <p className="mx-auto mb-s6 mt-s1 w-11/12 text-center font-extralight md:mt-s2 lg:w-1/2">
         Our approach is simple. Make content as accessible to as many audiences
         as possible. We also want to make it as easy for anyone as possible
       </p>

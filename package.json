@@ -30,7 +30,6 @@
     "react-phone-number-input": "^3.2.8",
     "react-redux": "^8.1.1",
     "react-toastify": "^9.1.1",
-    "react-typed": "^1.2.0",
     "redux-logger": "^3.0.6",
     "wavesurfer.js": "^7.2.0"
   },

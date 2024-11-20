@@ -38,13 +38,13 @@ const Home = ({ blogs }) => {
         title="Video Translation & Subtitling - AVIEW"
         description="All-in-one solution for content creators and brands to monetize international audiences. Leverage tools for context-based translations, voice-over dubbing, and global distribution"
       />
+      <ScrollToTopButton />
       <CookieConsent />
       <ProgressBar />
       <Header curPage="Home" />
       <UnlockGlobalGrowth />
       <AiTools />
       <HowItWorks />
-      <ScrollToTopButton />
       <ScrollVerticalAnime />
       <Features />
       <CompareTools />
