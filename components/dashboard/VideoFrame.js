@@ -23,7 +23,7 @@ const VideoFrame = ({
 }) => {
   return (
     <div
-      className="cursor-pointer justify-self-center"
+      className="w-full cursor-pointer justify-self-center"
       onClick={() =>
         handleVideos({
           id,
@@ -45,14 +45,14 @@ const VideoFrame = ({
         />
         <p className="pl-s1">{icons[type].title}</p>
       </div>
-      <div className="relative">
+      <div className="">
         <div className="relative h-[150px] w-full">
           <Image
             loader={() => thumbnail}
             src={thumbnail}
             alt={type}
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
             unoptimized
           />
         </div>
@@ -64,7 +64,7 @@ const VideoFrame = ({
       </div>
       <div className="flex">
         <div>
-          <p className="mb-s1 text-lg">
+          <p className="my-s1 text-lg">
             {caption?.substring(0, 51)}
             {caption?.length > 51 && '...'}
           </p>
