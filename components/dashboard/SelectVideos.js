@@ -16,26 +16,26 @@ const SelectVideos = ({
       if (selectedVideos.length < 1) {
         toast.error('Please select a video');
       } else {
-        getYoutubeVideosStats(selectedVideos)
-          .then((stats) => {
-            const sumStats = stats.reduce(
-              (sum, { statistics: s }) => ({
-                totalViews: sum.totalViews + Number(s.viewCount || 0),
-                totalLikes: sum.totalLikes + Number(s.likeCount || 0),
-                totalFavorites:
-                  sum.totalFavorites + Number(s.favoriteCount || 0),
-                totalComments: sum.totalFavorites + Number(s.commentCount || 0),
-              }),
-              {
-                totalViews: 0,
-                totalLikes: 0,
-                totalFavorites: 0,
-                totalComments: 0,
-              }
-            );
-            setVideoStats(sumStats);
-          })
-          .catch();
+        // getYoutubeVideosStats(selectedVideos)
+        //   .then((stats) => {
+        //     const sumStats = stats.reduce(
+        //       (sum, { statistics: s }) => ({
+        //         totalViews: sum.totalViews + Number(s.viewCount || 0),
+        //         totalLikes: sum.totalLikes + Number(s.likeCount || 0),
+        //         totalFavorites:
+        //           sum.totalFavorites + Number(s.favoriteCount || 0),
+        //         totalComments: sum.totalFavorites + Number(s.commentCount || 0),
+        //       }),
+        //       {
+        //         totalViews: 0,
+        //         totalLikes: 0,
+        //         totalFavorites: 0,
+        //         totalComments: 0,
+        //       }
+        //     );
+        // setVideoStats(sumStats);
+        // })
+        // .catch();
         setIsSelected(true);
       }
     } catch (error) {}

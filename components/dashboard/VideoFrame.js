@@ -45,7 +45,7 @@ const VideoFrame = ({
         />
         <p className="pl-s1">{icons[type].title}</p>
       </div>
-      <div className="">
+      <div className="relative">
         <div className="relative h-[150px] w-full">
           <Image
             loader={() => thumbnail}
