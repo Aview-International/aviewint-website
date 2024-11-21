@@ -18,7 +18,12 @@ import {
   signInWithEmailLink,
 } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import { auth, createNewUser, signInWithGoogle } from '../../services/firebase';
+import {
+  auth,
+  checkUserEmail,
+  createNewUser,
+  signInWithGoogle,
+} from '../../services/firebase';
 import ButtonLoader from '../../components/UI/loader';
 import SEO from '../../components/SEO/SEO';
 
@@ -52,7 +57,9 @@ const Register = () => {
   const handleRedirect = async (_tokenResponse, emailForSignIn) => {
     Cookies.set('session', _tokenResponse.idToken);
     Cookies.set('uid', _tokenResponse.localId);
-    if (_tokenResponse.isNewUser) {
+
+    const res = await checkUserEmail(_tokenResponse.localId);
+    if (!res) {
       await createNewUser(
         _tokenResponse.localId,
         _tokenResponse?.firstName,

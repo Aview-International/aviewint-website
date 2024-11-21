@@ -73,8 +73,8 @@
     @apply transition-all duration-300 ease-in-out;
   }
 
-  .title {
-    @apply text-7xl font-bold text-white md:text-8xl;
+   .title {
+    @apply text-7xl font-bold text-white md:text-9xl;
   }
 
   .h2 {
@@ -86,7 +86,7 @@
   }
 
   .body {
-    @apply text-lg text-white md:text-xl;
+    @apply text-white md:text-lg font-light;
   }
   .phone-number input {
     @apply w-full bg-transparent pl-s2;
@@ -113,12 +113,28 @@
   }
 
   .animate-images {
-    animation: slide-testimonial 18s linear infinite;
+    animation: slide-testimonial 15s linear infinite;
+    will-change: transform;
   }
 
-  .animate-images-reverse {
-    animation: slide-testimonial-reverse 18s linear infinite;
+  .animate-images-anime {
+    animation: slide-testimonial 30s linear infinite;
+    will-change: transform;
   }
+
+  .animate-images-anime-first {
+    animation: slide-testimonial-first 30s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-images-anime-second {
+    animation: slide-testimonial-second 30s linear infinite;
+    will-change: transform;
+  }
+ 
+  /* .animate-images-reverse {
+    animation: slide-testimonial-reverse 8s linear infinite;
+  } */
 
   /* For Chrome browsers */
   .slider-thumb::-webkit-slider-thumb {
@@ -331,20 +347,29 @@
   }
 
   @keyframes slide-testimonial {
-    from {
-      transform: translateY(0);
+    0% {
+      transform: translateX(0);
     }
-    to {
-      transform: translateY(-100%);
+    100% {
+      transform: translateX(-33.3%);
     }
   }
 
-  @keyframes slide-testimonial-reverse {
+  @keyframes slide-testimonial-first {
     from {
-      transform: translateY(-100%);
+      transform: translateX(-22.2%);
     }
     to {
-      transform: translateY(0);
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-testimonial-second {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-44.4%);
     }
   }
 

@@ -3,7 +3,6 @@ import Header from '../../components/navigation/Header';
 import Blobs from '../../components/UI/Blobs';
 import SEO from '../../components/SEO/SEO';
 import BlogRow from '../../components/blogs/BlogRow';
-import EasterEgg from '../../components/sections/reused/EasterEgg';
 import { getBlogPreviews } from '../../lib/notion';
 import ScrollToTopButton from '../../components/UI/ScrollToTopButton';
 import ProgressBar from '../../components/UI/ProgressBar';
@@ -13,12 +12,11 @@ const Blogs = ({ blogs }) => {
     <>
       <SEO title="Blog - AVIEW" />
       <ProgressBar />
-      <EasterEgg />
       <Header curPage="Blog" />
       <ScrollToTopButton />
       <section className="section m-horizontal">
         <h1 className="title mb-s4 mt-s6 text-center md:mb-s8 md:mt-s18">
-          Enjoy our <span className="gradient-text gradient-2">Blogs.</span>
+          Enjoy our <span className="gradient-text gradient-2">Blogs</span>
         </h1>
         <BlogRow blogs={blogs} />
       </section>
@@ -33,19 +31,13 @@ export default Blogs;
 export async function getStaticProps() {
   const blogs = await getBlogPreviews();
 
-  blogs.sort((blog1, blog2) => {
-    if (blog1.date > blog2.date) {
-      return -1;
-    } else if (blog1.date < blog2.date) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
+  let validData = blogs
+    .filter((item) => !isNaN(new Date(item.date)))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return {
     props: {
-      blogs: JSON.parse(JSON.stringify(blogs)),
+      blogs: JSON.parse(JSON.stringify(validData)),
     },
     revalidate: 1,
   };

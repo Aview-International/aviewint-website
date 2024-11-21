@@ -102,6 +102,9 @@ export const getChannelVideos = async (channelId) => {
   return response.data;
 };
 
+export const getYoutubeVideosStats = async (videos) =>
+  (await axiosInstance.post('auth/youtube/video-analytics', { videos })).data;
+
 // export const getUserMessages = async () => {
 //   const response = await axiosInstance.get('messages/convo');
 //   return response.data;
@@ -189,26 +192,36 @@ export const deleteVoiceClone = async (voiceId) => {
   return res;
 };
 
+let cancelTokenSource = null;
+
 export const uploadCreatorVideo = async (
   video,
-  creatorId,
   languages,
   additionalNote,
   setUploadProgress
 ) => {
+  cancelTokenSource = axios.CancelToken.source();
+
   let formData = new FormData();
   formData.append('video', video);
-  formData.append('creatorId', creatorId);
   formData.append('additionalNote', additionalNote);
   for (const lang of languages) formData.append('languages', lang);
 
   await axiosInstance.post('transcription/upload-creator-video', formData, {
+    cancelToken: cancelTokenSource.token,
     onUploadProgress: (progressEvent) =>
       setUploadProgress(
         Math.round((progressEvent.loaded * 100) / progressEvent.total)
       ),
   });
   return;
+};
+
+export const cancelVideoUpload = () => {
+  if (cancelTokenSource) {
+    cancelTokenSource.cancel('Upload canceled');
+    cancelTokenSource = null;
+  }
 };
 
 export const getIgAuthLink = async () => {
@@ -277,14 +290,14 @@ export const subscriptionHistory = async () =>
 export const deleteThread = async (threadId) =>
   (await axiosInstance.delete(`messages/delete-thread/${threadId}`)).data;
 
-export const downloadVideoFromS3 = async (timestamp, title, lang) =>
-  (
-    await axiosInstance.post(`admin/download`, {
-      timestamp,
-      title,
-      language: lang,
-    })
-  ).data;
+export const downloadVideoFromS3 = async (timestamp, title, lang) => {
+  const res = await axiosInstance.post(`admin/download`, {
+    timestamp,
+    title,
+    language: lang,
+  });
+  return res.data;
+};
 
 export const getJobsHistory = async () =>
   (await axiosInstance.get('transcription/history')).data;

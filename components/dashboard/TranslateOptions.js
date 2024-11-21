@@ -14,6 +14,8 @@ const TranslateOptions = ({
   setPayload,
   isLoading,
   uploadProgress,
+  handleCancelVideoUpload,
+  videoStats,
 }) => {
   const userData = useSelector((state) => state.user);
   const youtubePicture = useSelector(
@@ -56,18 +58,35 @@ const TranslateOptions = ({
           >
             <div className="flex items-center justify-between">
               <Image
-                src={youtubePicture || defaultPfp} //Conditional default pfp
+                src={youtubePicture || defaultPfp}
                 alt="profile-image"
                 height={40}
                 width={40}
                 className="block rounded-full"
               />
-              <div className="ml-3 flex flex-col">
+              <div className="ml-3">
                 <h2 className="text-lg">
                   {userData.youtubeChannelName}
                   {findLocalDialect(language)?.['localDialect']}
                 </h2>
-                <p className="text-sm">YouTube</p>
+                <p className="text-sm">{language}</p>
+                {/* how calculation is done
+              english -  $6 per CPM 
+              latam - $2 per CPM
+              southeast asia - $0.8 CPM
+              south asia - $1.5 CPM
+              north & east asia - $1.5 CPM
+              west asia - $0.8 CPM
+              central asia - $1 CPM
+              africa - $1 CPM
+              */}
+                {videoStats && (
+                  <div className="border-1 mt-s1 rounded border border-white-transparent bg-white-transparent p-s0 text-green">
+                    Expected Revenue: {'$'}
+                    {findLocalDialect(language)?.['costPerCPM'] *
+                      videoStats.totalViews}
+                  </div>
+                )}
               </div>
             </div>
             <ToggleButton
@@ -105,6 +124,14 @@ const TranslateOptions = ({
         ) : (
           <p>Processing video please wait</p>
         ))}
+
+      {uploadProgress > 0 && (
+        <div className="mt-s3 w-full md:w-36">
+          <GlobalButton onClick={handleCancelVideoUpload} theme="error">
+            Cancel Upload
+          </GlobalButton>
+        </div>
+      )}
       {!isLoading && (
         <div className="w-full md:w-36">
           <GlobalButton isLoading={isLoading} onClick={handleSubmit}>

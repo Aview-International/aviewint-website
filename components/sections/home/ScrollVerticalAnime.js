@@ -1,44 +1,52 @@
 import Image from 'next/image';
-import { LANDNG_PAGE_TESTIMONIALS } from '../../../constants/constants';
+import {
+  LANDNG_PAGE_TESTIMONIALS,
+  LANDNG_PAGE_TESTIMONIALS_REVERSE,
+} from '../../../constants/constants';
 
 const ScrollVerticalAnime = () => {
   return (
-    <section className="section m-horizontal text-white" data-aos="zoom-in">
-      <div className="mt-s16 grid h-[944px] w-full max-w-[1240px] grid-cols-1 place-content-center justify-items-center gap-8 rounded-2xl bg-white-transparent md:h-[560px] md:grid-cols-2">
-        <div className="flex h-full w-[90%] items-center justify-start p-s1">
-          <h2 className="h2">
-            Chosen by the World&apos;s Leading Creators and Innovative
-            Enterprises
-          </h2>
+    <section className="section text-white" data-aos="zoom-in">
+      <h2 className="mx-auto w-full text-center text-5xl font-bold lg:w-[85%] lg:text-8xl">
+        Chosen by the World&apos;s Leading{' '}
+        <span className="inline lg:block lg:text-center">
+          Creators and Innovative Enterprises
+        </span>
+      </h2>
+      <div className="relative mt-s8 overflow-hidden">
+        <div className="animate-images flex w-fit gap-x-6">
+          {[...Array(4)].map((_, setIndex) => (
+            <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
+              {LANDNG_PAGE_TESTIMONIALS.map((img, i) => (
+                <Image
+                  key={i}
+                  src={img}
+                  alt=""
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+              ))}
+            </div>
+          ))}
         </div>
-        <div className="flex flex-row justify-center gap-3 overflow-hidden whitespace-nowrap">
-          <div className="animate-images flex flex-col justify-center gap-y-4">
-            {LANDNG_PAGE_TESTIMONIALS.map((img, i) => (
-              <div className="h-36 w-36 md:h-60 md:w-60" key={i}>
+      </div>
+      <div className="relative mt-s8 -ml-s12 overflow-hidden">
+        <div className="animate-images flex w-fit gap-x-6">
+          {[...Array(4)].map((_, setIndex) => (
+            <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
+              {LANDNG_PAGE_TESTIMONIALS_REVERSE.map((img, i) => (
                 <Image
                   src={img}
+                  key={i}
                   alt=""
-                  width="180"
-                  height="180"
+                  width={200}
+                  height={200}
                   className="rounded-lg"
                 />
-              </div>
-            ))}
-          </div>
-
-          <div className="animate-images-reverse flex flex-col justify-center gap-y-4">
-            {LANDNG_PAGE_TESTIMONIALS.reverse().map((img, i) => (
-              <div className="h-36 w-36 md:h-60 md:w-60" key={i}>
-                <Image
-                  src={img}
-                  alt=""
-                  width="180"
-                  height="180"
-                  className="rounded-lg"
-                />
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>

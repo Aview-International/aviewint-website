@@ -19,18 +19,17 @@ import {
   setCompletedJobs,
   setPendingJobs,
 } from '../../store/reducers/history.reducer';
-import Cookies from 'js-cookie';
 import {
   updateRequiredServices,
   subscribeToHistory,
 } from '../../services/firebase';
 import { setTikTokVideos } from '../../store/reducers/tiktok.reducer';
+import Cookies from 'js-cookie';
 
 const DashboardHome = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
-  const uid = Cookies.get('uid');
   const userData = useSelector((state) => state.user);
+  const uid = Cookies.get('uid');
   const channelDetails = useSelector((state) => state.youtube.channelDetails);
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +39,8 @@ const DashboardHome = () => {
     additionalNote: '',
     saveSettings: false,
   });
+
+  const [videoStats, setVideoStats] = useState(undefined);
 
   const getYoutubeVideos = async () => {
     try {
@@ -102,16 +103,14 @@ const DashboardHome = () => {
 
   useEffect(() => {
     (async () => {
-      if (isLoggedIn) {
-        try {
-          const completedArray = await getJobsHistory();
-          dispatch(setCompletedJobs(completedArray));
-        } catch (error) {
-          ErrorHandler(error);
-        }
+      try {
+        const completedArray = await getJobsHistory();
+        dispatch(setCompletedJobs(completedArray));
+      } catch (error) {
+        ErrorHandler(error);
       }
     })();
-  }, [isLoggedIn]);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = subscribeToHistory(uid, (data) => {
@@ -140,7 +139,6 @@ const DashboardHome = () => {
       if (payload.saveSettings)
         updateRequiredServices(preferences, userData.uid);
       await transcribeSocialLink({
-        creatorId: userData.uid,
         videoData: selectedVideos,
         languages: payload.languages,
         additionalNote: payload.additionalNote,
@@ -176,6 +174,7 @@ const DashboardHome = () => {
             payload={payload}
             handleSubmit={handleSubmit}
             isLoading={isLoading}
+            videoStats={videoStats}
           />
         ) : (
           <SelectVideos
@@ -183,6 +182,7 @@ const DashboardHome = () => {
             setIsSelected={setIsSelected}
             selectedVideos={selectedVideos}
             setSelectedVideos={setSelectedVideos}
+            setVideoStats={setVideoStats}
           />
         )}
       </div>

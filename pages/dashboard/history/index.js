@@ -11,14 +11,6 @@ import {
 import ErrorHandler from '../../../utils/errorHandler';
 import { subscribeToHistory } from '../../../services/firebase';
 
-// Import createContext and useContext
-import { createContext, useContext, useState } from 'react';
-
-// Create a context for translatedLanguage
-const TranslatedLanguageContext = createContext();
-
-export const useTranslatedLanguage = () =>
-  useContext(TranslatedLanguageContext);
 const History = () => {
   const dispatch = useDispatch();
   const { completedJobs, pendingJobs } = useSelector((el) => el.history);
@@ -60,7 +52,7 @@ const History = () => {
 const Container = ({ pendingJobs, completedJobs }) => {
   const handleDownload = async (job) => {
     const downloadLink = await downloadVideoFromS3(
-      job.timestamp,
+      job.jobId,
       job.videoData.caption,
       job.translatedLanguage
     );

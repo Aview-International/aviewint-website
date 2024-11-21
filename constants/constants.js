@@ -1,10 +1,16 @@
 // Social Icons
 import linkedin from '../public/img/icons/linkedin.svg';
 import facebook from '../public/img/icons/facebook.svg';
+import facebook_color from '../public/img/icons/facebook-color.svg';
 import youtube from '../public/img/icons/youtube.svg';
+import youtube_red from '../public/img/icons/youtube-red.svg';
 import tiktok from '../public/img/icons/tiktok.svg';
+import tiktok_color from '../public/img/icons/tiktok-color.svg';
 import instagram from '../public/img/icons/instagram.svg';
+import instagram_red from '../public/img/icons/instagram-2.svg';
 import twitter from '../public/img/icons/twitter.svg';
+import vimeo from '../public/img/icons/Vimeo.svg';
+import aview_ai from '../public/img/icons/aview-ai.svg';
 
 // Content Creators
 import logan1 from '../public/img/creators/logan-1.png';
@@ -104,12 +110,12 @@ import Uk from '../public/img/icons/uk.svg';
 import brand_collab from '../public/img/graphics/new-landing-images/brand_collab.webp';
 import language_translator from '../public/img/graphics/new-landing-images/lanuage_translate.webp';
 import monetize from '../public/img/graphics/new-landing-images/monetize.webp';
+import workspace from '../public/img/graphics/new-landing-images/monetize.webp';
 import table_globe from '../public/img/graphics/new-landing-images/table_globe.webp';
-import workspace from '../public/img/graphics/new-landing-images/Workspace.webp';
-
-//new landing-page empower section
-import target from '../public/img/graphics/new-landing-images/target.webp';
-import empower from '../public/img/graphics/new-landing-images/empower.webp';
+import cultural_modifications from '../public/img/graphics/new-landing-images/cultural-modifications.webp';
+import multilingual_voiceovers from '../public/img/graphics/new-landing-images/multilingual-voiceovers.webp';
+import multi_track_audio from '../public/img/graphics/new-landing-images/multi-track-audio.webp';
+import translated_subtitles from '../public/img/graphics/new-landing-images/translated-subtitles.webp';
 
 //new landing-page corporate language icons
 import english from '../public/img/graphics/corporate/english.png';
@@ -155,6 +161,19 @@ import voice_recognition from '../public/img/graphics/voice-recognition.png';
 import voice_to_text from '../public/img/graphics/voice-to-text.png';
 import youtube_ai from '../public/img/graphics/youtube.png';
 
+import channel_management from '../public/img/graphics/channel_management.png';
+import global_reach from '../public/img/graphics/global_reach.png';
+import global_ai from '../public/img/graphics/globe-ai.svg';
+import ai_mask from '../public/img/graphics/ai-mask.svg';
+import clock from '../public/img/icons/clock.svg';
+import file_text from '../public/img/icons/file-text.svg';
+import mic from '../public/img/graphics/mic.svg';
+import upload_ai from '../public/img/graphics/upload-ai.svg';
+import video from '../public/img/graphics/video.svg';
+import volume from '../public/img/graphics/volume.svg';
+
+import aviewLogo from '../public/img/aview/AviewLogo.png';
+
 export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_1,
   testimonial_2,
@@ -164,6 +183,17 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_6,
   testimonial_7,
   testimonial_8,
+];
+
+export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
+  testimonial_8,
+  testimonial_7,
+  testimonial_6,
+  testimonial_5,
+  testimonial_4,
+  testimonial_3,
+  testimonial_2,
+  testimonial_1,
 ];
 
 export const PRICING_PAGE_TESTIMONIALS_1 = [
@@ -183,56 +213,194 @@ export const PRICING_PAGE_TESTIMONIALS_2 = [
   maverick,
 ];
 
-export const LANDING_PAGE_TYPES = [
+export const AI_Tools = [
   {
-    image: workspace,
-    title: 'Global Content Control Made Easy',
-    description:
-      'Seamlessly integrate, manage, and distribute your content on a global scale with Aview',
-    button_text: 'Explore content management',
-    imageWidth: 483,
-    imageHeight: 300,
-    hash: 'VDIhjfQ,1G*0-oOcxVx[9~vxFqtQm.VZ%ft-IorC-ApJ',
+    title: 'Multilingual Voiceovers',
+    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project',
+    button_text: 'Try our subtitle generator',
+    image: multilingual_voiceovers,
+    index: 1,
   },
   {
-    image: language_translator,
-    title: 'Speak Every Language, Reach Every Audience',
-    description:
-      'Unlock international markets with precise translations and voice over dubbing tailored for your content',
-    button_text: 'Explore translations',
-    imageWidth: 320,
-    imageHeight: 320,
-    hash: 'VGH_$JD262+sGI:dF,xlr_wO@sMxJSXT#oyYbLxGS}OT',
+    title: 'Cultural Modifications',
+    desc: 'Our cultural sensitivity filters ensure that your translations and dubbing are contextually accurate to your audience and language of choice',
+    button_text: 'Try our voiceover generator',
+    image: cultural_modifications,
+    index: 2,
   },
   {
-    image: brand_collab,
-    title: 'Brand Collaborations That Resonate',
-    description:
-      'Discover and partner with global brands that align perfectly with your content\u0027s essence',
-    button_text: 'Explore AI voice',
-    imageWidth: 420,
-    imageHeight: 340,
-    hash: 'eIH2g4R$2$$+xbTOobxUWF$^-bt7N6NHt7x,RljLkAVzTwjbZ*WTxo',
+    title: 'Translated Subtitles',
+    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project',
+    button_text: 'Try speech to text conversion',
+    image: translated_subtitles,
+    index: 3,
   },
   {
-    image: table_globe,
-    title: 'Discover Your Global Fanbase',
-    description:
-      'Optimize and tailor your content to resonate with diverse audiences, expanding your reach and influence',
-    button_text: 'Explore',
-    imageWidth: 320,
-    imageHeight: 320,
-    hash: 'LYFFO6%jDzD~-?OZniw]9XRPNKs8',
+    title: 'Content Distribution',
+    desc: 'We run your international channels and optimize them to get seen by your most likely audiences around the world',
+    button_text: 'Try text to speech conversion',
+    image: null,
+    index: 4,
   },
   {
-    image: monetize,
-    title: 'Monetization Beyond Borders',
-    description:
-      'Transform your content into a global revenue stream, tapping into untapped markets and audiences',
-    button_text: 'Explore distribution',
-    imageWidth: 400,
-    imageHeight: 400,
-    hash: 'VLH2p4RP6A${OHUHjFvgf$tR-9ozI:NL$%n4WUkqSji_',
+    title: 'Multi-Track Audio',
+    desc: 'We edit your videos and include audio tracks to your video file so you don\u0027t have new youtube channels.',
+    button_text: 'Try text to speech conversion',
+    image: multi_track_audio,
+    index: 5,
+  },
+];
+
+export const ComparisionTools = [
+  {
+    title: 'Other Leading AI Alternatives',
+    index: 1,
+    options1: [
+      {
+        text: 'Translations',
+        boolean: true,
+      },
+      {
+        text: 'Cultural Filters',
+        boolean: false,
+      },
+      {
+        text: 'Voiceover Dubbing',
+        boolean: true,
+      },
+      {
+        text: 'Video Editing',
+        boolean: true,
+      },
+      {
+        text: 'Content Management',
+        boolean: false,
+      },
+      {
+        text: 'Channel Monetization',
+        boolean: false,
+      },
+    ],
+    options2: [
+      {
+        text: 'Easy, all in one platform for international expansion',
+        boolean: false,
+      },
+      {
+        text: 'Multi-channel distribution capabilities',
+        boolean: false,
+      },
+      {
+        text: 'Multi-speaker dubbing',
+        boolean: false,
+      },
+    ],
+  },
+  {
+    image: aviewLogo,
+    index: 2,
+    options1: [
+      {
+        text: 'Translations',
+        boolean: true,
+      },
+      {
+        text: 'Cultural Filters',
+        boolean: true,
+      },
+      {
+        text: 'Voiceover Dubbing',
+        boolean: true,
+      },
+      {
+        text: 'Video Editing',
+        boolean: true,
+      },
+      {
+        text: 'Content Management',
+        boolean: true,
+      },
+      {
+        text: 'Channel Monetization',
+        boolean: true,
+      },
+    ],
+    options2: [
+      {
+        text: 'Easy, all in one platform for international expansion',
+        boolean: true,
+      },
+      {
+        text: 'Multi-channel distribution capabilities',
+        boolean: true,
+      },
+      {
+        text: 'Multi-speaker dubbing',
+        boolean: true,
+      },
+    ],
+  },
+];
+
+export const Work_Process = [
+  {
+    title: 'Sign Up for Free',
+    desc: 'Quickly create your free AView account to unlock global distribution',
+  },
+  {
+    title: 'Connect Your Socials',
+    desc: 'Link your social profiles to sync content and optimize reach',
+  },
+  {
+    title: 'Upload & Use AI Tools',
+    desc: 'Upload videos and leverage AI to enhance, caption, and translate for international audience',
+  },
+  {
+    title: 'Distribute with One Click',
+    desc: 'Export and publish across multiple platforms and regions effortlessly',
+  },
+];
+
+export const More_Features = [
+  {
+    title: 'Integrate with Popular Social Media Platforms',
+    desc: ' Connect easily with platforms like YouTube, Instagram, and TikTok to distribute content in multiple languages worldwide',
+    options: [
+      aview_ai,
+      facebook_color,
+      instagram_red,
+      tiktok_color,
+      youtube_red,
+      vimeo,
+    ],
+    index: 1,
+  },
+  {
+    title: 'Simplified Channel Management',
+    desc: 'Manage all your channels effortlessly with one-click updates and scheduling across platforms',
+    options: global_reach,
+    index: 2,
+  },
+  {
+    title: 'Maximize Reach with Global Analytics',
+    desc: `Use Aview's analytics to track performance and optimize your content's global impact`,
+    options: channel_management,
+    index: 3,
+  },
+  {
+    title: 'All in one suite of tools',
+    desc: 'Run your international channels all within our creator suite, with all the tools you need to create great content',
+    options: [
+      volume,
+      clock,
+      file_text,
+      global_ai,
+      upload_ai,
+      video,
+      ai_mask,
+      mic,
+    ],
+    index: 4,
   },
 ];
 
@@ -266,23 +434,6 @@ export const AI_Tools_Page = [
     description:
       'Effortlessly download your video\u0027s for seamless translation and adaptation, enabling your global audience to enjoy your content in their native languages.',
     img: youtube_ai,
-  },
-];
-
-export const LANDNG_PAGE_EMPOWER_SECTION = [
-  {
-    image: empower,
-    imageWidth: 508,
-    sectionTitle: 'Tools for Global Dominance',
-    sectionText:
-      'Harness a suite of powerful tools designed to propel your content onto the international stage.',
-  },
-  {
-    image: target,
-    imageWidth: 326,
-    sectionTitle: 'Insights for International Impact',
-    sectionText:
-      'Dive deep into analytics, understand your global reach, and monetize effectively in every language.',
   },
 ];
 
@@ -387,62 +538,76 @@ export const LANDING_PAGE_METRICS = [
 
 export const ROUTES = [
   {
-    id: 'route-2',
-    title: 'Corporate',
+    id: 'route-1',
+    title: 'Languages',
     routes: [
       {
-        text: 'Scientific Documents',
-        route: '/corporate/scientific',
+        text: 'English',
+        route: '/languages/english',
       },
       {
-        text: 'Financial Documents',
-        route: '/corporate/financial',
+        text: 'Spanish',
+        route: '/languages/spanish',
       },
       {
-        text: 'Business Documents',
+        text: 'French',
+        route: '/languages/french',
+      },
+      {
+        text: 'German',
+        route: '/languages/german',
+      },
+      {
+        text: 'Japanese',
+        route: '/languages/japanese',
+      },
+    ],
+  },
+  {
+    id: 'route-2',
+    title: 'Industries',
+    routes: [
+      {
+        text: 'Business',
         route: '/corporate/business',
       },
       {
-        text: 'Legal Documents',
+        text: 'Scientific',
+        route: '/corporate/scientific',
+      },
+      {
+        text: 'Financial',
+        route: '/corporate/financial',
+      },
+      {
+        text: 'Legal',
         route: '/corporate/legal',
       },
       {
-        text: 'Marketing Documents',
-        route: '/corporate/marketing',
-      },
-      {
-        text: 'eLearning Documents',
-        route: '/corporate/e-learning',
-      },
-      {
-        text: 'Medical Documents',
+        text: 'Medical',
         route: '/corporate/medical',
-      },
-      {
-        text: 'Voice Overs',
-        route: '/corporate/voice-over',
       },
     ],
   },
   {
     id: 'route-3',
-    title: 'Resources',
+    title: 'Company',
     routes: [
-      {
-        text: 'Pricing',
-        route: '/pricing',
-      },
       {
         text: 'Blog',
         route: '/blog',
       },
       {
-        text: 'About',
-        route: '/about',
+        text: 'Pricing',
+        route: '/pricing',
       },
       {
         text: 'Careers',
         route: '/careers',
+      },
+      {
+        text: 'About Us',
+        route: '/about',
       },
       {
         text: 'Contact',
@@ -1447,17 +1612,21 @@ export const SUPPORTED_REGIONS = [
         languageName: 'English (US)',
         localDialect: 'English (US)',
         id: 'English',
+        costPerCPM: 10,
       },
       {
         image: Spanish2,
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
+        id: 'Spanish (LATAM)',
+        costPerCPM: 8,
       },
       {
         image: Canada,
         languageName: 'French (QB)',
         localDialect: 'Français (QB)',
         id: 'Français',
+        costPerCPM: 7,
       },
     ],
   },
@@ -1470,12 +1639,14 @@ export const SUPPORTED_REGIONS = [
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
         id: 'Español',
+        costPerCPM: 8,
       },
       {
         image: Portuguese,
         languageName: 'Portuguese (BR)',
         localDialect: 'Português (BR)',
         id: 'Português',
+        costPerCPM: 5,
       },
     ],
   },
@@ -1487,46 +1658,55 @@ export const SUPPORTED_REGIONS = [
         image: Chinese,
         languageName: 'Chinese (Mandarin)',
         localDialect: '中文 (Zhōngwén)',
+        costPerCPM: 5,
       },
       {
         image: Hindi,
         languageName: 'Hindi',
         localDialect: 'हिन्दी (Hindī)',
+        costPerCPM: 5,
       },
       {
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Русский (Russkiy)',
+        costPerCPM: 5,
       },
       {
         image: Arabic,
         languageName: 'Arabic',
         localDialect: 'العربية (Al - ʿarabiyyah)',
+        costPerCPM: 5,
       },
       {
         image: Korean,
         languageName: 'Korean',
         localDialect: '한국어 (Hangugeo)',
+        costPerCPM: 5,
       },
       {
         image: Japanese,
         languageName: 'Japanese',
         localDialect: '日本語 (Nihongo)',
+        costPerCPM: 5,
       },
       {
         image: Indonesian,
         languageName: 'Indonesian',
         localDialect: 'Bahasa Indonesia',
+        costPerCPM: 5,
       },
       {
         image: Hindi,
         languageName: 'Bengali',
         localDialect: 'বাংলা (Bangla)',
+        costPerCPM: 5,
       },
       {
         image: Filipino,
         languageName: 'Filipino',
         localDialect: 'Wikang Filipino',
+        costPerCPM: 5,
       },
     ],
   },
@@ -1538,42 +1718,50 @@ export const SUPPORTED_REGIONS = [
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Russian',
+        costPerCPM: 5,
       },
       {
         image: German,
         languageName: 'German',
         localDialect: 'Deutsch',
+        costPerCPM: 5,
       },
       {
         image: Uk,
         languageName: 'English (UK)',
         localDialect: 'English (UK)',
         id: 'English ',
+        costPerCPM: 10,
       },
       {
         image: French,
         languageName: 'French',
         localDialect: 'Français',
+        costPerCPM: 7,
       },
       {
         image: Italian,
         languageName: 'Italian',
         localDialect: 'Italiano',
+        costPerCPM: 5,
       },
       {
         image: Turkish,
         languageName: 'Turkish',
         localDialect: 'Türkçe',
+        costPerCPM: 5,
       },
       {
         image: Spanish,
         languageName: 'Spanish',
         localDialect: 'Español',
+        costPerCPM: 5,
       },
       {
         image: Portugal,
         languageName: 'Portuguese',
         localDialect: 'Portugués',
+        costPerCPM: 5,
       },
     ],
   },

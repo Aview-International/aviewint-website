@@ -8,9 +8,22 @@ import {
 
 const FAQ = ({ page }) => {
   return (
-    <section className="section m-horizontal">
-      <h2 className="h2 text-center">Frequently Asked Questions</h2>
-      <div className="mt-s2 flex flex-col gap-y-5">
+    <section
+      className="section m-horizontal flex flex-col text-white lg:flex-row"
+      data-aos="zoom-in"
+    >
+      <div className="w-full lg:w-2/4">
+        <h2 className="text-5xl font-bold lg:text-8xl">
+          Frequently Asked Questions
+        </h2>
+        <p className="ml-1 pt-s2 text-sm font-light md:text-base">
+          Want to know more? Email us at{' '}
+          <a href="mailto:julia@aviewint.com" className="hover:underline">
+            julia@aviewint.com
+          </a>
+        </p>
+      </div>
+      <div className="mt-6 flex flex-col gap-y-5 lg:mt-0 lg:w-3/5">
         {page === 'e-learning'
           ? E_LEARNING_FAQ.map((faq, i) => (
               <Question key={`faq-${i}`} {...faq} />
@@ -48,9 +61,7 @@ const Question = ({ question, answer }) => {
         onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}
       >
         <div className="flex items-center justify-between">
-          <h3 className="-mb-1 text-xl font-medium text-white md:text-3xl">
-            {question}
-          </h3>
+          <h3 className="-mb-1 text-xl font-medium  md:text-3xl">{question}</h3>
           <div className="relative h-5 w-5">
             <div className="absolute top-1/2 left-1/2 h-0.5 w-5 -translate-x-1/2 -translate-y-1/2 bg-white md:h-[3px] md:w-7"></div>
             <div
