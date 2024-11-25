@@ -14,7 +14,7 @@ const ScrollVerticalAnime = () => {
         </span>
       </h2>
       <div className="relative mt-s8 overflow-hidden">
-        <div className="animate-images flex w-fit gap-x-6">
+        <div className="animate-scroll flex w-fit gap-x-6">
           {[...Array(4)].map((_, setIndex) => (
             <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
               {LANDNG_PAGE_TESTIMONIALS.map((img, i) => (
@@ -32,7 +32,7 @@ const ScrollVerticalAnime = () => {
         </div>
       </div>
       <div className="relative mt-s8 -ml-s12 overflow-hidden">
-        <div className="animate-images flex w-fit gap-x-6">
+        <div className="animate-scroll flex w-fit gap-x-6">
           {[...Array(4)].map((_, setIndex) => (
             <div className="flex shrink-0 gap-6" key={`set-${setIndex}`}>
               {LANDNG_PAGE_TESTIMONIALS_REVERSE.map((img, i) => (
