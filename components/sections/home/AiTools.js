@@ -50,7 +50,7 @@ const AiTools = () => {
       <div className="mt-s8 grid grid-cols-1 gap-8 md:grid-cols-2">
         <Voiceovers />
         {AI_Tools.slice(1).map((tool, i) => (
-          <div key={i} className={'col-span-1 max-w-[600px]'}>
+          <div key={i} className={'col-span-1 w-full md:max-w-[600px]'}>
             <div className="relative flex h-full w-full flex-col justify-start gap-y-2 rounded-2xl bg-white-transparent py-s3 px-s2">
               {Tools[i + 1]}
               <h4 className="mt-s4 mb-s2 px-s3 text-xl font-semibold md:text-5xl">
@@ -166,11 +166,11 @@ const TranslatedSubtitles = () => {
     <div className="border-1 rounded-lg border border-white-transparent p-s3">
       <p className="mb-s3 text-3xl">Global Channel</p>
       <div className="border-1 mb-s4 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
-        <Image src={Logo} alt="" width={50} height={50} />
-        <div className="ml-s4 flex-grow">
-          <p className="text-lg">Aview International Eng...</p>
+        <Image src={Logo} alt="" width={40} height={40} />
+        <div className="ml-s2 flex-grow">
+          <p className="text-sm md:text-base">Aview International Eng...</p>
           <span
-            className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-1 text-sm ${
+            className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-0.5 text-xs md:text-sm ${
               toggle1 ? 'text-green' : 'text-gray-2'
             }`}
           >
@@ -181,11 +181,11 @@ const TranslatedSubtitles = () => {
         <ToggleButton isChecked={toggle1} handleChange={null} />
       </div>
       <div className="border-1 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
-        <Image src={Logo} alt="" width={50} height={50} />
-        <div className="ml-s4 flex-grow">
-          <p className="text-lg">Aview International Esp...</p>
+        <Image src={Logo} alt="" width={40} height={40} />
+        <div className="ml-s2 flex-grow">
+          <p className="text-sm md:text-base">Aview International Esp...</p>
           <span
-            className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-1 text-sm ${
+            className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-0.5 text-xs md:text-sm ${
               toggle2 ? 'text-green' : 'text-gray-2'
             }`}
           >
