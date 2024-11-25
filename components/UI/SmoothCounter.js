@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
  * @param {endValue} endValue value to stop at
  * @param {duration} duration speed at which the counter runs in milliseconds
  * @returns React.Component
+ * @author Victor Ogunjobi
  */
 const SmoothCounter = ({ endValue = 5000, duration = 2000 }) => {
   let stopNumer = endValue + 1;
