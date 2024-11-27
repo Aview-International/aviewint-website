@@ -166,9 +166,9 @@ const TranslatedSubtitles = () => {
     <div className="border-1 rounded-lg border border-white-transparent p-s3">
       <p className="mb-s3 text-3xl">Global Channel</p>
       <div className="border-1 mb-s4 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
-        <Image src={Logo} alt="" width={40} height={40} />
+        <Image src={Logo} alt="Aview Internaional" width={40} height={40} />
         <div className="ml-s2 flex-grow">
-          <p className="text-sm md:text-base">Aview International Eng...</p>
+          <p className="text-sm md:text-base">Aview English</p>
           <span
             className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-0.5 text-xs md:text-sm ${
               toggle1 ? 'text-green' : 'text-gray-2'
@@ -183,7 +183,7 @@ const TranslatedSubtitles = () => {
       <div className="border-1 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
         <Image src={Logo} alt="" width={40} height={40} />
         <div className="ml-s2 flex-grow">
-          <p className="text-sm md:text-base">Aview International Esp...</p>
+          <p className="text-sm md:text-base">Aview Espanyol</p>
           <span
             className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-0.5 text-xs md:text-sm ${
               toggle2 ? 'text-green' : 'text-gray-2'

@@ -1,7 +1,9 @@
 const ToggleButton = ({ handleChange, isChecked }) => {
   return (
     <label
-      className={`relative inline-block h-6 w-12 cursor-pointer rounded-3xl bg-gray-1`}
+      className={`relative inline-block h-6 w-12 ${
+        handleChange !=null && 'cursor-pointer'
+      } rounded-3xl bg-gray-1`}
     >
       <div
         className={`gradient-2 h-full w-full rounded-3xl transition-all duration-500 ease-in-out ${
