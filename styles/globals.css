@@ -104,13 +104,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .animate-scroll-reverse {
-    animation: scroll-reverse 10s linear infinite;
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
   /* For Chrome browsers */
   .slider-thumb::-webkit-slider-thumb {
     background-color: #ffffff;
@@ -326,14 +319,6 @@
     }
     to {
       transform: translateX(-100%);
-    }
-  }
-  @keyframes scroll-reverse {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(100%);
     }
   }
 
