@@ -138,6 +138,8 @@ import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial
 import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
 import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
 import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+import testimonial_9 from '../public/img/graphics/new-landing-images/testimonial-9.webp';
+import testimonial_10 from '../public/img/graphics/new-landing-images/testimonial-10.webp';
 import million_teachers from '../public/img/graphics/corporate/1-million-teachers.png';
 import maverick from '../public/img/graphics/corporate/maverick.png';
 import seek_discomfort from '../public/img/graphics/corporate/seek-discomfort.png';
@@ -180,20 +182,14 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_3,
   testimonial_4,
   testimonial_5,
-  testimonial_6,
-  testimonial_7,
-  testimonial_8,
 ];
 
 export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
-  testimonial_8,
-  testimonial_7,
   testimonial_6,
-  testimonial_5,
-  testimonial_4,
-  testimonial_3,
-  testimonial_2,
-  testimonial_1,
+  testimonial_7,
+  testimonial_8,
+  testimonial_9,
+  testimonial_10,
 ];
 
 export const PRICING_PAGE_TESTIMONIALS_1 = [
