@@ -6,7 +6,7 @@ import {
 
 const ScrollVerticalAnime = () => {
   return (
-    <section className="section text-white m-horizontal" data-aos="zoom-in">
+    <section className="section text-white" data-aos="zoom-in">
       <h2 className="mx-auto w-full text-center text-5xl font-bold lg:w-[85%] lg:text-8xl">
         Chosen by the World&apos;s Leading{' '}
         <span className="inline lg:block lg:text-center">
@@ -31,7 +31,7 @@ const ScrollVerticalAnime = () => {
           ))}
         </div>
       </div>
-      <div className="relative mt-s8 overflow-hidden">
+      <div className="relative mt-s8 overflow-hidden -ml-s12">
         <div className="animate-scroll flex w-fit gap-x-6">
           {[...Array(4)].map((_, setIndex) => (
             <div className="flex shrink-0 gap-8" key={`set-${setIndex}`}>
