@@ -25,7 +25,7 @@ const Header = ({ curPage }) => {
             />
           </a>
         </Link>
-        <div className="flex items-center md:gap-x-10 w-full justify-between">
+        <div className="flex w-full items-center justify-between md:gap-x-10">
           <DesktopMenu curPage={curPage} />
           <HeaderButtons />
         </div>
@@ -40,7 +40,7 @@ const HeaderButtons = () => {
   const isLoggedIn = useSelector((el) => el.user.isLoggedIn);
 
   return (
-    <div className="hidden gap-5 lg:flex lg:mr-s2">
+    <div className="hidden gap-5 lg:mr-s2 lg:flex">
       {!isLoggedIn && (
         <GlobalButton purpose="route" route="/#generate-aview" type="primary">
           Contact Us
@@ -53,7 +53,7 @@ const HeaderButtons = () => {
         </GlobalButton>
       ) : (
         <GlobalButton purpose="route" route="/register" type="secondary">
-          Sign Up
+          Get Started
         </GlobalButton>
       )}
     </div>
