@@ -46,7 +46,7 @@ const Home = ({ blogs }) => {
       <AiTools />
       <HowItWorks />
       <ScrollVerticalAnime />
-      <Features />
+      {/* <Features /> */}
       <CompareTools />
       <StartGenerating formId="t5dW3MSY" />
       <FAQ page="landing" />
