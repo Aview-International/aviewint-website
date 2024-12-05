@@ -138,6 +138,8 @@ import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial
 import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
 import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
 import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+import testimonial_9 from '../public/img/graphics/new-landing-images/testimonial-9.webp';
+import testimonial_10 from '../public/img/graphics/new-landing-images/testimonial-10.webp';
 import million_teachers from '../public/img/graphics/corporate/1-million-teachers.png';
 import maverick from '../public/img/graphics/corporate/maverick.png';
 import seek_discomfort from '../public/img/graphics/corporate/seek-discomfort.png';
@@ -180,20 +182,14 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_3,
   testimonial_4,
   testimonial_5,
-  testimonial_6,
-  testimonial_7,
-  testimonial_8,
 ];
 
 export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
-  testimonial_8,
-  testimonial_7,
   testimonial_6,
-  testimonial_5,
-  testimonial_4,
-  testimonial_3,
-  testimonial_2,
-  testimonial_1,
+  testimonial_7,
+  testimonial_8,
+  testimonial_9,
+  testimonial_10,
 ];
 
 export const PRICING_PAGE_TESTIMONIALS_1 = [
@@ -215,28 +211,28 @@ export const PRICING_PAGE_TESTIMONIALS_2 = [
 
 export const AI_Tools = [
   {
-    title: 'Multilingual Voiceovers',
-    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project',
+    title: 'Voices That Resonate Globally',
+    desc: 'Create multilingual voiceovers that match your vision—any voice, any style, any language, effortlessly',
     image: multilingual_voiceovers,
   },
   {
-    title: 'Cultural Modifications',
-    desc: 'Our cultural sensitivity filters ensure that your translations and dubbing are contextually accurate to your audience and language of choice',
+    title: 'Cultural Precision, Global Impact',
+    desc: 'Our cultural sensitivity filters adapt your content to resonate deeply with every audience, ensuring accuracy and authenticity',
     image: cultural_modifications,
   },
   {
-    title: 'Translated Subtitles',
-    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project',
+    title: 'Your Global Earnings, Paid Upfront',
+    desc: 'Unlock your content\u0027s earning potential with upfront payouts—no waiting for global performance to cash in.',
     image: translated_subtitles,
   },
   {
-    title: 'Content Distribution',
-    desc: 'We run your international channels and optimize them to get seen by your most likely audiences around the world',
+    title: 'Effortless Worldwide Distribution',
+    desc: 'We manage and optimize your international channels, ensuring your content reaches the right audience at the right time',
     image: null,
   },
   {
-    title: 'Multi-Track Audio',
-    desc: 'We edit your videos and include audio tracks to your video file so you don\u0027t have new youtube channels.',
+    title: 'Multi-Language. One Platform',
+    desc: 'Seamlessly add multilingual audio tracks to your existing videos—no need for new YouTube channels',
     image: multi_track_audio,
   },
 ];
@@ -335,19 +331,19 @@ export const ComparisionTools = [
 export const Work_Process = [
   {
     title: 'Sign Up for Free',
-    desc: 'Quickly create your free AView account to unlock global distribution',
+    desc: 'Create your free account in seconds and unlock international opportunities',
   },
   {
     title: 'Connect Your Socials',
-    desc: 'Link your social profiles to sync content and optimize reach',
+    desc: 'Link your socials to synchronize content and begin your global reach',
   },
   {
-    title: 'Upload & Use AI Tools',
-    desc: 'Upload videos and leverage AI to enhance, caption, and translate for international audience',
+    title: 'Upload & Select Content',
+    desc: 'Choose the videos you want to globalize',
   },
   {
     title: 'Distribute with One Click',
-    desc: 'Export and publish across multiple platforms and regions effortlessly',
+    desc: 'Publish your content across multiple platforms and regions instantly, all from one dashboard',
   },
 ];
 

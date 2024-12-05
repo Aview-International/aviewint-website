@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
 import Logo from '../../../public/img/aview/logo.svg';
 import { useEffect, useState } from 'react';
-import modificationImg from '../../../public/img/graphics/new-landing-images/cultural-modifications.webp';
+import { SUPPORTED_REGIONS } from '../../../constants/constants';
 import audioImg from '../../../public/img/graphics/new-landing-images/multi-track-audio.webp';
 import ToggleButton from '../../FormComponents/ToggleButton';
 import GlobalButton from '../../UI/GlobalButton';
@@ -42,10 +42,11 @@ const AiTools = () => {
   return (
     <section className="m-horizontal section text-white">
       <h2 className="mx-auto text-center text-5xl font-bold lg:text-7xl">
-        AI Tools To Help You Succeed
+        Let AI Supercharge Your Creative Process
       </h2>
       <p className="mb-s6 mt-s2 text-center font-extralight">
-        Try our set of AI tools to see our capabilities
+        Transform how you create, localize, and distribute content—all with the
+        power of our AI toolkit
       </p>
       <div className="mt-s8 grid grid-cols-1 gap-8 md:grid-cols-2">
         <Voiceovers />
@@ -66,7 +67,40 @@ const AiTools = () => {
 };
 
 const Modification = () => {
-  return <Image src={modificationImg} alt="" />;
+  const [payload, setPayload] = useState([]);
+
+  const handleSelect = (option) => {
+    const selectedRegion = [...payload];
+
+    if (selectedRegion.includes(option))
+      selectedRegion.splice(selectedRegion.indexOf(option), 1);
+    else selectedRegion.push(option);
+
+    setPayload(selectedRegion);
+  };
+
+  return (
+    <div className="border-1 grid grid-cols-2 items-center justify-center gap-3 rounded-xl border border-white-transparent p-s3">
+      {SUPPORTED_REGIONS.map((item, index) => (
+        <div
+          key={index}
+          className={`group flex flex-col items-center`}
+          onClick={() => handleSelect(item.title)}
+        >
+          <div
+            className={`relative h-full max-h-[180px] w-full max-w-[250px] cursor-pointer rounded-xl bg-black p-s1 text-center ${
+              payload.includes(item.title) ? 'gradient-1' : 'gradient-dark'
+            }`}
+          >
+            <Image src={item.image} alt={item.title} width={140} height={135} />
+            <div
+              className={`gradient-1 transition-300 absolute left-1/2 top-1/2 -z-10 h-[104%] w-[104%] -translate-x-1/2 -translate-y-1/2 rounded-2xl opacity-0 blur-[8px] group-hover:opacity-60`}
+            ></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const Audio = () => {
@@ -164,8 +198,8 @@ const TranslatedSubtitles = () => {
 
   return (
     <div className="border-1 rounded-lg border border-white-transparent p-s3">
-      <p className="mb-s3 text-3xl">Global Channel</p>
-      <div className="border-1 mb-s4 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
+      <p className="mb-s3 text-3xl">Global Channels</p>
+      <div className="border-1 mb-s5 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
         <Image src={Logo} alt="Aview Internaional" width={40} height={40} />
         <div className="ml-s2 flex-grow">
           <p className="text-sm md:text-base">Aview English</p>
@@ -180,7 +214,7 @@ const TranslatedSubtitles = () => {
         </div>
         <ToggleButton isChecked={toggle1} handleChange={null} />
       </div>
-      <div className="border-1 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
+      <div className="border-1 mb-9 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
         <Image src={Logo} alt="" width={40} height={40} />
         <div className="ml-s2 flex-grow">
           <p className="text-sm md:text-base">Aview Espanyol</p>
@@ -195,12 +229,12 @@ const TranslatedSubtitles = () => {
         </div>
         <ToggleButton isChecked={toggle2} handleChange={null} />
       </div>
-      <div className="mt-s3 max-w-[160px]">
+      <div className="max-w-[160px]">
         {toggle1 && toggle2 ? (
-          <GlobalButton>Cash Out</GlobalButton>
+          <GlobalButton>Continue</GlobalButton>
         ) : (
           <GlobalButton disabled={true} extraClasses="px-s3">
-            Cash Out
+            Continue
           </GlobalButton>
         )}
       </div>

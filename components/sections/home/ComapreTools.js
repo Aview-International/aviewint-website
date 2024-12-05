@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ComparisionTools } from '../../../constants/constants';
 import check from '../../../public/img/icons/green-check-circle.svg';
 import uncheck from '../../../public/img/icons/incorrect.svg';
+import GlobalButton from '../../UI/GlobalButton';
 
 const CompareTools = () => {
   return (
@@ -39,6 +40,11 @@ const CompareTools = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-12 flex w-full justify-center">
+        <GlobalButton purpose="route" route="/dashboard" type="secondary">
+          Get Started
+        </GlobalButton>
       </div>
     </section>
   );

@@ -328,6 +328,7 @@
       transform: translateX(-100%);
     }
   }
+
   @keyframes scroll-reverse {
     from {
       transform: translateX(0%);

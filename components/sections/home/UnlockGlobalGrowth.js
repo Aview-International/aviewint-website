@@ -6,12 +6,11 @@ const UnlockGlobalGrowth = () => {
     <section className="section m-horizontal mt-12 lg:mt-28">
       <div className="flex flex-col items-start justify-start md:items-center md:justify-center">
         <h1 className="title mx-auto w-full text-center lg:w-4/5">
-          Unlock Your Content&apos;s Global Potential with One Click of Aview
+          Unlock Your Content&apos;s Global Potential with Aview
         </h1>
-        <p className="body my-s6 mx-auto text-center lg:w-1/2">
-          An all-in-one content creation tool for creators to scale up content
-          globally without a huge team or budget. Get a free sample to see for
-          yourself
+        <p className="body mx-auto mt-s4 mb-s6 text-center lg:w-1/2">
+          An all-in-one solution to create, localize, and distribute content
+          globally in minutes. Try a free sample today
         </p>
         <div className="flex w-full justify-center">
           <GlobalButton purpose="route" route="/dashboard" type="secondary">
