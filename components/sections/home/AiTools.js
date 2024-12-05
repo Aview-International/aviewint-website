@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { AI_Tools } from '../../../constants/constants';
 import Logo from '../../../public/img/aview/logo.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SUPPORTED_REGIONS } from '../../../constants/constants';
 import audioImg from '../../../public/img/graphics/new-landing-images/multi-track-audio.webp';
 import ToggleButton from '../../FormComponents/ToggleButton';
@@ -177,30 +177,49 @@ const Voiceovers = () => {
 const TranslatedSubtitles = () => {
   const [toggle1, setToggle1] = useState(false);
   const [toggle2, setToggle2] = useState(false);
+  const cycleStateRef = useRef(null);
 
   useEffect(() => {
     const cycleStates = () => {
+      // clear any existing timeout
+      if (cycleStateRef.current) {
+        clearTimeout(cycleStateRef.current);
+      }
+
+      // first stage: enable first toggle
       setToggle1(true);
-      setTimeout(() => {
+
+      // second stage: enable second toggle after 3 seconds
+      cycleStateRef.current = setTimeout(() => {
         setToggle2(true);
-        setTimeout(() => {
+
+        // third stage: reset toggles after 10 seconds
+        cycleStateRef.current = setTimeout(() => {
           setToggle1(false);
           setToggle2(false);
         }, 10000);
       }, 3000);
     };
 
-    cycleStates(); // start loop immediately
-    const intervalId = setInterval(cycleStates, 16000); // loop entire animation cycle
+    // start cycle immediately
+    cycleStates();
 
-    return () => clearInterval(intervalId);
+    // set up interval for looped cycles
+    const intervalId = setInterval(cycleStates, 16000);
+
+    return () => {
+      clearInterval(intervalId);
+      if (cycleStateRef.current) {
+        clearTimeout(cycleStateRef.current);
+      }
+    };
   }, []);
 
   return (
     <div className="border-1 rounded-lg border border-white-transparent p-s3">
       <p className="mb-s3 text-3xl">Global Channels</p>
       <div className="border-1 mb-s5 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
-        <Image src={Logo} alt="Aview Internaional" width={40} height={40} />
+        <Image src={Logo} alt="Aview International" width={40} height={40} />
         <div className="ml-s2 flex-grow">
           <p className="text-sm md:text-base">Aview English</p>
           <span
@@ -217,7 +236,7 @@ const TranslatedSubtitles = () => {
       <div className="border-1 mb-9 flex items-center justify-between rounded-lg border border-white-transparent bg-white-transparent p-s2">
         <Image src={Logo} alt="" width={40} height={40} />
         <div className="ml-s2 flex-grow">
-          <p className="text-sm md:text-base">Aview Espanyol</p>
+          <p className="text-sm md:text-base">Aview Español</p>
           <span
             className={`border-1 rounded-md border border-white-transparent bg-white-transparent p-0.5 text-xs md:text-sm ${
               toggle2 ? 'text-green' : 'text-gray-2'
@@ -230,13 +249,7 @@ const TranslatedSubtitles = () => {
         <ToggleButton isChecked={toggle2} handleChange={null} />
       </div>
       <div className="max-w-[160px]">
-        {toggle1 && toggle2 ? (
-          <GlobalButton>Continue</GlobalButton>
-        ) : (
-          <GlobalButton disabled={true} extraClasses="px-s3">
-            Continue
-          </GlobalButton>
-        )}
+        <GlobalButton disabled={!(toggle1 && toggle2)}>Continue</GlobalButton>
       </div>
     </div>
   );
