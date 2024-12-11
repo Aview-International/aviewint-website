@@ -7,17 +7,23 @@ import { useEffect, useRef, useState } from 'react';
  * @returns React.Component
  * @author Victor Ogunjobi
  */
-const SmoothCounter = ({ endValue = 5000, duration = 2000 }) => {
-  const [displayValue, setDisplayValue] = useState(0);
+
+const SmoothCounter = ({
+  endValue = 5000,
+  duration = 2000,
+  startValue = 0,
+}) => {
+  const [displayValue, setDisplayValue] = useState(startValue);
   const animationFrameRef = useRef(null);
   const startTimeRef = useRef(null);
+  const startValueRef = useRef(startValue);
   const endValueRef = useRef(endValue);
 
   useEffect(() => {
-    // Reset refs when endValue changes
+    // Reset refs when endValue or startValue changes
     startTimeRef.current = null;
+    startValueRef.current = startValue;
     endValueRef.current = endValue;
-    setDisplayValue(0);
 
     const animate = (currentTime) => {
       // Initialize start time on first frame
@@ -31,7 +37,11 @@ const SmoothCounter = ({ endValue = 5000, duration = 2000 }) => {
       // Smooth easing function (ease-out)
       const easeProgress = 1 - Math.pow(1 - progress, 4);
 
-      const currentValue = Math.floor(endValueRef.current * easeProgress);
+      // Calculate the current value considering the start value
+      const currentValue = Math.floor(
+        startValueRef.current +
+          (endValueRef.current - startValueRef.current) * easeProgress
+      );
 
       setDisplayValue(currentValue);
 
@@ -50,7 +60,7 @@ const SmoothCounter = ({ endValue = 5000, duration = 2000 }) => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [endValue, duration]);
+  }, [endValue, startValue, duration]);
 
   return <span>{displayValue.toLocaleString()}</span>;
 };

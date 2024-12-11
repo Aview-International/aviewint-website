@@ -38,6 +38,7 @@ const DashboardHome = () => {
     languages: [],
     additionalNote: '',
     saveSettings: false,
+    requestHumanReview: false,
   });
 
   const [videoStats, setVideoStats] = useState(undefined);
@@ -140,13 +141,13 @@ const DashboardHome = () => {
         updateRequiredServices(preferences, userData.uid);
       await transcribeSocialLink({
         videoData: selectedVideos,
-        languages: payload.languages,
-        additionalNote: payload.additionalNote,
+        ...payload,
       });
       setPayload({
         languages: [],
         additionalNote: '',
         saveSettings: false,
+        requestHumanReview: false,
       });
       setSelectedVideos([]);
       setIsSelected(false);

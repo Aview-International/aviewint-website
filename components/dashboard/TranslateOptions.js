@@ -102,6 +102,14 @@ const TranslateOptions = ({
       />
       <CheckBox
         onChange={(e) =>
+          setPayload({ ...payload, requestHumanReview: e.target.checked })
+        }
+        isChecked={payload.requestHumanReview}
+        label="Request human review"
+      />
+      <br />
+      <CheckBox
+        onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
         }
         isChecked={payload.saveSettings}
