@@ -14,6 +14,7 @@ const getWidthPercentages = (stage) => {
     'moderation',
     'dubbing',
     'editing',
+    'overlay',
     'under review',
     'complete',
   ];

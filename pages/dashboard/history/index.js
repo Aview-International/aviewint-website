@@ -17,27 +17,20 @@ const History = () => {
   const uid = Cookies.get('uid');
 
   useEffect(() => {
-    (async () => {
-      try {
-        const completedArray = await getJobsHistory();
-        dispatch(setCompletedJobs(completedArray));
-      } catch (error) {
-        ErrorHandler(error);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = subscribeToHistory(uid, (data) => {
-      const pendingArray = data
-        ? Object.values(data).sort(
-            (a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)
-          )
-        : [];
-      dispatch(setPendingJobs(pendingArray));
-    });
-
-    return () => unsubscribe(); // cleanup
+    try {
+      const unsubscribe = subscribeToHistory(uid, async (data) => {
+        const pendingArray = data
+          ? Object.values(data).sort(
+              (a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)
+            )
+          : [];
+        dispatch(setPendingJobs(pendingArray));
+        dispatch(setCompletedJobs(await getJobsHistory()));
+      });
+      return () => unsubscribe(); // cleanup
+    } catch (error) {
+      ErrorHandler(error);
+    }
   }, []);
 
   return (

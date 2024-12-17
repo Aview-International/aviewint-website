@@ -221,8 +221,8 @@ export const AI_Tools = [
     image: cultural_modifications,
   },
   {
-    title: 'Your Global Earnings, Paid Upfront',
-    desc: 'Unlock your content\u0027s earning potential with upfront payouts—no waiting for global performance to cash in.',
+    title: 'Your Expected Global Earnings',
+    desc: 'Unlock your content\u0027s earning potential with expected global revenue.',
     image: translated_subtitles,
   },
   {
