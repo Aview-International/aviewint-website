@@ -138,6 +138,8 @@ import testimonial_5 from '../public/img/graphics/new-landing-images/testimonial
 import testimonial_6 from '../public/img/graphics/new-landing-images/testimonial-6.webp';
 import testimonial_7 from '../public/img/graphics/new-landing-images/testimonial-7.webp';
 import testimonial_8 from '../public/img/graphics/new-landing-images/testimonial-8.webp';
+import testimonial_9 from '../public/img/graphics/new-landing-images/testimonial-9.webp';
+import testimonial_10 from '../public/img/graphics/new-landing-images/testimonial-10.webp';
 import million_teachers from '../public/img/graphics/corporate/1-million-teachers.png';
 import maverick from '../public/img/graphics/corporate/maverick.png';
 import seek_discomfort from '../public/img/graphics/corporate/seek-discomfort.png';
@@ -180,20 +182,14 @@ export const LANDNG_PAGE_TESTIMONIALS = [
   testimonial_3,
   testimonial_4,
   testimonial_5,
-  testimonial_6,
-  testimonial_7,
-  testimonial_8,
 ];
 
 export const LANDNG_PAGE_TESTIMONIALS_REVERSE = [
-  testimonial_8,
-  testimonial_7,
   testimonial_6,
-  testimonial_5,
-  testimonial_4,
-  testimonial_3,
-  testimonial_2,
-  testimonial_1,
+  testimonial_7,
+  testimonial_8,
+  testimonial_9,
+  testimonial_10,
 ];
 
 export const PRICING_PAGE_TESTIMONIALS_1 = [
@@ -215,39 +211,29 @@ export const PRICING_PAGE_TESTIMONIALS_2 = [
 
 export const AI_Tools = [
   {
-    title: 'Multilingual Voiceovers',
-    desc: 'Generate AI voiceovers to fit any voice, style, or language you may need for your next project',
-    button_text: 'Try our subtitle generator',
+    title: 'Voices That Resonate Globally',
+    desc: 'Create multilingual voiceovers that match your vision—any voice, any style, any language, effortlessly',
     image: multilingual_voiceovers,
-    index: 1,
   },
   {
-    title: 'Cultural Modifications',
-    desc: 'Our cultural sensitivity filters ensure that your translations and dubbing are contextually accurate to your audience and language of choice',
-    button_text: 'Try our voiceover generator',
+    title: 'Cultural Precision, Global Impact',
+    desc: 'Our cultural sensitivity filters adapt your content to resonate deeply with every audience, ensuring accuracy and authenticity',
     image: cultural_modifications,
-    index: 2,
   },
   {
-    title: 'Translated Subtitles',
-    desc: 'Easily convert audio files into accurate text to save you time and energy for your next creative or administrative project',
-    button_text: 'Try speech to text conversion',
+    title: 'Your Expected Global Earnings',
+    desc: 'Unlock your content\u0027s earning potential with expected global revenue.',
     image: translated_subtitles,
-    index: 3,
   },
   {
-    title: 'Content Distribution',
-    desc: 'We run your international channels and optimize them to get seen by your most likely audiences around the world',
-    button_text: 'Try text to speech conversion',
+    title: 'Effortless Worldwide Distribution',
+    desc: 'We manage and optimize your international channels, ensuring your content reaches the right audience at the right time',
     image: null,
-    index: 4,
   },
   {
-    title: 'Multi-Track Audio',
-    desc: 'We edit your videos and include audio tracks to your video file so you don\u0027t have new youtube channels.',
-    button_text: 'Try text to speech conversion',
+    title: 'Multi-Language. One Platform',
+    desc: 'Seamlessly add multilingual audio tracks to your existing videos—no need for new YouTube channels',
     image: multi_track_audio,
-    index: 5,
   },
 ];
 
@@ -345,19 +331,19 @@ export const ComparisionTools = [
 export const Work_Process = [
   {
     title: 'Sign Up for Free',
-    desc: 'Quickly create your free AView account to unlock global distribution',
+    desc: 'Create your free account in seconds and unlock international opportunities',
   },
   {
     title: 'Connect Your Socials',
-    desc: 'Link your social profiles to sync content and optimize reach',
+    desc: 'Link your socials to synchronize content and begin your global reach',
   },
   {
-    title: 'Upload & Use AI Tools',
-    desc: 'Upload videos and leverage AI to enhance, caption, and translate for international audience',
+    title: 'Upload & Select Content',
+    desc: 'Choose the videos you want to globalize',
   },
   {
     title: 'Distribute with One Click',
-    desc: 'Export and publish across multiple platforms and regions effortlessly',
+    desc: 'Publish your content across multiple platforms and regions instantly, all from one dashboard',
   },
 ];
 
@@ -1612,21 +1598,21 @@ export const SUPPORTED_REGIONS = [
         languageName: 'English (US)',
         localDialect: 'English (US)',
         id: 'English',
-        costPerCPM: 10,
+        costPerCPM: 3.75,
       },
       {
         image: Spanish2,
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
         id: 'Spanish (LATAM)',
-        costPerCPM: 8,
+        costPerCPM: 1,
       },
       {
         image: Canada,
         languageName: 'French (QB)',
         localDialect: 'Français (QB)',
         id: 'Français',
-        costPerCPM: 7,
+        costPerCPM: 2.5,
       },
     ],
   },
@@ -1639,14 +1625,14 @@ export const SUPPORTED_REGIONS = [
         languageName: 'Spanish (LATAM)',
         localDialect: 'Español (LATAM)',
         id: 'Español',
-        costPerCPM: 8,
+        costPerCPM: 1,
       },
       {
         image: Portuguese,
         languageName: 'Portuguese (BR)',
         localDialect: 'Português (BR)',
         id: 'Português',
-        costPerCPM: 5,
+        costPerCPM: 1.5,
       },
     ],
   },
@@ -1658,55 +1644,51 @@ export const SUPPORTED_REGIONS = [
         image: Chinese,
         languageName: 'Chinese (Mandarin)',
         localDialect: '中文 (Zhōngwén)',
-        costPerCPM: 5,
       },
       {
         image: Hindi,
         languageName: 'Hindi',
         localDialect: 'हिन्दी (Hindī)',
-        costPerCPM: 5,
+        costPerCPM: 0.5,
       },
       {
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Русский (Russkiy)',
-        costPerCPM: 5,
       },
       {
         image: Arabic,
         languageName: 'Arabic',
         localDialect: 'العربية (Al - ʿarabiyyah)',
-        costPerCPM: 5,
+        costPerCPM: 3.1,
       },
       {
         image: Korean,
         languageName: 'Korean',
         localDialect: '한국어 (Hangugeo)',
-        costPerCPM: 5,
+        costPerCPM: 2.5,
       },
       {
         image: Japanese,
         languageName: 'Japanese',
         localDialect: '日本語 (Nihongo)',
-        costPerCPM: 5,
+        costPerCPM: 3,
       },
       {
         image: Indonesian,
         languageName: 'Indonesian',
         localDialect: 'Bahasa Indonesia',
-        costPerCPM: 5,
+        costPerCPM: 0.75,
       },
       {
         image: Hindi,
         languageName: 'Bengali',
         localDialect: 'বাংলা (Bangla)',
-        costPerCPM: 5,
       },
       {
         image: Filipino,
         languageName: 'Filipino',
         localDialect: 'Wikang Filipino',
-        costPerCPM: 5,
       },
     ],
   },
@@ -1718,50 +1700,46 @@ export const SUPPORTED_REGIONS = [
         image: Russian,
         languageName: 'Russian',
         localDialect: 'Russian',
-        costPerCPM: 5,
       },
       {
         image: German,
         languageName: 'German',
         localDialect: 'Deutsch',
-        costPerCPM: 5,
       },
       {
         image: Uk,
         languageName: 'English (UK)',
         localDialect: 'English (UK)',
         id: 'English ',
-        costPerCPM: 10,
+        costPerCPM: 3.75,
       },
       {
         image: French,
         languageName: 'French',
         localDialect: 'Français',
-        costPerCPM: 7,
+        costPerCPM: 2.5,
       },
       {
         image: Italian,
         languageName: 'Italian',
         localDialect: 'Italiano',
-        costPerCPM: 5,
       },
       {
         image: Turkish,
         languageName: 'Turkish',
         localDialect: 'Türkçe',
-        costPerCPM: 5,
       },
       {
         image: Spanish,
         languageName: 'Spanish',
         localDialect: 'Español',
-        costPerCPM: 5,
+        costPerCPM: 1,
       },
       {
         image: Portugal,
         languageName: 'Portuguese',
         localDialect: 'Portugués',
-        costPerCPM: 5,
+        costPerCPM: 1.5,
       },
     ],
   },

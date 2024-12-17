@@ -9,7 +9,6 @@ import ScrollToTopButton from '../components/UI/ScrollToTopButton';
 import ProgressBar from '../components/UI/ProgressBar';
 import ScrollVerticalAnime from '../components/sections/home/ScrollVerticalAnime';
 import CookieConsent from '../components/sections/home/CookieConsent';
-import Features from '../components/sections/home/Features';
 import HowItWorks from '../components/sections/home/HowItWorks';
 import AiTools from '../components/sections/home/AiTools';
 import CompareTools from '../components/sections/home/ComapreTools';
@@ -46,7 +45,6 @@ const Home = ({ blogs }) => {
       <AiTools />
       <HowItWorks />
       <ScrollVerticalAnime />
-      <Features />
       <CompareTools />
       <StartGenerating formId="t5dW3MSY" />
       <FAQ page="landing" />

@@ -62,18 +62,17 @@
   }
 
   .border-gradient {
-    display:inline-block;
-    border-radius:3px;
-    background:
-     linear-gradient(#000017 0 0) padding-box,
-     linear-gradient(54deg, #ff00ff 0%, #00ffff 100%) border-box; 
+    display: inline-block;
+    border-radius: 3px;
+    background: linear-gradient(#000017 0 0) padding-box,
+      linear-gradient(54deg, #ff00ff 0%, #00ffff 100%) border-box;
   }
 
   .transition-300 {
     @apply transition-all duration-300 ease-in-out;
   }
 
-   .title {
+  .title {
     @apply text-7xl font-bold text-white md:text-9xl;
   }
 
@@ -86,23 +85,9 @@
   }
 
   .body {
-    @apply text-white md:text-lg font-light;
+    @apply font-light text-white md:text-lg;
   }
-  .phone-number input {
-    @apply w-full bg-transparent pl-s2;
-  }
-  .phone-number input:focus {
-    @apply outline-none;
-  }
-  .phone-number > div {
-    @apply p-2;
-  }
-  .phone-number img {
-    @apply max-w-[90%];
-  }
-  .phone-number > div > div > div:last-of-type {
-    @apply ml-s2 mb-s1 h-[11px] w-[11px] border-r-[3px] border-b-[3px] border-white opacity-100;
-  }
+
   .h-screen-trick {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
@@ -112,29 +97,19 @@
     animation: slide-text 18s linear infinite;
   }
 
-  .animate-images {
-    animation: slide-testimonial 15s linear infinite;
+  .animate-scroll {
+    animation: scroll 18s linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .animate-images-anime {
-    animation: slide-testimonial 30s linear infinite;
+  .animate-scroll-reverse {
+    animation: scroll-reverse 10s linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-
-  .animate-images-anime-first {
-    animation: slide-testimonial-first 30s linear infinite;
-    will-change: transform;
-  }
-
-  .animate-images-anime-second {
-    animation: slide-testimonial-second 30s linear infinite;
-    will-change: transform;
-  }
- 
-  /* .animate-images-reverse {
-    animation: slide-testimonial-reverse 8s linear infinite;
-  } */
 
   /* For Chrome browsers */
   .slider-thumb::-webkit-slider-thumb {
@@ -240,7 +215,6 @@
     transform-origin: left center;
   }
 
-
   @keyframes fadeInDown {
     0% {
       opacity: 0;
@@ -258,17 +232,17 @@
   .first_blob {
     animation: first_blob 50s infinite linear;
   }
-  
+
   .second_blob {
     animation: second_blob 60s infinite linear;
     animation-delay: 23s;
   }
 
   .top {
-    bottom : 26vh;
+    bottom: 26vh;
     left: 70vw;
   }
- 
+
   .bottom {
     top: 44vh;
     right: 44vw;
@@ -277,7 +251,7 @@
   .active {
     animation: scaleAnimation 2s infinite ease-out;
   }
-  
+
   @keyframes scaleAnimation {
     0% {
       transform: scale(1);
@@ -291,7 +265,7 @@
       transform: scale(1.6);
       opacity: 0.8;
     }
-    30%{
+    30% {
       transform: scale(1.9);
       opacity: 0.7;
     }
@@ -312,7 +286,7 @@
       opacity: 1;
     }
   }
-  
+
   @keyframes first_blob {
     0% {
       left: 10vw;
@@ -346,30 +320,21 @@
     }
   }
 
-  @keyframes slide-testimonial {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-33.3%);
-    }
-  }
-
-  @keyframes slide-testimonial-first {
-    from {
-      transform: translateX(-22.2%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slide-testimonial-second {
+  @keyframes scroll {
     from {
       transform: translateX(0);
     }
     to {
-      transform: translateX(-44.4%);
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes scroll-reverse {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(100%);
     }
   }
 

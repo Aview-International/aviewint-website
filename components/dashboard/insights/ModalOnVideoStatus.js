@@ -2,23 +2,34 @@ import Image from 'next/image';
 import { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import closeIcon from '../../../public/img/icons/close.svg';
+import SmoothCounter from '../../UI/SmoothCounter';
 
-const getWidthPercentage = (stage) => {
+const getWidthPercentages = (stage) => {
   const stages = [
     'queued',
+    'retrieving video',
     'audio-separation',
     'transcription',
     'translation',
+    'moderation',
     'dubbing',
     'editing',
+    'overlay',
     'under review',
     'complete',
   ];
-  const index = stages.findIndex((s) => s === stage.toLowerCase());
-  return index > 0 ? Math.floor(((index + 1) / stages.length) * 100) : 0;
-};
 
-const VideoStatusModal = ({ handler, video }) => {
+  const currentIndex = stages.findIndex((s) => s === stage.toLowerCase());
+  return {
+    currentPercentage:
+      currentIndex > 0
+        ? Math.floor(((currentIndex + 1) / stages.length) * 100)
+        : 0,
+    previousPercentage:
+      currentIndex > 1 ? Math.floor((currentIndex / stages.length) * 100) : 0,
+  };
+};
+const VideoStatusModal = ({ handler, video, currentPercentage }) => {
   return (
     <div
       className={`transition-300 absolute top-0 -right-1 z-20 h-auto w-[365px] rounded-2xl bg-black p-3 duration-300 ease-out`}
@@ -33,7 +44,7 @@ const VideoStatusModal = ({ handler, video }) => {
         <h2 className="mt-s2 mb-s0 text-sm text-white/70">VIDEO TITLE</h2>
         <p>{video.videoData.caption.replace(/\.mp4$/i, '')}</p>
         <h2 className="mt-s2 mb-s0 text-sm text-white/70">VIDEO PROGRESS</h2>
-        <p>{`${getWidthPercentage(video.status)} %`}</p>
+        <p>{`${currentPercentage} %`}</p>
         <h2 className="mt-s2 mb-s0 text-sm text-white/70">VIDEO STATUS</h2>
         <p>{video.status}</p>
         <h2 className="mt-s2 mb-s0 text-sm text-white/70">LANGUAGE</h2>
@@ -49,6 +60,10 @@ const VideoStatusModal = ({ handler, video }) => {
 
 const ModalOnVideoStatus = ({ video }) => {
   const [modal, setModal] = useState(false);
+
+  const { currentPercentage, previousPercentage } = getWidthPercentages(
+    video.status
+  );
 
   return (
     <div className="relative mb-s2">
@@ -68,12 +83,19 @@ const ModalOnVideoStatus = ({ video }) => {
       </div>
       <div className="relative my-0.5 h-1.5 w-full rounded-2xl">
         <span
-          className={`gradient-1 absolute z-10 block h-1 rounded-2xl`}
-          style={{ width: `${getWidthPercentage(video.status)}%` }}
+          className={`gradient-1 absolute z-10 block h-1 rounded-2xl transition-all duration-1000 ease-in-out`}
+          style={{ width: `${currentPercentage}%` }}
         ></span>
       </div>
       <div className="flex w-full flex-row items-center justify-between">
-        <p>{getWidthPercentage(video.status)} %</p>
+        <p>
+          <SmoothCounter
+            endValue={currentPercentage}
+            startValue={previousPercentage}
+            duration={2500}
+          />
+          %
+        </p>
         <p>
           <span className="font-medium">status{` :`}</span>
           <span className="ml-1 rounded-md bg-white-transparent p-0.5">
@@ -83,7 +105,11 @@ const ModalOnVideoStatus = ({ video }) => {
       </div>
       {modal && (
         <OutsideClickHandler onOutsideClick={() => setModal(false)}>
-          <VideoStatusModal video={video} handler={() => setModal(false)} />
+          <VideoStatusModal
+            video={video}
+            handler={() => setModal(false)}
+            currentPercentage={currentPercentage}
+          />
         </OutsideClickHandler>
       )}
     </div>

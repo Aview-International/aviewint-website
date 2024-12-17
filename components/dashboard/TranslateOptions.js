@@ -43,6 +43,12 @@ const TranslateOptions = ({
     setPayload({ ...payload, languages: allLanguages });
   };
 
+  const revenue = (cpm) =>
+    Number((cpm / 1000) * videoStats.totalViews).toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
   return (
     <>
       <h3 className="mb-s3 text-2xl font-bold">Distribution</h3>
@@ -70,21 +76,10 @@ const TranslateOptions = ({
                   {findLocalDialect(language)?.['localDialect']}
                 </h2>
                 <p className="text-sm">{language}</p>
-                {/* how calculation is done
-              english -  $6 per CPM 
-              latam - $2 per CPM
-              southeast asia - $0.8 CPM
-              south asia - $1.5 CPM
-              north & east asia - $1.5 CPM
-              west asia - $0.8 CPM
-              central asia - $1 CPM
-              africa - $1 CPM
-              */}
-                {videoStats && (
+                {videoStats && findLocalDialect(language)?.['costPerCPM'] && (
                   <div className="border-1 mt-s1 rounded border border-white-transparent bg-white-transparent p-s0 text-green">
                     Expected Revenue: {'$'}
-                    {findLocalDialect(language)?.['costPerCPM'] *
-                      videoStats.totalViews}
+                    {revenue(findLocalDialect(language)?.['costPerCPM'])}
                   </div>
                 )}
               </div>
@@ -105,6 +100,14 @@ const TranslateOptions = ({
           setPayload({ ...payload, additionalNote: e.target.value })
         }
       />
+      <CheckBox
+        onChange={(e) =>
+          setPayload({ ...payload, requestHumanReview: e.target.checked })
+        }
+        isChecked={payload.requestHumanReview}
+        label="Request human review"
+      />
+      <br />
       <CheckBox
         onChange={(e) =>
           setPayload({ ...payload, saveSettings: e.target.checked })
