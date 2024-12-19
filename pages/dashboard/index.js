@@ -34,6 +34,11 @@ const DashboardHome = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedVideos, setSelectedVideos] = useState([]);
+  /**
+   * changes to the payload below must also be updated
+   * at the /upload page 
+   * for consistency with the backend
+   */
   const [payload, setPayload] = useState({
     languages: [],
     additionalNote: '',
