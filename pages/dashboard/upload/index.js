@@ -16,10 +16,16 @@ const Upload = () => {
   const [video, setVideo] = useState(undefined);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  /**
+   * changes to the payload below must also be updated
+   * at the /dashboard page
+   * for consistency with the backend
+   */
   const [payload, setPayload] = useState({
-    languages: '',
-    saveSettings: false,
+    languages: [],
     additionalNote: '',
+    saveSettings: false,
+    requestHumanReview: false,
   });
 
   const handleSubmit = async () => {
@@ -34,12 +40,7 @@ const Upload = () => {
       if (payload.languages.length < 1)
         return ErrorHandler(null, 'Please select a language');
       if (payload.saveSettings) updateRequiredServices(preferences, userId);
-      await uploadCreatorVideo(
-        video,
-        payload.languages,
-        payload.additionalNote,
-        setUploadProgress
-      );
+      await uploadCreatorVideo({ video, setUploadProgress, ...payload });
       toast.success('Tasks submitted succesfully 🚀');
       router.push('/dashboard');
     } catch (error) {

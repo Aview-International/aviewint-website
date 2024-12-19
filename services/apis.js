@@ -194,17 +194,20 @@ export const deleteVoiceClone = async (voiceId) => {
 
 let cancelTokenSource = null;
 
-export const uploadCreatorVideo = async (
-  video,
-  languages,
-  additionalNote,
-  setUploadProgress
-) => {
+export const uploadCreatorVideo = async (body) => {
   cancelTokenSource = axios.CancelToken.source();
+  const {
+    video,
+    languages,
+    additionalNote,
+    setUploadProgress,
+    requestHumanReview,
+  } = body;
 
   let formData = new FormData();
   formData.append('video', video);
   formData.append('additionalNote', additionalNote);
+  formData.append('requestHumanReview', requestHumanReview);
   for (const lang of languages) formData.append('languages', lang);
 
   await axiosInstance.post('transcription/upload-creator-video', formData, {
